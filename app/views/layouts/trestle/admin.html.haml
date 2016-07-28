@@ -9,6 +9,13 @@
 
     %title Trestle
 
+    = stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag "turbolinks" if defined?(Turbolinks)
+    = javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload'
+
+    = yield :head
+
   %body
     = render "trestle/shared/sidebar"
 

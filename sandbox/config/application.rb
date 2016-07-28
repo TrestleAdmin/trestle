@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'turbolinks'
 
 Bundler.require(*Rails.groups)
 require "trestle"

@@ -1,0 +1,26 @@
+@import "trestle/font-awesome/scss/variables";
+@import "trestle/font-awesome/scss/mixins";
+
+$fa-font-path: "trestle/font-awesome/fonts";
+@font-face {
+  font-family: 'FontAwesome';
+  src: font-url('#{$fa-font-path}/fontawesome-webfont.eot?v=#{$fa-version}');
+  src: font-url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'),
+    font-url('#{$fa-font-path}/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'),
+    font-url('#{$fa-font-path}/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
+    font-url('#{$fa-font-path}/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
+    font-url('#{$fa-font-path}/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import "trestle/font-awesome/scss/core";
+@import "trestle/font-awesome/scss/larger";
+@import "trestle/font-awesome/scss/fixed-width";
+@import "trestle/font-awesome/scss/list";
+@import "trestle/font-awesome/scss/bordered-pulled";
+@import "trestle/font-awesome/scss/animated";
+@import "trestle/font-awesome/scss/rotated-flipped";
+@import "trestle/font-awesome/scss/stacked";
+@import "trestle/font-awesome/scss/icons";
+@import "trestle/font-awesome/scss/screen-reader";

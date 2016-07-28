@@ -1,6 +1,7 @@
 require "trestle/version"
 
 require "active_support"
+require "sass-rails"
 require "haml"
 
 module Trestle
