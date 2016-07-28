@@ -7,3 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/sandbox/db/*.sqlite3
+/sandbox/*.sqlite3-journal
+/sandbox/log/*.log
+/sandbox/tmp/

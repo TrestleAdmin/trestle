@@ -1,5 +1,10 @@
 require "trestle/version"
 
+require "active_support"
+require "haml"
+
 module Trestle
-  # Your code goes here...
+  extend ActiveSupport::Autoload
 end
+
+require "trestle/engine" if defined?(Rails)

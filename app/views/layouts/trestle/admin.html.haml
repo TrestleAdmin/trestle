@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{ charset: 'utf-8' }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
+    %meta{ content: "IE=edge,chrome=1", 'http-equiv': "X-UA-Compatible" }
+
+    %meta{ name: "turbolinks-cache-control", content: "no-cache" }
+
+    %title Trestle
+
+  %body
+    = render "trestle/shared/sidebar"
+
+    %main.app-main
+      = render "trestle/shared/header"
+
+      .app-container
+        = yield
+
+      = render "trestle/shared/footer"
