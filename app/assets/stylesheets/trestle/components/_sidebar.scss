@@ -9,8 +9,18 @@
   height: $header-height;
   background: $theme-bg;
 
+  display: flex;
+  align-items: center;
+
   .navbar-toggle {
     float: left;
+  }
+
+  .navbar-brand {
+    flex: 1;
+    color: white;
+    height: auto;
+    padding: 5px 15px;
   }
 
   .icon-bar {
@@ -46,6 +56,11 @@
     left: $sidebar-width;
     right: 0;
     z-index: 1;
+
+    .navbar-brand {
+      text-align: center;
+      margin-right: 60px;
+    }
   }
 }
 
