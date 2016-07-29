@@ -7,3 +7,21 @@
       %span.icon-bar
 
     = link_to "Trestle Admin", "/", class: "navbar-brand"
+
+  %nav.app-nav
+    %ul
+      %li
+        = link_to "#" do
+          %i.fa.fa-dashboard.nav-icon
+          %span.nav-label Dashboard
+
+    %ul
+      %li.nav-header Group 1
+      %li
+        = link_to "#" do
+          %i.fa.fa-user.nav-icon
+          %span.nav-label Navigation Item 1
+      %li.active
+        = link_to "#" do
+          %i.fa.fa-car.nav-icon
+          %spna.nav-label Navigation Item 2

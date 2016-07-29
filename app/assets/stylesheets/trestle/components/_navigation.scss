@@ -1,0 +1,62 @@
+.app-nav {
+  &, a {
+    color: rgba(white, 0.5);
+  }
+
+  ul {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+
+    font-weight: normal;
+    font-size: 13px;
+
+    padding: 12px 18px;
+
+    &:hover, &:focus {
+      background: rgba(black, 0.25);
+      text-decoration: none;
+
+      .nav-icon {
+        color: white;
+      }
+    }
+  }
+
+  .nav-icon {
+    @extend .fa-fw;
+    width: 18px;
+    margin-right: 8px;
+    vertical-align: 0;
+  }
+
+  .nav-header {
+    color: rgba(white, 0.25);
+
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+
+    padding: 5px 20px;
+  }
+
+  .active a {
+    border-left: 4px solid $brand-primary;
+    padding-left: 18px - 4px;
+
+    background: rgba(white, 0.1);
+    color: white;
+  }
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+  .app-nav {
+    .nav-header, .nav-label {
+      display: none;
+    }
+  }
+}
