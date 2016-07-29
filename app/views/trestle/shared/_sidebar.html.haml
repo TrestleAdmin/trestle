@@ -6,7 +6,9 @@
       %span.icon-bar
       %span.icon-bar
 
-    = link_to "Trestle Admin", "/", class: "navbar-brand"
+    = link_to "/", class: "navbar-brand" do
+      %span.visible-xs-block.visible-lg-block Trestle Admin
+      %span.visible-sm-block.visible-md-block T
 
   %nav.app-nav
     %ul

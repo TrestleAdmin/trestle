@@ -14,6 +14,15 @@
 
   .navbar-toggle {
     float: left;
+    margin-left: 10px;
+    padding: 7px 6px;
+
+    border: 1px solid rgba(white, 0.15);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(white, 0.05);
+    }
   }
 
   .navbar-brand {
@@ -21,6 +30,7 @@
     color: white;
     height: auto;
     padding: 5px 15px;
+    text-shadow: rgba(black, 0.5) 0 1px 1px;
   }
 
   .icon-bar {
@@ -69,5 +79,9 @@
 @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
   .app-sidebar {
     width: $sidebar-width-collapsed;
+  }
+
+  .app-sidebar-header {
+    text-align: center;
   }
 }
