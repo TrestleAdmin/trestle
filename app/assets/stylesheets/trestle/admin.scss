@@ -1,2 +1,20 @@
+// User-defined variables
+@import "variables";
+
+// Default variables
+@import "core/mixins";
+@import "core/defaults";
+
+// 3rd party dependencies
 @import "trestle/bootstrap";
 @import "trestle/font-awesome";
+
+// Core
+@import "core/typography";
+@import "core/layout";
+
+// Components
+@import "components/*";
+
+// User customizations
+@import "custom";
