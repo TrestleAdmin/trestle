@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'ready turbolinks:load', ->
   # Toggle navigation using menu button
 
   $('.app-sidebar .navbar-toggle').on 'click touchstart', (e) ->
