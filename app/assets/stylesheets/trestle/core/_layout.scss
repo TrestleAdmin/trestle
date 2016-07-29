@@ -24,10 +24,22 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  margin-top: $header-height;
 }
 
 .app-main {
   flex: 1;
+}
+
+.main-content-container {
+  margin: 10px;
+}
+
+.main-content {
+  padding: 10px;
+  background: white;
+  overflow: hidden;
 }
 
 .app-footer {
@@ -43,6 +55,18 @@ body {
 }
 
 @media (min-width: $screen-sm-min) {
+  .app-container {
+    margin-top: 0;
+  }
+
+  .main-content-container {
+    margin: 20px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
   .app-footer {
     padding-left: 20px;
     padding-right: 20px;
