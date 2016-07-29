@@ -1,13 +1,52 @@
 .app-sidebar {
+  background: $sidebar-bg;
+
   width: $sidebar-width;
   flex-shrink: 0;
-
-  background: $sidebar-bg;
 }
 
 .app-sidebar-header {
   height: $header-height;
   background: $theme-bg;
+
+  .navbar-toggle {
+    float: left;
+  }
+
+  .icon-bar {
+    background: white;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .app-wrapper {
+    margin-left: -$sidebar-width;
+    margin-right: 0;
+
+    &.animate {
+      transition: all $sidebar-transition-duration ease-out;
+      transition-property: margin-left, margin-right;
+    }
+  }
+
+  .mobile-nav-expanded {
+    .app-wrapper {
+      margin-left: 0;
+      margin-right: -$sidebar-width;
+    }
+  }
+
+  .app-sidebar-header {
+    position: absolute;
+    top: 0;
+    left: $sidebar-width;
+    right: 0;
+    z-index: 1;
+  }
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {

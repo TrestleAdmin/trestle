@@ -17,12 +17,13 @@
     = yield :head
 
   %body
-    = render "trestle/shared/sidebar"
-
-    %main.app-main
-      = render "trestle/shared/header"
+    .app-wrapper
+      = render "trestle/shared/sidebar"
 
       .app-container
-        = yield
+        = render "trestle/shared/header"
 
-      = render "trestle/shared/footer"
+        %main.app-main
+          = yield
+
+        = render "trestle/shared/footer"

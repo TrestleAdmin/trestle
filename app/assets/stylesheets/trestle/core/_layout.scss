@@ -9,16 +9,24 @@ html {
 
 body {
   display: flex;
-  align-items: stretch;
 }
 
-.app-main {
+.app-wrapper {
+  flex: 1;
+
+  display: flex;
+  align-items: stretch;
+
+  position: relative;
+}
+
+.app-container {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.app-container {
+.app-main {
   flex: 1;
 }
 
@@ -26,10 +34,17 @@ body {
   background: $footer-bg;
   color: $footer-text;
 
-  padding: 7px 20px;
+  padding: 7px 10px;
   font-size: 11px;
 
   .version {
     float: right;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .app-footer {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
