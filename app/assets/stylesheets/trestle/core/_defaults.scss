@@ -1,4 +1,8 @@
+$brand-primary: darken(#428bca, 6.5%) !default;
+
 $body-bg: #f3f3f3 !default;
+
+$header-height: 50px !default;
 
 $sidebar-width: 250px !default;
 $sidebar-width-collapsed: 54px !default;
@@ -6,3 +10,8 @@ $sidebar-bg: #222 !default;
 
 $footer-bg: rgba(white, 0.5) !default;
 $footer-text: #888 !default;
+
+$theme-bg-gradient-strength: 0.05 !default;
+$theme-bg-gradient: linear-gradient(rgba(white, $theme-bg-gradient-strength), rgba(black, $theme-bg-gradient-strength)) no-repeat !default;
+$theme-bg-color: darken($brand-primary, 15%) !default;
+$theme-bg: $theme-bg-gradient, $theme-bg-color !default;
