@@ -8,13 +8,15 @@
 .main-content-container
   %ul.nav.nav-tabs
     %li.active= link_to "Lorem Ipsum", "#tab-lorem-ipsum", role: "tab", data: { toggle: "tab" }
+    %li= link_to "Headings", "#tab-headings", role: "tab", data: { toggle: "tab" }
     %li
-      = link_to "#tab-headings", role: "tab", data: { toggle: "tab" } do
-        Headings
-        %span.badge 6
+      = link_to "#tab-media", role: "tab", data: { toggle: "tab" } do
+        Media
+        %span.badge 12
     %li.pull-right
       = link_to "#tab-configuration", role: "tab", data: { toggle: "tab" } do
         %i.fa.fa-cog
+        %span.sr-only Configuration
 
   .main-content
     #tab-lorem-ipsum.tab-pane.active{ role: "tabpanel" }
@@ -28,5 +30,11 @@
       %h4 Heading 4
       %h5 Heading 5
       %h6 Heading 6
+
+    #tab-media.tab-pane{ role: "tabpanel" }
+      %ul.media-grid
+        - 12.times do |i|
+          %li
+            %figure.fill.zoom= image_tag "https://unsplash.it/400/300/?random&#{i}"
 
     #tab-configuration.tab-pane{ role: "tabpanel" }

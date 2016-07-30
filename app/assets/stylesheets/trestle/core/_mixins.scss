@@ -7,3 +7,19 @@
     -moz-osx-font-smoothing: auto;
   }
 }
+
+@mixin aspect-ratio($ratio) {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: percentage(1 / $ratio);
+  background-size: 100%;
+}
+
+@mixin fill-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
