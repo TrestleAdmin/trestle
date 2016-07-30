@@ -45,8 +45,13 @@
       margin-right: 2px;
     }
 
-    > li.pull-right > a {
-      margin-left: 2px;
+    > li.pull-right {
+      float: left !important;
+
+      > a {
+        margin-right: 2px;
+        margin-left: 0;
+      }
     }
 
     .badge {

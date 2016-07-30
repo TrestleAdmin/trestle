@@ -14,7 +14,7 @@
 
   .navbar-toggle {
     float: left;
-    margin-left: 10px;
+    margin-left: $grid-gutter-width / 2;
     padding: 7px 6px;
 
     border: 1px solid rgba(white, 0.15);
