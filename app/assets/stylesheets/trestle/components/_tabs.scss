@@ -25,6 +25,11 @@
     }
   }
 
+  > li.pull-right > a {
+    margin-right: 0;
+    margin-left: 4px;
+  }
+
   .badge {
     font-size: 9px;
     padding: 4px 5px;

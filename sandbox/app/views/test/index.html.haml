@@ -12,6 +12,9 @@
       = link_to "#tab-headings", role: "tab", data: { toggle: "tab" } do
         Headings
         %span.badge 6
+    %li.pull-right
+      = link_to "#tab-configuration", role: "tab", data: { toggle: "tab" } do
+        %i.fa.fa-cog
 
   .main-content
     #tab-lorem-ipsum.tab-pane.active{ role: "tabpanel" }
@@ -25,3 +28,5 @@
       %h4 Heading 4
       %h5 Heading 5
       %h6 Heading 6
+
+    #tab-configuration.tab-pane{ role: "tabpanel" }
