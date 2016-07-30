@@ -50,6 +50,22 @@
   }
 }
 
+.media-grid-sm {
+  li {
+    @include make-xs-column(4);
+    @include make-sm-column(3);
+    @include make-md-column(2);
+  }
+}
+
+.media-grid-lg {
+  li {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+    @include make-md-column(4);
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .media-grid {
     margin-left: -5px;
