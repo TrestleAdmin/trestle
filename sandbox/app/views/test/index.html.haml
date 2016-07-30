@@ -32,9 +32,10 @@
       %h6 Heading 6
 
     #tab-media.tab-pane{ role: "tabpanel" }
-      %ul.media-grid
+      %ul.media-grid{ data: { behavior: "gallery" } }
         - 12.times do |i|
           %li
-            %figure.fill.zoom= image_tag "https://unsplash.it/400/300/?random&#{i}"
+            - url = "https://unsplash.it/1200/900/?random&#{i}"
+            %figure.fill.zoom= link_to image_tag(url), url
 
     #tab-configuration.tab-pane{ role: "tabpanel" }

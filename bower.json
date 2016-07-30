@@ -4,6 +4,7 @@
       "jquery":         "~3.1.0",
       "jquery-ujs":     "~1.0.4",
       "bootstrap-sass": "~3.3.7",
-      "font-awesome":   "~4.6.3"
+      "font-awesome":   "~4.6.3",
+      "magnific-popup": "~1.1.0"
   }
 }
