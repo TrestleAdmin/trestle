@@ -32,16 +32,6 @@ body {
   flex: 1;
 }
 
-.main-content-container {
-  margin: 10px;
-}
-
-.main-content {
-  padding: 10px;
-  background: white;
-  overflow: hidden;
-}
-
 .app-footer {
   background: $footer-bg;
   color: $footer-text;
@@ -57,14 +47,6 @@ body {
 @media (min-width: $screen-sm-min) {
   .app-container {
     margin-top: 0;
-  }
-
-  .main-content-container {
-    margin: 20px;
-  }
-
-  .main-content {
-    padding: 20px;
   }
 
   .app-footer {

@@ -17,3 +17,5 @@ $theme-bg-gradient-strength: 0.05 !default;
 $theme-bg-gradient: linear-gradient(rgba(white, $theme-bg-gradient-strength), rgba(black, $theme-bg-gradient-strength)) no-repeat !default;
 $theme-bg-color: darken($brand-primary, 15%) !default;
 $theme-bg: $theme-bg-gradient, $theme-bg-color !default;
+
+$headings-font-weight: 300 !default;

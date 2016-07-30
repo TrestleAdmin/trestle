@@ -1,0 +1,29 @@
+.content-header {
+  background: rgba(white, 0.6);
+  padding: 5px 10px;
+}
+
+.main-content-container {
+  margin: 10px;
+}
+
+.main-content {
+  padding: 10px;
+  background: white;
+  overflow: hidden;
+}
+
+@media (min-width: $screen-sm-min) {
+  .content-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .main-content-container {
+    margin: 20px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+}
