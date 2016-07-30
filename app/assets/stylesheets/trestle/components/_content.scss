@@ -9,9 +9,11 @@
 }
 
 .main-content {
+  @extend .tab-content;
+  @extend .clearfix;
+
   padding: 10px;
   background: white;
-  overflow: hidden;
 }
 
 @media (min-width: $screen-sm-min) {

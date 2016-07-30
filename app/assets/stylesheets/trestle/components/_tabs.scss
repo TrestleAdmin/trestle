@@ -1,0 +1,33 @@
+.nav-tabs {
+  border-bottom: none;
+
+  > li {
+    margin-bottom: 0;
+  }
+
+  > li > a {
+    margin-right: 4px;
+    padding: 10px 20px;
+
+    border: none !important;
+    border-radius: 0;
+
+    background-color: $gray-lighter;
+    color: $gray;
+
+    font-weight: 500;
+  }
+
+  > li.active > a {
+    &, &:hover, &:focus {
+      background-color: white;
+      color: $text-color;
+    }
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 4px 5px;
+    vertical-align: 1px;
+  }
+}
