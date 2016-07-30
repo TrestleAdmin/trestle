@@ -1,7 +1,9 @@
 Trestle.ready ->
-  # Toggle navigation using menu button
+  sidebar = $('.app-sidebar')
 
-  $('.app-sidebar .navbar-toggle').on 'click', (e) ->
+  # Toggle mobile navigation using menu button
+
+  sidebar.find('.navbar-toggle').on 'click', (e) ->
     e.preventDefault()
 
     $('.app-wrapper').addClass('animate')
@@ -13,10 +15,23 @@ Trestle.ready ->
 
   # Interacting outside of the sidebar closes the navigation
 
-  $('.app-sidebar').on 'click touchstart', (e) ->
+  sidebar.on 'click touchstart', (e) ->
     e.stopPropagation()
 
   $('.app-wrapper').on 'click touchstart', ->
     if $('body').hasClass('mobile-nav-expanded')
       $('.app-wrapper').addClass('animate')
       $('body').removeClass('mobile-nav-expanded')
+
+
+  # Toggle sidebar expand/collapse
+
+  sidebar.find('.toggle-sidebar').on 'click', (e) ->
+    e.preventDefault()
+
+    if sidebar.hasClass('expanded') or sidebar.hasClass('collapsed')
+      sidebar.removeClass('expanded').removeClass('collapsed')
+    else if $(document).width() >= 1200
+      sidebar.addClass('collapsed')
+    else if $(document).width() >= 768
+      sidebar.addClass('expanded')

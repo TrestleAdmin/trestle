@@ -58,5 +58,18 @@
     .nav-header, .nav-label {
       display: none;
     }
+
+    .expanded & {
+      .nav-header { display: block; }
+      .nav-label  { display: inline; }
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .collapsed .app-nav {
+    .nav-header, .nav-label {
+      display: none;
+    }
   }
 }

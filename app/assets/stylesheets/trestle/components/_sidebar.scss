@@ -3,6 +3,33 @@
 
   width: $sidebar-width;
   flex-shrink: 0;
+
+  position: relative;
+
+  .toggle-sidebar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background: rgba(black, 0.25);
+    color: rgba(white, 0.5);
+    border: none;
+
+    font-size: 24px;
+    padding: 10px 20px;
+    outline: none;
+
+    opacity: 0.75;
+
+    &:hover {
+      opacity: 1.0;
+    }
+
+    &:after {
+      @extend .fa;
+      content: $fa-var-angle-double-left;
+    }
+  }
 }
 
 .app-sidebar-header {
@@ -62,6 +89,14 @@
     }
   }
 
+  .app-sidebar {
+    position: static;
+
+    .toggle-sidebar {
+      display: none;
+    }
+  }
+
   .app-sidebar-header {
     position: absolute;
     top: 0;
@@ -79,9 +114,57 @@
 @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
   .app-sidebar {
     width: $sidebar-width-collapsed;
-  }
 
-  .app-sidebar-header {
-    text-align: center;
+    .app-sidebar-header {
+      text-align: center;
+    }
+
+    .toggle-sidebar:after {
+      content: $fa-var-angle-double-right;
+    }
+
+    &.expanded {
+      width: $sidebar-width;
+
+      .app-sidebar-header {
+        text-align: left;
+
+        .visible-md-block {
+          display: none !important;
+        }
+
+        .visible-lg-block {
+          display: block !important;
+        }
+      }
+
+      .toggle-sidebar:after {
+        content: $fa-var-angle-double-left;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .app-sidebar {
+    &.collapsed {
+      width: $sidebar-width-collapsed;
+
+      .app-sidebar-header {
+        text-align: center;
+
+        .visible-md-block {
+          display: block !important;
+        }
+
+        .visible-lg-block {
+          display: none !important;
+        }
+      }
+
+      .toggle-sidebar:after {
+        content: $fa-var-angle-double-right;
+      }
+    }
   }
 }
