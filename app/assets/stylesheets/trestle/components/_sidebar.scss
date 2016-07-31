@@ -54,10 +54,14 @@
 
   .navbar-brand {
     flex: 1;
-    color: white;
+
     height: auto;
     padding: 5px 15px;
+
+    font-size: 20px;
+    font-weight: 500;
     text-shadow: rgba(black, 0.5) 0 1px 1px;
+    color: white;
   }
 
   .icon-bar {
