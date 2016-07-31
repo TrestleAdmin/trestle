@@ -23,3 +23,21 @@
   left: 0;
   right: 0;
 }
+
+@mixin mobile {
+  @media (max-width: $screen-xs-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $screen-lg-min) {
+    @content;
+  }
+}

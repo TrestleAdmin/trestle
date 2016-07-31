@@ -66,7 +66,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@include mobile {
   .media-grid {
     margin-left: -5px;
     margin-right: -5px;

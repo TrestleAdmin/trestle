@@ -67,7 +67,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@include mobile {
   html, body {
     overflow-x: hidden;
   }
@@ -111,7 +111,7 @@
   }
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+@include tablet {
   .app-sidebar {
     width: $sidebar-width-collapsed;
 
@@ -145,7 +145,7 @@
   }
 }
 
-@media (min-width: $screen-lg-min) {
+@include desktop {
   .app-sidebar {
     &.collapsed {
       width: $sidebar-width-collapsed;

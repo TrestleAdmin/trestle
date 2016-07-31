@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@include mobile {
   .nav-tabs {
     > li > a {
       font-size: 13px;

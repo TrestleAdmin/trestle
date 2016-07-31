@@ -25,7 +25,8 @@ body {
   display: flex;
   flex-direction: column;
 
-  margin-top: $header-height;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .app-main {
@@ -38,7 +39,7 @@ body {
   background: $footer-bg;
   color: $footer-text;
 
-  padding: 7px 10px;
+  padding: 7px 20px;
   font-size: 11px;
 
   .version {
@@ -46,16 +47,14 @@ body {
   }
 }
 
-@media (min-width: $screen-sm-min) {
+@include mobile {
   .app-container {
-    margin-top: 0;
-    
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    margin-top: $header-height;
+    overflow-y: visible;
   }
 
   .app-footer {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

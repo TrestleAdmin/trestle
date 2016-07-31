@@ -53,7 +53,7 @@
   }
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+@include tablet {
   .app-nav {
     .nav-header, .nav-label {
       display: none;
@@ -66,7 +66,7 @@
   }
 }
 
-@media (min-width: $screen-lg-min) {
+@include desktop {
   .collapsed .app-nav {
     .nav-header, .nav-label {
       display: none;
