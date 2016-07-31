@@ -1,0 +1,37 @@
+.pagination-container {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: right;
+
+  p {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+  }
+
+  strong {
+    color: black;
+  }
+
+  .pagination {
+    vertical-align: middle;
+    margin: 0;
+
+    a {
+      font-weight: normal;
+    }
+  }
+}
+
+@include mobile {
+  .pagination-container {
+    margin-top: 10px;
+    text-align: center;
+
+    p {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+}
