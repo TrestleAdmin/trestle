@@ -1,0 +1,16 @@
+.app-header {
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+
+  background: white;
+  min-height: $header-height;
+}
+
+@include mobile {
+  .app-header {
+    margin-top: -$header-height;
+
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+  }
+}
