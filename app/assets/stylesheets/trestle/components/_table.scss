@@ -1,0 +1,39 @@
+.table-container {
+  margin-bottom: 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.trestle-table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-hover;
+  
+  margin-bottom: 0;
+
+  > thead, > tbody, > tfoot {
+    > tr > td, > tr > td {
+      vertical-align: middle;
+      padding: 6px 8px;
+    }
+  }
+
+  a {
+    font-weight: normal;
+    white-space: nowrap;
+
+    &.empty {
+      font-style: italic;
+      opacity: 0.5;
+    }
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .select-row {
+    width: 2.5em;
+    text-align: center;
+  }
+}

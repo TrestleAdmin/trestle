@@ -7,7 +7,8 @@
 
 .main-content-container
   %ul.nav.nav-tabs
-    %li.active= link_to "Lorem Ipsum", "#tab-lorem-ipsum", role: "tab", data: { toggle: "tab" }
+    %li.active= link_to "Table", "#tab-table", role: "tab", data: { toggle: "tab" }
+    %li= link_to "Lorem Ipsum", "#tab-lorem-ipsum", role: "tab", data: { toggle: "tab" }
     %li= link_to "Headings", "#tab-headings", role: "tab", data: { toggle: "tab" }
     %li
       = link_to "#tab-media", role: "tab", data: { toggle: "tab" } do
@@ -19,7 +20,34 @@
         %span.sr-only Configuration
 
   .main-content
-    #tab-lorem-ipsum.tab-pane.active{ role: "tabpanel" }
+    - if true
+      #tab-table.tab-pane.active{ role: "tabpanel" }
+        .table-container
+          %table.trestle-table
+            %thead
+              %tr
+                %th.select-row= check_box_tag "select"
+                %th Name
+                %th Email
+                %th.text-center Status
+                %th.text-center Followers
+                %th.text-center Registered
+
+            %tbody
+              - 10.times do |i|
+                %tr
+                  %td.select-row= check_box_tag "select"
+                  %td.nowrap Person #{i+1}
+                  %td= mail_to "person-#{i+1}@example.com"
+                  %td.text-center
+                    %span.label.label-success Active
+                  %td.text-center= (1..100).to_a.sample
+                  %td.text-center
+                    %time.timestamp
+                      = Time.now.strftime("#{Time.now.day.ordinalize} %b %Y")
+                      %small= Time.now.strftime("%l:%M:%S %p")
+
+    #tab-lorem-ipsum.tab-pane{ role: "tabpanel" }
       %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius vehicula tellus, at sagittis libero dapibus eget. Praesent tellus urna, consectetur ac ornare eget, mattis id libero. Nam commodo facilisis nunc, ac suscipit sem. Sed viverra mauris tortor, sit amet lobortis augue lacinia at. Quisque at condimentum nulla. Duis dictum at metus nec sagittis. Nulla id nisi mauris.
       %p Aenean fringilla urna sit amet condimentum mattis. Fusce pellentesque sem ac volutpat viverra. Vestibulum iaculis gravida tempor. Phasellus in pretium eros, ut mollis dui. Curabitur vel arcu erat. Integer lacus risus, imperdiet sit amet cursus a, ornare at tortor. Phasellus varius tortor ac urna vestibulum tincidunt eget id erat. Aliquam volutpat libero leo, a imperdiet lacus tempor at. Nulla porttitor neque maximus, molestie eros at, sagittis dolor. Praesent ultrices tempor odio quis semper. Curabitur ut facilisis nibh. Maecenas id urna iaculis, efficitur dui at, lobortis nunc. Nullam vestibulum consectetur odio, vel rhoncus dolor elementum id. Phasellus sem eros, tincidunt in hendrerit at, dapibus et odio.
 

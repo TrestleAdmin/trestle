@@ -18,6 +18,7 @@ body {
   align-items: stretch;
 
   position: relative;
+  width: 100%;
 }
 
 .app-container {
@@ -26,6 +27,8 @@ body {
   flex-direction: column;
 
   overflow-y: auto;
+  overflow-x: hidden;
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -48,9 +51,13 @@ body {
 }
 
 @include mobile {
+  body {
+    height: auto;
+  }
+
   .app-container {
-    margin-top: $header-height;
-    overflow-y: visible;
+    padding-top: $header-height;
+    -webkit-overflow-scrolling: auto;
   }
 
   .app-footer {
