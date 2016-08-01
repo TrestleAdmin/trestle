@@ -1,0 +1,12 @@
+.avatar {
+  display: inline-block;
+  width: 40px;
+
+  border-radius: 50%;
+  box-shadow: rgba(black, 0.25) 0 1px 0;
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+}
