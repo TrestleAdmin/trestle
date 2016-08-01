@@ -1,4 +1,21 @@
 %header.content-header
+  .btn-toolbar.primary-toolbar
+    - if true
+      = button_tag "Save Page", class: "btn btn-success"
+    - else
+      = link_to "#", class: "btn btn-default" do
+        %i.fa.fa-plus
+
+  .btn-toolbar.secondary-toolbar
+    - if true
+      .btn-group
+        = button_tag "Save Draft", class: "btn btn-info"
+        = button_tag "Preview", class: "btn btn-primary"
+
+    = link_to "#", class: "btn btn-danger" do
+      %i.fa.fa-trash
+      Delete Page
+
   %h1 Test Page
 
   %ol.breadcrumb

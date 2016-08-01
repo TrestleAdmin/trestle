@@ -2,6 +2,35 @@
   @extend .clearfix;
   background: rgba(white, 0.6);
   padding: 5px 20px;
+
+  .btn-toolbar {
+    @extend .pull-right;
+    clear: right;
+  }
+
+  .primary-toolbar {
+    margin-top: 16px;
+
+    .btn {
+      @extend .btn-lg;
+      font-size: 20px;
+      padding: 8px 16px;
+      border-radius: $border-radius-base;
+    }
+  }
+
+  .secondary-toolbar {
+    margin-top: 8px;
+
+    .btn {
+      font-size: 12px;
+      padding: 4px 10px;
+
+      i {
+        font-size: 11px;
+      }
+    }
+  }
 }
 
 .main-content-container {
