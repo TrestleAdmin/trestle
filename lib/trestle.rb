@@ -1,8 +1,9 @@
 require "trestle/version"
 
 require "active_support"
-require "sass-rails"
 require "haml"
+require "sass-rails"
+require "autoprefixer-rails"
 
 module Trestle
   extend ActiveSupport::Autoload
