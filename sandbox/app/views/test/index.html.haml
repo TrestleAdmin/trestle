@@ -32,6 +32,7 @@
                 %th.text-center Status
                 %th.text-center Followers
                 %th.text-center Registered
+                %th.actions
 
             %tbody
               - 10.times do |i|
@@ -46,6 +47,9 @@
                     %time.timestamp
                       = Time.now.strftime("#{Time.now.day.ordinalize} %b %Y")
                       %small= Time.now.strftime("%l:%M:%S %p")
+                  %td.actions
+                    = link_to "#", class: "btn btn-delete" do
+                      %i.fa.fa-trash
 
         %nav.pagination-container
           %p Displaying Users <strong>1&nbsp;-&nbsp;10</strong> of <b>1,234</b>

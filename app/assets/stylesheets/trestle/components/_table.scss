@@ -47,4 +47,17 @@
     width: 2.5em;
     text-align: center;
   }
+
+  .actions {
+    text-align: right;
+
+    .btn {
+      @extend .btn-sm;
+      padding: 3px 7px;
+
+      i {
+        font-size: 14px;
+      }
+    }
+  }
 }
