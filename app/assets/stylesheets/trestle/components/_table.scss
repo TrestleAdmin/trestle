@@ -1,6 +1,19 @@
 .table-container {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+
+  // Momentum scrolling (touch) causes rendering issues on iOS with the
+  // scrolling background hints. Must be disabled explicitly.
+  -webkit-overflow-scrolling: auto;
+
+  background-image: linear-gradient(to right, white 30%, rgba(white, 0)),
+                    linear-gradient(to left, white 30%, rgba(white, 0)),
+                    radial-gradient(at 0 50%, rgba(black, 0.2), rgba(black, 0) 70%),
+                    radial-gradient(at 100% 50%, rgba(black, 0.2), rgba(black, 0) 70%);
+  background-position: 0 0, 100% 0, 0 0, 100% 0;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 50px 100%, 50px 100%, 15px 100%, 15px 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 
 .trestle-table {
@@ -13,7 +26,6 @@
   > thead, > tbody, > tfoot {
     > tr > td, > tr > td {
       vertical-align: middle;
-      padding: 6px 8px;
     }
   }
 

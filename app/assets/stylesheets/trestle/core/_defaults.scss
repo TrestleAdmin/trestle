@@ -23,3 +23,8 @@ $theme-bg-color: darken($brand-primary, 15%) !default;
 $theme-bg: $theme-bg-texture-url, $theme-bg-gradient, $theme-bg-color !default;
 
 $headings-font-weight: 300 !default;
+
+$table-cell-padding: 6px 8px !default;
+$table-bg-accent:    rgba(black, 0.02) !default;
+$table-bg-hover:     rgba(black, 0.04) !default;
+$table-border-color: rgba(black, 0.13) !default;
