@@ -29,6 +29,10 @@
     }
   }
 
+  tr[data-url] {
+    cursor: pointer;
+  }
+
   a {
     font-weight: normal;
     white-space: nowrap;
