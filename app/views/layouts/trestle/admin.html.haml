@@ -14,6 +14,8 @@
     = javascript_include_tag "turbolinks" if defined?(Turbolinks)
     = javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload'
 
+    = csrf_meta_tags
+
     = yield :head
 
   %body

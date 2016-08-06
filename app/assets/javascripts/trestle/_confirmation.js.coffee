@@ -6,5 +6,6 @@ Trestle.ready ->
     btnOkClass:     'btn-danger'
     btnOkLabel:     "Delete"
     btnCancelIcon:  ''
+    btnCancelClass: 'btn-default'
     btnCancelLabel: 'Cancel'
-    copyAttributes: 'href target data'
+    copyAttributes: ''
