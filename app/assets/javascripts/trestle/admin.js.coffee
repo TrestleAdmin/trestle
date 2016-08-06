@@ -1,6 +1,7 @@
 #= require trestle/jquery
 #= require trestle/jquery_ujs
 #= require trestle/bootstrap
+#= require trestle/bootstrap-confirmation
 #= require trestle/magnific-popup
 #
 #= require_self

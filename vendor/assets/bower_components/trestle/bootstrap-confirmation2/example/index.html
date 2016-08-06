@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bootstrap Confirmation</title>
+
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="col-md-12 col-lg-10 col-lg-offset-1">
+    <div class="page-header">
+      <a class="pull-right" href="https://github.com/mistic100/Bootstrap-Confirmation">
+        <img src="https://assets.github.com/images/icons/emoji/octocat.png" width=48px height=48px>
+      </a>
+      <h1>Bootstrap Confirmation</h1>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Basic</div>
+      <div class="panel-body">
+        <button class="btn btn-default" data-toggle="confirmation">Confirmation</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Link</div>
+      <div class="panel-body">
+        <a class="btn btn-default" data-toggle="confirmation" href="https://google.com">Confirmation</a>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Customize</div>
+      <div class="panel-body">
+        <button class="btn btn-default" data-toggle="confirmation"
+                data-btn-ok-label="Continue" data-btn-ok-icon="glyphicon glyphicon-share-alt"
+                data-btn-ok-class="btn-success"
+                data-btn-cancel-label="Stoooop!" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+                data-btn-cancel-class="btn-danger"
+                data-title="Is it ok?" data-content="This might be dangerous">
+          Confirmation
+        </button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Directions</div>
+      <div class="panel-body">
+        <button class="btn btn-default" data-toggle="confirmation" data-placement="left">Confirmation on left</button>
+        <button class="btn btn-default" data-toggle="confirmation" data-placement="top">Confirmation on top</button>
+        <button class="btn btn-default" data-toggle="confirmation" data-placement="bottom">Confirmation on bottom
+        </button>
+        <button class="btn btn-default" data-toggle="confirmation" data-placement="right">Confirmation on right</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Singleton</div>
+      <div class="panel-body">
+        <button class="btn btn-default" data-toggle="confirmation" data-singleton="true">Confirmation 1</button>
+        <button class="btn btn-default" data-toggle="confirmation" data-singleton="true">Confirmation 2</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Popout</div>
+      <div class="panel-body">
+        <button class="btn btn-default" data-toggle="confirmation" data-popout="true">Confirmation 1</button>
+        <button class="btn btn-default" data-toggle="confirmation" data-popout="true">Confirmation 2</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Custom buttons</div>
+      <div class="panel-body">
+        <button class="btn btn-default" id="custom-confirmation" data-title="Choose your currency">Confirmation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bootstrap-confirmation.js"></script>
+
+<script>
+  console.log('Bootstrap ' + $.fn.tooltip.Constructor.VERSION);
+  console.log('Bootstrap Confirmation ' + $.fn.confirmation.Constructor.VERSION);
+
+  $('[data-toggle=confirmation]').confirmation();
+
+  var currency = '';
+  $('#custom-confirmation').confirmation({
+    onConfirm: function() {
+      alert('You choosed ' + currency);
+    },
+    buttons: [
+      {
+        class: 'btn btn-danger',
+        icon: 'glyphicon glyphicon-usd',
+        onClick: function() {
+          currency = 'US Dollar';
+        }
+      },
+      {
+        class: 'btn btn-primary',
+        icon: 'glyphicon glyphicon-euro',
+        onClick: function() {
+          currency = 'Euro';
+        }
+      },
+      {
+        class: 'btn btn-warning',
+        icon: 'glyphicon glyphicon-bitcoin',
+        onClick: function() {
+          currency = 'Bitcoin';
+        }
+      },
+      {
+        class: 'btn btn-default',
+        icon: 'glyphicon glyphicon-remove',
+        cancel: true
+      }
+    ]
+  });
+</script>
+
+<script>
+  document.write('<script src="//' + location.host.split(':')[0] + ':35729/livereload.js" async defer><' + '/script>');
+</script>
+
+</body>
+</html>

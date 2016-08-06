@@ -1,0 +1,16 @@
+.popover.confirmation {
+  .popover-content {
+    overflow: hidden;
+  }
+
+  .confirmation-buttons {
+    .btn-group {
+      display: flex;
+      float: none;
+
+      .btn {
+        flex: 1 auto;
+      }
+    }
+  }
+}

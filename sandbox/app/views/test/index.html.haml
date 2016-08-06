@@ -12,9 +12,9 @@
         = button_tag "Save Draft", class: "btn btn-info"
         = button_tag "Preview", class: "btn btn-primary"
 
-    = link_to "#", class: "btn btn-danger" do
-      %i.fa.fa-trash
-      Delete Page
+      = link_to "#", class: "btn btn-danger", method: :delete, data: { toggle: "confirm-delete", placement: "bottom" } do
+        %i.fa.fa-trash
+        Delete Page
 
   %h1 Test Page
 
@@ -68,7 +68,7 @@
                       = Time.now.strftime("#{Time.now.day.ordinalize} %b %Y")
                       %small= Time.now.strftime("%l:%M:%S %p")
                   %td.actions
-                    = link_to "#", class: "btn btn-delete" do
+                    = link_to "#", class: "btn btn-delete", method: :delete, data: { toggle: "confirm-delete", placement: "left" } do
                       %i.fa.fa-trash
 
         %nav.pagination-container
