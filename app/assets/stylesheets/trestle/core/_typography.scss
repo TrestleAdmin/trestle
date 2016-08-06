@@ -9,3 +9,17 @@ a {
 i {
   vertical-align: middle;
 }
+
+@include mobile {
+  h1 {
+    font-size: $font-size-h1 - 6px;
+  }
+
+  h2 {
+    font-size: $font-size-h2 - 4px;
+  }
+
+  h3 {
+    font-size: $font-size-h3 - 2px;
+  }
+}
