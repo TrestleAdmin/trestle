@@ -35,3 +35,7 @@ $table-cell-padding: 6px 8px !default;
 $table-bg-accent:    rgba(black, 0.02) !default;
 $table-bg-hover:     rgba(black, 0.04) !default;
 $table-border-color: rgba(black, 0.13) !default;
+
+$popover-arrow-width:        7px !default;
+$dropdown-arrow-width:       $popover-arrow-width !default;
+$dropdown-arrow-outer-width: $dropdown-arrow-width + 1px !default;
