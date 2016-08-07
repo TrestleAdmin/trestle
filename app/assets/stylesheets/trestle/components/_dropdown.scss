@@ -2,6 +2,8 @@
   margin-top: 8px;
   font-size: 13px;
 
+  box-shadow: $dropdown-shadow;
+
   &:before, &:after {
     content: '';
     display: inline-block;
@@ -13,9 +15,9 @@
     left: 12px;
 
     border-right: $dropdown-arrow-width solid transparent;
-    border-bottom: $dropdown-arrow-width solid #ccc;
+    border-bottom: $dropdown-arrow-width solid $dropdown-fallback-border;
     border-left: $dropdown-arrow-width solid transparent;
-    border-bottom-color: rgba(black, 0.2);
+    border-bottom-color: $dropdown-border;
   }
 
   &:after {
@@ -38,8 +40,4 @@
       right: 11px;
     }
   }
-}
-
-.dropdown-menu, .popover {
-  box-shadow: 0 3px 6px rgba(black, .175);
 }
