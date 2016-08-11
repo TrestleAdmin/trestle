@@ -11,6 +11,11 @@ module Trestle
 
   autoload :Configurable
   autoload :Configuration
+  autoload :Navigation
+
+  def self.navigation
+    Navigation.new(config.menus)
+  end
 
   def self.config
     @configuration ||= Configuration.new

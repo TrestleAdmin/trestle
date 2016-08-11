@@ -10,21 +10,15 @@
       %span.visible-xs-block.visible-lg-block Trestle Admin
 
   %nav.app-nav
-    %ul
-      %li
-        = link_to "#" do
-          %i.fa.fa-dashboard.nav-icon
-          %span.nav-label Dashboard
+    - Trestle.navigation.each do |group, items|
+      %ul
+        - if group.present?
+          %li.nav-header= group.label
 
-    %ul
-      %li.nav-header Group 1
-      %li
-        = link_to "#" do
-          %i.fa.fa-user.nav-icon
-          %span.nav-label Navigation Item 1
-      %li.active
-        = link_to "#" do
-          %i.fa.fa-car.nav-icon
-          %spna.nav-label Navigation Item 2
+        - items.each do |item|
+          %li
+            = link_to item.path do
+              %i.nav-icon{ class: item.icon }
+              %span.nav-label= item.label
 
   %button.toggle-sidebar
