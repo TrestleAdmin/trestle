@@ -1,4 +1,6 @@
 Trestle.configure do |config|
+  config.site_title = "Trestle Sandbox"
+
   config.menu do
     item :dashboard, "/", icon: "fa fa-dashboard"
 

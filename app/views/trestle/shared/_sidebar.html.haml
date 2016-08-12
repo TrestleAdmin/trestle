@@ -7,7 +7,7 @@
       %span.icon-bar
 
     = link_to "/", class: "navbar-brand" do
-      %span.visible-xs-block.visible-lg-block Trestle Admin
+      %span.visible-xs-block.visible-lg-block= Trestle.config.site_title
 
   %nav.app-nav
     - Trestle.navigation.each do |group, items|
