@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe Trestle::Navigation::Group do
+  subject(:group) { Trestle::Navigation::Group.new(:test) }
+
+  it "has a label based on the internationalized name" do
+    expect(I18n).to receive(:t).with("admin.menu.group.test", default: "Test").and_return("Test")
+    expect(group.label).to eq("Test")
+  end
+
   it "has a default priority of 0" do
-    group = Trestle::Navigation::Group.new(:test)
     expect(group.priority).to eq(0)
   end
 

@@ -3,6 +3,11 @@ require 'spec_helper'
 describe Trestle::Navigation::Item do
   subject(:item) { Trestle::Navigation::Item.new(:test) }
 
+  it "has a label based on the internationalized name" do
+    expect(I18n).to receive(:t).with("admin.menu.item.test", default: "Test").and_return("Test")
+    expect(item.label).to eq("Test")
+  end
+
   it "has a default priority of 0" do
     expect(item.priority).to eq(0)
   end

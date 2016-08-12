@@ -42,7 +42,7 @@ module Trestle
       end
 
       def label
-        name
+        I18n.t("admin.menu.group.#{name}", default: name.to_s.titlecase)
       end
     end
 
