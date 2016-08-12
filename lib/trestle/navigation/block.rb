@@ -14,6 +14,8 @@ module Trestle
       end
 
       class Context
+        include Rails.application.routes.url_helpers if Rails.application
+
         attr_reader :items
 
         def initialize
