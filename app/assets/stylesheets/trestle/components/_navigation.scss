@@ -51,24 +51,32 @@
     background: rgba(white, 0.1);
     color: white;
   }
+
+  .nav-badge {
+    @extend .label;
+    float: right;
+    position: relative;
+    top: 1px;
+  }
 }
 
 @include tablet {
   .app-nav {
-    .nav-header, .nav-label {
+    .nav-header, .nav-label, .nav-badge {
       display: none;
     }
 
     .expanded & {
       .nav-header { display: block; }
       .nav-label  { display: inline; }
+      .nav-badge  { display: block; }
     }
   }
 }
 
 @include desktop {
   .collapsed .app-nav {
-    .nav-header, .nav-label {
+    .nav-header, .nav-label, .nav-badge {
       display: none;
     }
   }

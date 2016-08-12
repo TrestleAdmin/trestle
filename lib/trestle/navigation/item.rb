@@ -51,6 +51,32 @@ module Trestle
       def icon
         options[:icon]
       end
+
+      def badge?
+        !!options[:badge]
+      end
+
+      def badge
+        Badge.new(options[:badge]) if badge?
+      end
+
+      class Badge
+        attr_reader :text
+
+        def initialize(options)
+          case options
+          when Hash
+            @html_class = options[:class]
+            @text = options[:text]
+          else
+            @text = options
+          end
+        end
+
+        def html_class
+          @html_class || "label-primary"
+        end
+      end
     end
   end
 end

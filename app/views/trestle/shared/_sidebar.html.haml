@@ -21,4 +21,7 @@
               %i.nav-icon{ class: item.icon }
               %span.nav-label= item.label
 
+              - if item.badge?
+                %span.nav-badge{ class: item.badge.html_class }= item.badge.text
+
   %button.toggle-sidebar

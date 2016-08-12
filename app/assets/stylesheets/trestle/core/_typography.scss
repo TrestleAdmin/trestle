@@ -6,8 +6,8 @@ a {
   font-weight: bold;
 }
 
-i {
-  vertical-align: middle;
+.label-pill {
+  border-radius: 10em !important;
 }
 
 @include mobile {
