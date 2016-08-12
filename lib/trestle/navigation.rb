@@ -16,7 +16,7 @@ module Trestle
     end
 
     def by_group
-      Hash[*items.group_by(&:group).sort_by { |group, items| group }.map { |group, items| [group, items.sort] }.flatten(1)]
+      Hash[items.group_by(&:group).sort_by { |group, items| group }.map { |group, items| [group, items.sort] }]
     end
 
     def each(&block)

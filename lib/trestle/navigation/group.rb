@@ -18,7 +18,12 @@ module Trestle
       end
 
       def <=>(other)
-        sort_key <=> other.sort_key
+        case other
+        when Group
+          sort_key <=> other.sort_key
+        when NullGroup
+          1
+        end
       end
 
       def sort_key
@@ -26,7 +31,14 @@ module Trestle
       end
 
       def priority
-        options[:priority] || 0
+        case options[:priority]
+        when :first
+          -Float::INFINITY
+        when :last
+          Float::INFINITY
+        else
+          options[:priority] || 0
+        end
       end
 
       def label

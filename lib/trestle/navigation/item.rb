@@ -30,7 +30,14 @@ module Trestle
       end
 
       def priority
-        options[:priority] || 0
+        case options[:priority]
+        when :first
+          -Float::INFINITY
+        when :last
+          Float::INFINITY
+        else
+          options[:priority] || 0
+        end
       end
 
       def group
