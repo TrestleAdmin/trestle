@@ -11,5 +11,13 @@ module Trestle
 
     # Optional turbolinks
     config.assets.precompile << "turbolinks.js" if defined?(Turbolinks)
+
+    initializer "trestle.automount" do |app|
+      if Trestle.config.automount
+        app.routes.prepend do
+          mount Trestle::Engine => Trestle.config.path
+        end
+      end
+    end
   end
 end
