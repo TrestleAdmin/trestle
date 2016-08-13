@@ -4,6 +4,9 @@ module Trestle
 
     option :site_title, "Trestle Admin"
 
+    option :path, "/admin"
+    option :automount, true
+
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"
 
     option :menus, []

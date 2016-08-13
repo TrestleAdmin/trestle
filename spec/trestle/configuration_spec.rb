@@ -7,6 +7,14 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:site_title).with_default("Trestle Admin")
   end
 
+  it "has a path configuration option" do
+    expect(config).to have_accessor(:path).with_default("/admin")
+  end
+
+  it "has an automount configuration option" do
+    expect(config).to have_accessor(:automount).with_default(true)
+  end
+
   it "has a default navigation icon configuration option" do
     expect(config).to have_accessor(:default_navigation_icon).with_default("fa fa-arrow-circle-o-right")
   end
