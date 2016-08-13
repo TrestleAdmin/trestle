@@ -23,6 +23,15 @@ describe Trestle::Navigation::Item do
     expect(item.group).to eq(group)
   end
 
+  it "has a default icon" do
+    expect(item.icon).to eq(Trestle.config.default_navigation_icon)
+  end
+
+  it "sets the icon from options" do
+    item = Trestle::Navigation::Item.new(:test, nil, icon: "fa fa-user")
+    expect(item.icon).to eq("fa fa-user")
+  end
+
   it "sorts by priority, then name" do
     i1 = Trestle::Navigation::Item.new(:test1)
     i2 = Trestle::Navigation::Item.new(:test2, priority: :first)

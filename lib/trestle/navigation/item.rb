@@ -49,7 +49,7 @@ module Trestle
       end
 
       def icon
-        options[:icon]
+        options[:icon] || Trestle.config.default_navigation_icon
       end
 
       def badge?

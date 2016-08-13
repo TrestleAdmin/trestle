@@ -4,6 +4,8 @@ module Trestle
 
     option :site_title, "Trestle Admin"
 
+    option :default_navigation_icon, "fa fa-arrow-circle-o-right"
+
     option :menus, []
 
     def menu(&block)

@@ -12,6 +12,15 @@ describe Trestle::Configuration do
     expect(config.site_title).to eq("Trestle Admin")
   end
 
+  it "has a default navigation icon accessor" do
+    config.default_navigation_icon = "fa fa-user"
+    expect(config.default_navigation_icon).to eq("fa fa-user")
+  end
+
+  it "has a default navigation icon" do
+    expect(config.default_navigation_icon).to eq("fa fa-arrow-circle-o-right")
+  end
+
   it "has no default menu blocks" do
     expect(config.menus).to eq([])
   end
