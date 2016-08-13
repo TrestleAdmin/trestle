@@ -34,10 +34,10 @@ describe Trestle::Navigation::Item do
 
   it "sorts by priority, then name" do
     i1 = Trestle::Navigation::Item.new(:test1)
-    i2 = Trestle::Navigation::Item.new(:test2, priority: :first)
-    i3 = Trestle::Navigation::Item.new(:test3, priority: 50)
-    i4 = Trestle::Navigation::Item.new(:atest4, priority: 50)
-    i5 = Trestle::Navigation::Item.new(:test5, priority: :last)
+    i2 = Trestle::Navigation::Item.new(:test2, nil, priority: :first)
+    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: 50)
+    i4 = Trestle::Navigation::Item.new(:atest4, nil, priority: 50)
+    i5 = Trestle::Navigation::Item.new(:test5, nil, priority: :last)
 
     expect([i5, i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3, i5])
   end

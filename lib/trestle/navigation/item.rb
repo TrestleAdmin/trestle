@@ -4,11 +4,6 @@ module Trestle
       attr_reader :name, :path, :options
 
       def initialize(name, path=nil, options={})
-        if path.is_a?(Hash)
-          options = path
-          path = nil
-        end
-
         @name, @path, @options = name, path, options
       end
 

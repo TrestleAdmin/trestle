@@ -23,7 +23,19 @@ module Trestle
         end
 
         def item(name, path=nil, options={})
-          options = options.merge(group: @current_group) if @current_group
+          if path.is_a?(Hash)
+            options = path
+            path = nil
+          end
+          
+          if options[:group]
+            group = Group.new(options[:group])
+          elsif @current_group
+            group = @current_group
+          end
+
+          options = options.merge(group: group) if group
+
           items << Item.new(name, path, options)
         end
 
