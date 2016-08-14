@@ -9,6 +9,7 @@ require "autoprefixer-rails"
 module Trestle
   extend ActiveSupport::Autoload
 
+  autoload :Admin
   autoload :Configurable
   autoload :Configuration
   autoload :Navigation
