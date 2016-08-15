@@ -16,4 +16,14 @@ describe Trestle do
       expect { |b| Trestle.configure(&b) }.to yield_with_args(Trestle.config)
     end
   end
+
+  describe "#admin" do
+    it "builds an admin" do
+      admin = double(:admin, admin_name: "test")
+
+      expect(Trestle::AdminBuilder).to receive(:build).with(:test, {}).and_return(admin)
+      expect(Trestle.admin(:test)).to eq(admin)
+      expect(Trestle.admins).to eq({ "test" => admin })
+    end
+  end
 end

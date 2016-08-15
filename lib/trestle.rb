@@ -31,6 +31,11 @@ module Trestle
   def self.configure
     yield config
   end
+
+  def self.admin(name, options={}, &block)
+    admin = AdminBuilder.build(name, options, &block)
+    self.admins[admin.admin_name] = admin
+  end
 end
 
 require "trestle/engine" if defined?(Rails)
