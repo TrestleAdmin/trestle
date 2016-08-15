@@ -44,4 +44,22 @@ describe Trestle::Navigation::Block do
       ])
     end
   end
+
+  context "bound to an admin" do
+    let(:admin) { double(path: "/123") }
+
+    it "uses the admin path as the default item path" do
+      block = Trestle::Navigation::Block.new(admin) do
+        item :default_path
+        item :custom_path, "/custom"
+      end
+
+      expect(block.items[0].path).to eq("/123")
+      expect(block.items[1].path).to eq("/custom")
+    end
+
+    it "yields the admin to the block" do
+      expect { |b| Trestle::Navigation::Block.new(admin, &b).items }.to yield_with_args(admin)
+    end
+  end
 end
