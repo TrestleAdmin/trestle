@@ -1,6 +1,7 @@
 module Trestle
   class Engine < ::Rails::Engine
     isolate_namespace Trestle
+    self.routes.default_scope = {}
 
     # Application assets
     config.assets.precompile << "trestle/admin.css" << "trestle/admin.js"

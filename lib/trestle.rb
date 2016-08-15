@@ -14,6 +14,9 @@ module Trestle
   autoload :Configuration
   autoload :Navigation
 
+  mattr_accessor :admins
+  self.admins = {}
+
   def self.navigation
     Navigation.new(config.menus)
   end
