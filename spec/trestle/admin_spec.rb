@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Trestle::Admin do
-  class TestAdmin < Trestle::Admin; end
+  before(:each) do
+    class TestAdmin < Trestle::Admin; end
+  end
 
   let(:subject) { TestAdmin }
 
@@ -22,8 +24,10 @@ describe Trestle::Admin do
   end
 
   context "scoped within a module" do
-    module Scoped
-      class TestAdmin < Trestle::Admin; end
+    before(:each) do
+      module Scoped
+        class TestAdmin < Trestle::Admin; end
+      end
     end
 
     let(:subject) { Scoped::TestAdmin }
