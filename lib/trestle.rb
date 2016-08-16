@@ -20,8 +20,9 @@ module Trestle
   mattr_accessor :admins
   self.admins = {}
 
-  def self.navigation
-    Navigation.new(config.menus)
+  def self.admin(name, options={}, &block)
+    admin = AdminBuilder.build(name, options, &block)
+    self.admins[admin.admin_name] = admin
   end
 
   def self.config
@@ -32,9 +33,8 @@ module Trestle
     yield config
   end
 
-  def self.admin(name, options={}, &block)
-    admin = AdminBuilder.build(name, options, &block)
-    self.admins[admin.admin_name] = admin
+  def self.navigation
+    Navigation.new(config.menus + admins.values.map(&:menu).compact)
   end
 end
 

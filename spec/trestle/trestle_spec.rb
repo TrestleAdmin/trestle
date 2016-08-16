@@ -26,4 +26,28 @@ describe Trestle do
       expect(Trestle.admins).to eq({ "test" => admin })
     end
   end
+
+  describe "#navigation" do
+    before(:each) do
+      Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
+    end
+    it "returns a navigation object using menu blocks from configuration and admin" do
+      Trestle.configure do |config|
+        config.menu do
+          item :item1, "/path1"
+        end
+      end
+
+      Trestle.admin(:test) do
+        menu do
+          item :item2, "/path2"
+        end
+      end
+
+      expect(Trestle.navigation.items).to eq([
+        Trestle::Navigation::Item.new(:item1, "/path1"),
+        Trestle::Navigation::Item.new(:item2, "/path2")
+      ])
+    end
+  end
 end
