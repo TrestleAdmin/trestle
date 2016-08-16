@@ -1,7 +1,7 @@
 module Trestle
   class Navigation
     class Block
-      attr_reader :block
+      attr_reader :block, :admin
 
       def initialize(admin=nil, &block)
         @admin = admin
@@ -9,7 +9,7 @@ module Trestle
       end
 
       def items
-        context = Context.new(@admin ? @admin.path : nil)
+        context = Context.new(@admin)
         context.instance_exec(@admin, &block)
         context.items
       end
@@ -19,15 +19,19 @@ module Trestle
 
         attr_reader :items
 
-        def initialize(default_path=nil)
-          @default_path = default_path
+        def initialize(admin=nil)
+          @admin = admin
           @items = []
         end
 
-        def item(name, path=@default_path, options={})
+        def default_path
+          @admin ? @admin.path : nil
+        end
+
+        def item(name, path=nil, options={})
           if path.is_a?(Hash)
             options = path
-            path = @default_path
+            path = nil
           end
 
           if options[:group]
@@ -38,7 +42,7 @@ module Trestle
 
           options = options.merge(group: group) if group
 
-          items << Item.new(name, path, options)
+          items << Item.new(name, path || default_path, options)
         end
 
         def group(name, options={})

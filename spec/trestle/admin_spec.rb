@@ -23,6 +23,13 @@ describe Trestle::Admin do
     expect(subject.controller_namespace).to eq("test_admin/admin")
   end
 
+  it "has a menu accessor" do
+    block = Trestle::Navigation::Block.new
+    
+    subject.menu = block
+    expect(subject.menu).to eq(block)
+  end
+
   context "scoped within a module" do
     before(:each) do
       module Scoped

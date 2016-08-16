@@ -10,7 +10,7 @@ module Trestle
     end
 
     def build(&block)
-      instance_eval(&block)
+      instance_eval(&block) if block_given?
       target
     end
   end

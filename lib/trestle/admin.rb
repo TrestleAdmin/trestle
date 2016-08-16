@@ -1,6 +1,8 @@
 module Trestle
   class Admin
     class << self
+      attr_accessor :menu
+
       def admin_name
         name.underscore.sub(/_admin$/, '')
       end

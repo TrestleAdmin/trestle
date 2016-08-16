@@ -19,5 +19,13 @@ module Trestle
       @controller = @admin.const_get("AdminController")
       @controller.instance_variable_set("@admin", @admin)
     end
+
+    def menu(*args, &block)
+      if block_given?
+        admin.menu = Navigation::Block.new(admin, &block)
+      else
+        menu { item(*args) }
+      end
+    end
   end
 end
