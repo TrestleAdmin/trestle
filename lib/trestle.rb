@@ -16,6 +16,7 @@ module Trestle
   autoload :Configurable
   autoload :Configuration
   autoload :Navigation
+  autoload :Reloader
 
   mattr_accessor :admins
   self.admins = {}
