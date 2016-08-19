@@ -35,6 +35,16 @@
 
 .main-content-container {
   margin: 20px;
+
+  &.with-sidebar {
+    display: flex;
+    align-items: flex-start;
+
+    .main-content-wrapper {
+      flex: 1 0 auto;
+      width: 0;
+    }
+  }
 }
 
 .main-content {
@@ -42,6 +52,14 @@
 
   padding: 20px;
   background: white;
+}
+
+.content-sidebar {
+  background: rgba(white, 0.6);
+  padding: 20px;
+  margin-left: 20px;
+
+  flex: 0 0 $content-sidebar-width;
 }
 
 @include mobile {
