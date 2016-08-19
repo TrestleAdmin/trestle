@@ -69,6 +69,19 @@
 
   .main-content-container {
     margin: 10px;
+
+    &.with-sidebar {
+      display: block;
+
+      .main-content-wrapper {
+        width: auto;
+      }
+    }
+  }
+
+  .content-sidebar {
+    margin-left: 0;
+    margin-top: 10px;
   }
 
   .main-content {
