@@ -32,6 +32,10 @@ module Trestle
           end
         end
       end
+
+      def railtie_routes_url_helpers(include_path_helpers=true)
+        Trestle.railtie_routes_url_helpers(include_path_helpers)
+      end
     end
   end
 end

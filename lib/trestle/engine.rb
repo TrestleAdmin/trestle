@@ -25,14 +25,26 @@ module Trestle
       reloader = self.reloader
       reloader.execute
 
-      ActionDispatch::Reloader.to_prepare do
+      ActiveSupport::Reloader.to_prepare do
         # Force-reload files underneath app/admin folders so that their routes can be loaded
         reloader.execute_if_updated
       end
     end
 
+    initializer "trestle.reset_helpers" do |app|
+      engine = self
+
+      ActiveSupport::Reloader.to_prepare do
+        engine.reset_helpers!
+      end
+    end
+
     def reloader
       @reloader ||= Trestle::Reloader.new
+    end
+
+    def reset_helpers!
+      @helpers = nil
     end
   end
 end
