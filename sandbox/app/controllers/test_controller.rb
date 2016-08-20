@@ -1,6 +1,4 @@
-class TestController < ApplicationController
-  layout 'trestle/admin'
-
+class TestController < Trestle::ApplicationController
   def index
   end
 end

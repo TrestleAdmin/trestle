@@ -14,5 +14,11 @@ module Trestle
     def menu(&block)
       menus << Navigation::Block.new(&block)
     end
+
+    option :hooks, Hash.new { |h, k| h[k] = [] }
+
+    def hook(name, &block)
+      hooks[name] << block
+    end
   end
 end

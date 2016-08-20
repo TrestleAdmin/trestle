@@ -7,16 +7,22 @@
 
     %meta{ name: "turbolinks-cache-control", content: "no-cache" }
 
+    = csrf_meta_tags
+
     %title Trestle
 
     = stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload'
 
+    = hook :stylesheets
+
     = javascript_include_tag "turbolinks" if defined?(Turbolinks)
     = javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload'
 
-    = csrf_meta_tags
+    = hook :javascripts
 
     = yield :head
+
+    = hook :head
 
   %body
     .app-wrapper

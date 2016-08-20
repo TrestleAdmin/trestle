@@ -26,11 +26,24 @@ describe Trestle::Configuration do
   describe "#menu" do
     it "adds an unbound navigation block to menus" do
       b = proc {}
-      config.menu(&b)
+      config.menu &b
 
       block = config.menus.first
       expect(block).to be_a(Trestle::Navigation::Block)
       expect(block.block).to eq(b)
+    end
+  end
+
+  it "has no default hooks" do
+    expect(config.hooks).to eq({})
+  end
+
+  describe "#hook" do
+    it "adds a hook for the given name" do
+      b = proc {}
+      config.hook "myhook", &b
+
+      expect(config.hooks["myhook"]).to eq([b])
     end
   end
 end
