@@ -10,8 +10,6 @@ module Trestle
   extend ActiveSupport::Autoload
 
   autoload :Admin
-  autoload :AdminBuilder
-  autoload :AdminController
   autoload :Builder
   autoload :Configurable
   autoload :Configuration
@@ -22,7 +20,7 @@ module Trestle
   self.admins = {}
 
   def self.admin(name, options={}, &block)
-    admin = AdminBuilder.build(name, options, &block)
+    admin = Admin::Builder.build(name, options, &block)
     self.admins[admin.admin_name] = admin
   end
 

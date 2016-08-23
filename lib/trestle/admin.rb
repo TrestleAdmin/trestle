@@ -1,5 +1,10 @@
 module Trestle
   class Admin
+    extend ActiveSupport::Autoload
+
+    autoload :Builder
+    autoload :Controller
+    
     class << self
       attr_accessor :menu
 

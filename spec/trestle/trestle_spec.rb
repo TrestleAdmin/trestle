@@ -21,7 +21,7 @@ describe Trestle do
     it "builds an admin" do
       admin = double(:admin, admin_name: "test")
 
-      expect(Trestle::AdminBuilder).to receive(:build).with(:test, {}).and_return(admin)
+      expect(Trestle::Admin::Builder).to receive(:build).with(:test, {}).and_return(admin)
       expect(Trestle.admin(:test)).to eq(admin)
       expect(Trestle.admins).to eq({ "test" => admin })
     end
@@ -31,6 +31,7 @@ describe Trestle do
     before(:each) do
       Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
     end
+
     it "returns a navigation object using menu blocks from configuration and admin" do
       Trestle.configure do |config|
         config.menu do

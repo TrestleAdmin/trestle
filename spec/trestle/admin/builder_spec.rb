@@ -2,25 +2,25 @@ require 'spec_helper'
 
 class Trestle::ApplicationController < ActionController::Base; end
 
-describe Trestle::AdminBuilder do
+describe Trestle::Admin::Builder do
   before(:each) do
     Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
   end
 
   it "creates a top-level Admin subclass" do
-    Trestle::AdminBuilder.build(:test)
+    Trestle::Admin::Builder.build(:test)
     expect(::TestAdmin).to be < Trestle::Admin
   end
 
   it "creates an AdminController class" do
-    Trestle::AdminBuilder.build(:test)
-    expect(::TestAdmin::AdminController).to be < Trestle::AdminController
+    Trestle::Admin::Builder.build(:test)
+    expect(::TestAdmin::AdminController).to be < Trestle::Admin::Controller
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
   describe "#menu" do
     it "sets the admin's menu to a bound navigation block" do
-      Trestle::AdminBuilder.build(:test) do
+      Trestle::Admin::Builder.build(:test) do
         menu do
         end
       end
@@ -30,7 +30,7 @@ describe Trestle::AdminBuilder do
     end
 
     it "uses a single-line menu definition if no block provided" do
-      Trestle::AdminBuilder.build(:test) do
+      Trestle::Admin::Builder.build(:test) do
         menu :test, "/path"
       end
 
@@ -45,7 +45,7 @@ describe Trestle::AdminBuilder do
     end
 
     it "creates the Admin subclass within the module scope" do
-      Trestle::AdminBuilder.build(:test, scope: Scoped)
+      Trestle::Admin::Builder.build(:test, scope: Scoped)
       expect(::Scoped::TestAdmin).to be < Trestle::Admin
     end
   end
