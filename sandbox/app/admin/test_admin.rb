@@ -1,4 +1,4 @@
-Trestle.admin(:test) do
+Trestle.resource(:test) do
   menu do |admin|
     item :test
   end

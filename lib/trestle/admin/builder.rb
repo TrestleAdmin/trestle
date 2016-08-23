@@ -3,9 +3,15 @@ module Trestle
     class Builder < Trestle::Builder
       target :admin
 
+      class_attribute :admin_class
+      self.admin_class = Admin
+
+      class_attribute :controller
+      self.controller = Controller
+
       def initialize(name, options={})
         # Create admin subclass
-        @admin = Class.new(Admin)
+        @admin = Class.new(admin_class)
 
         # Define a constant based on the admin name
         scope = options[:scope] || Object
@@ -14,7 +20,7 @@ module Trestle
         # Define admin controller class
         # This is done using class_eval rather than Class.new so that the full
         # class name and parent chain is set when Rails' inherited hooks are called.
-        @admin.class_eval("class AdminController < Trestle::Admin::Controller; end")
+        @admin.class_eval("class AdminController < #{controller.name}; end")
 
         # Set a reference on the controller class to the admin class
         @controller = @admin.const_get("AdminController")

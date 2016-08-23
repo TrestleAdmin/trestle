@@ -27,6 +27,16 @@ describe Trestle do
     end
   end
 
+  describe "#resource" do
+    it "builds a resource admin" do
+      admin = double(:admin, admin_name: "test")
+
+      expect(Trestle::Resource::Builder).to receive(:build).with(:test, {}).and_return(admin)
+      expect(Trestle.resource(:test)).to eq(admin)
+      expect(Trestle.admins).to eq({ "test" => admin })
+    end
+  end
+
   describe "#navigation" do
     before(:each) do
       Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)

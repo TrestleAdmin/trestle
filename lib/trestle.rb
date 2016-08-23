@@ -15,12 +15,18 @@ module Trestle
   autoload :Configuration
   autoload :Navigation
   autoload :Reloader
+  autoload :Resource
 
   mattr_accessor :admins
   self.admins = {}
 
   def self.admin(name, options={}, &block)
     admin = Admin::Builder.build(name, options, &block)
+    self.admins[admin.admin_name] = admin
+  end
+
+  def self.resource(name, options={}, &block)
+    admin = Resource::Builder.build(name, options, &block)
     self.admins[admin.admin_name] = admin
   end
 
