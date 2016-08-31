@@ -1,0 +1,25 @@
+<div class="table-container">
+  <%= content_tag(:table, class: table.classes, data: table.data) do %>
+    <thead>
+      <tr>
+        <% table.columns.each do |column| %>
+          <%= content_tag(:th, class: column.classes, data: column.data) do %>
+            <%= column.header(self) %>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% collection.each do |instance| %>
+        <tr>
+          <% table.columns.each do |column| %>
+            <%= content_tag(:td, class: column.classes, data: column.data) do %>
+              <%= column.content(self, instance) %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</div>
