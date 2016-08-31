@@ -5,6 +5,7 @@ module Trestle
     autoload :Builder
     autoload :Column
     autoload :ActionsColumn
+    autoload :SelectColumn
 
     attr_reader :columns, :options
 

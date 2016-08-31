@@ -8,6 +8,10 @@ module Trestle
         @output_buffer = ActionView::OutputBuffer.new
       end
 
+      def selectable_column
+        table.columns << SelectColumn.new(table)
+      end
+
       def column(field, options={}, &block)
         table.columns << Column.new(table, field, options, &block)
       end
