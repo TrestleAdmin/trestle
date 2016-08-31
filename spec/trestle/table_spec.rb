@@ -15,4 +15,9 @@ describe Trestle::Table do
     table = Trestle::Table.new(class: "custom-table")
     expect(table.classes).to eq("custom-table")
   end
+
+  it "returns the data from options" do
+    table = Trestle::Table.new(data: { attr: :custom })
+    expect(table.data).to eq({ attr: :custom })
+  end
 end

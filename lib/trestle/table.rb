@@ -16,5 +16,9 @@ module Trestle
     def classes
       options[:class] || "trestle-table"
     end
+
+    def data
+      options[:data]
+    end
   end
 end
