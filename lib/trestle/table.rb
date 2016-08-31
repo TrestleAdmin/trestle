@@ -3,6 +3,7 @@ module Trestle
     extend ActiveSupport::Autoload
 
     autoload :Column
+    autoload :ActionsColumn
 
     attr_reader :columns, :options
 
