@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+
+    <meta content='no-cache' name='turbolinks-cache-control'>
+
+    <%= csrf_meta_tags %>
+
+    <title>Trestle</title>
+
+    <%= stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
+
+    <%= hook :stylesheets %>
+
+    <%= javascript_include_tag "turbolinks" if defined?(Turbolinks) %>
+    <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
+
+    <%= hook :javascripts %>
+
+    <%= yield :head %>
+
+    <%= hook :head %>
+  </head>
+
+  <body>
+    <div class="app-wrapper">
+      <%= render "trestle/shared/sidebar" %>
+
+      <div class="app-container">
+        <%= render "trestle/shared/header" %>
+
+        <main class="app-main">
+          <%= yield %>
+        </main>
+
+        <%= render "trestle/shared/footer" %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,7 +2,6 @@ require "trestle/version"
 
 require "active_support/all"
 
-require "haml"
 require "sass-rails"
 require "autoprefixer-rails"
 

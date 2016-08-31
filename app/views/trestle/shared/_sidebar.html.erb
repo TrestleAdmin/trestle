@@ -1,0 +1,37 @@
+<aside class="app-sidebar">
+  <header class="app-sidebar-header">
+    <button class="navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <%= link_to "/", class: "navbar-brand" do %>
+      <span class="visible-xs-block visible-lg-block"><%= Trestle.config.site_title %></span>
+    <% end %>
+  </header>
+
+  <nav class="app-nav">
+    <% Trestle.navigation.each do |group, items| %>
+      <ul>
+        <% if group.present? %>
+          <li class="nav-header"><%= group.label %></li>
+        <% end %>
+
+        <% items.each do |item| %>
+          <li>
+            <%= link_to item.path do %>
+              <%= content_tag(:i, "", class: ["nav-icon", item.icon]) %>
+              <span class="nav-label"><%= item.label %></span>
+
+              <%= content_tag(:span, item.badge.text, class: ["nav-badge", item.badge.html_class]) if item.badge? %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </nav>
+
+  <button class="toggle-sidebar"></button>
+</aside>
