@@ -1,5 +1,9 @@
 module Trestle
   class Table
+    extend ActiveSupport::Autoload
+
+    autoload :Column
+
     attr_reader :columns, :options
 
     def initialize(options={})
