@@ -6,7 +6,11 @@ module Trestle
     autoload :Controller
 
     class << self
-      attr_accessor :collection
+      attr_writer :collection
+
+      def collection
+        @collection || -> { model.all }
+      end
 
       def model
         options[:model] || infer_model_class

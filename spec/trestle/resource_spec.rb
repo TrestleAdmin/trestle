@@ -23,6 +23,12 @@ describe Trestle::Resource do
     expect(admin.model).to eq(AlternateModel)
   end
 
+  it "has a default collection block" do
+    class Test; end
+    expect(Test).to receive(:all).and_return([1, 2, 3])
+    expect(admin.collection.call).to eq([1, 2, 3])
+  end
+
   context "scoped within a module" do
     before(:each) do
       Scoped.send(:remove_const, :TestAdmin) if defined?(Scoped::TestAdmin)
