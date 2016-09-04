@@ -20,7 +20,7 @@ module Trestle
         # Define admin controller class
         # This is done using class_eval rather than Class.new so that the full
         # class name and parent chain is set when Rails' inherited hooks are called.
-        @admin.class_eval("class AdminController < #{controller.name}; end")
+        @admin.class_eval("class AdminController < #{self.class.controller.name}; end")
 
         # Set a reference on the controller class to the admin class
         @controller = @admin.const_get("AdminController")
@@ -32,6 +32,16 @@ module Trestle
           admin.menu = Navigation::Block.new(admin, &block)
         else
           menu { item(*args) }
+        end
+      end
+
+      def controller(&block)
+        @controller.class_eval(&block)
+      end
+
+      def helper(*helpers)
+        controller do
+          helper *helpers
         end
       end
     end
