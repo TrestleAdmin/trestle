@@ -6,6 +6,8 @@ module Trestle
     autoload :Controller
 
     class << self
+      attr_accessor :collection
+      
       def routes
         admin = self
 

@@ -17,4 +17,16 @@ describe Trestle::Resource::Builder do
     expect(::TestAdmin::AdminController).to be < Trestle::Resource::Controller
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
+
+  describe "#collection" do
+    it "sets an explicit collection block" do
+      Trestle::Resource::Builder.build(:test) do
+        collection do
+          [1, 2, 3]
+        end
+      end
+
+      expect(::TestAdmin.collection.call).to eq([1, 2, 3])
+    end
+  end
 end
