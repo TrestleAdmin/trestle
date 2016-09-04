@@ -25,9 +25,16 @@ describe Trestle::Admin do
 
   it "has a menu accessor" do
     block = Trestle::Navigation::Block.new
-    
+
     subject.menu = block
     expect(subject.menu).to eq(block)
+  end
+
+  it "has an options accessor" do
+    options = { option: "custom" }
+
+    subject.options = options
+    expect(subject.options).to eq(options)
   end
 
   context "scoped within a module" do

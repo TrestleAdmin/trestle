@@ -4,9 +4,16 @@ module Trestle
 
     autoload :Builder
     autoload :Controller
-    
+
     class << self
       attr_accessor :menu
+      attr_accessor :table
+
+      attr_writer :options
+      
+      def options
+        @options ||= {}
+      end
 
       def admin_name
         name.underscore.sub(/_admin$/, '')

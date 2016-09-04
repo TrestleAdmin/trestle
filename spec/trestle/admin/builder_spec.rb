@@ -30,6 +30,12 @@ describe Trestle::Admin::Builder do
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
+  it "transfer the options on the Admin class" do
+    options = { custom: "option" }
+    Trestle::Admin::Builder.build(:test, options)
+    expect(TestAdmin.options).to eq(options)
+  end
+
   describe "#menu" do
     it "sets the admin's menu to a bound navigation block" do
       Trestle::Admin::Builder.build(:test) do
@@ -66,7 +72,7 @@ describe Trestle::Admin::Builder do
 
   describe "#helper" do
     module TestHelper; end
-    
+
     it "adds the helpers to the controller" do
       builder = Trestle::Admin::Builder.new(:test)
 

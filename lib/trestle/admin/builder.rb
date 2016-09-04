@@ -12,6 +12,7 @@ module Trestle
       def initialize(name, options={})
         # Create admin subclass
         @admin = Class.new(admin_class)
+        @admin.options = options
 
         # Define a constant based on the admin name
         scope = options[:scope] || Object
