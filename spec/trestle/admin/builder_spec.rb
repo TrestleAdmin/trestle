@@ -83,4 +83,18 @@ describe Trestle::Admin::Builder do
       end
     end
   end
+
+  describe "#table" do
+    it "builds a table" do
+      Trestle::Admin::Builder.build(:test) do
+        table custom: "option" do
+          column :test
+        end
+      end
+
+      expect(::TestAdmin.table).to be_a(Trestle::Table)
+      expect(::TestAdmin.table.options).to eq(custom: "option")
+      expect(::TestAdmin.table.columns[0].field).to eq(:test)
+    end
+  end
 end

@@ -36,6 +36,10 @@ module Trestle
         end
       end
 
+      def table(options={}, &block)
+        admin.table = Table::Builder.build(options, &block)
+      end
+
       def controller(&block)
         @controller.class_eval(&block)
       end
