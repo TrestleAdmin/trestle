@@ -42,8 +42,24 @@ module Trestle
           end
         end
       end
-
       prepend Formatting
+
+      module Linking
+        def content(template, instance)
+          if options[:link]
+            content = super
+
+            if content.blank?
+              template.link_to "None set", template.admin.path(:show, id: instance), class: "empty"
+            else
+              template.link_to content, template.admin.path(:show, id: instance)
+            end
+          else
+            super
+          end
+        end
+      end
+      prepend Linking
     end
   end
 end

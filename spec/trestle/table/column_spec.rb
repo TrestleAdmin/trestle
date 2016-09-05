@@ -81,4 +81,27 @@ describe Trestle::Table::Column do
       expect(column.content(template, date)).to eq(datestamp)
     end
   end
+
+  describe "linking" do
+    let(:admin) { double }
+    let(:template) { double(admin: admin) }
+    let(:instance) { double }
+    let(:link) { double }
+
+    it "links to the instance if the `link` option is true" do
+      column = Trestle::Table::Column.new(table, :linked, link: true) { |instance| "Link Text" }
+
+      expect(admin).to receive(:path).with(:show, id: instance).and_return("/test/123")
+      expect(template).to receive(:link_to).with("Link Text", "/test/123").and_return(link)
+      expect(column.content(template, instance)).to eq(link)
+    end
+
+    it "reformats and rewords if the column text is blank" do
+      column = Trestle::Table::Column.new(table, :linked, link: true) { |instance| "" }
+
+      expect(admin).to receive(:path).with(:show, id: instance).and_return("/test/123")
+      expect(template).to receive(:link_to).with("None set", "/test/123", class: "empty").and_return(link)
+      expect(column.content(template, instance)).to eq(link)
+    end
+  end
 end
