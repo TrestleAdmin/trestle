@@ -8,5 +8,11 @@ module Trestle
         ], "\n")
       end
     end
+
+    def datestamp(date)
+      time_tag(date, class: "datestamp") do
+        l(date, format: :trestle_calendar)
+      end
+    end
   end
 end

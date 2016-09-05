@@ -9,7 +9,7 @@ module Trestle
       end
 
       def header(template)
-        I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize)
+        I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
       end
 
       def content(template, instance)
@@ -27,6 +27,23 @@ module Trestle
       def data
         options[:data]
       end
+
+      module Formatting
+        def content(template, instance)
+          value = super
+
+          case value
+          when Time
+            template.timestamp(value)
+          when Date
+            template.datestamp(value)
+          else
+            value
+          end
+        end
+      end
+
+      prepend Formatting
     end
   end
 end

@@ -59,4 +59,26 @@ describe Trestle::Table::Column do
       end
     end
   end
+
+  describe "auto-formatting" do
+    it "automatically formats timestamp values" do
+      time = Time.now
+      timestamp = double
+
+      column = Trestle::Table::Column.new(table, :time) { |instance| instance }
+
+      expect(template).to receive(:timestamp).with(time).and_return(timestamp)
+      expect(column.content(template, time)).to eq(timestamp)
+    end
+
+    it "automatically formats date values" do
+      date = Date.today
+      datestamp = double
+
+      column = Trestle::Table::Column.new(table, :date) { |instance| instance }
+
+      expect(template).to receive(:datestamp).with(date).and_return(datestamp)
+      expect(column.content(template, date)).to eq(datestamp)
+    end
+  end
 end

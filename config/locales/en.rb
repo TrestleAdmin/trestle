@@ -2,7 +2,8 @@
   en: {
     date: {
       formats: {
-        trestle_date: proc { |date| "#{date.day.ordinalize} %b %Y" }
+        trestle_date: proc { |date| "#{date.day.ordinalize} %b %Y" },
+        trestle_calendar: "%-m/%-d/%Y"
       }
     },
 
