@@ -41,6 +41,7 @@ module Trestle
           end
 
           options = options.merge(group: group) if group
+          options = options.merge(admin: @admin) if @admin
 
           items << Item.new(name, path || default_path, options)
         end

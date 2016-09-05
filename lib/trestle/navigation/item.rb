@@ -39,6 +39,10 @@ module Trestle
         options[:group] || NullGroup.new
       end
 
+      def admin
+        options[:admin]
+      end
+
       def label
         I18n.t("admin.menu.item.#{name}", default: name.to_s.titlecase)
       end

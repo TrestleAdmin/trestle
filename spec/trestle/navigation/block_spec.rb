@@ -61,5 +61,13 @@ describe Trestle::Navigation::Block do
     it "yields the admin to the block" do
       expect { |b| Trestle::Navigation::Block.new(admin, &b).items }.to yield_with_args(admin)
     end
+
+    it "applies the admin to the items" do
+      block = Trestle::Navigation::Block.new(admin) do
+        item :item
+      end
+
+      expect(block.items[0].admin).to eq(admin)
+    end
   end
 end

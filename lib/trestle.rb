@@ -4,6 +4,7 @@ require "active_support/all"
 
 require "sass-rails"
 require "autoprefixer-rails"
+require "kaminari"
 
 module Trestle
   extend ActiveSupport::Autoload

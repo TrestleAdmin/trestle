@@ -1,10 +1,16 @@
+class Test
+  def self.all
+    1..10
+  end
+end
+
 Trestle.resource(:test) do
   menu do |admin|
     item :test
   end
 
-  collection do
-    1..10
+  paginate do |collection, params|
+    Kaminari.paginate_array(collection.to_a).page(params[:page])
   end
 
   table do

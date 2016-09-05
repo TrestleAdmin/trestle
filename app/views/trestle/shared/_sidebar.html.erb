@@ -20,7 +20,7 @@
         <% end %>
 
         <% items.each do |item| %>
-          <li>
+          <li<% if current_navigation_item?(item) %> class="active"<% end %>>
             <%= link_to item.path do %>
               <%= content_tag(:i, "", class: ["nav-icon", item.icon]) %>
               <span class="nav-label"><%= item.label %></span>
