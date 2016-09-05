@@ -7,9 +7,31 @@ module Trestle
 
     class << self
       attr_writer :collection
+      attr_writer :paginate
+      attr_writer :decorator
 
       def collection
-        @collection || -> { model.all }
+        if @collection
+          @collection.call
+        else
+          model.all
+        end
+      end
+
+      def paginate(collection, params)
+        if @paginate
+          @paginate.call(collection, params)
+        else
+          collection.page(params[:page])
+        end
+      end
+
+      def decorate(collection)
+        if @decorator
+          @decorator.decorate_collection(collection)
+        else
+          collection
+        end
       end
 
       def model

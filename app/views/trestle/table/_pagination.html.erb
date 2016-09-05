@@ -1,0 +1,5 @@
+<nav class="pagination-container">
+  <p><%= page_entries_info(collection, entry_name: (entry_name if local_assigns.has_key?(:entry_name))) %>
+
+  <%= paginate(collection, theme: "trestle") %>
+</nav>

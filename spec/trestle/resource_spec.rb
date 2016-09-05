@@ -26,7 +26,18 @@ describe Trestle::Resource do
   it "has a default collection block" do
     class Test; end
     expect(Test).to receive(:all).and_return([1, 2, 3])
-    expect(admin.collection.call).to eq([1, 2, 3])
+    expect(admin.collection).to eq([1, 2, 3])
+  end
+
+  it "has a default paginate block" do
+    collection = double
+    expect(collection).to receive(:page).with(5).and_return([1, 2, 3])
+    expect(admin.paginate(collection, page: 5)).to eq([1, 2, 3])
+  end
+
+  it "has a default (identity) decorator" do
+    collection = double
+    expect(admin.decorate(collection)).to eq(collection)
   end
 
   context "scoped within a module" do

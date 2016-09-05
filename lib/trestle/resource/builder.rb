@@ -7,6 +7,14 @@ module Trestle
       def collection(&block)
         admin.collection = block
       end
+
+      def paginate(&block)
+        admin.paginate = block
+      end
+
+      def decorator(decorator)
+        admin.decorator = decorator
+      end
     end
   end
 end

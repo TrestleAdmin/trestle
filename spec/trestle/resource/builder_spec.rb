@@ -26,7 +26,36 @@ describe Trestle::Resource::Builder do
         end
       end
 
-      expect(::TestAdmin.collection.call).to eq([1, 2, 3])
+      expect(::TestAdmin.collection).to eq([1, 2, 3])
+    end
+  end
+
+  describe "#paginate" do
+    it "sets an explicit paginate block" do
+      collection = double
+
+      Trestle::Resource::Builder.build(:test) do
+        paginate do |collection, params|
+          collection.paginate(page: params[:page])
+        end
+      end
+
+      expect(collection).to receive(:paginate).with(page: 5).and_return([1, 2, 3])
+      expect(::TestAdmin.paginate(collection, page: 5)).to eq([1, 2, 3])
+    end
+  end
+
+  describe "#decorator" do
+    it "sets a decorator class" do
+      class TestDecorator; end
+
+      Trestle::Resource::Builder.build(:test) do
+        decorator TestDecorator
+      end
+
+      collection = double
+      expect(TestDecorator).to receive(:decorate_collection).with(collection).and_return([1, 2, 3])
+      expect(::TestAdmin.decorate(collection)).to eq([1, 2, 3])
     end
   end
 end
