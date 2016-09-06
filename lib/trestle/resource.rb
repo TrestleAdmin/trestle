@@ -35,7 +35,11 @@ module Trestle
       end
 
       def model
-        options[:model] || infer_model_class
+        @model ||= options[:model] || infer_model_class
+      end
+
+      def model_name
+        options[:as] || model.model_name
       end
 
       def routes

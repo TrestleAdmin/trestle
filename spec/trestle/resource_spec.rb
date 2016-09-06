@@ -17,10 +17,27 @@ describe Trestle::Resource do
     expect(admin.model).to eq(Test)
   end
 
-  it "allows the model name to be specified manually via options" do
+  it "allows the model to be specified manually via options" do
     class AlternateModel; end
     admin.options = { model: AlternateModel }
     expect(admin.model).to eq(AlternateModel)
+  end
+
+  context "scoped within a module" do
+    before(:each) do
+      Scoped.send(:remove_const, :TestAdmin) if defined?(Scoped::TestAdmin)
+
+      module Scoped
+        class Test; end
+        class TestAdmin < Trestle::Resource; end
+      end
+    end
+
+    subject(:admin) { Scoped::TestAdmin }
+
+    it "infers the model from the module and admin name" do
+      expect(admin.model).to eq(Scoped::Test)
+    end
   end
 
   it "has a default collection block" do
@@ -40,20 +57,19 @@ describe Trestle::Resource do
     expect(admin.decorate(collection)).to eq(collection)
   end
 
-  context "scoped within a module" do
-    before(:each) do
-      Scoped.send(:remove_const, :TestAdmin) if defined?(Scoped::TestAdmin)
+  describe "#model_name" do
+    it "returns the model name" do
+      class Test; end
 
-      module Scoped
-        class Test; end
-        class TestAdmin < Trestle::Resource; end
-      end
+      expect(Test).to receive(:model_name).and_return("Test Class")
+      expect(admin.model_name).to eq("Test Class")
     end
 
-    subject(:admin) { Scoped::TestAdmin }
+    it "can be overridden via the `as` option" do
+      admin.options = { as: "Custom Class" }
 
-    it "infers the model from the module and admin name" do
-      expect(admin.model).to eq(Scoped::Test)
+      expect(Test).to_not receive(:model_name)
+      expect(admin.model_name).to eq("Custom Class")
     end
   end
 end
