@@ -1,5 +1,5 @@
 // User-defined variables
-@import "variables";
+@import "trestle/variables";
 
 // Default variables
 @import "core/mixins";
@@ -18,4 +18,4 @@
 @import "components/*";
 
 // User customizations
-@import "custom";
+@import "trestle/custom";
