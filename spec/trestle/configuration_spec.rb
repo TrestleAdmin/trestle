@@ -7,6 +7,11 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:site_title).with_default("Trestle Admin")
   end
 
+  it "has site logo configuration options" do
+    expect(config).to have_accessor(:site_logo)
+    expect(config).to have_accessor(:site_logo_small)
+  end
+
   it "has a path configuration option" do
     expect(config).to have_accessor(:path).with_default("/admin")
   end

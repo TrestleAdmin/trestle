@@ -7,9 +7,7 @@
       <span class="icon-bar"></span>
     </button>
 
-    <%= link_to "/", class: "navbar-brand" do %>
-      <span class="visible-xs-block visible-lg-block"><%= Trestle.config.site_title %></span>
-    <% end %>
+    <%= link_to trestle_title, "/", class: "navbar-brand" %>
   </header>
 
   <nav class="app-nav">

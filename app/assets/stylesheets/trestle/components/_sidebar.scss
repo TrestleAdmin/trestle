@@ -55,13 +55,22 @@
   .navbar-brand {
     flex: 1;
 
-    height: auto;
-    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    padding: 10px 15px;
 
     font-size: 20px;
     font-weight: 500;
     text-shadow: rgba(black, 0.5) 0 1px 1px;
     color: white;
+
+    img {
+      display: inline-block;
+      max-height: 100%;
+      margin-right: 10px;
+    }
   }
 
   .icon-bar {
@@ -121,6 +130,14 @@
 
     .app-sidebar-header {
       text-align: center;
+
+      .navbar-brand {
+        padding: 10px 5px;
+
+        img {
+          margin: auto;
+        }
+      }
     }
 
     .toggle-sidebar:after {
@@ -133,11 +150,19 @@
       .app-sidebar-header {
         text-align: left;
 
-        .visible-md-block {
+        .navbar-brand {
+          padding: 10px 15px;
+
+          img {
+            margin: 0 10px 0 0;
+          }
+        }
+
+        .visible-md-inline {
           display: none !important;
         }
 
-        .visible-lg-block {
+        .visible-lg-inline {
           display: block !important;
         }
       }
@@ -157,11 +182,19 @@
       .app-sidebar-header {
         text-align: center;
 
-        .visible-md-block {
+        .navbar-brand {
+          padding: 10px 5px;
+
+          img {
+            margin: auto;
+          }
+        }
+
+        .visible-md-inline {
           display: block !important;
         }
 
-        .visible-lg-block {
+        .visible-lg-inline {
           display: none !important;
         }
       }

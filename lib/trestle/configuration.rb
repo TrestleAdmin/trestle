@@ -4,6 +4,9 @@ module Trestle
 
     option :site_title, "Trestle Admin"
 
+    option :site_logo
+    option :site_logo_small
+
     option :path, "/admin"
     option :automount, true
 
