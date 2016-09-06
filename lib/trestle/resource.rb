@@ -22,6 +22,7 @@ module Trestle
         if @paginate
           @paginate.call(collection, params)
         else
+          collection = Kaminari.paginate_array(collection) unless collection.respond_to?(:page)
           collection.page(params[:page])
         end
       end
