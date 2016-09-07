@@ -9,7 +9,9 @@ module Trestle
       end
 
       def header(template)
-        I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
+        unless options.has_key?(:header) && options[:header].in?([nil, false])
+          I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
+        end
       end
 
       def content(template, instance)

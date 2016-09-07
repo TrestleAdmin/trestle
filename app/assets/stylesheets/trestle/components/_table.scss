@@ -57,11 +57,11 @@
 
     .btn {
       @extend .btn-sm;
-      padding: 3px 7px;
+      padding: 5px 7px;
+      line-height: 1;
 
       i {
         font-size: 14px;
-        vertical-align: middle;
       }
     }
   }
