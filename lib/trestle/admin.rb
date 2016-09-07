@@ -47,7 +47,7 @@ module Trestle
 
         Proc.new do
           controller admin.controller_namespace do
-            get admin.admin_name, action: "index", as: admin.route_name
+            get admin.options[:path] || admin.admin_name, action: "index", as: admin.route_name
           end
         end
       end
