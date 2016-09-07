@@ -46,6 +46,13 @@ describe Trestle::Resource do
     expect(admin.collection).to eq([1, 2, 3])
   end
 
+  it "has a default instance block" do
+    class Test; end
+    expect(Test).to receive(:all).and_return(Test)
+    expect(Test).to receive(:find).with(123).and_return(1)
+    expect(admin.instance(id: 123)).to eq(1)
+  end
+
   it "has a default paginate block" do
     collection = double
     expect(collection).to receive(:page).with(5).and_return([1, 2, 3])

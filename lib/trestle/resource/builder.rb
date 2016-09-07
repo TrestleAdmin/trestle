@@ -8,6 +8,10 @@ module Trestle
         admin.collection = block
       end
 
+      def instance(&block)
+        admin.instance = block
+      end
+
       def paginate(&block)
         admin.paginate = block
       end

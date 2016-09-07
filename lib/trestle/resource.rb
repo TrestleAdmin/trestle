@@ -7,6 +7,7 @@ module Trestle
 
     class << self
       attr_writer :collection
+      attr_writer :instance
       attr_writer :paginate
       attr_writer :decorator
 
@@ -15,6 +16,14 @@ module Trestle
           @collection.call
         else
           model.all
+        end
+      end
+
+      def instance(params)
+        if @instance
+          @instance.call(params)
+        else
+          collection.find(params[:id])
         end
       end
 

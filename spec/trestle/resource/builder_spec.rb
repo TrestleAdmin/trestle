@@ -30,6 +30,18 @@ describe Trestle::Resource::Builder do
     end
   end
 
+  describe "#instance" do
+    it "sets an explicit instance block" do
+      Trestle::Resource::Builder.build(:test) do
+        instance do |params|
+          params[:id]
+        end
+      end
+
+      expect(::TestAdmin.instance(id: 123)).to eq(123)
+    end
+  end
+
   describe "#paginate" do
     it "sets an explicit paginate block" do
       collection = double

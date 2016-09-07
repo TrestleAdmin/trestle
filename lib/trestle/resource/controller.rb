@@ -2,6 +2,11 @@ module Trestle
   class Resource
     class Controller < Admin::Controller
     protected
+      def instance
+        admin.instance(params)
+      end
+      helper_method :instance
+
       def collection
         admin.collection
       end
