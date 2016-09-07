@@ -18,8 +18,12 @@ module Trestle
       def breadcrumbs
         @breadcrumbs ||= Trestle::Breadcrumb::Trail.new([
           Trestle.config.root_breadcrumb,
-          Breadcrumb.new(model_name.to_s.titleize.pluralize, path)
+          breadcrumb
         ])
+      end
+
+      def breadcrumb
+        Breadcrumb.new(admin_name.titleize.pluralize, path)
       end
 
       def admin_name

@@ -52,6 +52,10 @@ module Trestle
         options[:as] || model.model_name
       end
 
+      def breadcrumb
+        Breadcrumb.new(model_name.to_s.titleize.pluralize, path)
+      end
+
       def routes
         admin = self
 
