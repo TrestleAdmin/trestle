@@ -10,6 +10,11 @@ module Trestle
 
       delegate :admin, to: :class
       helper_method :admin
+
+    protected
+      def breadcrumbs
+        @breadcrumbs ||= admin.breadcrumbs.dup
+      end
     end
   end
 end

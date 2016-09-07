@@ -10,9 +10,16 @@ module Trestle
       attr_accessor :table
 
       attr_writer :options
-      
+
       def options
         @options ||= {}
+      end
+
+      def breadcrumbs
+        @breadcrumbs ||= Trestle::Breadcrumb::Trail.new([
+          Trestle.config.root_breadcrumb,
+          Breadcrumb.new(model_name.to_s.titleize.pluralize, path)
+        ])
       end
 
       def admin_name

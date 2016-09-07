@@ -1,4 +1,6 @@
 class Test
+  extend ActiveModel::Naming
+  
   def self.all
     1..10
   end

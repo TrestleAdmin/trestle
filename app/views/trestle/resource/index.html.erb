@@ -1,13 +1,9 @@
-<% content_for(:title, "Index") %>
+<% content_for(:title, "Listing #{admin.model_name.to_s.titleize.pluralize}") %>
 
 <% content_for(:primary_toolbar) do %>
   <%= link_to admin.path(:new), class: "btn btn-default btn-lg" do %>
     <i class="fa fa-plus"></i>
   <% end %>
-<% end %>
-
-<%= render layout: "header" do %>
-  <ol class="breadcrumb"></ol>
 <% end %>
 
 <%= render layout: "layout" do %>

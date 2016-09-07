@@ -10,6 +10,7 @@ module Trestle
   extend ActiveSupport::Autoload
 
   autoload :Admin
+  autoload :Breadcrumb
   autoload :Builder
   autoload :Configurable
   autoload :Configuration

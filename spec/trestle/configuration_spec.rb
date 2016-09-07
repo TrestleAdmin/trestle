@@ -24,6 +24,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:default_navigation_icon).with_default("fa fa-arrow-circle-o-right")
   end
 
+  it "has a root breadcrumb configuration option" do
+    expect(config).to have_accessor(:root_breadcrumb).with_default(Trestle::Breadcrumb.new("Home", "/admin"))
+  end
+
   it "has no default menu blocks" do
     expect(config.menus).to eq([])
   end
