@@ -23,6 +23,18 @@ describe Trestle::Table::Builder do
     end
   end
 
+  describe "#selectable_column" do
+    it "adds a select column to the table" do
+      table = Trestle::Table::Builder.build do
+        selectable_column
+      end
+
+      column = table.columns[0]
+
+      expect(column).to be_a(Trestle::Table::SelectColumn)
+    end
+  end
+
   describe "#actions" do
     it "adds an actions column to the table" do
       block = Proc.new {}
