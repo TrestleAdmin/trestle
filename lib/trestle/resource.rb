@@ -49,11 +49,11 @@ module Trestle
       end
 
       def model_name
-        options[:as] || model.model_name
+        options[:as] || model.model_name.to_s.titleize
       end
 
       def breadcrumb
-        Breadcrumb.new(model_name.to_s.titleize.pluralize, path)
+        Breadcrumb.new(model_name.pluralize, path)
       end
 
       def routes
