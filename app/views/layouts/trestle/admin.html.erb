@@ -9,7 +9,7 @@
 
     <%= csrf_meta_tags %>
 
-    <title>Trestle</title>
+    <title><%= [yield(:title), Trestle.config.site_title].join(' :: ') %></title>
 
     <%= stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
 
