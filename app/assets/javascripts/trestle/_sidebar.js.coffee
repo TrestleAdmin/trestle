@@ -18,8 +18,11 @@ Trestle.ready ->
   sidebar.on 'click touchstart', (e) ->
     e.stopPropagation()
 
-  $('.app-wrapper').on 'click touchstart', ->
-    if $('body').hasClass('mobile-nav-expanded')
+  $('.app-wrapper').on 'click touchstart', (e) ->
+    navExpanded = $('body').hasClass('mobile-nav-expanded')
+    clickInHeader = $(e.target).closest('.app-header').length
+
+    if navExpanded and !clickInHeader
       $('.app-wrapper').addClass('animate')
       $('body').removeClass('mobile-nav-expanded')
 
