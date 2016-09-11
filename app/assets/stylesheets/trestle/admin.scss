@@ -1,9 +1,5 @@
-// User-defined variables
-@import "trestle/variables";
-
-// Default variables
-@import "core/mixins";
-@import "core/defaults";
+// Core Trestle variables
+@import "trestle/support";
 
 // 3rd party dependencies
 @import "trestle/bootstrap";

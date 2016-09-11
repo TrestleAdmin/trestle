@@ -1,0 +1,9 @@
+// User-defined variables
+@import "trestle/variables";
+
+// Default variables
+@import "core/mixins";
+@import "core/defaults";
+
+// Bootstrap variables
+@import "trestle/bootstrap-sass/assets/stylesheets/bootstrap/variables";
