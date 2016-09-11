@@ -6,6 +6,10 @@ module Trestle
 
       class << self
         attr_reader :admin
+
+        def controller_path
+          admin ? admin.controller_path : super
+        end
       end
 
       delegate :admin, to: :class

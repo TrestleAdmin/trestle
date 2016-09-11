@@ -1,26 +1,80 @@
 module Trestle
   class Resource
     class Controller < Admin::Controller
-    protected
-      def instance
-        admin.instance(params)
+      def index
+        self.collection = admin.collection
       end
-      helper_method :instance
 
-      def collection
-        admin.collection
+      def new
+        self.instance = admin.collection.build
       end
+
+      def show
+        self.instance = admin.instance(params)
+      end
+
+      def edit
+        self.instance = admin.instance(params)
+      end
+
+      def create
+        self.instance = admin.collection.build
+        instance.attributes = resource_params
+
+        if instance.save
+          flash[:message] = "#{admin.model_name} successfully created."
+          redirect_to action: :index
+        else
+          flash[:error] = "Please correct the errors below."
+          render "new"
+        end
+      end
+
+      def update
+        self.instance = admin.instance(params)
+        instance.attributes = resource_params
+
+        if instance.save
+          flash[:message] = "#{admin.model_name} successfully updated."
+          redirect_to action: :index
+        else
+          flash[:error] = "Please correct the errors below."
+          render "show"
+        end
+      end
+
+      def destroy
+        self.instance = admin.instance(params)
+
+        if instance.destroy
+          flash[:message] = "#{admin.model_name.titleize} successfully deleted."
+        else
+          flash[:error] = "Could not delete #{admin.model_name.titleize}."
+        end
+
+        redirect_to action: :index
+      end
+
+    protected
+      attr_accessor :collection
       helper_method :collection
 
+      attr_accessor :instance
+      helper_method :instance
+
       def paginated_collection
-        admin.paginate(collection, params)
+        @paginated_collection ||= admin.paginate(collection, params)
       end
       helper_method :paginated_collection
 
       def decorated_collection
-        admin.decorate(paginated_collection)
+        @decorated_collection ||= admin.decorate(paginated_collection)
       end
       helper_method :decorated_collection
+
+      def resource_params
+        params.require(admin.admin_name.singularize).permit!
+      end
     end
   end
 end
