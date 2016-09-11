@@ -17,6 +17,7 @@ module Trestle
   autoload :Navigation
   autoload :Reloader
   autoload :Resource
+  autoload :Tab
   autoload :Table
 
   mattr_accessor :admins
