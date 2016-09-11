@@ -22,5 +22,9 @@ module Trestle
     def each(&block)
       by_group.each(&block)
     end
+
+    def first
+      by_group.values.first.first
+    end
   end
 end
