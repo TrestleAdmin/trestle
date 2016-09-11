@@ -83,7 +83,18 @@ describe Trestle::Table::Column do
   end
 
   describe "linking" do
-    let(:admin) { double }
+    def admin_double(path)
+      klass = Class.new(Trestle::Admin) do
+        def self.path(*)
+          @path
+        end
+      end
+      klass.instance_variable_set("@path", path)
+      klass
+    end
+
+    let(:admin) { admin_double("/test/123") }
+    let(:alternative_admin) { admin_double("/alternate/123") }
     let(:template) { double(admin: admin) }
     let(:instance) { double }
     let(:link) { double }
@@ -102,6 +113,24 @@ describe Trestle::Table::Column do
       expect(admin).to receive(:path).with(:show, id: instance).and_return("/test/123")
       expect(template).to receive(:link_to).with("None set", "/test/123", class: "empty").and_return(link)
       expect(column.content(template, instance)).to eq(link)
+    end
+
+    it "links to the given admin if specified in the column options" do
+      column = Trestle::Table::Column.new(table, :linked, link: true, admin: alternative_admin) { |instance| "Link Text" }
+
+      expect(template).to receive(:link_to).with("Link Text", "/alternate/123").and_return(link)
+      expect(column.content(template, instance)).to eq(link)
+    end
+
+    context "within a table with an alternate admin specified" do
+      let(:table) { Trestle::Table.new(admin: alternative_admin) }
+
+      it "links to the table's admin" do
+        column = Trestle::Table::Column.new(table, :linked, link: true) { |instance| "Link Text" }
+
+        expect(template).to receive(:link_to).with("Link Text", "/alternate/123").and_return(link)
+        expect(column.content(template, instance)).to eq(link)
+      end
     end
   end
 end

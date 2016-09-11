@@ -47,14 +47,26 @@ module Trestle
       prepend Formatting
 
       module Linking
+        def admin
+          admin = options[:admin] || table.options[:admin]
+          return unless admin
+
+          if admin.is_a?(Class) && admin < Admin
+            admin
+          else
+            Trestle.admins[admin.to_s]
+          end
+        end
+
         def content(template, instance)
           if options[:link]
             content = super
+            admin = self.admin || template.admin
 
             if content.blank?
-              template.link_to "None set", template.admin.path(:show, id: instance), class: "empty"
+              template.link_to "None set", admin.path(:show, id: instance), class: "empty"
             else
-              template.link_to content, template.admin.path(:show, id: instance)
+              template.link_to content, admin.path(:show, id: instance)
             end
           else
             super
