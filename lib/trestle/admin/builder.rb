@@ -40,6 +40,10 @@ module Trestle
         admin.table = Table::Builder.build(options, &block)
       end
 
+      def form(&block)
+        admin.form = Form.new(&block)
+      end
+
       def controller(&block)
         @controller.class_eval(&block)
       end

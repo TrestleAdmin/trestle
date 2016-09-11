@@ -1,0 +1,10 @@
+<% content_for(:title, "New #{admin.model_name}") %>
+<% breadcrumb "New #{admin.model_name}" %>
+
+<% content_for(:primary_toolbar) do %>
+  <%= button_tag "Save #{admin.model_name}", class: "btn btn-success btn-lg" %>
+<% end %>
+
+<%= trestle_form_for instance, url: admin.path do |f| %>
+  <%= render partial: "form", layout: "layout" %>
+<% end %>

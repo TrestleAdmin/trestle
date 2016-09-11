@@ -97,4 +97,17 @@ describe Trestle::Admin::Builder do
       expect(::TestAdmin.table.columns[0].field).to eq(:test)
     end
   end
+
+  describe "#form" do
+    it "builds a form" do
+      b = Proc.new {}
+      
+      Trestle::Admin::Builder.build(:test) do
+        form &b
+      end
+
+      expect(::TestAdmin.form).to be_a(Trestle::Form)
+      expect(::TestAdmin.form.block).to eq(b)
+    end
+  end
 end

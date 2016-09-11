@@ -7,7 +7,9 @@ module Trestle
 
     class << self
       attr_accessor :menu
+
       attr_accessor :table
+      attr_accessor :form
 
       attr_writer :options
 

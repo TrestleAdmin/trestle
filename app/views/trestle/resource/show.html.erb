@@ -1,0 +1,16 @@
+<% content_for(:title, "Editing #{admin.model_name}") %>
+<% breadcrumb "Editing #{admin.model_name}" %>
+
+<% content_for(:primary_toolbar) do %>
+  <%= button_tag "Save #{admin.model_name}", class: "btn btn-success btn-lg" %>
+<% end %>
+
+<% content_for(:secondary_toolbar) do %>
+  <%= link_to admin.path(:destroy, id: instance), method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
+    <i class="fa fa-trash"></i> Delete <%= admin.model_name %>
+  <% end %>
+<% end %>
+
+<%= trestle_form_for instance, url: admin.path(:update, id: instance) do |f| %>
+  <%= render partial: "form", layout: "layout" %>
+<% end %>
