@@ -55,6 +55,14 @@ module Trestle
         other.is_a?(NullGroup)
       end
 
+      def eql?(other)
+        other.is_a?(NullGroup)
+      end
+
+      def hash
+        NullGroup.hash
+      end
+
       def <=>(other)
         -1
       end
