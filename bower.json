@@ -6,6 +6,6 @@
       "bootstrap-sass":          "~3.3.7",
       "font-awesome":            "~4.6.3",
       "magnific-popup":          "~1.1.0",
-      "bootstrap-confirmation2": "~2.3.1"
+      "bootstrap-confirmation2": "mistic100/Bootstrap-Confirmation#f70b109888fa15077fe0f5f3ddb3f6858b8f97f1"
   }
 }

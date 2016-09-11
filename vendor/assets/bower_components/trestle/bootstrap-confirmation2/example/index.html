@@ -62,16 +62,16 @@
     <div class="panel panel-default">
       <div class="panel-heading">Singleton</div>
       <div class="panel-body">
-        <button class="btn btn-default" data-toggle="confirmation" data-singleton="true">Confirmation 1</button>
-        <button class="btn btn-default" data-toggle="confirmation" data-singleton="true">Confirmation 2</button>
+        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 1</button>
+        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 2</button>
       </div>
     </div>
 
     <div class="panel panel-default">
       <div class="panel-heading">Popout</div>
       <div class="panel-body">
-        <button class="btn btn-default" data-toggle="confirmation" data-popout="true">Confirmation 1</button>
-        <button class="btn btn-default" data-toggle="confirmation" data-popout="true">Confirmation 2</button>
+        <button class="btn btn-default" data-toggle="confirmation-popout" data-popout="true">Confirmation 1</button>
+        <button class="btn btn-default" data-toggle="confirmation-popout" data-popout="true">Confirmation 2</button>
       </div>
     </div>
 
@@ -93,6 +93,12 @@
   console.log('Bootstrap Confirmation ' + $.fn.confirmation.Constructor.VERSION);
 
   $('[data-toggle=confirmation]').confirmation();
+  $('[data-toggle=confirmation-singleton]').confirmation({
+    rootSelector: '[data-toggle=confirmation-singleton]'
+  });
+  $('[data-toggle=confirmation-popout]').confirmation({
+    rootSelector: '[data-toggle=confirmation-popout]'
+  });
 
   var currency = '';
   $('#custom-confirmation').confirmation({

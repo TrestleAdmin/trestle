@@ -4,6 +4,7 @@ Trestle.ready ->
   root = $('body')
 
   root.confirmation
+    rootSelector:   'body'
     selector:       '[data-toggle="confirm-delete"]'
     singleton:      true
     popout:         true

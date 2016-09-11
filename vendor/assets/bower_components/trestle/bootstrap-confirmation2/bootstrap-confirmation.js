@@ -72,17 +72,21 @@
   Confirmation.prototype.init = function(element, options) {
     $.fn.popover.Constructor.prototype.init.call(this, 'confirmation', element, options);
 
+    if ((this.options.popout || this.options.singleton) && !options.rootSelector) {
+      throw new Error('The rootSelector option is required to use popout and singleton features since jQuery 3.');
+    }
+
     // keep trace of selectors
     this.options._isDelegate = false;
     if (options.selector) { // container of buttons
-      this.options._selector = this._options._selector = options._root_selector + ' ' + options.selector;
+      this.options._selector = this._options._selector = options.rootSelector + ' ' + options.selector;
     }
     else if (options._selector) { // children of container
       this.options._selector = options._selector;
       this.options._isDelegate = true;
     }
     else { // standalone
-      this.options._selector = options._root_selector;
+      this.options._selector = options.rootSelector;
     }
 
     var self = this;
@@ -286,7 +290,7 @@
 
   $.fn.confirmation = function(option) {
     var options = (typeof option == 'object' && option) || {};
-    options._root_selector = this.selector;
+    options.rootSelector = this.selector || options.rootSelector; // this.selector removed in jQuery > 3
 
     return this.each(function() {
       var $this = $(this);
