@@ -1,6 +1,14 @@
 module Trestle
   class Reloader
-    delegate :execute_if_updated, :execute, :updated?, to: :updater
+    delegate :execute, :updated?, to: :updater
+
+    def execute_if_updated
+      if defined?(@updater)
+        updater.execute_if_updated
+      else
+        updater.execute
+      end
+    end
 
     def updater
       @updater ||= ActiveSupport::FileUpdateChecker.new([], compile_load_paths) do
