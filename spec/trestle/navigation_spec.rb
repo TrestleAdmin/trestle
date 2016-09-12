@@ -104,4 +104,25 @@ describe Trestle::Navigation do
       )
     end
   end
+
+  describe "#first" do
+    let(:block) do
+      Trestle::Navigation::Block.new do
+        item :default
+        item :first, priority: :first
+      end
+    end
+
+    it "returns the first (ordered) navigation item" do
+      expect(navigation.first).to eq(Trestle::Navigation::Item.new(:first))
+    end
+
+    context "with an empty navigation" do
+      let(:blocks) { [] }
+
+      it "returns nil" do
+        expect(navigation.first).to be_nil
+      end
+    end
+  end
 end

@@ -24,7 +24,8 @@ module Trestle
     end
 
     def first
-      by_group.values.first.first
+      sorted = by_group.values
+      sorted.first.first if sorted.any?
     end
   end
 end
