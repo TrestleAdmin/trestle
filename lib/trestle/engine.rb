@@ -9,6 +9,7 @@ module Trestle
     # Vendor assets
     config.assets.precompile << %r(trestle/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular\.(?:eot|svg|ttf|woff|woff2)$)
     config.assets.precompile << %r(trestle/font-awesome/fonts/fontawesome-webfont\.(?:eot|svg|ttf|woff|woff2)$)
+    config.assets.precompile << %r(trestle/ionicons/fonts/ionicons\.(?:eot|svg|ttf|woff)$)
 
     # Optional turbolinks
     config.assets.precompile << "turbolinks.js" if defined?(Turbolinks)
