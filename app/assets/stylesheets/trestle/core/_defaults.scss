@@ -8,7 +8,7 @@ $body-bg: #f3f3f3 !default;
 
 $header-height: 50px !default;
 
-$grid-gutter-width: 10px * 2;
+$grid-gutter-width: 10px * 2 !default;
 
 $sidebar-width: 250px !default;
 $sidebar-width-collapsed: 54px !default;
@@ -30,8 +30,19 @@ $theme-bg: $theme-bg-texture-url, $theme-bg-gradient, $theme-bg-color !default;
 
 $headings-font-weight: 300 !default;
 
-$btn-default-bg:    #dbdbdb;
-$btn-default-color: white;
+$btn-default-bg:    #dbdbdb !default;
+$btn-default-color: white !default;
+
+$alert-padding:       15px 20px !default;
+$alert-border-radius: 2px !default;
+
+$alert-success-bg:     #7ac47a !default;
+$alert-success-text:   white !default;
+$alert-success-border: #66bb66 !default;
+
+$alert-danger-bg:      #de7471 !default;
+$alert-danger-text:    white !default;
+$alert-danger-border:  #d85956 !default;
 
 $table-cell-padding: 6px 8px !default;
 $table-bg-accent:    rgba(black, 0.02) !default;

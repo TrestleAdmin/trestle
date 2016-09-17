@@ -22,10 +22,10 @@ module Trestle
         instance.attributes = resource_params
 
         if instance.save
-          flash[:message] = "#{admin.model_name} successfully created."
+          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully created."
           redirect_to action: :index
         else
-          flash[:error] = "Please correct the errors below."
+          flash.now[:error] = "Please correct the errors below."
           render "new"
         end
       end
@@ -35,10 +35,10 @@ module Trestle
         instance.attributes = resource_params
 
         if instance.save
-          flash[:message] = "#{admin.model_name} successfully updated."
+          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully updated."
           redirect_to action: :index
         else
-          flash[:error] = "Please correct the errors below."
+          flash.now[:error] = "Please correct the errors below."
           render "show"
         end
       end
@@ -47,9 +47,9 @@ module Trestle
         self.instance = admin.instance(params)
 
         if instance.destroy
-          flash[:message] = "#{admin.model_name.titleize} successfully deleted."
+          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully deleted."
         else
-          flash[:error] = "Could not delete #{admin.model_name.titleize}."
+          flash[:error] = "Could not delete #{admin.model_name.humanize(capitalize: false)}."
         end
 
         redirect_to action: :index
