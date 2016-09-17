@@ -36,7 +36,7 @@ module Trestle
 
         if instance.save
           flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully updated."
-          redirect_to action: :index
+          redirect_to action: :show, id: instance
         else
           flash.now[:error] = "Please correct the errors below."
           render "show"
