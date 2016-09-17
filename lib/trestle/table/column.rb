@@ -34,6 +34,24 @@ module Trestle
         def content(template, instance)
           value = super
 
+          if options[:format]
+            format_from_options(template, value)
+          else
+            autoformat_value(template, value)
+          end
+        end
+
+      private
+        def format_from_options(template, value)
+          case options[:format]
+          when :currency
+            template.number_to_currency(value)
+          else
+            value
+          end
+        end
+
+        def autoformat_value(template, value)
           case value
           when Time
             template.timestamp(value)

@@ -80,6 +80,14 @@ describe Trestle::Table::Column do
       expect(template).to receive(:datestamp).with(date).and_return(datestamp)
       expect(column.content(template, date)).to eq(datestamp)
     end
+
+    it "formats currency values with options[:format] = :currency" do
+      currency = double
+
+      column = Trestle::Table::Column.new(table, :money, format: :currency) { |instance| instance }
+      expect(template).to receive(:number_to_currency).with(123.45).and_return(currency)
+      expect(column.content(template, 123.45)).to eq(currency)
+    end
   end
 
   describe "linking" do
