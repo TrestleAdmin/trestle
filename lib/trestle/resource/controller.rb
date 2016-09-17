@@ -22,7 +22,7 @@ module Trestle
         instance.attributes = resource_params
 
         if instance.save
-          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully created."
+          flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully created."
           redirect_to action: :index
         else
           flash.now[:error] = "Please correct the errors below."
@@ -35,7 +35,7 @@ module Trestle
         instance.attributes = resource_params
 
         if instance.save
-          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully updated."
+          flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully updated."
           redirect_to action: :index
         else
           flash.now[:error] = "Please correct the errors below."
