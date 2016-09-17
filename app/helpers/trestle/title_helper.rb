@@ -16,7 +16,7 @@ module Trestle
           content_tag(:span, Trestle.config.site_title, class: "visible-xs-inline visible-lg-inline")
         ], "\n")
       else
-        Trestle.config.site_title
+        content_tag(:span, Trestle.config.site_title, class: "visible-xs-inline visible-lg-inline")
       end
     end
   end
