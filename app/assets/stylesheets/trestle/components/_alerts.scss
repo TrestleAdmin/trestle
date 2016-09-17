@@ -1,6 +1,8 @@
 .alert {
+  display: flex;
+  align-items: center;
+
   .alert-icon {
-    float: left;
     margin-right: 20px;
     font-size: 48px;
     line-height: 1;
@@ -8,8 +10,31 @@
 
   h3 {
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-size: 22px;
     font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  @include mobile {
+    padding: 5px 10px;
+
+    .alert-icon {
+      margin-right: 10px;
+      font-size: 42px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 12px;
+    }
   }
 }

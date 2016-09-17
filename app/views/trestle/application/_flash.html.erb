@@ -1,13 +1,17 @@
 <% if flash[:message] -%>
   <div class="alert alert-success">
     <i class="alert-icon ion-ios-checkmark-outline"></i>
-    <h3>Success!</h3>
-    <p><%= flash[:message] %></p>
+    <div class="alert-content">
+      <h3>Success!</h3>
+      <p><%= flash[:message] %></p>
+    </div>
   </div>
 <% elsif flash[:error] -%>
   <div class="alert alert-danger">
     <i class="alert-icon ion-ios-close-outline"></i>
-    <h3>Warning!</h3>
-    <p><%= flash[:error] %></p>
+    <div class="alert-content">
+      <h3>Warning!</h3>
+      <p><%= flash[:error] %></p>
+    </div>
   </div>
 <% end -%>
