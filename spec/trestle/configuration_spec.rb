@@ -7,6 +7,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:site_title).with_default("Trestle Admin")
   end
 
+  it "has a footer configuration option" do
+    expect(config).to have_accessor(:footer).with_default("Powered by Trestle")
+  end
+
   it "has site logo configuration options" do
     expect(config).to have_accessor(:site_logo)
     expect(config).to have_accessor(:site_logo_small)

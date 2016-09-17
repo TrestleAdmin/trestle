@@ -3,6 +3,7 @@ module Trestle
     include Configurable
 
     option :site_title, "Trestle Admin"
+    option :footer, "Powered by Trestle"
 
     option :site_logo
     option :site_logo_small
