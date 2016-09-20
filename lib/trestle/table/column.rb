@@ -10,7 +10,7 @@ module Trestle
 
       def header(template)
         unless options.has_key?(:header) && options[:header].in?([nil, false])
-          I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
+          sortable? ? template.sort_link(header_text, sort_field) : header_text
         end
       end
 
@@ -28,6 +28,19 @@ module Trestle
 
       def data
         options[:data]
+      end
+
+      def sortable?
+        table.sortable? && options[:sort] != false && (!@block || options.has_key?(:sort))
+      end
+
+    private
+      def header_text
+        I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
+      end
+
+      def sort_field
+        options[:sort] || field
       end
 
       module Formatting

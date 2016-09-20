@@ -21,5 +21,9 @@ module Trestle
     def data
       options[:data]
     end
+
+    def sortable?
+      options[:sortable] == true
+    end
   end
 end
