@@ -46,7 +46,7 @@ module Trestle
 
       def sort(collection, params)
         if params[:sort]
-          collection.order(params[:sort] => params[:order] || "asc")
+          collection.reorder(params[:sort] => params[:order] || "asc")
         else
           collection
         end
