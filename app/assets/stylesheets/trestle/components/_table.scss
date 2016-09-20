@@ -34,8 +34,11 @@
   }
 
   a {
-    font-weight: normal;
     white-space: nowrap;
+  }
+
+  tbody a {
+    font-weight: normal;
 
     &.empty {
       font-style: italic;
