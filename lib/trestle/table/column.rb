@@ -10,7 +10,7 @@ module Trestle
 
       def header(template)
         unless options.has_key?(:header) && options[:header].in?([nil, false])
-          sortable? ? template.sort_link(header_text, sort_field) : header_text
+          sortable? ? template.sort_link(header_text, sort_field, sort_options) : header_text
         end
       end
 
@@ -40,7 +40,15 @@ module Trestle
       end
 
       def sort_field
-        options[:sort] || field
+        if options[:sort].is_a?(Hash)
+          options[:sort][:field] || field
+        else
+          options[:sort] || field
+        end
+      end
+
+      def sort_options
+        options[:sort].is_a?(Hash) ? options[:sort] : {}
       end
 
       module Formatting
