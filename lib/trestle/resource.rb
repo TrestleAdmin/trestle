@@ -44,6 +44,14 @@ module Trestle
         end
       end
 
+      def sort(collection, params)
+        if params[:sort]
+          collection.order(params[:sort] => params[:order] || "asc")
+        else
+          collection
+        end
+      end
+
       def model
         @model ||= options[:model] || infer_model_class
       end

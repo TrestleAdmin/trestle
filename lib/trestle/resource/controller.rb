@@ -2,7 +2,7 @@ module Trestle
   class Resource
     class Controller < Admin::Controller
       def index
-        self.collection = admin.collection
+        self.collection = admin.sort(admin.collection, params)
       end
 
       def new
