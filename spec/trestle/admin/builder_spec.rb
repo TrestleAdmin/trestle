@@ -85,7 +85,7 @@ describe Trestle::Admin::Builder do
   end
 
   describe "#table" do
-    it "builds a table" do
+    it "builds a sortable table" do
       Trestle::Admin::Builder.build(:test) do
         table custom: "option" do
           column :test
@@ -93,7 +93,7 @@ describe Trestle::Admin::Builder do
       end
 
       expect(::TestAdmin.table).to be_a(Trestle::Table)
-      expect(::TestAdmin.table.options).to eq(custom: "option")
+      expect(::TestAdmin.table.options).to eq(custom: "option", sortable: true)
       expect(::TestAdmin.table.columns[0].field).to eq(:test)
     end
   end
@@ -101,7 +101,7 @@ describe Trestle::Admin::Builder do
   describe "#form" do
     it "builds a form" do
       b = Proc.new {}
-      
+
       Trestle::Admin::Builder.build(:test) do
         form &b
       end
