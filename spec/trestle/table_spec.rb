@@ -20,4 +20,13 @@ describe Trestle::Table do
     table = Trestle::Table.new(data: { attr: :custom })
     expect(table.data).to eq({ attr: :custom })
   end
+
+  context "without options[:sortable]" do
+    it { is_expected.to_not be_sortable }
+  end
+
+  context "with options[:sortable]" do
+    subject(:table) { Trestle::Table.new(sortable: true) }
+    it { is_expected.to be_sortable }
+  end
 end

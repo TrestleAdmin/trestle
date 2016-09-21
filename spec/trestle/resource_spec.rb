@@ -79,4 +79,23 @@ describe Trestle::Resource do
       expect(admin.model_name).to eq("Custom Class")
     end
   end
+
+  describe "#sort" do
+    let(:collection) { double }
+
+    context "when given sort params" do
+      let(:sorted_collection) { double }
+
+      it "reorders the given collection" do
+        expect(collection).to receive(:reorder).with(:field => :asc).and_return(sorted_collection)
+        expect(admin.sort(collection, sort: :field, order: :asc)).to eq(sorted_collection)
+      end
+    end
+
+    context "when given no sort params" do
+      it "returns the given collection" do
+        expect(admin.sort(collection, {})).to eq(collection)
+      end
+    end
+  end
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Trestle::Table::Column do
   let(:options) { {} }
   let(:template) { double }
-  let(:table) { Trestle::Table.new }
+  let(:table) { Trestle::Table.new(sortable: true) }
 
   subject(:column) do
     Trestle::Table::Column.new(table, :my_field, options) { |instance| instance }
@@ -39,6 +39,13 @@ describe Trestle::Table::Column do
   end
 
   context "with a block" do
+    it { is_expected.to_not be_sortable }
+
+    context "with options[:sort] = :field" do
+      let(:options) { { sort: :field } }
+      it { is_expected.to be_sortable }
+    end
+
     describe "#content" do
       let(:instance) { double }
 
@@ -51,12 +58,24 @@ describe Trestle::Table::Column do
   context "without a block" do
     subject(:column) { Trestle::Table::Column.new(table, :my_field, options) }
 
+    it { is_expected.to be_sortable }
+
     describe "#content" do
       let(:instance) { double(my_field: "Field content") }
 
       it "sends the field name to the instance" do
         expect(column.content(template, instance)).to eq("Field content")
       end
+    end
+
+    context "with options[:sort] = false" do
+      let(:options) { { sort: false } }
+      it { is_expected.to_not be_sortable }
+    end
+
+    context "with a non-sortable table" do
+      let(:table) { Trestle::Table.new(sortable: false) }
+      it { is_expected.to_not be_sortable }
     end
   end
 
