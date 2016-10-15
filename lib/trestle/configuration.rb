@@ -11,6 +11,8 @@ module Trestle
     option :path, "/admin"
     option :automount, true
 
+    option :persistent_params, [:sort, :order]
+
     option :root_breadcrumb, -> { Trestle::Breadcrumb.new("Home", Trestle.config.path) }
 
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"

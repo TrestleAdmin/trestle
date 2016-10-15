@@ -23,7 +23,7 @@ describe Trestle::SortHelper::SortLink do
   describe "#params" do
     context "when inactive" do
       it "returns params for ascending order" do
-        expect(link.params).to eq(ActionController::Parameters.new(sort: :field, order: "asc").permit!)
+        expect(link.params).to eq(ActionController::Parameters.new(sort: :field, order: "asc"))
       end
     end
 
@@ -31,7 +31,7 @@ describe Trestle::SortHelper::SortLink do
       let(:params) { { sort: "field", order: "asc" } }
 
       it "returns params for opposite direction" do
-        expect(link.params).to eq(ActionController::Parameters.new(sort: :field, order: "desc").permit!)
+        expect(link.params).to eq(ActionController::Parameters.new(sort: :field, order: "desc"))
       end
     end
 
@@ -39,7 +39,7 @@ describe Trestle::SortHelper::SortLink do
       let(:params) { { q: "search query" } }
 
       it "merges in sort params" do
-        expect(link.params).to eq(ActionController::Parameters.new(q: "search query", sort: :field, order: "asc").permit!)
+        expect(link.params).to eq(ActionController::Parameters.new(q: "search query", sort: :field, order: "asc"))
       end
     end
   end

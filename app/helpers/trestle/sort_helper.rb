@@ -1,7 +1,7 @@
 module Trestle
   module SortHelper
     def sort_link(text, field, options={})
-      sort_link = SortLink.new(field, params, options)
+      sort_link = SortLink.new(field, persistent_params, options)
       link_to text, sort_link.params, class: sort_link.classes
     end
 
@@ -17,7 +17,7 @@ module Trestle
       end
 
       def params
-        @params.permit(:sort, :order, :q).merge(sort: field, order: order)
+        @params.merge(sort: field, order: order)
       end
 
       def order
