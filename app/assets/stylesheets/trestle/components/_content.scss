@@ -62,6 +62,11 @@
   flex: 0 0 $content-sidebar-width;
 }
 
+.utilities {
+  @include clearfix;
+  margin-bottom: 10px;
+}
+
 @include mobile {
   .content-header {
     padding: 0 10px;
