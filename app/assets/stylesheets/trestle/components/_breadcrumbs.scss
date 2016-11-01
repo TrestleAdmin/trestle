@@ -2,4 +2,13 @@
   padding: 0;
   background-color: transparent;
   font-size: 12px;
+
+  .active, .active a {
+    font-weight: normal;
+    color: $breadcrumb-active-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
