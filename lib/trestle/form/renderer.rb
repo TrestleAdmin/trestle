@@ -8,10 +8,14 @@ module Trestle
         @template = template
       end
 
-      def render(instance, &block)
+      def render_form(instance, &block)
         with_output_buffer do
           instance_exec(instance, &block)
         end
+      end
+
+      def render(*args)
+        output_buffer.concat @template.render(*args)
       end
 
       def toolbar(name, &block)

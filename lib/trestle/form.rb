@@ -12,7 +12,7 @@ module Trestle
     end
 
     def render(template, instance)
-      Renderer.new(template).render(instance, &block)
+      Renderer.new(template).render_form(instance, &block)
     end
   end
 end
