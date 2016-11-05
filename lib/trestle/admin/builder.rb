@@ -44,6 +44,11 @@ module Trestle
         admin.form = Form.new(&block)
       end
 
+      def admin(&block)
+        @admin.singleton_class.class_eval(&block) if block_given?
+        @admin
+      end
+
       def controller(&block)
         @controller.class_eval(&block)
       end

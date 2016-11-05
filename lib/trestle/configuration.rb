@@ -13,6 +13,8 @@ module Trestle
 
     option :persistent_params, [:sort, :order]
 
+    option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
+
     option :root_breadcrumb, -> { Trestle::Breadcrumb.new("Home", Trestle.config.path) }
 
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"

@@ -56,6 +56,20 @@ describe Trestle::Admin::Builder do
     end
   end
 
+  describe "#admin" do
+    it "evaluates the block in the context of the admin" do
+      Trestle::Admin::Builder.build(:test) do
+        admin do
+          def custom_method
+            "Custom"
+          end
+        end
+      end
+
+      expect(::TestAdmin.custom_method).to eq("Custom")
+    end
+  end
+
   describe "#controller" do
     it "evaluates the block in the context of the controller" do
       builder = Trestle::Admin::Builder.new(:test)

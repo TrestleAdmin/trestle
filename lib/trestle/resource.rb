@@ -6,50 +6,48 @@ module Trestle
     autoload :Controller
 
     class << self
-      attr_writer :collection
-      attr_writer :instance
-      attr_writer :paginate
-      attr_writer :decorator
+      def adapter
+        @adapter ||= Trestle.config.default_adapter.new(self)
+      end
 
-      def collection
-        if @collection
-          @collection.call
-        else
-          model.all
+      def adapter=(klass)
+        @adapter = klass.new(self)
+      end
+
+      # Defines a method that can be overridden with a custom block,
+      # but is otherwise delegated to the adapter instance.
+      def self.adapter_method(name)
+        attr_writer name
+
+        define_method(name) do |*args|
+          if override = instance_variable_get("@#{name}")
+            override.call(*args)
+          else
+            adapter.public_send(name, *args)
+          end
         end
       end
 
-      def instance(params)
-        if @instance
-          @instance.call(params)
-        else
-          collection.find(params[:id])
-        end
-      end
+      adapter_method :collection
+      adapter_method :find_instance
+      adapter_method :build_instance
+      adapter_method :update_instance
+      adapter_method :save_instance
+      adapter_method :delete_instance
+      adapter_method :permitted_params
+      adapter_method :decorate_collection
+      adapter_method :sort
+      adapter_method :paginate
+      adapter_method :count
 
-      def paginate(collection, params)
-        if @paginate
-          @paginate.call(collection, params)
-        else
-          collection = Kaminari.paginate_array(collection) unless collection.respond_to?(:page)
-          collection.page(params[:page])
-        end
-      end
+      attr_accessor :decorator
 
-      def decorate(collection)
-        if @decorator
-          @decorator.decorate_collection(collection)
-        else
-          collection
-        end
-      end
-
-      def sort(collection, params)
-        if params[:sort]
-          collection.reorder(params[:sort] => params[:order] || "asc")
-        else
-          collection
-        end
+      def prepare_collection(params)
+        collection = collection(params)
+        collection = sort(collection, params)
+        collection = paginate(collection, params)
+        collection = decorate_collection(collection)
+        collection
       end
 
       def model

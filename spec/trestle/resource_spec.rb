@@ -48,9 +48,8 @@ describe Trestle::Resource do
 
   it "has a default instance block" do
     class Test; end
-    expect(Test).to receive(:all).and_return(Test)
     expect(Test).to receive(:find).with(123).and_return(1)
-    expect(admin.instance(id: 123)).to eq(1)
+    expect(admin.find_instance(id: 123)).to eq(1)
   end
 
   it "has a default paginate block" do
@@ -61,7 +60,7 @@ describe Trestle::Resource do
 
   it "has a default (identity) decorator" do
     collection = double
-    expect(admin.decorate(collection)).to eq(collection)
+    expect(admin.decorate_collection(collection)).to eq(collection)
   end
 
   describe "#model_name" do

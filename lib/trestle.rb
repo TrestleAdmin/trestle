@@ -9,6 +9,7 @@ require "kaminari"
 module Trestle
   extend ActiveSupport::Autoload
 
+  autoload :Adapters
   autoload :Admin
   autoload :Breadcrumb
   autoload :Builder

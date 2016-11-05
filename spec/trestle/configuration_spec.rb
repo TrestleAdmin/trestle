@@ -32,6 +32,13 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:default_navigation_icon).with_default("fa fa-arrow-circle-o-right")
   end
 
+  it "has a default adapter configuration option" do
+    expect(config).to have_accessor(:default_adapter)
+
+    expect(config.default_adapter).to be < Trestle::Adapters::Adapter
+    expect(config.default_adapter.ancestors).to include(Trestle::Adapters::ActiveRecordAdapter, Trestle::Adapters::DraperAdapter)
+  end
+
   it "has a root breadcrumb configuration option" do
     expect(config).to have_accessor(:root_breadcrumb).with_default(Trestle::Breadcrumb.new("Home", "/admin"))
   end

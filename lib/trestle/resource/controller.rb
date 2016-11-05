@@ -2,26 +2,17 @@ module Trestle
   class Resource
     class Controller < Admin::Controller
       def index
-        self.collection = admin.sort(admin.collection, params)
+        self.collection = admin.prepare_collection(params)
       end
 
       def new
-        self.instance = admin.collection.build
-      end
-
-      def show
-        self.instance = admin.instance(params)
-      end
-
-      def edit
-        self.instance = admin.instance(params)
+        self.instance = admin.build_instance
       end
 
       def create
-        self.instance = admin.collection.build
-        instance.attributes = resource_params
+        self.instance = admin.build_instance(admin.permitted_params(params))
 
-        if instance.save
+        if admin.save_instance(instance)
           flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully created."
           redirect_to action: :show, id: instance
         else
@@ -30,11 +21,19 @@ module Trestle
         end
       end
 
-      def update
-        self.instance = admin.instance(params)
-        instance.attributes = resource_params
+      def show
+        self.instance = admin.find_instance(params)
+      end
 
-        if instance.save
+      def edit
+        self.instance = admin.find_instance(params)
+      end
+
+      def update
+        self.instance = admin.find_instance(params)
+        admin.update_instance(instance, admin.permitted_params(params))
+
+        if admin.save_instance(instance)
           flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully updated."
           redirect_to action: :show, id: instance
         else
@@ -44,9 +43,9 @@ module Trestle
       end
 
       def destroy
-        self.instance = admin.instance(params)
+        self.instance = admin.find_instance(params)
 
-        if instance.destroy
+        if admin.delete_instance(instance)
           flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully deleted."
         else
           flash[:error] = "Could not delete #{admin.model_name.humanize(capitalize: false)}."
@@ -61,20 +60,6 @@ module Trestle
 
       attr_accessor :instance
       helper_method :instance
-
-      def paginated_collection
-        @paginated_collection ||= admin.paginate(collection, params)
-      end
-      helper_method :paginated_collection
-
-      def decorated_collection
-        @decorated_collection ||= admin.decorate(paginated_collection)
-      end
-      helper_method :decorated_collection
-
-      def resource_params
-        params.require(admin.admin_name.singularize).permit!
-      end
     end
   end
 end
