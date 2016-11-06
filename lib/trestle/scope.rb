@@ -11,7 +11,7 @@ module Trestle
     end
 
     def label
-      @options[:label] || name.to_s.humanize
+      @options[:label] || name.to_s.humanize.titleize
     end
 
     def apply(collection)

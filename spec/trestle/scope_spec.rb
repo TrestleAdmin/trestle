@@ -24,7 +24,7 @@ describe Trestle::Scope do
 
     context "without an explicit label option" do
       it "returns the humanized scope name" do
-        expect(scope.label).to eq("My scope")
+        expect(scope.label).to eq("My Scope")
       end
     end
   end
