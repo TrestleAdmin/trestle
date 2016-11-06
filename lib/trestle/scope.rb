@@ -14,6 +14,10 @@ module Trestle
       @options[:label] || name.to_s.humanize.titleize
     end
 
+    def default?
+      @options[:default] == true
+    end
+
     def apply(collection)
       if @block
         @block.call(collection)

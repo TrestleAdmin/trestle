@@ -69,6 +69,10 @@ module Trestle
           result << scopes[params[:scope].to_sym]
         end
 
+        if result.empty? && default_scope = scopes.values.find(&:default?)
+          result << default_scope
+        end
+
         result
       end
 

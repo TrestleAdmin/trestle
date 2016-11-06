@@ -71,4 +71,20 @@ describe Trestle::Scope do
       expect(scope.active?(params)).to be false
     end
   end
+
+  describe "#default?" do
+    context "with options[:default] = true" do
+      let(:options) { { default: true } }
+
+      it "returns true" do
+        expect(scope).to be_default
+      end
+    end
+
+    context "without options[:default]" do
+      it "returns false" do
+        expect(scope).not_to be_default
+      end
+    end
+  end
 end
