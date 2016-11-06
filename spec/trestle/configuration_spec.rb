@@ -25,7 +25,7 @@ describe Trestle::Configuration do
   end
 
   it "has a persistent params configuration option" do
-    expect(config).to have_accessor(:persistent_params).with_default([:sort, :order])
+    expect(config).to have_accessor(:persistent_params).with_default([:sort, :order, :scope])
   end
 
   it "has a default navigation icon configuration option" do

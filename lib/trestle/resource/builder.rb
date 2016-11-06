@@ -61,6 +61,10 @@ module Trestle
       def count(&block)
         admin.count = block
       end
+
+      def scope(name, options={}, &block)
+        admin.scopes[name] = Scope.new(admin, name, options, &block)
+      end
     end
   end
 end

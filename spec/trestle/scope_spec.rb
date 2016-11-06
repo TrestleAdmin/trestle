@@ -1,0 +1,74 @@
+require 'spec_helper'
+
+describe Trestle::Scope do
+  let(:admin) { double }
+  let(:options) { {} }
+  let(:block) { nil }
+
+  subject(:scope) { Trestle::Scope.new(admin, :my_scope, options, &block) }
+
+  describe "#to_param" do
+    it "returns the scope name" do
+      expect(scope.to_param).to eq(:my_scope)
+    end
+  end
+
+  describe "#label" do
+    context "with an explicit label option" do
+      let(:options) { { label: "Custom Label" } }
+
+      it "returns the given label option" do
+        expect(scope.label).to eq("Custom Label")
+      end
+    end
+
+    context "without an explicit label option" do
+      it "returns the humanized scope name" do
+        expect(scope.label).to eq("My scope")
+      end
+    end
+  end
+
+  describe "#apply" do
+    let(:collection) { double }
+
+    context "with an explicit block" do
+      let(:block) { Proc.new { |collection| [1,2,3] } }
+
+      it "calls the block with the given collection" do
+        expect(scope.apply(collection)).to eq([1,2,3])
+      end
+    end
+
+    context "with no explicit block" do
+      it "sends the name of the scope to the collection" do
+        expect(collection).to receive(:my_scope).and_return([1,2])
+        expect(scope.apply(collection)).to eq([1,2])
+      end
+    end
+  end
+
+  describe "#count" do
+    let(:collection) { double }
+
+    it "returns the count of the applied scope" do
+      expect(collection).to receive(:my_scope).and_return([1,2])
+      expect(admin).to receive(:count).with([1,2]).and_return(2)
+      expect(scope.count(collection)).to eq(2)
+    end
+  end
+
+  describe "#active?" do
+    let(:params) { double }
+
+    it "returns true if the admin's active scopes include this scope" do
+      expect(admin).to receive(:scopes_for).with(params).and_return([scope])
+      expect(scope.active?(params)).to be true
+    end
+
+    it "returns false if the admin's active scopes do not include this scope" do
+      expect(admin).to receive(:scopes_for).with(params).and_return([])
+      expect(scope.active?(params)).to be false
+    end
+  end
+end

@@ -218,4 +218,18 @@ describe Trestle::Resource::Builder do
       expect(::TestAdmin.decorate_collection(collection)).to eq([1, 2, 3])
     end
   end
+
+  describe "#scope" do
+    it "defines a scope on the admin" do
+      b = Proc.new {}
+
+      Trestle::Resource::Builder.build(:test) do
+        scope :my_scope, label: "Custom Label", &b
+      end
+
+      expect(::TestAdmin.scopes).to include(my_scope: be_a(Trestle::Scope))
+      expect(::TestAdmin.scopes[:my_scope].options).to eq(label: "Custom Label")
+      expect(::TestAdmin.scopes[:my_scope].block).to eq(b)
+    end
+  end
 end

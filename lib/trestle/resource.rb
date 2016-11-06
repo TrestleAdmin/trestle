@@ -44,10 +44,32 @@ module Trestle
 
       def prepare_collection(params)
         collection = collection(params)
+        collection = apply_scopes(collection, params)
         collection = sort(collection, params)
         collection = paginate(collection, params)
         collection = decorate_collection(collection)
         collection
+      end
+
+      def scopes
+        @scopes ||= {}
+      end
+
+      def apply_scopes(collection, params)
+        scopes_for(params).each do |scope|
+          collection = scope.apply(collection)
+        end
+        collection
+      end
+
+      def scopes_for(params)
+        result = []
+
+        if params[:scope] && scopes.has_key?(params[:scope].to_sym)
+          result << scopes[params[:scope].to_sym]
+        end
+
+        result
       end
 
       def model

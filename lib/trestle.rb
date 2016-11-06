@@ -19,6 +19,7 @@ module Trestle
   autoload :Navigation
   autoload :Reloader
   autoload :Resource
+  autoload :Scope
   autoload :Tab
   autoload :Table
 

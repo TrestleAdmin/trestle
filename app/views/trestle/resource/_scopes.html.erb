@@ -1,0 +1,9 @@
+<ul class="scopes pull-left">
+  <% admin.scopes.each do |name, scope| %>
+    <%= content_tag(:li, class: ("active" if scope.active?(params))) do %>
+      <%= link_to persistent_params.merge(scope: (name unless scope.active?(params))) do %>
+        <strong><%= scope.label %></strong> (<%= number_with_delimiter(scope.count(admin.collection(params))) %>)
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

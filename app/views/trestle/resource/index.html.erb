@@ -6,6 +6,10 @@
   <% end %>
 <% end %>
 
+<% content_for(:utilities) do %>
+  <%= render "scopes" if admin.scopes.any? %>
+<% end if admin.scopes.any? %>
+
 <%= render layout: "layout" do %>
   <%= render "table" %>
 <% end %>
