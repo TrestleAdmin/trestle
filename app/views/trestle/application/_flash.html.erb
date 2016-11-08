@@ -2,7 +2,7 @@
   <div class="alert alert-success">
     <i class="alert-icon ion-ios-checkmark-outline"></i>
     <div class="alert-content">
-      <h3>Success!</h3>
+      <h3><%= t("trestle.flash.success.title") %></h3>
       <p><%= flash[:message] %></p>
     </div>
   </div>
@@ -10,7 +10,7 @@
   <div class="alert alert-danger">
     <i class="alert-icon ion-ios-close-outline"></i>
     <div class="alert-content">
-      <h3>Warning!</h3>
+      <h3><%= t("trestle.flash.failure.title") %></h3>
       <p><%= flash[:error] %></p>
     </div>
   </div>

@@ -13,10 +13,10 @@ module Trestle
         self.instance = admin.build_instance(admin.permitted_params(params))
 
         if admin.save_instance(instance)
-          flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully created."
+          flash[:message] = flash_message("success.create")
           redirect_to action: :show, id: instance
         else
-          flash.now[:error] = "Please correct the errors below."
+          flash.now[:error] = flash_message("failure.create")
           render "new"
         end
       end
@@ -34,10 +34,10 @@ module Trestle
         admin.update_instance(instance, admin.permitted_params(params))
 
         if admin.save_instance(instance)
-          flash[:message] = "The #{admin.model_name.underscore.humanize(capitalize: false)} was successfully updated."
+          flash[:message] = flash_message("success.update")
           redirect_to action: :show, id: instance
         else
-          flash.now[:error] = "Please correct the errors below."
+          flash.now[:error] = flash_message("failure.update")
           render "show"
         end
       end
@@ -46,9 +46,9 @@ module Trestle
         self.instance = admin.find_instance(params)
 
         if admin.delete_instance(instance)
-          flash[:message] = "The #{admin.model_name.humanize(capitalize: false)} was successfully deleted."
+          flash[:message] = flash_message("success.destroy")
         else
-          flash[:error] = "Could not delete #{admin.model_name.humanize(capitalize: false)}."
+          flash[:error] = flash_message("failure.destroy")
         end
 
         redirect_to action: :index
@@ -60,6 +60,10 @@ module Trestle
 
       attr_accessor :instance
       helper_method :instance
+
+      def flash_message(type)
+        t("trestle.flash.#{type}", model_name: admin.model_name.underscore.humanize(capitalize: false))
+      end
     end
   end
 end
