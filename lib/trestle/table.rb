@@ -2,6 +2,7 @@ module Trestle
   class Table
     extend ActiveSupport::Autoload
 
+    autoload :Automatic
     autoload :Builder
     autoload :Column
     autoload :ActionsColumn

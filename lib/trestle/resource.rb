@@ -39,6 +39,7 @@ module Trestle
       adapter_method :sort
       adapter_method :paginate
       adapter_method :count
+      adapter_method :default_columns
 
       attr_accessor :decorator
 
@@ -74,6 +75,10 @@ module Trestle
         end
 
         result
+      end
+
+      def table
+        super || Table::Automatic.new(self)
       end
 
       def model

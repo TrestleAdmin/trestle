@@ -56,6 +56,10 @@ module Trestle
         params.require(admin.admin_name.singularize).permit!
       end
 
+      def default_columns
+        raise NotImplementedError
+      end
+
       # Creates a new Adapter class with the given modules mixed in
       def self.compose(*modules)
         Class.new(self) do

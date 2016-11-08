@@ -41,6 +41,10 @@ module Trestle
       def count(collection)
         collection.count
       end
+
+      def default_columns
+        Hash[*admin.model.content_columns.map { |column| [column.name, column.type] }.flatten]
+      end
     end
   end
 end
