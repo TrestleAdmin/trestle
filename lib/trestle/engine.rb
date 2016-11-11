@@ -12,7 +12,7 @@ module Trestle
     config.assets.precompile << %r(trestle/ionicons/fonts/ionicons\.(?:eot|svg|ttf|woff)$)
 
     # Optional turbolinks
-    config.assets.precompile << "turbolinks.js" if defined?(Turbolinks)
+    config.assets.precompile << "turbolinks.js" if Trestle.config.turbolinks
 
     initializer "trestle.automount" do |app|
       if Trestle.config.automount

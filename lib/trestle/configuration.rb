@@ -11,6 +11,8 @@ module Trestle
     option :path, "/admin"
     option :automount, true
 
+    option :turbolinks, defined?(Turbolinks)
+
     option :persistent_params, [:sort, :order, :scope]
 
     option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)

@@ -15,7 +15,7 @@
 
     <%= hook :stylesheets %>
 
-    <%= javascript_include_tag "turbolinks" if defined?(Turbolinks) %>
+    <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks %>
     <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
 
     <%= hook :javascripts %>

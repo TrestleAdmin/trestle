@@ -24,6 +24,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:automount).with_default(true)
   end
 
+  it "has a Turbolinks configuration option" do
+    expect(config).to have_accessor(:turbolinks).with_default(false)
+  end
+
   it "has a persistent params configuration option" do
     expect(config).to have_accessor(:persistent_params).with_default([:sort, :order, :scope])
   end
