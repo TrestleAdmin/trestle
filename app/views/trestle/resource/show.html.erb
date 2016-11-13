@@ -7,7 +7,7 @@
 
 <% content_for(:secondary_toolbar) do %>
   <%= link_to admin.path(:destroy, id: instance), method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
-    <i class="fa fa-trash"></i> Delete <%= admin.model_name %>
+    <%= icon("fa fa-trash") %> Delete <%= admin.model_name %>
   <% end %>
 <% end %>
 

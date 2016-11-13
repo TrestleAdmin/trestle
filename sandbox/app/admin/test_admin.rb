@@ -1,6 +1,6 @@
 class Test
   extend ActiveModel::Naming
-  
+
   def self.all
     1..10
   end
@@ -24,7 +24,7 @@ Trestle.resource(:test) do
     column(:followers, align: :center) { (1..100).to_a.sample }
     column(:registered, align: :center) { timestamp(Time.now) }
     actions do
-      link_to content_tag(:i, "", class: "fa fa-trash"), "/123", class: "btn btn-delete", method: :delete, data: { toggle: "confirm-delete", placement: "left" }
+      link_to icon("fa fa-trash"), "/123", class: "btn btn-delete", method: :delete, data: { toggle: "confirm-delete", placement: "left" }
     end
   end
 end
