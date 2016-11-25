@@ -5,10 +5,15 @@ module Trestle
       options[:as] ||= admin.admin_name.singularize
 
       form_for(instance, options) do |f|
-        @_trestle_form = f
-        yield f if block_given?
-        @_trestle_form = nil
+        with_form(f) { yield }
       end
+    end
+
+    def with_form(form)
+      @_trestle_form = form
+      yield form if block_given?
+    ensure
+      @_trestle_form = nil
     end
 
     def form
