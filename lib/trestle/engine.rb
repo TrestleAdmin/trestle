@@ -11,9 +11,6 @@ module Trestle
     config.assets.precompile << %r(trestle/font-awesome/fonts/fontawesome-webfont\.(?:eot|svg|ttf|woff|woff2)$)
     config.assets.precompile << %r(trestle/ionicons/fonts/ionicons\.(?:eot|svg|ttf|woff)$)
 
-    # Optional turbolinks
-    config.assets.precompile << "turbolinks.js" if Trestle.config.turbolinks
-
     initializer "trestle.automount" do |app|
       if Trestle.config.automount
         app.routes.prepend do
@@ -26,6 +23,11 @@ module Trestle
       if defined?(Draper)
         Draper::CollectionDecorator.delegate :current_page, :total_pages, :limit_value, :entry_name, :total_count, :offset_value, :last_page?
       end
+    end
+
+    initializer "trestle.turbolinks" do |app|
+      # Optional turbolinks
+      app.config.assets.precompile << "turbolinks.js" if Trestle.config.turbolinks
     end
 
     config.to_prepare do
