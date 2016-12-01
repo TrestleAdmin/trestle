@@ -97,7 +97,9 @@ module Trestle
         admin = self
 
         Proc.new do
-          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path]
+          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path] do
+            instance_exec(&admin.additional_routes) if admin.additional_routes
+          end
         end
       end
 

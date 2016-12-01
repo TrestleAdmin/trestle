@@ -53,6 +53,10 @@ module Trestle
         @controller.class_eval(&block)
       end
 
+      def routes(&block)
+        @admin.additional_routes = block
+      end
+
       def helper(*helpers)
         controller do
           helper *helpers

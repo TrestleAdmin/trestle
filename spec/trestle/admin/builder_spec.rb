@@ -124,4 +124,16 @@ describe Trestle::Admin::Builder do
       expect(::TestAdmin.form.block).to eq(b)
     end
   end
+
+  describe "#routes" do
+    it "sets additional routes on the admin" do
+      b = Proc.new {}
+
+      Trestle::Admin::Builder.build(:test) do
+        routes &b
+      end
+
+      expect(::TestAdmin.additional_routes).to eq(b)
+    end
+  end
 end
