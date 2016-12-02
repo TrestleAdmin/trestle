@@ -20,7 +20,7 @@ module Trestle
       end
 
       def breadcrumbs
-        @breadcrumbs ||= Trestle::Breadcrumb::Trail.new([
+        @breadcrumbs ||= Breadcrumb::Trail.new([
           Trestle.config.root_breadcrumb,
           breadcrumb
         ])

@@ -1,7 +1,7 @@
 module Trestle
   module FormHelper
     def trestle_form_for(instance, options={}, &block)
-      options[:builder] ||= Trestle::Form::Builder
+      options[:builder] ||= Form::Builder
       options[:as] ||= admin.admin_name.singularize
 
       form_for(instance, options) do |f|
