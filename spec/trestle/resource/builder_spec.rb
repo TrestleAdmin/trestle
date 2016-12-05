@@ -107,32 +107,32 @@ describe Trestle::Resource::Builder do
 
   describe "#save_instance" do
     it "sets an explicit save_instance block" do
-      Repository = double
+      repository = double
 
       Trestle::Resource::Builder.build(:test) do
         save_instance do |instance|
-          Repository.save(instance)
+          repository.save(instance)
         end
       end
 
       instance = double
-      expect(Repository).to receive(:save).with(instance)
+      expect(repository).to receive(:save).with(instance)
       expect(::TestAdmin.save_instance(instance))
     end
   end
 
   describe "#delete_instance" do
     it "sets an explicit delete_instance block" do
-      Repository = double
+      repository = double
       instance = double
 
       Trestle::Resource::Builder.build(:test) do
         delete_instance do |instance|
-          Repository.delete(instance)
+          repository.delete(instance)
         end
       end
 
-      expect(Repository).to receive(:delete).with(instance)
+      expect(repository).to receive(:delete).with(instance)
       expect(::TestAdmin.delete_instance(instance))
     end
   end

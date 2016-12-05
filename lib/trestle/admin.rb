@@ -54,7 +54,7 @@ module Trestle
         admin = self
 
         Proc.new do
-          controller admin.controller_namespace, path: admin.options[:path] || admin.admin_name do
+          scope controller: admin.controller_namespace, path: admin.options[:path] || admin.admin_name do
             get "", action: "index", as: admin.route_name
 
             instance_exec(&admin.additional_routes) if admin.additional_routes
