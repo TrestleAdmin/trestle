@@ -11,3 +11,4 @@
 /sandbox/*.sqlite3-journal
 /sandbox/log/*.log
 /sandbox/tmp/
+/spec/dummy/log/*.log
