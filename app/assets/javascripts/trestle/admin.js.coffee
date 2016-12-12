@@ -5,6 +5,7 @@
 #= require trestle/magnific-popup
 #
 #= require_self
+#= require trestle/custom
 #= require_tree .
 
 window.Trestle = Trestle = {}
