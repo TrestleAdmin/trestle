@@ -1,7 +1,8 @@
 module Trestle
   module IconHelper
     def icon(*classes)
-      content_tag(:i, "", class: classes)
+      options = classes.extract_options!
+      content_tag(:i, "", options.merge(class: classes))
     end
   end
 end
