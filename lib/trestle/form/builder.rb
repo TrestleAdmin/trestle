@@ -54,7 +54,7 @@ module Trestle
 
       def render
         super do
-          builder.original_text_area(name, options)
+          builder.raw_text_area(name, options)
         end
       end
     end
@@ -65,7 +65,7 @@ module Trestle
 
       def render
         super do
-          builder.original_text_field(name, options)
+          builder.raw_text_field(name, options)
         end
       end
     end
@@ -76,14 +76,14 @@ module Trestle
 
       def render
         super do
-          builder.original_password_field(name, options)
+          builder.raw_password_field(name, options)
         end
       end
     end
 
     class Builder < ActionView::Helpers::FormBuilder
       (field_helpers - [:fields_for, :label]).each do |helper|
-        alias_method :"original_#{helper}", helper
+        alias_method :"raw_#{helper}", helper
         undef_method helper
       end
 
@@ -95,11 +95,11 @@ module Trestle
         self.fields[name] = klass
       end
 
-      def respond_to?(name, include_all=false)
-        super || self.class.fields.has_key?(name)
+    protected
+      def respond_to_missing?(name, include_all=false)
+        self.class.fields.has_key?(name) || super
       end
 
-    protected
       def method_missing(name, *args, &block)
         if field = self.class.fields[name]
           field.new(self, @template, *args, &block).render
