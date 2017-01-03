@@ -4,6 +4,10 @@ module Trestle
       include ::ActionView::Context
       include ::ActionView::Helpers::CaptureHelper
 
+      # The #select method is defined on Kernel. Undefine it so that it can
+      # be delegated to the form builder by method_missing.
+      undef_method :select
+
       def initialize(template)
         @template = template
       end
@@ -28,6 +32,10 @@ module Trestle
         output_buffer.concat @template.table(*args, &block)
       end
 
+      def icon(*args)
+        @template.icon(*args)
+      end
+
       def method_missing(name, *args, &block)
         target = @template.form.respond_to?(name) ? @template.form : @template
 
@@ -40,6 +48,12 @@ module Trestle
         end
 
         output_buffer.concat(result)
+      end
+
+      def respond_to_missing?(name, include_all=false)
+        @template.form.respond_to?(name, include_all) ||
+          @template.respond_to?(name, include_all) ||
+          super
       end
     end
   end

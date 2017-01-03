@@ -3,6 +3,8 @@ module Trestle
     extend ActiveSupport::Autoload
 
     autoload :Builder
+    autoload :Field
+    autoload :Fields
     autoload :Renderer
 
     attr_reader :block

@@ -1,0 +1,12 @@
+.date-select,
+.datetime-select,
+.time-select {
+  select {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+.control-label + .checkbox {
+  margin-top: 0;
+}
