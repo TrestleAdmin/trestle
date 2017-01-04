@@ -19,5 +19,9 @@ module Trestle
     def form
       @_trestle_form
     end
+
+    def toolbar(name, &block)
+      content_for(:"#{name}_toolbar", &block)
+    end
   end
 end

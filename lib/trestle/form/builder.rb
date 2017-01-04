@@ -1,11 +1,8 @@
 module Trestle
   class Form
     class Builder < ActionView::Helpers::FormBuilder
-      delegate :content_tag, :safe_join, :icon, to: :@template
-
-      def self.fields
-        @fields ||= {}
-      end
+      cattr_accessor :fields
+      self.fields = {}
 
       def self.register(name, klass)
         rename_existing_helper_method(name)
