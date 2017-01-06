@@ -23,5 +23,9 @@ module Trestle
     def toolbar(name, &block)
       content_for(:"#{name}_toolbar", &block)
     end
+
+    def sidebar(&block)
+      content_for(:sidebar, &block)
+    end
   end
 end

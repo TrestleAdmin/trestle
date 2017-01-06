@@ -24,21 +24,21 @@
     %li.breadcrumb-item= link_to "Home", "/"
     %li.breadcrumb-item.active Test Page
 
-.main-content-container.with-sidebar
-  .main-content-wrapper
-    %ul.nav.nav-tabs
-      %li.active= link_to "Table", "#tab-table", role: "tab", data: { toggle: "tab" }
-      %li= link_to "Lorem Ipsum", "#tab-lorem-ipsum", role: "tab", data: { toggle: "tab" }
-      %li= link_to "Headings", "#tab-headings", role: "tab", data: { toggle: "tab" }
-      %li
-        = link_to "#tab-media", role: "tab", data: { toggle: "tab" } do
-          Media
-          %span.badge 12
-      %li.pull-right
-        = link_to "#tab-configuration", role: "tab", data: { toggle: "tab" } do
-          %i.fa.fa-cog
-          %span.sr-only Configuration
+.main-content-area
+  %ul.nav.nav-tabs
+    %li.active= link_to "Table", "#tab-table", role: "tab", data: { toggle: "tab" }
+    %li= link_to "Lorem Ipsum", "#tab-lorem-ipsum", role: "tab", data: { toggle: "tab" }
+    %li= link_to "Headings", "#tab-headings", role: "tab", data: { toggle: "tab" }
+    %li
+      = link_to "#tab-media", role: "tab", data: { toggle: "tab" } do
+        Media
+        %span.badge 12
+    %li.pull-right
+      = link_to "#tab-configuration", role: "tab", data: { toggle: "tab" } do
+        %i.fa.fa-cog
+        %span.sr-only Configuration
 
+  .main-content-container
     .main-content
       #tab-table.tab-pane.active{ role: "tabpanel" }
         .table-container
@@ -127,10 +127,10 @@
 
       #tab-configuration.tab-pane{ role: "tabpanel" }
 
-  .content-sidebar
-    %dl.small
-      %dt Reference
-      %dd ABC-123
+    .main-content-sidebar
+      %dl.small
+        %dt Reference
+        %dd ABC-123
 
-      %dt Date:
-      %dd 5 days ago
+        %dt Date:
+        %dd 5 days ago

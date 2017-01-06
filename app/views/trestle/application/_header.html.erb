@@ -1,18 +1,18 @@
 <header class="content-header">
   <% if content_for?(:primary_toolbar) %>
     <div class="btn-toolbar primary-toolbar">
-      <%= yield :primary_toolbar %>
+      <%= content_for(:primary_toolbar) %>
     </div>
   <% end %>
 
   <% if content_for?(:secondary_toolbar) %>
     <div class="btn-toolbar secondary-toolbar">
-      <%= yield :secondary_toolbar %>
+      <%= content_for(:secondary_toolbar) %>
     </div>
   <% end %>
 
   <h1>
-    <%= yield :title %>
+    <%= content_for(:title) %>
   </h1>
 
   <ol class="breadcrumb">

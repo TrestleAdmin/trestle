@@ -20,7 +20,7 @@
 
     <%= hook :javascripts %>
 
-    <%= yield :head %>
+    <%= content_for(:head) %>
 
     <%= hook :head %>
   </head>

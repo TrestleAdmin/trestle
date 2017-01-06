@@ -1,11 +1,19 @@
 <%= render "header" %>
 
-<div class="main-content-container">
+<div class="main-content-area">
   <%= render "flash" %>
   <%= render "utilities" %>
   <%= render "tabs" %>
 
-  <div class="main-content">
-    <%= yield %>
+  <div class="main-content-container">
+    <div class="main-content">
+      <%= yield %>
+    </div>
+
+    <% if content_for?(:sidebar) %>
+      <aside class="main-content-sidebar">
+        <%= content_for(:sidebar) %>
+      </aside>
+    <% end %>
   </div>
 </div>

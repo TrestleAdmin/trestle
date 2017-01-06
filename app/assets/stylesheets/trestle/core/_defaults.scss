@@ -14,7 +14,10 @@ $sidebar-width: 250px !default;
 $sidebar-width-collapsed: 54px !default;
 $sidebar-bg: #222 !default;
 
-$content-sidebar-width: 250px !default;
+$content-header-background: rgba(white, 0.6);
+
+$content-sidebar-width: 275px !default;
+$content-sidebar-background: rgba(black, 0.025);
 
 $sidebar-transition-duration: 250ms !default;
 

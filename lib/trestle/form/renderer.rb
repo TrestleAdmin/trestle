@@ -19,9 +19,9 @@ module Trestle
         @template = template
       end
 
-      def render_form(instance, &block)
+      def render_form(*args, &block)
         with_output_buffer do
-          instance_exec(instance, &block)
+          instance_exec(*args, &block)
         end
       end
 
@@ -29,18 +29,18 @@ module Trestle
         if @template.form.respond_to?(name)
           output_buffer.concat @template.form.send(name, *args, &block)
         else
-          if WHITELISTED_HELPERS.include?(name)
-            if block_given? && !RAW_BLOCK_HELPERS.include?(name)
-              result = @template.send(name, *args) do |*args|
-                with_output_buffer { instance_exec(*args, &block) }
-              end
-            else
-              result = @template.send(name, *args, &block)
+          if block_given? && !RAW_BLOCK_HELPERS.include?(name)
+            result = @template.send(name, *args) do |*blockargs|
+              render_form(*blockargs, &block)
             end
+          else
+            result = @template.send(name, *args, &block)
+          end
 
+          if WHITELISTED_HELPERS.include?(name)
             output_buffer.concat result
           else
-            @template.send(name, *args, &block)
+            result
           end
         end
       end
