@@ -1,7 +1,7 @@
 <% content_for(:title, "Listing #{admin.model_name.pluralize}") %>
 
 <% content_for(:primary_toolbar) do %>
-  <%= link_to icon("fa fa-plus"), admin.path(:new), class: "btn btn-default btn-lg" %>
+  <%= link_to icon("fa fa-plus"), admin.path(:new), class: "btn btn-default btn-lg" unless admin.readonly? %>
 <% end %>
 
 <% content_for(:utilities) do %>

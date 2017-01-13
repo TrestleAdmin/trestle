@@ -3,10 +3,12 @@ module Trestle
     class Field
       attr_reader :builder, :template, :name, :options, :block
 
-      delegate :content_tag, :concat, :safe_join, :icon, to: :template
+      delegate :admin, :content_tag, :concat, :safe_join, :icon, to: :template
 
       def initialize(builder, template, name, options={}, &block)
         @builder, @template, @name, @options, @block = builder, template, name, options, block
+
+        @options[:readonly] = @options.fetch(:readonly) { admin.readonly? }
       end
 
       def errors

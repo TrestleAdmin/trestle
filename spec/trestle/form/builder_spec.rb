@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Trestle::Form::Builder, type: :helper do
   include Trestle::IconHelper
 
+  let(:admin) { double(readonly?: false) }
   let(:object_name) { :article }
   let(:object) { instance_double("Article", title: "Title", errors: ActiveModel::Errors.new([])) }
   let(:template) { self }
@@ -56,6 +57,15 @@ describe Trestle::Form::Builder, type: :helper do
             with_tag "i.fa.fa-warning"
           end
         end
+      end
+    end
+
+    context "within a read-only admin" do
+      let(:admin) { double(readonly?: true) }
+
+      it "sets the readonly attribute on the input" do
+        result = builder.text_field(:title)
+        expect(result).to have_tag("input.form-control", with: { type: "text", readonly: "readonly" })
       end
     end
   end

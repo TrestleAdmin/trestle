@@ -89,6 +89,10 @@ module Trestle
         options[:as] || model.model_name.to_s.titleize
       end
 
+      def readonly?
+        options[:readonly]
+      end
+
       def breadcrumb
         Breadcrumb.new(model_name.pluralize, path)
       end
@@ -97,10 +101,14 @@ module Trestle
         admin = self
 
         Proc.new do
-          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path] do
+          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path], except: admin.disabled_routes do
             instance_exec(&admin.additional_routes) if admin.additional_routes
           end
         end
+      end
+
+      def disabled_routes
+        readonly? ? [:new, :create, :edit, :update, :destroy] : []
       end
 
     private
