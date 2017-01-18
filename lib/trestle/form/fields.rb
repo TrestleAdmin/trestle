@@ -26,6 +26,7 @@ module Trestle
         autoload :RangeField
         autoload :SearchField
         autoload :Select
+        autoload :StaticField
         autoload :TelephoneField
         autoload :TextArea
         autoload :TextField
