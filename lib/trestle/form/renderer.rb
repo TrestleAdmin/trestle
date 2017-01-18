@@ -26,22 +26,20 @@ module Trestle
       end
 
       def method_missing(name, *args, &block)
-        if @template.form.respond_to?(name)
-          output_buffer.concat @template.form.send(name, *args, &block)
-        else
-          if block_given? && !RAW_BLOCK_HELPERS.include?(name)
-            result = @template.send(name, *args) do |*blockargs|
-              render_form(*blockargs, &block)
-            end
-          else
-            result = @template.send(name, *args, &block)
-          end
+        target = @template.form.respond_to?(name) ? @template.form : @template
 
-          if WHITELISTED_HELPERS.include?(name)
-            output_buffer.concat result
-          else
-            result
+        if block_given? && !RAW_BLOCK_HELPERS.include?(name)
+          result = target.send(name, *args) do |*blockargs|
+            render_form(*blockargs, &block)
           end
+        else
+          result = target.send(name, *args, &block)
+        end
+
+        if target == @template.form || WHITELISTED_HELPERS.include?(name)
+          output_buffer.concat result
+        else
+          result
         end
       end
 
