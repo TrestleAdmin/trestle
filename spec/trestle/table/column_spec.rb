@@ -115,6 +115,10 @@ describe Trestle::Table::Column do
         def self.path(*)
           @path
         end
+
+        def self.to_param(instance)
+          instance
+        end
       end
       klass.instance_variable_set("@path", path)
       klass

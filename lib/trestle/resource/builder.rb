@@ -38,6 +38,10 @@ module Trestle
         admin.delete_instance = block
       end
 
+      def to_param(&block)
+        admin.to_param = block
+      end
+
       def params(&block)
         admin.permitted_params = block
       end

@@ -14,7 +14,7 @@ module Trestle
 
         if admin.save_instance(instance)
           flash[:message] = flash_message("success.create")
-          redirect_to action: :show, id: instance
+          redirect_to action: :show, id: admin.to_param(instance)
         else
           flash.now[:error] = flash_message("failure.create")
           render "new"
@@ -35,7 +35,7 @@ module Trestle
 
         if admin.save_instance(instance)
           flash[:message] = flash_message("success.update")
-          redirect_to action: :show, id: instance
+          redirect_to action: :show, id: admin.to_param(instance)
         else
           flash.now[:error] = flash_message("failure.update")
           render "show"

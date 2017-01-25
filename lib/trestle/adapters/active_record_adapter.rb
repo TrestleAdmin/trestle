@@ -25,6 +25,10 @@ module Trestle
         instance.destroy
       end
 
+      def to_param(instance)
+        instance
+      end
+
       def sort(collection, params)
         if params[:sort]
           collection.reorder(params[:sort] => params[:order] || "asc")

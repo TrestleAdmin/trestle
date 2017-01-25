@@ -101,11 +101,12 @@ module Trestle
           if options[:link]
             content = super
             admin = self.admin || template.admin
+            url = admin.path(:show, id: admin.to_param(instance))
 
             if content.blank?
-              template.link_to "None set", admin.path(:show, id: instance), class: "empty"
+              template.link_to "None set", url, class: "empty"
             else
-              template.link_to content, admin.path(:show, id: instance)
+              template.link_to content, url
             end
           else
             super

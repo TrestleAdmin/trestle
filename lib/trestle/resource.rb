@@ -34,6 +34,7 @@ module Trestle
       adapter_method :update_instance
       adapter_method :save_instance
       adapter_method :delete_instance
+      adapter_method :to_param
       adapter_method :permitted_params
       adapter_method :decorate_collection
       adapter_method :sort
