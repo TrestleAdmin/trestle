@@ -11,6 +11,10 @@ body {
   display: flex;
 }
 
+img {
+  max-width: 100%;
+}
+
 .app-wrapper {
   flex: 1;
 
