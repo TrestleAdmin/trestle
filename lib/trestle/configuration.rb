@@ -30,7 +30,7 @@ module Trestle
     option :hooks, Hash.new { |h, k| h[k] = [] }
 
     def hook(name, &block)
-      hooks[name] << block
+      hooks[name.to_s] << block
     end
   end
 end
