@@ -1,10 +1,12 @@
 .app-nav {
+  padding: 10px 0;
+
   &, a {
     color: rgba(white, 0.5);
   }
 
   ul {
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 0;
     list-style: none;
   }
@@ -61,10 +63,21 @@
   }
 }
 
+@mixin collapsed-nav-header {
+  border-bottom: 1px solid rgba(white, 0.15);
+  height: 0;
+  margin: 0 0 14px;
+  text-indent: -99999px;
+}
+
 @include tablet {
   .app-nav {
-    .nav-header, .nav-label, .nav-badge {
+    .nav-label, .nav-badge {
       display: none;
+    }
+
+    .nav-header {
+      @include collapsed-nav-header;
     }
 
     .expanded & {
@@ -77,8 +90,12 @@
 
 @include desktop {
   .collapsed .app-nav {
-    .nav-header, .nav-label, .nav-badge {
+    .nav-label, .nav-badge {
       display: none;
+    }
+
+    .nav-header {
+      @include collapsed-nav-header;
     }
   }
 }
