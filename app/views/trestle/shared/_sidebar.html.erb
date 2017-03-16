@@ -10,26 +10,28 @@
     <%= link_to trestle_title, "/", class: "navbar-brand" %>
   </header>
 
-  <nav class="app-nav">
-    <% Trestle.navigation.each do |group, items| %>
-      <ul>
-        <% if group.present? %>
-          <li class="nav-header"><%= group.label %></li>
-        <% end %>
+  <div class="app-sidebar-inner">
+    <nav class="app-nav">
+      <% Trestle.navigation.each do |group, items| %>
+        <ul>
+          <% if group.present? %>
+            <li class="nav-header"><%= group.label %></li>
+          <% end %>
 
-        <% items.each do |item| %>
-          <li<% if current_navigation_item?(item) %> class="active"<% end %>>
-            <%= link_to item.path do %>
-              <%= icon("nav-icon", item.icon) %>
-              <span class="nav-label"><%= item.label %></span>
+          <% items.each do |item| %>
+            <li<% if current_navigation_item?(item) %> class="active"<% end %>>
+              <%= link_to item.path do %>
+                <%= icon("nav-icon", item.icon) %>
+                <span class="nav-label"><%= item.label %></span>
 
-              <%= content_tag(:span, item.badge.text, class: ["nav-badge", item.badge.html_class]) if item.badge? %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </nav>
+                <%= content_tag(:span, item.badge.text, class: ["nav-badge", item.badge.html_class]) if item.badge? %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </nav>
 
-  <button class="toggle-sidebar"></button>
+    <button class="toggle-sidebar"></button>
+  </div>
 </aside>
