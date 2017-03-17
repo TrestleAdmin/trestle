@@ -55,13 +55,6 @@ describe Trestle::Navigation do
       expect(result.keys.index(group1)).to be > result.keys.index(group2)
     end
 
-    it "sorts groups with equal priority alphabetically" do
-      group2 = Trestle::Navigation::Group.new(:group2)
-      group3 = Trestle::Navigation::Group.new(:agroup3)
-
-      expect(result.keys.index(group2)).to be > result.keys.index(group3)
-    end
-
     it "sorts items by priority" do
       group = Trestle::Navigation::Group.new(:group2)
       items = result[group]
@@ -70,16 +63,6 @@ describe Trestle::Navigation do
       item2 = items.find { |i| i.name == :group2_item2 }
 
       expect(items.index(item1)).to be > items.index(item2)
-    end
-
-    it "sorts items with equal priority alphabetically" do
-      group = Trestle::Navigation::Group.new(:group2)
-      items = result[group]
-
-      item1 = items.find { |i| i.name == :group2_item1 }
-      item3 = items.find { |i| i.name == :agroup2_item3 }
-
-      expect(items.index(item1)).to be > items.index(item3)
     end
   end
 

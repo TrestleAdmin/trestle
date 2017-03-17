@@ -32,14 +32,13 @@ describe Trestle::Navigation::Item do
     expect(item.icon).to eq("fa fa-user")
   end
 
-  it "sorts by priority, then name" do
+  it "sorts by priority" do
     i1 = Trestle::Navigation::Item.new(:test1)
     i2 = Trestle::Navigation::Item.new(:test2, nil, priority: :first)
-    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: 50)
-    i4 = Trestle::Navigation::Item.new(:atest4, nil, priority: 50)
-    i5 = Trestle::Navigation::Item.new(:test5, nil, priority: :last)
+    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: :last)
+    i4 = Trestle::Navigation::Item.new(:test4, nil, priority: 50)
 
-    expect([i5, i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3, i5])
+    expect([i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3])
   end
 
   context "with a badge" do

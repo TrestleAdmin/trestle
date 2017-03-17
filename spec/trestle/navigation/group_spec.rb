@@ -12,14 +12,13 @@ describe Trestle::Navigation::Group do
     expect(group.priority).to eq(0)
   end
 
-  it "sorts by priority, then name" do
+  it "sorts by priority" do
     g1 = Trestle::Navigation::Group.new(:test1)
     g2 = Trestle::Navigation::Group.new(:test2, priority: :first)
-    g3 = Trestle::Navigation::Group.new(:test3, priority: 50)
-    g4 = Trestle::Navigation::Group.new(:atest4, priority: 50)
-    g5 = Trestle::Navigation::Group.new(:test5, priority: :last)
+    g3 = Trestle::Navigation::Group.new(:test3, priority: :last)
+    g4 = Trestle::Navigation::Group.new(:test4, priority: 50)
 
-    expect([g5, g1, g2, g3, g4].sort).to eq([g2, g1, g4, g3, g5])
+    expect([g1, g2, g3, g4].sort).to eq([g2, g1, g4, g3])
   end
 end
 

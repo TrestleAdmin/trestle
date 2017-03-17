@@ -17,11 +17,7 @@ module Trestle
       end
 
       def <=>(other)
-        sort_key <=> other.sort_key
-      end
-
-      def sort_key
-        [priority, name]
+        priority <=> other.priority
       end
 
       def priority

@@ -20,14 +20,10 @@ module Trestle
       def <=>(other)
         case other
         when Group
-          sort_key <=> other.sort_key
+          priority <=> other.priority
         when NullGroup
           1
         end
-      end
-
-      def sort_key
-        [priority, name]
       end
 
       def priority

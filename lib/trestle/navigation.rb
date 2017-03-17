@@ -16,7 +16,7 @@ module Trestle
     end
 
     def by_group
-      Hash[items.group_by(&:group).sort_by { |group, items| group }.map { |group, items| [group, items.sort] }]
+      Hash[stable_sort(items.group_by(&:group)).map { |group, items| [group, stable_sort(items)] }]
     end
 
     def each(&block)
@@ -26,6 +26,11 @@ module Trestle
     def first
       sorted = by_group.values
       sorted.first.first if sorted.any?
+    end
+
+  private
+    def stable_sort(items)
+      items.sort_by.with_index { |item, i| [item, i] }
     end
   end
 end
