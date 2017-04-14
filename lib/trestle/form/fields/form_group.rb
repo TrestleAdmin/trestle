@@ -6,7 +6,7 @@ module Trestle
           classes = ['form-group']
           classes << 'has-error' if errors.any?
 
-          content_tag(:div, class: classes.compact) do
+          content_tag(:div, options.slice(:data).merge(class: classes.compact)) do
             concat label unless options[:label] == false
             concat block.call if block
             concat help_message if options[:help]
