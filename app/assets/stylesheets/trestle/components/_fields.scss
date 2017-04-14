@@ -7,6 +7,10 @@
   }
 }
 
-.control-label + .checkbox {
-  margin-top: 0;
+.control-label {
+  display: block;
+
+  & + .checkbox {
+    margin-top: 0;
+  }
 }
