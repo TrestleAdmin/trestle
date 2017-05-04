@@ -21,6 +21,21 @@ describe Trestle::Table::Builder do
       expect(column.options).to eq({ class: "custom-class" })
       expect(column.block).to eq(block)
     end
+
+    context "with a proc as the second parameter" do
+      it "uses the proc as the block" do
+        block = Proc.new {}
+        table = Trestle::Table::Builder.build do
+          column :my_field, block, class: "custom-class"
+        end
+
+        column = table.columns[0]
+
+        expect(column.field).to eq(:my_field)
+        expect(column.options).to eq({ class: "custom-class" })
+        expect(column.block).to eq(block)
+      end
+    end
   end
 
   describe "#selectable_column" do

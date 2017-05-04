@@ -231,5 +231,19 @@ describe Trestle::Resource::Builder do
       expect(::TestAdmin.scopes[:my_scope].options).to eq(label: "Custom Label")
       expect(::TestAdmin.scopes[:my_scope].block).to eq(b)
     end
+
+    context "with a proc as the second parameter" do
+      it "uses the proc as the block" do
+        b = Proc.new {}
+
+        Trestle::Resource::Builder.build(:test) do
+          scope :my_scope, b, label: "Custom Label"
+        end
+
+        expect(::TestAdmin.scopes).to include(my_scope: be_a(Trestle::Scope))
+        expect(::TestAdmin.scopes[:my_scope].options).to eq(label: "Custom Label")
+        expect(::TestAdmin.scopes[:my_scope].block).to eq(b)
+      end
+    end
   end
 end

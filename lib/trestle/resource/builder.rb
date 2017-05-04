@@ -66,8 +66,13 @@ module Trestle
         admin.count = block
       end
 
-      def scope(name, options={}, &block)
-        admin.scopes[name] = Scope.new(admin, name, options, &block)
+      def scope(name, scope=nil, options={}, &block)
+        if scope.is_a?(Hash)
+          options = scope
+          scope = nil
+        end
+
+        admin.scopes[name] = Scope.new(admin, name, options, &(scope || block))
       end
     end
   end

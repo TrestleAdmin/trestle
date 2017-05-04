@@ -12,8 +12,13 @@ module Trestle
         table.columns << SelectColumn.new(table)
       end
 
-      def column(field, options={}, &block)
-        table.columns << Column.new(table, field, options, &block)
+      def column(field, proc=nil, options={}, &block)
+        if proc.is_a?(Hash)
+          options = proc
+          proc = nil
+        end
+
+        table.columns << Column.new(table, field, options, &(proc || block))
       end
 
       def actions(&block)
