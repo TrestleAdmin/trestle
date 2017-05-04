@@ -32,5 +32,9 @@ module Trestle
     def hook(name, &block)
       hooks[name.to_s] << block
     end
+
+    def form_field(name, klass)
+      Form::Builder.register(name, klass)
+    end
   end
 end

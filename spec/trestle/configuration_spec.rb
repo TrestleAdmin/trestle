@@ -74,4 +74,13 @@ describe Trestle::Configuration do
       expect(config.hooks["myhook"]).to eq([b])
     end
   end
+
+  describe "#form_field" do
+    let(:klass) { double }
+
+    it "registers a form field type" do
+      expect(Trestle::Form::Builder).to receive(:register).with(:custom, klass)
+      config.form_field :custom, klass
+    end
+  end
 end
