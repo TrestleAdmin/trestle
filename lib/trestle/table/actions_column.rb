@@ -5,14 +5,18 @@ module Trestle
 
       def initialize(table, &block)
         @table = table
-        @block = block if block_given?
+        @block = block_given? ? block : default_actions
       end
 
       def header(template)
       end
 
       def content(template, instance)
-        template.instance_exec(instance, &block)
+        builder = ActionsBuilder.new(template, instance)
+
+        template.with_output_buffer do
+          template.instance_exec(builder, &block)
+        end
       end
 
       def classes
@@ -21,6 +25,31 @@ module Trestle
 
       def data
         {}
+      end
+
+      def default_actions
+        ->(action) do
+          action.delete
+        end
+      end
+
+      class ActionsBuilder
+        attr_reader :template, :instance
+
+        def initialize(template, instance)
+          @template, @instance = template, instance
+        end
+
+        def button(content, url, options={})
+          options[:class] = Array(options[:class])
+          options[:class] << "btn" unless options[:class].include?("btn")
+
+          template.concat template.link_to(content, url, options)
+        end
+
+        def delete
+          button(template.icon("fa fa-fw fa-trash"), template.admin.path(:destroy, id: template.admin.to_param(instance)), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+        end
       end
     end
   end
