@@ -54,6 +54,10 @@ module Trestle
         admin.decorate_collection = block
       end
 
+      def merge_scopes(&block)
+        admin.merge_scopes = block
+      end
+
       def sort(&block)
         admin.sort = block
       end

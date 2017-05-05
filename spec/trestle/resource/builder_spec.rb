@@ -150,6 +150,22 @@ describe Trestle::Resource::Builder do
     end
   end
 
+  describe "#merge_scopes" do
+    it "sets an explicit merge_scopes block" do
+      Trestle::Resource::Builder.build(:test) do
+        merge_scopes do |scope, other|
+          scope.combine(other)
+        end
+      end
+
+      collection = double
+      other = double
+
+      expect(collection).to receive(:combine).with(other).and_return([1, 2, 3])
+      expect(::TestAdmin.merge_scopes(collection, other)).to eq([1, 2, 3])
+    end
+  end
+
   describe "#sort" do
     it "sets an explicit sort block" do
       Trestle::Resource::Builder.build(:test) do

@@ -40,6 +40,10 @@ module Trestle
         collection
       end
 
+      def merge_scopes(scope, other)
+        raise NotImplementedError
+      end
+
       def sort(collection, params)
         raise NotImplementedError
       end

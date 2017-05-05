@@ -29,6 +29,10 @@ module Trestle
         instance
       end
 
+      def merge_scopes(scope, other)
+        scope.merge(other)
+      end
+
       def sort(collection, params)
         if params[:sort]
           collection.reorder(params[:sort] => params[:order] || "asc")

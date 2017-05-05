@@ -20,14 +20,14 @@ module Trestle
 
     def apply(collection)
       if @block
-        @block.call(collection)
+        @block.call
       else
         collection.public_send(name)
       end
     end
 
     def count(collection)
-      @admin.count(apply(collection))
+      @admin.count(@admin.merge_scopes(collection, apply(collection)))
     end
 
     def active?(params)
