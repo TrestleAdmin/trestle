@@ -15,6 +15,8 @@ module Trestle
       # be delegated to the form builder by method_missing.
       undef_method :select
 
+      delegate :concat, to: :output_buffer
+
       def initialize(template)
         @template = template
       end
@@ -37,7 +39,7 @@ module Trestle
         end
 
         if target == @template.form || WHITELISTED_HELPERS.include?(name)
-          output_buffer.concat result
+          concat(result)
         else
           result
         end
