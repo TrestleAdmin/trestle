@@ -30,6 +30,11 @@ describe Trestle::Form::Renderer, type: :helper do
     expect(result).to eq('<div class="row"><div class="col-xs-12"></div></div>')
   end
 
+  it "does not append non-whitelisted helpers to the result" do
+    result = render_form { icon("fa fa-warning"); nil }
+    expect(result).to be_nil
+  end
+
   it "correctly concats addition content" do
     result = render_form do
       row {}
@@ -37,10 +42,5 @@ describe Trestle::Form::Renderer, type: :helper do
     end
 
     expect(result).to eq('<div class="row"></div>FROM CONCAT')
-  end
-
-  it "does not append non-whitelisted helpers to the result" do
-    result = render_form { icon("fa fa-warning") }
-    expect(result).to eq("")
   end
 end

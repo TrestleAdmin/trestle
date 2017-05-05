@@ -22,9 +22,7 @@ module Trestle
       end
 
       def render_form(*args, &block)
-        with_output_buffer do
-          instance_exec(*args, &block)
-        end
+        capture { instance_exec(*args, &block) }
       end
 
       def method_missing(name, *args, &block)
