@@ -17,16 +17,26 @@ module Trestle
 
       delegate :concat, to: :output_buffer
 
-      def initialize(template)
+      def initialize(template, form=nil)
         @template = template
+        @form = form || @template.form
       end
 
       def render_form(*args, &block)
         capture { instance_exec(*args, &block) }
       end
 
+      def fields_for(*args, &block)
+        result = @form.fields_for(*args) do |f|
+          renderer = self.class.new(@template, f)
+          renderer.render_form(f, &block)
+        end
+
+        concat(result)
+      end
+
       def method_missing(name, *args, &block)
-        target = @template.form.respond_to?(name) ? @template.form : @template
+        target = @form.respond_to?(name) ? @form : @template
 
         if block_given? && !RAW_BLOCK_HELPERS.include?(name)
           result = target.send(name, *args) do |*blockargs|
@@ -36,7 +46,7 @@ module Trestle
           result = target.send(name, *args, &block)
         end
 
-        if target == @template.form || WHITELISTED_HELPERS.include?(name)
+        if target == @form || WHITELISTED_HELPERS.include?(name)
           concat(result)
         else
           result
@@ -44,7 +54,7 @@ module Trestle
       end
 
       def respond_to_missing?(name, include_all=false)
-        @template.form.respond_to?(name, include_all) ||
+        @form.respond_to?(name, include_all) ||
           @template.respond_to?(name, include_all) ||
           super
       end

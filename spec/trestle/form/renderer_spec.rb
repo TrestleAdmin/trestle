@@ -43,4 +43,21 @@ describe Trestle::Form::Renderer, type: :helper do
 
     expect(result).to eq('<div class="row"></div>FROM CONCAT')
   end
+
+  describe "#fields_for" do
+    let(:subform) { double }
+
+    it "sends form builder methods to the subform" do
+      expect(form).to receive(:fields_for).with(:subobject).and_yield(subform)
+      expect(subform).to receive(:text_field).with(:name).and_return('SUB:TEXT FIELD')
+
+      result = render_form do
+        fields_for :subobject do
+          text_field :name
+        end
+      end
+
+      expect(result).to eq("SUB:TEXT FIELD")
+    end
+  end
 end
