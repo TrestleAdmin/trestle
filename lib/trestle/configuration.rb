@@ -2,8 +2,8 @@ module Trestle
   class Configuration
     include Configurable
 
-    option :site_title, "Trestle Admin"
-    option :footer, "Powered by Trestle"
+    option :site_title, -> { I18n.t("trestle.title") }
+    option :footer, -> { I18n.t("trestle.footer") }
 
     option :site_logo
     option :site_logo_small

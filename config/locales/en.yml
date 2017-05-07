@@ -1,5 +1,8 @@
 en:
   trestle:
+    title: Trestle Admin
+    footer: Powered by Trestle
+
     flash:
       success:
         title: "Success!"
