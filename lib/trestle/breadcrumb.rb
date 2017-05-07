@@ -12,7 +12,7 @@ module Trestle
 
     class Trail
       def initialize(breadcrumbs=[])
-        @breadcrumbs = breadcrumbs
+        @breadcrumbs = Array(breadcrumbs)
       end
 
       def dup

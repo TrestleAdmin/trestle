@@ -3,6 +3,9 @@ en:
     title: Trestle Admin
     footer: Powered by Trestle
 
+    breadcrumbs:
+      home: Home
+
     flash:
       success:
         title: "Success!"
