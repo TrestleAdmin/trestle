@@ -1,8 +1,3 @@
-ENV['RAILS_ENV'] ||= 'test'
-
-require File.expand_path("../dummy/config/environment.rb", __FILE__)
-require 'rspec/rails'
-
 require 'simplecov'
 SimpleCov.start do
   add_filter '/spec/'
@@ -14,6 +9,11 @@ SimpleCov.start do
 
   track_files "{app,lib}/**/*.rb"
 end
+
+ENV['RAILS_ENV'] ||= 'test'
+
+require File.expand_path("../dummy/config/environment.rb", __FILE__)
+require 'rspec/rails'
 
 require 'trestle'
 
