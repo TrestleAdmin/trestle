@@ -3,7 +3,7 @@ class Trestle::ApplicationController < ActionController::Base
 
 protected
   def breadcrumbs
-    @breadcrumbs ||= Trestle::Breadcrumb::Trail.new(Trestle.config.root_breadcrumb)
+    @breadcrumbs ||= Trestle::Breadcrumb::Trail.new(Trestle.config.root_breadcrumbs)
   end
   helper_method :breadcrumbs
 
