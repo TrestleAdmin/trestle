@@ -43,8 +43,8 @@ describe Trestle::Configuration do
     expect(config.default_adapter.ancestors).to include(Trestle::Adapters::ActiveRecordAdapter, Trestle::Adapters::DraperAdapter)
   end
 
-  it "has a root breadcrumb configuration option" do
-    expect(config).to have_accessor(:root_breadcrumb).with_default(Trestle::Breadcrumb.new("Home", "/admin"))
+  it "has a root breadcrumbs configuration option" do
+    expect(config).to have_accessor(:root_breadcrumbs).with_default([Trestle::Breadcrumb.new("Home", "/admin")])
   end
 
   it "has no default menu blocks" do
