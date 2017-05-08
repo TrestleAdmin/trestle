@@ -15,7 +15,6 @@ module Trestle
         autoload :DateField
         autoload :DateSelect
         autoload :DatetimeField
-        autoload :DatetimeLocalField
         autoload :DatetimeSelect
         autoload :EmailField
         autoload :FileField

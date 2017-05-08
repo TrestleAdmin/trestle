@@ -29,7 +29,6 @@ Trestle.resource(:form, model: FormStub, as: "Form") do
     tab :date_fields do
       date_field :name, label: "Date Field"
       datetime_field :name, label: "Datetime Field"
-      datetime_local_field :name, label: "Datetime Local Field"
       time_field :name, label: "Time Field"
       month_field :name, label: "Month Field"
       week_field :name, label: "Week Field"
