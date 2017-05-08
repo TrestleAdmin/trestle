@@ -1,5 +1,6 @@
 {
   "name": "bootstrap-confirmation2",
+  "version": "2.4.0",
   "homepage": "http://mistic100.github.io/Bootstrap-Confirmation",
   "description": "Bootstrap plugin for on-place confirm boxes using Popover",
   "authors": [
@@ -34,12 +35,13 @@
     "test",
     "tests"
   ],
-  "_release": "f70b109888",
+  "_release": "2.4.0",
   "_resolution": {
-    "type": "commit",
-    "commit": "f70b109888fa15077fe0f5f3ddb3f6858b8f97f1"
+    "type": "version",
+    "tag": "v2.4.0",
+    "commit": "1575968511276b150fd666b6564ecde28724fe4b"
   },
-  "_source": "git://github.com/mistic100/Bootstrap-Confirmation.git",
-  "_target": "f70b109888fa15077fe0f5f3ddb3f6858b8f97f1",
-  "_originalSource": "mistic100/Bootstrap-Confirmation"
+  "_source": "https://github.com/mistic100/Bootstrap-Confirmation.git",
+  "_target": "~2.4.0",
+  "_originalSource": "bootstrap-confirmation2"
 }

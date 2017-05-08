@@ -30,7 +30,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Link</div>
       <div class="panel-body">
-        <a class="btn btn-default" data-toggle="confirmation" href="https://google.com">Confirmation</a>
+        <a class="btn btn-default" data-toggle="confirmation" href="https://google.com">Go to Google</a>
       </div>
     </div>
 
@@ -62,8 +62,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">Singleton</div>
       <div class="panel-body">
-        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 1</button>
-        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 2</button>
+        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 1
+        </button>
+        <button class="btn btn-default" data-toggle="confirmation-singleton" data-singleton="true">Confirmation 2
+        </button>
       </div>
     </div>
 
@@ -76,9 +78,18 @@
     </div>
 
     <div class="panel panel-default">
+      <div class="panel-heading">Delegation</div>
+      <div class="panel-body" id="confirmation-delegate">
+        <button class="btn btn-default">Confirmation 1</button>
+        <button class="btn btn-default">Confirmation 2</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
       <div class="panel-heading">Custom buttons</div>
       <div class="panel-body">
-        <button class="btn btn-default" id="custom-confirmation" data-title="Choose your currency">Confirmation</button>
+        <button class="btn btn-default" id="custom-confirmation">Choose your currency</button>
+        <button class="btn btn-default" id="custom-confirmation-links">Share to</button>
       </div>
     </div>
   </div>
@@ -92,16 +103,28 @@
   console.log('Bootstrap ' + $.fn.tooltip.Constructor.VERSION);
   console.log('Bootstrap Confirmation ' + $.fn.confirmation.Constructor.VERSION);
 
-  $('[data-toggle=confirmation]').confirmation();
+  $('[data-toggle=confirmation]').confirmation({
+    rootSelector: '[data-toggle=confirmation]',
+    container: 'body'
+  });
   $('[data-toggle=confirmation-singleton]').confirmation({
-    rootSelector: '[data-toggle=confirmation-singleton]'
+    rootSelector: '[data-toggle=confirmation-singleton]',
+    container: 'body'
   });
   $('[data-toggle=confirmation-popout]').confirmation({
-    rootSelector: '[data-toggle=confirmation-popout]'
+    rootSelector: '[data-toggle=confirmation-popout]',
+    container: 'body'
+  });
+
+  $('#confirmation-delegate').confirmation({
+    selector: 'button'
   });
 
   var currency = '';
   $('#custom-confirmation').confirmation({
+    rootSelector: '#custom-confirmation',
+    container: 'body',
+    title: null,
     onConfirm: function() {
       alert('You choosed ' + currency);
     },
@@ -131,6 +154,32 @@
         class: 'btn btn-default',
         icon: 'glyphicon glyphicon-remove',
         cancel: true
+      }
+    ]
+  });
+
+  $('#custom-confirmation-links').confirmation({
+    rootSelector: '#custom-confirmation-link',
+    container: 'body',
+    title: null,
+    buttons: [
+      {
+        label: 'Twitter',
+        attr: {
+          href: 'https://twitter.com'
+        }
+      },
+      {
+        label: 'Facebook',
+        attr: {
+          href: 'https://facebook.com'
+        }
+      },
+      {
+        label: 'Pinterest',
+        attr: {
+          href: 'https://pinterest.com'
+        }
       }
     ]
   });

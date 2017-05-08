@@ -15,9 +15,3 @@ Trestle.ready ->
     btnCancelClass: 'btn-default'
     btnCancelLabel: 'Cancel'
     copyAttributes: ''
-
-  root.on 'click', '[data-toggle="confirm-delete"]', (e, ack) ->
-    unless ack
-      e.preventDefault()
-      e.stopPropagation()
-      e.stopImmediatePropagation()
