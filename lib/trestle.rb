@@ -17,6 +17,7 @@ module Trestle
   autoload :Configuration
   autoload :Form
   autoload :Navigation
+  autoload :Options
   autoload :Reloader
   autoload :Resource
   autoload :Scope
