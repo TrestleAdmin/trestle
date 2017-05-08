@@ -4,7 +4,6 @@ module Trestle
       class FormControl < Field
         def initialize(*args)
           super(*args)
-          options[:class] ||= "form-control"
         end
 
         def render
@@ -31,6 +30,10 @@ module Trestle
           Class.new(self) do
             define_method(:field, &block)
           end
+        end
+
+        def defaults
+          super.merge(class: ["form-control"])
         end
       end
     end

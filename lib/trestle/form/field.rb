@@ -6,8 +6,9 @@ module Trestle
       delegate :admin, :content_tag, :concat, :safe_join, :icon, to: :template
 
       def initialize(builder, template, name, options={}, &block)
-        @builder, @template, @name, @options, @block = builder, template, name, options, block
+        @builder, @template, @name, @block = builder, template, name, block
 
+        @options = defaults.merge(options)
         @options[:readonly] = @options.fetch(:readonly) { admin.readonly? }
       end
 
@@ -29,6 +30,10 @@ module Trestle
 
       def field
         raise NotImplementedError
+      end
+
+      def defaults
+        Trestle::Options.new
       end
     end
   end
