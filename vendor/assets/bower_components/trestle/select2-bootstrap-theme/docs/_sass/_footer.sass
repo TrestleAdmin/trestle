@@ -1,0 +1,27 @@
+.footer
+  text-align: center
+  color: #ccc
+  a
+    +link
+  small a
+    color: #999
+    border-bottom: 0
+  &-links
+    margin-top: $padding-large-horizontal
+    margin-bottom: 0
+    padding-bottom: $padding-large-horizontal
+    padding-left: 0
+    list-style: none
+    font-size: 14px
+    li
+      display: inline
+      margin-left: 2px
+      margin-right: 2px
+  .demo &
+    padding-top: 200px
+    padding-bottom: 80px
+    @extend %background-image
+  img
+    height: 16px
+    width: auto
+    margin-right: 4px

@@ -41,7 +41,7 @@ Trestle.resource(:form, model: FormStub, as: "Form") do
     tab :select_fields do
       select :name, ["Red", "Green", "Blue", "Yellow"], label: "Basic Select Field"
       collection_select :name, Color.all, :code, :name_with_code, label: "Collection Select"
-      grouped_collection_select :name, Color.categorized, :colors, :name, :code, :name_with_code, label: "Grouped Collection Select"
+      grouped_collection_select :name, Color.categorized, :colors, :name, :code, :name_with_code, { label: "Grouped Collection Select" }, { multiple: true }
       time_zone_select :name, /Australia/, label: "Time Zone Select"
 
       form_group :name, label: "Check Box Form Group" do
