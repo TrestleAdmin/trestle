@@ -3,7 +3,7 @@ module Trestle
     def merge(other)
       super(other) do |key, v1, v2|
         if v1.is_a?(Array)
-          v1 + v2
+          v1 + Array(v2)
         else
           v2
         end
