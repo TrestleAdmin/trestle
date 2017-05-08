@@ -26,12 +26,6 @@ module Trestle
           end
         end
 
-        def self.build(&block)
-          Class.new(self) do
-            define_method(:field, &block)
-          end
-        end
-
         def defaults
           super.merge(class: ["form-control"])
         end
