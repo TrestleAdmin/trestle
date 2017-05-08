@@ -7,6 +7,7 @@
       "font-awesome":            "~4.7.0",
       "ionicons":                "~2.0.1",
       "magnific-popup":          "~1.1.0",
-      "bootstrap-confirmation2": "~2.4.0"
+      "bootstrap-confirmation2": "~2.4.0",
+      "flatpickr":               "~2.6.1"
   }
 }

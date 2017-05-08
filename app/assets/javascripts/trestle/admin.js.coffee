@@ -3,6 +3,7 @@
 #= require trestle/bootstrap
 #= require trestle/bootstrap-confirmation
 #= require trestle/magnific-popup
+#= require trestle/flatpickr
 #
 #= require_self
 #= require trestle/custom
