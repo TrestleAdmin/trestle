@@ -1,8 +1,29 @@
 .flatpickr-calendar {
   background: $theme-bg;
 
-  &.arrowTop::after {
-    border-bottom-color: lighten($theme-bg-color, percentage($theme-bg-gradient-strength));
+  &.arrowTop {
+    &::after {
+      border-bottom-color: lighten($theme-bg-color, percentage($theme-bg-gradient-strength));
+    }
+  }
+
+  &.showTimeInput.hasTime {
+    .flatpickr-time {
+      border-radius: 0 0 5px 5px;
+    }
+  }
+
+  &.noCalendar {
+    &::after {
+      border-bottom-color: white;
+    }
+
+    &.showTimeInput.hasTime {
+      .flatpickr-time {
+        border-top: 0;
+        border-radius: 5px;
+      }
+    }
   }
 }
 
