@@ -3,6 +3,10 @@
   background: $content-header-background;
   padding: 5px 20px;
 
+  h1 {
+    font-weight: 300;
+  }
+
   .btn-toolbar {
     @extend .pull-right;
     clear: right;

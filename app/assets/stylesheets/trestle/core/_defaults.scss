@@ -31,7 +31,7 @@ $theme-bg-gradient: linear-gradient(rgba(white, $theme-bg-gradient-strength), rg
 $theme-bg-color: darken($brand-primary, 15%) !default;
 $theme-bg: $theme-bg-texture-url, $theme-bg-gradient, $theme-bg-color !default;
 
-$headings-font-weight: 300 !default;
+$headings-font-weight: 500 !default;
 
 $btn-default-bg:    #dbdbdb !default;
 $btn-default-color: white !default;

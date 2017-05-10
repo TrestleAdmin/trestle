@@ -10,10 +10,6 @@ a {
   border-radius: 10em !important;
 }
 
-.panel-title {
-  font-weight: 500;
-}
-
 @include mobile {
   h1 {
     font-size: $font-size-h1 - 6px;
