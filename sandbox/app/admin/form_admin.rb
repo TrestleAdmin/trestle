@@ -68,5 +68,7 @@ Trestle.resource(:form, model: FormStub, as: "Form") do
         end
       end
     end
+
+    tab :wells
   end
 end
