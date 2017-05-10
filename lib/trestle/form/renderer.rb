@@ -9,7 +9,7 @@ module Trestle
 
       # Raw block helpers will pass their block argument directly to the method
       # without wrapping it in a new output buffer.
-      RAW_BLOCK_HELPERS = [:table, :toolbar]
+      RAW_BLOCK_HELPERS = [:table]
 
       # The #select method is defined on Kernel. Undefine it so that it can
       # be delegated to the form builder by method_missing.
