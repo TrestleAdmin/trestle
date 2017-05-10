@@ -58,6 +58,18 @@
   min-width: 0;
 }
 
+.main-content,
+.main-content-sidebar,
+.tab-pane {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .main-content-sidebar {
   background: $content-sidebar-background;
   flex: 0 0 $content-sidebar-width;
