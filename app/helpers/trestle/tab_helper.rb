@@ -12,6 +12,8 @@ module Trestle
           yield
         elsif options[:partial]
           render partial: options[:partial]
+        else
+          render partial: name.to_s
         end
       end
     end
