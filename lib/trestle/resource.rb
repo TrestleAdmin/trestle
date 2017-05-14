@@ -83,6 +83,10 @@ module Trestle
         super || Table::Automatic.new(self)
       end
 
+      def form
+        super || Form::Automatic.new(self)
+      end
+
       def model
         @model ||= options[:model] || infer_model_class
       end

@@ -2,6 +2,7 @@ module Trestle
   class Form
     extend ActiveSupport::Autoload
 
+    autoload :Automatic
     autoload :Builder
     autoload :Field
     autoload :Fields
