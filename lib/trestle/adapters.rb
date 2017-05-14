@@ -60,7 +60,7 @@ module Trestle
         params.require(admin.admin_name.singularize).permit!
       end
 
-      def default_columns
+      def default_attributes
         raise NotImplementedError
       end
 

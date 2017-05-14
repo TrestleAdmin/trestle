@@ -41,7 +41,7 @@ module Trestle
       adapter_method :sort
       adapter_method :paginate
       adapter_method :count
-      adapter_method :default_columns
+      adapter_method :default_attributes
 
       attr_accessor :decorator
 

@@ -50,8 +50,14 @@ module Trestle
         collection.count
       end
 
-      def default_columns
-        Hash[*admin.model.content_columns.map { |column| [column.name, column.type] }.flatten]
+      def default_attributes
+        admin.model.columns.map do |column|
+          if column.name.end_with?("_id") && (reflection = admin.model.reflections[column.name.sub(/_id$/, '')])
+            Attribute::Association.new(admin, column.name, reflection.klass)
+          else
+            Attribute.new(admin, column.name, column.type)
+          end
+        end
       end
     end
   end
