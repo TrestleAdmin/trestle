@@ -13,7 +13,9 @@ module Trestle
       end
 
       def errors
-        builder.object.errors[name]
+        errors = builder.object.errors[name]
+        errors += builder.object.errors[name.to_s.sub(/_id$/, '')] if name.to_s =~ /_id$/
+        errors
       end
 
       def form_group(opts={})
