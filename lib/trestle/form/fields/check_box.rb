@@ -18,7 +18,7 @@ module Trestle
             content_tag(:label) do
               safe_join([
                 builder.raw_check_box(name, options, checked_value, unchecked_value),
-                options[:label] || name
+                options[:label] || admin.model.human_attribute_name(name)
               ], " ")
             end
           end
