@@ -11,6 +11,7 @@ module Trestle
 
   autoload :Adapters
   autoload :Admin
+  autoload :Attribute
   autoload :Breadcrumb
   autoload :Builder
   autoload :Configurable
