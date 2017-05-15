@@ -10,7 +10,10 @@ module Trestle
 
             case attribute.type
             when :association
-              select attribute.name, attribute.options_for_select, include_blank: "- Select #{admin.model.human_attribute_name(attribute.association_name)} -"
+              options = attribute.association_class.all.map { |instance| [display(instance), instance.id] }
+              prompt = "- Select #{admin.model.human_attribute_name(attribute.association_name)} -"
+
+              select attribute.name, options, include_blank: prompt
             when :text
               text_area attribute.name
             when :date

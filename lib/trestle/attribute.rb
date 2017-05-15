@@ -49,10 +49,6 @@ module Trestle
       def association_admin
         Trestle.admins[association_class.name.underscore.pluralize]
       end
-
-      def options_for_select
-        association_class.all.map { |instance| [instance.name, instance.id] }
-      end
     end
   end
 end

@@ -1,6 +1,11 @@
 module Trestle
   class Form
     class Builder < ActionView::Helpers::FormBuilder
+      # The #display method is defined on Kernel. Undefine it so that the
+      # Builder instance will not respond_to?(:display) allowing the method to
+      # be dispatched to the template helpers instead.
+      undef_method :display
+
       cattr_accessor :fields
       self.fields = {}
 

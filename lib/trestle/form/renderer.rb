@@ -11,9 +11,9 @@ module Trestle
       # without wrapping it in a new output buffer.
       RAW_BLOCK_HELPERS = [:table]
 
-      # The #select method is defined on Kernel. Undefine it so that it can
-      # be delegated to the form builder by method_missing.
-      undef_method :select
+      # The #select and #display methods are defined on Kernel. Undefine them so
+      # that they can be delegated to the form builder or template by method_missing.
+      undef_method :select, :display
 
       delegate :concat, to: :output_buffer
 

@@ -19,9 +19,9 @@ module Trestle
             Column.new(self, attribute.name, link: index.zero?) do |instance|
               if target = instance.public_send(attribute.association_name)
                 if admin = attribute.association_admin
-                  link_to target.name, admin.path(:show, id: admin.to_param(target))
+                  link_to display(target), admin.path(:show, id: admin.to_param(target))
                 else
-                  target.name
+                  display(target)
                 end
               else
                 content_tag(:span, "None set", class: "empty")
