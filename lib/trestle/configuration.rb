@@ -13,6 +13,8 @@ module Trestle
 
     option :turbolinks, defined?(Turbolinks)
 
+    option :display_methods, [:display_name, :full_name, :name, :title, :username, :login, :email, :to_s]
+
     option :persistent_params, [:sort, :order, :scope]
 
     option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)

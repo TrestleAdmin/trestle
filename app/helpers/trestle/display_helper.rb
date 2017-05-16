@@ -1,7 +1,7 @@
 module Trestle
   module DisplayHelper
     def display(instance)
-      instance.name
+      Trestle::Display.new(instance).to_s
     end
   end
 end

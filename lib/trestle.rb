@@ -16,6 +16,7 @@ module Trestle
   autoload :Builder
   autoload :Configurable
   autoload :Configuration
+  autoload :Display
   autoload :Form
   autoload :Navigation
   autoload :Options
