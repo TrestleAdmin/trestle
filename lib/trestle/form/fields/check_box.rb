@@ -6,6 +6,7 @@ module Trestle
 
         def initialize(builder, template, name, options = {}, checked_value = "1", unchecked_value = "0")
           super(builder, template, name, options)
+
           @checked_value, @unchecked_value = checked_value, unchecked_value
         end
 

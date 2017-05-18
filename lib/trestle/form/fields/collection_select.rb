@@ -6,12 +6,17 @@ module Trestle
 
         def initialize(builder, template, name, collection, value_method, text_method, options={}, html_options={})
           super(builder, template, name, options)
-          @collection, @value_method, @text_method, @html_options = collection, value_method, text_method, html_options
-          html_options[:class] ||= "form-control"
+
+          @collection, @value_method, @text_method = collection, value_method, text_method
+          @html_options = default_html_options.merge(html_options)
         end
 
         def field
           builder.raw_collection_select(name, collection, value_method, text_method, options, html_options)
+        end
+
+        def default_html_options
+          Trestle::Options.new(class: ["form-control"])
         end
       end
     end

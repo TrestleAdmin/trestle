@@ -6,12 +6,17 @@ module Trestle
 
         def initialize(builder, template, name, priority_zones=nil, options={}, html_options={}, &block)
           super(builder, template, name, options, &block)
-          @priority_zones, @html_options = priority_zones, html_options
-          html_options[:class] ||= "form-control"
+
+          @priority_zones = priority_zones
+          @html_options = default_html_options.merge(html_options)
         end
 
         def field
           builder.raw_time_zone_select(name, priority_zones, options, html_options, &block)
+        end
+
+        def default_html_options
+          Trestle::Options.new(class: ["form-control"])
         end
       end
     end

@@ -6,7 +6,9 @@ module Trestle
 
         def initialize(builder, template, name, collection, value_method, text_method, options={}, html_options={})
           super(builder, template, name, options)
-          @collection, @value_method, @text_method, @html_options = collection, value_method, text_method, html_options
+
+          @collection, @value_method, @text_method = collection, value_method, text_method
+          @html_options = default_html_options.merge(html_options)
         end
 
         def field
@@ -15,6 +17,10 @@ module Trestle
               b.label(class: "checkbox-inline") { b.check_box + b.text }
             end
           end
+        end
+
+        def default_html_options
+          Trestle::Options.new
         end
       end
     end

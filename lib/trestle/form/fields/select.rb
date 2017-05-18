@@ -6,12 +6,17 @@ module Trestle
 
         def initialize(builder, template, name, choices=nil, options={}, html_options={}, &block)
           super(builder, template, name, options, &block)
-          @choices, @html_options = Choices.new(choices), html_options
-          html_options[:class] ||= "form-control"
+
+          @choices = Choices.new(choices)
+          @html_options = default_html_options.merge(html_options)
         end
 
         def field
           builder.raw_select(name, choices, options, html_options, &block)
+        end
+
+        def default_html_options
+          Trestle::Options.new(class: ["form-control"])
         end
 
         # Allows an array of model instances (or a scope) to be

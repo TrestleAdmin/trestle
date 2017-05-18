@@ -6,6 +6,7 @@ module Trestle
 
         def initialize(builder, template, name, tag_value, options={})
           super(builder, template, name, options)
+
           @tag_value = tag_value
         end
 

@@ -3,9 +3,10 @@ module Trestle
     module Fields
       class StaticField < Field
         attr_reader :value
-        
+
         def initialize(builder, template, name, value, options={})
           super(builder, template, name, options)
+
           @value = value
         end
 
