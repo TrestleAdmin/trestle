@@ -26,7 +26,7 @@ module Trestle
           alias empty? none?
 
           def initialize(choices)
-            @choices = choices
+            @choices = Array(choices)
           end
 
           def each
