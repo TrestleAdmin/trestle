@@ -24,12 +24,12 @@
     "test",
     "tests"
   ],
-  "version": "2.6.1",
-  "_release": "2.6.1",
+  "version": "2.6.2",
+  "_release": "2.6.2",
   "_resolution": {
     "type": "version",
-    "tag": "v2.6.1",
-    "commit": "cabb795d9980baf481a45045dc9e3bc2c723e6e3"
+    "tag": "v2.6.2",
+    "commit": "ea2383c406206146783da59d3142bc45737216f6"
   },
   "_source": "https://github.com/chmln/flatpickr.git",
   "_target": "~2.6.1",

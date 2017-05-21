@@ -2,7 +2,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/*! flatpickr v2.6.1, @license MIT */
+/*! flatpickr v2.6.2, @license MIT */
 function Flatpickr(element, config) {
 	var self = this;
 
@@ -23,10 +23,6 @@ function Flatpickr(element, config) {
 	self.toggle = toggle;
 
 	function init() {
-		if (element._flatpickr) element._flatpickr.destroy();
-
-		element._flatpickr = self;
-
 		self.element = element;
 		self.instanceConfig = config || {};
 		self.parseDate = Flatpickr.prototype.parseDate.bind(self);
@@ -106,7 +102,7 @@ function Flatpickr(element, config) {
 
 		var hours = (parseInt(self.hourElement.value, 10) || 0) % (self.amPM ? 12 : 24),
 		    minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60,
-		    seconds = self.config.enableSeconds ? parseInt(self.secondElement.value, 10) || 0 : 0;
+		    seconds = self.config.enableSeconds ? (parseInt(self.secondElement.value, 10) || 0) % 60 : 0;
 
 		if (self.amPM !== undefined) hours = hours % 12 + 12 * (self.amPM.textContent === "PM");
 
@@ -455,7 +451,7 @@ function Flatpickr(element, config) {
 
 		dayElement.dateObj = date;
 		dayElement.$i = i;
-		dayElement.setAttribute("aria-label", self.formatDate(date, "F j, Y"));
+		dayElement.setAttribute("aria-label", self.formatDate(date, self.config.ariaDateFormat));
 
 		if (compareDates(date, self.now) === 0) {
 			self.todayDateElem = dayElement;
@@ -834,36 +830,35 @@ function Flatpickr(element, config) {
 		triggerEvent("Close");
 	}
 
-	function destroy(instance) {
-		instance = instance || self;
-
-		for (var i = instance._handlers.length; i--;) {
-			var h = instance._handlers[i];
+	function destroy() {
+		for (var i = self._handlers.length; i--;) {
+			var h = self._handlers[i];
 			h.element.removeEventListener(h.event, h.handler);
 		}
 
-		instance._handlers = [];
+		self._handlers = [];
 
-		if (instance.mobileInput) {
-			if (instance.mobileInput.parentNode) instance.mobileInput.parentNode.removeChild(instance.mobileInput);
-			instance.mobileInput = undefined;
-		} else if (instance.calendarContainer && instance.calendarContainer.parentNode) instance.calendarContainer.parentNode.removeChild(instance.calendarContainer);
+		if (self.mobileInput) {
+			if (self.mobileInput.parentNode) self.mobileInput.parentNode.removeChild(self.mobileInput);
+			self.mobileInput = null;
+		} else if (self.calendarContainer && self.calendarContainer.parentNode) self.calendarContainer.parentNode.removeChild(self.calendarContainer);
 
-		if (instance.altInput) {
-			instance.input.type = "text";
-			if (instance.altInput.parentNode) instance.altInput.parentNode.removeChild(instance.altInput);
-			instance.altInput = undefined;
+		if (self.altInput) {
+			self.input.type = "text";
+			if (self.altInput.parentNode) self.altInput.parentNode.removeChild(self.altInput);
+			delete self.altInput;
 		}
 
-		if (instance.input) {
-			instance.input.type = instance.input._type;
-			instance.input.classList.remove("flatpickr-input");
-			instance.input.removeAttribute("readonly");
-			instance.input.value = "";
+		if (self.input) {
+			self.input.type = self.input._type;
+			self.input.classList.remove("flatpickr-input");
+			self.input.removeAttribute("readonly");
+			self.input.value = "";
 		}
 
-		instance.config = undefined;
-		instance.input._flatpickr = undefined;
+		["_showTimeInput", "latestSelectedDateObj", "_hideNextMonthArrow", "_hidePrevMonthArrow", "__hideNextMonthArrow", "__hidePrevMonthArrow", "isMobile", "isOpen", "selectedDateElem", "minDateHasTime", "maxDateHasTime", "days", "daysContainer", "_input", "_positionElement", "innerContainer", "rContainer", "monthNav", "todayDateElem", "calendarContainer", "weekdayContainer", "prevMonthNav", "nextMonthNav", "currentMonthElement", "currentYearElement", "navigationCurrentMonth", "selectedDateElem", "config"].forEach(function (k) {
+			return delete self[k];
+		});
 	}
 
 	function isCalendarElem(elem) {
@@ -884,7 +879,6 @@ function Flatpickr(element, config) {
 			if (lostFocus) {
 				e.preventDefault();
 				self.close();
-				self._input.blur();
 
 				if (self.config.mode === "range" && self.selectedDates.length === 1) {
 					self.clear(false);
@@ -965,18 +959,20 @@ function Flatpickr(element, config) {
 
 				case "ArrowLeft":
 				case "ArrowRight":
-					e.preventDefault();
+					if (!isTimeObj) {
+						e.preventDefault();
 
-					if (self.daysContainer) {
-						var _delta = e.key === "ArrowRight" ? 1 : -1;
+						if (self.daysContainer) {
+							var _delta = e.key === "ArrowRight" ? 1 : -1;
 
-						if (!e.ctrlKey) focusOnDay(e.target.$i, _delta);else {
-							changeMonth(_delta, true);
-							afterDayAnim(function () {
-								focusOnDay(e.target.$i, 0);
-							});
-						}
-					} else if (self.config.enableTime && !isTimeObj) self.hourElement.focus();
+							if (!e.ctrlKey) focusOnDay(e.target.$i, _delta);else {
+								changeMonth(_delta, true);
+								afterDayAnim(function () {
+									focusOnDay(e.target.$i, 0);
+								});
+							}
+						} else if (self.config.enableTime && !isTimeObj) self.hourElement.focus();
+					}
 
 					break;
 
@@ -1001,7 +997,10 @@ function Flatpickr(element, config) {
 					if (e.target === self.hourElement) {
 						e.preventDefault();
 						self.minuteElement.select();
-					} else if (e.target === self.minuteElement && self.amPM) {
+					} else if (e.target === self.minuteElement && (self.secondElement || self.amPM)) {
+						e.preventDefault();
+						(self.secondElement || self.amPM).focus();
+					} else if (e.target === self.secondElement) {
 						e.preventDefault();
 						self.amPM.focus();
 					}
@@ -1305,10 +1304,7 @@ function Flatpickr(element, config) {
 				self._hidePrevMonthArrow = self._hidePrevMonthArrow || self.minRangeDate > self.days.childNodes[0].dateObj;
 
 				self._hideNextMonthArrow = self._hideNextMonthArrow || self.maxRangeDate < new Date(self.currentYear, self.currentMonth + 1, 1);
-			} else {
-				updateNavigationCurrentMonth();
-				self.close();
-			}
+			} else updateNavigationCurrentMonth();
 		}
 
 		triggerEvent("Change");
@@ -1322,7 +1318,7 @@ function Flatpickr(element, config) {
 			return self.hourElement.select();
 		}, 451);
 
-		if (self.config.mode === "single" && !self.config.enableTime) self.close();
+		if (self.config.mode !== "multiple" && !self.config.enableTime && self.config.closeOnSelect) self.close();
 	}
 
 	function set(option, value) {
@@ -1781,6 +1777,12 @@ Flatpickr.defaultConfig = {
  */
 	clickOpens: true,
 
+	/*
+ 	closes calendar after date selection,
+ 	unless 'mode' is 'multiple' or enableTime is true
+ */
+	closeOnSelect: true,
+
 	// display time picker in 24 hour mode
 	time_24hr: false,
 
@@ -1792,6 +1794,9 @@ Flatpickr.defaultConfig = {
 
 	// more date format chars at https://chmln.github.io/flatpickr/#dateformat
 	dateFormat: "Y-m-d",
+
+	// date format used in aria-label for days
+	ariaDateFormat: "F j, Y",
 
 	// altInput - see https://chmln.github.io/flatpickr/#altinput
 	altInput: false,
