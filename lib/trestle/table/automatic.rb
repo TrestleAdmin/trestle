@@ -38,7 +38,7 @@ module Trestle
           else
             Column.new(self, attribute.name, link: index.zero?, align: (:center if attribute.datetime?))
           end
-        end
+        end.compact
       end
 
       def actions_column
