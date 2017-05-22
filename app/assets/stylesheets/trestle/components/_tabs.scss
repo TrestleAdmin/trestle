@@ -41,9 +41,17 @@
     }
   }
 
-  > li.pull-right > a {
-    margin-right: 0;
-    margin-left: 4px;
+  > li.pull-right {
+    margin-left: auto;
+
+    & + li.pull-right {
+      margin-left: 0;
+    }
+
+    > a {
+      margin-right: 0;
+      margin-left: 4px;
+    }
   }
 
   .badge, .label {
@@ -62,7 +70,7 @@
     }
 
     > li.pull-right {
-      float: left !important;
+      margin-left: 0;
 
       > a {
         margin-right: 2px;
