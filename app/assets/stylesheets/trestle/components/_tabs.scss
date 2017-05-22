@@ -1,6 +1,22 @@
 .nav-tabs {
   border-bottom: none;
 
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $gray-lighter;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(black, 0.1);
+  }
+
   > li {
     margin-bottom: 0;
   }
