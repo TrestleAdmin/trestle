@@ -6,6 +6,15 @@ a {
   font-weight: bold;
 }
 
+.empty {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
 .label-pill {
   border-radius: 10em !important;
 }

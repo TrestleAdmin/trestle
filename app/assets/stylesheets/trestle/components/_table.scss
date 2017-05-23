@@ -39,15 +39,6 @@
 
   tbody a {
     font-weight: normal;
-
-    &.empty {
-      font-style: italic;
-      opacity: 0.5;
-    }
-  }
-
-  .nowrap {
-    white-space: nowrap;
   }
 
   .select-row {
