@@ -4,14 +4,23 @@ module Trestle
       class StaticField < Field
         attr_reader :value
 
-        def initialize(builder, template, name, value, options={})
-          super(builder, template, name, options)
+        def initialize(builder, template, name, value=nil, options={}, &block)
+          if block_given? && value.is_a?(Hash)
+            options = value
+          else
+            @value = value
+          end
 
-          @value = value
+          super(builder, template, name, options, &block)
         end
 
         def field
-          content_tag(:p, value, class: "form-control-static")
+          if block
+            template.instance_eval(&block)
+            nil
+          else
+            content_tag(:p, value, class: "form-control-static")
+          end
         end
       end
     end
