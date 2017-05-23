@@ -15,14 +15,16 @@ Trestle.ready ->
 
   # Interacting outside of the sidebar closes the navigation
 
-  sidebar.on 'click touchstart', (e) ->
-    e.stopPropagation()
-
   $('.app-wrapper').on 'click touchstart', (e) ->
     navExpanded = $('body').hasClass('mobile-nav-expanded')
-    clickInHeader = $(e.target).closest('.app-header').length
 
-    if navExpanded and !clickInHeader
+    clickInHeader = $(e.target).closest('.app-header').length
+    clickInSidebar = $(e.target).closest('.app-sidebar').length
+
+    if navExpanded and !clickInHeader and !clickInSidebar
+      e.stopPropagation()
+      e.preventDefault()
+
       $('.app-wrapper').addClass('animate')
       $('body').removeClass('mobile-nav-expanded')
 
