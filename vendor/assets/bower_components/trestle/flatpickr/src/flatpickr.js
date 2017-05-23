@@ -1,4 +1,4 @@
-/*! flatpickr v2.6.2, @license MIT */
+/*! flatpickr v2.6.3, @license MIT */
 function Flatpickr(element, config) {
 	const self = this;
 
@@ -19,7 +19,7 @@ function Flatpickr(element, config) {
 	self.toggle = toggle;
 
 	function init() {
-		self.element = element;
+		self.element = self.input = element;
 		self.instanceConfig = config || {};
 		self.parseDate = Flatpickr.prototype.parseDate.bind(self);
 		self.formatDate = Flatpickr.prototype.formatDate.bind(self);
@@ -238,6 +238,7 @@ function Flatpickr(element, config) {
 	 */
 	function bindEvents() {
 		self._handlers = [];
+		self._animationLoop = [];
 		if (self.config.wrap) {
 			["open", "close", "toggle", "clear"].forEach(evt => {
 				Array.prototype.forEach.call(
@@ -312,6 +313,13 @@ function Flatpickr(element, config) {
 		}
 	}
 
+	function processPostDayAnimation() {
+		for(let i = self._animationLoop.length; i--;){
+			self._animationLoop[i]();
+			self._animationLoop.splice(i, 1);
+		}
+	}
+
 	/**
 	 * Removes the day container that slided out of view
 	 * @param {Event} e the animation event
@@ -323,6 +331,7 @@ function Flatpickr(element, config) {
 					self.daysContainer.lastChild.classList.remove("slideLeftNew")
 					self.daysContainer.removeChild(self.daysContainer.firstChild);
 					self.days = self.daysContainer.firstChild;
+					processPostDayAnimation();
 
 					break;
 
@@ -330,6 +339,7 @@ function Flatpickr(element, config) {
 					self.daysContainer.firstChild.classList.remove("slideRightNew")
 					self.daysContainer.removeChild(self.daysContainer.lastChild);
 					self.days = self.daysContainer.firstChild;
+					processPostDayAnimation();
 
 					break;
 
@@ -606,8 +616,8 @@ function Flatpickr(element, config) {
 	}
 
 	function afterDayAnim(fn) {
-		if (self.config.animate)
-			return setTimeout(fn, self._.daysAnimDuration + 1);
+		if (self.config.animate === true)
+			return self._animationLoop.push(fn);
 		fn();
 	}
 
@@ -911,8 +921,6 @@ function Flatpickr(element, config) {
 
 		buildDays(!skipAnimations ? delta : undefined);
 
-
-
 		if (skipAnimations) {
 			triggerEvent("MonthChange");
 			return updateNavigationCurrentMonth();
@@ -939,7 +947,6 @@ function Flatpickr(element, config) {
 				: self.oldCurMonth
 		);
 
-
 		if (delta > 0) {
 			self.daysContainer.firstChild.classList.add("slideLeft");
 			self.daysContainer.lastChild.classList.add("slideLeftNew");
@@ -965,13 +972,11 @@ function Flatpickr(element, config) {
 
 		triggerEvent("MonthChange");
 
-		if (self._.daysAnimDuration === undefined) {
-			const compStyle = window.getComputedStyle(self.daysContainer.lastChild);
-
-			const duration = compStyle.getPropertyValue("animation-duration")
-				|| compStyle.getPropertyValue("-webkit-animation-duration");
-
-			self._.daysAnimDuration = parseInt(/(\d+)s/.exec(duration)[1]);
+		if (document.activeElement && document.activeElement.$i) {
+			const index = document.activeElement.$i;
+			afterDayAnim(() => {
+				focusOnDay(index, 0)
+			});
 		}
 	}
 
@@ -1210,12 +1215,8 @@ function Flatpickr(element, config) {
 							if (!e.ctrlKey)
 								focusOnDay(e.target.$i, delta);
 
-							else {
+							else 
 								changeMonth(delta, true);
-								afterDayAnim(() => {
-									focusOnDay(e.target.$i, 0)
-								});
-							}
 						}
 
 						else if (self.config.enableTime && !isTimeObj)
@@ -1664,9 +1665,19 @@ function Flatpickr(element, config) {
 
 		if (self.config.enableTime)
 			setTimeout(() => self.hourElement.select(), 451);
+		
+		if (self.config.closeOnSelect) {
+			const single = self.config.mode === "single" && !self.config.enableTime;
+			const range = (
+				self.config.mode === "range" &&
+				self.selectedDates.length === 2 &&
+				!self.config.enableTime
+			);
 
-		if (self.config.mode !== "multiple" && !self.config.enableTime && self.config.closeOnSelect)
-			self.close();
+			if (single || range)
+				self.close();
+		}
+
 	}
 
 	function set(option, value) {
@@ -1870,6 +1881,7 @@ function Flatpickr(element, config) {
 			);
 			self._input = self.altInput;
 			self.altInput.placeholder = self.input.placeholder;
+			self.altInput.disabled = self.input.disabled;
 			self.altInput.type = "text";
 			self.input.type = "hidden";
 
@@ -1942,7 +1954,7 @@ function Flatpickr(element, config) {
 
 		if (hooks !== undefined && hooks.length > 0) {
 			for (let i = 0; hooks[i] && i < hooks.length; i++)
-				hooks[i](self.selectedDates, self._input.value, self, data);
+				hooks[i](self.selectedDates, self.input.value, self, data);
 		}
 
 		if (event === "Change") {
@@ -2406,6 +2418,13 @@ Flatpickr.prototype = {
 			return this.utils.monthToStr(this.formats.n(date) - 1, false);
 		},
 
+		// padded hour 1-12
+		G: function (date) {
+			return Flatpickr.prototype.pad(
+				Flatpickr.prototype.formats.h(date)
+			)
+		},
+
 		// hours with leading zero e.g. 03
 		H: date => Flatpickr.prototype.pad(date.getHours()),
 
@@ -2489,6 +2508,9 @@ Flatpickr.prototype = {
 		F: function(dateObj, monthName) {
 			dateObj.setMonth(this.l10n.months.longhand.indexOf(monthName));
 		},
+		G: (dateObj, hour) => {
+			dateObj.setHours(parseFloat(hour))
+		},
 		H: (dateObj, hour) => {
 			dateObj.setHours(parseFloat(hour))
 		},
@@ -2549,6 +2571,7 @@ Flatpickr.prototype = {
 	tokenRegex: {
 		D:"(\\w+)",
 		F:"(\\w+)",
+		G: "(\\d\\d|\\d)",
 		H:"(\\d\\d|\\d)",
 		J:"(\\d\\d|\\d)\\w+",
 		K:"(\\w+)",
