@@ -7,5 +7,9 @@ module Trestle
     def col(columns)
       content_tag(:div, class: columns.map { |breakpoint, span| "col-#{breakpoint}-#{span}" }) { yield }
     end
+
+    def divider
+      content_tag(:hr)
+    end
   end
 end

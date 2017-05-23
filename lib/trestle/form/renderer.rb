@@ -5,7 +5,7 @@ module Trestle
       include ::ActionView::Helpers::CaptureHelper
 
       # Whitelisted helpers will concatenate their result to the output buffer when called.
-      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :toolbar, :table]
+      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :toolbar, :table, :divider]
 
       # Raw block helpers will pass their block argument directly to the method
       # without wrapping it in a new output buffer.
