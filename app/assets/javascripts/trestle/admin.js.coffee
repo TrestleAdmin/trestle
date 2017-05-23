@@ -12,5 +12,9 @@
 
 window.Trestle = Trestle = {}
 
-Trestle.ready = (callback) ->
-  $(document).on 'ready turbolinks:load', callback
+if Turbolinks?.supported
+  Trestle.ready = (callback) -> $(document).on 'turbolinks:load', callback
+  Trestle.visit = (url) -> Turbolinks.visit(url)
+else
+  Trestle.ready = (callback) -> $(callback)
+  Trestle.visit = (url) -> document.location = url

@@ -6,7 +6,7 @@ $(document).on 'click', '[data-url]', (e) ->
   else
     url = row.data('url')
 
-  document.location = url if url
+  Trestle.visit(url) if url
 
 $(document).on 'click', '[data-url] a', (e) ->
   e.stopPropagation()
