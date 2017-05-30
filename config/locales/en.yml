@@ -3,9 +3,6 @@ en:
     title: Trestle Admin
     footer: Powered by Trestle
 
-    breadcrumbs:
-      home: Home
-
     flash:
       success:
         title: "Success!"
@@ -29,3 +26,11 @@ en:
 
         more_pages:
           display_entries: "Displaying %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> of <b>%{total}</b>"
+
+  admin:
+    breadcrumbs:
+      home: Home
+
+    table:
+      headers:
+        id: ID

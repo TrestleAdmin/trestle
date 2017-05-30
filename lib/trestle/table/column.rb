@@ -36,7 +36,7 @@ module Trestle
 
     private
       def header_text
-        I18n.t("admin.table.header.#{field}", default: options[:header] || field.to_s.humanize.titleize)
+        I18n.t("admin.table.headers.#{field}", default: options[:header] || field.to_s.humanize.titleize)
       end
 
       def sort_field

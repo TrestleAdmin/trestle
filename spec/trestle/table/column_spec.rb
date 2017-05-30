@@ -13,7 +13,7 @@ describe Trestle::Table::Column do
     let(:options) { { header: "Custom Header" } }
 
     it "returns the header based on the internationalized field name" do
-      expect(I18n).to receive(:t).with("admin.table.header.my_field", default: "Custom Header").and_return("Custom Header")
+      expect(I18n).to receive(:t).with("admin.table.headers.my_field", default: "Custom Header").and_return("Custom Header")
       expect(column.header(template)).to eq("Custom Header")
     end
   end

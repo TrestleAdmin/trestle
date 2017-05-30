@@ -19,7 +19,7 @@ module Trestle
 
     option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
 
-    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t("trestle.breadcrumbs.home"), Trestle.config.path)] }
+    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t("admin.breadcrumbs.home"), Trestle.config.path)] }
 
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"
 
