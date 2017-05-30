@@ -78,6 +78,8 @@ module Trestle
             template.timestamp(value)
           when Date, DateTime
             template.datestamp(value)
+          when TrueClass, FalseClass
+            template.status_tag(template.icon("fa fa-check"), :success) if value
           else
             value
           end

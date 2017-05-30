@@ -31,12 +31,8 @@ module Trestle
             Column.new(self, attribute.name, link: index.zero?) do |instance|
               truncate(instance.public_send(attribute.name))
             end
-          elsif attribute.boolean?
-            Column.new(self, attribute.name, link: index.zero?, align: :center) do |instance|
-              status_tag(icon("fa fa-check"), :success) if instance.public_send(attribute.name)
-            end
           else
-            Column.new(self, attribute.name, link: index.zero?, align: (:center if attribute.datetime?))
+            Column.new(self, attribute.name, link: index.zero?, align: (:center if attribute.datetime? || attribute.boolean?))
           end
         end.compact
       end
