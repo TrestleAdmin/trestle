@@ -76,7 +76,7 @@ module Trestle
           case value
           when Time
             template.timestamp(value)
-          when Date
+          when Date, DateTime
             template.datestamp(value)
           else
             value
