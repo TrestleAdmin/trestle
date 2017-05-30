@@ -58,16 +58,16 @@ describe Trestle::SortHelper::SortLink do
         expect(link.classes).to include("active")
       end
 
-      it "includes the sort-desc class" do
-        expect(link.classes).to include("sort-desc")
+      it "includes the sort-asc class" do
+        expect(link.classes).to include("sort-asc")
       end
     end
 
-    context "when active in ascending order" do
-      let(:params) { { sort: "field", order: "asc" } }
+    context "when active in descending order" do
+      let(:params) { { sort: "field", order: "desc" } }
 
-      it "includes the sort-asc class" do
-        expect(link.classes).to include("sort-asc")
+      it "includes the sort-desc class" do
+        expect(link.classes).to include("sort-desc")
       end
     end
   end

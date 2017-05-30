@@ -22,14 +22,14 @@ module Trestle
 
       def order
         if active?
-          reverse_order(@params[:order] || "desc")
+          reverse_order(current_order)
         else
           default_order
         end
       end
 
       def current_order
-        default_order == "desc" ? order : reverse_order(order)
+        @params[:order] || default_order
       end
 
       def default_order
