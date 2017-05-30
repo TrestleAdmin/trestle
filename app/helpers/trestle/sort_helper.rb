@@ -13,7 +13,8 @@ module Trestle
       end
 
       def active?
-        @params[:sort] == field.to_s
+        @params[:sort] == field.to_s ||
+          (@options[:default] && !@params.key?(:sort))
       end
 
       def params

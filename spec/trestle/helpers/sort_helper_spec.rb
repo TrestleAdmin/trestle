@@ -18,6 +18,24 @@ describe Trestle::SortHelper::SortLink do
     context "when the sort param does not match the field name" do
       it { is_expected.to_not be_active }
     end
+
+    context "on a default field" do
+      let(:options) { { default: true } }
+
+      context "when no sort param is present" do
+        it { is_expected.to be_active }
+      end
+
+      context "when the sort param matches the field name" do
+        let(:params) { { sort: "field" } }
+        it { is_expected.to be_active }
+      end
+
+      context "when the sort param does not match the field name" do
+        let(:params) { { sort: "other" } }
+        it { is_expected.to_not be_active }
+      end
+    end
   end
 
   describe "#params" do
