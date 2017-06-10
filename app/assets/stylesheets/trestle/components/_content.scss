@@ -73,6 +73,7 @@
 .main-content-sidebar {
   background: $content-sidebar-background;
   flex: 0 0 $content-sidebar-width;
+  max-width: $content-sidebar-width;
 }
 
 .utilities {
@@ -95,6 +96,7 @@
 
   .main-content-sidebar {
     flex-basis: 0;
+    max-width: none;
   }
 
   .main-content,
