@@ -92,7 +92,7 @@ module Trestle
       end
 
       def model_name
-        options[:as] || model.model_name.to_s.titleize
+        options[:as] || default_model_name
       end
 
       def readonly?
@@ -122,6 +122,11 @@ module Trestle
         parent.const_get(admin_name.classify)
       rescue NameError
         nil
+      end
+
+      def default_model_name
+        model_name = model.model_name
+        model_name.respond_to?(:human) ? model_name.human : model_name.to_s.titleize
       end
     end
   end

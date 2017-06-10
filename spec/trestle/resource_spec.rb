@@ -64,11 +64,23 @@ describe Trestle::Resource do
   end
 
   describe "#model_name" do
-    it "returns the model name" do
-      class Test; end
+    context "#model_name on the class returns an ActiveModel::Name" do
+      it "returns the humanized model name" do
+        model_name = double(human: "ActiveModel Class")
+        class Test; end
 
-      expect(Test).to receive(:model_name).and_return("Test Class")
-      expect(admin.model_name).to eq("Test Class")
+        expect(Test).to receive(:model_name).and_return(model_name)
+        expect(admin.model_name).to eq("ActiveModel Class")
+      end
+    end
+
+    context "#model_name on the class returns a string" do
+      it "returns the titleized model name" do
+        class Test; end
+
+        expect(Test).to receive(:model_name).and_return("TestClass")
+        expect(admin.model_name).to eq("Test Class")
+      end
     end
 
     it "can be overridden via the `as` option" do
