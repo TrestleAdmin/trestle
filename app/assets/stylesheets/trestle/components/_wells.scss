@@ -12,3 +12,28 @@
     margin-bottom: 0;
   }
 }
+
+.main-content-sidebar .well {
+  margin: 0 -20px;
+  background: darken($well-bg, 3%);
+
+  &:first-child {
+    margin-top: -20px;
+  }
+
+  &:last-child {
+    margin-bottom: -20px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    margin: 0 -15px;
+
+    &:first-child {
+      margin-top: -15px;
+    }
+
+    &:last-child {
+      margin-bottom: -15px;
+    }
+  }
+}
