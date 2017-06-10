@@ -1,4 +1,4 @@
-$(document).on 'click', '[data-url]', (e) ->
+$(document).on 'click', 'tr[data-url]', (e) ->
   row = $(e.currentTarget)
 
   if row.data('url') == 'auto'
@@ -8,5 +8,5 @@ $(document).on 'click', '[data-url]', (e) ->
 
   Trestle.visit(url) if url
 
-$(document).on 'click', '[data-url] a', (e) ->
+$(document).on 'click', 'tr[data-url] a', (e) ->
   e.stopPropagation()
