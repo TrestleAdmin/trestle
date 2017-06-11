@@ -1,38 +1,70 @@
 # Trestle
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trestle`. To experiment with that code, run `bin/console` for an interactive prompt.
+> A modern new admin framework for Ruby on Rails
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+## Example
 
-Add this line to your application's Gemfile:
+```ruby
+Trestle.resource(:posts) do
+  # Add a link to this admin in the main navigation
+  menu :posts, icon: "fa fa-file-text-o", group: :blog_management
+
+  # Define custom scopes for the index view
+  scope :all, default: true
+  scope :published
+  scope :drafts, -> { Post.unpublished }
+
+  # Define the index view table listing
+  table do
+    column :title, link: true
+    column :author, ->(post) { post.author.name }
+    column :published, align: :center do |post|
+      status_tag(icon("fa fa-check"), :success) if post.published?
+    end
+    column :updated_at, header: "Last Updated", align: :center
+    actions
+  end
+
+  # Define the form structure for the new & edit actions
+  form do
+    # Organize fields into tabs and sidebars
+    tab :post do
+      text_field :title
+
+      # Define custom form fields for easy re-use
+      wysiwyg :body
+    end
+
+    tab :metadata do
+      # Layout fields based on a 12-column grid
+      row do
+        col(xs: 6) { select :author, User.all }
+        col(xs: 6) { check_box :published, label: "Published post" }
+      end
+    end
+  end
+end
+```
+
+
+## Getting Started
+
+To start using Trestle, first add it to your application's Gemfile:
 
 ```ruby
 gem 'trestle'
 ```
 
-And then execute:
+Run `bundle install`, and then run the install generator to create the initial configuration file and customization hooks:
 
-    $ bundle
+    $ rails generate trestle:install
 
-Or install it yourself as:
+Then create your first admin resource:
 
-    $ gem install trestle
+    $ rails generate trestle:resource Article
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/trestle.
+After restarting your Rails server, visit http://localhost:3000/admin to view your newly created admin. You will find the admin definition in `app/admin/articles_admin.rb` ready to customize.
 
 
 ## License
