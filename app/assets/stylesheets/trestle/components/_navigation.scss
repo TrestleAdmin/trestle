@@ -83,7 +83,15 @@
     }
 
     .expanded & {
-      .nav-header { display: block; }
+      .nav-header {
+        display: block;
+        border-bottom: none;
+        height: auto;
+        margin: 0;
+        padding: 5px 20px;
+        text-indent: 0;
+      }
+
       .nav-label  { display: inline; }
       .nav-badge  { display: block; }
     }
