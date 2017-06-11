@@ -4,7 +4,7 @@
 
 # Trestle
 
-[![Travis](https://img.shields.io/travis/TrestleAdmin/trestle.svg?style=flat-square)]()&nbsp;[![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat-square)]()
+[![Travis](https://img.shields.io/travis/TrestleAdmin/trestle.svg?style=flat-square)]()&nbsp;[![Code Climate](https://img.shields.io/codeclimate/github/TrestleAdmin/trestle.svg?style=flat-square)]()&nbsp;[![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat-square)]()
 
 > A modern new admin framework for Ruby on Rails
 
