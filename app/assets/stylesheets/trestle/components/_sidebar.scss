@@ -35,8 +35,8 @@
     align-self: flex-start;
     flex-shrink: 0;
 
-    background: rgba(black, 0.25);
-    color: rgba(white, 0.5);
+    background: $sidebar-toggle-bg;
+    color: $sidebar-toggle-color;
     border: none;
 
     font-size: 24px;
@@ -58,7 +58,7 @@
 
 .app-sidebar-header {
   height: $header-height;
-  background: $theme-bg;
+  background: $sidebar-header-bg;
 
   display: flex;
   align-items: center;
@@ -68,11 +68,11 @@
     margin-left: $grid-gutter-width / 2;
     padding: 7px 6px;
 
-    border: 1px solid rgba(white, 0.15);
+    border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15);
     border-radius: 4px;
 
     &:hover {
-      background: rgba(white, 0.05);
+      background: rgba($sidebar-mobile-toggle-color, 0.05);
     }
   }
 
@@ -98,7 +98,7 @@
   }
 
   .icon-bar {
-    background: white;
+    background: $sidebar-mobile-toggle-color;
     width: 26px;
     height: 3px;
   }
