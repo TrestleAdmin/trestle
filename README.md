@@ -7,6 +7,25 @@
 > A modern new admin framework for Ruby on Rails
 
 
+## Getting Started
+
+To start using Trestle, first add it to your application's Gemfile:
+
+```ruby
+gem 'trestle'
+```
+
+Run `bundle install`, and then run the install generator to create the initial configuration file and customization hooks:
+
+    $ rails generate trestle:install
+
+Then create your first admin resource:
+
+    $ rails generate trestle:resource Article
+
+After restarting your Rails server, visit http://localhost:3000/admin to view your newly created admin. You will find the admin definition in `app/admin/articles_admin.rb` ready to customize.
+
+
 ## Example
 
 ```ruby
@@ -50,25 +69,6 @@ Trestle.resource(:posts) do
   end
 end
 ```
-
-
-## Getting Started
-
-To start using Trestle, first add it to your application's Gemfile:
-
-```ruby
-gem 'trestle'
-```
-
-Run `bundle install`, and then run the install generator to create the initial configuration file and customization hooks:
-
-    $ rails generate trestle:install
-
-Then create your first admin resource:
-
-    $ rails generate trestle:resource Article
-
-After restarting your Rails server, visit http://localhost:3000/admin to view your newly created admin. You will find the admin definition in `app/admin/articles_admin.rb` ready to customize.
 
 
 ## License
