@@ -1,4 +1,6 @@
-<a href="https://github.com/TrestleAdmin/trestle"><img src="https://avatars3.githubusercontent.com/u/29348992?v=3&s=200" width="50" align="right" /></a>
+<a href="https://github.com/TrestleAdmin/trestle">
+    <img src="https://avatars3.githubusercontent.com/u/29348992?v=3&s=200" alt="Trestle Logo" width="50" align="right" />
+</a>
 
 # Trestle
 
