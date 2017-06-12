@@ -36,10 +36,10 @@ Trestle.ready ->
 
     if sidebar.hasClass('expanded') or sidebar.hasClass('collapsed')
       sidebar.removeClass('expanded').removeClass('collapsed')
-      document.cookie = "trestle:sidebar=; path='/'; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+      document.cookie = "trestle:sidebar=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
     else if $(document).width() >= 1200
       sidebar.addClass('collapsed')
-      document.cookie = "trestle:sidebar=collapsed; path='/'"
+      document.cookie = "trestle:sidebar=collapsed; path=/"
     else if $(document).width() >= 768
       sidebar.addClass('expanded')
-      document.cookie = "trestle:sidebar=expanded; path='/'"
+      document.cookie = "trestle:sidebar=expanded; path=/"
