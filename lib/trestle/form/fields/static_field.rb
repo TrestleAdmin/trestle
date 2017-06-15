@@ -16,8 +16,7 @@ module Trestle
 
         def field
           if block
-            template.instance_eval(&block)
-            nil
+            block.call
           else
             content_tag(:p, value, class: "form-control-static")
           end
