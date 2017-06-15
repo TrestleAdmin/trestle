@@ -66,9 +66,14 @@ Trestle.resource(:posts) do
     tab :metadata do
       # Layout fields based on a 12-column grid
       row do
-        col(xs: 6) { select :author, User.all }
-        col(xs: 6) { check_box :published, label: "Published post" }
+        col(sm: 6) { select :author, User.all }
+        col(sm: 6) { check_box :published, label: "Published post" }
       end
+    end
+
+    sidebar do
+      # Render a custom partial: app/views/admin/posts/_sidebar.html.erb
+      render "sidebar"
     end
   end
 end
