@@ -1,0 +1,11 @@
+// Convert input groups to use flexbox instead of table layout.
+
+.input-group {
+  display: flex;
+}
+
+.input-group-addon {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
