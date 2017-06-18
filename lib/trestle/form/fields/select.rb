@@ -16,7 +16,7 @@ module Trestle
         end
 
         def default_html_options
-          Trestle::Options[class: ["form-control"]]
+          Trestle::Options.new(class: ["form-control"])
         end
 
         # Allows an array of model instances (or a scope) to be
