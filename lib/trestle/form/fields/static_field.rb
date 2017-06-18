@@ -16,7 +16,7 @@ module Trestle
 
         def field
           if block
-            block.call
+            template.capture(&block)
           else
             content_tag(:p, value, class: "form-control-static")
           end
