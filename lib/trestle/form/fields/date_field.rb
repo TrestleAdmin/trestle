@@ -1,7 +1,5 @@
 class Trestle::Form::Fields::DateField < Trestle::Form::Fields::FormControl
-  def defaults
-    super.merge(prepend: icon("fa fa-calendar"))
-  end
+  include Trestle::Form::Fields::DatePicker
 
   def field
     builder.raw_date_field(name, options)

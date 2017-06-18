@@ -3,10 +3,9 @@ module Trestle
     module Fields
       class FormGroup < Field
         def render
-          classes = ['form-group']
-          classes << 'has-error' if errors.any?
+          options[:class] << 'has-error' if errors.any?
 
-          content_tag(:div, options.slice(:data).merge(class: classes.compact)) do
+          content_tag(:div, options) do
             concat label unless options[:label] == false
             concat block.call if block
             concat help_message if options[:help]
@@ -25,7 +24,15 @@ module Trestle
         end
 
         def label
-          builder.label(name, options[:label], class: ["control-label", ("sr-only" if options[:hide_label])])
+          builder.label(name, options[:label], class: ["control-label", ("sr-only" if options[:hide_label])].compact)
+        end
+
+        def defaults
+          super.merge(class: ["form-group"])
+        end
+
+        def extract_options!
+          # Do not call super
         end
       end
     end

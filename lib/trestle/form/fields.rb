@@ -7,6 +7,8 @@ module Trestle
         autoload :FormControl
         autoload :FormGroup
 
+        autoload :DatePicker
+
         autoload :CheckBox
         autoload :CollectionCheckBoxes
         autoload :CollectionRadioButtons

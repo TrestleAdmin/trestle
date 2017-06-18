@@ -9,7 +9,7 @@ module Trestle
         @builder, @template, @name, @block = builder, template, name, block
 
         @options = defaults.merge(options)
-        @options[:readonly] = @options.fetch(:readonly) { admin.readonly? }
+        extract_options!
       end
 
       def errors
@@ -19,7 +19,7 @@ module Trestle
       end
 
       def form_group(opts={})
-        @builder.form_group(name, options.merge(opts)) do
+        @builder.form_group(name, @wrapper.merge(opts)) do
           yield
         end
       end
@@ -35,7 +35,18 @@ module Trestle
       end
 
       def defaults
-        Trestle::Options.new
+        Trestle::Options.new(readonly: admin.readonly?)
+      end
+
+      def extract_options!
+        @wrapper = extract_wrapper_options(:help, :label, :hide_label).merge(options.delete(:wrapper))
+      end
+
+    private
+      def extract_wrapper_options(*keys)
+        wrapper = Trestle::Options.new
+        keys.each { |k| wrapper[k] = options.delete(k) if options.key?(k) }
+        wrapper
       end
     end
   end
