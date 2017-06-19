@@ -9,6 +9,15 @@ describe Trestle::Configurable do
 
   subject(:config) { configurable.new }
 
+  it "inspects neatly when class is named" do
+    allow(configurable).to receive(:name).and_return("MyConfigurable")
+    expect(config.inspect).to eq("#<MyConfigurable>")
+  end
+
+  it "inspects neatly when anonymous" do
+    expect(config.inspect).to eq("#<Anonymous(Trestle::Configurable)>")
+  end
+
   describe "#configure" do
     it "yields itself" do
       expect { |b| config.configure(&b) }.to yield_with_args(config)

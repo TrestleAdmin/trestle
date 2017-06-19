@@ -13,6 +13,10 @@ module Trestle
       self
     end
 
+    def inspect
+      "#<#{self.class.name || "Anonymous(Trestle::Configurable)"}>"
+    end
+
     module ClassMethods
       def defaults
         @defaults ||= {}
