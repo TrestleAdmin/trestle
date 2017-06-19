@@ -1,0 +1,36 @@
+require 'spec_helper'
+
+describe Trestle::Configurable do
+  subject(:configurable) do
+    Class.new do
+      include Trestle::Configurable
+    end
+  end
+
+  subject(:config) { configurable.new }
+
+  describe "#configure" do
+    it "yields itself" do
+      expect { |b| config.configure(&b) }.to yield_with_args(config)
+    end
+
+    it "returns itself" do
+      expect(config.configure).to eq(config)
+    end
+  end
+
+  describe ".option" do
+    it "defines accessors for the option" do
+      configurable.option :myoption
+
+      config.myoption = "test"
+      expect(config.myoption).to eq("test")
+    end
+
+    it "can be declared with a default value" do
+      configurable.option :myoption_with_default, "default"
+
+      expect(config.myoption_with_default).to eq("default")
+    end
+  end
+end
