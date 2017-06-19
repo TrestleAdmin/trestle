@@ -3,6 +3,16 @@ require 'spec_helper'
 describe Trestle::Configuration do
   subject(:config) { Trestle::Configuration.new }
 
+  describe "#configure" do
+    it "yields itself" do
+      expect { |b| config.configure(&b) }.to yield_with_args(config)
+    end
+
+    it "returns itself" do
+      expect(config.configure).to eq(config)
+    end
+  end
+
   it "has a site title configuration option" do
     expect(config).to have_accessor(:site_title).with_default("Trestle Admin")
   end

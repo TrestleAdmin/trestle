@@ -43,8 +43,8 @@ module Trestle
     @configuration ||= Configuration.new
   end
 
-  def self.configure
-    yield config
+  def self.configure(&block)
+    config.configure(&block)
   end
 
   def self.navigation

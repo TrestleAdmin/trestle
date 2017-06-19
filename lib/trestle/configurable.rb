@@ -8,6 +8,11 @@ module Trestle
       end
     end
 
+    def configure(&block)
+      yield self if block_given?
+      self
+    end
+
     module ClassMethods
       def defaults
         @defaults ||= {}
