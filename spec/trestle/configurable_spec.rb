@@ -28,6 +28,15 @@ describe Trestle::Configurable do
     end
   end
 
+  describe "#options" do
+    it "returns a hash of defined options" do
+      configurable.option :myoption
+      config.myoption = "test"
+
+      expect(config.options).to eq({ myoption: "test" })
+    end
+  end
+
   describe ".option" do
     it "defines accessors for the option" do
       configurable.option :myoption

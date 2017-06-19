@@ -4,13 +4,17 @@ module Trestle
 
     def initialize
       self.class.defaults.each do |name, default|
-        instance_variable_set("@#{name}", default)
+        options[name] = default
       end
     end
 
     def configure(&block)
       yield self if block_given?
       self
+    end
+
+    def options
+      @options ||= {}
     end
 
     def inspect
@@ -23,10 +27,14 @@ module Trestle
       end
 
       def option(name, default=nil)
-        attr_writer name
+        name = name.to_sym
+
+        define_method("#{name}=") do |value|
+          options[name] = value
+        end
 
         define_method(name) do |*args|
-          value = instance_variable_get("@#{name}")
+          value = options[name]
 
           if value.respond_to?(:call)
             value.call(*args)
@@ -40,11 +48,6 @@ module Trestle
     end
 
     module Open
-      def initialize(*)
-        super
-        @_configuration = {}
-      end
-
     protected
       def respond_to_missing(name, include_all=false)
         true
@@ -53,9 +56,9 @@ module Trestle
       def method_missing(name, *args, &block)
         if name =~ /(.*)\=$/
           key, value = $1, args.first
-          @_configuration[key.to_sym] = value
+          options[key.to_sym] = value
         else
-          @_configuration[name.to_sym] ||= self.class.new
+          options[name.to_sym] ||= self.class.new
         end
       end
     end
