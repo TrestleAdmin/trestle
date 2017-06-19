@@ -34,5 +34,26 @@ module Trestle
         defaults[name] = default
       end
     end
+
+    module Open
+      def initialize(*)
+        super
+        @_configuration = {}
+      end
+
+    protected
+      def respond_to_missing(name, include_all=false)
+        true
+      end
+
+      def method_missing(name, *args, &block)
+        if name =~ /(.*)\=$/
+          key, value = $1, args.first
+          @_configuration[key.to_sym] = value
+        else
+          @_configuration[name.to_sym] ||= self.class.new
+        end
+      end
+    end
   end
 end

@@ -33,4 +33,22 @@ describe Trestle::Configurable do
       expect(config.myoption_with_default).to eq("default")
     end
   end
+
+  describe Trestle::Configurable::Open do
+    subject(:configurable) do
+      Class.new do
+        include Trestle::Configurable
+        include Trestle::Configurable::Open
+      end
+    end
+
+    it "sets options arbitrarily" do
+      config.automatic = "auto"
+      expect(config.automatic).to eq("auto")
+    end
+
+    it "returns a new instance of itself if an option is not set" do
+      expect(config.unset.nested.deeply).to be_a(configurable)
+    end
+  end
 end
