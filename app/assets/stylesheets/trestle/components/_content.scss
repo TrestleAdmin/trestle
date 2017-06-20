@@ -44,6 +44,7 @@
 .main-content-container {
   background: white;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .main-content,
@@ -92,6 +93,7 @@
 
   .main-content-container {
     flex-direction: column;
+    margin-bottom: 10px;
   }
 
   .main-content-sidebar {

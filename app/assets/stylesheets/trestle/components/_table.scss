@@ -35,6 +35,10 @@
 
   th, a {
     white-space: nowrap;
+
+    &.wrap {
+      white-space: normal;
+    }
   }
 
   tbody a {
