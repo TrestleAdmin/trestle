@@ -1,0 +1,13 @@
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-col {
+  display: flex;
+  flex-wrap: wrap;
+
+  &, > * {
+    max-width: 100%;
+  }
+}
