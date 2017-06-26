@@ -8,23 +8,8 @@ module Trestle
         @block = block_given? ? block : default_actions
       end
 
-      def header(template)
-      end
-
-      def content(template, instance)
-        builder = ActionsBuilder.new(template, instance)
-
-        template.with_output_buffer do
-          template.instance_exec(builder, &block)
-        end
-      end
-
-      def classes
-        "actions"
-      end
-
-      def data
-        {}
+      def renderer(template)
+        Renderer.new(self, template)
       end
 
       def default_actions
@@ -49,6 +34,31 @@ module Trestle
 
         def delete
           button(template.icon("fa fa-fw fa-trash"), template.admin.path(:destroy, id: template.admin.to_param(instance)), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+        end
+      end
+
+      class Renderer < Column::Renderer
+        def header
+        end
+
+        def classes
+          "actions"
+        end
+
+        def options
+          {}
+        end
+
+        def data
+          {}
+        end
+
+        def content(instance)
+          builder = ActionsBuilder.new(@template, instance)
+
+          @template.with_output_buffer do
+            @template.instance_exec(builder, &@column.block)
+          end
         end
       end
     end

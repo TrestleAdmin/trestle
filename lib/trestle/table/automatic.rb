@@ -16,17 +16,7 @@ module Trestle
           next if attribute.counter_cache?
 
           if attribute.association?
-            Column.new(self, attribute.name, link: index.zero?) do |instance|
-              if target = instance.public_send(attribute.association_name)
-                if admin = attribute.association_admin
-                  link_to display(target), admin.path(:show, id: admin.to_param(target))
-                else
-                  display(target)
-                end
-              else
-                content_tag(:span, "None set", class: "empty")
-              end
-            end
+            Column.new(self, attribute.association_name, sort: false)
           elsif attribute.text?
             Column.new(self, attribute.name, link: index.zero?) do |instance|
               truncate(instance.public_send(attribute.name))

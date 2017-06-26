@@ -7,25 +7,29 @@ describe Trestle::Table::SelectColumn do
 
   subject(:column) { Trestle::Table::SelectColumn.new(table) }
 
-  it "has a checkbox header" do
-    expect(template).to receive(:check_box_tag).with("").and_return("checkbox")
-    expect(column.header(template)).to eq("checkbox")
-  end
+  describe "#renderer" do
+    subject(:renderer) { column.renderer(template) }
 
-  it "has a class of 'select-row'" do
-    expect(column.classes).to eq("select-row")
-  end
+    it "has a checkbox header" do
+      expect(template).to receive(:check_box_tag).with("").and_return("checkbox")
+      expect(renderer.header).to eq("checkbox")
+    end
 
-  it "has empty data" do
-    expect(column.data).to eq({})
-  end
+    it "has a class of 'select-row'" do
+      expect(renderer.classes).to eq("select-row")
+    end
 
-  describe "#content" do
-    let(:instance) { double(to_param: "abc") }
+    it "has empty data" do
+      expect(renderer.data).to eq({})
+    end
 
-    it "returns a checkbox" do
-      expect(template).to receive(:check_box_tag).with("selected[]", "abc", false, id: nil).and_return("checkbox")
-      expect(column.content(template, instance)).to eq("checkbox")
+    describe "#content" do
+      let(:instance) { double(to_param: "abc") }
+
+      it "returns a checkbox" do
+        expect(template).to receive(:check_box_tag).with("selected[]", "abc", false, id: nil).and_return("checkbox")
+        expect(renderer.content(instance)).to eq("checkbox")
+      end
     end
   end
 end

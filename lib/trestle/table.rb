@@ -15,16 +15,32 @@ module Trestle
       @columns = []
     end
 
-    def classes
-      options[:class] || "trestle-table"
-    end
-
-    def data
-      options[:data]
-    end
-
     def sortable?
       options[:sortable] == true
+    end
+
+    def renderer(template)
+      Renderer.new(self, template)
+    end
+
+    class Renderer
+      delegate :options, to: :@table
+
+      def initialize(table, template)
+        @table, @template = table, template
+      end
+
+      def columns
+        @columns ||= @table.columns.map { |column| column.renderer(@template) }
+      end
+
+      def classes
+        ["trestle-table", options[:class]].compact
+      end
+
+      def data
+        options[:data]
+      end
     end
   end
 end

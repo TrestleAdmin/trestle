@@ -7,20 +7,26 @@ module Trestle
         @table = table
       end
 
-      def header(template)
-        template.check_box_tag ""
+      def renderer(template)
+        Renderer.new(self, template)
       end
 
-      def content(template, instance)
-        template.check_box_tag "selected[]", instance.to_param, false, id: nil
-      end
+      class Renderer < Column::Renderer
+        def header
+          @template.check_box_tag ""
+        end
 
-      def classes
-        "select-row"
-      end
+        def content(instance)
+          @template.check_box_tag "selected[]", instance.to_param, false, id: nil
+        end
 
-      def data
-        {}
+        def classes
+          "select-row"
+        end
+
+        def data
+          {}
+        end
       end
     end
   end

@@ -1,36 +1,39 @@
 require 'spec_helper'
 
 describe Trestle::Table::ActionsColumn do
-  let(:options) { {} }
-  let(:template) { double }
-  let(:instance) { double }
   let(:table) { Trestle::Table.new }
+  let(:instance) { double }
+  let(:template) { double }
 
   subject(:column) do
     Trestle::Table::ActionsColumn.new(table)
   end
 
-  it "has an empty header" do
-    expect(column.header(template)).to be_blank
-  end
+  describe "#renderer" do
+    subject(:renderer) { column.renderer(template) }
 
-  it "has a class of 'actions'" do
-    expect(column.classes).to eq("actions")
-  end
+    it "has an empty header" do
+      expect(renderer.header).to be_blank
+    end
 
-  it "has empty data" do
-    expect(column.data).to eq({})
-  end
+    it "has a class of 'actions'" do
+      expect(renderer.classes).to eq("actions")
+    end
 
-  describe "#content" do
-    let(:admin) { double(to_param: "123", path: "/test/123") }
-    let(:template) { double(admin: admin, icon: double, link_to: double, concat: nil) }
+    it "has empty data" do
+      expect(renderer.data).to eq({})
+    end
 
-    it "renders the actions block" do
-      expect(template).to receive(:with_output_buffer).and_yield
-      expect(template).to receive(:instance_exec).with(Trestle::Table::ActionsColumn::ActionsBuilder, &column.block)
+    describe "#content" do
+      let(:admin) { double(to_param: "123", path: "/test/123") }
+      let(:template) { double(admin: admin, icon: double, link_to: double, concat: nil) }
 
-      column.content(template, instance)
+      it "renders the actions block" do
+        expect(template).to receive(:with_output_buffer).and_yield
+        expect(template).to receive(:instance_exec).with(Trestle::Table::ActionsColumn::ActionsBuilder, &column.block)
+
+        renderer.content(instance)
+      end
     end
   end
 

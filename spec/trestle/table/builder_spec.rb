@@ -5,7 +5,7 @@ describe Trestle::Table::Builder do
     table = Trestle::Table::Builder.build(class: "my-table")
 
     expect(table).to be_a(Trestle::Table)
-    expect(table.classes).to eq("my-table")
+    expect(table.options).to eq({ class: "my-table" })
   end
 
   describe "#column" do

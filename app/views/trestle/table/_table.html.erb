@@ -1,11 +1,11 @@
+<% table = table.renderer(self) %>
+
 <div class="table-container">
   <%= content_tag(:table, class: table.classes, data: table.data) do %>
     <thead>
       <tr>
         <% table.columns.each do |column| %>
-          <%= content_tag(:th, class: column.classes, data: column.data) do %>
-            <%= column.header(self) %>
-          <% end %>
+          <%= content_tag(:th, column.header, class: column.classes, data: column.data) %>
         <% end %>
       </tr>
     </thead>
@@ -14,9 +14,7 @@
       <% collection.each do |instance| %>
         <tr data-url="auto">
           <% table.columns.each do |column| %>
-            <%= content_tag(:td, class: column.classes, data: column.data) do %>
-              <%= column.content(self, instance) %>
-            <% end %>
+            <%= content_tag(:td, column.content(instance), class: column.classes, data: column.data) %>
           <% end %>
         </tr>
       <% end %>

@@ -34,3 +34,6 @@ en:
     table:
       headers:
         id: ID
+
+      column:
+        blank: None
