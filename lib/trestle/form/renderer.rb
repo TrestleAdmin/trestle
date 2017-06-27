@@ -23,7 +23,7 @@ module Trestle
       end
 
       def render_form(*args, &block)
-        capture { instance_exec(*args, &block) }
+        capture { instance_exec(*args, &block).to_s }
       end
 
       def fields_for(*args, &block)

@@ -79,6 +79,7 @@ describe Trestle::Table::Column do
         end
 
         it "returns the result of the block" do
+          allow(template).to receive(:capture).and_return(instance)
           expect(renderer.content(instance)).to eq(instance)
         end
       end

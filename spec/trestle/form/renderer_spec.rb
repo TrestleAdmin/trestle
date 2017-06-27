@@ -32,7 +32,7 @@ describe Trestle::Form::Renderer, type: :helper do
 
   it "does not append non-whitelisted helpers to the result" do
     result = render_form { icon("fa fa-warning"); nil }
-    expect(result).to be_nil
+    expect(result).to be_blank
   end
 
   it "correctly concats addition content" do

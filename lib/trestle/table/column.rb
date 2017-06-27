@@ -72,7 +72,7 @@ module Trestle
       private
         def column_value(instance)
           if @column.block
-            @template.instance_exec(instance, &@column.block)
+            @template.capture { @template.instance_exec(instance, &@column.block).to_s }
           else
             instance.send(@column.field)
           end
