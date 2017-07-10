@@ -5,7 +5,6 @@ module Trestle
 
       def initialize(options={})
         @table = Table.new(options)
-        @output_buffer = ActionView::OutputBuffer.new
       end
 
       def selectable_column
