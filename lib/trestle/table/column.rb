@@ -84,7 +84,7 @@ module Trestle
         end
 
         def format_column(value)
-          if options[:format]
+          if options.key?(:format)
             format_from_options(value)
           else
             autoformat_value(value)
@@ -102,9 +102,9 @@ module Trestle
 
         def autoformat_value(value)
           case value
-          when Time
+          when Time, DateTime
             @template.timestamp(value)
-          when Date, DateTime
+          when Date
             @template.datestamp(value)
           when TrueClass, FalseClass
             @template.status_tag(@template.icon("fa fa-check"), :success) if value
