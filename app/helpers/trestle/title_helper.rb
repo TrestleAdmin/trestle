@@ -16,7 +16,10 @@ module Trestle
           content_tag(:span, Trestle.config.site_title, class: "visible-xs-inline visible-lg-inline")
         ], "\n")
       else
-        content_tag(:span, Trestle.config.site_title, class: "visible-xs-inline visible-lg-inline")
+        safe_join([
+          content_tag(:span, Trestle.config.site_title, class: "visible-xs-inline visible-lg-inline"),
+          content_tag(:span, Trestle.config.site_title.split(/ /).map(&:first).first(3).join, class: "visible-sm-inline visible-md-inline")
+        ], "\n")
       end
     end
   end
