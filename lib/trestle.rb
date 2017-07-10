@@ -39,6 +39,11 @@ module Trestle
     self.admins[admin.admin_name] = admin
   end
 
+  def self.lookup(admin)
+    return admin if admin.is_a?(Class) && admin < Trestle::Admin
+    self.admins[admin.to_s]
+  end
+
   def self.config
     @configuration ||= Configuration.new
   end

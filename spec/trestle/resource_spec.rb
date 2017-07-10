@@ -2,8 +2,11 @@ require 'spec_helper'
 
 describe Trestle::Resource do
   before(:each) do
-    Object.send(:remove_const, :TestAdmin) if defined?(TestAdmin)
     class TestAdmin < Trestle::Resource; end
+  end
+
+  after(:each) do
+    Object.send(:remove_const, :TestAdmin)
   end
 
   subject(:admin) { TestAdmin }
@@ -25,12 +28,14 @@ describe Trestle::Resource do
 
   context "scoped within a module" do
     before(:each) do
-      Scoped.send(:remove_const, :TestAdmin) if defined?(Scoped::TestAdmin)
-
       module Scoped
         class Test; end
         class TestAdmin < Trestle::Resource; end
       end
+    end
+
+    after(:each) do
+      Scoped.send(:remove_const, :TestAdmin)
     end
 
     subject(:admin) { Scoped::TestAdmin }

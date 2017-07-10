@@ -37,6 +37,30 @@ describe Trestle do
     end
   end
 
+  describe "#lookup" do
+    context "given an admin class" do
+      before(:each) do
+        class TestAdmin < Trestle::Admin; end
+      end
+
+      it "returns the admin class" do
+        expect(Trestle.lookup(TestAdmin)).to eq(TestAdmin)
+      end
+    end
+
+    context "given a string" do
+      it "returns the admin class corresponding to the given string/symbol" do
+        admin = double
+        Trestle.admins["test"] = admin
+        expect(Trestle.lookup(:test)).to eq(admin)
+      end
+
+      it "returns nil if no matching admin is found" do
+        expect(Trestle.lookup(:missing)).to be_nil
+      end
+    end
+  end
+
   describe "#navigation" do
     before(:each) do
       Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)

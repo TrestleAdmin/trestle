@@ -6,7 +6,11 @@ module Trestle
         content = capture(&block)
       end
 
-      admin = options.delete(:admin) || admin_for(instance) || self.admin
+      if options.key?(:admin)
+        admin = Trestle.lookup(options.delete(:admin))
+      else
+        admin = admin_for(instance) || self.admin
+      end
 
       if admin
         link_to(content, admin_url_for(instance, admin), options)

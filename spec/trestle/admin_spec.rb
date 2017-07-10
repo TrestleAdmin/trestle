@@ -5,6 +5,10 @@ describe Trestle::Admin do
     class TestAdmin < Trestle::Admin; end
   end
 
+  after(:each) do
+    Object.send(:remove_const, :TestAdmin)
+  end
+
   let(:subject) { TestAdmin }
 
   it "has an admin name" do
@@ -42,6 +46,10 @@ describe Trestle::Admin do
       module Scoped
         class TestAdmin < Trestle::Admin; end
       end
+    end
+
+    after(:each) do
+      Scoped.send(:remove_const, :TestAdmin)
     end
 
     let(:subject) { Scoped::TestAdmin }

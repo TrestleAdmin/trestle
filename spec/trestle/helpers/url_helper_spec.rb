@@ -17,6 +17,7 @@ describe Trestle::UrlHelper do
 
       expect(self).to receive(:admin_url_for).with(instance, admin).and_return(url)
       expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+      expect(Trestle).to receive(:lookup).with(admin).and_return(admin)
       expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
     end
 
