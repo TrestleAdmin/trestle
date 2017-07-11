@@ -107,7 +107,7 @@ describe Trestle::Admin::Builder do
       end
 
       expect(::TestAdmin.table).to be_a(Trestle::Table)
-      expect(::TestAdmin.table.options).to eq(custom: "option", sortable: true)
+      expect(::TestAdmin.table.options).to eq(custom: "option", sortable: true, admin: ::TestAdmin)
       expect(::TestAdmin.table.columns[0].field).to eq(:test)
     end
   end

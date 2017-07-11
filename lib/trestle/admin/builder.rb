@@ -37,7 +37,7 @@ module Trestle
       end
 
       def table(options={}, &block)
-        admin.table = Table::Builder.build(options.reverse_merge(sortable: true), &block)
+        admin.table = Table::Builder.build(options.reverse_merge(sortable: true, admin: admin), &block)
       end
 
       def form(&block)
