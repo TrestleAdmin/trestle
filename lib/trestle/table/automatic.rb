@@ -2,7 +2,7 @@ module Trestle
   class Table
     class Automatic < Table
       def initialize(admin)
-        super(sortable: true)
+        super(sortable: true, admin: admin)
         @admin = admin
       end
 
