@@ -52,6 +52,7 @@
 
   .actions {
     text-align: right;
+    white-space: nowrap;
 
     .btn {
       @extend .btn-sm;
@@ -60,6 +61,9 @@
 
       i {
         font-size: 14px;
+
+        width: (18em / 14);
+        text-align: center;
       }
 
       & + .btn {

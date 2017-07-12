@@ -33,7 +33,7 @@ module Trestle
         end
 
         def delete
-          button(template.icon("fa fa-fw fa-trash"), template.admin.path(:destroy, id: template.admin.to_param(instance)), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+          button(template.icon("fa fa-trash"), template.admin.path(:destroy, id: template.admin.to_param(instance)), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
         end
       end
 

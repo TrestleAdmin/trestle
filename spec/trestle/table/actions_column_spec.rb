@@ -58,7 +58,7 @@ describe Trestle::Table::ActionsColumn do
       let(:template) { double(admin: admin) }
 
       it "appends a delete link to the template" do
-        expect(template).to receive(:icon).with("fa fa-fw fa-trash").and_return(icon)
+        expect(template).to receive(:icon).with("fa fa-trash").and_return(icon)
         expect(template).to receive(:link_to).with(icon, "/test/123", method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: ["btn-danger", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
 
