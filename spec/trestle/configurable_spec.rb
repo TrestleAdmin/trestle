@@ -50,6 +50,19 @@ describe Trestle::Configurable do
 
       expect(config.myoption_with_default).to eq("default")
     end
+
+    context "given a callable value" do
+      it "calls the block when reading" do
+        configurable.option :proc_option, -> { "test" }
+        expect(config.proc_option).to eq("test")
+      end
+
+      it "returns the block if options[:evaluate] = false" do
+        b = -> { "test" }
+        configurable.option :proc_option, b, evaluate: false
+        expect(config.proc_option).to eq(b)
+      end
+    end
   end
 
   describe Trestle::Configurable::Open do

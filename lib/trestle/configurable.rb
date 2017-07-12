@@ -26,7 +26,7 @@ module Trestle
         @defaults ||= {}
       end
 
-      def option(name, default=nil)
+      def option(name, default=nil, opts={})
         name = name.to_sym
 
         define_method("#{name}=") do |value|
@@ -36,7 +36,7 @@ module Trestle
         define_method(name) do |*args|
           value = options[name]
 
-          if value.respond_to?(:call)
+          if value.respond_to?(:call) && opts[:evaluate] != false
             value.call(*args)
           else
             value
