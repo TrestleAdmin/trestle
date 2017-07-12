@@ -5,7 +5,8 @@
   }
 
   &:after {
-    @extend .ion-navicon-round:before;
+    @extend .ion;
+    content: $ionicon-var-navicon-round;
 
     font-size: 75%;
     margin-left: 5px;
@@ -21,10 +22,10 @@
   }
 
   &.sort-asc:after {
-    @extend .ion-chevron-up:before;
+    content: $ionicon-var-chevron-up;
   }
 
   &.sort-desc:after {
-    @extend .ion-chevron-down:before;
+    content: $ionicon-var-chevron-down;
   }
 }
