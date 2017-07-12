@@ -2,9 +2,9 @@ module Trestle
   class Form
     module Fields
       class TagSelect < Select
-        def initialize(builder, template, name, html_options={})
+        def initialize(builder, template, name, options={}, html_options={})
           choices = builder.object.send(name)
-          super(builder, template, name, choices, {}, html_options)
+          super(builder, template, name, choices, options, html_options)
         end
 
         def default_html_options
