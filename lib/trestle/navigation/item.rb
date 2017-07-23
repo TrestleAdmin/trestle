@@ -40,7 +40,7 @@ module Trestle
       end
 
       def label
-        I18n.t("admin.menu.item.#{name}", default: name.to_s.titlecase)
+        I18n.t("admin.navigation.items.#{name}", default: name.to_s.titlecase)
       end
 
       def icon

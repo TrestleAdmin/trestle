@@ -38,7 +38,7 @@ module Trestle
       end
 
       def label
-        I18n.t("admin.menu.group.#{name}", default: name.to_s.titlecase)
+        I18n.t("admin.navigation.groups.#{name}", default: name.to_s.titlecase)
       end
     end
 
