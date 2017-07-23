@@ -4,7 +4,7 @@ describe Trestle::Navigation::Item do
   subject(:item) { Trestle::Navigation::Item.new(:test) }
 
   it "has a label based on the internationalized name" do
-    expect(I18n).to receive(:t).with("admin.menu.item.test", default: "Test").and_return("Test")
+    expect(I18n).to receive(:t).with("admin.navigation.items.test", default: "Test").and_return("Test")
     expect(item.label).to eq("Test")
   end
 

@@ -4,7 +4,7 @@ describe Trestle::Navigation::Group do
   subject(:group) { Trestle::Navigation::Group.new(:test) }
 
   it "has a label based on the internationalized name" do
-    expect(I18n).to receive(:t).with("admin.menu.group.test", default: "Test").and_return("Test")
+    expect(I18n).to receive(:t).with("admin.navigation.groups.test", default: "Test").and_return("Test")
     expect(group.label).to eq("Test")
   end
 
