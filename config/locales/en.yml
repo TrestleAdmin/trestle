@@ -28,6 +28,14 @@ en:
           display_entries: "Displaying %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> of <b>%{total}</b>"
 
   admin:
+    titles:
+      index: Listing %{pluralized_model_name}
+      edit: Editing %{model_name}
+
+    buttons:
+      save: Save %{model_name}
+      delete: Delete %{model_name}
+
     breadcrumbs:
       home: Home
 

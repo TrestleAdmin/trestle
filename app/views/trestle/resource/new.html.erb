@@ -1,8 +1,10 @@
-<% content_for(:title, "New #{admin.model_name}") %>
-<% breadcrumb "New #{admin.model_name}" %>
+<% title = t("admin.titles.new", default: "New %{model_name}", model_name: admin.model_name, pluralized_model_name: admin.model_name.pluralize) %>
+
+<% content_for(:title, title) %>
+<% breadcrumb title %>
 
 <% content_for(:primary_toolbar) do %>
-  <%= button_tag "Save #{admin.model_name}", class: "btn btn-success btn-lg" %>
+  <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path do |f| %>
