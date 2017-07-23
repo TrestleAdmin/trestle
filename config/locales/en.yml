@@ -46,3 +46,8 @@ en:
 
       column:
         blank: None
+
+    confirmation:
+      title: Are you sure?
+      delete: Delete
+      cancel: Cancel

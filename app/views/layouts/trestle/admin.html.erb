@@ -21,6 +21,12 @@
     <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks %>
     <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
 
+    <script type="text/javascript">
+      <% Trestle.config.javascript_i18n_keys.each do |key| %>
+        Trestle.i18n['<%= key %>'] = "<%= escape_javascript(t(key, default: t(key, locale: :en))) %>";
+      <% end %>
+    </script>
+
     <%= hook :javascripts %>
 
     <%= content_for(:head) %>

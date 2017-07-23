@@ -10,6 +10,10 @@
 
       .btn {
         flex: 1 auto;
+
+        & + .btn {
+          margin-left: -1px;
+        }
       }
     }
   }

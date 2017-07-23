@@ -23,6 +23,8 @@ module Trestle
 
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"
 
+    option :javascript_i18n_keys, ["admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel"]
+
     option :menus, []
 
     def menu(&block)

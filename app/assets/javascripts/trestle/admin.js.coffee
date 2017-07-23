@@ -12,6 +12,8 @@
 
 window.Trestle = Trestle = {}
 
+Trestle.i18n = {}
+
 if Turbolinks?.supported
   Trestle.ready = (callback) -> $(document).on 'turbolinks:load', callback
   Trestle.visit = (url) -> Turbolinks.visit(url)

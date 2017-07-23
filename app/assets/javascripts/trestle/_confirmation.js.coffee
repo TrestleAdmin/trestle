@@ -8,10 +8,11 @@ Trestle.ready ->
     selector:       '[data-toggle="confirm-delete"]'
     singleton:      true
     popout:         true
+    title:          Trestle.i18n['admin.confirmation.title']
     btnOkIcon:      ''
     btnOkClass:     'btn-danger'
-    btnOkLabel:     'Delete'
+    btnOkLabel:     Trestle.i18n['admin.confirmation.delete'] || 'Delete'
     btnCancelIcon:  ''
     btnCancelClass: 'btn-default'
-    btnCancelLabel: 'Cancel'
+    btnCancelLabel: Trestle.i18n['admin.confirmation.cancel'] || 'Cancel'
     copyAttributes: ''
