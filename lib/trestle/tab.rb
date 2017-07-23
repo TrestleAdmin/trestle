@@ -9,7 +9,7 @@ module Trestle
     end
 
     def label
-      safe_join([options[:label] || name.to_s.titleize, badge].compact, " ")
+      safe_join([options[:label] || I18n.t("admin.tabs.#{name}", default: name.to_s.titleize), badge].compact, " ")
     end
 
     def badge
