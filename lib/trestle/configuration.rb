@@ -2,8 +2,8 @@ module Trestle
   class Configuration
     include Configurable
 
-    option :site_title, -> { I18n.t("trestle.title") }
-    option :footer, -> { I18n.t("trestle.footer") }
+    option :site_title, -> { I18n.t("trestle.title", default: "Trestle") }
+    option :footer, -> { I18n.t("trestle.footer", default: "Powered by Trestle") }
 
     option :site_logo
     option :site_logo_small
@@ -19,7 +19,7 @@ module Trestle
 
     option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
 
-    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t("admin.breadcrumbs.home"), Trestle.config.path)] }
+    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t("admin.breadcrumbs.home", default: "Home"), Trestle.config.path)] }
 
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"
 
