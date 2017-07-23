@@ -1,4 +1,6 @@
 class Trestle::ApplicationController < ActionController::Base
+  protect_from_forgery
+
   layout 'trestle/admin'
 
 protected
