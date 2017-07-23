@@ -20,7 +20,7 @@ module Trestle
       end
 
       def breadcrumbs
-        @breadcrumbs ||= Breadcrumb::Trail.new(Array(Trestle.config.root_breadcrumbs) + [breadcrumb])
+        Breadcrumb::Trail.new(Array(Trestle.config.root_breadcrumbs) + [breadcrumb])
       end
 
       def breadcrumb
