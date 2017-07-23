@@ -2,6 +2,7 @@ en:
   trestle:
     title: Trestle Admin
     footer: Powered by Trestle
+    version: Version
 
     flash:
       success:
