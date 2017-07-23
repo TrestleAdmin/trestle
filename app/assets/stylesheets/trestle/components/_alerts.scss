@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
 
+  padding-top: 15px;
+  padding-bottom: 15px;
+
   .alert-icon {
     margin-right: 20px;
     font-size: 48px;
@@ -35,6 +38,22 @@
 
     p {
       font-size: 12px;
+    }
+  }
+}
+
+.alert-dismissable {
+  position: relative;
+
+  .close {
+    position: absolute;
+    top: 8px;
+    right: $alert-padding;
+    opacity: 0.5;
+
+    &:hover, &:focus {
+      color: inherit;
+      opacity: 0.75;
     }
   }
 }
