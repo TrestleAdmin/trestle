@@ -1,0 +1,5 @@
+//= require trestle/flatpickr/dist/flatpickr
+
+<% I18n.available_locales.each do |locale| %>
+  <% require_asset("trestle/flatpickr/dist/l10n/#{locale}") rescue nil %>
+<% end %>

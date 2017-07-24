@@ -25,6 +25,10 @@
       <% Trestle.config.javascript_i18n_keys.each do |key| %>
         Trestle.i18n['<%= key %>'] = "<%= escape_javascript(t(key, default: t(key, locale: :en))) %>";
       <% end %>
+
+      if (Flatpickr.l10ns['<%= I18n.locale %>']) {
+        Flatpickr.localize(Flatpickr.l10ns['<%= I18n.locale %>']);
+      }
     </script>
 
     <%= hook :javascripts %>
