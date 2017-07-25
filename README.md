@@ -8,7 +8,7 @@
 [![Code Climate](https://img.shields.io/codeclimate/github/TrestleAdmin/trestle.svg?style=flat-square)](https://codeclimate.com/github/TrestleAdmin/trestle)
 [![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat-square)](https://coveralls.io/github/TrestleAdmin/trestle)
 
-> A modern new admin framework for Ruby on Rails
+> A modern, responsive admin framework for Ruby on Rails
 
 
 ## Getting Started
@@ -60,14 +60,14 @@ Trestle.resource(:posts) do
       text_field :title
 
       # Define custom form fields for easy re-use
-      wysiwyg :body
+      editor :body
     end
 
     tab :metadata do
       # Layout fields based on a 12-column grid
       row do
         col(sm: 6) { select :author, User.all }
-        col(sm: 6) { check_box :published, label: "Published post" }
+        col(sm: 6) { tag_select :tags }
       end
     end
 
