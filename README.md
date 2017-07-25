@@ -10,7 +10,7 @@
 
 > A modern, responsive admin framework for Ruby on Rails
 
-<img src="https://trestle.io/images/Trestle-Screenshot-1.png" width="50%" /><img src="https://trestle.io/images/Trestle-Screenshot-2.png" width="50%" />
+<img src="https://trestle.io/images/Trestle-Screenshot-1.png?" width="50%" /><img src="https://trestle.io/images/Trestle-Screenshot-2.png?" width="50%" />
 
 ## Getting Started
 
