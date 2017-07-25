@@ -13,7 +13,7 @@ module Trestle
         self.instance = admin.build_instance(admin.permitted_params(params))
 
         if admin.save_instance(instance)
-          flash[:message] = flash_message("success.create", "The %{model_name} was successfully created.")
+          flash[:message] = flash_message("success.create", default: "The %{model_name} was successfully created.")
           redirect_to action: :show, id: admin.to_param(instance)
         else
           flash.now[:error] = flash_message("failure.create", default: "Please correct the errors below.")
