@@ -46,12 +46,16 @@ module Trestle
       attr_accessor :decorator
 
       def prepare_collection(params)
-        collection = collection(params)
+        collection = initialize_collection(params)
         collection = apply_scopes(collection, params)
         collection = sort(collection, params)
         collection = paginate(collection, params)
         collection = decorate_collection(collection)
         collection
+      end
+
+      def initialize_collection(params)
+        collection(params)
       end
 
       def scopes
