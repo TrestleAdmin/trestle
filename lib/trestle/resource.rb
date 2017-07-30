@@ -21,7 +21,7 @@ module Trestle
 
         define_method(name) do |*args|
           if override = instance_variable_get("@#{name}")
-            override.call(*args)
+            instance_exec(*args, &override)
           else
             adapter.public_send(name, *args)
           end
