@@ -37,6 +37,7 @@ module Trestle
       adapter_method :to_param
       adapter_method :permitted_params
       adapter_method :decorate_collection
+      adapter_method :unscope
       adapter_method :merge_scopes
       adapter_method :sort
       adapter_method :paginate
@@ -63,9 +64,12 @@ module Trestle
       end
 
       def apply_scopes(collection, params)
+        unscoped = unscope(collection)
+
         scopes_for(params).each do |scope|
-          collection = merge_scopes(collection, scope.apply(collection))
+          collection = merge_scopes(collection, scope.apply(unscoped))
         end
+
         collection
       end
 

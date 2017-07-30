@@ -27,7 +27,7 @@ module Trestle
     end
 
     def count(collection)
-      @admin.count(@admin.merge_scopes(collection, apply(collection)))
+      @admin.count(@admin.merge_scopes(collection, apply(@admin.unscope(collection))))
     end
 
     def active?(params)

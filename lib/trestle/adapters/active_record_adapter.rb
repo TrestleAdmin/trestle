@@ -29,6 +29,10 @@ module Trestle
         instance
       end
 
+      def unscope(scope)
+        scope.unscoped
+      end
+
       def merge_scopes(scope, other)
         scope.merge(other)
       end
