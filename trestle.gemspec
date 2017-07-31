@@ -19,15 +19,15 @@ Gem::Specification.new do |spec|
   spec.files        += [
     Dir.glob("vendor/assets/bower_components/trestle/bootstrap-confirmation2/bootstrap-confirmation.js"),
     Dir.glob("vendor/assets/bower_components/trestle/bootstrap-sass/assets/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/flatpickr/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/font-awesome/{fonts,scss}/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/ionicons/{fonts,scss}/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/jquery/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/jquery-ujs/src/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/magnific-popup/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/select2/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/select2-bootstrap-theme/src/*.scss")
-  ].flatten
+    Dir.glob("vendor/assets/bower_components/trestle/flatpickr/dist/{flatpickr.css,flatpickr.js,l10n/*.js}"),
+    Dir.glob("vendor/assets/bower_components/trestle/font-awesome/{fonts,scss}/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/ionicons/{fonts,scss}/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/jquery/dist/jquery.js"),
+    Dir.glob("vendor/assets/bower_components/trestle/jquery-ujs/src/rails.js"),
+    Dir.glob("vendor/assets/bower_components/trestle/magnific-popup/dist/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/select2/dist/{js/select2.full.js,css/select2.css}"),
+    Dir.glob("vendor/assets/bower_components/trestle/select2-bootstrap-theme/src/select2-bootstrap.scss")
+  ].flatten.reject { |f| f.match(%r{.min.(js|css)$}) }
 
   spec.require_paths = ["lib"]
 
