@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
     Dir.glob("vendor/assets/bower_components/trestle/jquery-ujs/src/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/magnific-popup/dist/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/select2/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/select2-bootstrap-theme/dist/**/*")
+    Dir.glob("vendor/assets/bower_components/trestle/select2-bootstrap-theme/src/*.scss")
   ].flatten
 
   spec.require_paths = ["lib"]
