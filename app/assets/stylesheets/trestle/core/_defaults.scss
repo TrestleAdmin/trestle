@@ -43,6 +43,11 @@ $headings-font-weight: 400 !default;
 $btn-default-bg:    #dbdbdb !default;
 $btn-default-color: white !default;
 
+$state-success-bg: lighten(#dff0d8, 2.5%) !default;
+$state-info-bg:    lighten(#d9edf7, 2.5%) !default;
+$state-warning-bg: lighten(#fcf8e3, 2.5%) !default;
+$state-danger-bg:  lighten(#f2dede, 2.5%) !default;
+
 $alert-padding:       20px !default;
 $alert-border-radius: 2px !default;
 
