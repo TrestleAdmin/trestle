@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
     Dir.glob("vendor/assets/bower_components/trestle/bootstrap-confirmation2/bootstrap-confirmation.js"),
     Dir.glob("vendor/assets/bower_components/trestle/bootstrap-sass/assets/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/flatpickr/dist/**/*"),
-    Dir.glob("vendor/assets/bower_components/trestle/font-awesome/scss/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/font-awesome/{fonts,scss}/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/ionicons/{fonts,scss}/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/jquery/dist/**/*"),
     Dir.glob("vendor/assets/bower_components/trestle/jquery-ujs/src/**/*"),
