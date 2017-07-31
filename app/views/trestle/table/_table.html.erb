@@ -12,11 +12,11 @@
 
     <tbody>
       <% collection.each do |instance| %>
-        <tr data-url="auto">
+        <%= content_tag(:tr, table.row.options(instance)) do %>
           <% table.columns.each do |column| %>
             <%= content_tag(:td, column.content(instance), class: column.classes, data: column.data) %>
           <% end %>
-        </tr>
+        <% end %>
       <% end %>
     </tbody>
   <% end %>

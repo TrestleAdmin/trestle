@@ -19,7 +19,7 @@ module Trestle
       end
     end
 
-    def admin_url_for(instance, admin)
+    def admin_url_for(instance, admin=self.admin)
       admin.path(:show, id: admin.to_param(instance)) if admin
     end
 

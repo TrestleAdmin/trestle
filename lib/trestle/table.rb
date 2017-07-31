@@ -7,8 +7,10 @@ module Trestle
     autoload :Column
     autoload :ActionsColumn
     autoload :SelectColumn
+    autoload :Row
 
     attr_reader :columns, :options
+    attr_writer :row
 
     def initialize(options={})
       @options = options
@@ -23,11 +25,19 @@ module Trestle
       Renderer.new(self, template)
     end
 
+    def row
+      @row || Row.new
+    end
+
     class Renderer
       delegate :options, to: :@table
 
       def initialize(table, template)
         @table, @template = table, template
+      end
+
+      def row
+        @row ||= @table.row.renderer(@template)
       end
 
       def columns
