@@ -4,7 +4,7 @@
 
 # Trestle
 
-[![RubyGem](https://img.shields.io/gem/v/trestle.svg?style=flat-square&color=blue)](https://travis-ci.org/TrestleAdmin/trestle)
+[![RubyGem](https://img.shields.io/gem/v/trestle.svg?style=flat-square&colorB=4065a9)](https://rubygems.org/gems/trestle)
 [![Travis](https://img.shields.io/travis/TrestleAdmin/trestle.svg?style=flat-square)](https://travis-ci.org/TrestleAdmin/trestle)
 [![Code Climate](https://img.shields.io/codeclimate/github/TrestleAdmin/trestle.svg?style=flat-square)](https://codeclimate.com/github/TrestleAdmin/trestle)
 [![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat-square)](https://coveralls.io/github/TrestleAdmin/trestle)
