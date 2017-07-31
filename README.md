@@ -83,6 +83,17 @@ end
 ```
 
 
+## Plugins
+
+The following plugins are currently available:
+
+| Name | Description | GitHub |
+| --- | --- | --- |
+| *trestle-auth* | User authentication plugin | https://github.com/TrestleAdmin/trestle-auth |
+| *trestle-search* | Search plugin | https://github.com/TrestleAdmin/trestle-search |
+| *trestle-tinymce* | TinyMCE (WYSIWYG editor) integration | https://github.com/TrestleAdmin/trestle-tinymce |
+
+
 ## License
 
 The gem is available as open source under the terms of the [LGPLv3 License](https://opensource.org/licenses/LGPL-3.0).
