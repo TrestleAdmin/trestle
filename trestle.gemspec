@@ -15,7 +15,20 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://www.trestle.io"
   spec.license       = "LGPL-3.0"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec|sandbox|vendor/assets/bower_components)/}) }
+  spec.files        += [
+    Dir.glob("vendor/assets/bower_components/trestle/bootstrap-confirmation2/bootstrap-confirmation.js"),
+    Dir.glob("vendor/assets/bower_components/trestle/bootstrap-sass/assets/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/flatpickr/dist/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/font-awesome/scss/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/ionicons/{fonts,scss}/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/jquery/dist/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/jquery-ujs/src/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/magnific-popup/dist/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/select2/dist/**/*"),
+    Dir.glob("vendor/assets/bower_components/trestle/select2-bootstrap-theme/dist/**/*")
+  ].flatten
+
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 2.2.2"
