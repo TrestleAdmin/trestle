@@ -5,9 +5,11 @@ module Trestle
     end
 
     def merge(other)
-      return self if other.nil?
+      dup.merge!(other)
+    end
 
-      deep_merge(other) do |key, v1, v2|
+    def merge!(other)
+      deep_merge!(other || {}) do |key, v1, v2|
         if v1.is_a?(Array)
           v1 + Array(v2)
         else
