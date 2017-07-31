@@ -7,7 +7,7 @@ $(document).on 'click', 'tr[data-url]', (e) ->
     url = row.data('url')
 
   if url
-    if e.metaKey
+    if e.metaKey or e.ctrlKey
       window.open(url, '_blank')
     else
       Trestle.visit(url)
