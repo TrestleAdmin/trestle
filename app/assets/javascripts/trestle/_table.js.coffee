@@ -6,7 +6,11 @@ $(document).on 'click', 'tr[data-url]', (e) ->
   else
     url = row.data('url')
 
-  Trestle.visit(url) if url
+  if url
+    if e.metaKey
+      window.open(url, '_blank')
+    else
+      Trestle.visit(url)
 
 $(document).on 'click', 'tr[data-url] a', (e) ->
   e.stopPropagation()
