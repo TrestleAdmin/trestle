@@ -62,6 +62,10 @@ module Trestle
         admin.sort = block
       end
 
+      def sort_column(column, &block)
+        admin.column_sorts[column.to_sym] = block
+      end
+
       def paginate(&block)
         admin.paginate = block
       end

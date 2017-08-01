@@ -96,21 +96,29 @@ describe Trestle::Resource do
     end
   end
 
-  describe "#sort" do
+  describe "#apply_sorting" do
     let(:collection) { double }
+    let(:sorted_collection) { double }
 
     context "when given sort params" do
-      let(:sorted_collection) { double }
-
       it "reorders the given collection" do
-        expect(collection).to receive(:reorder).with(:field => :asc).and_return(sorted_collection)
-        expect(admin.sort(collection, sort: :field, order: :asc)).to eq(sorted_collection)
+        expect(collection).to receive(:reorder).with(field: "asc").and_return(sorted_collection)
+        expect(admin.apply_sorting(collection, sort: "field", order: "asc")).to eq(sorted_collection)
       end
     end
 
     context "when given no sort params" do
       it "returns the given collection" do
-        expect(admin.sort(collection, {})).to eq(collection)
+        expect(admin.apply_sorting(collection, {})).to eq(collection)
+      end
+    end
+
+    context "when a column sort for the field exists" do
+      it "reorders the collection using the column sort" do
+        TestAdmin.column_sorts[:field] = ->(collection, order) { collection.order(field: order) }
+
+        expect(collection).to receive(:order).with(field: "desc").and_return(sorted_collection)
+        expect(admin.apply_sorting(collection, sort: "field", order: "desc")).to eq(sorted_collection)
       end
     end
   end

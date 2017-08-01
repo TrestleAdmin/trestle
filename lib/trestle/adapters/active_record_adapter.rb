@@ -37,12 +37,8 @@ module Trestle
         scope.merge(other)
       end
 
-      def sort(collection, params)
-        if params[:sort]
-          collection.reorder(params[:sort] => params[:order] || "asc")
-        else
-          collection
-        end
+      def sort(collection, field, order)
+        collection.reorder(field => order)
       end
 
       def paginate(collection, params)

@@ -169,14 +169,28 @@ describe Trestle::Resource::Builder do
   describe "#sort" do
     it "sets an explicit sort block" do
       Trestle::Resource::Builder.build(:test) do
-        sort do |collection, params|
-          collection.sort(params)
+        sort do |collection, field, order|
+          collection.order(field => order)
         end
       end
 
       collection = double
-      expect(collection).to receive(:sort).with(name: "asc").and_return([1, 2, 3])
-      expect(::TestAdmin.sort(collection, name: "asc")).to eq([1, 2, 3])
+      expect(collection).to receive(:order).with(name: "asc").and_return([1, 2, 3])
+      expect(::TestAdmin.sort(collection, :name, "asc")).to eq([1, 2, 3])
+    end
+  end
+
+  describe "#sort_column" do
+    it "sets a column sort block" do
+      Trestle::Resource::Builder.build(:test) do
+        sort_column(:field) do |collection, order|
+          collection.order(:field => order)
+        end
+      end
+
+      collection = double
+      expect(collection).to receive(:order).with(field: "asc").and_return([1, 2, 3])
+      expect(::TestAdmin.apply_sorting(collection, sort: "field", order: "asc")).to eq([1, 2, 3])
     end
   end
 

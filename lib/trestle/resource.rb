@@ -49,7 +49,7 @@ module Trestle
       def prepare_collection(params)
         collection = initialize_collection(params)
         collection = apply_scopes(collection, params)
-        collection = sort(collection, params)
+        collection = apply_sorting(collection, params)
         collection = paginate(collection, params)
         collection = decorate_collection(collection)
         collection
@@ -85,6 +85,25 @@ module Trestle
         end
 
         result
+      end
+
+      def column_sorts
+        @column_sorts ||= {}
+      end
+
+      def apply_sorting(collection, params)
+        return collection unless params[:sort]
+
+        field = params[:sort].to_sym
+
+        order = params[:order].downcase
+        order = "asc" unless %w(asc desc).include?(order)
+
+        if column_sorts.has_key?(field)
+          instance_exec(collection, order, &column_sorts[field])
+        else
+          sort(collection, field, order)
+        end
       end
 
       def table
