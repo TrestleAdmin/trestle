@@ -13,14 +13,15 @@ module Trestle
       end
 
       if admin
-        link_to(content, admin_url_for(instance, admin), options)
+        link_to(content, admin_url_for(instance, admin: admin), options)
       else
         content
       end
     end
 
-    def admin_url_for(instance, admin=self.admin)
-      admin.path(:show, id: admin.to_param(instance)) if admin
+    def admin_url_for(instance, options={})
+      admin = Trestle.lookup(options[:admin] || self.admin)
+      admin.path(options[:action] || :show, id: admin.to_param(instance)) if admin
     end
 
     def admin_for(instance)

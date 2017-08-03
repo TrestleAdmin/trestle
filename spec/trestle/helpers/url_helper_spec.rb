@@ -15,14 +15,14 @@ describe Trestle::UrlHelper do
     it "renders an admin link to the given instance" do
       admin = double
 
-      expect(self).to receive(:admin_url_for).with(instance, admin).and_return(url)
+      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
       expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
       expect(Trestle).to receive(:lookup).with(admin).and_return(admin)
       expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
     end
 
     it "links to the current admin if no admin provided" do
-      expect(self).to receive(:admin_url_for).with(instance, admin).and_return(url)
+      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
       expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
       expect(admin_link_to("link content", instance)).to eq(link)
     end
@@ -34,7 +34,7 @@ describe Trestle::UrlHelper do
         expect(block).to be(blk)
       }.and_return("captured content")
 
-      expect(self).to receive(:admin_url_for).with(instance, admin).and_return(url)
+      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
       expect(self).to receive(:link_to).with("captured content", url, {}).and_return(link)
       expect(admin_link_to(instance, &blk)).to eq(link)
     end
@@ -65,13 +65,14 @@ describe Trestle::UrlHelper do
     let(:param) { double }
 
     it "returns the path to the show action of the given admin and instance" do
+      allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
       expect(admin).to receive(:to_param).with(instance).and_return(param)
       expect(admin).to receive(:path).with(:show, id: param)
-      admin_url_for(instance, admin)
+      admin_url_for(instance, admin: admin)
     end
 
     it "returns nil if the admin passed is nil" do
-      expect(admin_url_for(instance, nil)).to be_nil
+      expect(admin_url_for(instance)).to be_nil
     end
   end
 

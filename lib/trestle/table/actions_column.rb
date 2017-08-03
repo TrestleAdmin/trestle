@@ -19,22 +19,25 @@ module Trestle
       end
 
       class ActionsBuilder
-        attr_reader :template, :instance
+        attr_reader :instance
 
-        def initialize(template, instance)
-          @template, @instance = template, instance
+        delegate :table, to: :@column
+
+        def initialize(column, template, instance)
+          @column, @template, @instance = column, template, instance
+        end
+
+        def delete
+          button(@template.icon("fa fa-trash"), @template.admin_url_for(instance, admin: table.options[:admin], action: :destroy), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
         end
 
         def button(content, url, options={})
           options[:class] = Array(options[:class])
           options[:class] << "btn" unless options[:class].include?("btn")
 
-          template.concat template.link_to(content, url, options)
+          @template.concat @template.link_to(content, url, options)
         end
-
-        def delete
-          button(template.icon("fa fa-trash"), template.admin.path(:destroy, id: template.admin.to_param(instance)), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
-        end
+        alias_method :link, :button
       end
 
       class Renderer < Column::Renderer
@@ -54,7 +57,7 @@ module Trestle
         end
 
         def content(instance)
-          builder = ActionsBuilder.new(@template, instance)
+          builder = ActionsBuilder.new(@column, @template, instance)
 
           @template.with_output_buffer do
             @template.instance_exec(builder, &@column.block)
