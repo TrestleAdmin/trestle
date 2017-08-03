@@ -26,7 +26,7 @@ module Trestle
     end
 
     def row
-      @row || Row.new
+      @row || Row.new(self)
     end
 
     class Renderer

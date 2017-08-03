@@ -8,7 +8,7 @@ module Trestle
       end
 
       def row(options={}, &block)
-        table.row = Row.new(options, &block)
+        table.row = Row.new(table, options, &block)
       end
 
       def selectable_column
