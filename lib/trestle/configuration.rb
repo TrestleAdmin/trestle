@@ -37,6 +37,12 @@ module Trestle
       hooks[name.to_s] << block
     end
 
+    option :helpers, []
+
+    def helper(*helpers)
+      self.helpers += helpers
+    end
+
     def form_field(name, klass)
       Form::Builder.register(name, klass)
     end

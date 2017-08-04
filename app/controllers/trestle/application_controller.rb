@@ -3,6 +3,10 @@ class Trestle::ApplicationController < ActionController::Base
 
   layout 'trestle/admin'
 
+  # Global helpers
+  self.helpers_path += Rails.application.helpers_paths
+  helper *Trestle.config.helpers
+
 protected
   def breadcrumbs
     @breadcrumbs ||= Trestle::Breadcrumb::Trail.new(Trestle.config.root_breadcrumbs)
