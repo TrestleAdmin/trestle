@@ -79,6 +79,17 @@ describe Trestle::Configuration do
     end
   end
 
+  it "has no default helpers" do
+    expect(config.helpers).to eq([])
+  end
+
+  describe "#helper" do
+    it "appends the given helpers" do
+      config.helper :all
+      expect(config.helpers).to eq([:all])
+    end
+  end
+
   describe "#form_field" do
     let(:klass) { double }
 
