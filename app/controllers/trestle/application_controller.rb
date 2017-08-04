@@ -5,6 +5,7 @@ class Trestle::ApplicationController < ActionController::Base
 
   # Global helpers
   self.helpers_path += Rails.application.helpers_paths
+  helper Trestle.config.helper_module
   helper *Trestle.config.helpers
 
 protected

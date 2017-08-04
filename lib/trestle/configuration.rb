@@ -38,9 +38,11 @@ module Trestle
     end
 
     option :helpers, []
+    option :helper_module, Module.new
 
-    def helper(*helpers)
+    def helper(*helpers, &block)
       self.helpers += helpers
+      self.helper_module.module_eval(&block) if block_given?
     end
 
     def form_field(name, klass)

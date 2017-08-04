@@ -57,9 +57,9 @@ module Trestle
         @admin.additional_routes = block
       end
 
-      def helper(*helpers)
+      def helper(*helpers, &block)
         controller do
-          helper *helpers
+          helper *helpers, &block
         end
       end
     end
