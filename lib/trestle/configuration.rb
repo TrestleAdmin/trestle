@@ -48,5 +48,25 @@ module Trestle
     def form_field(name, klass)
       Form::Builder.register(name, klass)
     end
+
+    Action = Struct.new(:options, :block)
+
+    option :before_actions, []
+
+    def before_action(options={}, &block)
+      before_actions << Action.new(options, block)
+    end
+
+    option :after_actions, []
+
+    def after_action(options={}, &block)
+      after_actions << Action.new(options, block)
+    end
+
+    option :around_actions, []
+
+    def around_action(options={}, &block)
+      around_actions << Action.new(options, block)
+    end
   end
 end

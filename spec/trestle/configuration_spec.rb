@@ -98,4 +98,46 @@ describe Trestle::Configuration do
       config.form_field :custom, klass
     end
   end
+
+  it "has no default before actions" do
+    expect(config.before_actions).to eq([])
+  end
+
+  it "has no default after actions" do
+    expect(config.after_actions).to eq([])
+  end
+
+  it "has no default around actions" do
+    expect(config.around_actions).to eq([])
+  end
+
+  describe "#before_action" do
+    let(:options) { double }
+    let(:block) { Proc.new {} }
+
+    it "registers a before action" do
+      config.before_action(options, &block)
+      expect(config.before_actions).to eq([Trestle::Configuration::Action.new(options, block)])
+    end
+  end
+
+  describe "#after_action" do
+    let(:options) { double }
+    let(:block) { Proc.new {} }
+
+    it "registers an afer action" do
+      config.after_action(options, &block)
+      expect(config.after_actions).to eq([Trestle::Configuration::Action.new(options, block)])
+    end
+  end
+
+  describe "#around_action" do
+    let(:options) { double }
+    let(:block) { Proc.new {} }
+
+    it "registers an around action" do
+      config.around_action(options, &block)
+      expect(config.around_actions).to eq([Trestle::Configuration::Action.new(options, block)])
+    end
+  end
 end
