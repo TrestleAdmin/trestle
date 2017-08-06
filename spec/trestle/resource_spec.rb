@@ -7,6 +7,7 @@ describe Trestle::Resource do
 
   after(:each) do
     Object.send(:remove_const, :TestAdmin)
+    Object.send(:remove_const, :Test) if defined?(Test)
   end
 
   subject(:admin) { TestAdmin }
@@ -18,6 +19,10 @@ describe Trestle::Resource do
   it "infers the model from the admin name" do
     class Test; end
     expect(admin.model).to eq(Test)
+  end
+
+  it "raises an exception if the inferred model does not exist" do
+    expect { admin.model }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:test, model: MyModel)")
   end
 
   it "allows the model to be specified manually via options" do
@@ -69,10 +74,13 @@ describe Trestle::Resource do
   end
 
   describe "#model_name" do
+    before(:each) do
+      class Test; end
+    end
+
     context "#model_name on the class returns an ActiveModel::Name" do
       it "returns the humanized model name" do
         model_name = double(human: "ActiveModel Class")
-        class Test; end
 
         expect(Test).to receive(:model_name).and_return(model_name)
         expect(admin.model_name).to eq("ActiveModel Class")
@@ -81,8 +89,6 @@ describe Trestle::Resource do
 
     context "#model_name on the class returns a string" do
       it "returns the titleized model name" do
-        class Test; end
-
         expect(Test).to receive(:model_name).and_return("TestClass")
         expect(admin.model_name).to eq("Test Class")
       end

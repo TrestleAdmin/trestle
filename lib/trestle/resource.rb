@@ -148,7 +148,7 @@ module Trestle
       def infer_model_class
         parent.const_get(admin_name.classify)
       rescue NameError
-        nil
+        raise NameError, "Unable to find model #{admin_name.classify}. Specify a different model using Trestle.resource(:#{admin_name}, model: MyModel)"
       end
 
       def default_model_name
