@@ -57,6 +57,22 @@ Trestle.configure do |config|
   #
   # config.helper :all
 
+  # Register callbacks to run before, after or around all Trestle actions.
+  #
+  # config.before_action do |controller|
+  #   Rails.logger.debug("Before action")
+  # end
+  #
+  # config.after_action do |controller|
+  #   Rails.logger.debug("After action")
+  # end
+  #
+  # config.around_action do |controller, block|
+  #   Rails.logger.debug("Around action (before)")
+  #   block.call
+  #   Rails.logger.debug("Around ation (after)")
+  # end
+
   # Specify a custom hook to be injected into the admin.
   #
   # config.hook(:stylesheets) do
