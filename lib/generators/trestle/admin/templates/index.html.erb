@@ -1,0 +1,5 @@
+<%% content_for(:title, "<%= singular_name.titleize %>") %>
+
+<%%= render layout: "layout", locals: { wrapper: true, sidebar: false, hide_breadcrumbs: false } do %>
+  To customize this template, please edit <code><%= File.join("app/views/admin", class_path, singular_name, "index.html.erb") %></code>.
+<%% end %>

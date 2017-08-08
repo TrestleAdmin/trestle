@@ -6,7 +6,7 @@ module Trestle
       source_root File.expand_path("../templates", __FILE__)
 
       def create_admin
-        template "admin.rb.erb", File.join('app/admin', class_path, "#{plural_name}_admin.rb")
+        template "admin.rb.erb", File.join("app/admin", class_path, "#{plural_name}_admin.rb")
       end
 
     protected
