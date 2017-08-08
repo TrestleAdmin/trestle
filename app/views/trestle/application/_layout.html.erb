@@ -1,19 +1,19 @@
-<%= render "header" %>
+<%= render "header", hide_breadcrumbs: local_assigns.fetch(:hide_breadcrumbs, false) if local_assigns.fetch(:header, true) %>
 
 <div class="main-content-area">
   <%= render "flash" %>
   <%= render "utilities" %>
   <%= render "tabs" %>
 
-  <div class="main-content-container">
-    <div class="main-content">
+  <% if local_assigns.fetch(:wrapper, true) %>
+    <%= container do |c| %>
       <%= yield %>
-    </div>
 
-    <% if content_for?(:sidebar) %>
-      <aside class="main-content-sidebar">
+      <% c.sidebar do %>
         <%= content_for(:sidebar) %>
-      </aside>
+      <% end if content_for?(:sidebar) %>
     <% end %>
-  </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
 </div>

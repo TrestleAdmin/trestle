@@ -1,7 +1,7 @@
 module Trestle
   module GridHelper
     def row
-      content_tag(:div, class: 'row') { yield }
+      content_tag(:div, class: "row") { yield }
     end
 
     def col(columns)
