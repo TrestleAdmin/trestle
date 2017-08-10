@@ -30,7 +30,7 @@ module Trestle
       end
 
       def unscope(scope)
-        scope.unscoped
+        scope.respond_to?(:unscoped) ? scope.unscoped : scope
       end
 
       def merge_scopes(scope, other)

@@ -40,6 +40,10 @@ module Trestle
         collection
       end
 
+      def unscope(scope)
+        scope
+      end
+
       def merge_scopes(scope, other)
         raise NotImplementedError
       end
