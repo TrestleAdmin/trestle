@@ -17,7 +17,7 @@ module Trestle
         end
 
         def default_html_options
-          Trestle::Options.new(class: ["form-control"])
+          Trestle::Options.new(class: ["form-control"], data: { enable_select2: true })
         end
       end
     end

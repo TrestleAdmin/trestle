@@ -1,5 +1,5 @@
 Trestle.ready ->
-  $('select').each ->
+  $('select[data-enable-select2]').each ->
     $(this).select2
       theme: 'bootstrap'
       containerCssClass: ':all:'
