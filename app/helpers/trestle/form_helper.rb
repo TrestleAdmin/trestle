@@ -5,7 +5,7 @@ module Trestle
       options[:as] ||= admin.admin_name.singularize
 
       form_for(instance, options) do |f|
-        with_form(f) { yield }
+        with_form(f) { yield f }
       end
     end
 
