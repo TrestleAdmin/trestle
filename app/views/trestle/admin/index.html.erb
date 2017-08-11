@@ -1,5 +1,5 @@
 <% content_for(:title, admin.admin_name.titleize) %>
 
 <%= render layout: "layout" do %>
-  To customize this template, please create <code>app/views/<%= admin.controller_path %>/index.html.erb</code>.
+  <p><%= t("trestle.onboarding.no_template", path: "app/views/#{admin.controller_path}/index.html.erb", default: "To customize this template, please create <code>%{path}</code>.").html_safe %></p>
 <% end %>

@@ -1,5 +1,5 @@
 <% if admin.form -%>
   <%= admin.form.render(self, instance) %>
 <% else %>
-  <p>Please define a form block or create a <code>_form.html</code> partial.</p>
+  <p><%= t("trestle.onboarding.no_form", default: "Please define a form block or create a <code>_form.html</code> partial.").html_safe %></p>
 <% end %>

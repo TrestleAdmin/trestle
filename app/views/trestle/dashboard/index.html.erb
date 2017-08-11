@@ -1,5 +1,5 @@
-<% content_for(:title, "Welcome to Trestle") %>
+<% content_for(:title, t("trestle.onboarding.welcome", default: "Welcome to Trestle")) %>
 
 <%= render layout: "layout" do %>
-  <p>To begin, please create an admin within <code>app/admin</code>.</p>
+  <p><%= t("trestle.onboarding.no_admins", default: "To begin, please create an admin within <code>app/admin</code>.").html_safe %></p>
 <% end %>
