@@ -55,7 +55,7 @@ module Trestle
           if column.name.end_with?("_id") && (reflection = admin.model.reflections[column.name.sub(/_id$/, '')])
             Attribute::Association.new(admin, column.name, reflection.klass, false)
           else
-            Attribute.new(admin, column.name, column.type, column.array)
+            Attribute.new(admin, column.name, column.type, false)
           end
         end
       end

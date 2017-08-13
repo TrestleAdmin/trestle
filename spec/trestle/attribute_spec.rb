@@ -26,7 +26,7 @@ describe Trestle::Attribute do
 
   describe "#array?" do
     it "returns true if the attribute has type text and is array" do
-      expect(Trestle::Attribute.new(admin, :body, :text, false)).to be_an_instance_of(Array)
+      expect(Trestle::Attribute.new(admin, :body, :text, true).array?).to be_truthy 
     end
   end
 
