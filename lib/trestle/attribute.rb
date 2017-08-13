@@ -1,9 +1,9 @@
 module Trestle
   class Attribute
-    attr_reader :admin, :name, :type
+    attr_reader :admin, :name, :type, :array
 
-    def initialize(admin, name, type)
-      @admin, @name, @type = admin, name.to_sym, type
+    def initialize(admin, name, type, array)
+      @admin, @name, @type, @array = admin, name.to_sym, type, array
     end
 
     def association?
@@ -15,7 +15,11 @@ module Trestle
     end
 
     def text?
-      type == :text
+      type == :text && !array
+    end
+
+    def array?
+      type == :text && array
     end
 
     def datetime?
@@ -37,8 +41,8 @@ module Trestle
     class Association < Attribute
       attr_reader :association_class
 
-      def initialize(admin, name, association_class)
-        super(admin, name, :association)
+      def initialize(admin, name, association_class, array)
+        super(admin, name, :association, array)
         @association_class = association_class
       end
 

@@ -53,9 +53,9 @@ module Trestle
       def default_attributes
         admin.model.columns.map do |column|
           if column.name.end_with?("_id") && (reflection = admin.model.reflections[column.name.sub(/_id$/, '')])
-            Attribute::Association.new(admin, column.name, reflection.klass)
+            Attribute::Association.new(admin, column.name, reflection.klass, false)
           else
-            Attribute.new(admin, column.name, column.type)
+            Attribute.new(admin, column.name, column.type, column.array)
           end
         end
       end
