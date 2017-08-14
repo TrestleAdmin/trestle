@@ -10,10 +10,10 @@ module Trestle
       end
 
       def create_assets
-        template "_variables.scss",   "app/assets/stylesheets/trestle/_variables.scss"
-        template "_custom.scss",      "app/assets/stylesheets/trestle/_custom.scss"
+        template "_variables.scss", "app/assets/stylesheets/trestle/_variables.scss"
+        template "_custom.scss",    "app/assets/stylesheets/trestle/_custom.scss"
 
-        template "custom.js.coffee",  "app/assets/javascripts/trestle/custom.js.coffee"
+        template "custom.js",       "app/assets/javascripts/trestle/custom.js"
       end
 
       def create_directory
