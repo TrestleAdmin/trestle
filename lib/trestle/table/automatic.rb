@@ -11,10 +11,7 @@ module Trestle
       end
 
       def content_columns
-        @admin.default_attributes.map.with_index do |attribute, index|
-          next if attribute.inheritance_column?
-          next if attribute.counter_cache?
-
+        @admin.default_table_attributes.map.with_index do |attribute, index|
           if attribute.association?
             Column.new(self, attribute.association_name, sort: false)
           elsif attribute.text?

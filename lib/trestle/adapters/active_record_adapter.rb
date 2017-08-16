@@ -41,6 +41,19 @@ module Trestle
         collection.count
       end
 
+      def default_table_attributes
+        default_attributes.reject do |attribute|
+          attribute.inheritance_column? || attribute.counter_cache?
+        end
+      end
+
+      def default_form_attributes
+        default_attributes.reject do |attribute|
+          attribute.primary_key? || attribute.inheritance_column? || attribute.counter_cache?
+        end
+      end
+
+    protected
       def default_attributes
         admin.model.columns.map do |column|
           if column.name.end_with?("_id") && (reflection = admin.model.reflections[column.name.sub(/_id$/, '')])

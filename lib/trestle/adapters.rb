@@ -69,7 +69,11 @@ module Trestle
         params.require(admin.admin_name.singularize).permit!
       end
 
-      def default_attributes
+      def default_table_attributes
+        raise NotImplementedError
+      end
+
+      def default_form_attributes
         raise NotImplementedError
       end
     end

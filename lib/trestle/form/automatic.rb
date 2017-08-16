@@ -3,11 +3,7 @@ module Trestle
     class Automatic < Form
       def initialize(admin)
         @block = Proc.new do
-          admin.default_attributes.each do |attribute|
-            next if attribute.primary_key?
-            next if attribute.inheritance_column?
-            next if attribute.counter_cache?
-
+          admin.default_form_attributes.each do |attribute|
             case attribute.type
             when :association
               options = attribute.association_class.all.map { |instance| [display(instance), instance.id] }
