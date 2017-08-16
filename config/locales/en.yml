@@ -53,6 +53,10 @@ en:
       column:
         blank: None
 
+    form:
+      select:
+        prompt: "- Select %{attribute_name} -"
+
     confirmation:
       title: Are you sure?
       delete: Delete

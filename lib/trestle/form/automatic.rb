@@ -6,10 +6,8 @@ module Trestle
           admin.default_form_attributes.each do |attribute|
             case attribute.type
             when :association
-              options = attribute.association_class.all
-              prompt = "- Select #{admin.model.human_attribute_name(attribute.association_name)} -"
-
-              select attribute.name, options, include_blank: prompt
+              prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.model.human_attribute_name(attribute.association_name))
+              select attribute.name, attribute.association_class.all, include_blank: prompt
             when :text
               text_area attribute.name
             when :date
