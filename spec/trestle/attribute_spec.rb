@@ -38,24 +38,6 @@ describe Trestle::Attribute do
     end
   end
 
-  describe "#primary_key?" do
-    it "returns true if the attribute name matches the admin model's primary key" do
-      expect(Trestle::Attribute.new(admin, :id, :integer)).to be_primary_key
-    end
-  end
-
-  describe "#inheritance_column?" do
-    it "returns true if the attribute name matches the admin model's STI column" do
-      expect(Trestle::Attribute.new(admin, :type, :string)).to be_inheritance_column
-    end
-  end
-
-  describe "#counter_cache?" do
-    it "returns true if the attribute name is a counter cache column" do
-      expect(Trestle::Attribute.new(admin, :posts_count, :integer)).to be_counter_cache
-    end
-  end
-
   describe Trestle::Attribute::Association do
     let(:association_class) { double(name: "User") }
 

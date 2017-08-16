@@ -22,18 +22,6 @@ module Trestle
       [:datetime, :time, :date].include?(type)
     end
 
-    def primary_key?
-      name.to_s == admin.model.primary_key
-    end
-
-    def inheritance_column?
-      name.to_s == admin.model.inheritance_column
-    end
-
-    def counter_cache?
-      name.to_s.end_with?("_count")
-    end
-
     class Association < Attribute
       attr_reader :association_class
 

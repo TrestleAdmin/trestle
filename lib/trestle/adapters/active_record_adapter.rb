@@ -43,13 +43,13 @@ module Trestle
 
       def default_table_attributes
         default_attributes.reject do |attribute|
-          attribute.inheritance_column? || attribute.counter_cache?
+          inheritance_column?(attribute) || counter_cache_column?(attribute)
         end
       end
 
       def default_form_attributes
         default_attributes.reject do |attribute|
-          attribute.primary_key? || attribute.inheritance_column? || attribute.counter_cache?
+          primary_key?(attribute) || inheritance_column?(attribute) || counter_cache_column?(attribute)
         end
       end
 
@@ -62,6 +62,18 @@ module Trestle
             Attribute.new(admin, column.name, column.type)
           end
         end
+      end
+
+      def primary_key?(attribute)
+        attribute.name.to_s == admin.model.primary_key
+      end
+
+      def inheritance_column?(attribute)
+        attribute.name.to_s == admin.model.inheritance_column
+      end
+
+      def counter_cache_column?(attribute)
+        attribute.name.to_s.end_with?("_count")
       end
     end
   end
