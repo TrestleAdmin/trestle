@@ -94,6 +94,12 @@ describe Trestle::Resource do
       end
     end
 
+    context "#model_name is not defined on the class" do
+      it "returns the titleized class name" do
+        expect(admin.model_name).to eq("Test")
+      end
+    end
+
     it "can be overridden via the `as` option" do
       admin.options = { as: "Custom Class" }
 

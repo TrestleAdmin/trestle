@@ -152,8 +152,12 @@ module Trestle
       end
 
       def default_model_name
-        model_name = model.model_name
-        model_name.respond_to?(:human) ? model_name.human : model_name.to_s.titleize
+        if model.respond_to?(:model_name)
+          model_name = model.model_name
+          model_name.respond_to?(:human) ? model_name.human : model_name.to_s.titleize
+        else
+          model.name.titleize
+        end
       end
     end
   end
