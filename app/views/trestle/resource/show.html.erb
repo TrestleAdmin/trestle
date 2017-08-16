@@ -13,6 +13,6 @@
   <% end unless admin.readonly? %>
 <% end %>
 
-<%= trestle_form_for instance, url: admin.readonly? ? "#" : admin.path(:update, id: admin.to_param(instance)) do |f| %>
+<%= trestle_form_for instance, url: admin.readonly? ? "#" : admin.path(:update, id: admin.to_param(instance)), method: :patch do |f| %>
   <%= render partial: "form", layout: "layout" %>
 <% end %>
