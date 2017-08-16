@@ -12,16 +12,17 @@ module Trestle
 
       def content_columns
         @admin.default_table_attributes.map.with_index do |attribute, index|
-          if attribute.association?
+          case attribute.type
+          when :association
             Column.new(self, attribute.association_name, sort: false)
-          elsif attribute.text?
+          when :text
             Column.new(self, attribute.name, link: index.zero?) do |instance|
               truncate(instance.public_send(attribute.name))
             end
           else
-            Column.new(self, attribute.name, link: index.zero?, align: (:center if attribute.datetime? || attribute.boolean?))
+            Column.new(self, attribute.name, link: index.zero?, align: (:center if [:datetime, :boolean].include?(attribute.type)))
           end
-        end.compact
+        end
       end
 
       def actions_column

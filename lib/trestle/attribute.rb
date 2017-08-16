@@ -6,22 +6,6 @@ module Trestle
       @name, @type = name.to_sym, type
     end
 
-    def association?
-      type == :association
-    end
-
-    def boolean?
-      type == :boolean
-    end
-
-    def text?
-      type == :text
-    end
-
-    def datetime?
-      [:datetime, :time, :date].include?(type)
-    end
-
     class Association < Attribute
       attr_reader :association_class
 
@@ -32,10 +16,6 @@ module Trestle
 
       def association_name
         name.to_s.sub(/_id$/, "")
-      end
-
-      def association_admin
-        Trestle.admins[association_class.name.underscore.pluralize]
       end
     end
   end

@@ -6,7 +6,7 @@ module Trestle
           admin.default_form_attributes.each do |attribute|
             case attribute.type
             when :association
-              options = attribute.association_class.all.map { |instance| [display(instance), instance.id] }
+              options = attribute.association_class.all
               prompt = "- Select #{admin.model.human_attribute_name(attribute.association_name)} -"
 
               select attribute.name, options, include_blank: prompt
