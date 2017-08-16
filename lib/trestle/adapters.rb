@@ -40,6 +40,10 @@ module Trestle
         collection
       end
 
+      def to_param(instance)
+        instance
+      end
+
       def unscope(scope)
         scope
       end
@@ -53,7 +57,8 @@ module Trestle
       end
 
       def paginate(collection, params)
-        raise NotImplementedError
+        collection = Kaminari.paginate_array(collection) unless collection.respond_to?(:page)
+        collection.page(params[:page])
       end
 
       def count(collection)

@@ -25,10 +25,6 @@ module Trestle
         instance.destroy
       end
 
-      def to_param(instance)
-        instance
-      end
-
       def unscope(scope)
         scope.respond_to?(:unscoped) ? scope.unscoped : scope
       end
@@ -39,11 +35,6 @@ module Trestle
 
       def sort(collection, field, order)
         collection.reorder(field => order)
-      end
-
-      def paginate(collection, params)
-        collection = Kaminari.paginate_array(collection) unless collection.respond_to?(:page)
-        collection.page(params[:page])
       end
 
       def count(collection)
