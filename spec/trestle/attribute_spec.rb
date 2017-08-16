@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe Trestle::Attribute do
   let(:model) { double(primary_key: "id", inheritance_column: "type") }
-  let(:admin) { double(model: model) }
 
-  subject(:attribute) { Trestle::Attribute.new(admin, :name, :string) }
+  subject(:attribute) { Trestle::Attribute.new(:name, :string) }
 
   describe "#association?" do
     it "returns false" do
@@ -14,34 +13,34 @@ describe Trestle::Attribute do
 
   describe "#boolean?" do
     it "returns true if the attribute has type boolean" do
-      expect(Trestle::Attribute.new(admin, :published, :boolean)).to be_boolean
+      expect(Trestle::Attribute.new(:published, :boolean)).to be_boolean
     end
   end
 
   describe "#text?" do
     it "returns true if the attribute has type text" do
-      expect(Trestle::Attribute.new(admin, :body, :text)).to be_text
+      expect(Trestle::Attribute.new(:body, :text)).to be_text
     end
   end
 
   describe "#datetime?" do
     it "returns true if the attribute has type date" do
-      expect(Trestle::Attribute.new(admin, :timestamp, :date)).to be_datetime
+      expect(Trestle::Attribute.new(:timestamp, :date)).to be_datetime
     end
 
     it "returns true if the attribute has type time" do
-      expect(Trestle::Attribute.new(admin, :timestamp, :time)).to be_datetime
+      expect(Trestle::Attribute.new(:timestamp, :time)).to be_datetime
     end
 
     it "returns true if the attribute has type datetime" do
-      expect(Trestle::Attribute.new(admin, :timestamp, :datetime)).to be_datetime
+      expect(Trestle::Attribute.new(:timestamp, :datetime)).to be_datetime
     end
   end
 
   describe Trestle::Attribute::Association do
     let(:association_class) { double(name: "User") }
 
-    subject(:association) { Trestle::Attribute::Association.new(admin, :user_id, association_class) }
+    subject(:association) { Trestle::Attribute::Association.new(:user_id, association_class) }
 
     describe "#association?" do
       it "returns true" do

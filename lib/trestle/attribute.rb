@@ -1,9 +1,9 @@
 module Trestle
   class Attribute
-    attr_reader :admin, :name, :type
+    attr_reader :name, :type
 
-    def initialize(admin, name, type)
-      @admin, @name, @type = admin, name.to_sym, type
+    def initialize(name, type)
+      @name, @type = name.to_sym, type
     end
 
     def association?
@@ -25,8 +25,8 @@ module Trestle
     class Association < Attribute
       attr_reader :association_class
 
-      def initialize(admin, name, association_class)
-        super(admin, name, :association)
+      def initialize(name, association_class)
+        super(name, :association)
         @association_class = association_class
       end
 
