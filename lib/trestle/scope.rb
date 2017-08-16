@@ -20,7 +20,7 @@ module Trestle
 
     def apply(collection)
       if @block
-        @block.call
+        @admin.instance_exec(&@block)
       else
         collection.public_send(name)
       end
