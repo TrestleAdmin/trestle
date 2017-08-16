@@ -67,7 +67,7 @@ module Trestle
     option :display_methods, [:display_name, :full_name, :name, :title, :username, :login, :email, :to_s]
 
     # Default adapter class used by all admin resources
-    option :default_adapter, Adapters::Adapter.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
+    option :default_adapter, Adapters.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
 
     # Register a custom form field class
     def form_field(name, klass)

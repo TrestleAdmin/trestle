@@ -72,12 +72,12 @@ module Trestle
       def default_attributes
         raise NotImplementedError
       end
+    end
 
-      # Creates a new Adapter class with the given modules mixed in
-      def self.compose(*modules)
-        Class.new(self) do
-          modules.each { |mod| include(mod) }
-        end
+    # Creates a new Adapter class with the given modules mixed in
+    def self.compose(*modules)
+      Class.new(Adapter) do
+        modules.each { |mod| include(mod) }
       end
     end
   end
