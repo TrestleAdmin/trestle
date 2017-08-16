@@ -39,9 +39,9 @@ module Trestle
       adapter_method :decorate_collection
       adapter_method :unscope
       adapter_method :merge_scopes
+      adapter_method :count
       adapter_method :sort
       adapter_method :paginate
-      adapter_method :count
       adapter_method :default_table_attributes
       adapter_method :default_form_attributes
 

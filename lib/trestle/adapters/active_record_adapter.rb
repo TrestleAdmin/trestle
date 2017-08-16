@@ -26,19 +26,19 @@ module Trestle
       end
 
       def unscope(scope)
-        scope.respond_to?(:unscoped) ? scope.unscoped : scope
+        scope.unscoped
       end
 
       def merge_scopes(scope, other)
         scope.merge(other)
       end
 
-      def sort(collection, field, order)
-        collection.reorder(field => order)
-      end
-
       def count(collection)
         collection.count
+      end
+
+      def sort(collection, field, order)
+        collection.reorder(field => order)
       end
 
       def default_table_attributes
