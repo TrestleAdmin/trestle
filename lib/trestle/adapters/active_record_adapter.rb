@@ -9,12 +9,12 @@ module Trestle
         admin.model.find(params[:id])
       end
 
-      def build_instance(params={})
-        admin.model.new(params)
+      def build_instance(attrs={}, params={})
+        admin.model.new(attrs)
       end
 
-      def update_instance(instance, params)
-        instance.assign_attributes(params)
+      def update_instance(instance, attrs, params={})
+        instance.assign_attributes(attrs)
       end
 
       def save_instance(instance)

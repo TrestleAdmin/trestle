@@ -20,11 +20,11 @@ module Trestle
         raise NotImplementedError
       end
 
-      def build_instance(params={})
+      def build_instance(attrs={}, params={})
         raise NotImplementedError
       end
 
-      def update_instance(instance, params)
+      def update_instance(instance, attrs, params={})
         raise NotImplementedError
       end
 

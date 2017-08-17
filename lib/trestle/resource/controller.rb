@@ -11,7 +11,7 @@ module Trestle
       end
 
       def new
-        self.instance = admin.build_instance
+        self.instance = admin.build_instance({}, params)
 
         respond_to do |format|
           format.html
@@ -20,7 +20,7 @@ module Trestle
       end
 
       def create
-        self.instance = admin.build_instance(admin.permitted_params(params))
+        self.instance = admin.build_instance(admin.permitted_params(params), params)
 
         if admin.save_instance(instance)
           respond_to do |format|
@@ -57,7 +57,7 @@ module Trestle
 
       def update
         self.instance = admin.find_instance(params)
-        admin.update_instance(instance, admin.permitted_params(params))
+        admin.update_instance(instance, admin.permitted_params(params), params)
 
         if admin.save_instance(instance)
           respond_to do |format|
