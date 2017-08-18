@@ -59,7 +59,7 @@ module Trestle
           if column.name.end_with?("_id") && (reflection = model.reflections[column.name.sub(/_id$/, '')])
             Attribute::Association.new(column.name, reflection.klass)
           else
-            Attribute.new(column.name, column.type)
+            Attribute.new(column.name, column.type, array: array_column?(column))
           end
         end
       end
@@ -74,6 +74,10 @@ module Trestle
 
       def counter_cache_column?(attribute)
         attribute.name.to_s.end_with?("_count")
+      end
+
+      def array_column?(column)
+        column.respond_to?(:array?) && column.array?
       end
     end
   end

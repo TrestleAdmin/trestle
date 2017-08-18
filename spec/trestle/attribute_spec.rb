@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 describe Trestle::Attribute do
-  let(:model) { double(primary_key: "id", inheritance_column: "type") }
+  describe "#array?" do
+    it "returns true when options[:array] is true" do
+      attribute = Trestle::Attribute.new(:name, :string, array: true)
+      expect(attribute.array?).to be true
+    end
 
-  subject(:attribute) { Trestle::Attribute.new(:name, :string) }
+    it "returns false when options[:array] is false" do
+      attribute = Trestle::Attribute.new(:name, :string)
+      expect(attribute.array?).to be false
+    end
+  end
 
   describe Trestle::Attribute::Association do
     let(:association_class) { double(name: "User") }

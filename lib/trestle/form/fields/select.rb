@@ -7,7 +7,7 @@ module Trestle
         def initialize(builder, template, name, choices=nil, options={}, html_options={}, &block)
           super(builder, template, name, options, &block)
 
-          @choices = Choices.new(choices)
+          @choices = Choices.new(choices || builder.object.send(name))
           @html_options = default_html_options.merge(html_options)
         end
 

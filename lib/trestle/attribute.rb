@@ -1,9 +1,13 @@
 module Trestle
   class Attribute
-    attr_reader :name, :type
+    attr_reader :name, :type, :options
 
-    def initialize(name, type)
-      @name, @type = name.to_sym, type
+    def initialize(name, type, options={})
+      @name, @type, @options = name.to_sym, type, options
+    end
+
+    def array?
+      options[:array] == true
     end
 
     class Association < Attribute
