@@ -50,6 +50,17 @@ describe Trestle::FormatHelper do
       expect(format_value(model)).to eq(representation)
     end
 
+    it "automatically formats array values" do
+      list, items = double, double
+      first_item, second_item = double, double
+
+      expect(self).to receive(:content_tag).with(:li, "First").and_return(first_item)
+      expect(self).to receive(:content_tag).with(:li, "Second").and_return(second_item)
+      expect(self).to receive(:safe_join).with([first_item, second_item], "\n").and_return(items)
+      expect(self).to receive(:content_tag).with(:ol, items).and_return(list)
+      expect(format_value(["First", "Second"])).to eq(list)
+    end
+
     it "formats value as currency" do
       currency = double
 

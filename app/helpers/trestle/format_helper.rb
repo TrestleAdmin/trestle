@@ -19,6 +19,8 @@ module Trestle
 
     def autoformat_value(value, options={})
       case value
+      when Array
+        content_tag(:ol, safe_join(value.map { |v| content_tag(:li, autoformat_value(v, options)) }, "\n"))
       when Time, DateTime
         timestamp(value)
       when Date
