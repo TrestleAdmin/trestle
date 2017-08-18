@@ -45,10 +45,7 @@ module Trestle
 
         def content(instance)
           value = column_value(instance)
-
-          return blank_column(instance) if value.nil?
-
-          content = format_column(value)
+          content = @template.format_value(value, options)
 
           if value.respond_to?(:id) && options[:link] != false
             # Automatically link to instance's admin if available
@@ -86,43 +83,6 @@ module Trestle
             end
           else
             instance.send(@column.field)
-          end
-        end
-
-        def blank_column(value)
-          text = options.key?(:blank) ? options[:blank] : I18n.t("admin.table.column.blank")
-          @template.content_tag(:span, text, class: "blank")
-        end
-
-        def format_column(value)
-          if options.key?(:format)
-            format_from_options(value)
-          else
-            autoformat_value(value)
-          end
-        end
-
-        def format_from_options(value)
-          case options[:format]
-          when :currency
-            @template.number_to_currency(value)
-          else
-            value
-          end
-        end
-
-        def autoformat_value(value)
-          case value
-          when Time, DateTime
-            @template.timestamp(value)
-          when Date
-            @template.datestamp(value)
-          when TrueClass, FalseClass
-            @template.status_tag(@template.icon("fa fa-check"), :success) if value
-          when ->(value) { value.respond_to?(:id) }
-            @template.display(value)
-          else
-            value
           end
         end
       end

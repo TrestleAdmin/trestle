@@ -50,9 +50,6 @@ en:
       headers:
         id: ID
 
-      column:
-        blank: None
-
     form:
       select:
         prompt: "- Select %{attribute_name} -"
@@ -65,3 +62,6 @@ en:
     ui:
       toggle_navigation: Toggle navigation
       toggle_sidebar: Toggle sidebar
+
+    format:
+      blank: None
