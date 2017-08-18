@@ -2,15 +2,15 @@ module Trestle
   module Adapters
     module ActiveRecordAdapter
       def collection(params={})
-        admin.model.all
+        model.all
       end
 
       def find_instance(params)
-        admin.model.find(params[:id])
+        model.find(params[:id])
       end
 
       def build_instance(attrs={}, params={})
-        admin.model.new(attrs)
+        model.new(attrs)
       end
 
       def update_instance(instance, attrs, params={})
@@ -55,8 +55,8 @@ module Trestle
 
     protected
       def default_attributes
-        admin.model.columns.map do |column|
-          if column.name.end_with?("_id") && (reflection = admin.model.reflections[column.name.sub(/_id$/, '')])
+        model.columns.map do |column|
+          if column.name.end_with?("_id") && (reflection = model.reflections[column.name.sub(/_id$/, '')])
             Attribute::Association.new(column.name, reflection.klass)
           else
             Attribute.new(column.name, column.type)
@@ -65,11 +65,11 @@ module Trestle
       end
 
       def primary_key?(attribute)
-        attribute.name.to_s == admin.model.primary_key
+        attribute.name.to_s == model.primary_key
       end
 
       def inheritance_column?(attribute)
-        attribute.name.to_s == admin.model.inheritance_column
+        attribute.name.to_s == model.inheritance_column
       end
 
       def counter_cache_column?(attribute)

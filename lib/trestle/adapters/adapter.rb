@@ -2,6 +2,7 @@ module Trestle
   module Adapters
     class Adapter
       attr_reader :admin
+      delegate :model, to: :admin
 
       def initialize(admin)
         @admin = admin
