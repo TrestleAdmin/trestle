@@ -67,5 +67,15 @@ describe Trestle::FormatHelper do
       expect(self).to receive(:number_to_currency).with(123.45).and_return(currency)
       expect(format_value(123.45, format: :currency)).to eq(currency)
     end
+
+    it "formats values as tags" do
+      tags = double
+      first_tag, second_tag = double, double
+
+      expect(self).to receive(:content_tag).with(:span, "First", class: "tag").and_return(first_tag)
+      expect(self).to receive(:content_tag).with(:span, "Second", class: "tag").and_return(second_tag)
+      expect(self).to receive(:safe_join).with([first_tag, second_tag]).and_return(tags)
+      expect(format_value(["First", "Second"], format: :tags)).to eq(tags)
+    end
   end
 end

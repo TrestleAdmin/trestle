@@ -12,6 +12,8 @@ module Trestle
       case options[:format]
       when :currency
         number_to_currency(value)
+      when :tags
+        safe_join(value.map { |tag| content_tag(:span, tag, class: "tag") })
       else
         value
       end
