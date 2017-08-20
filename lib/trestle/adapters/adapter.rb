@@ -65,6 +65,10 @@ module Trestle
         params.require(admin.admin_name.singularize).permit!
       end
 
+      def human_attribute_name(attribute, options = {})
+        attribute.to_s.titleize
+      end
+
       def default_table_attributes
         raise NotImplementedError
       end

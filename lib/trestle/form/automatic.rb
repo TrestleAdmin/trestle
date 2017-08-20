@@ -17,7 +17,8 @@ module Trestle
                     admin_link_to format_value(associated_instance), associated_instance
                   end
                 else
-                  prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.model.human_attribute_name(attribute.association_name))
+                  prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.human_attribute_name(attribute.association_name))
+
                   select attribute.name, attribute.association_class.all, include_blank: prompt
                 end
               when :text

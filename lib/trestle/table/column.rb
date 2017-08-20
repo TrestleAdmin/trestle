@@ -28,6 +28,16 @@ module Trestle
         options[:sort].is_a?(Hash) ? options[:sort] : {}
       end
 
+      def header
+        if options[:header]
+          options[:header]
+        elsif admin = table.options[:admin]
+          admin.human_attribute_name(field)
+        else
+          field.to_s.humanize.titleize
+        end
+      end
+
       class Renderer
         delegate :options, to: :@column
 
@@ -38,7 +48,7 @@ module Trestle
         def header
           return if options.has_key?(:header) && options[:header].in?([nil, false])
 
-          header = I18n.t("admin.table.headers.#{@column.field}", default: options[:header] || @column.field.to_s.humanize.titleize)
+          header = I18n.t("admin.table.headers.#{@column.field}", default: @column.header)
           header = @template.sort_link(header, @column.sort_field, @column.sort_options) if @column.sortable?
           header
         end

@@ -42,6 +42,7 @@ module Trestle
       adapter_method :count
       adapter_method :sort
       adapter_method :paginate
+      adapter_method :human_attribute_name
       adapter_method :default_table_attributes
       adapter_method :default_form_attributes
 

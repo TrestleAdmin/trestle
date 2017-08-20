@@ -41,6 +41,10 @@ module Trestle
         collection.reorder(field => order)
       end
 
+      def human_attribute_name(attribute, options = {})
+        model.human_attribute_name(attribute, options={})
+      end
+
       def default_table_attributes
         default_attributes.reject do |attribute|
           inheritance_column?(attribute) || counter_cache_column?(attribute)
