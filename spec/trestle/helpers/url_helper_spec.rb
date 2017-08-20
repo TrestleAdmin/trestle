@@ -5,26 +5,21 @@ require_relative '../../../app/helpers/trestle/url_helper'
 describe Trestle::UrlHelper do
   include Trestle::UrlHelper
 
-  describe "#admin_link_to" do
-    let(:admin) { double }
+  let(:admin) { double }
 
+  before(:each) do
+    allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
+  end
+
+  describe "#admin_link_to" do
     let(:instance) { double }
     let(:url) { double }
     let(:link) { double }
 
     it "renders an admin link to the given instance" do
-      admin = double
-
       expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
       expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
-      expect(Trestle).to receive(:lookup).with(admin).and_return(admin)
       expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
-    end
-
-    it "links to the current admin if no admin provided" do
-      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
-      expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
-      expect(admin_link_to("link content", instance)).to eq(link)
     end
 
     it "uses the block as content if provided" do
@@ -36,11 +31,10 @@ describe Trestle::UrlHelper do
 
       expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
       expect(self).to receive(:link_to).with("captured content", url, {}).and_return(link)
-      expect(admin_link_to(instance, &blk)).to eq(link)
+      expect(admin_link_to(instance, admin: admin, &blk)).to eq(link)
     end
 
-    context "no admin available" do
-      let(:admin) { nil }
+    context "no admin specified" do
       let(:instance) { double }
 
       it "renders the content unlinked if no admin specified or available" do
@@ -60,12 +54,10 @@ describe Trestle::UrlHelper do
   end
 
   describe "#admin_url_for" do
-    let(:admin) { double }
     let(:instance) { double }
     let(:param) { double }
 
     it "returns the path to the show action of the given admin and instance" do
-      allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
       expect(admin).to receive(:to_param).with(instance).and_return(param)
       expect(admin).to receive(:path).with(:show, id: param)
       admin_url_for(instance, admin: admin)
@@ -77,7 +69,6 @@ describe Trestle::UrlHelper do
   end
 
   describe "#admin_for" do
-    let(:admin) { double }
     let(:instance) { double(class: double(name: "MyClass")) }
 
     it "returns the admin associated with an object's class type" do

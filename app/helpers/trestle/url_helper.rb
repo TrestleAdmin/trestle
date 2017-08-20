@@ -6,13 +6,7 @@ module Trestle
         content = capture(&block)
       end
 
-      if options.key?(:admin)
-        admin = Trestle.lookup(options.delete(:admin))
-      else
-        admin = admin_for(instance) || self.admin
-      end
-
-      if admin
+      if admin = (options.key?(:admin) ? Trestle.lookup(options.delete(:admin)) : admin_for(instance))
         link_to(content, admin_url_for(instance, admin: admin), options)
       else
         content
@@ -20,7 +14,7 @@ module Trestle
     end
 
     def admin_url_for(instance, options={})
-      admin = Trestle.lookup(options[:admin] || self.admin)
+      admin = options.key?(:admin) ? Trestle.lookup(options[:admin]) : admin_for(instance)
       admin.path(options[:action] || :show, id: admin.to_param(instance)) if admin
     end
 
