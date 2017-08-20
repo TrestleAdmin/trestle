@@ -93,7 +93,8 @@ Trestle.configure do |config|
   # See the documentation on Trestle::Adapters::Adapter for details on
   # the adapter methods that can be customized.
   #
-  # config.default_adapter.extend MyAdapterExtensions
+  # config.default_adapter = Trestle::Adapters.compose(Trestle::Adapters::SequelAdapter)
+  # config.default_adapter.include MyAdapterExtensions
 
   # Register a form field type to be made available to the Trestle form builder.
   # Field types should conform to the following method definition:
