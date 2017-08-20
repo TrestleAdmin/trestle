@@ -15,10 +15,6 @@ module Trestle
           case attribute.type
           when :association
             Column.new(self, attribute.association_name, sort: false)
-          when :text
-            Column.new(self, attribute.name, link: index.zero?) do |instance|
-              truncate(instance.public_send(attribute.name))
-            end
           else
             Column.new(self, attribute.name, link: index.zero?, align: (:center if [:datetime, :boolean].include?(attribute.type)))
           end

@@ -32,6 +32,12 @@ module Trestle
       when NilClass
         text = options.key?(:blank) ? options[:blank] : I18n.t("admin.format.blank")
         content_tag(:span, text, class: "blank")
+      when String
+        if value.html_safe? || options[:truncate] == false
+          value
+        else
+          truncate(value, options[:truncate] || {})
+        end
       when ->(value) { value.respond_to?(:id) }
         display(value)
       else

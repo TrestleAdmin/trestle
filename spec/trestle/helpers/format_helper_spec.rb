@@ -5,6 +5,10 @@ require_relative '../../../app/helpers/trestle/format_helper'
 describe Trestle::FormatHelper do
   include Trestle::FormatHelper
 
+  before(:each) do
+    allow(self).to receive(:truncate) { |v| v }
+  end
+
   describe "#format_value" do
     it "automatically formats timestamp values" do
       time = Time.now
