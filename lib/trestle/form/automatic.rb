@@ -2,7 +2,7 @@ module Trestle
   class Form
     class Automatic < Form
       def initialize(admin)
-        @block = Proc.new do
+        @block = Proc.new do |instance|
           admin.default_form_attributes.each do |attribute|
             if attribute.array?
               if [:string, :text].include?(attribute.type)
@@ -11,8 +11,15 @@ module Trestle
             else
               case attribute.type
               when :association
-                prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.model.human_attribute_name(attribute.association_name))
-                select attribute.name, attribute.association_class.all, include_blank: prompt
+                if attribute.polymorphic?
+                  static_field attribute.name do
+                    associated_instance = instance.public_send(attribute.association_name)
+                    admin_link_to format_value(associated_instance), associated_instance
+                  end
+                else
+                  prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.model.human_attribute_name(attribute.association_name))
+                  select attribute.name, attribute.association_class.all, include_blank: prompt
+                end
               when :text
                 text_area attribute.name
               when :date

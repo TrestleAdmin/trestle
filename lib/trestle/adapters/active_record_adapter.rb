@@ -56,12 +56,14 @@ module Trestle
     protected
       def default_attributes
         model.columns.map do |column|
-          if column.name.end_with?("_id") && (reflection = model.reflections[column.name.sub(/_id$/, '')])
-            Attribute::Association.new(column.name, reflection.klass)
+          if column.name.end_with?("_id") && (name = column.name.sub(/_id$/, '')) && (reflection = model.reflections[name])
+            Attribute::Association.new(column.name, class: -> { reflection.klass }, name: name, polymorphic: reflection.polymorphic?, type_column: reflection.foreign_type)
+          elsif column.name.end_with?("_type") && (name = column.name.sub(/_type$/, '')) && (reflection = model.reflections[name])
+            # Ignore type columns for polymorphic associations
           else
-            Attribute.new(column.name, column.type, array: array_column?(column))
+            Attribute.new(column.name, column.type, array_column?(column) ? { array: true } : {})
           end
-        end
+        end.compact
       end
 
       def primary_key?(attribute)

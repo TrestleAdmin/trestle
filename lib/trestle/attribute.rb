@@ -11,15 +11,20 @@ module Trestle
     end
 
     class Association < Attribute
-      attr_reader :association_class
-
-      def initialize(name, association_class)
-        super(name, :association)
-        @association_class = association_class
+      def initialize(name, options={})
+        super(name, :association, options)
       end
 
       def association_name
-        name.to_s.sub(/_id$/, "")
+        options[:name] || name.to_s.sub(/_id$/, "")
+      end
+
+      def association_class
+        options[:class].respond_to?(:call) ? options[:class].call : options[:class]
+      end
+
+      def polymorphic?
+        options[:polymorphic] == true
       end
     end
   end
