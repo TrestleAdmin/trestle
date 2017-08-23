@@ -37,7 +37,7 @@ module Trestle
       end
 
       def to_param(instance)
-        instance
+        instance.id
       end
 
       def unscope(scope)
