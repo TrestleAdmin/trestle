@@ -24,7 +24,7 @@ module Trestle
       end
 
       def breadcrumb
-        Breadcrumb.new(admin_name.titleize.pluralize, path)
+        Breadcrumb.new(admin_name.titleize, path)
       end
 
       def admin_name

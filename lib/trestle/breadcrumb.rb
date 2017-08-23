@@ -11,8 +11,14 @@ module Trestle
     end
 
     class Trail
+      include Enumerable
+
       def initialize(breadcrumbs=[])
         @breadcrumbs = Array(breadcrumbs)
+      end
+
+      def ==(other)
+        to_a == other.to_a
       end
 
       def dup

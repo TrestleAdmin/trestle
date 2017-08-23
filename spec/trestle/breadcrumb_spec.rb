@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Trestle::Breadcrumb::Trail do
   let(:breadcrumbs) { [Trestle::Breadcrumb.new("Home", "/"), Trestle::Breadcrumb.new("Child")] }
-  
+
   subject(:trail) { Trestle::Breadcrumb::Trail.new(breadcrumbs) }
 
   it "is iterable" do
@@ -10,6 +10,11 @@ describe Trestle::Breadcrumb::Trail do
       Trestle::Breadcrumb.new("Home", "/"),
       Trestle::Breadcrumb.new("Child")
     )
+  end
+
+  it "is equal to a trail with identical breadcrumbs" do
+    other = Trestle::Breadcrumb::Trail.new(breadcrumbs)
+    expect(other).to eq(trail)
   end
 
   describe "#append" do

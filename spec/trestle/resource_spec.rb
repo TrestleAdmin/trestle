@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Trestle::Resource do
   before(:each) do
+    class Test; end
     class TestAdmin < Trestle::Resource; end
   end
 
@@ -17,11 +18,11 @@ describe Trestle::Resource do
   end
 
   it "infers the model from the admin name" do
-    class Test; end
     expect(admin.model).to eq(Test)
   end
 
   it "raises an exception if the inferred model does not exist" do
+    Object.send(:remove_const, :Test) if defined?(Test)
     expect { admin.model }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:test, model: MyModel)")
   end
 
@@ -29,6 +30,15 @@ describe Trestle::Resource do
     class AlternateModel; end
     admin.options = { model: AlternateModel }
     expect(admin.model).to eq(AlternateModel)
+  end
+
+  it "has a breadcrumb trail" do
+    trail = Trestle::Breadcrumb::Trail.new([
+      Trestle::Breadcrumb.new("Home", "/admin"),
+      Trestle::Breadcrumb.new("Tests", "/admin/test")
+    ])
+
+    expect(admin.breadcrumbs).to eq(trail)
   end
 
   context "scoped within a module" do
