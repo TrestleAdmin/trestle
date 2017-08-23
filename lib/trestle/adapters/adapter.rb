@@ -52,12 +52,12 @@ module Trestle
         raise NotImplementedError
       end
 
-      def sort(collection, params)
+      def sort(collection, field, order)
         raise NotImplementedError
       end
 
       def paginate(collection, params)
-        collection = Kaminari.paginate_array(collection) unless collection.respond_to?(:page)
+        collection = Kaminari.paginate_array(collection.to_a) unless collection.respond_to?(:page)
         collection.page(params[:page])
       end
 
