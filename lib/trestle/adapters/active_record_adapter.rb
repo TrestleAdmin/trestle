@@ -41,8 +41,8 @@ module Trestle
         collection.reorder(field => order)
       end
 
-      def human_attribute_name(attribute, options = {})
-        model.human_attribute_name(attribute, options={})
+      def human_attribute_name(attribute, options={})
+        model.human_attribute_name(attribute, options)
       end
 
       def default_table_attributes
