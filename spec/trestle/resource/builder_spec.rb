@@ -175,8 +175,8 @@ describe Trestle::Resource::Builder do
       end
 
       collection = double
-      expect(collection).to receive(:order).with(name: "asc").and_return([1, 2, 3])
-      expect(::TestAdmin.sort(collection, :name, "asc")).to eq([1, 2, 3])
+      expect(collection).to receive(:order).with(name: :asc).and_return([1, 2, 3])
+      expect(::TestAdmin.sort(collection, :name, :asc)).to eq([1, 2, 3])
     end
   end
 
@@ -189,7 +189,7 @@ describe Trestle::Resource::Builder do
       end
 
       collection = double
-      expect(collection).to receive(:order).with(field: "asc").and_return([1, 2, 3])
+      expect(collection).to receive(:order).with(field: :asc).and_return([1, 2, 3])
       expect(::TestAdmin.apply_sorting(collection, sort: "field", order: "asc")).to eq([1, 2, 3])
     end
   end

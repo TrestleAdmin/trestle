@@ -124,7 +124,7 @@ describe Trestle::Resource do
 
     context "when given sort params" do
       it "reorders the given collection" do
-        expect(collection).to receive(:reorder).with(field: "asc").and_return(sorted_collection)
+        expect(collection).to receive(:reorder).with(field: :asc).and_return(sorted_collection)
         expect(admin.apply_sorting(collection, sort: "field", order: "asc")).to eq(sorted_collection)
       end
     end
@@ -139,7 +139,7 @@ describe Trestle::Resource do
       it "reorders the collection using the column sort" do
         TestAdmin.column_sorts[:field] = ->(collection, order) { collection.order(field: order) }
 
-        expect(collection).to receive(:order).with(field: "desc").and_return(sorted_collection)
+        expect(collection).to receive(:order).with(field: :desc).and_return(sorted_collection)
         expect(admin.apply_sorting(collection, sort: "field", order: "desc")).to eq(sorted_collection)
       end
     end

@@ -97,9 +97,7 @@ module Trestle
         return collection unless params[:sort]
 
         field = params[:sort].to_sym
-
-        order = params[:order].downcase
-        order = "asc" unless %w(asc desc).include?(order)
+        order = params[:order].to_s.downcase == "desc" ? :desc : :asc
 
         if column_sorts.has_key?(field)
           instance_exec(collection, order, &column_sorts[field])
