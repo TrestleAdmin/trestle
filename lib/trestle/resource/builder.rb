@@ -18,9 +18,10 @@ module Trestle
         admin.collection = block
       end
 
-      def instance(&block)
+      def find_instance(&block)
         admin.find_instance = block
       end
+      alias instance find_instance
 
       def build_instance(&block)
         admin.build_instance = block

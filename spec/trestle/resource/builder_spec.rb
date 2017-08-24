@@ -67,8 +67,18 @@ describe Trestle::Resource::Builder do
     end
   end
 
-  describe "#instance" do
+  describe "#find_instance" do
     it "sets an explicit instance block" do
+      Trestle::Resource::Builder.build(:test) do
+        find_instance do |params|
+          params[:id]
+        end
+      end
+
+      expect(::TestAdmin.find_instance(id: 123)).to eq(123)
+    end
+
+    it "is aliased as #instance" do
       Trestle::Resource::Builder.build(:test) do
         instance do |params|
           params[:id]
