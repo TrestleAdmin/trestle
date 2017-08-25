@@ -28,7 +28,7 @@ module Trestle
         end
 
         def delete
-          button(@template.icon("fa fa-trash"), @template.admin_url_for(instance, admin: table.options[:admin], action: :destroy), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+          button(@template.icon("fa fa-trash"), @template.admin_url_for(instance, admin: table.admin, action: :destroy), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
         end
 
         def button(content, url, options={})

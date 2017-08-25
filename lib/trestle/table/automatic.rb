@@ -3,7 +3,6 @@ module Trestle
     class Automatic < Table
       def initialize(admin)
         super(sortable: true, admin: admin)
-        @admin = admin
       end
 
       def columns
@@ -11,7 +10,7 @@ module Trestle
       end
 
       def content_columns
-        @admin.default_table_attributes.map.with_index do |attribute, index|
+        admin.default_table_attributes.map.with_index do |attribute, index|
           case attribute.type
           when :association
             Column.new(self, attribute.association_name, sort: false)

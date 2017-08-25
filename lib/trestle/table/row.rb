@@ -21,7 +21,7 @@ module Trestle
 
         def options(instance)
           options = Trestle::Options.new
-          options.merge!(data: { url: admin_url_for(instance) }) if table.options[:admin]
+          options.merge!(data: { url: admin_url_for(instance) }) if table.admin
           options.merge!(@row.options)
           options.merge!(@template.instance_exec(instance, &@row.block)) if @row.block
           options
@@ -29,7 +29,7 @@ module Trestle
 
       protected
         def admin_url_for(instance)
-          @template.admin_url_for(instance, admin: table.options[:admin])
+          @template.admin_url_for(instance, admin: table.admin)
         end
       end
     end

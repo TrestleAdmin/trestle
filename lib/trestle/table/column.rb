@@ -31,8 +31,8 @@ module Trestle
       def header
         if options[:header]
           options[:header]
-        elsif admin = table.options[:admin]
-          admin.human_attribute_name(field)
+        elsif table.admin
+          table.admin.human_attribute_name(field)
         else
           field.to_s.humanize.titleize
         end
@@ -62,7 +62,7 @@ module Trestle
             content = @template.admin_link_to(content, value)
           elsif options[:link]
             # Explicitly link to the specified admin, or the table's admin
-            content = @template.admin_link_to(content, instance, admin: options[:admin] || @column.table.options[:admin])
+            content = @template.admin_link_to(content, instance, admin: options[:admin] || @column.table.admin)
           end
 
           content

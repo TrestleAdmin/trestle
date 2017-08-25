@@ -6,6 +6,10 @@ describe Trestle::Table::ActionsColumn do
   let(:instance) { double }
   let(:template) { double }
 
+  before(:each) do
+    allow(Trestle).to receive(:lookup).and_return(admin)
+  end
+
   subject(:column) do
     Trestle::Table::ActionsColumn.new(table)
   end
@@ -26,7 +30,7 @@ describe Trestle::Table::ActionsColumn do
     end
 
     describe "#content" do
-      let(:template) { double(admin: admin, icon: double, link_to: double, concat: nil) }
+      let(:template) { double(icon: double, link_to: double, concat: nil) }
 
       it "renders the actions block" do
         expect(template).to receive(:with_output_buffer).and_yield
@@ -55,7 +59,6 @@ describe Trestle::Table::ActionsColumn do
     describe "#delete" do
       let(:button) { double }
       let(:icon) { double }
-      let(:template) { double(admin: admin) }
 
       it "appends a delete link to the template" do
         expect(template).to receive(:icon).with("fa fa-trash").and_return(icon)
