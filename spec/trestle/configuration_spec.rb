@@ -29,7 +29,7 @@ describe Trestle::Configuration do
   end
 
   it "has a display methods configuration option" do
-    expect(config).to have_accessor(:display_methods).with_default([:display_name, :full_name, :name, :title, :username, :login, :email, :to_s])
+    expect(config).to have_accessor(:display_methods).with_default([:display_name, :full_name, :name, :title, :username, :login, :email])
   end
 
   it "has a persistent params configuration option" do

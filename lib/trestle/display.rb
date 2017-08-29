@@ -14,7 +14,7 @@ module Trestle
 
   private
     def display_method
-      @display_method ||= Trestle.config.display_methods.find { |m| @instance.respond_to?(m) }
+      @display_method ||= Trestle.config.display_methods.find { |m| @instance.respond_to?(m) } || :to_s
     end
   end
 end

@@ -64,7 +64,7 @@ module Trestle
     option :persistent_params, [:sort, :order, :scope]
 
     # List of methods to try calling on an instance when displayed by the `display` helper
-    option :display_methods, [:display_name, :full_name, :name, :title, :username, :login, :email, :to_s]
+    option :display_methods, [:display_name, :full_name, :name, :title, :username, :login, :email]
 
     # Default adapter class used by all admin resources
     option :default_adapter, Adapters.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
