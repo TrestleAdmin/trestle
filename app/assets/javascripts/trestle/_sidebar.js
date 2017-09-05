@@ -40,13 +40,13 @@ Trestle.ready(function() {
 
     if (sidebar.hasClass('expanded') || sidebar.hasClass('collapsed')) {
       sidebar.removeClass('expanded').removeClass('collapsed');
-      document.cookie = "trestle:sidebar=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      Trestle.cookie.delete("trestle:sidebar");
     } else if ($(document).width() >= 1200) {
       sidebar.addClass('collapsed');
-      document.cookie = "trestle:sidebar=collapsed; path=/";
+      Trestle.cookie.set("trestle:sidebar", "collapsed");
     } else if ($(document).width() >= 768) {
       sidebar.addClass('expanded');
-      document.cookie = "trestle:sidebar=expanded; path=/";
+      Trestle.cookie.set("trestle:sidebar", "expanded");
     }
   });
 });
