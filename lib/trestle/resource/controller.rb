@@ -88,7 +88,7 @@ module Trestle
             if success
               flash[:message] = flash_message("success.destroy", default: "The %{model_name} was successfully deleted.")
             else
-              flash[:message] = flash_message("failure.destroy", default: "Could not delete %{model_name}.")
+              flash[:error] = flash_message("failure.destroy", default: "Could not delete %{model_name}.")
             end
 
             redirect_to action: :index
