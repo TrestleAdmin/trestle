@@ -1,0 +1,67 @@
+nl:
+  trestle:
+    title: Trestle Admin
+    footer: Powered by Trestle
+    version: Versie
+
+    flash:
+      success:
+        title: "Gelukt!"
+        create: "De %{model_name} succesvol toegevoegd."
+        update: "De %{model_name} is succesvol gewijzigd."
+        destroy: "De %{model_name} is succesvol verwijderd."
+
+      failure:
+        title: "Waarschuwing!"
+        create: "Kon niet toevoegen om de volgende redenen."
+        update: "Kon niet aanpassen om de volgende redenen."
+        destroy: "Kon %{model_name} niet verwijderen."
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Geen %{entry_name} gevonden"
+            one: "<strong>1</strong> %{entry_name} wordt weergeven"
+            other: "<strong>Alle %{count}</strong> %{entry_name} worden weergeven"
+
+        more_pages:
+          display_entries: "%{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> van de <b>%{total}</b> worden weergeven"
+
+    onboarding:
+      welcome: Welkom bij Trestle
+      no_admins: Voeg een admin toe in <code>app/admin</code> om te beginnen.
+      no_template: Maak <code>%{path}</code> aan om dit template aan te passen.
+      no_form: Definieer een form block of maak een <code>_form.html</code> partial.
+
+  admin:
+    titles:
+      index: Lijst van %{pluralized_model_name}
+      edit: "%{model_name} aanpassen"
+
+    buttons:
+      save: "%{model_name} opslaan"
+      delete: "%{model_name} verwijderen"
+
+    breadcrumbs:
+      home: Home
+
+    table:
+      headers:
+        id: ID
+
+    form:
+      select:
+        prompt: "- Selecteer %{attribute_name} -"
+
+    confirmation:
+      title: Weer je het zeker?
+      delete: Verwijderen
+      cancel: Annuleren
+
+    ui:
+      toggle_navigation: "Navigation tonen/verbergen"
+      toggle_sidebar: "Sidebar tonen/verbergen"
+
+    format:
+      blank: Geen
