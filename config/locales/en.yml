@@ -37,9 +37,11 @@ en:
   admin:
     titles:
       index: Listing %{pluralized_model_name}
+      new: New %{model_name}
       edit: Editing %{model_name}
 
     buttons:
+      new: New %{model_name}
       save: Save %{model_name}
       delete: Delete %{model_name}
 
