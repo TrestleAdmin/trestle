@@ -87,11 +87,16 @@ module Trestle
           format.html do
             if success
               flash[:message] = flash_message("success.destroy", default: "The %{model_name} was successfully deleted.")
+              redirect_to action: :index
             else
-              flash[:message] = flash_message("failure.destroy", default: "Could not delete %{model_name}.")
-            end
+              flash[:error] = flash_message("failure.destroy", default: "Could not delete %{model_name}.")
 
-            redirect_to action: :index
+              if self.instance = admin.find_instance(params)
+                redirect_to action: :show, id: admin.to_param(instance)
+              else
+                redirect_to action: :index
+              end
+            end
           end
           format.json { head :no_content }
           format.js
