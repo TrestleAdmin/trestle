@@ -48,16 +48,22 @@
 
     padding: 5px 20px;
 
-    &:hover, &:focus {
-      background: none;
-    }
-
     &:after {
       @extend .ion;
       content: $ionicon-var-arrow-down-b;
 
       float: right;
       margin-top: 2px;
+
+      opacity: 0.75;
+    }
+
+    &:hover, &:focus {
+      background: none;
+
+      &:after {
+        opacity: 1.0;
+      }
     }
   }
 
