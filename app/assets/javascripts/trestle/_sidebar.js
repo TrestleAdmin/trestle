@@ -64,4 +64,10 @@ Trestle.ready(function() {
 
     Trestle.cookie.set("trestle:navigation:collapsed", collapsed.join(","))
   });
+
+
+  // Scroll sidebar to active item
+
+  var active = sidebar.find('.active');
+  sidebar.find('.app-sidebar-inner').scrollTop(active.offset().top - 100);
 });
