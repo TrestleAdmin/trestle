@@ -12,8 +12,9 @@
 
   <div class="app-sidebar-inner">
     <nav class="app-nav">
+      <% collapsed = cookies["trestle:navigation:collapsed"].split(",") %>
       <% Trestle.navigation.each do |group, items| %>
-        <ul>
+        <ul<% if collapsed.include?(group.label.parameterize) %> class="collapsed"<% end %>>
           <% if group.present? %>
             <li class="nav-header"><%= link_to group.label, "##{group.label.parameterize}" %></li>
           <% end %>

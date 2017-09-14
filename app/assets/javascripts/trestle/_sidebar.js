@@ -57,5 +57,11 @@ Trestle.ready(function() {
     e.preventDefault();
 
     $(this).closest('ul').toggleClass('collapsed');
+
+    var collapsed = sidebar.find('.collapsed .nav-header a').map(function() {
+      return $(this).attr('href').replace(/^#/, '');
+    }).toArray();
+
+    Trestle.cookie.set("trestle:navigation:collapsed", collapsed.join(","))
   });
 });
