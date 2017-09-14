@@ -1,0 +1,69 @@
+pt-BR:
+  trestle:
+    title: Trestle Admin
+    footer: Powered by Trestle
+    version: Versão
+
+    flash:
+      success:
+        title: "Sucesso!"
+        create: "O %{model_name} foi criado com sucesso."
+        update: "O %{model_name} foi atualizado com sucesso."
+        destroy: "O %{model_name} foi deletado com sucesso."
+
+      failure:
+        title: "Atenção!"
+        create: "Por favor corrija os erros abaixo."
+        update: "Por favor corrija os erros abaixo."
+        destroy: "Falha ao excluir %{model_name}."
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Nenhum %{entry_name} encontrado"
+            one: "Mostrando <strong>1</strong> %{entry_name}"
+            other: "Mostrando <strong>all %{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "Mostrando %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> de <b>%{total}</b>"
+
+    onboarding:
+      welcome: Bem-vindo ao Trestle
+      no_admins: Para começar, crie um admin dentro de <code>app/admin</code>.
+      no_template: Para personalizar este template, crie <code>%{path}</code>.
+      no_form: Defina um bloco de formulário ou crie um <code>_form.html</code> parcial.
+  
+  admin:
+    titles:
+      index: Listando %{pluralized_model_name}
+      new: Novo %{model_name}
+      edit: Editando %{model_name}
+
+    buttons:
+      new: Novo %{model_name}
+      save: Salvar %{model_name}
+      delete: Excluir %{model_name}
+
+    breadcrumbs:
+      home: Home
+
+    table:
+      headers:
+        id: ID
+
+    form:
+      select:
+        prompt: "- Selecione %{attribute_name} -"
+
+    confirmation:
+      title: Você tem certeza?
+      delete: Excluir
+      cancel: Cancelar
+
+    ui:
+      toggle_navigation: Alternar naveção
+      toggle_sidebar: Alternar barra lateral
+
+    format:
+      blank: Nenhum
