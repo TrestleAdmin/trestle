@@ -14,7 +14,7 @@ Trestle.cookie = {
   },
 
   set: function(name, value) {
-    document.cookie = name + "=" + value + "; path=/";
+    document.cookie = name + "=" + encodeURIComponent(value) + "; path=/";
   },
 
   delete: function(name) {
