@@ -15,7 +15,7 @@
       <% Trestle.navigation.each do |group, items| %>
         <ul>
           <% if group.present? %>
-            <li class="nav-header"><%= group.label %></li>
+            <li class="nav-header"><%= link_to group.label, "##{group.label.parameterize}" %></li>
           <% end %>
 
           <% items.each do |item| %>

@@ -49,4 +49,13 @@ Trestle.ready(function() {
       Trestle.cookie.set("trestle:sidebar", "expanded");
     }
   });
+
+
+  // Toggle navigation groups
+
+  sidebar.find('.nav-header a').on('click', function(e) {
+    e.preventDefault();
+
+    $(this).closest('ul').toggleClass('collapsed');
+  });
 });

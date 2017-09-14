@@ -38,7 +38,8 @@
     vertical-align: 0;
   }
 
-  .nav-header {
+  .nav-header a {
+    position: relative;
     color: rgba(white, 0.25);
 
     text-transform: uppercase;
@@ -46,6 +47,18 @@
     font-size: 11px;
 
     padding: 5px 20px;
+
+    &:hover, &:focus {
+      background: none;
+    }
+
+    &:after {
+      @extend .ion;
+      content: $ionicon-var-arrow-down-b;
+
+      float: right;
+      margin-top: 2px;
+    }
   }
 
   .active a {
@@ -62,14 +75,30 @@
     position: relative;
     top: 1px;
   }
+
+  .collapsed {
+    li {
+      display: none;
+
+      &.nav-header {
+        display: block;
+      }
+    }
+  }
 }
 
 @mixin collapsed-nav-header {
-  border-bottom: 1px solid rgba(white, 0.1);
   height: 0;
-  margin: 0 15px 14px;
-  padding: 5px 0;
+  padding: 10px 15px 15px;
   text-indent: -99999px;
+
+  &:after {
+    display: block;
+    float: none;
+    margin-top: -12px;
+    content: '';
+    border-bottom: 1px solid rgba(white, 0.1);
+  }
 }
 
 @include tablet {
@@ -78,7 +107,7 @@
       display: none;
     }
 
-    .nav-header {
+    .nav-header a {
       @include collapsed-nav-header;
     }
 
@@ -104,7 +133,7 @@
       display: none;
     }
 
-    .nav-header {
+    .nav-header a {
       @include collapsed-nav-header;
     }
   }
