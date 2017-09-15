@@ -23,7 +23,7 @@ describe Trestle do
 
       expect(Trestle::Admin::Builder).to receive(:build).with(:test, {}).and_return(admin)
       expect(Trestle.admin(:test)).to eq(admin)
-      expect(Trestle.admins).to eq({ "test" => admin })
+      expect(Trestle.admins).to include({ "test" => admin })
     end
   end
 
@@ -33,7 +33,7 @@ describe Trestle do
 
       expect(Trestle::Resource::Builder).to receive(:build).with(:test, {}).and_return(admin)
       expect(Trestle.resource(:test)).to eq(admin)
-      expect(Trestle.admins).to eq({ "test" => admin })
+      expect(Trestle.admins).to include({ "test" => admin })
     end
   end
 
@@ -79,10 +79,10 @@ describe Trestle do
         end
       end
 
-      expect(Trestle.navigation.items).to eq([
+      expect(Trestle.navigation.items).to include(
         Trestle::Navigation::Item.new(:item1, "/path1"),
         Trestle::Navigation::Item.new(:item2, "/path2")
-      ])
+      )
     end
   end
 end
