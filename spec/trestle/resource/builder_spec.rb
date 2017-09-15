@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-class Trestle::ApplicationController < ActionController::Base; end
-
 describe Trestle::Resource::Builder do
   before(:each) do
     Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
+    stub_const("Trestle::ApplicationController", Class.new(ActionController::Base))
   end
 
   it "creates a top-level Resource subclass" do
