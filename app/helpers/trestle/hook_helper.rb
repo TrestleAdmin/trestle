@@ -1,13 +1,18 @@
 module Trestle
   module HookHelper
     def hook(name)
-      safe_join(Trestle.config.hooks[name.to_s].map { |hook|
+      safe_join(hooks[name.to_s].map { |hook|
         instance_exec(&hook)
-      }, "\n")
+      }, "\n") if hook?(name)
     end
 
     def hook?(name)
-      Trestle.config.hooks[name.to_s].any?
+      hooks.key?(name.to_s) && hooks[name.to_s].any?
+    end
+
+  protected
+    def hooks
+      Trestle.config.hooks
     end
   end
 end
