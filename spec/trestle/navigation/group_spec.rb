@@ -20,6 +20,10 @@ describe Trestle::Navigation::Group do
 
     expect([g1, g2, g3, g4].sort).to eq([g2, g1, g4, g3])
   end
+
+  it "has an id based on the name" do
+    expect(group.id).to eq("test")
+  end
 end
 
 describe Trestle::Navigation::NullGroup do
@@ -32,5 +36,9 @@ describe Trestle::Navigation::NullGroup do
     group = Trestle::Navigation::Group.new(:test, priority: :first)
 
     expect([group, null].sort).to eq([null, group])
+  end
+
+  it "has a nil id" do
+    expect(subject.id).to be_nil
   end
 end

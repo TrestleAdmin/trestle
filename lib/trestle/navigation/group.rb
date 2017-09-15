@@ -40,6 +40,10 @@ module Trestle
       def label
         I18n.t("admin.navigation.groups.#{name}", default: name.to_s.titlecase)
       end
+
+      def id
+        name.to_s.parameterize
+      end
     end
 
     class NullGroup
@@ -57,6 +61,10 @@ module Trestle
 
       def hash
         NullGroup.hash
+      end
+
+      def id
+        nil
       end
 
       def <=>(other)
