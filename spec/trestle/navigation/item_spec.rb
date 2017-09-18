@@ -8,6 +8,11 @@ describe Trestle::Navigation::Item do
     expect(item.label).to eq("Test")
   end
 
+  it "can override the label from options" do
+    item = Trestle::Navigation::Item.new(:test, nil, label: "Custom Label")
+    expect(item.label).to eq("Custom Label")
+  end
+
   it "has a default priority of 0" do
     expect(item.priority).to eq(0)
   end
