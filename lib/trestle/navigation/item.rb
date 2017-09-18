@@ -40,7 +40,8 @@ module Trestle
       end
 
       def label
-        I18n.t("admin.navigation.items.#{name}", default: name.to_s.titlecase)
+        I18n.t("admin.navigation.items.#{name}", default: false) ||
+        I18n.t("activerecord.models.#{name.to_s.singularize}.other", default: name.to_s.titlecase)
       end
 
       def icon
