@@ -1,4 +1,4 @@
-<% title = t("admin.titles.edit", default: "Editing %{model_name}", model_name: admin.model_name, pluralized_model_name: admin.model_name.pluralize) %>
+<% title = t("admin.titles.edit", default: "Editing %{model_name}", model_name: admin.model_name.titleize, pluralized_model_name: admin.model_name.plural.titleize) %>
 
 <% content_for(:title, title) %>
 <% breadcrumb title %>

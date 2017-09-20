@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.2.2"
 
   spec.add_dependency "railties",           ">= 4.2.0"
+  spec.add_dependency "activemodel",        ">= 4.2.0"
   spec.add_dependency "sass-rails",         "~> 5.0.6"
   spec.add_dependency "autoprefixer-rails", "~> 7.1.2"
   spec.add_dependency "kaminari",           "~> 1.0.1"

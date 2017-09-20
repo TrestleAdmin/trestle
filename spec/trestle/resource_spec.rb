@@ -32,6 +32,10 @@ describe Trestle::Resource do
     expect(admin.model).to eq(AlternateModel)
   end
 
+  it "has a model name" do
+    expect(admin.model_name).to eq(Trestle::ModelName.new(Test))
+  end
+
   it "has a breadcrumb trail" do
     trail = Trestle::Breadcrumb::Trail.new([
       Trestle::Breadcrumb.new("Home", "/admin"),
@@ -81,41 +85,6 @@ describe Trestle::Resource do
   it "has a default (identity) decorator" do
     collection = double
     expect(admin.decorate_collection(collection)).to eq(collection)
-  end
-
-  describe "#model_name" do
-    before(:each) do
-      class Test; end
-    end
-
-    context "#model_name on the class returns an ActiveModel::Name" do
-      it "returns the humanized model name" do
-        model_name = double(human: "ActiveModel Class")
-
-        expect(Test).to receive(:model_name).and_return(model_name)
-        expect(admin.model_name).to eq("ActiveModel Class")
-      end
-    end
-
-    context "#model_name on the class returns a string" do
-      it "returns the titleized model name" do
-        expect(Test).to receive(:model_name).and_return("TestClass")
-        expect(admin.model_name).to eq("Test Class")
-      end
-    end
-
-    context "#model_name is not defined on the class" do
-      it "returns the titleized class name" do
-        expect(admin.model_name).to eq("Test")
-      end
-    end
-
-    it "can be overridden via the `as` option" do
-      admin.options = { as: "Custom Class" }
-
-      expect(Test).to_not receive(:model_name)
-      expect(admin.model_name).to eq("Custom Class")
-    end
   end
 
   describe "#apply_sorting" do

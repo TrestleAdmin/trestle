@@ -1,4 +1,4 @@
-<% content_for(:title, t("admin.titles.index", default: "Listing %{pluralized_model_name}", model_name: admin.model_name, pluralized_model_name: admin.model_name.pluralize)) %>
+<% content_for(:title, t("admin.titles.index", default: "Listing %{pluralized_model_name}", model_name: admin.model_name.titleize, pluralized_model_name: admin.model_name.plural.titleize)) %>
 
 <% content_for(:primary_toolbar) do %>
   <%= link_to admin.path(:new), class: "btn btn-default btn-lg" do %>

@@ -119,7 +119,7 @@ module Trestle
       end
 
       def model_name
-        options[:as] || default_model_name
+        @model_name ||= Trestle::ModelName.new(model)
       end
 
       def readonly?
@@ -127,7 +127,7 @@ module Trestle
       end
 
       def breadcrumb
-        Breadcrumb.new(model_name.pluralize, path)
+        Breadcrumb.new(model_name.plural.titleize, path)
       end
 
       def routes
@@ -149,15 +149,6 @@ module Trestle
         parent.const_get(admin_name.classify)
       rescue NameError
         raise NameError, "Unable to find model #{admin_name.classify}. Specify a different model using Trestle.resource(:#{admin_name}, model: MyModel)"
-      end
-
-      def default_model_name
-        if model.respond_to?(:model_name)
-          model_name = model.model_name
-          model_name.respond_to?(:human) ? model_name.human : model_name.to_s.titleize
-        else
-          model.name.titleize
-        end
       end
     end
   end

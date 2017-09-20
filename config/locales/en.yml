@@ -7,15 +7,15 @@ en:
     flash:
       success:
         title: "Success!"
-        create: "The %{model_name} was successfully created."
-        update: "The %{model_name} was successfully updated."
-        destroy: "The %{model_name} was successfully deleted."
+        create: "The %{lowercase_model_name} was successfully created."
+        update: "The %{lowercase_model_name} was successfully updated."
+        destroy: "The %{lowercase_model_name} was successfully deleted."
 
       failure:
         title: "Warning!"
         create: "Please correct the errors below."
         update: "Please correct the errors below."
-        destroy: "Could not delete %{model_name}."
+        destroy: "Could not delete %{lowercase_model_name}."
 
     helpers:
       page_entries_info:
