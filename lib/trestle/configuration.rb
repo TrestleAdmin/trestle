@@ -86,6 +86,12 @@ module Trestle
     option :javascript_i18n_keys, ["admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel"]
 
 
+    ## Debugging
+
+    # Enable debugging of form errors
+    option :debug_form_errors, Rails.env.development?
+
+
     ## Callbacks
 
     Action = Struct.new(:options, :block)

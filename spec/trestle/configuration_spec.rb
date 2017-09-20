@@ -51,6 +51,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:root_breadcrumbs).with_default([Trestle::Breadcrumb.new("Home", "/admin")])
   end
 
+  it "has a debug form errors configuration option" do
+    expect(config).to have_accessor(:debug_form_errors).with_default(false)
+  end
+
   it "has no default menu blocks" do
     expect(config.menus).to eq([])
   end

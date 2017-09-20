@@ -4,8 +4,22 @@
                       title: t("trestle.flash.success.title", default: "Success!"),
                       message: flash[:message] %>
 <% elsif flash[:error] -%>
-  <%= render "alert", html_class: "alert-danger",
-                      icon: icon("alert-icon ion-ios-close-outline"),
-                      title: t("trestle.flash.failure.title", default: "Warning!"),
-                      message: flash[:error] %>
+  <%= render layout: "alert",
+             locals: {
+               html_class: "alert-danger",
+               icon: icon("alert-icon ion-ios-close-outline"),
+               title: t("trestle.flash.failure.title", default: "Warning!"),
+               message: flash[:error]
+             } do %>
+    <%- if Trestle.config.debug_form_errors && instance && instance.errors.any? -%>
+      <%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { toggle: "collapse" } %>
+      <div id="debug-errors" class="debug-errors collapse">
+        <ul>
+          <% instance.errors.each do |key, message| %>
+            <li class="small"><tt><%= key %>:</tt> <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <%- end -%>
+  <% end %>
 <% end -%>

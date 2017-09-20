@@ -6,5 +6,7 @@
   <div class="alert-content">
     <h3><%= title %></h3>
     <p><%= message %></p>
+
+    <%= yield if block_given? %>
   </div>
 </div>
