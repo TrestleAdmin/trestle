@@ -54,12 +54,13 @@ describe Trestle::Table::Builder do
     it "adds an actions column to the table" do
       block = Proc.new {}
       table = Trestle::Table::Builder.build do
-        actions &block
+        actions class: "custom-actions", &block
       end
 
       column = table.columns[0]
 
       expect(column).to be_a(Trestle::Table::ActionsColumn)
+      expect(column.options).to eq({ class: "custom-actions" })
       expect(column.block).to eq(block)
     end
   end

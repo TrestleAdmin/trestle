@@ -25,8 +25,8 @@ module Trestle
         table.columns << Column.new(table, field, options, &(proc || block))
       end
 
-      def actions(&block)
-        table.columns << ActionsColumn.new(table, &block)
+      def actions(options={}, &block)
+        table.columns << ActionsColumn.new(table, options, &block)
       end
     end
   end

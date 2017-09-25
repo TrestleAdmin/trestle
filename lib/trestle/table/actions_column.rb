@@ -1,10 +1,10 @@
 module Trestle
   class Table
     class ActionsColumn
-      attr_reader :table, :block
+      attr_reader :table, :options, :block
 
-      def initialize(table, &block)
-        @table = table
+      def initialize(table, options={}, &block)
+        @table, @options = table, options
         @block = block_given? ? block : default_actions
       end
 
@@ -42,18 +42,11 @@ module Trestle
 
       class Renderer < Column::Renderer
         def header
+          options[:header]
         end
 
         def classes
-          "actions"
-        end
-
-        def options
-          {}
-        end
-
-        def data
-          {}
+          super + ["actions"]
         end
 
         def content(instance)

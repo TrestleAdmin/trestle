@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Trestle::Table::ActionsColumn do
+  let(:options) { {} }
   let(:table) { Trestle::Table.new(admin: admin) }
   let(:admin) { double }
   let(:instance) { double }
@@ -11,22 +12,44 @@ describe Trestle::Table::ActionsColumn do
   end
 
   subject(:column) do
-    Trestle::Table::ActionsColumn.new(table)
+    Trestle::Table::ActionsColumn.new(table, options)
   end
 
   describe "#renderer" do
     subject(:renderer) { column.renderer(template) }
 
-    it "has an empty header" do
-      expect(renderer.header).to be_blank
+    describe "#header" do
+      it "is empty by default" do
+        expect(renderer.header).to be_blank
+      end
+
+      context "with options[:header]" do
+        let(:options) { { header: "Custom Header" } }
+
+        it "returns the header specified in options" do
+          expect(renderer.header).to eq("Custom Header")
+        end
+      end
     end
 
-    it "has a class of 'actions'" do
-      expect(renderer.classes).to eq("actions")
+    describe "#classes" do
+      let(:options) { { class: "custom-class" } }
+
+      it "includes class of 'actions'" do
+        expect(renderer.classes).to include("actions")
+      end
+
+      it "includes classes specified in options" do
+        expect(renderer.classes).to include("custom-class")
+      end
     end
 
-    it "has empty data" do
-      expect(renderer.data).to eq({})
+    describe "#data" do
+      let(:options) { { data: { attr: "custom" } } }
+
+      it "returns data specified in options" do
+        expect(renderer.data).to eq({ attr: "custom" })
+      end
     end
 
     describe "#content" do
