@@ -8,12 +8,7 @@ module Trestle
 
     def initialize(klass)
       @klass = klass
-
-      if klass.respond_to?(:model_name)
-        @name = klass.model_name
-      else
-        @name = ActiveModel::Name.new(klass)
-      end
+      @name = klass.respond_to?(:model_name) ? klass.model_name : ActiveModel::Name.new(klass)
     end
 
     def ==(other)
@@ -21,25 +16,49 @@ module Trestle
     end
 
     def to_s
-      human
+      singular
     end
 
     def singular(options={})
-      human(options)
+      human(default_singular, options)
     end
     alias_method :singularize, :singular
 
     def plural(options={})
-      if klass.respond_to?(:lookup_ancestors) && klass.respond_to?(:i18n_scope)
-        human({ count: :many, default: human.pluralize }.merge(options))
+      if i18n_supported? && i18n_pluralizations_available?
+        human(default_plural, { count: :many }.merge(options))
       else
-        human.pluralize
+        default_plural
       end
     end
     alias_method :pluralize, :plural
 
-    def human(options={})
-      @name.human(options)
+  protected
+    # Default singular version if it cannot be determined from i18n
+    def default_singular
+      @name.name.demodulize.titleize
+    end
+
+    # Default plural version if it cannot be determined from i18n
+    def default_plural
+      singular.pluralize(I18n.locale)
+    end
+
+    # Safely delegates to ActiveModel::Name#human, catching exceptions caused by missing pluralizations
+    def human(default, options={})
+      @name.human(options.merge(default: default))
+    rescue I18n::InvalidPluralizationData
+      default
+    end
+
+    # Checks if the model can be translated by ActiveModel
+    def i18n_supported?
+      klass.respond_to?(:lookup_ancestors) && klass.respond_to?(:i18n_scope)
+    end
+
+    # Checks if multiple pluralization forms (e.g. zero/one/few/many/other) are available from i18n
+    def i18n_pluralizations_available?
+      @name.human(count: nil).is_a?(Hash)
     end
   end
 end
