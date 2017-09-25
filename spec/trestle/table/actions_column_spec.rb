@@ -68,9 +68,10 @@ describe Trestle::Table::ActionsColumn do
   describe Trestle::Table::ActionsColumn::ActionsBuilder do
     subject(:builder) { Trestle::Table::ActionsColumn::ActionsBuilder.new(column, template, instance) }
 
-    describe "#button" do
-      let(:button) { double }
+    let(:button) { double }
+    let(:icon) { double }
 
+    describe "#button" do
       it "appends a button link to the template" do
         expect(template).to receive(:link_to).with("Test", "/path", class: ["btn-info", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
@@ -80,9 +81,6 @@ describe Trestle::Table::ActionsColumn do
     end
 
     describe "#delete" do
-      let(:button) { double }
-      let(:icon) { double }
-
       it "appends a delete link to the template" do
         expect(template).to receive(:icon).with("fa fa-trash").and_return(icon)
         expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :destroy).and_return("/test/123")
@@ -90,6 +88,28 @@ describe Trestle::Table::ActionsColumn do
         expect(template).to receive(:concat).with(button)
 
         builder.delete
+      end
+    end
+
+    describe "#show" do
+      it "appends a show link to the template" do
+        expect(template).to receive(:icon).with("fa fa-info").and_return(icon)
+        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :show).and_return("/test/123")
+        expect(template).to receive(:link_to).with(icon, "/test/123", class: ["btn-info", "btn"]).and_return(button)
+        expect(template).to receive(:concat).with(button)
+
+        builder.show
+      end
+    end
+
+    describe "#edit" do
+      it "appends an edit link to the template" do
+        expect(template).to receive(:icon).with("fa fa-pencil").and_return(icon)
+        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :edit).and_return("/test/123")
+        expect(template).to receive(:link_to).with(icon, "/test/123", class: ["btn-warning", "btn"]).and_return(button)
+        expect(template).to receive(:concat).with(button)
+
+        builder.edit
       end
     end
   end
