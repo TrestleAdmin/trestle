@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+group :test do
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
+
+  gem 'capybara'
+  gem 'capybara-selenium'
+  gem 'selenium-webdriver'
+end
+
+gem 'rails', github: 'rails/rails'
+gem 'arel', github: 'rails/arel'
+
+gemspec :path => "../"

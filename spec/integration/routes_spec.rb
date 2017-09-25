@@ -39,7 +39,7 @@ describe "Trestle::Admin routes", type: :routing do
     let!(:admin) do
       Trestle.admin(:test) do
         routes do
-          get :custom, to: "custom"
+          get :custom
         end
       end
     end
