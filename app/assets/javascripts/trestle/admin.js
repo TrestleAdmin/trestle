@@ -7,8 +7,11 @@
 //= require trestle/select2
 //
 //= require_self
+//
+//= require_tree ./core
+//= require_tree ./components
+//
 //= require trestle/custom
-//= require_tree .
 
 var Trestle = window.Trestle = {};
 
