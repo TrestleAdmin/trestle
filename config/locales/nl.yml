@@ -1,8 +1,8 @@
 nl:
   trestle:
-    title: Trestle Admin
-    footer: Powered by Trestle
-    version: Versie
+    title: "Trestle Admin"
+    footer: "Powered by Trestle"
+    version: "Versie"
 
     flash:
       success:
@@ -29,14 +29,14 @@ nl:
           display_entries: "%{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> van de <b>%{total}</b> worden weergeven"
 
     onboarding:
-      welcome: Welkom bij Trestle
-      no_admins: Voeg een admin toe in <code>app/admin</code> om te beginnen.
-      no_template: Maak <code>%{path}</code> aan om dit template aan te passen.
-      no_form: Definieer een form block of maak een <code>_form.html</code> partial.
+      welcome: "Welkom bij Trestle"
+      no_admins: "Voeg een admin toe in <code>app/admin</code> om te beginnen."
+      no_template: "Maak <code>%{path}</code> aan om dit template aan te passen."
+      no_form: "Definieer een form block of maak een <code>_form.html</code> partial."
 
   admin:
     titles:
-      index: Lijst van %{pluralized_model_name}
+      index: "Lijst van %{pluralized_model_name}"
       edit: "%{model_name} aanpassen"
 
     buttons:
@@ -44,24 +44,24 @@ nl:
       delete: "%{model_name} verwijderen"
 
     breadcrumbs:
-      home: Home
+      home: "Home"
 
     table:
       headers:
-        id: ID
+        id: "ID"
 
     form:
       select:
         prompt: "- Selecteer %{attribute_name} -"
 
     confirmation:
-      title: Weer je het zeker?
-      delete: Verwijderen
-      cancel: Annuleren
+      title: "Weer je het zeker?"
+      delete: "Verwijderen"
+      cancel: "Annuleren"
 
     ui:
       toggle_navigation: "Navigation tonen/verbergen"
       toggle_sidebar: "Sidebar tonen/verbergen"
 
     format:
-      blank: Geen
+      blank: "Geen"
