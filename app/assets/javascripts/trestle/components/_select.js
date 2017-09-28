@@ -1,5 +1,5 @@
-Trestle.ready(function() {
-  $('select[data-enable-select2]').each(function() {
+Trestle.init(function(e, root) {
+  $(root).find('select[data-enable-select2]').each(function() {
     $(this).select2({
       theme: 'bootstrap',
       containerCssClass: ':all:',

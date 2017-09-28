@@ -13,14 +13,12 @@
 //
 //= require trestle/custom
 
-var Trestle = window.Trestle = {};
+var Trestle = {
+  // Is Turbolinks enabled?
+  turbolinks: typeof(Turbolinks) !== 'undefined' && Turbolinks.supported,
 
-Trestle.i18n = {};
+  // Store for i18n translations used within JS
+  i18n: {}
+};
 
-if (typeof(Turbolinks) !== 'undefined' && Turbolinks.supported) {
-  Trestle.ready = function(callback) { $(document).on('turbolinks:load', callback); };
-  Trestle.visit = function(url) { Turbolinks.visit(url); };
-} else {
-  Trestle.ready = function(callback) { $(callback); };
-  Trestle.visit = function(url) { document.location = url; };
-}
+window.Trestle = Trestle;

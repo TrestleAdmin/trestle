@@ -1,5 +1,5 @@
-Trestle.ready(function() {
-  $('[data-behavior~="zoom"]').magnificPopup({
+Trestle.init(function(e, root) {
+  $(root).find('[data-behavior~="zoom"]').magnificPopup({
     type: 'image',
     closeOnContentClick: false,
     closeBtnInside: false,
@@ -10,7 +10,7 @@ Trestle.ready(function() {
     }
   });
 
-  $('[data-behavior~="gallery"]').magnificPopup({
+  $(root).find('[data-behavior~="gallery"]').magnificPopup({
     delegate: 'a',
     type: 'image',
     closeOnContentClick: false,

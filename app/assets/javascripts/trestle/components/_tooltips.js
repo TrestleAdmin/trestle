@@ -1,3 +1,3 @@
-Trestle.ready(function() {
-  $('[data-toggle="tooltip"]').tooltip();
+Trestle.init(function(e, root) {
+  $(root).find('[data-toggle="tooltip"]').tooltip();
 });

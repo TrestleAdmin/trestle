@@ -1,6 +1,6 @@
 // Add error indicators to tabs
-Trestle.ready(function() {
-  $('.tab-pane').each(function() {
+Trestle.init(function(e, root) {
+  $(root).find('.tab-pane').each(function() {
     var errorCount = $(this).find('.has-error').length;
 
     if (errorCount > 0) {
