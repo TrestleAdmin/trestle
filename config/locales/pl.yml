@@ -1,0 +1,70 @@
+pl:
+  trestle:
+    title: "Trestle Admin"
+    footer: "Powered by Trestle"
+    version: "Wersja"
+
+    flash:
+      success:
+        title: "Sukces!"
+        create: "%{lowercase_model_name} został pomyślnie utworzony."
+        update: "%{lowercase_model_name} został pomyślnie zaktualizowany."
+        destroy: "%{lowercase_model_name} został pomyślnie usunięty."
+
+      failure:
+        title: "Uwaga!"
+        create: "Popraw poniższe błędy."
+        update: "Popraw poniższe błędy."
+        destroy: "Nie można usunąć %{lowercase_model_name}."
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Nie znaleziono %{entry_name}"
+            one: "Wyświetla <strong>1</strong> %{entry_name}"
+            few: "Wyświetla <strong>wszystkie %{count}</strong> %{entry_name}"
+            other: "Wyświetla <strong>wszystkie %{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "Wyświetla %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> z <b>%{total}</b> łącznie"
+
+    onboarding:
+      welcome: "Witamy w Trestle"
+      no_admins: "Aby rozpocząć, utwórz administratora w zasięgu <code>app/admin</code>."
+      no_template: "Aby dostosować ten szablon, utwórz <code>%{path}</code>."
+      no_form: "Proszę zdefiniować blok formularza lub utworzyć podszablon <code>_form.html</code>."
+
+  admin:
+    titles:
+      index: "Lista %{pluralized_model_name}"
+      new: "Nowy %{model_name}"
+      edit: "Edycja %{model_name}"
+
+    buttons:
+      new: "Nowy %{model_name}"
+      save: "Zachowaj %{model_name}"
+      delete: "Usuń %{model_name}"
+
+    breadcrumbs:
+      home: "Start"
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Wybierz %{attribute_name} -"
+
+    confirmation:
+      title: "Jesteś pewny?"
+      delete: "Usuń"
+      cancel: "Anuluj"
+
+    ui:
+      toggle_navigation: "Przełącz nawigację"
+      toggle_sidebar: "Przełącz pasek boczny"
+
+    format:
+      blank: "Żaden"
