@@ -30,6 +30,6 @@ Trestle.resource(:posts) do
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:post).require(:name, ...)
+  #   params.require(:post).permit(:name, ...)
   # end
 end
