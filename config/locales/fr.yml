@@ -1,0 +1,69 @@
+fr:
+  trestle:
+    title: "Trestle Admin"
+    footer: "Fourni par Trestle"
+    version: "Version"
+
+    flash:
+      success:
+        title: "Opération réussie"
+        create: "%{model_name} créé(e)."
+        update: "%{model_name} mis(e) à jour."
+        destroy: "%{model_name} supprimé(e)."
+
+      failure:
+        title: "Attention!"
+        create: "Veuillez corriger les erreurs ci-après."
+        update: "Veuillez corriger les erreurs ci-après."
+        destroy: "Suppression impossible."
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Aucun(e) '%{entry_name}'"
+            one: "<strong>1</strong> %{entry_name}"
+            other: "<strong>%{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "%{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> sur <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Bienvenue sur Trestle"
+      no_admins: "Pour commencer, créez le répertoire <code>app/admin</code>."
+      no_template: "Pour personnaliser ce modèle, veuillez créer <code>%{path}</code>."
+      no_form: "Veuillez déclarer un block 'form' ou créer un modèle partiel <code>_form.html</code>."
+
+  admin:
+    titles:
+      index: "Liste des %{pluralized_model_name}"
+      new: "%{model_name} (ajout)"
+      edit: "%{model_name} (modification)"
+
+    buttons:
+      new: "Nouveau"
+      save: "Enregistrer"
+      delete: "Supprimer"
+
+    breadcrumbs:
+      home: "Acceuil"
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Choisir le/la %{attribute_name} -"
+
+    confirmation:
+      title: "Voulez-vous supprimer?"
+      delete: "Oui"
+      cancel: "Non"
+
+    ui:
+      toggle_navigation: "Basculer navigation"
+      toggle_sidebar: "Basculer vue latérale"
+
+    format:
+      blank: "Aucun"
