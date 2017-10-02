@@ -127,7 +127,7 @@ module Trestle
       end
 
       def default_breadcrumb
-        Breadcrumb.new(model_name.plural.titleize, path)
+        Breadcrumb.new(I18n.t("admin.breadcrumbs.#{admin_name}", default: model_name.plural.titleize), path)
       end
 
       def routes

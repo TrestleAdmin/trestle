@@ -33,7 +33,7 @@ module Trestle
       end
 
       def default_breadcrumb
-        Breadcrumb.new(admin_name.titleize, path)
+        Breadcrumb.new(I18n.t("admin.breadcrumbs.#{admin_name}", default: admin_name.titleize), path)
       end
 
       def admin_name
