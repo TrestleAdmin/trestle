@@ -126,7 +126,7 @@ module Trestle
         options[:readonly]
       end
 
-      def breadcrumb
+      def default_breadcrumb
         Breadcrumb.new(model_name.plural.titleize, path)
       end
 

@@ -137,4 +137,16 @@ describe Trestle::Admin::Builder do
       expect(::TestAdmin.additional_routes).to eq(b)
     end
   end
+
+  describe "#breadcrumb" do
+    it "overrides the default breadcrumb" do
+      b = Trestle::Breadcrumb.new("Custom")
+
+      Trestle::Admin::Builder.build(:test) do
+        breadcrumb { b }
+      end
+
+      expect(::TestAdmin.breadcrumb).to eq(b)
+    end
+  end
 end

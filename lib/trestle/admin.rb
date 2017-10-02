@@ -14,6 +14,7 @@ module Trestle
       attr_accessor :additional_routes
 
       attr_writer :options
+      attr_writer :breadcrumb
 
       def options
         @options ||= {}
@@ -24,6 +25,14 @@ module Trestle
       end
 
       def breadcrumb
+        if @breadcrumb
+          Breadcrumb.cast(@breadcrumb.call)
+        else
+          default_breadcrumb
+        end
+      end
+
+      def default_breadcrumb
         Breadcrumb.new(admin_name.titleize, path)
       end
 
