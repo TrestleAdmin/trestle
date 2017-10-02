@@ -1,5 +1,38 @@
 require 'spec_helper'
 
+describe Trestle::Breadcrumb do
+  describe ".cast" do
+    context "when passed a Breadcrumb object" do
+      it "returns the breadcrumb" do
+        breadcrumb = Trestle::Breadcrumb.new("Home", "/")
+        expect(Trestle::Breadcrumb.cast(breadcrumb)).to eq(breadcrumb)
+      end
+    end
+
+    context "when passed a string" do
+      it "returns a breadcrumb created with the given label" do
+        breadcrumb = Trestle::Breadcrumb.new("Home")
+        expect(Trestle::Breadcrumb.cast("Home")).to eq(breadcrumb)
+      end
+    end
+
+    context "when passed an array" do
+      it "returns a breadcrumb created with the array elements" do
+        breadcrumb = Trestle::Breadcrumb.new("Home", "/")
+        expect(Trestle::Breadcrumb.cast(["Home", "/"])).to eq(breadcrumb)
+      end
+    end
+
+    context "when passed anything else" do
+      it "raises an ArgumentError" do
+        expect {
+          Trestle::Breadcrumb.cast(123)
+        }.to raise_error(ArgumentError, "Unable to cast 123 to Breadcrumb")
+      end
+    end
+  end
+end
+
 describe Trestle::Breadcrumb::Trail do
   let(:breadcrumbs) { [Trestle::Breadcrumb.new("Home", "/"), Trestle::Breadcrumb.new("Child")] }
 
