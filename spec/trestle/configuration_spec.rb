@@ -103,6 +103,11 @@ describe Trestle::Configuration do
     end
   end
 
+  it "has a list of load paths" do
+    expect(config).to have_accessor(:load_paths)
+    expect(config.load_paths).to be_an(Array)
+  end
+
   it "has no default before actions" do
     expect(config.before_actions).to eq([])
   end

@@ -85,6 +85,11 @@ module Trestle
     # List of i18n keys to pass into the Trestle.i18n JavaScript object
     option :javascript_i18n_keys, ["admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel"]
 
+    # List of load paths for where to find admin definitions
+    option :load_paths, [
+      -> { ActiveSupport::Dependencies.autoload_paths.grep(/\/app\/admin\Z/) }
+    ]
+
 
     ## Debugging
 

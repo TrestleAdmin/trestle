@@ -34,7 +34,7 @@ module Trestle
     end
 
     def load_paths
-      ActiveSupport::Dependencies.autoload_paths.grep(/\/app\/admin\Z/)
+      Trestle.config.load_paths.map { |path| path.respond_to?(:call) ? path.call : path }.flatten.map(&:to_s)
     end
 
   private
