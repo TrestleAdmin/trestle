@@ -69,5 +69,7 @@ Trestle.ready(function() {
   // Scroll sidebar to active item
 
   var active = sidebar.find('.active');
-  sidebar.find('.app-sidebar-inner').scrollTop(active.offset().top - 100);
+  if (active.length) {
+    sidebar.find('.app-sidebar-inner').scrollTop(active.offset().top - 100);
+  }
 });
