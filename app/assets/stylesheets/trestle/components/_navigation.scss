@@ -48,7 +48,7 @@
 
     padding: 5px 20px;
 
-    &:after {
+    &::after {
       @extend .ion;
       content: $ionicon-var-arrow-down-b;
 
@@ -61,8 +61,8 @@
     &:hover, &:focus {
       background: none;
 
-      &:after {
-        opacity: 1.0;
+      &::after {
+        opacity: 1;
       }
     }
   }
@@ -98,11 +98,11 @@
   padding: 10px 15px 15px;
   text-indent: -99999px;
 
-  &:after {
+  &::after {
     display: block;
     float: none;
     margin-top: -12px;
-    content: '';
+    content: "";
     border-bottom: 1px solid rgba(white, 0.1);
   }
 }
@@ -118,13 +118,17 @@
     }
 
     .expanded & {
-      .nav-header {
-        display: block;
-        border-bottom: none;
+      .nav-header a {
         height: auto;
-        margin: 0;
         padding: 5px 20px;
         text-indent: 0;
+
+        &::after {
+          content: $ionicon-var-arrow-down-b;
+          float: right;
+          margin-top: 2px;
+          border-bottom: 0;
+        }
       }
 
       .nav-label  { display: inline; }
