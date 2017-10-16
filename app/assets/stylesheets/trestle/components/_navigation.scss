@@ -61,8 +61,8 @@
     &:hover, &:focus {
       background: none;
 
-      &::after {
-        opacity: 1;
+      &::before, &::after {
+        opacity: 1 !important;
       }
     }
   }
@@ -99,11 +99,27 @@
   text-indent: -99999px;
 
   &::after {
-    display: block;
-    float: none;
-    margin-top: -12px;
+    display: none;
+
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    margin-left: -3px;
+
+    text-indent: 0;
+  }
+
+  &::before {
     content: "";
+
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 50%;
+    margin-top: -4px;
+
     border-bottom: 1px solid rgba(white, 0.1);
+    opacity: 0.75;
   }
 }
 
@@ -117,17 +133,26 @@
       @include collapsed-nav-header;
     }
 
+    .collapsed .nav-header a {
+      &::after {
+        display: block;
+      }
+    }
+
     .expanded & {
       .nav-header a {
         height: auto;
         padding: 5px 20px;
         text-indent: 0;
 
+        &::before {
+          display: none;
+        }
+
         &::after {
-          content: $ionicon-var-arrow-down-b;
-          float: right;
-          margin-top: 2px;
-          border-bottom: 0;
+          display: block;
+          position: static;
+          margin-left: 0;
         }
       }
 
@@ -145,6 +170,12 @@
 
     .nav-header a {
       @include collapsed-nav-header;
+    }
+
+    .collapsed .nav-header a {
+      &::after {
+        display: block;
+      }
     }
   }
 }
