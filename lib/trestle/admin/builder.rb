@@ -21,12 +21,17 @@ module Trestle
         scope.const_set("#{name.to_s.camelize}Admin", @admin)
 
         # Define admin controller class
-        # This is done using class_eval rather than Class.new so that the full
-        # class name and parent chain is set when Rails' inherited hooks are called.
-        @admin.class_eval("class AdminController < #{self.class.controller.name}; end")
+        if options[:controller]
+          @controller = options[:controller]
+        else
+          # This is done using class_eval rather than Class.new so that the full
+          # class name and parent chain is set when Rails' inherited hooks are called.
+          @admin.class_eval("class AdminController < #{self.class.controller.name}; end")
 
-        # Set a reference on the controller class to the admin class
-        @controller = @admin.const_get("AdminController")
+          # Set a reference on the controller class to the admin class
+          @controller = @admin.const_get("AdminController")
+        end
+
         @controller.instance_variable_set("@admin", @admin)
       end
 
