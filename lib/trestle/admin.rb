@@ -49,7 +49,11 @@ module Trestle
       end
 
       def controller_namespace
-        "#{name.underscore}/admin"
+        if options[:controller]
+          options[:controller].name.underscore.sub(/_controller$/, '')
+        else
+          "#{name.underscore}/admin"
+        end
       end
 
       def path(action=:index, options={})
