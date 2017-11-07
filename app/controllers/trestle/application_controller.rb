@@ -1,7 +1,7 @@
 class Trestle::ApplicationController < ActionController::Base
   protect_from_forgery
 
-  layout 'trestle/admin'
+  layout :choose_layout
 
   # Global helpers
   self.helpers_path += Rails.application.helpers_paths
@@ -31,4 +31,8 @@ protected
     breadcrumbs.append(label, path)
   end
   helper_method :breadcrumb
+
+  def choose_layout
+    request.xhr? ? false : "trestle/admin"
+  end
 end

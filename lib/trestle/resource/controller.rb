@@ -1,6 +1,8 @@
 module Trestle
   class Resource
     class Controller < Admin::Controller
+      after_action :set_trestle_location_header
+
       def index
         self.collection = admin.prepare_collection(params)
 
@@ -26,7 +28,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.create", default: "The %{lowercase_model_name} was successfully created.")
-              redirect_to action: :show, id: admin.to_param(instance)
+              redirect_to({ action: :show, id: admin.to_param(instance) }, turbolinks: false)
             end
             format.json { render json: instance, status: :created, location: { action: :show, id: admin.to_param(instance) } }
             format.js
@@ -35,7 +37,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash.now[:error] = flash_message("failure.create", default: "Please correct the errors below.")
-              render "new"
+              render "new", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
           end
@@ -63,7 +65,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.update", default: "The %{lowercase_model_name} was successfully updated.")
-              redirect_to action: :show, id: admin.to_param(instance)
+              redirect_to({ action: :show, id: admin.to_param(instance) }, turbolinks: false)
             end
             format.json { render json: instance, status: :ok }
             format.js
@@ -72,7 +74,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash.now[:error] = flash_message("failure.update", default: "Please correct the errors below.")
-              render "show"
+              render "show", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
           end
@@ -112,6 +114,12 @@ module Trestle
 
       def flash_message(type, options={})
         t("trestle.flash.#{type}", options.merge(model_name: admin.model_name, lowercase_model_name: admin.model_name.downcase))
+      end
+
+      def set_trestle_location_header
+        unless request.headers["X-Trestle-Dialog"]
+          headers["X-Trestle-Location"] = request.path
+        end
       end
     end
   end

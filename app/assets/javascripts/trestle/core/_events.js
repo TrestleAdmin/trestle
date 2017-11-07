@@ -30,7 +30,7 @@ Trestle.ready(function() {
 // Trigger the page load events.
 if (Trestle.turbolinks) {
   $(document).on('turbolinks:load', function() {
-    $(Trestle).trigger("load", document);
+    $(Trestle).trigger("load");
   });
 } else {
   $(document).ready(function() {

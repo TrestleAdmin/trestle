@@ -4,6 +4,9 @@ module Trestle
       options[:builder] ||= Form::Builder
       options[:as] ||= admin.admin_name.singularize
 
+      options[:data] ||= {}
+      options[:data].merge!(remote: true, type: :html, behavior: "trestle-form", turbolinks: false)
+
       form_for(instance, options) do |f|
         with_form(f) { yield f }
       end

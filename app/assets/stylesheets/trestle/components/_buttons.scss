@@ -1,6 +1,15 @@
 .btn {
   border: none;
   box-shadow: none;
+
+  &.loading {
+    &::before {
+      @extend .fa;
+      @extend .fa-spin;
+      content: $fa-var-spinner;
+      margin-right: 10px;
+    }
+  }
 }
 
 .btn-delete {
