@@ -8,7 +8,7 @@ Trestle.init(function(e, root) {
   });
 });
 
-Trestle.ready(function() {
+Trestle.focusActiveTab = function() {
   if (location.hash.substr(0, 2) == "#!") {
     // Focus on active tab from URL
     $("a[data-toggle='tab'][href='#" + location.hash.substr(2) + "']").tab("show");
@@ -17,4 +17,8 @@ Trestle.ready(function() {
     var pane = $(".tab-pane:has(.has-error)").first();
     $("a[data-toggle='tab'][href='#" + pane.attr("id") + "']").tab("show");
   }
+};
+
+Trestle.ready(function() {
+  Trestle.focusActiveTab();
 });
