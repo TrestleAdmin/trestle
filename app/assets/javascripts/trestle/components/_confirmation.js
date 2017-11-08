@@ -11,7 +11,7 @@ Trestle.ready(function() {
     selector:       '[data-toggle="confirm-delete"]',
     singleton:      true,
     popout:         true,
-    title:          Trestle.i18n['admin.confirmation.title'],
+    title:          Trestle.i18n['admin.confirmation.title'] || 'Are you sure?',
     btnOkIcon:      '',
     btnOkClass:     'btn-danger',
     btnOkLabel:     Trestle.i18n['admin.confirmation.delete'] || 'Delete',
