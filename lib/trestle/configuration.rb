@@ -83,7 +83,7 @@ module Trestle
     end
 
     # List of i18n keys to pass into the Trestle.i18n JavaScript object
-    option :javascript_i18n_keys, ["admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel"]
+    option :javascript_i18n_keys, ["admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel", "trestle.dialog.error", "admin.buttons.ok"]
 
     # List of load paths for where to find admin definitions
     option :load_paths, [

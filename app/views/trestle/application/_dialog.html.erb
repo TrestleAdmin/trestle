@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title"><%= content_for(:title) %></h4>
+</div>
+
+<div class="modal-flash">
+  <%= render "flash" %>
+</div>
+
+<div class="modal-tabs">
+  <%= render "tabs" %>
+</div>
+
+<div class="modal-body">
+  <%= yield %>
+
+  <% if content_for?(:sidebar) %>
+    <div id="tab-sidebar" class="tab-pane" role="tabpanel">
+      <%= content_for(:sidebar) %>
+    </div>
+  <% end %>
+</div>
+
+<div class="modal-footer">
+  <% if content_for?(:secondary_toolbar) %>
+    <div class="btn-toolbar secondary-toolbar">
+      <%= content_for(:secondary_toolbar) %>
+    </div>
+  <% end %>
+
+  <% if content_for?(:primary_toolbar) %>
+    <div class="btn-toolbar primary-toolbar">
+      <%= content_for(:primary_toolbar) %>
+    </div>
+  <% end %>
+</div>

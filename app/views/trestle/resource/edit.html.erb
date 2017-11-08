@@ -14,5 +14,5 @@
 <% end %>
 
 <%= trestle_form_for instance, url: admin.readonly? ? "#" : admin.path(:update, id: admin.to_param(instance)), method: :patch do |f| %>
-  <%= render partial: "form", layout: "layout" %>
+  <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
 <% end %>

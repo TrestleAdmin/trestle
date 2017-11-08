@@ -29,6 +29,11 @@ Trestle.init(function(e, root) {
         history.replaceState({}, "", location);
         context.data('context', location);
       }
+
+      // Refresh the main context
+      if (!context.hasClass('app-main')) {
+        Trestle.refreshMainContext();
+      }
     });
 
   // Loading indicator

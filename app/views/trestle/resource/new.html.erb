@@ -8,5 +8,5 @@
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path, method: :post do |f| %>
-  <%= render partial: "form", layout: "layout" %>
+  <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
 <% end %>

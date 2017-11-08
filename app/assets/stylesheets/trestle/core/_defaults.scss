@@ -11,6 +11,7 @@ $theme-bg-gradient:          linear-gradient(rgba(white, $theme-bg-gradient-stre
 $theme-bg-color:             darken($brand-primary, 15%) !default;
 
 $theme-bg: $theme-bg-texture-url, $theme-bg-gradient, $theme-bg-color !default;
+$error-bg: $theme-bg-texture-url, $theme-bg-gradient, $brand-danger !default;
 
 $body-bg: #f3f3f3 !default;
 
@@ -78,5 +79,8 @@ $dropdown-arrow-outer-width: $dropdown-arrow-width + 1px !default;
 $input-border:       #ccc !default;
 $input-border-focus: mix($brand-primary, $input-border) !default;
 $input-bg-disabled:  #fafafa !default;
+
+$modal-inner-padding: 20px !default;
+$modal-title-padding: 15px 20px !default;
 
 $s2bs-btn-default-bg: #eee !default;

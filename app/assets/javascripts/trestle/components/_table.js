@@ -1,4 +1,4 @@
-$(document).on('click', 'tr[data-url]', function(e) {
+$(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function(e) {
   var row = $(e.currentTarget);
 
   if (row.data('url') == 'auto') {

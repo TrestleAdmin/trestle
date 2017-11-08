@@ -30,5 +30,9 @@ module Trestle
     def sidebar(&block)
       content_for(:sidebar, &block)
     end
+
+    def render_sidebar_as_tab?
+      dialog_request? && content_for?(:sidebar)
+    end
   end
 end
