@@ -9,6 +9,7 @@ module Trestle
         respond_to do |format|
           format.html
           format.json { render json: collection }
+          format.js
         end
       end
 
@@ -18,6 +19,7 @@ module Trestle
         respond_to do |format|
           format.html
           format.json { render json: instance }
+          format.js
         end
       end
 
@@ -40,6 +42,7 @@ module Trestle
               render "new", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
+            format.js
           end
         end
       end
@@ -50,6 +53,7 @@ module Trestle
         respond_to do |format|
           format.html
           format.json { render json: instance }
+          format.js
         end
       end
 
@@ -77,6 +81,7 @@ module Trestle
               render "show", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
+            format.js
           end
         end
       end
