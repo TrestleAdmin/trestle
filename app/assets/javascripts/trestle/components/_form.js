@@ -1,12 +1,14 @@
 // Prevent enter key from submitting the form
-$(document).on('keypress', '.app-main form :input:not(textarea):not([type=submit])', function(e) {
+$(document).on('keypress', 'form[data-behavior="trestle-form"] :input:not(textarea):not([type=submit])', function(e) {
   if (e.keyCode == 13) {
     e.preventDefault();
   }
 });
 
 Trestle.init(function(e, root) {
-  $('form[data-behavior="trestle-form"]', root)
+  var form = $(root).find('form[data-behavior="trestle-form"]');
+
+  form
     .on('ajax:complete', function(e, xhr, status) {
       // Find the parent context and replace content
       var context = $(this).closest('[data-context]');
@@ -19,20 +21,18 @@ Trestle.init(function(e, root) {
       Trestle.focusActiveTab();
     })
     .on('ajax:success', function(e, data, status, xhr) {
+      var context = $(this).closest('[data-context]');
       var location = xhr.getResponseHeader("X-Trestle-Location");
 
       if (location) {
         // Update the URL in the browser and context
         history.replaceState({}, "", location);
-
-        // Update the URL of the context
-        var context = $(this).closest('[data-context]');
         context.data('context', location);
       }
     });
 
   // Loading indicator
-  $('form[data-behavior="trestle-form"] :submit', root).click(function() {
+  form.find(':submit').click(function() {
     var button = $(this);
 
     // Delay to ensure form is still submitted
