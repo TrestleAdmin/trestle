@@ -118,10 +118,11 @@ describe Trestle::Admin::Builder do
       b = Proc.new {}
 
       Trestle::Admin::Builder.build(:test) do
-        form &b
+        form custom: "option", &b
       end
 
       expect(::TestAdmin.form).to be_a(Trestle::Form)
+      expect(::TestAdmin.form.options).to eq(custom: "option")
       expect(::TestAdmin.form.block).to eq(b)
     end
   end

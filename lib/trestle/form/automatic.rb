@@ -2,7 +2,7 @@ module Trestle
   class Form
     class Automatic < Form
       def initialize(admin)
-        @block = Proc.new do |instance|
+        super() do |instance|
           admin.default_form_attributes.each do |attribute|
             if attribute.array?
               if [:string, :text].include?(attribute.type)

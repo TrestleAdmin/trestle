@@ -14,7 +14,9 @@ module Trestle
     end
 
     def admin_url_for(instance, options={})
-      admin = options.key?(:admin) ? Trestle.lookup(options[:admin]) : admin_for(instance)
+      admin = Trestle.lookup(options[:admin]) if options.key?(:admin)
+      admin ||= admin_for(instance)
+
       admin.path(options[:action] || :show, id: admin.to_param(instance)) if admin
     end
 

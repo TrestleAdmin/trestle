@@ -21,9 +21,15 @@ module Trestle
 
         def options(instance)
           options = Trestle::Options.new
-          options.merge!(data: { url: admin_url_for(instance) }) if table.admin
+
+          if table.admin
+            options.merge!(data: { url: admin_url_for(instance) })
+            options.merge!(data: { behavior: "dialog" }) if table.admin.form.dialog?
+          end
+
           options.merge!(@row.options)
           options.merge!(@template.instance_exec(instance, &@row.block)) if @row.block
+
           options
         end
 

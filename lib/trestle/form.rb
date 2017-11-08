@@ -8,10 +8,14 @@ module Trestle
     autoload :Fields
     autoload :Renderer
 
-    attr_reader :block
+    attr_reader :options, :block
 
-    def initialize(&block)
-      @block = block
+    def initialize(options={}, &block)
+      @options, @block = options, block
+    end
+
+    def dialog?
+      options[:dialog] == true
     end
 
     def render(template, instance)
