@@ -31,6 +31,14 @@ describe Trestle::Admin::Builder do
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
+  it "accepts custom controller class" do
+    controller = Class.new(Trestle::Admin::Controller)
+
+    Trestle::Admin::Builder.build(:test, controller: controller)
+    expect(::TestAdmin).not_to be_const_defined(:AdminController)
+    expect(controller.admin).to eq(::TestAdmin)
+  end
+
   it "transfer the options on the Admin class" do
     options = { custom: "option" }
     Trestle::Admin::Builder.build(:test, options)
