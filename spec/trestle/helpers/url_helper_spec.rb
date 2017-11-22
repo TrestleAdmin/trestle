@@ -5,7 +5,8 @@ require_relative '../../../app/helpers/trestle/url_helper'
 describe Trestle::UrlHelper do
   include Trestle::UrlHelper
 
-  let(:admin) { double }
+  let(:form) { double(dialog?: false) }
+  let(:admin) { double(form: form) }
 
   before(:each) do
     allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
@@ -49,6 +50,16 @@ describe Trestle::UrlHelper do
         }.and_return("captured content")
 
         expect(admin_link_to(instance, &blk)).to eq("captured content")
+      end
+    end
+
+    context "target admin form is a dialog" do
+      let(:form) { double(dialog?: true) }
+
+      it "renders the admin link with data-behavior='dialog' set" do
+        expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
+        expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
+        expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
       end
     end
   end

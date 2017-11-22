@@ -7,6 +7,11 @@ module Trestle
       end
 
       if admin = (options.key?(:admin) ? Trestle.lookup(options.delete(:admin)) : admin_for(instance))
+        if admin.form.dialog?
+          options[:data] ||= {}
+          options[:data][:behavior] ||= "dialog"
+        end
+
         link_to(content, admin_url_for(instance, admin: admin), options)
       else
         content
