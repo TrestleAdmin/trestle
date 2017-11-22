@@ -39,7 +39,7 @@ module Trestle
       end
 
       class Renderer
-        delegate :options, to: :@column
+        delegate :options, :table, to: :@column
 
         def initialize(column, template)
           @column, @template = column, template
@@ -62,7 +62,7 @@ module Trestle
             content = @template.admin_link_to(content, value)
           elsif options[:link]
             # Explicitly link to the specified admin, or the table's admin
-            content = @template.admin_link_to(content, instance, admin: options[:admin] || @column.table.admin)
+            content = @template.admin_link_to(content, instance, admin: options[:admin] || table.admin)
           end
 
           content
