@@ -6,7 +6,8 @@ Trestle.cookie = {
 
     for (i = cookies.length - 1; i >= 0; i--) {
       if (!cookies[i].indexOf(name)) {
-        return cookies[i].replace(name, '');
+        var value = cookies[i].replace(name, '');
+        return decodeURIComponent(value);
       }
     }
 
