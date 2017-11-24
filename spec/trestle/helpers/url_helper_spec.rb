@@ -13,53 +13,73 @@ describe Trestle::UrlHelper do
   end
 
   describe "#admin_link_to" do
-    let(:instance) { double }
     let(:url) { double }
     let(:link) { double }
 
-    it "renders an admin link to the given instance" do
-      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
-      expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
-      expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
-    end
-
-    it "uses the block as content if provided" do
-      blk = Proc.new {}
-
-      expect(self).to receive(:capture) { |&block|
-        expect(block).to be(blk)
-      }.and_return("captured content")
-
-      expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
-      expect(self).to receive(:link_to).with("captured content", url, {}).and_return(link)
-      expect(admin_link_to(instance, admin: admin, &blk)).to eq(link)
-    end
-
-    context "no admin specified" do
+    context "when an instance is provided" do
       let(:instance) { double }
 
-      it "renders the content unlinked if no admin specified or available" do
-        expect(admin_link_to("link content", instance)).to eq("link content")
+      before(:each) do
+        expect(admin).to receive(:to_param).with(instance).and_return(123)
+        expect(admin).to receive(:path).with(:show, id: 123).and_return(url)
+        expect(self).to receive(:admin_for).with(instance).and_return(admin)
       end
 
-      it "renders the block content if provided" do
+      it "renders a link to the given instance" do
+        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(admin_link_to("link content", instance)).to eq(link)
+      end
+
+      it "passes additional options to link_to" do
+        expect(self).to receive(:link_to).with("link content", url, class: "btn").and_return(link)
+        expect(admin_link_to("link content", instance, class: "btn")).to eq(link)
+      end
+
+      it "uses the block as content if provided" do
         blk = Proc.new {}
 
         expect(self).to receive(:capture) { |&block|
           expect(block).to be(blk)
         }.and_return("captured content")
 
-        expect(admin_link_to(instance, &blk)).to eq("captured content")
+        expect(self).to receive(:link_to).with("captured content", url, {}).and_return(link)
+        expect(admin_link_to(instance, &blk)).to eq(link)
+      end
+
+      context "target admin's form is a dialog" do
+        let(:form) { double(dialog?: true) }
+
+        it "renders the admin link with data-behavior='dialog' set" do
+          expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
+          expect(admin_link_to("link content", instance)).to eq(link)
+        end
       end
     end
 
-    context "target admin form is a dialog" do
-      let(:form) { double(dialog?: true) }
+    context "when no instance is provided" do
+      it "renders a link using the given admin, action and params" do
+        expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
+        expect(admin).to receive(:path).with(:new, foo: "bar").and_return(url)
+        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
+      end
+    end
 
-      it "renders the admin link with data-behavior='dialog' set" do
-        expect(self).to receive(:admin_url_for).with(instance, admin: admin).and_return(url)
-        expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
-        expect(admin_link_to("link content", instance, admin: admin)).to eq(link)
+    context "when no admin or instance is provided" do
+      it "uses the current admin" do
+        expect(admin).to receive(:path).with(:new, {}).and_return(url)
+        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(admin_link_to("link content", action: :new)).to eq(link)
+      end
+
+      context "no current admin" do
+        let(:admin) { nil }
+
+        it "raises an exception" do
+          expect {
+            admin_link_to("link content", action: :new)
+          }.to raise_exception(ActionController::UrlGenerationError, "An admin could not be inferred. Please specify an admin using the :admin option.")
+        end
       end
     end
   end
