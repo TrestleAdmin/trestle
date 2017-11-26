@@ -22,7 +22,7 @@ module Trestle
         def options(instance)
           options = Trestle::Options.new
 
-          if table.admin
+          if table.admin && table.autolink?
             options.merge!(data: { url: admin_url_for(instance) })
             options.merge!(data: { behavior: "dialog" }) if table.admin.form.dialog?
           end

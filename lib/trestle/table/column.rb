@@ -58,6 +58,7 @@ module Trestle
           content = @template.format_value(value, options)
 
           if value.respond_to?(:id) && options[:link] != false
+            # Column value was a model instance (e.g. from an association).
             # Automatically link to instance's admin if available
             content = @template.admin_link_to(content, value)
           elsif options[:link]

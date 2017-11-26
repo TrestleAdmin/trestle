@@ -23,6 +23,10 @@ module Trestle
       options[:sortable] == true
     end
 
+    def autolink?
+      options[:autolink] != false
+    end
+
     def renderer(template)
       Renderer.new(self, template)
     end

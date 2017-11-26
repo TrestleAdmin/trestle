@@ -16,6 +16,15 @@ describe Trestle::Table do
     it { is_expected.to be_sortable }
   end
 
+  context "without options[:autolink]" do
+    it { is_expected.to be_autolink }
+  end
+
+  context "with options[:autolink] = false" do
+    subject(:table) { Trestle::Table.new(autolink: false) }
+    it { is_expected.not_to be_autolink }
+  end
+
   describe "#renderer" do
     let(:template) { double }
 
