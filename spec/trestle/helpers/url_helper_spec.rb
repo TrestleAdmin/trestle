@@ -16,8 +16,17 @@ describe Trestle::UrlHelper do
     let(:url) { double }
     let(:link) { double }
 
+    context "when a string URL is provided" do
+      let(:url) { "/test" }
+
+      it "renders a link to the given URL" do
+        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(admin_link_to("link content", url)).to eq(link)
+      end
+    end
+
     context "when an instance is provided" do
-      let(:instance) { double }
+      let(:instance) { double(id: 123) }
 
       before(:each) do
         expect(admin).to receive(:to_param).with(instance).and_return(123)
