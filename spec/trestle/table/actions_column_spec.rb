@@ -53,6 +53,8 @@ describe Trestle::Table::ActionsColumn do
     end
 
     describe "#content" do
+      let(:admin) { double(actions: [:destroy]) }
+
       let(:button) { double }
       let(:icon) { double }
 

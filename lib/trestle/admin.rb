@@ -56,6 +56,10 @@ module Trestle
         Engine.routes.url_for(options.merge(controller: controller_namespace, action: action, only_path: true))
       end
 
+      def actions
+        [:index]
+      end
+
       def routes
         admin = self
 

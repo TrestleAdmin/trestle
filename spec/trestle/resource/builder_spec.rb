@@ -54,6 +54,18 @@ describe Trestle::Resource::Builder do
     end
   end
 
+  describe "#remove_action" do
+    it "removes the given action(s) from the resource" do
+      Trestle::Resource::Builder.build(:test) do
+        remove_action :edit, :update
+      end
+
+      expect(::TestAdmin.actions).to eq([:index, :show, :new, :create, :destroy])
+      expect(::TestAdmin::AdminController).not_to respond_to(:edit)
+      expect(::TestAdmin::AdminController).not_to respond_to(:update)
+    end
+  end
+
   describe "#collection" do
     it "sets an explicit collection block" do
       Trestle::Resource::Builder.build(:test) do

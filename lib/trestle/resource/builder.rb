@@ -14,6 +14,13 @@ module Trestle
         admin.adapter = adapter
       end
 
+      def remove_action(*actions)
+        actions.each do |action|
+          controller.remove_possible_method(action.to_sym)
+          admin.actions.delete(action.to_sym)
+        end
+      end
+
       def collection(&block)
         admin.collection = block
       end

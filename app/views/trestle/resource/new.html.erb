@@ -4,7 +4,7 @@
 <% breadcrumb title %>
 
 <% content_for(:primary_toolbar) do %>
-  <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" %>
+  <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path, method: :post do |f| %>

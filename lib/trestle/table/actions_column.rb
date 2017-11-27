@@ -13,8 +13,10 @@ module Trestle
       end
 
       def default_actions
+        admin = table.admin
+
         ->(action) do
-          action.delete
+          action.delete if admin && admin.actions.include?(:destroy)
         end
       end
 

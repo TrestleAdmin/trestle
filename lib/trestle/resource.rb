@@ -5,6 +5,9 @@ module Trestle
     autoload :Builder
     autoload :Controller
 
+    RESOURCE_ACTIONS = [:index, :show, :new, :create, :edit, :update, :destroy]
+    READONLY_ACTIONS = [:index, :show]
+
     class << self
       def adapter
         @adapter ||= Trestle.config.default_adapter.new(self)
@@ -122,6 +125,10 @@ module Trestle
         @model_name ||= Trestle::ModelName.new(model)
       end
 
+      def actions
+        @actions ||= (readonly? ? READONLY_ACTIONS : RESOURCE_ACTIONS).dup
+      end
+
       def readonly?
         options[:readonly]
       end
@@ -134,14 +141,10 @@ module Trestle
         admin = self
 
         Proc.new do
-          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path], except: admin.disabled_routes do
+          resources admin.admin_name, controller: admin.controller_namespace, as: admin.route_name, path: admin.options[:path], except: (RESOURCE_ACTIONS - admin.actions) do
             instance_exec(&admin.additional_routes) if admin.additional_routes
           end
         end
-      end
-
-      def disabled_routes
-        readonly? ? [:new, :create, :edit, :update, :destroy] : []
       end
 
     private
