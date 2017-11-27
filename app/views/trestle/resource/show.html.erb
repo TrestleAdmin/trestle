@@ -10,7 +10,7 @@
 <% content_for(:secondary_toolbar) do %>
   <%= admin_link_to instance, action: :destroy, method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
     <%= icon("fa fa-trash") %> <%= t("admin.buttons.delete", default: "Delete %{model_name}", model_name: admin.model_name) %>
-  <% end if admin.actions.include?(:destroy?) %>
+  <% end if admin.actions.include?(:destroy) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.actions.include?(:update) ? admin.path(:update, id: admin.to_param(instance)) : "#", method: :patch do |f| %>
