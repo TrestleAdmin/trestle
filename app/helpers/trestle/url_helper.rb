@@ -27,7 +27,7 @@ module Trestle
           params = options.delete(:params) || {}
           params[:id] ||= admin.to_param(instance_or_url) if instance_or_url
 
-          if admin.form.dialog?
+          if [:show, :edit].include?(action) && admin.form.dialog?
             options[:data] ||= {}
             options[:data][:behavior] ||= "dialog"
           end
