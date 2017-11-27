@@ -53,12 +53,16 @@ describe Trestle::Table::ActionsColumn do
     end
 
     describe "#content" do
-      let(:template) { double(icon: double, link_to: double, concat: nil) }
+      let(:button) { double }
+      let(:icon) { double }
 
       it "renders the actions block" do
         expect(template).to receive(:with_output_buffer).and_yield
         expect(template).to receive(:instance_exec).with(Trestle::Table::ActionsColumn::ActionsBuilder, &column.block)
-        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :destroy).and_return("/test/123")
+
+        expect(template).to receive(:icon).with("fa fa-trash").and_return(icon)
+        expect(template).to receive(:admin_link_to).with(icon, instance, admin: admin, action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: ["btn-danger", "btn"]).and_return(button)
+        expect(template).to receive(:concat).with(button)
 
         renderer.content(instance)
       end
@@ -73,7 +77,7 @@ describe Trestle::Table::ActionsColumn do
 
     describe "#button" do
       it "appends a button link to the template" do
-        expect(template).to receive(:link_to).with("Test", "/path", class: ["btn-info", "btn"]).and_return(button)
+        expect(template).to receive(:admin_link_to).with("Test", "/path", admin: admin, class: ["btn-info", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
 
         builder.button("Test", "/path", class: "btn-info")
@@ -83,8 +87,7 @@ describe Trestle::Table::ActionsColumn do
     describe "#delete" do
       it "appends a delete link to the template" do
         expect(template).to receive(:icon).with("fa fa-trash").and_return(icon)
-        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :destroy).and_return("/test/123")
-        expect(template).to receive(:link_to).with(icon, "/test/123", method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: ["btn-danger", "btn"]).and_return(button)
+        expect(template).to receive(:admin_link_to).with(icon, instance, admin: admin, action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: ["btn-danger", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
 
         builder.delete
@@ -94,8 +97,7 @@ describe Trestle::Table::ActionsColumn do
     describe "#show" do
       it "appends a show link to the template" do
         expect(template).to receive(:icon).with("fa fa-info").and_return(icon)
-        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :show).and_return("/test/123")
-        expect(template).to receive(:link_to).with(icon, "/test/123", class: ["btn-info", "btn"]).and_return(button)
+        expect(template).to receive(:admin_link_to).with(icon, instance, admin: admin, action: :show, class: ["btn-info", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
 
         builder.show
@@ -105,8 +107,7 @@ describe Trestle::Table::ActionsColumn do
     describe "#edit" do
       it "appends an edit link to the template" do
         expect(template).to receive(:icon).with("fa fa-pencil").and_return(icon)
-        expect(template).to receive(:admin_url_for).with(instance, admin: admin, action: :edit).and_return("/test/123")
-        expect(template).to receive(:link_to).with(icon, "/test/123", class: ["btn-warning", "btn"]).and_return(button)
+        expect(template).to receive(:admin_link_to).with(icon, instance, admin: admin, action: :edit, class: ["btn-warning", "btn"]).and_return(button)
         expect(template).to receive(:concat).with(button)
 
         builder.edit

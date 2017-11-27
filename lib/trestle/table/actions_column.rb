@@ -23,29 +23,29 @@ module Trestle
 
         delegate :table, to: :@column
 
-        delegate :icon, :admin_url_for, :concat, :link_to, to: :@template
+        delegate :concat, :icon, :link_to, :admin_url_for, :admin_link_to, to: :@template
 
         def initialize(column, template, instance)
           @column, @template, @instance = column, template, instance
         end
 
         def show
-          button(icon("fa fa-info"), admin_url_for(instance, admin: table.admin, action: :show), class: "btn-info")
+          button(icon("fa fa-info"), instance, action: :show, class: "btn-info")
         end
 
         def edit
-          button(icon("fa fa-pencil"), admin_url_for(instance, admin: table.admin, action: :edit), class: "btn-warning")
+          button(icon("fa fa-pencil"), instance, action: :edit, class: "btn-warning")
         end
 
         def delete
-          button(icon("fa fa-trash"), admin_url_for(instance, admin: table.admin, action: :destroy), method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+          button(icon("fa fa-trash"), instance, action: :destroy, method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
         end
 
-        def button(content, url, options={})
+        def button(content, instance_or_url, options={})
           options[:class] = Array(options[:class])
           options[:class] << "btn" unless options[:class].include?("btn")
 
-          concat link_to(content, url, options)
+          concat admin_link_to(content, instance_or_url, options.reverse_merge(admin: table.admin))
         end
         alias_method :link, :button
       end
