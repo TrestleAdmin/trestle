@@ -297,4 +297,32 @@ describe Trestle::Resource::Builder do
       end
     end
   end
+
+  describe "#return_to" do
+    context "given options[:on]" do
+      it "sets a return location block for the given action" do
+        b = Proc.new {}
+
+        Trestle::Resource::Builder.build(:test) do
+          return_to on: :create, &b
+        end
+
+        expect(::TestAdmin.return_locations[:create]).to eq(b)
+      end
+    end
+
+    context "without options[:on]" do
+      it "sets the return location block for all actions" do
+        b = Proc.new {}
+
+        Trestle::Resource::Builder.build(:test) do
+          return_to &b
+        end
+
+        expect(::TestAdmin.return_locations[:create]).to eq(b)
+        expect(::TestAdmin.return_locations[:update]).to eq(b)
+        expect(::TestAdmin.return_locations[:destroy]).to eq(b)
+      end
+    end
+  end
 end

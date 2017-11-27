@@ -147,6 +147,18 @@ module Trestle
         end
       end
 
+      def return_locations
+        @return_locations ||= {
+          create:  ->(instance) { path(:show, id: to_param(instance)) },
+          update:  ->(instance) { path(:show, id: to_param(instance)) },
+          destroy: -> { path(:index) }
+        }
+      end
+
+      def return_location(action, instance=nil)
+        instance_exec(instance, &return_locations[action])
+      end
+
     private
       def infer_model_class
         parent.const_get(admin_name.classify)

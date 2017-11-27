@@ -90,6 +90,14 @@ module Trestle
 
         admin.scopes[name] = Scope.new(admin, name, options, &(scope || block))
       end
+
+      def return_to(options={}, &block)
+        actions = options.key?(:on) ? Array(options[:on]) : [:create, :update, :destroy]
+
+        actions.each do |action|
+          admin.return_locations[action.to_sym] = block
+        end
+      end
     end
   end
 end
