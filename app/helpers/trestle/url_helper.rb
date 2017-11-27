@@ -16,7 +16,7 @@ module Trestle
         if options.key?(:admin)
           admin = Trestle.lookup(options.delete(:admin))
         elsif instance_or_url.respond_to?(:id)
-          admin = admin_for(instance)
+          admin = admin_for(instance_or_url)
         end
 
         admin ||= self.admin if respond_to?(:admin)
