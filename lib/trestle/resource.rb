@@ -149,9 +149,9 @@ module Trestle
 
       def return_locations
         @return_locations ||= {
-          create:  ->(instance) { path(:show, id: to_param(instance)) },
-          update:  ->(instance) { path(:show, id: to_param(instance)) },
-          destroy: -> { path(:index) }
+          create:  Proc.new { |instance| path(:show, id: to_param(instance)) },
+          update:  Proc.new { |instance| path(:show, id: to_param(instance)) },
+          destroy: Proc.new { path(:index) }
         }
       end
 
