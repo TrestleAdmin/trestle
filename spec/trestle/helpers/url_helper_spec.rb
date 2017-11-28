@@ -72,6 +72,17 @@ describe Trestle::UrlHelper do
         expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
         expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
       end
+
+      context "target admin's form is a dialog" do
+        let(:form) { double(dialog?: true) }
+
+        it "renders the admin link with data-behavior='dialog' set" do
+          expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
+          expect(admin).to receive(:path).with(:new, foo: "bar").and_return(url)
+          expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
+          expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
+        end
+      end
     end
 
     context "when no admin or instance is provided" do

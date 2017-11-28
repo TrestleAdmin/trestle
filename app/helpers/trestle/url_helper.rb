@@ -1,5 +1,7 @@
 module Trestle
   module UrlHelper
+    DIALOG_ACTIONS = [:new, :show, :edit]
+
     def admin_link_to(content, instance_or_url=nil, options={}, &block)
       if block_given?
         instance_or_url, options = content, instance_or_url || {}
@@ -27,7 +29,7 @@ module Trestle
           params = options.delete(:params) || {}
           params[:id] ||= admin.to_param(instance_or_url) if instance_or_url
 
-          if [:show, :edit].include?(action) && admin.form.dialog?
+          if DIALOG_ACTIONS.include?(action) && admin.form.dialog?
             options[:data] ||= {}
             options[:data][:behavior] ||= "dialog"
           end
