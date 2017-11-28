@@ -9,7 +9,7 @@
       "magnific-popup":          "~1.1.0",
       "bootstrap-confirmation2": "~2.4.0",
       "flatpickr":               "~3.0.7",
-      "select2":                 "~4.0.4",
+      "select2":                 "~4.0.5",
       "select2-bootstrap-theme": "~0.1.0"
   }
 }
