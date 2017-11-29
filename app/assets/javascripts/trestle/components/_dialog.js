@@ -56,7 +56,12 @@ Trestle.Dialog.prototype.load = function(url) {
       dialog.setContent(content);
     },
     error: function(xhr, status, error) {
-      dialog.showError(error);
+      var errorMessage = Trestle.i18n['trestle.dialog.error'] || 'The request could not be completed.';
+
+      var title = error || errorMessage;
+      var content = $('<p>').text(errorMessage);
+
+      dialog.showError(title, content);
     }
   });
 };
@@ -74,20 +79,18 @@ Trestle.Dialog.prototype.setContent = function(content) {
   $(Trestle).trigger('init', this.el);
 };
 
-Trestle.Dialog.prototype.showError = function(error) {
+Trestle.Dialog.prototype.showError = function(title, content) {
   this.el.addClass('error');
 
   var container = this.el.find('.modal-content').empty();
 
-  var errorMessage = Trestle.i18n['trestle.dialog.error'] || 'The request could not be completed.';
-
   $('<div class="modal-header">')
     .append('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
-    .append('<h4 class="modal-title"></h4>').find('h4').text(error || errorMessage).end()
+    .append('<h4 class="modal-title"></h4>').find('h4').text(title).end()
     .appendTo(container);
 
   $('<div class="modal-body">')
-    .append('<p>').find('p').text(errorMessage).end()
+    .append(content)
     .appendTo(container);
 
   $('<div class="modal-footer">')
