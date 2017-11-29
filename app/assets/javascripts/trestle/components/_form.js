@@ -13,15 +13,25 @@ Trestle.init(function(e, root) {
       var contentType = xhr.getResponseHeader("Content-Type").split(";")[0];
 
       if (contentType == "text/html") {
-        // Find the parent context and replace content
-        var context = $(this).closest('[data-context]');
-        context.html(xhr.responseText);
+        if (/<html/i.test(xhr.responseText)) {
+          // Response is a full HTML page, likely an error page. Render within an iframe.
 
-        // Initialize replaced elements within the context
-        $(Trestle).trigger('init', context);
+          var context = $(this).closest('[data-context]');
+          var iframe = $("<iframe>").addClass('error-iframe').get(0);
+          context.html(iframe);
 
-        // Focus the correct tab
-        Trestle.focusActiveTab();
+          iframe.contentWindow.document.documentElement.innerHTML = xhr.responseText;
+        } else {
+          // Find the parent context and replace content
+          var context = $(this).closest('[data-context]');
+          context.html(xhr.responseText);
+
+          // Initialize replaced elements within the context
+          $(Trestle).trigger('init', context);
+
+          // Focus the correct tab
+          Trestle.focusActiveTab();
+        }
       } else {
         // Assume an error response
         var title = xhr.status + " (" + xhr.statusText + ")";

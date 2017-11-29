@@ -41,6 +41,9 @@ img {
 
 .app-main {
   flex: 1 0 auto;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .app-footer {
@@ -55,6 +58,11 @@ img {
   .version {
     float: right;
   }
+}
+
+.error-iframe {
+  border: 0;
+  flex: 1;
 }
 
 @include mobile {
