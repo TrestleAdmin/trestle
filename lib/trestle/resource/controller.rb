@@ -4,8 +4,6 @@ module Trestle
       after_action :set_trestle_location_header
 
       def index
-        self.collection = admin.prepare_collection(params)
-
         respond_to do |format|
           format.html
           format.json { render json: collection }
@@ -48,8 +46,6 @@ module Trestle
       end
 
       def show
-        self.instance = admin.find_instance(params)
-
         respond_to do |format|
           format.html
           format.json { render json: instance }
@@ -58,11 +54,9 @@ module Trestle
       end
 
       def edit
-        self.instance = admin.find_instance(params)
       end
 
       def update
-        self.instance = admin.find_instance(params)
         admin.update_instance(instance, admin.permitted_params(params), params)
 
         if admin.save_instance(instance)
@@ -87,7 +81,6 @@ module Trestle
       end
 
       def destroy
-        self.instance = admin.find_instance(params)
         success = admin.delete_instance(instance)
 
         respond_to do |format|
@@ -111,11 +104,16 @@ module Trestle
       end
 
     protected
-      attr_accessor :collection
-      helper_method :collection
+      def instance
+        @instance ||= admin.find_instance(params)
+      end
 
-      attr_accessor :instance
-      helper_method :instance
+      def collection
+        @collection ||= admin.prepare_collection(params)
+      end
+
+      attr_writer :instance, :collection
+      helper_method :instance, :collection
 
       def flash_message(type, options={})
         t("trestle.flash.#{type}", options.merge(model_name: admin.model_name, lowercase_model_name: admin.model_name.downcase))
