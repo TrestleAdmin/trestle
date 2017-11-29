@@ -1,5 +1,11 @@
-Trestle.Dialog = function() {
+Trestle.Dialog = function(options) {
+  options = options || {};
+
   this.el = Trestle.Dialog.getElement();
+
+  if (options.modalClass) {
+    this.el.find('.modal-dialog').addClass(options.modalClass);
+  }
 };
 
 Trestle.Dialog.TEMPLATE =
