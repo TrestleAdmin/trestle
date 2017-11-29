@@ -37,6 +37,15 @@ Trestle.Dialog.getElement = function() {
   return el;
 };
 
+Trestle.Dialog.showError = function(title, errorText) {
+  var dialog = new Trestle.Dialog({ modalClass: 'modal-lg' });
+
+  dialog.showError(title, $('<pre>').addClass('exception').text(errorText));
+  dialog.show();
+
+  return dialog;
+};
+
 Trestle.Dialog.prototype.load = function(url) {
   var dialog = this;
 

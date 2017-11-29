@@ -10,15 +10,26 @@ Trestle.init(function(e, root) {
 
   form
     .on('ajax:complete', function(e, xhr, status) {
-      // Find the parent context and replace content
-      var context = $(this).closest('[data-context]');
-      context.html(xhr.responseText);
+      var contentType = xhr.getResponseHeader("Content-Type").split(";")[0];
 
-      // Initialize replaced elements within the context
-      $(Trestle).trigger('init', context);
+      if (contentType == "text/html") {
+        // Find the parent context and replace content
+        var context = $(this).closest('[data-context]');
+        context.html(xhr.responseText);
 
-      // Focus the correct tab
-      Trestle.focusActiveTab();
+        // Initialize replaced elements within the context
+        $(Trestle).trigger('init', context);
+
+        // Focus the correct tab
+        Trestle.focusActiveTab();
+      } else {
+        // Assume an error response
+        var title = xhr.status + " (" + xhr.statusText + ")";
+        Trestle.Dialog.showError(title, xhr.responseText);
+
+        // Reset submit button
+        form.find(':submit').prop('disabled', false).removeClass('loading');
+      }
     })
     .on('ajax:success', function(e, data, status, xhr) {
       var context = $(this).closest('[data-context]');

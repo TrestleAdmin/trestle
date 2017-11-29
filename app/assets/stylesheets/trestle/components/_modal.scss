@@ -79,6 +79,10 @@
 
 .modal-body {
   @extend .tab-content;
+
+  pre.exception {
+    max-height: 75vh;
+  }
 }
 
 .modal-footer {
