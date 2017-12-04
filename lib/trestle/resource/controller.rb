@@ -22,7 +22,7 @@ module Trestle
       end
 
       def create
-        self.instance = admin.build_instance(admin.permitted_params(params), params)
+        self.instance = admin.build_instance(permitted_params, params)
 
         if admin.save_instance(instance)
           respond_to do |format|
@@ -57,7 +57,7 @@ module Trestle
       end
 
       def update
-        admin.update_instance(instance, admin.permitted_params(params), params)
+        admin.update_instance(instance, permitted_params, params)
 
         if admin.save_instance(instance)
           respond_to do |format|
@@ -122,6 +122,14 @@ module Trestle
       def set_trestle_location_header
         unless request.headers["X-Trestle-Dialog"]
           headers["X-Trestle-Location"] = request.path
+        end
+      end
+
+      def permitted_params
+        if admin.permitted_params_block
+          instance_exec(params, &admin.permitted_params_block)
+        else
+          admin.permitted_params(params)
         end
       end
     end
