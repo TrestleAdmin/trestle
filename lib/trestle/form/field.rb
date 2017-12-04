@@ -39,7 +39,7 @@ module Trestle
       end
 
       def extract_options!
-        @wrapper = extract_wrapper_options(:help, :label, :hide_label).merge(options.delete(:wrapper))
+        @wrapper = extract_wrapper_options(*Fields::FormGroup::WRAPPER_OPTIONS).merge(options.delete(:wrapper))
       end
 
     private
