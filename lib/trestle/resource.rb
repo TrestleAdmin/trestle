@@ -20,10 +20,11 @@ module Trestle
       # Defines a method that can be overridden with a custom block,
       # but is otherwise delegated to the adapter instance.
       def self.adapter_method(name)
-        attr_writer name
+        block_method = :"#{name}_block"
+        attr_accessor block_method
 
         define_method(name) do |*args|
-          if override = instance_variable_get("@#{name}")
+          if override = public_send(block_method)
             instance_exec(*args, &override)
           else
             adapter.public_send(name, *args)

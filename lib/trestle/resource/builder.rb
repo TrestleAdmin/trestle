@@ -22,36 +22,36 @@ module Trestle
       end
 
       def collection(&block)
-        admin.collection = block
+        admin.collection_block = block
       end
 
       def find_instance(&block)
-        admin.find_instance = block
+        admin.find_instance_block = block
       end
       alias instance find_instance
 
       def build_instance(&block)
-        admin.build_instance = block
+        admin.build_instance_block = block
       end
 
       def update_instance(&block)
-        admin.update_instance = block
+        admin.update_instance_block = block
       end
 
       def save_instance(&block)
-        admin.save_instance = block
+        admin.save_instance_block = block
       end
 
       def delete_instance(&block)
-        admin.delete_instance = block
+        admin.delete_instance_block = block
       end
 
       def to_param(&block)
-        admin.to_param = block
+        admin.to_param_block = block
       end
 
       def params(&block)
-        admin.permitted_params = block
+        admin.permitted_params_block = block
       end
 
       def decorator(decorator)
@@ -59,15 +59,15 @@ module Trestle
       end
 
       def decorate_collection(&block)
-        admin.decorate_collection = block
+        admin.decorate_collection_block = block
       end
 
       def merge_scopes(&block)
-        admin.merge_scopes = block
+        admin.merge_scopes_block = block
       end
 
       def sort(&block)
-        admin.sort = block
+        admin.sort_block = block
       end
 
       def sort_column(column, &block)
@@ -75,11 +75,11 @@ module Trestle
       end
 
       def paginate(&block)
-        admin.paginate = block
+        admin.paginate_block = block
       end
 
       def count(&block)
-        admin.count = block
+        admin.count_block = block
       end
 
       def scope(name, scope=nil, options={}, &block)
