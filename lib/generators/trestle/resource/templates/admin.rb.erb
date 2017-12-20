@@ -13,7 +13,7 @@ Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><
 
   # Customize the form fields shown on the new/edit views.
   #
-  # form do |<%= singular_name %>|
+  # form do |<%= singular_table_name %>|
   #   text_field :name
   #
   #   row do
@@ -30,6 +30,6 @@ Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:<%= singular_name %>).permit(:name, ...)
+  #   params.require(:<%= singular_table_name %>).permit(:name, ...)
   # end
 end
