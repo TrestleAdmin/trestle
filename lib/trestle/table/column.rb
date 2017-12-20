@@ -87,10 +87,17 @@ module Trestle
               # evaluate the block using instance_exec, we need to set this up manually.
               -> {
                 _hamlout = eval('_hamlout', @column.block.binding)
-                @template.capture { @template.instance_exec(instance, &@column.block).to_s }
+                value = nil
+                buffer = @template.capture { value = @template.instance_exec(instance, &@column.block) }
+                value.is_a?(String) ? buffer : value
               }.call
             else
-              @template.capture { @template.instance_exec(instance, &@column.block).to_s }
+              # Capture both the immediate value and captured output of the block.
+              # If the result of the block is a string, then use the contents of the buffer.
+              # Otherwise return the result of the block as a raw value (for auto-formatting).
+              value = nil
+              buffer = @template.capture { value = @template.instance_exec(instance, &@column.block) }
+              value.is_a?(String) ? buffer : value
             end
           else
             instance.send(@column.field)
