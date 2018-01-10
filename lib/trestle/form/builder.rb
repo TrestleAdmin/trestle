@@ -10,7 +10,11 @@ module Trestle
       self.fields = {}
 
       def errors(name)
-        object.errors[name].to_a
+        if object.respond_to?(:errors) && object.errors.respond_to?(:[])
+          object.errors[name].to_a
+        else
+          []
+        end
       end
 
       def self.register(name, klass)
