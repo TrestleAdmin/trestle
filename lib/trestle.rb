@@ -54,7 +54,7 @@ module Trestle
   end
 
   def self.navigation
-    Navigation.new(config.menus + admins.values.map(&:menu).compact)
+    Navigation.build(config.menus + admins.values.map(&:menu).compact)
   end
 end
 

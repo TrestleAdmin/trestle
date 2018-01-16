@@ -46,6 +46,20 @@ describe Trestle::Navigation::Item do
     expect([i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3])
   end
 
+  it "is visible by default" do
+    expect(item.visible?(self)).to be true
+  end
+
+  it "is not visible if options[:if] is provided and evaluates to false" do
+    item = Trestle::Navigation::Item.new(:test, nil, if: -> { false })
+    expect(item.visible?(self)).to be false
+  end
+
+  it "is not visible if options[:unless] if provided and evaluates to true" do
+    item = Trestle::Navigation::Item.new(:test, nil, unless: -> { true })
+    expect(item.visible?(self)).to be false
+  end
+
   context "with a badge" do
     it "has a badge" do
       item = Trestle::Navigation::Item.new(:test, nil, badge: { text: "123", class: "label-success" })

@@ -7,12 +7,10 @@ module Trestle
     autoload :Group
     autoload :NullGroup, "trestle/navigation/group"
 
-    def initialize(blocks)
-      @blocks = blocks
-    end
+    attr_reader :items
 
-    def items
-      @blocks.map(&:items).flatten
+    def initialize(items)
+      @items = items
     end
 
     def by_group
@@ -26,6 +24,14 @@ module Trestle
     def first
       sorted = by_group.values
       sorted.first.first if sorted.any?
+    end
+
+    def visible(context)
+      self.class.new(items.select { |item| item.visible?(context) })
+    end
+
+    def self.build(blocks)
+      new(blocks.map(&:items).flatten)
     end
 
   private

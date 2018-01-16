@@ -55,6 +55,16 @@ module Trestle
         Badge.new(options[:badge]) if badge?
       end
 
+      def visible?(context)
+        if options[:if]
+          context.instance_exec(&options[:if])
+        elsif options[:unless]
+          !context.instance_exec(&options[:unless])
+        else
+          true
+        end
+      end
+
       class Badge
         attr_reader :text
 
