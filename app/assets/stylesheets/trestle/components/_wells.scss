@@ -1,5 +1,5 @@
 .well {
-  padding: 20px;
+  padding: 15px;
 
   box-shadow: none;
   border-radius: 0;
@@ -11,6 +11,14 @@
   > *:last-child {
     margin-bottom: 0;
   }
+}
+
+.well-lg {
+  padding: 24px;
+}
+
+.well-sm {
+  padding: 9px;
 }
 
 .main-content-sidebar .well {
