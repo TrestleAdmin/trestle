@@ -93,6 +93,7 @@ The following plugins are currently available:
 | *trestle-search* | Search plugin | https://github.com/TrestleAdmin/trestle-search |
 | *trestle-tinymce* | TinyMCE (WYSIWYG editor) integration | https://github.com/TrestleAdmin/trestle-tinymce |
 | *trestle-simplemde* | SimpleMDE (Markdown editor) integration | https://github.com/TrestleAdmin/trestle-simplemde |
+| *trestle-sidekiq* | Sidekiq integration | https://github.com/TrestleAdmin/trestle-sidekiq |
 
 
 ## License
