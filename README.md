@@ -87,13 +87,13 @@ end
 
 The following plugins are currently available:
 
-| Name | Description | GitHub |
+| Name | Description | Links |
 | --- | --- | --- |
-| *trestle-auth* | User authentication plugin | https://github.com/TrestleAdmin/trestle-auth |
-| *trestle-search* | Search plugin | https://github.com/TrestleAdmin/trestle-search |
-| *trestle-tinymce* | [TinyMCE](https://www.tinymce.com/) (WYSIWYG editor) integration | https://github.com/TrestleAdmin/trestle-tinymce |
-| *trestle-simplemde* | [SimpleMDE](https://simplemde.com/) (Markdown editor) integration | https://github.com/TrestleAdmin/trestle-simplemde |
-| *trestle-sidekiq* | [Sidekiq](http://sidekiq.org/) integration | https://github.com/TrestleAdmin/trestle-sidekiq |
+| *trestle-auth* | User authentication plugin | [GitHub](https://github.com/TrestleAdmin/trestle-auth) \| [RubyGems](https://rubygems.org/gems/trestle-auth) |
+| *trestle-search* | Search plugin | [GitHub](https://github.com/TrestleAdmin/trestle-search) \| [RubyGems](https://rubygems.org/gems/trestle-search) |
+| *trestle-tinymce* | [TinyMCE](https://www.tinymce.com/) (WYSIWYG editor) integration | [GitHub](https://github.com/TrestleAdmin/trestle-tinymce) \| [RubyGems](https://rubygems.org/gems/trestle-tinymce) |
+| *trestle-simplemde* | [SimpleMDE](https://simplemde.com/) (Markdown editor) integration | [GitHub](https://github.com/TrestleAdmin/trestle-simplemde) \| [RubyGems](https://rubygems.org/gems/trestle-simplemde) |
+| *trestle-sidekiq* | [Sidekiq](http://sidekiq.org/) integration | [GitHub](https://github.com/TrestleAdmin/trestle-sidekiq) \| [RubyGems](https://rubygems.org/gems/trestle-sidekiq) |
 
 
 ## License
