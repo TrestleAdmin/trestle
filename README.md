@@ -91,9 +91,9 @@ The following plugins are currently available:
 | --- | --- | --- |
 | *trestle-auth* | User authentication plugin | https://github.com/TrestleAdmin/trestle-auth |
 | *trestle-search* | Search plugin | https://github.com/TrestleAdmin/trestle-search |
-| *trestle-tinymce* | TinyMCE (WYSIWYG editor) integration | https://github.com/TrestleAdmin/trestle-tinymce |
-| *trestle-simplemde* | SimpleMDE (Markdown editor) integration | https://github.com/TrestleAdmin/trestle-simplemde |
-| *trestle-sidekiq* | Sidekiq integration | https://github.com/TrestleAdmin/trestle-sidekiq |
+| *trestle-tinymce* | [TinyMCE](https://www.tinymce.com/) (WYSIWYG editor) integration | https://github.com/TrestleAdmin/trestle-tinymce |
+| *trestle-simplemde* | [SimpleMDE](https://simplemde.com/) (Markdown editor) integration | https://github.com/TrestleAdmin/trestle-simplemde |
+| *trestle-sidekiq* | [Sidekiq](http://sidekiq.org/) integration | https://github.com/TrestleAdmin/trestle-sidekiq |
 
 
 ## License
