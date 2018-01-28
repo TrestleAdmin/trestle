@@ -1,1 +1,13 @@
-@import "trestle/magnific-popup/dist/magnific-popup"
+@import "trestle/magnific-popup/dist/magnific-popup";
+
+$mfp-z-index-base: 1140;
+
+.mfp-bg { z-index: $mfp-z-index-base + 2; }
+.mfp-wrap { z-index: $mfp-z-index-base + 3; }
+.mfp-content { z-index: $mfp-z-index-base + 5; }
+.mfp-preloader { z-index: $mfp-z-index-base + 4; }
+
+button.mfp-close,
+button.mfp-arrow {
+  z-index: $mfp-z-index-base + 6;
+}
