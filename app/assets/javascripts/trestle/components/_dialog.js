@@ -120,6 +120,9 @@ $(document).on('click', '[data-behavior="dialog"]', function(e) {
 
   var url = $(this).data('url') || $(this).attr('href');
 
-  var dialog = new Trestle.Dialog();
+  var dialog = new Trestle.Dialog({
+    modalClass: $(this).data('dialog-class')
+  });
+
   dialog.load(url);
 });
