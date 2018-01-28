@@ -45,6 +45,10 @@ module Trestle
           @column, @template = column, template
         end
 
+        def render(instance)
+          @template.content_tag(:td, content(instance), class: classes, data: data)
+        end
+
         def header
           return if options.has_key?(:header) && options[:header].in?([nil, false])
 

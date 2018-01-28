@@ -19,6 +19,16 @@ module Trestle
           @row, @template = row, template
         end
 
+        def columns
+          table.columns.map { |column| column.renderer(@template) }
+        end
+
+        def render(instance)
+          @template.content_tag(:tr, options(instance)) do
+            @template.safe_join(columns.map { |column| column.render(instance) }, "\n")
+          end
+        end
+
         def options(instance)
           options = Trestle::Options.new
 

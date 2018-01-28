@@ -12,11 +12,7 @@
 
     <tbody>
       <% collection.each do |instance| %>
-        <%= content_tag(:tr, table.row.options(instance)) do %>
-          <% table.columns.each do |column| %>
-            <%= content_tag(:td, column.content(instance), class: column.classes, data: column.data) %>
-          <% end %>
-        <% end %>
+        <%= table.row.render(instance) %>
       <% end %>
     </tbody>
   <% end %>

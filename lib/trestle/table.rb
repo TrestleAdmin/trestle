@@ -47,7 +47,7 @@ module Trestle
       end
 
       def columns
-        @columns ||= @table.columns.map { |column| column.renderer(@template) }
+        @columns ||= row.columns
       end
 
       def classes
