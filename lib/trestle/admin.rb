@@ -8,7 +8,6 @@ module Trestle
     class << self
       attr_accessor :menu
 
-      attr_accessor :table
       attr_accessor :form
 
       attr_accessor :additional_routes
@@ -18,6 +17,20 @@ module Trestle
 
       def options
         @options ||= {}
+      end
+
+      def tables
+        @tables ||= {}
+      end
+
+      # Deprecated: Use `tables[:index]` instead
+      def table
+        tables[:index]
+      end
+
+      # Deprecated: Use `tables[:index]=` instead
+      def table=(table)
+        tables[:index] = table
       end
 
       def breadcrumbs

@@ -38,8 +38,14 @@ module Trestle
         end
       end
 
-      def table(options={}, &block)
-        admin.table = Table::Builder.build(options.reverse_merge(admin: admin, sortable: true), &block)
+      def table(name_or_options={}, options={}, &block)
+        if name_or_options.is_a?(Hash)
+          name, options = :index, name_or_options.reverse_merge(admin: admin, sortable: true)
+        else
+          name = name_or_options
+        end
+
+        admin.tables[name] = Table::Builder.build(options, &block)
       end
 
       def form(options={}, &block)
