@@ -8,7 +8,11 @@ if (!('ontouchstart' in window)) {
       selector:  '.app-nav a',
       trigger:   'hover',
       placement: 'right',
-      title:     function() { return $(this).find('.nav-label').text(); }
+      container: 'body',
+      template:  '<div class="tooltip nav-tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+      title: function() {
+        return $(this).find('.nav-label').text();
+      }
     });
   });
 };

@@ -171,7 +171,7 @@
       content: $fa-var-angle-double-right;
     }
 
-    &.expanded {
+    .sidebar-expanded & {
       width: $sidebar-width;
 
       .app-sidebar-header {
@@ -204,7 +204,7 @@
 
 @include desktop {
   .app-sidebar {
-    &.collapsed {
+    .sidebar-collapsed & {
       width: $sidebar-width-collapsed;
 
       .app-sidebar-header {

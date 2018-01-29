@@ -91,10 +91,10 @@
       }
     }
   }
+}
 
-  .tooltip {
-    display: none !important;
-  }
+.nav-tooltip {
+  display: none !important;
 }
 
 @mixin collapsed-nav-header {
@@ -128,6 +128,10 @@
 }
 
 @include tablet {
+  .nav-tooltip {
+    display: block !important;
+  }
+
   .app-nav {
     .nav-label, .nav-badge {
       display: none;
@@ -142,12 +146,10 @@
         display: block;
       }
     }
+  }
 
-    .tooltip {
-      display: block !important;
-    }
-
-    .expanded & {
+  .sidebar-expanded {
+    .app-nav {
       .nav-header a {
         height: auto;
         padding: 5px 20px;
@@ -166,31 +168,33 @@
 
       .nav-label  { display: inline; }
       .nav-badge  { display: block; }
+    }
 
-      .tooltip {
-        display: none !important;
-      }
+    .nav-tooltip {
+      display: none !important;
     }
   }
 }
 
 @include desktop {
-  .collapsed .app-nav {
-    .nav-label, .nav-badge {
-      display: none;
-    }
+  .sidebar-collapsed {
+    .app-nav {
+      .nav-label, .nav-badge {
+        display: none;
+      }
 
-    .nav-header a {
-      @include collapsed-nav-header;
-    }
+      .nav-header a {
+        @include collapsed-nav-header;
+      }
 
-    .collapsed .nav-header a {
-      &::after {
-        display: block;
+      .collapsed .nav-header a {
+        &::after {
+          display: block;
+        }
       }
     }
 
-    .tooltip {
+    .nav-tooltip {
       display: block !important;
     }
   }

@@ -32,7 +32,7 @@ $sidebar-toggle-color: rgba(white, 0.5) !default;
 $content-header-background: rgba(white, 0.6) !default;
 
 $content-sidebar-width:      285px !default;
-$content-sidebar-background: rgba(black, 0.025);
+$content-sidebar-background: rgba(black, 0.025) !default;
 
 $sidebar-transition-duration: 250ms !default;
 
@@ -65,9 +65,9 @@ $table-bg-accent:    rgba(black, 0.02) !default;
 $table-bg-hover:     rgba(black, 0.04) !default;
 $table-border-color: rgba(black, 0.13) !default;
 
-$well-border: transparent;
+$well-border: transparent !default;
 
-$panel-border-radius: 0;
+$panel-border-radius: 0 !default;
 
 $popover-shadow:  0 3px 6px rgba(black, .175) !default;
 $dropdown-shadow: $popover-shadow !default;

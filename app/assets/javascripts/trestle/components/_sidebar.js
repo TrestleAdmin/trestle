@@ -1,4 +1,6 @@
 Trestle.ready(function() {
+  var body    = $('body');
+  var wrapper = $('.app-wrapper');
   var sidebar = $('.app-sidebar');
 
   // Toggle mobile navigation using menu button
@@ -6,18 +8,18 @@ Trestle.ready(function() {
   sidebar.find('.navbar-toggle').on('click', function(e) {
     e.preventDefault();
 
-    $('.app-wrapper').addClass('animate');
-    $('body').toggleClass('mobile-nav-expanded');
+    wrapper.addClass('animate');
+    body.toggleClass('mobile-nav-expanded');
   });
 
-  $('.app-wrapper').on('transitionend webkitTransitionEnd', function() {
+  wrapper.on('transitionend webkitTransitionEnd', function() {
     $(this).removeClass('animate');
   });
 
 
   // Interacting outside of the sidebar closes the navigation
 
-  $('.app-wrapper').on('click touchstart', function(e) {
+  wrapper.on('click touchstart', function(e) {
     var navExpanded = $('body').hasClass('mobile-nav-expanded');
 
     var clickInHeader = $(e.target).closest('.app-header').length;
@@ -38,14 +40,14 @@ Trestle.ready(function() {
   sidebar.find('.toggle-sidebar').on('click', function(e) {
     e.preventDefault();
 
-    if (sidebar.hasClass('expanded') || sidebar.hasClass('collapsed')) {
-      sidebar.removeClass('expanded').removeClass('collapsed');
+    if (body.hasClass('sidebar-expanded') || body.hasClass('sidebar-collapsed')) {
+      body.removeClass('sidebar-expanded').removeClass('sidebar-collapsed');
       Trestle.cookie.delete("trestle:sidebar");
     } else if ($(document).width() >= 1200) {
-      sidebar.addClass('collapsed');
+      body.addClass('sidebar-collapsed');
       Trestle.cookie.set("trestle:sidebar", "collapsed");
     } else if ($(document).width() >= 768) {
-      sidebar.addClass('expanded');
+      body.addClass('sidebar-expanded');
       Trestle.cookie.set("trestle:sidebar", "expanded");
     }
   });
