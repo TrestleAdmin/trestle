@@ -9,14 +9,16 @@ module Trestle
     autoload :SelectColumn
     autoload :Row
 
-    attr_reader :columns, :options, :admin
+    attr_reader :columns, :options
     attr_writer :row
 
     def initialize(options={})
       @options = options
-      @admin = Trestle.lookup(options[:admin]) if options.key?(:admin)
-
       @columns = []
+    end
+
+    def admin
+      Trestle.lookup(options[:admin]) if options.key?(:admin)
     end
 
     def sortable?
