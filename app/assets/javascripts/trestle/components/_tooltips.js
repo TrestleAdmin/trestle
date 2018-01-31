@@ -1,5 +1,6 @@
 Trestle.init(function(e, root) {
   $(root).find('[data-toggle="tooltip"]').tooltip();
+  $(root).find('[data-toggle="popover"]').popover();
 });
 
 if (!('ontouchstart' in window)) {
