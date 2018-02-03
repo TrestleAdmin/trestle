@@ -14,6 +14,15 @@
   }
 }
 
+a.tag {
+  &:hover, &:focus {
+    text-decoration: none;
+    color: white;
+    background: $brand-primary;
+    border-left-color: darken($brand-primary, 10%);
+  }
+}
+
 .tag-select {
   &.select2-selection--multiple {
     .select2-selection__choice {
