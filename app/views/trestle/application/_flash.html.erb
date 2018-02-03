@@ -11,7 +11,7 @@
                title: t("trestle.flash.failure.title", default: "Warning!"),
                message: flash[:error]
              } do %>
-    <%- if Trestle.config.debug_form_errors && instance && instance.errors.any? -%>
+    <%- if debug_form_errors? -%>
       <%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { toggle: "collapse" } %>
       <div id="debug-errors" class="debug-errors collapse">
         <ul>
