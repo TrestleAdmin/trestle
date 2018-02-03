@@ -7,7 +7,7 @@ module Trestle
         end
 
         def default_html_options
-          super.merge(multiple: true, class: "tag-select", data: { tags: true, select_on_close: true })
+          super.merge(multiple: true, class: "tag-select", data: { tags: true })
         end
       end
     end
