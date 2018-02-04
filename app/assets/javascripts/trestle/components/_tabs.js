@@ -1,8 +1,9 @@
 Trestle.init(function(e, root) {
   $(root).find("a[data-toggle='tab']").on('shown.bs.tab', function(e) {
     var hash = $(this).attr("href");
+    var withinModal = $(this).closest('.modal').length > 0;
 
-    if (hash.substr(0, 1) == "#") {
+    if (hash.substr(0, 1) == "#" && !withinModal) {
       history.replaceState({ turbolinks: {} }, "", "#!" + hash.substr(1));
     }
   });
