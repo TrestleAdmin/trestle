@@ -33,6 +33,20 @@ describe Trestle::FormatHelper do
       expect(format_value(nil)).to eq(blank)
     end
 
+    it "returns custom blank text when :blank String option provided" do
+      blank = double
+
+      expect(self).to receive(:content_tag).with(:span, "Empty", class: "blank").and_return(blank)
+      expect(format_value(nil, blank: "Empty")).to eq(blank)
+    end
+
+    it "calls custom blank block when :blank option is callable" do
+      blank = double
+
+      expect(self).to receive(:icon).with("fa fa-ban").and_return(blank)
+      expect(format_value(nil, blank: -> { icon("fa fa-ban") })).to eq(blank)
+    end
+
     it "automatically formats true values" do
       status = double
       icon = double

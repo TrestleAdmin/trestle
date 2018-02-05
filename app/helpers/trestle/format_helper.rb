@@ -30,8 +30,12 @@ module Trestle
       when TrueClass, FalseClass
         status_tag(icon("fa fa-check"), :success) if value
       when NilClass
-        text = options.key?(:blank) ? options[:blank] : I18n.t("admin.format.blank")
-        content_tag(:span, text, class: "blank")
+        blank = options.key?(:blank) ? options[:blank] : I18n.t("admin.format.blank")
+        if blank.respond_to?(:call)
+          instance_exec(&blank)
+        else
+          content_tag(:span, blank, class: "blank")
+        end
       when String
         if value.html_safe? || options[:truncate] == false
           value
