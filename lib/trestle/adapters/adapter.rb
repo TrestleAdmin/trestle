@@ -82,15 +82,6 @@ module Trestle
         instance.id
       end
 
-      # Unscopes a collection so that it can be merged with other scopes without duplication or interference.
-      #
-      # scope - The scope to unscope
-      #
-      # Returns a scope object.
-      def unscope(scope)
-        scope
-      end
-
       # Merges scopes together for Trestle scope application and counting.
       #
       # scope - The first scope

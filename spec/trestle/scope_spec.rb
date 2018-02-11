@@ -52,7 +52,6 @@ describe Trestle::Scope do
     let(:collection) { double }
 
     it "returns the count of the applied scope" do
-      expect(admin).to receive(:unscope).with(collection).and_return(collection)
       expect(collection).to receive(:my_scope).and_return([1,2])
       expect(admin).to receive(:merge_scopes).with(collection, [1,2]).and_return([3,4])
       expect(admin).to receive(:count).with([3,4]).and_return(2)

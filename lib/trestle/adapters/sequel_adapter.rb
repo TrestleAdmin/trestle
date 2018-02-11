@@ -34,10 +34,6 @@ module Trestle
         instance.destroy
       end
 
-      def unscope(scope)
-        scope.unfiltered
-      end
-
       def merge_scopes(scope, other)
         scope.intersect(other)
       end
