@@ -30,13 +30,27 @@ describe Trestle::Scope do
   end
 
   describe "#apply" do
-    let(:collection) { double }
+    let(:collection) { [1, 2, 3] }
 
     context "with an explicit block" do
-      let(:block) { Proc.new { |collection| [1,2,3] } }
+      context "with no parameters" do
+        let(:block) do
+          -> { [4, 5, 6] }
+        end
 
-      it "calls the block with the given collection" do
-        expect(scope.apply(collection)).to eq([1,2,3])
+        it "calls the block and returns the result" do
+          expect(scope.apply(collection)).to eq([4, 5, 6])
+        end
+      end
+
+      context "with one parameter" do
+        let(:block) do
+          ->(collection) { collection + [4] }
+        end
+
+        it "calls the block with the given collection and returns the result" do
+          expect(scope.apply(collection)).to eq([1, 2, 3, 4])
+        end
       end
     end
 
