@@ -74,7 +74,8 @@ module Trestle
         admin.column_sorts[column.to_sym] = block
       end
 
-      def paginate(&block)
+      def paginate(options={}, &block)
+        admin.pagination_options = admin.pagination_options.merge(options)
         admin.paginate_block = block
       end
 

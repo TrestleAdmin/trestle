@@ -122,7 +122,9 @@ module Trestle
       # Returns a Kaminari-compatible scope corresponding to a single page.
       def paginate(collection, params)
         collection = Kaminari.paginate_array(collection.to_a) unless collection.respond_to?(:page)
-        collection.page(params[:page])
+        per_page = admin.pagination_options[:per]
+
+        collection.page(params[:page]).per(per_page)
       end
 
       # Filters the submitted form parameters and returns a whitelisted attributes 'hash'

@@ -81,7 +81,8 @@ describe Trestle::Resource do
 
   it "has a default paginate block" do
     collection = double
-    expect(collection).to receive(:page).with(5).and_return([1, 2, 3])
+    expect(collection).to receive(:page).with(5).and_return(collection)
+    expect(collection).to receive(:per).with(nil).and_return([1, 2, 3])
     expect(admin.paginate(collection, page: 5)).to eq([1, 2, 3])
   end
 

@@ -8,6 +8,11 @@ module Trestle
     RESOURCE_ACTIONS = [:index, :show, :new, :create, :edit, :update, :destroy]
     READONLY_ACTIONS = [:index, :show]
 
+    class_attribute :decorator
+
+    class_attribute :pagination_options
+    self.pagination_options = {}
+
     class << self
       def adapter
         @adapter ||= Trestle.config.default_adapter.new(self)
@@ -48,8 +53,6 @@ module Trestle
       adapter_method :human_attribute_name
       adapter_method :default_table_attributes
       adapter_method :default_form_attributes
-
-      attr_accessor :decorator
 
       def prepare_collection(params)
         collection = initialize_collection(params)
