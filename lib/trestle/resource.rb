@@ -43,6 +43,7 @@ module Trestle
       adapter_method :merge_scopes
       adapter_method :sort
       adapter_method :paginate
+      adapter_method :finalize_collection
       adapter_method :decorate_collection
       adapter_method :count
 

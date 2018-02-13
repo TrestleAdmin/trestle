@@ -1,7 +1,7 @@
 module Trestle
   class Resource
     class Collection
-      delegate :initialize_collection, :paginate, :decorate_collection,
+      delegate :initialize_collection, :paginate, :finalize_collection, :decorate_collection,
                :scopes, :merge_scopes, :column_sorts, :sort, to: :@admin
 
       def initialize(admin)
@@ -13,6 +13,7 @@ module Trestle
         collection = apply_scopes(collection, params)
         collection = apply_sorting(collection, params)
         collection = paginate(collection, params)
+        collection = finalize_collection(collection)
         collection = decorate_collection(collection)
         collection
       end

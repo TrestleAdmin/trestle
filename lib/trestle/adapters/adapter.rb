@@ -61,6 +61,18 @@ module Trestle
         raise NotImplementedError
       end
 
+      # Finalizes a collection so that it can be rendered within the index view.
+      #
+      # In most cases (e.g. ActiveRecord), no finalization is required. However if you are using a search library then
+      # you may need to explicitly execute the search, or access the models via a #records or #objects method.
+      #
+      # collection - The collection to finalize
+      #
+      # Returns an enumerable collection of instances.
+      def finalize_collection(collection)
+        collection
+      end
+
       # Decorates a collection for rendering by the index view.
       # Decorating is the final step in preparing the collection for the view.
       #
