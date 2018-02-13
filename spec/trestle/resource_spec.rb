@@ -91,29 +91,36 @@ describe Trestle::Resource do
     expect(admin.decorate_collection(collection)).to eq(collection)
   end
 
-  describe "#apply_sorting" do
-    let(:collection) { double }
-    let(:sorted_collection) { double }
+  describe "#prepare_collection" do
+    let(:collection) { [3, 1, 2] }
 
-    context "when given sort params" do
-      it "reorders the given collection" do
-        expect(collection).to receive(:reorder).with(field: :asc).and_return(sorted_collection)
-        expect(admin.apply_sorting(collection, sort: "field", order: "asc")).to eq(sorted_collection)
-      end
+    before(:each) do
+      allow(admin).to receive(:initialize_collection).and_return(collection)
     end
 
-    context "when given no sort params" do
-      it "returns the given collection" do
-        expect(admin.apply_sorting(collection, {})).to eq(collection)
+    describe "sorting" do
+      let(:sorted_collection) { [1, 2, 3] }
+
+      context "when given sort params" do
+        it "reorders the given collection" do
+          expect(collection).to receive(:reorder).with(field: :asc).and_return(sorted_collection)
+          expect(admin.prepare_collection(sort: "field", order: "asc")).to eq(sorted_collection)
+        end
       end
-    end
 
-    context "when a column sort for the field exists" do
-      it "reorders the collection using the column sort" do
-        TestAdmin.column_sorts[:field] = ->(collection, order) { collection.order(field: order) }
+      context "when given no sort params" do
+        it "returns the given collection" do
+          expect(admin.prepare_collection({})).to eq(collection)
+        end
+      end
 
-        expect(collection).to receive(:order).with(field: :desc).and_return(sorted_collection)
-        expect(admin.apply_sorting(collection, sort: "field", order: "desc")).to eq(sorted_collection)
+      context "when a column sort for the field exists" do
+        it "reorders the collection using the column sort" do
+          TestAdmin.column_sorts[:field] = ->(collection, order) { collection.order(field: order) }
+
+          expect(collection).to receive(:order).with(field: :desc).and_return(sorted_collection)
+          expect(admin.prepare_collection(sort: "field", order: "desc")).to eq(sorted_collection)
+        end
       end
     end
   end
