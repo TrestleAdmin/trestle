@@ -35,7 +35,13 @@ module Trestle
     end
 
     def active?(params)
-      @admin.scopes_for(params).include?(self)
+      active_scopes = Array(params[:scope])
+
+      if active_scopes.any?
+        active_scopes.include?(to_param.to_s)
+      else
+        default?
+      end
     end
   end
 end

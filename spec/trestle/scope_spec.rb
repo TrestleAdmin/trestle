@@ -74,16 +74,25 @@ describe Trestle::Scope do
   end
 
   describe "#active?" do
-    let(:params) { double }
-
-    it "returns true if the admin's active scopes include this scope" do
-      expect(admin).to receive(:scopes_for).with(params).and_return([scope])
-      expect(scope.active?(params)).to be true
+    it "returns true if the scope param includes the scope name" do
+      expect(scope.active?(scope: "my_scope")).to be true
     end
 
-    it "returns false if the admin's active scopes do not include this scope" do
-      expect(admin).to receive(:scopes_for).with(params).and_return([])
-      expect(scope.active?(params)).to be false
+    it "returns false if the scope param does not match the scope name or is missing" do
+      expect(scope.active?({ scope: "another_scope" })).to be false
+      expect(scope.active?({})).to be false
+    end
+
+    context "scope is default" do
+      let(:options) { { default: true } }
+
+      it "returns true if no scopes are enabled" do
+        expect(scope.active?({})).to be true
+      end
+
+      it "returns false if another scope is enabled" do
+        expect(scope.active?({ scope: "another_scope" })).to be false
+      end
     end
   end
 
