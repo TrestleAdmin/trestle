@@ -13,8 +13,11 @@ module Trestle
               when :association
                 if attribute.polymorphic?
                   static_field attribute.name do
-                    associated_instance = instance.public_send(attribute.association_name)
-                    admin_link_to format_value(associated_instance), associated_instance
+                    if associated_instance = instance.public_send(attribute.association_name)
+                      admin_link_to format_value(associated_instance), associated_instance
+                    else
+                      content_tag(:span, I18n.t("admin.format.blank"), class: "blank")
+                    end
                   end
                 else
                   prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.human_attribute_name(attribute.association_name))
