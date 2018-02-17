@@ -39,6 +39,11 @@ describe Trestle::Table do
       expect(table.renderer(template).classes).to eq(["trestle-table", "custom-table"])
     end
 
+    it "sets the id from options" do
+      table = Trestle::Table.new(id: "custom-id")
+      expect(table.renderer(template).id).to eq("custom-id")
+    end
+
     it "returns the data from options" do
       table = Trestle::Table.new(data: { attr: :custom })
       expect(table.renderer(template).data).to eq({ attr: :custom })

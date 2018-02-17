@@ -52,6 +52,10 @@ module Trestle
         @columns ||= row.columns
       end
 
+      def id
+        options[:id]
+      end
+
       def classes
         ["trestle-table", options[:class]].compact
       end
