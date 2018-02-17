@@ -21,7 +21,7 @@ describe Trestle do
     it "builds an admin" do
       admin = double(:admin, admin_name: "test")
 
-      expect(Trestle::Admin::Builder).to receive(:build).with(:test, {}).and_return(admin)
+      expect(Trestle::Admin::Builder).to receive(:create).with(:test, {}).and_return(admin)
       expect(Trestle.admin(:test)).to eq(admin)
       expect(Trestle.admins).to include({ "test" => admin })
     end
@@ -31,7 +31,7 @@ describe Trestle do
     it "builds a resource admin" do
       admin = double(:admin, admin_name: "test")
 
-      expect(Trestle::Resource::Builder).to receive(:build).with(:test, {}).and_return(admin)
+      expect(Trestle::Resource::Builder).to receive(:create).with(:test, {}).and_return(admin)
       expect(Trestle.resource(:test)).to eq(admin)
       expect(Trestle.admins).to include({ "test" => admin })
     end

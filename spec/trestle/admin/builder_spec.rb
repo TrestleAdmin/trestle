@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-#class Trestle::ApplicationController < ActionController::Base; end
-
 describe Trestle::Admin::Builder do
   before(:each) do
     Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
@@ -9,7 +7,7 @@ describe Trestle::Admin::Builder do
   end
 
   it "creates a top-level Admin subclass" do
-    Trestle::Admin::Builder.build(:test)
+    Trestle::Admin::Builder.create(:test)
     expect(::TestAdmin).to be < Trestle::Admin
   end
 
@@ -20,26 +18,26 @@ describe Trestle::Admin::Builder do
     end
 
     it "creates the Admin subclass within the module scope" do
-      Trestle::Admin::Builder.build(:test, scope: Scoped)
+      Trestle::Admin::Builder.create(:test, scope: Scoped)
       expect(::Scoped::TestAdmin).to be < Trestle::Admin
     end
   end
 
   it "creates an AdminController class" do
-    Trestle::Admin::Builder.build(:test)
+    Trestle::Admin::Builder.create(:test)
     expect(::TestAdmin::AdminController).to be < Trestle::Admin::Controller
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
   it "transfer the options on the Admin class" do
     options = { custom: "option" }
-    Trestle::Admin::Builder.build(:test, options)
+    Trestle::Admin::Builder.create(:test, options)
     expect(TestAdmin.options).to eq(options)
   end
 
   describe "#menu" do
     it "sets the admin's menu to a bound navigation block" do
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         menu do
         end
       end
@@ -49,7 +47,7 @@ describe Trestle::Admin::Builder do
     end
 
     it "uses a single-line menu definition if no block provided" do
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         menu :test, "/path"
       end
 
@@ -59,7 +57,7 @@ describe Trestle::Admin::Builder do
 
   describe "#admin" do
     it "evaluates the block in the context of the admin" do
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         admin do
           def custom_method
             "Custom"
@@ -73,7 +71,7 @@ describe Trestle::Admin::Builder do
 
   describe "#controller" do
     it "evaluates the block in the context of the controller" do
-      builder = Trestle::Admin::Builder.new(:test)
+      builder = Trestle::Admin::Builder.create(:test)
 
       expect(::TestAdmin::AdminController).to receive(:before_action).with(:test)
 
@@ -89,7 +87,7 @@ describe Trestle::Admin::Builder do
     module TestHelper; end
 
     it "adds the helpers to the controller" do
-      builder = Trestle::Admin::Builder.new(:test)
+      builder = Trestle::Admin::Builder.create(:test)
 
       expect(::TestAdmin::AdminController).to receive(:helper).with(TestHelper)
 
@@ -101,7 +99,7 @@ describe Trestle::Admin::Builder do
 
   describe "#table" do
     it "builds a sortable table" do
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         table custom: "option" do
           column :test
         end
@@ -117,7 +115,7 @@ describe Trestle::Admin::Builder do
     it "builds a form" do
       b = Proc.new {}
 
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         form custom: "option", &b
       end
 
@@ -131,7 +129,7 @@ describe Trestle::Admin::Builder do
     it "sets additional routes on the admin" do
       b = Proc.new {}
 
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         routes &b
       end
 
@@ -143,7 +141,7 @@ describe Trestle::Admin::Builder do
     it "overrides the default breadcrumb" do
       b = Trestle::Breadcrumb.new("Custom")
 
-      Trestle::Admin::Builder.build(:test) do
+      Trestle::Admin::Builder.create(:test) do
         breadcrumb { b }
       end
 

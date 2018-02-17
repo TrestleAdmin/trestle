@@ -88,6 +88,10 @@ module Trestle
       def railtie_routes_url_helpers(include_path_helpers=true)
         Trestle.railtie_routes_url_helpers(include_path_helpers)
       end
+
+      def build(&block)
+        Admin::Builder.build(self, &block)
+      end
     end
   end
 end

@@ -11,23 +11,29 @@ module Trestle
 
       delegate :helper, :before_action, :after_action, :around_action, to: :@controller
 
-      def initialize(name, options={})
+      def initialize(admin)
+        @admin, @controller = admin, admin.const_get(:AdminController)
+      end
+
+      def self.create(name, options={}, &block)
         # Create admin subclass
-        @admin = Class.new(admin_class)
-        @admin.options = options
+        admin = Class.new(admin_class)
+        admin.options = options
 
         # Define a constant based on the admin name
         scope = options[:scope] || Object
-        scope.const_set("#{name.to_s.camelize}Admin", @admin)
+        scope.const_set("#{name.to_s.camelize}Admin", admin)
 
         # Define admin controller class
         # This is done using class_eval rather than Class.new so that the full
         # class name and parent chain is set when Rails' inherited hooks are called.
-        @admin.class_eval("class AdminController < #{self.class.controller.name}; end")
+        admin.class_eval("class AdminController < #{controller.name}; end")
 
         # Set a reference on the controller class to the admin class
-        @controller = @admin.const_get("AdminController")
-        @controller.instance_variable_set("@admin", @admin)
+        controller = admin.const_get(:AdminController)
+        controller.instance_variable_set("@admin", admin)
+
+        admin.build(&block)
       end
 
       def menu(*args, &block)
@@ -53,7 +59,7 @@ module Trestle
       end
 
       def admin(&block)
-        @admin.singleton_class.class_eval(&block) if block_given?
+        @admin.instance_eval(&block) if block_given?
         @admin
       end
 

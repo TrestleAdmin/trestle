@@ -31,11 +31,11 @@ module Trestle
   self.admins = {}
 
   def self.admin(name, options={}, &block)
-    register(Admin::Builder.build(name, options, &block))
+    register(Admin::Builder.create(name, options, &block))
   end
 
   def self.resource(name, options={}, &block)
-    register(Resource::Builder.build(name, options, &block))
+    register(Resource::Builder.create(name, options, &block))
   end
 
   def self.register(admin)

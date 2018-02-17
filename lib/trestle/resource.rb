@@ -129,6 +129,10 @@ module Trestle
         instance_exec(instance, &return_locations[action])
       end
 
+      def build(&block)
+        Resource::Builder.build(self, &block)
+      end
+
     private
       def infer_model_class
         parent.const_get(admin_name.classify)
