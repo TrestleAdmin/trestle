@@ -6,4 +6,5 @@ class Trestle::ApplicationController < ActionController::Base
   include Trestle::Controller::Dialog
   include Trestle::Controller::Helpers
   include Trestle::Controller::Layout
+  include Trestle::Controller::Location
 end

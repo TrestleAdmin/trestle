@@ -1,8 +1,6 @@
 module Trestle
   class Resource
     class Controller < Admin::Controller
-      after_action :set_trestle_location_header
-
       def index
         respond_to do |format|
           format.html
@@ -117,12 +115,6 @@ module Trestle
 
       def flash_message(type, options={})
         t("trestle.flash.#{type}", options.merge(model_name: admin.model_name, lowercase_model_name: admin.model_name.downcase))
-      end
-
-      def set_trestle_location_header
-        unless dialog_request?
-          headers["X-Trestle-Location"] = request.path
-        end
       end
 
       def permitted_params
