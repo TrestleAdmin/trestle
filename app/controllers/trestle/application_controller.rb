@@ -3,6 +3,7 @@ class Trestle::ApplicationController < ActionController::Base
 
   include Trestle::Controller::Breadcrumbs
   include Trestle::Controller::Callbacks
+  include Trestle::Controller::Dialog
   include Trestle::Controller::Helpers
   include Trestle::Controller::Layout
 end

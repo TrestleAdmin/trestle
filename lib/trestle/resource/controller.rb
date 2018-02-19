@@ -120,7 +120,7 @@ module Trestle
       end
 
       def set_trestle_location_header
-        unless request.headers["X-Trestle-Dialog"]
+        unless dialog_request?
           headers["X-Trestle-Location"] = request.path
         end
       end
