@@ -124,13 +124,4 @@ describe Trestle::Resource do
       end
     end
   end
-
-  describe "#return_location" do
-    let(:instance) { double(id: 123) }
-
-    it "evaluates the return block for given action" do
-      expect(admin.return_location(:create, instance)).to eq(admin.path(:show, id: 123))
-      expect(admin.return_location(:destroy)).to eq(admin.path(:index))
-    end
-  end
 end

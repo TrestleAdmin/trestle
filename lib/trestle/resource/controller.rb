@@ -26,7 +26,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.create", default: "The %{lowercase_model_name} was successfully created.")
-              redirect_to(admin.return_location(:create, instance), turbolinks: false)
+              redirect_to_return_location(:create, instance, default: admin.path(:show, id: admin.to_param(instance)))
             end
             format.json { render json: instance, status: :created, location: { action: :show, id: admin.to_param(instance) } }
             format.js
@@ -61,7 +61,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.update", default: "The %{lowercase_model_name} was successfully updated.")
-              redirect_to(admin.return_location(:update, instance), turbolinks: false)
+              redirect_to_return_location(:update, instance, default: admin.path(:show, id: admin.to_param(instance)))
             end
             format.json { render json: instance, status: :ok }
             format.js
@@ -85,14 +85,14 @@ module Trestle
           format.html do
             if success
               flash[:message] = flash_message("success.destroy", default: "The %{lowercase_model_name} was successfully deleted.")
-              redirect_to admin.return_location(:destroy)
+              redirect_to_return_location(:destroy, instance, default: admin.path(:index))
             else
               flash[:error] = flash_message("failure.destroy", default: "Could not delete %{lowercase_model_name}.")
 
               if self.instance = admin.find_instance(params)
-                redirect_to action: :show, id: admin.to_param(instance)
+                redirect_to_return_location(:update, instance, default: admin.path(:show, id: admin.to_param(instance)))
               else
-                redirect_to admin.return_location(:destroy)
+                redirect_to_return_location(:destroy, instance, default: admin.path(:index))
               end
             end
           end
@@ -122,6 +122,21 @@ module Trestle
           instance_exec(params, &admin.permitted_params_block)
         else
           admin.permitted_params(params)
+        end
+      end
+
+      def redirect_to_return_location(action, instance, default:)
+        if admin.return_locations[action] && !dialog_request?
+          location = instance_exec(instance, &admin.return_locations[action])
+
+          case location
+          when :back
+            redirect_back fallback_location: default, turbolinks: false
+          else
+            redirect_to location, turbolinks: false
+          end
+        else
+          redirect_to default, turbolinks: false
         end
       end
     end

@@ -118,15 +118,7 @@ module Trestle
       end
 
       def return_locations
-        @return_locations ||= {
-          create:  Proc.new { |instance| path(:show, id: to_param(instance)) },
-          update:  Proc.new { |instance| path(:show, id: to_param(instance)) },
-          destroy: Proc.new { path(:index) }
-        }
-      end
-
-      def return_location(action, instance=nil)
-        instance_exec(instance, &return_locations[action])
+        @return_locations ||= {}
       end
 
       def build(&block)
