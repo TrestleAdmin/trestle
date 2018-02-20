@@ -23,6 +23,8 @@ Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../dummy/db/migrate", __FILE__)]
 ActiveRecord::Migration.maintain_test_schema!
 
+require 'database_cleaner'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.include_chain_clauses_in_custom_matcher_descriptions = true
