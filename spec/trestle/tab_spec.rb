@@ -3,6 +3,16 @@ require 'spec_helper'
 describe Trestle::Tab do
   subject(:tab) { Trestle::Tab.new(:my_tab) }
 
+  describe "#id" do
+    it "returns the tab id" do
+      expect(tab.id).to eq("tab-my_tab")
+    end
+
+    it "inserts the tag if provided" do
+      expect(tab.id("tag")).to eq("tab-tag-my_tab")
+    end
+  end
+
   describe "#label" do
     it "returns the titleized name by default" do
       expect(tab.label).to eq("My Tab")

@@ -8,6 +8,10 @@ module Trestle
       @name, @options = name, options
     end
 
+    def id(tag=nil)
+      ["tab", tag, name].compact.join("-")
+    end
+
     def label
       safe_join([options[:label] || I18n.t("admin.tabs.#{name}", default: name.to_s.titleize), badge].compact, " ")
     end

@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs">
     <% tabs.each do |name, tab| %>
       <li<% if name == tabs.keys.first %> class="active"<% end %>>
-        <%= link_to tab.label, "#tab-#{name}", role: "tab", data: { toggle: "tab" } %>
+        <%= link_to tab.label, "##{tab.id(("modal" if dialog_request?))}", role: "tab", data: { toggle: "tab" } %>
       </li>
     <% end %>
 
