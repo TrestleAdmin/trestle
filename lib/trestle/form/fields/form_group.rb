@@ -9,7 +9,7 @@ module Trestle
 
           content_tag(:div, options.except(*WRAPPER_OPTIONS)) do
             concat label unless options[:label] == false
-            concat block.call if block
+            concat template.capture(&block) if block
             concat help_message if options[:help]
             concat error_message if errors.any?
           end
