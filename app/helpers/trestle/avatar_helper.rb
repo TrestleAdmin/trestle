@@ -5,6 +5,8 @@ module Trestle
     end
 
     def gravatar(email, options={})
+      options = { d: "mm" }.merge(options)
+
       url = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.downcase)}.png"
       url << "?#{options.to_query}" if options.any?
 
