@@ -63,7 +63,9 @@ Trestle.init(function(e, root) {
 
     // Delay to ensure form is still submitted
     setTimeout(function() {
-      button.prop('disabled', true).addClass('loading');
+      if (form[0].checkValidity()) {
+        button.prop('disabled', true).addClass('loading');
+      }
     }, 1);
   });
 });
