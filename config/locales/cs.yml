@@ -1,0 +1,80 @@
+cs:
+  trestle:
+    title: "Administrace Trestle"
+    footer: "Poháněno systémem Trestle"
+    version: "Verze"
+
+    flash:
+      success:
+        title: "Akce úspěšně dokončena!"
+        create: "Položka byla vytvořena."
+        update: "Položka byla aktualizováná."
+        destroy: "Položka byla smazána."
+
+      failure:
+        title: "Nastala chyba!"
+        create: "Prosím opravte chyby zvýrazněné níže."
+        update: "Prosím opravte chyby zvýrazněné níže."
+        destroy: "Položku nebylo možné smazat."
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Nezobrazeny žádné položky"
+            one: "Zobrazena <strong>1</strong> položka"
+            other: "Zobrazeno <strong>%{count}</strong> položek"
+            few: "Zobrazeny <strong>%{count}</strong> položky"
+
+        more_pages:
+          display_entries: "Zobrazeny položky <strong>%{first}</strong> až <strong>%{last}</strong> z celkem <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Vítejte v administraci Trestle"
+      no_admins: "Začněte přidáním souboru do <code>app/admin</code>."
+      no_template: "Pro přizpůsobení šablony vytvořte  <code>%{path}</code>."
+      no_form: "Pro přidání formuláře nadefinujte form blok, nebo vytvořte soubor <code>_form.html</code>."
+
+    dialog:
+      error: "Požadavek nemohl být dokončen."
+
+  admin:
+    titles:
+      index: Přehled
+      edit: Upravit položku
+      new: Nová položka
+
+    buttons:
+      new: "Přidat"
+      save: Uložit
+      delete: Smazat
+      ok: "OK"
+
+    breadcrumbs:
+      home: "Úvod"
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Prosím vyberte -"
+
+    confirmation:
+      title: "Jste si jisti?"
+      delete: "Ano"
+      cancel: "Nemazat"
+
+    ui:
+      toggle_navigation: "Přepnout navigaci"
+      toggle_sidebar: "Přepnout boční panel"
+
+    format:
+      blank: "Žádný"
+
+    datepicker:
+      formats:
+        date: "d/m/Y"
+        datetime: "d/m/Y H:i"
+        time: "H:i"
