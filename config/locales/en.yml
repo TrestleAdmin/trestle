@@ -71,3 +71,9 @@ en:
 
     format:
       blank: "None"
+
+    datepicker:
+      formats:
+        date: "m/d/Y"
+        datetime: "m/d/Y h:i K"
+        time: "h:i K"
