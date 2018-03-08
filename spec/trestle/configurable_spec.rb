@@ -18,6 +18,13 @@ describe Trestle::Configurable do
     expect(config.inspect).to eq("#<Anonymous(Trestle::Configurable)>")
   end
 
+  it "converts to JSON representation" do
+    configurable.option :myoption
+    config.myoption = "test"
+
+    expect(config.as_json({})).to eq({ myoption: "test" })
+  end
+
   describe "#configure" do
     it "yields itself" do
       expect { |b| config.configure(&b) }.to yield_with_args(config)
@@ -80,6 +87,11 @@ describe Trestle::Configurable do
 
     it "returns a new instance of itself if an option is not set" do
       expect(config.unset.nested.deeply).to be_a(configurable)
+    end
+
+    it "converts to JSON representation" do
+      config.first.second.third = "value"
+      expect(config.as_json({})).to eq({ first: { second: { third: "value" } } })
     end
   end
 end

@@ -17,6 +17,12 @@ module Trestle
       @options ||= {}
     end
 
+    def as_json(options=nil)
+      @options.each_with_object({}) do |(k, v), h|
+        h[k] = v.as_json(options)
+      end
+    end
+
     def inspect
       "#<#{self.class.name || "Anonymous(Trestle::Configurable)"}>"
     end
