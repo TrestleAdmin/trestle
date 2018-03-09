@@ -93,6 +93,9 @@ module Trestle
       -> { ActiveSupport::Dependencies.autoload_paths.grep(/\/app\/admin\Z/) }
     ]
 
+    # When to reload Trestle admin within a to_prepare block (`:always` or `:on_update`)
+    option :reload, :on_update
+
 
     ## Debugging
 

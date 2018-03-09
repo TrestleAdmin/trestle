@@ -35,7 +35,11 @@ module Trestle
     end
 
     config.to_prepare do
-      Engine.reloader.execute_if_updated
+      if Trestle.config.reload == :always
+        Engine.reloader.execute
+      else
+        Engine.reloader.execute_if_updated
+      end
     end
 
     def reloader
