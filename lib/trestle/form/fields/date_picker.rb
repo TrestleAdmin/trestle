@@ -1,7 +1,7 @@
 module Trestle::Form::Fields::DatePicker
   def extract_options!
-    options[:prepend] ||= options.key?(:icon) ? options.delete(:icon) : default_icon
-    options.merge!(data: { picker: options.key?(:picker) ? options.delete(:picker) : true })
+    options[:prepend] ||= options.delete(:icon) { default_icon }
+    options.reverse_merge!(data: { picker: options.delete(:picker) { true } })
 
     super
   end
