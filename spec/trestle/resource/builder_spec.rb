@@ -17,6 +17,32 @@ describe Trestle::Resource::Builder do
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
+  describe "#table" do
+    it "builds an index table with the admin and sortable options set" do
+      Trestle::Resource::Builder.create(:test) do
+        table custom: "option" do
+          column :test
+        end
+      end
+
+      expect(::TestAdmin.tables[:index]).to be_a(Trestle::Table)
+      expect(::TestAdmin.tables[:index].options).to eq(custom: "option", sortable: true, admin: ::TestAdmin)
+      expect(::TestAdmin.tables[:index].columns[0].field).to eq(:test)
+    end
+
+    it "builds a named table with the admin option set" do
+      Trestle::Resource::Builder.create(:test) do
+        table :named, custom: "option" do
+          column :test
+        end
+      end
+
+      expect(::TestAdmin.tables[:named]).to be_a(Trestle::Table)
+      expect(::TestAdmin.tables[:named].options).to eq(custom: "option", admin: ::TestAdmin)
+      expect(::TestAdmin.tables[:named].columns[0].field).to eq(:test)
+    end
+  end
+
   describe "#adapter" do
     it "returns the admin's adapter instance" do
       adapter = nil

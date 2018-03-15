@@ -99,6 +99,16 @@ module Trestle
           admin.return_locations[action.to_sym] = block
         end
       end
+
+    protected
+      def normalize_table_options(name, options)
+        if name.is_a?(Hash)
+          # Default index table
+          name, options = :index, name.reverse_merge(sortable: true)
+        end
+
+        [name, options.reverse_merge(admin: admin)]
+      end
     end
   end
 end

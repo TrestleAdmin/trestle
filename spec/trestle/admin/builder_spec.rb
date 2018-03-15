@@ -98,16 +98,28 @@ describe Trestle::Admin::Builder do
   end
 
   describe "#table" do
-    it "builds a sortable table" do
+    it "builds an index table" do
       Trestle::Admin::Builder.create(:test) do
         table custom: "option" do
           column :test
         end
       end
 
-      expect(::TestAdmin.table).to be_a(Trestle::Table)
-      expect(::TestAdmin.table.options).to eq(custom: "option", sortable: true, admin: ::TestAdmin)
-      expect(::TestAdmin.table.columns[0].field).to eq(:test)
+      expect(::TestAdmin.tables[:index]).to be_a(Trestle::Table)
+      expect(::TestAdmin.tables[:index].options).to eq(custom: "option")
+      expect(::TestAdmin.tables[:index].columns[0].field).to eq(:test)
+    end
+
+    it "builds a named table" do
+      Trestle::Admin::Builder.create(:test) do
+        table :named, custom: "option" do
+          column :test
+        end
+      end
+
+      expect(::TestAdmin.tables[:named]).to be_a(Trestle::Table)
+      expect(::TestAdmin.tables[:named].options).to eq(custom: "option")
+      expect(::TestAdmin.tables[:named].columns[0].field).to eq(:test)
     end
   end
 
