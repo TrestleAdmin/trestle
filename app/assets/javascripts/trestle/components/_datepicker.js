@@ -1,8 +1,23 @@
+Trestle.setupDatePicker = function(selectedDates, dateStr, instance) {
+  console.log(instance);
+
+  if (instance.config.allowInput) {
+    $('<a href="#">')
+      .on('click', function(e) {
+        e.preventDefault();
+        instance.clear();
+      })
+      .addClass('clear-datepicker')
+      .insertAfter(instance.altInput);
+  }
+};
+
 Trestle.init(function(e, root) {
   $(root).find('input[type="date"][data-picker="true"]').flatpickr({
     allowInput: true,
     altInput:   true,
     altFormat:  Trestle.i18n["admin.datepicker.formats.date"] || "m/d/Y",
+    onReady:    Trestle.setupDatePicker
   });
 
   $(root).find('input[type="datetime"][data-picker="true"], input[type="datetime-local"][data-picker="true"]').flatpickr({
@@ -10,6 +25,7 @@ Trestle.init(function(e, root) {
     allowInput: true,
     altInput:   true,
     altFormat:  Trestle.i18n["admin.datepicker.formats.datetime"] || "m/d/Y h:i K",
+    onReady:    Trestle.setupDatePicker
   });
 
   $(root).find('input[type="time"][data-picker="true"]').flatpickr({
@@ -17,6 +33,7 @@ Trestle.init(function(e, root) {
     noCalendar: true,
     allowInput: true,
     altInput:   true,
-    altFormat:  Trestle.i18n["admin.datepicker.formats.time"] || "h:i K"
+    altFormat:  Trestle.i18n["admin.datepicker.formats.time"] || "h:i K",
+    onReady:    Trestle.setupDatePicker
   });
 });
