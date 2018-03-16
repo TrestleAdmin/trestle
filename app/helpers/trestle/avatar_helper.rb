@@ -1,7 +1,10 @@
 module Trestle
   module AvatarHelper
-    def avatar(&block)
-      content_tag(:div, class: "avatar", &block)
+    def avatar(options={})
+      content_tag(:div, class: "avatar") do
+        concat content_tag(:span, options[:fallback], class: "avatar-fallback") if options[:fallback]
+        concat yield if block_given?
+      end
     end
 
     def gravatar(email, options={})
