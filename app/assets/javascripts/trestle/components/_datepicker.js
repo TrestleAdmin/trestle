@@ -1,5 +1,5 @@
 Trestle.setupDatePicker = function(selectedDates, dateStr, instance) {
-  if (instance.config.allowInput) {
+  if ($(instance.input).data('allow-clear')) {
     $('<a href="#">')
       .on('click', function(e) {
         e.preventDefault();
