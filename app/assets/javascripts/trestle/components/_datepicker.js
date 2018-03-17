@@ -1,6 +1,4 @@
 Trestle.setupDatePicker = function(selectedDates, dateStr, instance) {
-  console.log(instance);
-
   if (instance.config.allowInput) {
     $('<a href="#">')
       .on('click', function(e) {
