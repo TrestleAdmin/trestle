@@ -71,7 +71,7 @@ cs:
       toggle_sidebar: "Přepnout boční panel"
 
     format:
-      blank: "Žádný"
+      blank: "-"
 
     datepicker:
       formats:
