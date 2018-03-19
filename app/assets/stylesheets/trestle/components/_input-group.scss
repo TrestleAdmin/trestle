@@ -2,6 +2,24 @@
 
 .input-group {
   display: flex;
+
+  .field_with_errors {
+    flex: 1;
+
+    .form-control {
+      border-radius: $input-border-radius;
+    }
+
+    &:not(:last-child) .form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) .form-control {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
 }
 
 .input-group-addon {
