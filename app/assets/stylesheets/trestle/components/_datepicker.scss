@@ -20,7 +20,8 @@
     content: $fa-var-times;
   }
 
-  input[value=""] ~ & {
+  input[value=""] ~ &,
+  input:not([value]) ~ & {
     display: none;
   }
 }

@@ -6,7 +6,7 @@ Trestle.setupDatePicker = function(selectedDates, dateStr, instance) {
         instance.clear();
       })
       .addClass('clear-datepicker')
-      .insertAfter(instance.altInput);
+      .insertBefore(instance.altInput);
   }
 };
 
