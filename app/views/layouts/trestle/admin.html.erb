@@ -28,6 +28,8 @@
 
       if (flatpickr.l10ns['<%= I18n.locale %>']) {
         flatpickr.localize(flatpickr.l10ns['<%= I18n.locale %>']);
+      } else if (flatpickr.l10ns['<%= I18n.locale.to_s.split('-').first %>']) {
+        flatpickr.localize(flatpickr.l10ns['<%= I18n.locale.to_s.split('-').first %>']);
       }
     </script>
 
