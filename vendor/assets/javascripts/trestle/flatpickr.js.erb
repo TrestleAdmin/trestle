@@ -1,5 +1,7 @@
 //= require trestle/flatpickr/dist/flatpickr
 
+<% flatpickr_locale_conversions = { ca: "cat", el: "gr", nb: "no", vi: "vn" } %>
 <% I18n.available_locales.each do |locale| %>
+  <% locale = flatpickr_locale_conversions[locale] if flatpickr_locale_conversions.key?(locale) %>
   <% require_asset("trestle/flatpickr/dist/l10n/#{locale}") rescue nil %>
 <% end %>
