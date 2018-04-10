@@ -46,7 +46,7 @@ Trestle.Dialog.showError = function(title, errorText) {
   return dialog;
 };
 
-Trestle.Dialog.prototype.load = function(url) {
+Trestle.Dialog.prototype.load = function(url, callback) {
   var dialog = this;
 
   dialog.show();
@@ -63,6 +63,10 @@ Trestle.Dialog.prototype.load = function(url) {
     },
     success: function(content) {
       dialog.setContent(content);
+
+      if (callback) {
+        callback.apply(dialog);
+      }
     },
     error: function(xhr, status, error) {
       var errorMessage = Trestle.i18n['trestle.dialog.error'] || 'The request could not be completed.';
