@@ -143,6 +143,12 @@ module Trestle
         Resource::Builder.build(self, &block)
       end
 
+      def validate!
+        if singular? && find_instance_block.nil?
+          raise NotImplementedError, "Singular resources must define an instance block."
+        end
+      end
+
     private
       def infer_model_class
         parent.const_get(admin_name.classify)
