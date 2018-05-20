@@ -135,7 +135,7 @@ module Trestle
       def paginate(collection, params)
         collection = Kaminari.paginate_array(collection.to_a) unless collection.respond_to?(:page)
         per_page = admin.pagination_options[:per]
-
+        per_page= 20 if per_page.nil?
         collection.page(params[:page]).per(per_page)
       end
 
