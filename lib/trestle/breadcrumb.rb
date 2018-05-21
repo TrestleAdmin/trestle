@@ -18,6 +18,8 @@ module Trestle
         new(obj)
       when Array
         new(*obj)
+      when NilClass, false
+        nil
       else
         raise ArgumentError, "Unable to cast #{obj.inspect} to Breadcrumb"
       end
@@ -27,7 +29,7 @@ module Trestle
       include Enumerable
 
       def initialize(breadcrumbs=[])
-        @breadcrumbs = Array(breadcrumbs)
+        @breadcrumbs = Array(breadcrumbs).compact
       end
 
       def ==(other)

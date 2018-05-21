@@ -23,6 +23,18 @@ describe Trestle::Breadcrumb do
       end
     end
 
+    context "when passed nil" do
+      it "returns nil" do
+        expect(Trestle::Breadcrumb.cast(nil)).to be_nil
+      end
+    end
+
+    context "when passed false" do
+      it "returns nil" do
+        expect(Trestle::Breadcrumb.cast(false)).to be_nil
+      end
+    end
+
     context "when passed anything else" do
       it "raises an ArgumentError" do
         expect {
@@ -48,6 +60,11 @@ describe Trestle::Breadcrumb::Trail do
   it "is equal to a trail with identical breadcrumbs" do
     other = Trestle::Breadcrumb::Trail.new(breadcrumbs)
     expect(other).to eq(trail)
+  end
+
+  it "removes nils from the breadcrumbs array" do
+    trail_with_nil = Trestle::Breadcrumb::Trail.new(breadcrumbs + [nil])
+    expect(trail_with_nil).to eq(trail)
   end
 
   describe "#append" do

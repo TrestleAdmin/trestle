@@ -70,8 +70,10 @@ module Trestle
       def breadcrumb(label=nil, path=nil, &block)
         if block_given?
           @admin.breadcrumb = block
-        else
+        elsif label
           @admin.breadcrumb = -> { Breadcrumb.new(label, path) }
+        else
+          @admin.breadcrumb = -> { false }
         end
       end
 

@@ -159,5 +159,13 @@ describe Trestle::Admin::Builder do
 
       expect(::TestAdmin.breadcrumb).to eq(b)
     end
+
+    it "allows the breadcrumb to be disabled" do
+      Trestle::Admin::Builder.create(:test) do
+        breadcrumb false
+      end
+
+      expect(::TestAdmin.breadcrumb).to be_nil
+    end
   end
 end
