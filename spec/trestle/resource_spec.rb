@@ -38,11 +38,11 @@ describe Trestle::Resource do
 
   it "has a breadcrumb trail" do
     expect(I18n).to receive(:t).with("admin.breadcrumbs.home", default: "Home").and_return("Home")
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.test", default: "Tests").and_return("Tests")
+    expect(I18n).to receive(:t).with("admin.breadcrumbs.test", default: "Test").and_return("Test")
 
     trail = Trestle::Breadcrumb::Trail.new([
       Trestle::Breadcrumb.new("Home", "/admin"),
-      Trestle::Breadcrumb.new("Tests", "/admin/test")
+      Trestle::Breadcrumb.new("Test", "/admin/test")
     ])
 
     expect(admin.breadcrumbs).to eq(trail)
