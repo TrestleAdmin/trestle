@@ -46,11 +46,15 @@ module Trestle
       end
 
       def default_breadcrumb
-        Breadcrumb.new(I18n.t("admin.breadcrumbs.#{admin_name}", default: admin_name.titleize), path)
+        Breadcrumb.new(human_admin_name, path)
       end
 
       def admin_name
         name.underscore.sub(/_admin$/, '')
+      end
+
+      def human_admin_name
+        I18n.t("admin.breadcrumbs.#{admin_name}", default: name.demodulize.underscore.sub(/_admin$/, '').titleize)
       end
 
       def route_name
