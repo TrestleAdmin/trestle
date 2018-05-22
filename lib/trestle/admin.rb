@@ -69,12 +69,16 @@ module Trestle
         "#{name.underscore}/admin"
       end
 
-      def path(action=:index, options={})
+      def path(action=root_action, options={})
         Engine.routes.url_for(options.merge(controller: controller_namespace, action: action, only_path: true))
       end
 
       def actions
         [:index]
+      end
+
+      def root_action
+        :index
       end
 
       def routes
