@@ -26,9 +26,9 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.create", default: "The %{lowercase_model_name} was successfully created.")
-              redirect_to_return_location(:create, instance, default: admin.path(:show, id: admin.to_param(instance)))
+              redirect_to_return_location(:create, instance, default: admin.instance_path(instance))
             end
-            format.json { render json: instance, status: :created, location: { action: :show, id: admin.to_param(instance) } }
+            format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
             format.js
           end
         else
@@ -61,7 +61,7 @@ module Trestle
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("success.update", default: "The %{lowercase_model_name} was successfully updated.")
-              redirect_to_return_location(:update, instance, default: admin.path(:show, id: admin.to_param(instance)))
+              redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
             end
             format.json { render json: instance, status: :ok }
             format.js
@@ -90,7 +90,7 @@ module Trestle
               flash[:error] = flash_message("failure.destroy", default: "Could not delete %{lowercase_model_name}.")
 
               if self.instance = admin.find_instance(params)
-                redirect_to_return_location(:update, instance, default: admin.path(:show, id: admin.to_param(instance)))
+                redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
               else
                 redirect_to_return_location(:destroy, instance, default: admin.path(:index))
               end
