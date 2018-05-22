@@ -113,7 +113,9 @@ module Trestle
 
       def instance_path(instance, options={})
         action = options.fetch(:action) { :show }
-        path(action, options.merge(id: to_param(instance)))
+        options = options.merge(id: to_param(instance)) unless singular?
+
+        path(action, options)
       end
 
       def routes
