@@ -1,7 +1,7 @@
 <% title = t("admin.titles.edit", default: "Editing %{model_name}", model_name: admin.model_name.titleize, pluralized_model_name: admin.model_name.plural.titleize) %>
 
 <% content_for(:title, title) %>
-<% breadcrumb title %>
+<% breadcrumb(title) unless admin.singular? %>
 
 <% content_for(:primary_toolbar) do %>
   <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" if admin.actions.include?(:update) %>
