@@ -48,25 +48,6 @@ describe Trestle::Resource do
     expect(admin.breadcrumbs).to eq(trail)
   end
 
-  context "scoped within a module" do
-    before(:each) do
-      module Scoped
-        class Test; end
-        class TestAdmin < Trestle::Resource; end
-      end
-    end
-
-    after(:each) do
-      Scoped.send(:remove_const, :TestAdmin)
-    end
-
-    subject(:admin) { Scoped::TestAdmin }
-
-    it "infers the model from the module and admin name" do
-      expect(admin.model).to eq(Scoped::Test)
-    end
-  end
-
   it "has a default collection block" do
     class Test; end
     expect(Test).to receive(:all).and_return([1, 2, 3])
@@ -132,6 +113,54 @@ describe Trestle::Resource do
           expect(admin.prepare_collection(sort: "field", order: "desc")).to eq(sorted_collection)
         end
       end
+    end
+  end
+
+  context "scoped within a module" do
+    before(:each) do
+      module Scoped
+        class Test; end
+        class TestAdmin < Trestle::Resource; end
+      end
+    end
+
+    after(:each) do
+      Scoped.send(:remove_const, :TestAdmin)
+    end
+
+    subject(:admin) { Scoped::TestAdmin }
+
+    it "infers the model from the module and admin name" do
+      expect(admin.model).to eq(Scoped::Test)
+    end
+  end
+
+  context "a singular resource" do
+    before(:each) do
+      Trestle.resource(:singular, singular: true) do
+        instance {}
+      end
+    end
+
+    after(:each) do
+      Object.send(:remove_const, :SingularAdmin)
+    end
+
+    subject(:admin) { SingularAdmin }
+
+    it "is singular" do
+      expect(admin).to be_singular
+    end
+
+    it "returns the show action path as the default path" do
+      Rails.application.reload_routes!
+      expect(admin.path).to eq("/admin/singular")
+    end
+
+    it "raises an exception if an instance block is not defined" do
+      expect {
+        Trestle.resource(:singular, singular: true)
+      }.to raise_error(NotImplementedError, "Singular resources must define an instance block.")
     end
   end
 end
