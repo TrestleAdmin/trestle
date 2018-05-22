@@ -44,10 +44,18 @@ module Trestle
       end
 
       def show
-        respond_to do |format|
-          format.html
-          format.json { render json: instance }
-          format.js
+        if admin.singular? && instance.nil?
+          respond_to do |format|
+            format.html { redirect_to action: :new }
+            format.json { head :not_found }
+            format.js
+          end
+        else
+          respond_to do |format|
+            format.html
+            format.json { render json: instance }
+            format.js
+          end
         end
       end
 
