@@ -7,6 +7,6 @@
   <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
 <% end %>
 
-<%= trestle_form_for instance, url: admin.path, method: :post do |f| %>
+<%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>
   <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
 <% end %>
