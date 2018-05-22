@@ -96,6 +96,10 @@ module Trestle
       def build(&block)
         Admin::Builder.build(self, &block)
       end
+
+      def validate!
+        # No validations by default. This can be overridden in subclasses.
+      end
     end
   end
 end

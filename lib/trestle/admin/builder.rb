@@ -34,6 +34,9 @@ module Trestle
         controller.instance_variable_set("@admin", admin)
 
         admin.build(&block)
+        admin.validate!
+
+        admin
       end
 
       def menu(*args, &block)
