@@ -103,6 +103,11 @@ module Trestle
         options[:readonly]
       end
 
+      def instance_path(instance, options={})
+        action = options.fetch(:action) { :show }
+        path(action, options.merge(id: to_param(instance)))
+      end
+
       def routes
         admin = self
 

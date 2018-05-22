@@ -91,6 +91,16 @@ describe Trestle::Resource do
     expect(admin.decorate_collection(collection)).to eq(collection)
   end
 
+  describe "#instance_path" do
+    let(:instance) { double(id: "123") }
+
+    it "returns the path for the given instance" do
+      expect(admin.instance_path(instance)).to eq("/admin/test/123")
+      expect(admin.instance_path(instance, action: :edit)).to eq("/admin/test/123/edit")
+      expect(admin.instance_path(instance, action: :edit, foo: :bar)).to eq("/admin/test/123/edit?foo=bar")
+    end
+  end
+
   describe "#prepare_collection" do
     let(:collection) { [3, 1, 2] }
 

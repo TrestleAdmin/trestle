@@ -58,6 +58,15 @@ describe Trestle::Admin do
     expect(admin.breadcrumbs).to eq(trail)
   end
 
+  describe "#path" do
+    it "returns the path for the given action" do
+      expect(admin.path).to eq("/admin/test")
+      expect(admin.path(:new)).to eq("/admin/test/new")
+      expect(admin.path(:show, id: 123)).to eq("/admin/test/123")
+      expect(admin.path(:edit, id: 123, foo: :bar)).to eq("/admin/test/123/edit?foo=bar")
+    end
+  end
+
   context "scoped within a module" do
     before(:each) do
       module Scoped; end
