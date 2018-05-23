@@ -32,4 +32,25 @@ RSpec.configure do |config|
 
   require 'rspec-html-matchers'
   config.include RSpecHtmlMatchers
+
+  config.before(:example) do
+    Trestle.admins.clear
+
+    Trestle.config.hooks = Hash.new { |h, k| h[k] = [] }
+    Trestle.config.menus = []
+  end
+
+  config.around(:example, remove_const: true) do |example|
+    original_constants = Object.constants
+
+    example.run
+
+    (Object.constants - original_constants).each do |const|
+      Object.send(:remove_const, const)
+    end
+  end
+
+  config.before(type: :feature) do
+    #Trestle::Engine.reloader.execute
+  end
 end

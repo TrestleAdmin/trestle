@@ -1,15 +1,13 @@
 require 'spec_helper'
 
-describe Trestle::Admin do
+describe Trestle::Admin, remove_const: true do
+  subject!(:admin) do
+    Trestle.admin(:test)
+  end
+
   before(:each) do
-    class TestAdmin < Trestle::Admin; end
+    Rails.application.reload_routes!
   end
-
-  after(:each) do
-    Object.send(:remove_const, :TestAdmin)
-  end
-
-  subject(:admin) { TestAdmin }
 
   it "has an admin name" do
     expect(admin.admin_name).to eq("test")
@@ -64,24 +62,15 @@ describe Trestle::Admin do
 
   describe "#path" do
     it "returns the path for the given action" do
-      expect(admin.path).to eq("/admin/test")
-      expect(admin.path(:new)).to eq("/admin/test/new")
-      expect(admin.path(:show, id: 123)).to eq("/admin/test/123")
-      expect(admin.path(:edit, id: 123, foo: :bar)).to eq("/admin/test/123/edit?foo=bar")
+      expect(admin.path(:index, foo: "bar")).to eq("/admin/test?foo=bar")
     end
   end
 
   context "scoped within a module" do
-    before(:each) do
+    subject!(:admin) do
       module Scoped; end
       Trestle.admin(:test, scope: Scoped)
     end
-
-    after(:each) do
-      Scoped.send(:remove_const, :TestAdmin)
-    end
-
-    subject(:admin) { Scoped::TestAdmin }
 
     it "has an admin name" do
       expect(admin.admin_name).to eq("scoped/test")
@@ -100,8 +89,6 @@ describe Trestle::Admin do
     end
 
     it "has a default breadcrumb" do
-      Rails.application.reload_routes!
-
       expect(I18n).to receive(:t).with("admin.breadcrumbs.scoped/test", default: "Test").and_return("Test")
       expect(admin.default_breadcrumb).to eq(Trestle::Breadcrumb.new("Test", "/admin/scoped/test"))
     end

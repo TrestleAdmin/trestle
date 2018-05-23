@@ -1,18 +1,14 @@
 require 'spec_helper'
 
-describe "Trestle::Admin routes", type: :routing do
+describe "Trestle::Admin routes", type: :routing, remove_const: true do
   routes { Trestle::Engine.routes }
 
-  let!(:admin) do
+  subject!(:admin) do
     Trestle.admin(:test)
   end
 
   before(:each) do
     Rails.application.reload_routes!
-  end
-
-  after(:each) do
-    Object.send(:remove_const, :TestAdmin)
   end
 
   it "routes to the admin index action" do
@@ -23,7 +19,7 @@ describe "Trestle::Admin routes", type: :routing do
   end
 
   context "with a custom path" do
-    let!(:admin) do
+    subject!(:admin) do
       Trestle.admin(:test, path: "custom")
     end
 
@@ -36,7 +32,7 @@ describe "Trestle::Admin routes", type: :routing do
   end
 
   context "with additional routes" do
-    let!(:admin) do
+    subject!(:admin) do
       Trestle.admin(:test) do
         routes do
           get :custom
@@ -53,19 +49,15 @@ describe "Trestle::Admin routes", type: :routing do
   end
 end
 
-describe "Trestle::Resource routes", type: :routing do
+describe "Trestle::Resource routes", type: :routing, remove_const: true do
   routes { Trestle::Engine.routes }
 
-  let!(:admin) do
+  subject!(:admin) do
     Trestle.resource(:test)
   end
 
   before(:each) do
     Rails.application.reload_routes!
-  end
-
-  after(:each) do
-    Object.send(:remove_const, :TestAdmin)
   end
 
   it "routes to the admin index action" do
@@ -84,7 +76,7 @@ describe "Trestle::Resource routes", type: :routing do
   end
 
   context "with a custom path" do
-    let!(:admin) do
+    subject!(:admin) do
       Trestle.resource(:test, path: "custom")
     end
 
@@ -97,7 +89,7 @@ describe "Trestle::Resource routes", type: :routing do
   end
 
   context "with additional routes" do
-    let!(:admin) do
+    subject!(:admin) do
       Trestle.resource(:test) do
         routes do
           get :custom, on: :member

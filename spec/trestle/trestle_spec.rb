@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Trestle do
+describe Trestle, remove_const: true do
   describe "#config" do
     it "returns the current configuration" do
       expect(Trestle.config).to be_a(Trestle::Configuration)
@@ -40,7 +40,7 @@ describe Trestle do
   describe "#lookup" do
     context "given an admin class" do
       before(:each) do
-        class TestAdmin < Trestle::Admin; end
+        Trestle.admin(:test)
       end
 
       it "returns the admin class" do
@@ -62,10 +62,6 @@ describe Trestle do
   end
 
   describe "#navigation" do
-    before(:each) do
-      Object.send(:remove_const, :TestAdmin) if Object.const_defined?(:TestAdmin)
-    end
-
     it "returns a navigation object using menu blocks from configuration and admin" do
       Trestle.configure do |config|
         config.menu do
