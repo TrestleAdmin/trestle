@@ -44,11 +44,21 @@ describe Trestle::Table::Column do
     subject(:renderer) { column.renderer(template) }
 
     describe "#header" do
-      let(:options) { { header: "Custom Header", sort: false } }
+      context "with options[:header] set" do
+        let(:options) { { header: "Custom Header", sort: false } }
 
-      it "returns the header based on the internationalized field name" do
-        expect(I18n).to receive(:t).with("admin.table.headers.my_field", default: "Custom Header").and_return("Custom Header")
-        expect(renderer.header).to eq("Custom Header")
+        it "uses options[:header] as the field name" do
+          expect(renderer.header).to eq("Custom Header")
+        end
+      end
+
+      context "with options[:header] unset" do
+        let(:options) { { sort: false } }
+
+        it "returns the header based on the internationalized field name" do
+          expect(I18n).to receive(:t).with("admin.table.headers.my_field", default: "My Field").and_return("My Field")
+          expect(renderer.header).to eq("My Field")
+        end
       end
     end
 
