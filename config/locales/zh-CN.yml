@@ -21,6 +21,10 @@ zh-CN:
       no_template: "要自定义此模板，请创建 <code>%{path}</code>。"
       no_form: "请定义一个表单块或者创建一个 <code>_form.html</code> 文件。"
 
+    ui:
+      toggle_navigation: "打开/隐藏导航"
+      toggle_sidebar: "打开/隐藏侧边栏"
+
     dialog:
       error: 无法完成该请求。
 
@@ -79,10 +83,6 @@ zh-CN:
       title: 真的要删除吗？
       delete: 删除
       cancel: 取消
-
-    ui:
-      toggle_navigation: "打开/隐藏导航"
-      toggle_sidebar: "打开/隐藏侧边栏"
 
     format:
       blank: "无"

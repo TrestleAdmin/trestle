@@ -21,6 +21,10 @@ fr:
       no_template: "Pour personnaliser ce modèle, veuillez créer <code>%{path}</code>."
       no_form: "Veuillez déclarer un block 'form' ou créer un modèle partiel <code>_form.html</code>."
 
+    ui:
+      toggle_navigation: "Basculer navigation"
+      toggle_sidebar: "Basculer vue latérale"
+
   admin:
     titles:
       index: "Liste des %{pluralized_model_name}"
@@ -75,10 +79,6 @@ fr:
       title: "Voulez-vous supprimer?"
       delete: "Oui"
       cancel: "Non"
-
-    ui:
-      toggle_navigation: "Basculer navigation"
-      toggle_sidebar: "Basculer vue latérale"
 
     format:
       blank: "Aucun"

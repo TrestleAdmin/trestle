@@ -21,6 +21,10 @@ pt-BR:
       no_template: "Para personalizar este template, crie <code>%{path}</code>."
       no_form: "Defina um bloco de formulário ou crie um <code>_form.html</code> parcial."
 
+    ui:
+      toggle_navigation: "Alternar naveção"
+      toggle_sidebar: "Alternar barra lateral"
+
   admin:
     titles:
       index: "Listando %{pluralized_model_name}"
@@ -75,10 +79,6 @@ pt-BR:
       title: "Você tem certeza?"
       delete: "Excluir"
       cancel: "Cancelar"
-
-    ui:
-      toggle_navigation: "Alternar naveção"
-      toggle_sidebar: "Alternar barra lateral"
 
     format:
       blank: "Nenhum"

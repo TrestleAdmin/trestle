@@ -21,6 +21,10 @@ en:
       no_template: "To customize this template, please create <code>%{path}</code>."
       no_form: "Please define a form block or create a <code>_form.html</code> partial."
 
+    ui:
+      toggle_navigation: "Toggle navigation"
+      toggle_sidebar: "Toggle sidebar"
+
     dialog:
       error: "The request could not be completed."
 
@@ -79,10 +83,6 @@ en:
       title: "Are you sure?"
       delete: "Delete"
       cancel: "Cancel"
-
-    ui:
-      toggle_navigation: "Toggle navigation"
-      toggle_sidebar: "Toggle sidebar"
 
     format:
       blank: "None"

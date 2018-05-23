@@ -21,6 +21,10 @@ nl:
       no_template: "Maak <code>%{path}</code> aan om dit template aan te passen."
       no_form: "Definieer een form block of maak een <code>_form.html</code> partial."
 
+    ui:
+      toggle_navigation: "Navigation tonen/verbergen"
+      toggle_sidebar: "Sidebar tonen/verbergen"
+
   admin:
     titles:
       index: "Lijst van %{pluralized_model_name}"
@@ -73,10 +77,6 @@ nl:
       title: "Weer je het zeker?"
       delete: "Verwijderen"
       cancel: "Annuleren"
-
-    ui:
-      toggle_navigation: "Navigation tonen/verbergen"
-      toggle_sidebar: "Sidebar tonen/verbergen"
 
     format:
       blank: "Geen"

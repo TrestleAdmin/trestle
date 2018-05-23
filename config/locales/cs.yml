@@ -22,6 +22,10 @@ cs:
       no_template: "Pro přizpůsobení šablony vytvořte  <code>%{path}</code>."
       no_form: "Pro přidání formuláře nadefinujte form blok, nebo vytvořte soubor <code>_form.html</code>."
 
+    ui:
+      toggle_navigation: "Přepnout navigaci"
+      toggle_sidebar: "Přepnout boční panel"
+
     dialog:
       error: "Požadavek nemohl být dokončen."
 
@@ -80,10 +84,6 @@ cs:
       title: "Jste si jisti?"
       delete: "Ano"
       cancel: "Nemazat"
-
-    ui:
-      toggle_navigation: "Přepnout navigaci"
-      toggle_sidebar: "Přepnout boční panel"
 
     format:
       blank: "-"

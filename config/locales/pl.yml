@@ -22,6 +22,10 @@ pl:
       no_template: "Aby dostosować ten szablon, utwórz <code>%{path}</code>."
       no_form: "Proszę zdefiniować blok formularza lub utworzyć podszablon <code>_form.html</code>."
 
+    ui:
+      toggle_navigation: "Przełącz nawigację"
+      toggle_sidebar: "Przełącz pasek boczny"
+
   admin:
     titles:
       index: "Lista %{pluralized_model_name}"
@@ -76,10 +80,6 @@ pl:
       title: "Jesteś pewny?"
       delete: "Usuń"
       cancel: "Anuluj"
-
-    ui:
-      toggle_navigation: "Przełącz nawigację"
-      toggle_sidebar: "Przełącz pasek boczny"
 
     format:
       blank: "Żaden"
