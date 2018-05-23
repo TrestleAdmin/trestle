@@ -5,7 +5,7 @@ module Trestle
     end
 
     def instance_has_errors?
-      @instance && @instance.respond_to?(:errors) && @instance.errors.any?
+      instance.errors.any? rescue false
     end
   end
 end

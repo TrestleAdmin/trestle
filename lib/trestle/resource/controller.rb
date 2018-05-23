@@ -1,6 +1,9 @@
 module Trestle
   class Resource
     class Controller < Admin::Controller
+      before_action :load_collection, only: [:index]
+      before_action :load_instance, only: [:show, :edit, :update, :destroy]
+
       def index
         respond_to do |format|
           format.html
@@ -110,15 +113,15 @@ module Trestle
       end
 
     protected
-      def instance
-        @instance ||= admin.find_instance(params)
+      def load_instance
+        self.instance = admin.find_instance(params)
       end
 
-      def collection
-        @collection ||= admin.prepare_collection(params)
+      def load_collection
+        self.collection = admin.prepare_collection(params)
       end
 
-      attr_writer :instance, :collection
+      attr_accessor :instance, :collection
       helper_method :instance, :collection
 
       def flash_message(type, options={})
