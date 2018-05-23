@@ -1,10 +1,10 @@
-<% title = t("admin.titles.new", default: "New %{model_name}", model_name: admin.model_name.titleize, pluralized_model_name: admin.model_name.plural.titleize) %>
+<% title = admin.t("titles.new", default: "New %{model_name}") %>
 
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
 <% content_for(:primary_toolbar) do %>
-  <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
+  <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>

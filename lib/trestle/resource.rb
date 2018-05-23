@@ -111,6 +111,11 @@ module Trestle
         options[:singular]
       end
 
+      def translate(key, options={})
+        super(key, options.merge(model_name: model_name.titleize, pluralized_model_name: model_name.plural.titleize))
+      end
+      alias t translate
+
       def instance_path(instance, options={})
         action = options.fetch(:action) { :show }
         options = options.merge(id: to_param(instance)) unless singular?

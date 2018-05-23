@@ -66,6 +66,13 @@ describe Trestle::Admin, remove_const: true do
     end
   end
 
+  describe "#translate" do
+    it "translates the given key using sensible defaults" do
+      expect(I18n).to receive(:t).with(:"admin.test.titles.index", default: [:"admin.titles.index", "Index"]).and_return("Test Index")
+      expect(admin.translate("titles.index", default: "Index")).to eq("Test Index")
+    end
+  end
+
   context "scoped within a module" do
     subject!(:admin) do
       module Scoped; end

@@ -1,15 +1,15 @@
-<% title = t("admin.titles.edit", default: "Editing %{model_name}", model_name: admin.model_name.titleize, pluralized_model_name: admin.model_name.plural.titleize) %>
+<% title = admin.t("titles.edit", default: "Editing %{model_name}") %>
 
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
 <% content_for(:primary_toolbar) do %>
-  <%= button_tag t("admin.buttons.save", default: "Save %{model_name}", model_name: admin.model_name), class: "btn btn-success btn-lg" if admin.actions.include?(:update) %>
+  <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:update) %>
 <% end %>
 
 <% content_for(:secondary_toolbar) do %>
   <%= admin_link_to instance, action: :destroy, method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
-    <%= icon("fa fa-trash") %> <%= t("admin.buttons.delete", default: "Delete %{model_name}", model_name: admin.model_name) %>
+    <%= icon("fa fa-trash") %> <%= admin.t("buttons.delete", default: "Delete %{model_name}") %>
   <% end if admin.actions.include?(:destroy) %>
 <% end %>
 
