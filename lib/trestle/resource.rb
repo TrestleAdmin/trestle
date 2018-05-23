@@ -112,7 +112,11 @@ module Trestle
       end
 
       def translate(key, options={})
-        super(key, options.merge(model_name: model_name.titleize, pluralized_model_name: model_name.plural.titleize))
+        super(key, options.merge({
+          model_name:            model_name.titleize,
+          lowercase_model_name:  model_name.downcase,
+          pluralized_model_name: model_name.plural.titleize
+        }))
       end
       alias t translate
 

@@ -4,19 +4,6 @@ zh-CN:
     footer: "由 Trestle 强力驱动"
     version: "版本"
 
-    flash:
-      success:
-        title: "成功！"
-        create: "%{lowercase_model_name}创建成功。"
-        update: "%{lowercase_model_name}更新成功。"
-        destroy: "%{lowercase_model_name}删除成功。"
-
-      failure:
-        title: "警告!"
-        create: "请修正以下错误。"
-        update: "请修正以下错误。"
-        destroy: "不能删除%{lowercase_model_name}。"
-
     helpers:
       page_entries_info:
         one_page:
@@ -51,6 +38,34 @@ zh-CN:
 
     breadcrumbs:
       home: "首页"
+
+    flash:
+      create:
+        success:
+          title: "成功！"
+          message: "%{lowercase_model_name}创建成功。"
+
+        failure:
+          title: "警告!"
+          message: "请修正以下错误。"
+
+      update:
+        success:
+          title: "成功！"
+          message: "%{lowercase_model_name}更新成功。"
+
+        failure:
+          title: "警告!"
+          message: "请修正以下错误。"
+
+      destroy:
+        success:
+          title: "成功！"
+          message: "%{lowercase_model_name}删除成功。"
+
+        failure:
+          title: "警告!"
+          message: "不能删除%{lowercase_model_name}。"
 
     table:
       headers:

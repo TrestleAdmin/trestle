@@ -4,19 +4,6 @@ fr:
     footer: "Fourni par Trestle"
     version: "Version"
 
-    flash:
-      success:
-        title: "Opération réussie"
-        create: "%{model_name} créé(e)."
-        update: "%{model_name} mis(e) à jour."
-        destroy: "%{model_name} supprimé(e)."
-
-      failure:
-        title: "Attention!"
-        create: "Veuillez corriger les erreurs ci-après."
-        update: "Veuillez corriger les erreurs ci-après."
-        destroy: "Suppression impossible."
-
     helpers:
       page_entries_info:
         one_page:
@@ -47,6 +34,34 @@ fr:
 
     breadcrumbs:
       home: "Acceuil"
+
+    flash:
+      create:
+        success:
+          title: "Opération réussie"
+          message: "%{model_name} créé(e)."
+
+        failure:
+          title: "Attention!"
+          message: "Veuillez corriger les erreurs ci-après."
+
+      update:
+        success:
+          title: "Opération réussie"
+          message: "%{model_name} mis(e) à jour."
+
+        failure:
+          title: "Attention!"
+          message: "Veuillez corriger les erreurs ci-après."
+
+      destroy:
+        success:
+          title: "Opération réussie"
+          message: "%{model_name} supprimé(e)."
+
+        failure:
+          title: "Attention!"
+          message: "Suppression impossible."
 
     table:
       headers:

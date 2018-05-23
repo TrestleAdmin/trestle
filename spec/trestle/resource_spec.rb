@@ -83,7 +83,13 @@ describe Trestle::Resource, remove_const: true do
 
   describe "#translate" do
     it "translates the given key using sensible defaults, passing in the model name" do
-      expect(I18n).to receive(:t).with(:"admin.tests.titles.index", default: [:"admin.titles.index", "Index"], model_name: "Test", pluralized_model_name: "Tests").and_return("Tests Index")
+      expect(I18n).to receive(:t).with(:"admin.tests.titles.index", {
+        default: [:"admin.titles.index", "Index"],
+        model_name: "Test",
+        lowercase_model_name: "test",
+        pluralized_model_name: "Tests"
+      }).and_return("Tests Index")
+
       expect(admin.translate("titles.index", default: "Index")).to eq("Tests Index")
     end
   end

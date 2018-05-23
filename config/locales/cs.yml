@@ -4,19 +4,6 @@ cs:
     footer: "Poháněno systémem Trestle"
     version: "Verze"
 
-    flash:
-      success:
-        title: "Akce úspěšně dokončena!"
-        create: "Položka byla vytvořena."
-        update: "Položka byla aktualizováná."
-        destroy: "Položka byla smazána."
-
-      failure:
-        title: "Nastala chyba!"
-        create: "Prosím opravte chyby zvýrazněné níže."
-        update: "Prosím opravte chyby zvýrazněné níže."
-        destroy: "Položku nebylo možné smazat."
-
     helpers:
       page_entries_info:
         one_page:
@@ -52,6 +39,34 @@ cs:
 
     breadcrumbs:
       home: "Úvod"
+
+    flash:
+      create:
+        success:
+          title: "Akce úspěšně dokončena!"
+          message: "Položka byla vytvořena."
+
+        failure:
+          title: "Nastala chyba!"
+          message: "Prosím opravte chyby zvýrazněné níže."
+
+      update:
+        success:
+          title: "Akce úspěšně dokončena!"
+          message: "Položka byla aktualizováná."
+
+        failure:
+          title: "Nastala chyba!"
+          message: "Prosím opravte chyby zvýrazněné níže."
+
+      destroy:
+        success:
+          title: "Akce úspěšně dokončena!"
+          message: "Položka byla smazána."
+
+        failure:
+          title: "Nastala chyba!"
+          message: "Položku nebylo možné smazat."
 
     table:
       headers:

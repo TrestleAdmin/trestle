@@ -4,19 +4,6 @@ nl:
     footer: "Powered by Trestle"
     version: "Versie"
 
-    flash:
-      success:
-        title: "Gelukt!"
-        create: "De %{model_name} succesvol toegevoegd."
-        update: "De %{model_name} is succesvol gewijzigd."
-        destroy: "De %{model_name} is succesvol verwijderd."
-
-      failure:
-        title: "Waarschuwing!"
-        create: "Kon niet toevoegen om de volgende redenen."
-        update: "Kon niet aanpassen om de volgende redenen."
-        destroy: "Kon %{model_name} niet verwijderen."
-
     helpers:
       page_entries_info:
         one_page:
@@ -45,6 +32,34 @@ nl:
 
     breadcrumbs:
       home: "Home"
+
+    flash:
+      create:
+        success:
+          title: "Gelukt!"
+          message: "De %{model_name} succesvol toegevoegd."
+
+        failure:
+          title: "Waarschuwing!"
+          message: "Kon niet toevoegen om de volgende redenen."
+
+      update:
+        success:
+          title: "Gelukt!"
+          message: "De %{model_name} is succesvol gewijzigd."
+
+        failure:
+          title: "Waarschuwing!"
+          message: "Kon niet aanpassen om de volgende redenen."
+
+      destroy:
+        success:
+          title: "Gelukt!"
+          message: "De %{model_name} is succesvol verwijderd."
+
+        failure:
+          title: "Waarschuwing!"
+          message: "Kon %{model_name} niet verwijderen."
 
     table:
       headers:

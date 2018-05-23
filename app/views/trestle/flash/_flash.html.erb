@@ -1,0 +1,7 @@
+<% if flash[:message] -%>
+  <%= render "trestle/flash/alert", html_class: "alert-success", icon: icon("alert-icon ion-ios-checkmark-outline"), alert: flash[:message].with_indifferent_access %>
+<% elsif flash[:error] -%>
+  <%= render layout: "trestle/flash/alert", locals: { html_class: "alert-danger", icon: icon("alert-icon ion-ios-close-outline"), alert: flash[:error].with_indifferent_access } do %>
+    <%= render "trestle/flash/debug" if debug_form_errors? %>
+  <% end %>
+<% end -%>

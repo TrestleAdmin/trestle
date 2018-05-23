@@ -4,19 +4,6 @@ pt-BR:
     footer: "Powered by Trestle"
     version: "Versão"
 
-    flash:
-      success:
-        title: "Sucesso!"
-        create: "O %{model_name} foi criado com sucesso."
-        update: "O %{model_name} foi atualizado com sucesso."
-        destroy: "O %{model_name} foi deletado com sucesso."
-
-      failure:
-        title: "Atenção!"
-        create: "Por favor corrija os erros abaixo."
-        update: "Por favor corrija os erros abaixo."
-        destroy: "Falha ao excluir %{model_name}."
-
     helpers:
       page_entries_info:
         one_page:
@@ -47,6 +34,34 @@ pt-BR:
 
     breadcrumbs:
       home: "Home"
+
+    flash:
+      create:
+        success:
+          title: "Sucesso!"
+          message: "O %{model_name} foi criado com sucesso."
+
+        failure:
+          title: "Atenção!"
+          message: "Por favor corrija os erros abaixo."
+
+      update:
+        success:
+          title: "Sucesso!"
+          message: "O %{model_name} foi atualizado com sucesso."
+
+        failure:
+          title: "Atenção!"
+          message: "Por favor corrija os erros abaixo."
+
+      destroy:
+        success:
+          title: "Sucesso!"
+          message: "O %{model_name} foi deletado com sucesso."
+
+        failure:
+          title: "Atenção!"
+          message: "Falha ao excluir %{model_name}."
 
     table:
       headers:

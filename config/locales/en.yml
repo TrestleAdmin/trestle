@@ -4,19 +4,6 @@ en:
     footer: "Powered by Trestle"
     version: "Version"
 
-    flash:
-      success:
-        title: "Success!"
-        create: "The %{lowercase_model_name} was successfully created."
-        update: "The %{lowercase_model_name} was successfully updated."
-        destroy: "The %{lowercase_model_name} was successfully deleted."
-
-      failure:
-        title: "Warning!"
-        create: "Please correct the errors below."
-        update: "Please correct the errors below."
-        destroy: "Could not delete %{lowercase_model_name}."
-
     helpers:
       page_entries_info:
         one_page:
@@ -51,6 +38,34 @@ en:
 
     breadcrumbs:
       home: "Home"
+
+    flash:
+      create:
+        success:
+          title: "Success!"
+          message: "The %{lowercase_model_name} was successfully created."
+
+        failure:
+          title: "Warning!"
+          message: "Please correct the errors below."
+
+      update:
+        success:
+          title: "Success!"
+          message: "The %{lowercase_model_name} was successfully updated."
+
+        failure:
+          title: "Warning!"
+          message: "Please correct the errors below."
+
+      destroy:
+        success:
+          title: "Success!"
+          message: "The %{lowercase_model_name} was successfully deleted."
+
+        failure:
+          title: "Warning!"
+          message: "Could not delete %{lowercase_model_name}."
 
     table:
       headers:

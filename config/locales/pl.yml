@@ -4,19 +4,6 @@ pl:
     footer: "Powered by Trestle"
     version: "Wersja"
 
-    flash:
-      success:
-        title: "Sukces!"
-        create: "%{lowercase_model_name} został pomyślnie utworzony."
-        update: "%{lowercase_model_name} został pomyślnie zaktualizowany."
-        destroy: "%{lowercase_model_name} został pomyślnie usunięty."
-
-      failure:
-        title: "Uwaga!"
-        create: "Popraw poniższe błędy."
-        update: "Popraw poniższe błędy."
-        destroy: "Nie można usunąć %{lowercase_model_name}."
-
     helpers:
       page_entries_info:
         one_page:
@@ -48,6 +35,34 @@ pl:
 
     breadcrumbs:
       home: "Start"
+
+    flash:
+      create:
+        success:
+          title: "Sukces!"
+          message: "%{lowercase_model_name} został pomyślnie utworzony."
+
+        failure:
+          title: "Uwaga!"
+          message: "Popraw poniższe błędy."
+
+      update:
+        success:
+          title: "Sukces!"
+          message: "%{lowercase_model_name} został pomyślnie zaktualizowany."
+
+        failure:
+          title: "Uwaga!"
+          message: "Popraw poniższe błędy."
+
+      destroy:
+        success:
+          title: "Sukces!"
+          message: "%{lowercase_model_name} został pomyślnie usunięty."
+
+        failure:
+          title: "Uwaga!"
+          message: "Nie można usunąć %{lowercase_model_name}."
 
     table:
       headers:

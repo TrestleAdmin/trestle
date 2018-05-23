@@ -28,7 +28,7 @@ module Trestle
         if admin.save_instance(instance)
           respond_to do |format|
             format.html do
-              flash[:message] = flash_message("success.create", default: "The %{lowercase_model_name} was successfully created.")
+              flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
               redirect_to_return_location(:create, instance, default: admin.instance_path(instance))
             end
             format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
@@ -37,7 +37,7 @@ module Trestle
         else
           respond_to do |format|
             format.html do
-              flash.now[:error] = flash_message("failure.create", default: "Please correct the errors below.")
+              flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
               render "new", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
@@ -71,7 +71,7 @@ module Trestle
         if admin.save_instance(instance)
           respond_to do |format|
             format.html do
-              flash[:message] = flash_message("success.update", default: "The %{lowercase_model_name} was successfully updated.")
+              flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
               redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
             end
             format.json { render json: instance, status: :ok }
@@ -80,7 +80,7 @@ module Trestle
         else
           respond_to do |format|
             format.html do
-              flash.now[:error] = flash_message("failure.update", default: "Please correct the errors below.")
+              flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
               render "show", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
@@ -95,10 +95,10 @@ module Trestle
         respond_to do |format|
           format.html do
             if success
-              flash[:message] = flash_message("success.destroy", default: "The %{lowercase_model_name} was successfully deleted.")
+              flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
               redirect_to_return_location(:destroy, instance, default: admin.path(:index))
             else
-              flash[:error] = flash_message("failure.destroy", default: "Could not delete %{lowercase_model_name}.")
+              flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
 
               if self.instance = admin.find_instance(params)
                 redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
@@ -124,8 +124,11 @@ module Trestle
       attr_accessor :instance, :collection
       helper_method :instance, :collection
 
-      def flash_message(type, options={})
-        t("trestle.flash.#{type}", options.merge(model_name: admin.model_name, lowercase_model_name: admin.model_name.downcase))
+      def flash_message(type, title:, message:)
+        {
+          title:   admin.t("flash.#{type}.title", default: title),
+          message: admin.t("flash.#{type}.message", default: message)
+        }
       end
 
       def permitted_params
