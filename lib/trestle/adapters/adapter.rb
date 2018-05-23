@@ -149,7 +149,7 @@ module Trestle
       #
       # Returns the permitted set of parameters as a ActionController::Parameters object.
       def permitted_params(params)
-        params.require(admin.admin_name.singularize).permit!
+        params.require(admin.parameter_name).permit!
       end
 
       # Produces a human-readable name for a given attribute, applying I18n where appropriate.

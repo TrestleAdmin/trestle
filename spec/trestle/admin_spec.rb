@@ -19,6 +19,10 @@ describe Trestle::Admin do
     expect(admin.route_name).to eq("test_admin")
   end
 
+  it "has a parameter name" do
+    expect(admin.parameter_name).to eq("test")
+  end
+
   it "has a controller path" do
     expect(admin.controller_path).to eq("admin/test")
   end

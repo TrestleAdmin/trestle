@@ -2,7 +2,7 @@ module Trestle
   module FormHelper
     def trestle_form_for(instance, options={}, &block)
       options[:builder] ||= Form::Builder
-      options[:as] ||= admin.admin_name.singularize
+      options[:as] ||= admin.parameter_name
 
       options[:data] ||= {}
       options[:data].merge!(remote: true, type: :html, behavior: "trestle-form", turbolinks: false)

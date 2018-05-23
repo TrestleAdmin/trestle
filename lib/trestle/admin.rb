@@ -57,6 +57,10 @@ module Trestle
         I18n.t("admin.breadcrumbs.#{admin_name}", default: name.demodulize.underscore.sub(/_admin$/, '').titleize)
       end
 
+      def parameter_name
+        admin_name.singularize
+      end
+
       def route_name
         "#{admin_name.tr('/', '_')}_admin"
       end
