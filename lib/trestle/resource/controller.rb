@@ -13,7 +13,7 @@ module Trestle
       end
 
       def new
-        self.instance = admin.build_instance({}, params)
+        self.instance = admin.build_instance(params.key?(admin.parameter_name) ? permitted_params : {}, params)
 
         respond_to do |format|
           format.html
