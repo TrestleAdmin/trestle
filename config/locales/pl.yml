@@ -26,6 +26,11 @@ pl:
       toggle_navigation: "Przełącz nawigację"
       toggle_sidebar: "Przełącz pasek boczny"
 
+    confirmation:
+      title: "Jesteś pewny?"
+      delete: "Usuń"
+      cancel: "Anuluj"
+
   admin:
     titles:
       index: "Lista %{pluralized_model_name}"
@@ -75,11 +80,6 @@ pl:
     form:
       select:
         prompt: "- Wybierz %{attribute_name} -"
-
-    confirmation:
-      title: "Jesteś pewny?"
-      delete: "Usuń"
-      cancel: "Anuluj"
 
     format:
       blank: "Żaden"

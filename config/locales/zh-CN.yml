@@ -28,6 +28,11 @@ zh-CN:
     dialog:
       error: 无法完成该请求。
 
+    confirmation:
+      title: 真的要删除吗？
+      delete: 删除
+      cancel: 取消
+
   admin:
     titles:
       index: "%{pluralized_model_name}列表"
@@ -78,11 +83,6 @@ zh-CN:
     form:
       select:
         prompt: "- 选择%{attribute_name} -"
-
-    confirmation:
-      title: 真的要删除吗？
-      delete: 删除
-      cancel: 取消
 
     format:
       blank: "无"

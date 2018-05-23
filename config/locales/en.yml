@@ -28,6 +28,11 @@ en:
     dialog:
       error: "The request could not be completed."
 
+    confirmation:
+      title: "Are you sure?"
+      delete: "Delete"
+      cancel: "Cancel"
+
   admin:
     titles:
       index: "Listing %{pluralized_model_name}"
@@ -78,11 +83,6 @@ en:
     form:
       select:
         prompt: "- Select %{attribute_name} -"
-
-    confirmation:
-      title: "Are you sure?"
-      delete: "Delete"
-      cancel: "Cancel"
 
     format:
       blank: "None"

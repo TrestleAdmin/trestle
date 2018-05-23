@@ -25,6 +25,11 @@ nl:
       toggle_navigation: "Navigation tonen/verbergen"
       toggle_sidebar: "Sidebar tonen/verbergen"
 
+    confirmation:
+      title: "Weer je het zeker?"
+      delete: "Verwijderen"
+      cancel: "Annuleren"
+
   admin:
     titles:
       index: "Lijst van %{pluralized_model_name}"
@@ -72,11 +77,6 @@ nl:
     form:
       select:
         prompt: "- Selecteer %{attribute_name} -"
-
-    confirmation:
-      title: "Weer je het zeker?"
-      delete: "Verwijderen"
-      cancel: "Annuleren"
 
     format:
       blank: "Geen"

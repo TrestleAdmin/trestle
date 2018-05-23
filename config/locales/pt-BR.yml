@@ -25,6 +25,11 @@ pt-BR:
       toggle_navigation: "Alternar naveção"
       toggle_sidebar: "Alternar barra lateral"
 
+    confirmation:
+      title: "Você tem certeza?"
+      delete: "Excluir"
+      cancel: "Cancelar"
+
   admin:
     titles:
       index: "Listando %{pluralized_model_name}"
@@ -74,11 +79,6 @@ pt-BR:
     form:
       select:
         prompt: "- Selecione %{attribute_name} -"
-
-    confirmation:
-      title: "Você tem certeza?"
-      delete: "Excluir"
-      cancel: "Cancelar"
 
     format:
       blank: "Nenhum"

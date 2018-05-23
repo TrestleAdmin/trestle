@@ -25,6 +25,11 @@ fr:
       toggle_navigation: "Basculer navigation"
       toggle_sidebar: "Basculer vue latérale"
 
+    confirmation:
+      title: "Voulez-vous supprimer?"
+      delete: "Oui"
+      cancel: "Non"
+
   admin:
     titles:
       index: "Liste des %{pluralized_model_name}"
@@ -74,11 +79,6 @@ fr:
     form:
       select:
         prompt: "- Choisir le/la %{attribute_name} -"
-
-    confirmation:
-      title: "Voulez-vous supprimer?"
-      delete: "Oui"
-      cancel: "Non"
 
     format:
       blank: "Aucun"

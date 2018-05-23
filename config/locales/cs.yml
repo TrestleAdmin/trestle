@@ -29,6 +29,11 @@ cs:
     dialog:
       error: "Požadavek nemohl být dokončen."
 
+    confirmation:
+      title: "Jste si jisti?"
+      delete: "Ano"
+      cancel: "Nemazat"
+
   admin:
     titles:
       index: Přehled
@@ -79,11 +84,6 @@ cs:
     form:
       select:
         prompt: "- Prosím vyberte -"
-
-    confirmation:
-      title: "Jste si jisti?"
-      delete: "Ano"
-      cancel: "Nemazat"
 
     format:
       blank: "-"

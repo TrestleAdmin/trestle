@@ -84,8 +84,8 @@ module Trestle
 
     # List of i18n keys to pass into the Trestle.i18n JavaScript object
     option :javascript_i18n_keys, [
-      "admin.confirmation.title", "admin.confirmation.delete", "admin.confirmation.cancel", "trestle.dialog.error", "admin.buttons.ok",
-      "admin.datepicker.formats.date", "admin.datepicker.formats.datetime", "admin.datepicker.formats.time"
+      "trestle.confirmation.title", "trestle.confirmation.delete", "trestle.confirmation.cancel", "trestle.dialog.error",
+      "admin.buttons.ok", "admin.datepicker.formats.date", "admin.datepicker.formats.datetime", "admin.datepicker.formats.time"
     ]
 
     # List of load paths for where to find admin definitions
