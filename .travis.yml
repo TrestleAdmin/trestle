@@ -12,3 +12,6 @@ gemfile:
   - gemfiles/rails-5.1.gemfile
   - gemfiles/rails-5.2.gemfile
   - gemfiles/rails-edge.gemfile
+
+addons:
+  chrome: stable
