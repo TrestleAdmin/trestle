@@ -1,6 +1,6 @@
-Trestle.resource(:posts) do
+Trestle.resource(:dialog, model: Post) do
   menu do
-    item :posts, icon: "fa fa-star"
+    item :dialog, icon: "fa fa-star"
   end
 
   table do
@@ -8,7 +8,7 @@ Trestle.resource(:posts) do
     actions
   end
 
-  form do |post|
+  form dialog: true do |post|
     text_field :title
     text_area :body
   end
