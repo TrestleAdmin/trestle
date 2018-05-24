@@ -4,7 +4,10 @@
   <%= icon %>
 
   <div class="alert-content">
-    <h3><%= alert[:title] %></h3>
+    <% if alert[:title] %>
+      <h3><%= alert[:title] %></h3>
+    <% end %>
+
     <p><%= alert[:message] %></p>
 
     <%= yield if block_given? %>
