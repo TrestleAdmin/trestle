@@ -28,5 +28,11 @@ describe Trestle::AvatarHelper do
         with_tag "img", src: "avatar.png"
       end
     end
+
+    it "passes custom option to the div" do
+      result = avatar(style: "border: 1px solid red") { image }
+
+      expect(result).to have_tag(".avatar", with: { style: "border: 1px solid red" })
+    end
   end
 end

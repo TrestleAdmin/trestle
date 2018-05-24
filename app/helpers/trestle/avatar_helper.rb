@@ -1,8 +1,10 @@
 module Trestle
   module AvatarHelper
     def avatar(options={})
-      content_tag(:div, class: "avatar") do
-        concat content_tag(:span, options[:fallback], class: "avatar-fallback") if options[:fallback]
+      fallback = options.delete(:fallback) if options[:fallback]
+
+      content_tag(:div, options.reverse_merge(class: "avatar")) do
+        concat content_tag(:span, fallback, class: "avatar-fallback") if fallback
         concat yield if block_given?
       end
     end
