@@ -53,6 +53,7 @@ module Trestle
           return if options.key?(:header) && options[:header].in?([nil, false])
 
           header = @column.header
+          header = @template.instance_exec(&header) if header.respond_to?(:call)
           header = @template.sort_link(header, @column.sort_field, @column.sort_options) if @column.sortable?
           header
         end

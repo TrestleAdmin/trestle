@@ -52,6 +52,16 @@ describe Trestle::Table::Column do
         end
       end
 
+      context "with options[:header] as a proc" do
+        let(:header_proc) { Proc.new { "From proc" } }
+        let(:options) { { header: header_proc, sort: false }}
+
+        it "evaluates the header proc in the context of the template" do
+          expect(template).to receive(:instance_exec) { |&b| expect(b).to be(header_proc) }.and_return("From proc")
+          expect(renderer.header).to eq("From proc")
+        end
+      end
+
       context "with options[:header] unset" do
         let(:options) { { sort: false } }
 
