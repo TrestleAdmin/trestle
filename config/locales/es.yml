@@ -1,0 +1,94 @@
+es:
+  trestle:
+    title: "Trestle Administrador"
+    footer: "Patrocinado por Trestle"
+    version: "Version"
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "No %{entry_name} encontrado"
+            one: "Mostrando <strong>1</strong> %{entry_name}"
+            other: "Mostrando <strong>total %{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "Mostrando %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> of <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Bienvenido a Trestle"
+      no_admins: "Para poder ingresar, por favor crea una cuenta de administrador en <code>app/admin</code>."
+      no_template: "Para personalizar esta plantilla, por favor crea <code>%{path}</code>."
+      no_form: "Por favor define una forma de bloque o crea un parcial <code>_form.html</code>."
+
+    ui:
+      toggle_navigation: "Cambiar (modo de) navegación"
+      toggle_sidebar: "Alternar la barra lateral"
+
+    dialog:
+      error: "La solicitud no pudo ser completada."
+
+    confirmation:
+      title: "¿Estás seguro?"
+      delete: "Borrar"
+      cancel: "Cancelar"
+
+  admin:
+    titles:
+      index: "Listado de %{pluralized_model_name}"
+      new: "Nuevo %{model_name}"
+      edit: "Editando %{model_name}"
+
+    buttons:
+      new: "Nuevo %{model_name}"
+      save: "Guardar %{model_name}"
+      delete: "Borrar %{model_name}"
+      ok: "Aceptar"
+
+    breadcrumbs:
+      home: "Inicio"
+
+    flash:
+      create:
+        success:
+          title: "¡Exito!"
+          message: "El %{lowercase_model_name} fue creado exitosamente."
+
+        failure:
+          title: "¡Advertencia!"
+          message: "Por favor corrige los siguientes errores."
+
+      update:
+        success:
+          title: "¡Exito!"
+          message: "El %{lowercase_model_name} se actualizo exitosamente."
+
+        failure:
+          title: "¡Advertencia!"
+          message: "Por favor corrige los siguientes errores."
+
+      destroy:
+        success:
+          title: "¡Exito!"
+          message: "El %{lowercase_model_name} fue borrado exitosamente."
+
+        failure:
+          title: "¡Advertencia!"
+          message: "%{lowercase_model_name} no pudo ser borrado."
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Selecciona %{attribute_name} -"
+
+    format:
+      blank: "Ninguno"
+
+    datepicker:
+      formats:
+        date: "m/d/Y"
+        datetime: "m/d/Y h:i K"
+        time: "h:i K"
