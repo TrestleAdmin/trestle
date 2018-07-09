@@ -43,7 +43,7 @@
       <div class="app-container">
         <%= render "trestle/shared/header" %>
 
-        <main class="app-main" data-context="<%= request.path %>">
+        <main class="app-main" data-context="<%= request.fullpath %>">
           <%= yield %>
         </main>
 
