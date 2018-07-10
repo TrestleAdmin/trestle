@@ -22,8 +22,15 @@
   }
 }
 
-.input-group-addon {
+.input-group-addon,
+.input-group-btn {
   width: auto;
   display: flex;
   align-items: center;
+}
+
+.input-group-btn {
+  > .btn {
+    border-width: 1px;
+  }
 }
