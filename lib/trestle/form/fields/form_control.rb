@@ -13,12 +13,20 @@ module Trestle
         def input_group
           if @prepend || @append
             content_tag(:div, class: "input-group") do
-              concat content_tag(:span, @prepend, class: "input-group-addon") if @prepend
+              concat input_group_addon(@prepend) if @prepend
               concat yield
-              concat content_tag(:span, @append, class: "input-group-addon") if @append
+              concat input_group_addon(@append) if @append
             end
           else
             yield
+          end
+        end
+
+        def input_group_addon(addon)
+          if addon[:wrap]
+            content_tag(:span, addon[:content], class: "input-group-addon")
+          else
+            addon[:content]
           end
         end
 
@@ -29,8 +37,10 @@ module Trestle
         def extract_options!
           super
 
-          @prepend = options.delete(:prepend)
-          @append  = options.delete(:append)
+          @prepend = { content: options.delete(:prepend),  wrap: true }  if options[:prepend]
+          @prepend = { content: options.delete(:prepend!), wrap: false } if options[:prepend!]
+          @append  = { content: options.delete(:append),   wrap: true }  if options[:append]
+          @append  = { content: options.delete(:append!),  wrap: false } if options[:append!]
         end
       end
     end
