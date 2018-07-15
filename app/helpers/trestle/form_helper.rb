@@ -5,7 +5,7 @@ module Trestle
       options[:as] ||= admin.parameter_name
 
       options[:data] ||= {}
-      options[:data].merge!(remote: true, type: :html, behavior: "trestle-form", turbolinks: false)
+      options[:data].reverse_merge!(remote: true, type: :html, behavior: "trestle-form", turbolinks: false)
 
       form_for(instance, options) do |f|
         with_form(f) { yield f }
