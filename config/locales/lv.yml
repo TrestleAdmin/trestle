@@ -1,0 +1,94 @@
+lv:
+  trestle:
+    title: "Trestle Administrators"
+    footer: "Powered by Trestle"
+    version: "Versija"
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Neviena %{entry_name} ieraksta nav atrasts"
+            one: "Attēlo <strong>1</strong> %{entry_name}"
+            other: "Attēlo <strong>%{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "Attēlo %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> no <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Esi sveicināts Trestle"
+      no_admins: "Lai sāktu, lūdzu izveido administratoru <code>app/admin</code>."
+      no_template: "Lai pielāgotu šo vedni, lūdzu izveido <code>%{path}</code>."
+      no_form: "Lūdzu izveido formas bloku vai izveido failu <code>_form.html</code>."
+
+    ui:
+      toggle_navigation: "Pārslēgt navigāciju"
+      toggle_sidebar: "Pārslēgt malējo izvēlni"
+
+    dialog:
+      error: "Pieprasījumu neizdevās izpildīt."
+
+    confirmation:
+      title: "Vai tu esi drošs?"
+      delete: "Dzēst"
+      cancel: "Atcelt"
+
+  admin:
+    titles:
+      index: "Attēlo %{pluralized_model_name}"
+      new: "Jauns %{model_name}"
+      edit: "Labot %{model_name}"
+
+    buttons:
+      new: "Jauns %{model_name}"
+      save: "Saglabāt %{model_name}"
+      delete: "Dzēst %{model_name}"
+      ok: "Labi"
+
+    breadcrumbs:
+      home: "Mājas"
+
+    flash:
+      create:
+        success:
+          title: "Izveide veikta!"
+          message: "%{lowercase_model_name} tika veiksmīgi izveidots."
+
+        failure:
+          title: "Uzmanību!"
+          message: "Lūdzu labojiet zemāk atzīmētās kļūmes vai nepilnības."
+
+      update:
+        success:
+          title: "Papildināšana veikta!"
+          message: "%{lowercase_model_name} tika veiksmīgi papildināts."
+
+        failure:
+          title: "Uzmanību!"
+          message: "Lūdzu labojiet zemāk atzīmētās kļūmes vai nepilnības."
+
+      destroy:
+        success:
+          title: "Veiksmīgi dzēsts!"
+          message: "%{lowercase_model_name} tika veiksmīgi izdzēsts."
+
+        failure:
+          title: "Uzmanību!"
+          message: "%{lowercase_model_name} dzēšana neizdevās."
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Izvēlieties %{attribute_name} -"
+
+    format:
+      blank: "Neviens"
+
+    datepicker:
+      formats:
+        date: "d/m/Y"
+        datetime: "d/m/Y H:i"
+        time: "H:i"
