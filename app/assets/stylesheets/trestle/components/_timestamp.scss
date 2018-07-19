@@ -5,8 +5,11 @@
   small {
     display: block;
     color: #666;
+  }
 
-    .inline & {
+  &.timestamp-inline,
+  &.inline, {
+    small {
       display: inline;
     }
   }

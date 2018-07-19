@@ -16,6 +16,9 @@ module Trestle
     # Text shown in the admin page footer
     option :footer, -> { I18n.t("trestle.footer", default: "Powered by Trestle") }
 
+    # Default timestamp precision
+    option :timestamp_precision, :minutes
+
 
     ## Mounting Options
 
