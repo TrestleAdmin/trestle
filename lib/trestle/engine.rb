@@ -7,9 +7,11 @@ module Trestle
     config.assets.precompile << "trestle/admin.css" << "trestle/admin.js"
 
     # Vendor assets
-    config.assets.precompile << %r(trestle/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular\.(?:eot|svg|ttf|woff|woff2)$)
-    config.assets.precompile << %r(trestle/font-awesome/fonts/fontawesome-webfont\.(?:eot|svg|ttf|woff|woff2)$)
-    config.assets.precompile << %r(trestle/ionicons/fonts/ionicons\.(?:eot|svg|ttf|woff)$)
+    %w(eot svg ttf woff woff2).each do |ext|
+      config.assets.precompile << "trestle/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.#{ext}"
+      config.assets.precompile << "trestle/font-awesome/fonts/fontawesome-webfont.#{ext}"
+      config.assets.precompile << "trestle/ionicons/fonts/ionicons.#{ext}"
+    end
 
     initializer "trestle.automount" do |app|
       if Trestle.config.automount
