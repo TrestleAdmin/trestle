@@ -81,8 +81,8 @@ module Trestle
     option :hooks, Hash.new { |h, k| h[k] = [] }
 
     # Register an extension hook
-    def hook(name, &block)
-      hooks[name.to_s] << block
+    def hook(name, options={}, &block)
+      hooks[name.to_s] << Hook.new(name.to_s, options, &block)
     end
 
     # List of i18n keys to pass into the Trestle.i18n JavaScript object

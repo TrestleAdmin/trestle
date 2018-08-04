@@ -83,7 +83,7 @@ describe Trestle::Configuration do
       b = proc {}
       config.hook "myhook", &b
 
-      expect(config.hooks["myhook"]).to eq([b])
+      expect(config.hooks["myhook"]).to eq([Trestle::Hook.new("myhook", {}, &b)])
     end
   end
 

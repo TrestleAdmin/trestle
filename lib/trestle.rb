@@ -18,6 +18,7 @@ module Trestle
   autoload :Configuration
   autoload :Display
   autoload :Form
+  autoload :Hook
   autoload :ModelName
   autoload :Navigation
   autoload :Options
