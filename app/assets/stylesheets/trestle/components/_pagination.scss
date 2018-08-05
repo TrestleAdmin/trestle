@@ -1,6 +1,4 @@
 .pagination-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
   text-align: right;
 
   p {
@@ -26,7 +24,6 @@
 
 @include mobile {
   .pagination-container {
-    margin-top: 10px;
     text-align: center;
 
     display: flex;

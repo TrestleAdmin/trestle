@@ -59,6 +59,20 @@
   min-width: 0;
 }
 
+.main-content-header {
+  margin: -20px -20px 20px !important;
+  padding: $main-content-header-padding;
+  background: $main-content-header-background;
+  border-bottom: $main-content-header-border;
+}
+
+.main-content-footer {
+  margin: 20px -20px -20px !important;
+  padding: $main-content-footer-padding;
+  background: $main-content-footer-background;
+  border-top: $main-content-footer-border;
+}
+
 .main-content,
 .main-content-sidebar,
 .tab-pane {
@@ -104,5 +118,17 @@
   .main-content,
   .main-content-sidebar {
     padding: 15px;
+  }
+
+  .main-content-header {
+    margin: -15px -15px 15px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .main-content-footer {
+    margin: 15px -15px -15px !important;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

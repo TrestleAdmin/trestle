@@ -12,5 +12,17 @@
 <% end if admin.scopes.any? %>
 
 <%= render layout: "layout" do %>
-  <%= render "table" %>
+  <% if hook?("resource.index.header") %>
+    <header class="main-content-header">
+      <%= hook("resource.index.header") %>
+    </header>
+  <% end %>
+
+  <%= render "trestle/table/table", table: admin.table, collection: collection %>
+
+  <footer class="main-content-footer">
+    <%= hook("resource.index.footer") %>
+
+    <%= render "trestle/table/pagination", collection: collection, entry_name: admin.model_name %>
+  </footer>
 <% end %>

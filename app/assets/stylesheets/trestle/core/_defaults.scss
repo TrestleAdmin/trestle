@@ -34,6 +34,14 @@ $content-header-background: rgba(white, 0.6) !default;
 $content-sidebar-width:      285px !default;
 $content-sidebar-background: rgba(black, 0.025) !default;
 
+$main-content-header-background: $content-sidebar-background !default;
+$main-content-header-padding:    12px 20px !default;
+$main-content-header-border:     1px solid rgba(black, 0.1) !default;
+
+$main-content-footer-background: $content-sidebar-background !default;
+$main-content-footer-padding:    12px 20px !default;
+$main-content-footer-border:     1px solid rgba(black, 0.1) !default;
+
 $sidebar-transition-duration: 250ms !default;
 
 $footer-bg:   rgba(white, 0.5) !default;
