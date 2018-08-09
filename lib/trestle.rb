@@ -27,6 +27,7 @@ module Trestle
   autoload :Scope
   autoload :Tab
   autoload :Table
+  autoload :Toolbar
 
   mattr_accessor :admins
   self.admins = {}

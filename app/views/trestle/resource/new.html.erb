@@ -3,7 +3,7 @@
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
-<% content_for(:primary_toolbar) do %>
+<% toolbar(:primary) do %>
   <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
 <% end %>
 

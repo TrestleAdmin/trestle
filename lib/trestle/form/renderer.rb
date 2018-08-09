@@ -5,11 +5,11 @@ module Trestle
       include ::ActionView::Helpers::CaptureHelper
 
       # Whitelisted helpers will concatenate their result to the output buffer when called.
-      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :toolbar, :table, :divider, :h1, :h2, :h3, :h4, :h5, :h6, :panel, :well]
+      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :table, :divider, :h1, :h2, :h3, :h4, :h5, :h6, :panel, :well]
 
       # Raw block helpers will pass their block argument directly to the method
       # without wrapping it in a new output buffer.
-      RAW_BLOCK_HELPERS = [:table]
+      RAW_BLOCK_HELPERS = [:table, :toolbar]
 
       # The #select and #display methods are defined on Kernel. Undefine them so
       # that they can be delegated to the form builder or template by method_missing.

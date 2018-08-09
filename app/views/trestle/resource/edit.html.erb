@@ -3,11 +3,11 @@
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
-<% content_for(:primary_toolbar) do %>
+<% toolbar(:primary) do %>
   <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:update) %>
 <% end %>
 
-<% content_for(:secondary_toolbar) do %>
+<% toolbar(:secondary) do %>
   <%= admin_link_to instance, action: :destroy, method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
     <%= icon("fa fa-trash") %> <%= admin.t("buttons.delete", default: "Delete %{model_name}") %>
   <% end if admin.actions.include?(:destroy) %>

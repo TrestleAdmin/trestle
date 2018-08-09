@@ -10,6 +10,9 @@
   .btn-toolbar {
     @extend .pull-right;
     clear: right;
+
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .primary-toolbar {
