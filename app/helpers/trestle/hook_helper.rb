@@ -1,9 +1,13 @@
 module Trestle
   module HookHelper
     def hook(name)
-      safe_join(hooks(name).map { |hook|
-        hook.evaluate(self)
-      }, "\n")
+      if hook?(name)
+        safe_join(hooks(name).map { |hook|
+          hook.evaluate(self)
+        }, "\n")
+      elsif block_given?
+        yield
+      end
     end
 
     def hook?(name)

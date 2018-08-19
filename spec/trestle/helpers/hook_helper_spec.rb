@@ -13,6 +13,16 @@ describe Trestle::HookHelper do
 
       expect(hook("test-hook")).to eq("abc\n123")
     end
+
+    it "yields if a block is provided an no hooks exist" do
+      expect { |b| hook("no-hook", &b) }.to yield_control
+    end
+
+    it "does not yield if a hook exists" do
+      Trestle.config.hook("test-hook") { "abc" }
+
+      expect { |b| hook("test-hook", &b) }.not_to yield_control
+    end
   end
 
   describe "#hook?" do
