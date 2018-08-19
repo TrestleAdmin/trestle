@@ -24,6 +24,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:path).with_default("/admin")
   end
 
+  it "has a root configuration option" do
+    expect(config).to have_accessor(:root).with_default("/admin")
+  end
+
   it "has an automount configuration option" do
     expect(config).to have_accessor(:automount).with_default(true)
   end
