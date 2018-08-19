@@ -7,7 +7,9 @@
       <span class="icon-bar"></span>
     </button>
 
-    <%= link_to trestle_title, Trestle.config.root, class: "navbar-brand" %>
+    <%= link_to Trestle.config.root, class: "navbar-brand" do %>
+      <%= hook("view.title") { render "trestle/shared/title" } %>
+    <% end %>
   </header>
 
   <div class="app-sidebar-inner">
