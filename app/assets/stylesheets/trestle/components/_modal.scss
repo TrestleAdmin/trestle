@@ -86,6 +86,9 @@
 }
 
 .modal-footer {
+  background: $modal-footer-background;
+  border-color: $modal-footer-border-color;
+
   .primary-toolbar {
     float: right;
   }
