@@ -38,8 +38,8 @@ feature 'Dialog forms', js: true do
     visit '/admin/dialog'
     click_link "First Post"
 
-    click_link "Delete Post"
-    click_link "Delete"
+    within_modal { click_link "Delete Post" }
+    within_popover { click_link "Delete" }
 
     expect(page).to have_content("The post was successfully deleted.")
     expect(page).not_to have_content("First Post")
@@ -47,5 +47,13 @@ feature 'Dialog forms', js: true do
 
   def create_test_post
     Post.create!(id: 1, title: "First Post", body: "This is a test post", published: true)
+  end
+
+  def within_modal(&block)
+    within('.modal', &block)
+  end
+
+  def within_popover(&block)
+    within('.popover', &block)
   end
 end

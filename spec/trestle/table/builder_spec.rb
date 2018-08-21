@@ -61,7 +61,6 @@ describe Trestle::Table::Builder do
 
       expect(column).to be_a(Trestle::Table::ActionsColumn)
       expect(column.options).to eq({ class: "custom-actions" })
-      expect(column.block).to eq(block)
     end
   end
 end

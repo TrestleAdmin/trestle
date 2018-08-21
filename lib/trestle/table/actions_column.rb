@@ -1,11 +1,17 @@
 module Trestle
   class Table
     class ActionsColumn
-      attr_reader :table, :options, :block
+      attr_reader :table, :toolbar, :options
 
       def initialize(table, options={}, &block)
         @table, @options = table, options
-        @block = block_given? ? block : default_actions
+        @toolbar = Toolbar.new(ActionsBuilder)
+
+        if block_given?
+          @toolbar.append(&block)
+        else
+          @toolbar.append(&default_actions)
+        end
       end
 
       def renderer(template)
@@ -13,43 +19,41 @@ module Trestle
       end
 
       def default_actions
-        admin = table.admin
-
-        ->(action) do
-          action.delete if admin && admin.actions.include?(:destroy)
+        ->(toolbar, instance, admin) do
+          toolbar.delete if admin && admin.actions.include?(:destroy)
         end
       end
 
-      class ActionsBuilder
-        attr_reader :instance
+      class ActionsBuilder < Toolbar::Builder
+        attr_reader :instance, :admin
 
-        delegate :table, to: :@column
+        def initialize(template, instance, admin)
+          super(template)
 
-        delegate :concat, :icon, :link_to, :admin_url_for, :admin_link_to, to: :@template
-
-        def initialize(column, template, instance)
-          @column, @template, @instance = column, template, instance
+          @instance, @admin = instance, admin
         end
 
         def show
-          button(icon("fa fa-info"), instance, action: :show, class: "btn-info")
+          link(t("buttons.show", default: "Show"), instance, admin: admin, action: :show, icon: "fa fa-info", style: :info)
         end
 
         def edit
-          button(icon("fa fa-pencil"), instance, action: :edit, class: "btn-warning")
+          link(t("buttons.edit", default: "Edit"), instance, admin: admin, action: :edit, icon: "fa fa-pencil", style: :warning)
         end
 
         def delete
-          button(icon("fa fa-trash"), instance, action: :destroy, method: :delete, class: "btn-danger", data: { toggle: "confirm-delete", placement: "left" })
+          link(t("buttons.delete", default: "Delete"), instance, admin: admin, action: :destroy, method: :delete, icon: "fa fa-trash", style: :danger, data: { toggle: "confirm-delete", placement: "left" })
         end
 
-        def button(content, instance_or_url, options={})
-          options[:class] = Array(options[:class])
-          options[:class] << "btn" unless options[:class].include?("btn")
-
-          concat admin_link_to(content, instance_or_url, options.reverse_merge(admin: table.admin))
+      private
+        def translate(key, options={})
+          if admin
+            admin.translate(key, options)
+          else
+            I18n.t(:"admin.#{key}", options)
+          end
         end
-        alias_method :link, :button
+        alias t translate
       end
 
       class Renderer < Column::Renderer
@@ -62,11 +66,7 @@ module Trestle
         end
 
         def content(instance)
-          builder = ActionsBuilder.new(@column, @template, instance)
-
-          @template.with_output_buffer do
-            @template.instance_exec(builder, &@column.block)
-          end
+          @template.render_toolbar(@column.toolbar, instance, table.admin)
         end
       end
     end

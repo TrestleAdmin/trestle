@@ -65,10 +65,24 @@
         width: (18em / 14);
         text-align: center;
       }
+    }
 
-      & + .btn {
+    .btn,
+    .btn-group {
+      + .btn,
+      + .btn-group {
         margin-left: 4px;
       }
+    }
+
+    .btn-group {
+      .btn + .btn {
+        margin-left: -1px;
+      }
+    }
+
+    .btn-label {
+      @include sr-only;
     }
   }
 
