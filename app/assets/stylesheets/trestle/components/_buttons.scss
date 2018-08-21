@@ -24,3 +24,9 @@
     background: $btn-danger-bg;
   }
 }
+
+.btn-new-resource {
+  .btn-label {
+    @include sr-only;
+  }
+}
