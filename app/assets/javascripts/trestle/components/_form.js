@@ -9,13 +9,24 @@ Trestle.init(function(e, root) {
   var form = $(root).find('form[data-behavior="trestle-form"]');
 
   form
-    .on('ajax:complete', function(e, xhr, status) {
-      var contentType = xhr.getResponseHeader("Content-Type").split(";")[0];
+    .on('ajax:send', function(e, xhr) {
+      // Disable submit buttons
+      $(this).find(':submit').prop('disabled', true);
 
-      if (contentType == "text/html") {
+      // Set loading status on button that triggered submission
+      var button = $(this).data('trestle:submitButton');
+      if (button) { $(button).addClass('loading'); }
+    })
+    .on('ajax:complete', function(e, xhr, status) {
+      // Reset submit buttons
+      $(this).find(':submit').prop('disabled', false).removeClass('loading');
+      $(this).removeData('trestle:submitButton');
+
+      var contentType = xhr.getResponseHeader("Content-Type");
+
+      if (contentType && contentType.split(";")[0] == "text/html") {
         if (/<html/i.test(xhr.responseText)) {
           // Response is a full HTML page, likely an error page. Render within an iframe.
-
           var context = $(this).closest('[data-context]');
           var iframe = $("<iframe>").addClass('error-iframe').get(0);
           context.html(iframe);
@@ -36,9 +47,6 @@ Trestle.init(function(e, root) {
         // Assume an error response
         var title = xhr.status + " (" + xhr.statusText + ")";
         Trestle.Dialog.showError(title, xhr.responseText);
-
-        // Reset submit button
-        form.find(':submit').prop('disabled', false).removeClass('loading');
       }
     })
     .on('ajax:success', function(e, data, status, xhr) {
@@ -57,15 +65,8 @@ Trestle.init(function(e, root) {
       }
     });
 
-  // Loading indicator
   form.find(':submit').click(function() {
-    var button = $(this);
-
-    // Delay to ensure form is still submitted
-    setTimeout(function() {
-      if (form[0].checkValidity()) {
-        button.prop('disabled', true).addClass('loading');
-      }
-    }, 1);
+    // Save this as the button that triggered the form
+    $(this).closest('form').data('trestle:submitButton', this);
   });
 });
