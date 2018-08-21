@@ -30,7 +30,7 @@ module Trestle
 
       def evaluate(builder, template, enumerator, *args)
         context = Context.new(builder, enumerator, *args)
-        result = template.capture(context, *args, &@block)
+        result = template.capture { template.instance_exec(context, *args, &@block) }
         enumerator << [result] if result.present?
       end
     end
@@ -61,8 +61,12 @@ module Trestle
       end
 
       def method_missing(name, *args, &block)
-        group do
-          @current_group << builder.send(name, *args, &block)
+        result = builder.send(name, *args, &block)
+
+        if builder.class.builder_methods.include?(name)
+          group { @current_group << result }
+        else
+          result
         end
       end
     end
@@ -70,6 +74,14 @@ module Trestle
     class Builder
       def initialize(template)
         @template = template
+      end
+
+      def self.builder_methods
+        @builder_methods ||= []
+      end
+
+      def self.builder_method(*methods)
+        builder_methods.concat(methods)
       end
 
       def button(content, options={})
@@ -84,6 +96,8 @@ module Trestle
 
         admin_link_to(button_label(content, options), instance_or_url, options)
       end
+
+      builder_method :button, :link
 
     private
       delegate :admin_link_to, :button_tag, :content_tag, :safe_join, :icon, to: :@template
