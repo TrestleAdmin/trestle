@@ -1,17 +1,11 @@
 <header class="content-header">
   <div class="btn-toolbar primary-toolbar">
-    <% toolbar(:primary).items(self).each do |item| %>
-      <%= item %>
-    <% end %>
-
+    <%= render_toolbar(toolbar(:primary)) %>
     <%= deprecated_toolbar(:primary) %>
   </div>
 
   <div class="btn-toolbar secondary-toolbar">
-    <% toolbar(:secondary).items(self).each do |item| %>
-      <%= item %>
-    <% end %>
-
+    <%= render_toolbar(toolbar(:secondary)) %>
     <%= deprecated_toolbar(:secondary) %>
   </div>
 

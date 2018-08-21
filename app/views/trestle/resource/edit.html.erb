@@ -3,14 +3,12 @@
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
-<% toolbar(:primary) do %>
-  <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:update) %>
+<% toolbar(:primary) do |t| %>
+  <%= t.button admin.t("buttons.save", default: "Save %{model_name}"), style: :success if admin.actions.include?(:update) %>
 <% end %>
 
-<% toolbar(:secondary) do %>
-  <%= admin_link_to instance, action: :destroy, method: :delete, class: "btn btn-danger", data: { toggle: "confirm-delete", placement: "bottom" } do %>
-    <%= icon("fa fa-trash") %> <%= admin.t("buttons.delete", default: "Delete %{model_name}") %>
-  <% end if admin.actions.include?(:destroy) %>
+<% toolbar(:secondary) do |t| %>
+  <%= t.link admin.t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" } if admin.actions.include?(:destroy) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.actions.include?(:update) ? admin.instance_path(instance, action: :update) : "#", method: :patch do |f| %>

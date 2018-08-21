@@ -3,8 +3,8 @@
 <% content_for(:title, title) %>
 <% breadcrumb(title) %>
 
-<% toolbar(:primary) do %>
-  <%= button_tag admin.t("buttons.save", default: "Save %{model_name}"), class: "btn btn-success btn-lg" if admin.actions.include?(:create) %>
+<% toolbar(:primary) do |t| %>
+  <%= t.button admin.t("buttons.save", default: "Save %{model_name}"), style: :success if admin.actions.include?(:create) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>

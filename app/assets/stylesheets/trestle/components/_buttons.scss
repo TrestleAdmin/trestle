@@ -2,6 +2,10 @@
   border-width: 0;
   box-shadow: none;
 
+  i + .btn-label {
+    margin-left: 5px;
+  }
+
   &.loading {
     &::before {
       @extend .fa;

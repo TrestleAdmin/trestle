@@ -1,0 +1,19 @@
+.primary-toolbar {
+  .btn {
+    @extend .btn-lg;
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: $border-radius-base;
+  }
+}
+
+.secondary-toolbar {
+  .btn {
+    font-size: 12px;
+    padding: 4px 10px;
+
+    i {
+      font-size: 11px;
+    }
+  }
+}
