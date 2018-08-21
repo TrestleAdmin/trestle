@@ -19,6 +19,9 @@ module Dummy
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.active_record.sqlite3.represent_boolean_as_integer = true
+    # Fixes deprecation warnings in Rails 5.2
+    if config.active_record.sqlite3.respond_to?(:represent_boolean_as_integer=)
+      config.active_record.sqlite3.represent_boolean_as_integer = true
+    end
   end
 end
