@@ -1,3 +1,62 @@
+@mixin button-child-visible($prefix, $selector) {
+  &.#{$prefix}-visible-xs,
+  &.#{$prefix}-visible-sm,
+  &.#{$prefix}-visible-md,
+  &.#{$prefix}-visible-lg {
+    #{$selector} { display: none; }
+  }
+
+  &.#{$prefix}-visible-xs {
+    @media (max-width: $screen-xs-max) {
+      #{$selector} { display: inline-block; }
+    }
+  }
+
+  &.#{$prefix}-visible-sm {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      #{$selector} { display: inline-block; }
+    }
+  }
+
+  &.#{$prefix}-visible-md {
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      #{$selector} { display: inline-block; }
+    }
+  }
+
+  &.#{$prefix}-visible-lg {
+    @media (min-width: $screen-lg-min) {
+      #{$selector} { display: inline-block; }
+    }
+  }
+}
+
+@mixin button-child-hidden($prefix, $selector) {
+  &.#{$prefix}-hidden-xs {
+    @media (max-width: $screen-xs-max) {
+      #{$selector} { display: none; }
+    }
+  }
+
+  &.#{$prefix}-hidden-sm {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      #{$selector} { display: none; }
+    }
+  }
+
+  &.#{$prefix}-hidden-md {
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      #{$selector} { display: none; }
+    }
+  }
+
+  &.#{$prefix}-hidden-lg {
+    @media (min-width: $screen-lg-min) {
+      #{$selector} { display: none; }
+    }
+  }
+}
+
 .btn {
   border-width: 0;
   box-shadow: none;
@@ -14,6 +73,12 @@
       margin-right: 10px;
     }
   }
+
+  @include button-child-visible('icon', '> i');
+  @include button-child-hidden('icon', '> i');
+
+  @include button-child-visible('label', '> .btn-label');
+  @include button-child-hidden('label', '> .btn-label');
 }
 
 .btn-delete {
