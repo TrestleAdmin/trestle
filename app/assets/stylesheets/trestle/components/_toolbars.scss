@@ -1,9 +1,37 @@
+.btn-toolbar {
+  .btn,
+  .btn-group,
+  .input-group {
+    float: none;
+  }
+
+  > .btn,
+  > .btn-group,
+  > .input-group {
+    margin-left: 1px;
+  }
+
+  .btn-group {
+    .btn + .btn,
+    .btn + .btn-group,
+    .btn-group + .btn,
+    .btn-group + .btn-group {
+      margin-left: -4px;
+    }
+  }
+}
+
 .primary-toolbar {
   .btn {
     @extend .btn-lg;
     font-size: 20px;
     padding: 8px 16px;
     border-radius: $border-radius-base;
+
+    @include mobile {
+      font-size: 18px;
+      padding: 7px 12px;
+    }
   }
 }
 
@@ -14,6 +42,14 @@
 
     i {
       font-size: 11px;
+    }
+
+    @include mobile {
+      font-size: 11px;
+
+      i {
+        font-size: 10px;
+      }
     }
   }
 }

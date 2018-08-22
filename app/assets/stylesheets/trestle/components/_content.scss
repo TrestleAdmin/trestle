@@ -1,23 +1,33 @@
 .content-header {
-  @extend .clearfix;
+  display: flex;
+  justify-content: space-between;
+
   background: $content-header-background;
-  padding: 5px 20px;
+  padding: 20px;
 
   h1 {
     font-weight: 300;
+    margin-top: 0;
+  }
+
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+
+  .content-header-title {
+    margin: 5px 0;
   }
 
   .btn-toolbar {
-    @extend .pull-right;
-    clear: right;
-  }
-
-  .primary-toolbar {
-    margin-top: 16px;
+    text-align: right;
   }
 
   .secondary-toolbar {
     margin-top: 8px;
+
+    @include mobile {
+      margin-top: 6px;
+    }
   }
 }
 
@@ -82,7 +92,7 @@
 
 @include mobile {
   .content-header {
-    padding: 0 10px;
+    padding: 10px;
   }
 
   .main-content-area {

@@ -1,25 +1,29 @@
 <header class="content-header">
-  <div class="btn-toolbar primary-toolbar">
-    <%= render_toolbar(toolbar(:primary)) %>
-    <%= deprecated_toolbar(:primary) %>
-  </div>
+  <div class="content-header-title">
+    <h1>
+      <%= content_for(:title) %>
+    </h1>
 
-  <div class="btn-toolbar secondary-toolbar">
-    <%= render_toolbar(toolbar(:secondary)) %>
-    <%= deprecated_toolbar(:secondary) %>
-  </div>
-
-  <h1>
-    <%= content_for(:title) %>
-  </h1>
-
-  <% unless local_assigns.fetch(:hide_breadcrumbs, false) %>
-  <ol class="breadcrumb">
-    <% breadcrumbs.each do |breadcrumb| %>
-      <li class="breadcrumb-item<% if breadcrumb == breadcrumbs.last %> active<% end %>">
-        <%= link_to breadcrumb.label, breadcrumb.path %>
-      </li>
+    <% unless local_assigns.fetch(:hide_breadcrumbs, false) %>
+    <ol class="breadcrumb">
+      <% breadcrumbs.each do |breadcrumb| %>
+        <li class="breadcrumb-item<% if breadcrumb == breadcrumbs.last %> active<% end %>">
+          <%= link_to breadcrumb.label, breadcrumb.path %>
+        </li>
+      <% end %>
+    </ol>
     <% end %>
-  </ol>
-  <% end %>
+  </div>
+
+  <div class="content-header-toolbars">
+    <div class="btn-toolbar primary-toolbar">
+      <%= render_toolbar(toolbar(:primary)) %>
+      <%= deprecated_toolbar(:primary) %>
+    </div>
+
+    <div class="btn-toolbar secondary-toolbar">
+      <%= render_toolbar(toolbar(:secondary)) %>
+      <%= deprecated_toolbar(:secondary) %>
+    </div>
+  </div>
 </header>
