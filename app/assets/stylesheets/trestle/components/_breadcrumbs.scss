@@ -3,6 +3,14 @@
   background-color: transparent;
   font-size: 12px;
 
+  > li + li:before {
+    content: "/";
+
+    @include mobile {
+      padding: 0 2px;
+    }
+  }
+
   .active, .active a {
     font-weight: normal;
     color: $breadcrumb-active-color;
@@ -10,5 +18,9 @@
     &:hover {
       text-decoration: none;
     }
+  }
+
+  @include mobile {
+    font-size: 11px;
   }
 }
