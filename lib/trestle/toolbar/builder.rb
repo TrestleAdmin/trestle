@@ -37,6 +37,7 @@ module Trestle
         classes = (options[:class] || "").split("\s")
         classes.unshift("btn-#{options.delete(:style) || "default"}")
         classes.unshift("btn") unless classes.include?("btn")
+        classes.push("has-icon") if options[:icon]
         classes
       end
 

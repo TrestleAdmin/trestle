@@ -93,7 +93,7 @@ describe Trestle::Table::ActionsColumn do
       it "appends a delete link to the template" do
         expect(admin).to receive(:translate).with("buttons.delete", default: "Delete").and_return("Delete")
         expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-trash"></i> <span class="btn-label">Delete</span>', instance, admin: admin, action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: %w(btn btn-danger))
+          .with('<i class="fa fa-trash"></i> <span class="btn-label">Delete</span>', instance, admin: admin, action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: %w(btn btn-danger has-icon))
           .and_return(button)
 
         expect(builder.delete).to eq(button)
@@ -104,7 +104,7 @@ describe Trestle::Table::ActionsColumn do
       it "appends a show link to the template" do
         expect(admin).to receive(:translate).with("buttons.show", default: "Show").and_return("Show")
         expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-info"></i> <span class="btn-label">Show</span>', instance, admin: admin, action: :show, class: %w(btn btn-info))
+          .with('<i class="fa fa-info"></i> <span class="btn-label">Show</span>', instance, admin: admin, action: :show, class: %w(btn btn-info has-icon))
           .and_return(button)
 
         expect(builder.show).to eq(button)
@@ -115,7 +115,7 @@ describe Trestle::Table::ActionsColumn do
       it "appends an edit link to the template" do
         expect(admin).to receive(:translate).with("buttons.edit", default: "Edit").and_return("Edit")
         expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-pencil"></i> <span class="btn-label">Edit</span>', instance, admin: admin, action: :edit, class: %w(btn btn-warning))
+          .with('<i class="fa fa-pencil"></i> <span class="btn-label">Edit</span>', instance, admin: admin, action: :edit, class: %w(btn btn-warning has-icon))
           .and_return(button)
 
         expect(builder.edit).to eq(button)

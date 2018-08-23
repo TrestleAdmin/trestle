@@ -47,6 +47,9 @@ module Trestle
 
         builder_method :show, :edit, :delete
 
+        # Disallow button tags within the actions toolbar. Alias to link for backwards compatibility.
+        alias button link
+
       private
         def translate(key, options={})
           if admin

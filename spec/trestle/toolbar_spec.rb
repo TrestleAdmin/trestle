@@ -76,7 +76,7 @@ describe Trestle::Toolbar do
       end
 
       it "allows an icon to be specified" do
-        expect(template).to receive(:button_tag).with('<i class="fa fa-trash"></i> <span class="btn-label">Button</span>', class: %w(btn btn-default)).and_return(button)
+        expect(template).to receive(:button_tag).with('<i class="fa fa-trash"></i> <span class="btn-label">Button</span>', class: %w(btn btn-default has-icon)).and_return(button)
         expect(builder.button("Button", icon: "fa fa-trash")).to eq(button)
       end
     end
@@ -93,7 +93,7 @@ describe Trestle::Toolbar do
       end
 
       it "allows an icon to be specified" do
-        expect(template).to receive(:admin_link_to).with('<i class="fa fa-trash"></i> <span class="btn-label">Link</span>', "#", class: %w(btn btn-default)).and_return(link)
+        expect(template).to receive(:admin_link_to).with('<i class="fa fa-trash"></i> <span class="btn-label">Link</span>', "#", class: %w(btn btn-default has-icon)).and_return(link)
         expect(builder.link("Link", "#", icon: "fa fa-trash")).to eq(link)
       end
     end

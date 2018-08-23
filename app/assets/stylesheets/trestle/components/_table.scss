@@ -65,6 +65,10 @@
         width: (18em / 14);
         text-align: center;
       }
+
+      &.has-icon .btn-label {
+        @include sr-only;
+      }
     }
 
     .btn,
@@ -79,10 +83,6 @@
       .btn + .btn {
         margin-left: -1px;
       }
-    }
-
-    .btn-label {
-      @include sr-only;
     }
   }
 
