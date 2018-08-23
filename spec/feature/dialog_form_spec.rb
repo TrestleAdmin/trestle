@@ -50,10 +50,16 @@ feature 'Dialog forms', js: true do
   end
 
   def within_modal(&block)
+    delay
     within('.modal', &block)
   end
 
   def within_popover(&block)
+    delay
     within('.popover', &block)
+  end
+
+  def delay
+    sleep 0.5
   end
 end
