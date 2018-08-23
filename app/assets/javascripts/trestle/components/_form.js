@@ -54,6 +54,9 @@ Trestle.init(function(e, root) {
       var location = xhr.getResponseHeader("X-Trestle-Location");
 
       if (location) {
+        // Retain current active tab
+        location = location + document.location.hash;
+
         // Update the URL in the browser and context
         history.replaceState({}, "", location);
         context.data('context', location);

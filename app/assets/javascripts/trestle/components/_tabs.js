@@ -20,6 +20,6 @@ Trestle.focusActiveTab = function() {
   }
 };
 
-Trestle.ready(function() {
+Trestle.init(function() {
   Trestle.focusActiveTab();
 });
