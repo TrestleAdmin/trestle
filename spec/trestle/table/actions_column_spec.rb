@@ -75,6 +75,10 @@ describe Trestle::Table::ActionsColumn do
       allow(template).to receive(:icon) { |klass| template.content_tag(:i, "", class: klass) }
     end
 
+    it "has a list of registered builder methods" do
+      expect(builder.builder_methods).to eq([:button, :link, :show, :edit, :delete])
+    end
+
     describe "#link" do
       it "appends a button link to the template" do
         expect(template).to receive(:admin_link_to)

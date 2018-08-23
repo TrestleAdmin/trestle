@@ -28,7 +28,7 @@ module Trestle
       def method_missing(name, *args, &block)
         result = builder.send(name, *args, &block)
 
-        if builder.class.builder_methods.include?(name)
+        if builder.builder_methods.include?(name)
           group { @current_group << result }
         else
           result

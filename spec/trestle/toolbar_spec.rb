@@ -60,6 +60,10 @@ describe Trestle::Toolbar do
   describe Trestle::Toolbar::Builder do
     let(:builder) { Trestle::Toolbar::Builder.new(template) }
 
+    it "has a list of registered builder methods" do
+      expect(builder.builder_methods).to eq([:button, :link])
+    end
+
     describe "#button" do
       it "creates a button tag" do
         expect(template).to receive(:button_tag).with('<span class="btn-label">Button</span>', class: %w(btn btn-default)).and_return(button)

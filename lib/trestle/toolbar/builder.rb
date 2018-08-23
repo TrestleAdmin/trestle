@@ -5,14 +5,6 @@ module Trestle
         @template = template
       end
 
-      def self.builder_methods
-        @builder_methods ||= []
-      end
-
-      def self.builder_method(*methods)
-        builder_methods.concat(methods)
-      end
-
       def button(content, options={})
         options[:class] = button_classes_from_options(options)
 
@@ -24,6 +16,16 @@ module Trestle
         options[:class] = button_classes_from_options(options)
 
         admin_link_to(button_label(content, options), instance_or_url, options)
+      end
+
+      # Only methods explicitly tagged as builder methods will be automatically
+      # appended to the toolbar when called by Toolbar::Context.
+
+      class_attribute :builder_methods
+      self.builder_methods = []
+
+      def self.builder_method(*methods)
+        self.builder_methods += methods
       end
 
       builder_method :button, :link
