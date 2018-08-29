@@ -1,4 +1,5 @@
 .pagination-container {
+  margin-left: auto;
   text-align: right;
 
   p {
@@ -24,6 +25,8 @@
 
 @include mobile {
   .pagination-container {
+    margin-right: auto;
+
     text-align: center;
 
     display: flex;
