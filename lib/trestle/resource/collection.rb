@@ -4,18 +4,38 @@ module Trestle
       delegate :initialize_collection, :paginate, :finalize_collection, :decorate_collection,
                :scopes, :merge_scopes, :column_sorts, :sort, to: :@admin
 
-      def initialize(admin)
-        @admin = admin
+      def initialize(admin, options={})
+        @admin, @options = admin, options
       end
 
       def prepare(params)
         collection = initialize_collection(params)
-        collection = apply_scopes(collection, params)
-        collection = apply_sorting(collection, params)
-        collection = paginate(collection, params)
-        collection = finalize_collection(collection)
-        collection = decorate_collection(collection)
+        collection = apply_scopes(collection, params)  if scope?
+        collection = apply_sorting(collection, params) if sort?
+        collection = paginate(collection, params)      if paginate?
+        collection = finalize_collection(collection)   if finalize?
+        collection = decorate_collection(collection)   if decorate?
         collection
+      end
+
+      def scope?
+        @options[:scope] != false
+      end
+
+      def sort?
+        @options[:sort] != false
+      end
+
+      def paginate?
+        @options[:paginate] != false
+      end
+
+      def finalize?
+        @options[:finalize] != false
+      end
+
+      def decorate?
+        @options[:decorate] != false
       end
 
     private

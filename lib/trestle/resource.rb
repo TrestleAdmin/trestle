@@ -63,8 +63,8 @@ module Trestle
       adapter_method :default_table_attributes
       adapter_method :default_form_attributes
 
-      def prepare_collection(params)
-        Collection.new(self).prepare(params)
+      def prepare_collection(params, options={})
+        Collection.new(self, options).prepare(params)
       end
 
       def initialize_collection(params)
