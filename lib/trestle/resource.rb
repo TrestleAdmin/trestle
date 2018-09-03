@@ -15,12 +15,19 @@ module Trestle
     self.pagination_options = {}
 
     class << self
-      def adapter
-        @adapter ||= Trestle.config.default_adapter.new(self)
+      # Returns the adapter class for this admin.
+      def adapter_class
+        @adapter_class ||= Class.new(Trestle.config.default_adapter)
       end
 
-      def adapter=(klass)
-        @adapter = klass.new(self)
+      # Sets an explicit adapter class for this admin.
+      def adapter_class=(klass)
+        @adapter_class = Class.new(klass)
+      end
+
+      # Unbound instance of adapter.
+      def adapter
+        @adapter ||= adapter_class.new(self)
       end
 
       # Defines a method that can be overridden with a custom block,

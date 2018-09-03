@@ -43,17 +43,17 @@ describe Trestle::Resource::Builder, remove_const: true do
   end
 
   describe "#adapter" do
-    it "returns the admin's adapter instance" do
+    it "returns the admin's adapter class" do
       adapter = nil
 
       Trestle::Resource::Builder.create(:tests) do
         adapter = self.adapter
       end
 
-      expect(adapter).to eq(::TestsAdmin.adapter)
+      expect(adapter).to eq(::TestsAdmin.adapter_class)
     end
 
-    it "evaluates the given block in the context of the adapter" do
+    it "evaluates the given block in the context of the adapter class" do
       Trestle::Resource::Builder.create(:tests) do
         adapter do
           def custom_method
@@ -67,15 +67,14 @@ describe Trestle::Resource::Builder, remove_const: true do
   end
 
   describe "#adapter=" do
-    it "sets the admin's adapter to an instance of the given class" do
-      adapter = double
-      CustomAdapter = double(new: adapter)
+    it "sets the admin's adapter to (a subclass of) the given class" do
+      CustomAdapter = Class.new
 
       Trestle::Resource::Builder.create(:tests) do
         self.adapter = CustomAdapter
       end
 
-      expect(::TestsAdmin.adapter).to eq(adapter)
+      expect(::TestsAdmin.adapter_class).to be < CustomAdapter
     end
   end
 

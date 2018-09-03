@@ -5,13 +5,13 @@ module Trestle
       self.controller = Controller
 
       def adapter(&block)
-        klass = admin.adapter
-        klass.instance_eval(&block) if block_given?
+        klass = admin.adapter_class
+        klass.class_eval(&block) if block_given?
         klass
       end
 
       def adapter=(adapter)
-        admin.adapter = adapter
+        admin.adapter_class = adapter
       end
 
       def remove_action(*actions)
