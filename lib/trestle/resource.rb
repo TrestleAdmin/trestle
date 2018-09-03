@@ -14,6 +14,49 @@ module Trestle
     class_attribute :pagination_options
     self.pagination_options = {}
 
+    # Declares a method that is handled by the admin's adapter class.
+    def self.adapter_method(name)
+      delegate name, to: :adapter
+
+      singleton_class.class_eval do
+        delegate name, to: :adapter
+      end
+    end
+
+    # Collection-focused adapter methods
+    adapter_method :collection
+    adapter_method :merge_scopes
+    adapter_method :sort
+    adapter_method :paginate
+    adapter_method :finalize_collection
+    adapter_method :decorate_collection
+    adapter_method :count
+
+    # Instance-focused adapter methods
+    adapter_method :find_instance
+    adapter_method :build_instance
+    adapter_method :update_instance
+    adapter_method :save_instance
+    adapter_method :delete_instance
+    adapter_method :permitted_params
+
+    # Common adapter methods
+    adapter_method :to_param
+    adapter_method :human_attribute_name
+
+    # Automatic tables and forms adapter methods
+    adapter_method :default_table_attributes
+    adapter_method :default_form_attributes
+
+    # Delegate all missing methods to corresponding class method if available
+    def method_missing(name, *args, &block)
+      if self.class.respond_to?(name)
+        self.class.send(name, *args, &block)
+      else
+        super
+      end
+    end
+
     class << self
       # Returns the adapter class for this admin.
       #
@@ -43,36 +86,6 @@ module Trestle
       def define_adapter_method(name, &block)
         adapter_methods.define_method(name, &block)
       end
-
-      # Declares a method that is handled by the admin's adapter class.
-      def self.adapter_method(name)
-        delegate name, to: :adapter
-      end
-
-      # Collection-focused adapter methods
-      adapter_method :collection
-      adapter_method :merge_scopes
-      adapter_method :sort
-      adapter_method :paginate
-      adapter_method :finalize_collection
-      adapter_method :decorate_collection
-      adapter_method :count
-
-      # Instance-focused adapter methods
-      adapter_method :find_instance
-      adapter_method :build_instance
-      adapter_method :update_instance
-      adapter_method :save_instance
-      adapter_method :delete_instance
-      adapter_method :permitted_params
-
-      # Common adapter methods
-      adapter_method :to_param
-      adapter_method :human_attribute_name
-
-      # Automatic tables and forms adapter methods
-      adapter_method :default_table_attributes
-      adapter_method :default_form_attributes
 
       def prepare_collection(params, options={})
         Collection.new(self, options).prepare(params)
