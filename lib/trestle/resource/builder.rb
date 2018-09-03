@@ -22,36 +22,36 @@ module Trestle
       end
 
       def collection(&block)
-        admin.collection_block = block
+        admin.define_adapter_method(:collection, &block)
       end
 
       def find_instance(&block)
-        admin.find_instance_block = block
+        admin.define_adapter_method(:find_instance, &block)
       end
       alias instance find_instance
 
       def build_instance(&block)
-        admin.build_instance_block = block
+        admin.define_adapter_method(:build_instance, &block)
       end
 
       def update_instance(&block)
-        admin.update_instance_block = block
+        admin.define_adapter_method(:update_instance, &block)
       end
 
       def save_instance(&block)
-        admin.save_instance_block = block
+        admin.define_adapter_method(:save_instance, &block)
       end
 
       def delete_instance(&block)
-        admin.delete_instance_block = block
+        admin.define_adapter_method(:delete_instance, &block)
       end
 
       def to_param(&block)
-        admin.to_param_block = block
+        admin.define_adapter_method(:to_param, &block)
       end
 
       def params(&block)
-        admin.permitted_params_block = block
+        admin.define_adapter_method(:permitted_params, &block)
       end
 
       def decorator(decorator)
@@ -59,15 +59,15 @@ module Trestle
       end
 
       def decorate_collection(&block)
-        admin.decorate_collection_block = block
+        admin.define_adapter_method(:decorate_collection, &block)
       end
 
       def merge_scopes(&block)
-        admin.merge_scopes_block = block
+        admin.define_adapter_method(:merge_scopes, &block)
       end
 
       def sort(&block)
-        admin.sort_block = block
+        admin.define_adapter_method(:sort, &block)
       end
 
       def sort_column(column, &block)
@@ -76,11 +76,11 @@ module Trestle
 
       def paginate(options={}, &block)
         admin.pagination_options = admin.pagination_options.merge(options)
-        admin.paginate_block = block
+        admin.define_adapter_method(:paginate, &block)
       end
 
       def count(&block)
-        admin.count_block = block
+        admin.define_adapter_method(:count, &block)
       end
 
       def scope(name, scope=nil, options={}, &block)

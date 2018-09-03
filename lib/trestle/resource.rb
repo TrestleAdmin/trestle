@@ -16,13 +16,17 @@ module Trestle
 
     class << self
       # Returns the adapter class for this admin.
+      #
+      # Defaults to a subclass of `Trestle.config.default_adapter` with
+      # the admin-specific adapter methods module included.
       def adapter_class
-        @adapter_class ||= Class.new(Trestle.config.default_adapter)
+        @adapter_class ||= Class.new(Trestle.config.default_adapter).include(adapter_methods)
       end
 
       # Sets an explicit adapter class for this admin.
+      # A subclass is created with the admin-specific adapter methods module included.
       def adapter_class=(klass)
-        @adapter_class = Class.new(klass)
+        @adapter_class = Class.new(klass).include(adapter_methods)
       end
 
       # Unbound instance of adapter.
@@ -30,19 +34,19 @@ module Trestle
         @adapter ||= adapter_class.new(self)
       end
 
-      # Defines a method that can be overridden with a custom block,
-      # but is otherwise delegated to the adapter instance.
-      def self.adapter_method(name)
-        block_method = :"#{name}_block"
-        attr_accessor block_method
+      # Module container for admin-specific adapter methods.
+      def adapter_methods
+        @adapter_methods ||= Module.new
+      end
 
-        define_method(name) do |*args|
-          if override = public_send(block_method)
-            instance_exec(*args, &override)
-          else
-            adapter.public_send(name, *args)
-          end
-        end
+      # Defines an admin-specific adapter method.
+      def define_adapter_method(name, &block)
+        adapter_methods.define_method(name, &block)
+      end
+
+      # Declares a method that is handled by the admin's adapter class.
+      def self.adapter_method(name)
+        delegate name, to: :adapter
       end
 
       # Collection-focused adapter methods
@@ -162,7 +166,7 @@ module Trestle
       end
 
       def validate!
-        if singular? && find_instance_block.nil?
+        if singular? && !adapter_methods.method_defined?(:find_instance)
           raise NotImplementedError, "Singular resources must define an instance block."
         end
       end
