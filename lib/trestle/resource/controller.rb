@@ -13,7 +13,7 @@ module Trestle
       end
 
       def new
-        self.instance = admin.build_instance(params.key?(admin.parameter_name) ? permitted_params : {}, params)
+        self.instance = admin.build_instance(params.key?(admin.parameter_name) ? admin.permitted_params(params) : {}, params)
 
         respond_to do |format|
           format.html
@@ -23,7 +23,7 @@ module Trestle
       end
 
       def create
-        self.instance = admin.build_instance(permitted_params, params)
+        self.instance = admin.build_instance(admin.permitted_params(params), params)
 
         if admin.save_instance(instance)
           respond_to do |format|
@@ -66,7 +66,7 @@ module Trestle
       end
 
       def update
-        admin.update_instance(instance, permitted_params, params)
+        admin.update_instance(instance, admin.permitted_params(params), params)
 
         if admin.save_instance(instance)
           respond_to do |format|
@@ -129,14 +129,6 @@ module Trestle
           title:   admin.t("flash.#{type}.title", default: title),
           message: admin.t("flash.#{type}.message", default: message)
         }
-      end
-
-      def permitted_params
-        if admin.permitted_params_block
-          instance_exec(params, &admin.permitted_params_block)
-        else
-          admin.permitted_params(params)
-        end
       end
 
       def redirect_to_return_location(action, instance, default:)
