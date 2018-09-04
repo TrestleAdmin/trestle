@@ -97,10 +97,6 @@ module Trestle
         Collection.new(self, options).prepare(params)
       end
 
-      def initialize_collection(params)
-        collection(params)
-      end
-
       def scopes
         @scopes ||= {}
       end

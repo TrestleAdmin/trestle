@@ -234,7 +234,7 @@ describe Trestle::Resource::Builder, remove_const: true do
       end
 
       collection = double
-      allow(::TestsAdmin).to receive(:initialize_collection).and_return(collection)
+      allow(::TestsAdmin).to receive(:collection).and_return(collection)
 
       expect(collection).to receive(:order).with(field: :asc).and_return([1, 2, 3])
       expect(::TestsAdmin.prepare_collection(sort: "field", order: "asc")).to eq([1, 2, 3])

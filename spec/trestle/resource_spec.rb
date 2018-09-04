@@ -98,7 +98,7 @@ describe Trestle::Resource, remove_const: true do
     let(:collection) { [3, 1, 2] }
 
     before(:each) do
-      allow(admin).to receive(:initialize_collection).and_return(collection)
+      allow(admin).to receive(:collection).and_return(collection)
     end
 
     describe "sorting" do
