@@ -253,6 +253,18 @@ describe Trestle::Resource::Builder, remove_const: true do
       expect(collection).to receive(:paginate).with(page: 5).and_return([1, 2, 3])
       expect(::TestsAdmin.paginate(collection, page: 5)).to eq([1, 2, 3])
     end
+
+    it "sets pagination options" do
+      Trestle::Resource::Builder.create(:tests) do
+        paginate per: 50
+      end
+
+      expect(::TestsAdmin.pagination_options).to eq({ per: 50 })
+
+      collection = double
+      expect(collection).to receive_message_chain(:page, :per) { [1, 2, 3] }
+      expect(::TestsAdmin.paginate(collection, page: 5)).to eq([1, 2, 3])
+    end
   end
 
   describe "#count" do
