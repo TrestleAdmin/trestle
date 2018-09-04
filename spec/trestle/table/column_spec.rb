@@ -43,6 +43,46 @@ describe Trestle::Table::Column do
   describe "#renderer" do
     subject(:renderer) { column.renderer(template) }
 
+    describe "#render?" do
+      it "returns true by default" do
+        expect(renderer.render?).to be true
+      end
+
+      context "with options[:if] set to a boolean" do
+        let(:options) { { if: false } }
+
+        it "returns the value of options[:if]" do
+          expect(renderer.render?).to be false
+        end
+      end
+
+      context "with options[:if] set to a proc" do
+        let(:options) { { if: -> { result } } }
+
+        it "evaluates the proc in the context of the template and returns the result" do
+          expect(template).to receive(:result).and_return(true)
+          expect(renderer.render?).to be true
+        end
+      end
+
+      context "with options[:unless] set to a boolean" do
+        let(:options) { { unless: true } }
+
+        it "returns the negated value of options[:unless]" do
+          expect(renderer.render?).to be false
+        end
+      end
+
+      context "with options[:unless] set to a proc" do
+        let(:options) { { unless: -> { result } } }
+
+        it "evaluates the proc in the context of the template and returns the negated result" do
+          expect(template).to receive(:result).and_return(true)
+          expect(renderer.render?).to be false
+        end
+      end
+    end
+
     describe "#header" do
       context "with options[:header] set" do
         let(:options) { { header: "Custom Header", sort: false } }

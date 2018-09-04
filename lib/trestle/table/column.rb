@@ -49,6 +49,24 @@ module Trestle
           @template.content_tag(:td, content(instance), class: classes, data: data)
         end
 
+        def render?
+          if options.key?(:if)
+            if options[:if].respond_to?(:call)
+              @template.instance_exec(&options[:if])
+            else
+              options[:if]
+            end
+          elsif options.key?(:unless)
+            if options[:unless].respond_to?(:call)
+              !@template.instance_exec(&options[:unless])
+            else
+              !options[:unless]
+            end
+          else
+            true
+          end
+        end
+
         def header
           return if options.key?(:header) && options[:header].in?([nil, false])
 

@@ -20,7 +20,7 @@ module Trestle
         end
 
         def columns
-          table.columns.map { |column| column.renderer(@template) }
+          table.columns.map { |column| column.renderer(@template) }.select(&:render?)
         end
 
         def render(instance)
