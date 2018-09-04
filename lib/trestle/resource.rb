@@ -14,6 +14,11 @@ module Trestle
     class_attribute :pagination_options
     self.pagination_options = {}
 
+    # Adapter instance bound to the current resource's context.
+    def adapter
+      @adapter ||= adapter_class.new(self, @context)
+    end
+
     # Declares a method that is handled by the admin's adapter class.
     def self.adapter_method(name)
       delegate name, to: :adapter
@@ -48,13 +53,12 @@ module Trestle
     adapter_method :default_table_attributes
     adapter_method :default_form_attributes
 
-    # Delegate all missing methods to corresponding class method if available
-    def method_missing(name, *args, &block)
-      if self.class.respond_to?(name)
-        self.class.send(name, *args, &block)
-      else
-        super
-      end
+    # Prepares a collection for use in the resource controller's index action.
+    #
+    # Applies scopes, sorts, pagination, finalization and decorators according
+    # to the admin's adapter and any admin-specific adapter methods.
+    def prepare_collection(params, options={})
+      Collection.new(self, options).prepare(params)
     end
 
     class << self
@@ -93,6 +97,7 @@ module Trestle
         end
       end
 
+      # Deprecated: use instance method instead
       def prepare_collection(params, options={})
         Collection.new(self, options).prepare(params)
       end

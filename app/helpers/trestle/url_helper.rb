@@ -30,6 +30,9 @@ module Trestle
         admin ||= self.admin if respond_to?(:admin)
 
         if admin
+          # Ensure admin has controller context
+          admin = admin.new(self) if admin.is_a?(Class)
+
           # Generate path
           action = options.delete(:action) || :show
           params = options.delete(:params) || {}
@@ -58,6 +61,9 @@ module Trestle
       admin = Trestle.lookup(options.delete(:admin)) if options.key?(:admin)
       admin ||= admin_for(instance)
       return unless admin
+
+      # Ensure admin has controller context
+      admin = admin.new(self) if admin.is_a?(Class)
 
       if admin.respond_to?(:instance_path)
         admin.instance_path(instance, options)

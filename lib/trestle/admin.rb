@@ -5,6 +5,23 @@ module Trestle
     autoload :Builder
     autoload :Controller
 
+    def initialize(context=nil)
+      @context = context
+    end
+
+    # Delegate all missing methods to corresponding class method if available
+    def method_missing(name, *args, &block)
+      if self.class.respond_to?(name)
+        self.class.send(name, *args, &block)
+      else
+        super
+      end
+    end
+
+    def respond_to_missing?(name, include_private=false)
+      self.class.respond_to?(name, include_private) || super
+    end
+
     class << self
       attr_accessor :menu
 

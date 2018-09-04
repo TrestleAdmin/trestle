@@ -12,7 +12,9 @@ module Trestle
         end
       end
 
-      delegate :admin, to: :class
+      def admin
+        @_admin ||= self.class.admin.new(self)
+      end
       helper_method :admin
 
     protected
