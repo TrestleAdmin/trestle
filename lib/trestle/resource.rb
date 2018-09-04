@@ -83,8 +83,14 @@ module Trestle
       end
 
       # Defines an admin-specific adapter method.
+      #
+      # The given block is wrapped rather than passed to #define_method directly, so that
+      # adapter methods can be defined with incomplete block parameters. Unfortunately
+      # this means we lose the ability to call super from within a custom adapter method.
       def define_adapter_method(name, &block)
-        adapter_methods.define_method(name, &block)
+        adapter_methods.define_method(name) do |*args|
+          instance_exec(*args, &block)
+        end
       end
 
       def prepare_collection(params, options={})
