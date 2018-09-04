@@ -24,8 +24,10 @@ module Trestle
         # adapter methods can be defined with incomplete block parameters. Unfortunately
         # this means we lose the ability to call super from within a custom adapter method.
         def define_adapter_method(name, &block)
-          adapter_methods.define_method(name) do |*args|
-            instance_exec(*args, &block)
+          adapter_methods.module_eval do
+            define_method(name) do |*args|
+              instance_exec(*args, &block)
+            end
           end
         end
 
