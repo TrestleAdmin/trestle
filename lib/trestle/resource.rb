@@ -2,9 +2,12 @@ module Trestle
   class Resource < Admin
     extend ActiveSupport::Autoload
 
+    autoload :AdapterMethods
     autoload :Builder
     autoload :Collection
     autoload :Controller
+
+    include AdapterMethods
 
     RESOURCE_ACTIONS = [:index, :show, :new, :create, :edit, :update, :destroy]
     READONLY_ACTIONS = [:index, :show]
@@ -13,20 +16,6 @@ module Trestle
 
     class_attribute :pagination_options
     self.pagination_options = {}
-
-    # Adapter instance bound to the current resource's context.
-    def adapter
-      @adapter ||= adapter_class.new(self, @context)
-    end
-
-    # Declares a method that is handled by the admin's adapter class.
-    def self.adapter_method(name)
-      delegate name, to: :adapter
-
-      singleton_class.class_eval do
-        delegate name, to: :adapter
-      end
-    end
 
     # Collection-focused adapter methods
     adapter_method :collection
@@ -62,41 +51,6 @@ module Trestle
     end
 
     class << self
-      # Returns the adapter class for this admin.
-      #
-      # Defaults to a subclass of `Trestle.config.default_adapter` with
-      # the admin-specific adapter methods module included.
-      def adapter_class
-        @adapter_class ||= Class.new(Trestle.config.default_adapter).include(adapter_methods)
-      end
-
-      # Sets an explicit adapter class for this admin.
-      # A subclass is created with the admin-specific adapter methods module included.
-      def adapter_class=(klass)
-        @adapter_class = Class.new(klass).include(adapter_methods)
-      end
-
-      # Unbound instance of adapter.
-      def adapter
-        @adapter ||= adapter_class.new(self)
-      end
-
-      # Module container for admin-specific adapter methods.
-      def adapter_methods
-        @adapter_methods ||= Module.new
-      end
-
-      # Defines an admin-specific adapter method.
-      #
-      # The given block is wrapped rather than passed to #define_method directly, so that
-      # adapter methods can be defined with incomplete block parameters. Unfortunately
-      # this means we lose the ability to call super from within a custom adapter method.
-      def define_adapter_method(name, &block)
-        adapter_methods.define_method(name) do |*args|
-          instance_exec(*args, &block)
-        end
-      end
-
       # Deprecated: use instance method instead
       def prepare_collection(params, options={})
         Collection.new(self, options).prepare(params)
