@@ -73,6 +73,20 @@ describe Trestle::Admin, remove_const: true do
     end
   end
 
+  describe "#to_param" do
+    it "raises a NoMethodError if mistakenly called on the instance" do
+      expect {
+        admin.new(nil).to_param(123)
+      }.to raise_error(NoMethodError, "#to_param called on non-resourceful admin. You may need to explicitly specify the admin.")
+    end
+
+    it "raises a NoMethodError if mistakenly called on the class" do
+      expect {
+        admin.to_param(123)
+      }.to raise_error(NoMethodError, "#to_param called on non-resourceful admin. You may need to explicitly specify the admin.")
+    end
+  end
+
   context "scoped within a module" do
     subject!(:admin) do
       module Scoped; end

@@ -5,6 +5,8 @@ module Trestle
     autoload :Builder
     autoload :Controller
 
+    delegate :to_param, to: :class
+
     def initialize(context=nil)
       @context = context
     end
@@ -104,6 +106,10 @@ module Trestle
 
       def path(action=root_action, options={})
         Engine.routes.url_for(options.merge(controller: controller_namespace, action: action, only_path: true))
+      end
+
+      def to_param(*)
+        raise NoMethodError, "#to_param called on non-resourceful admin. You may need to explicitly specify the admin."
       end
 
       def actions
