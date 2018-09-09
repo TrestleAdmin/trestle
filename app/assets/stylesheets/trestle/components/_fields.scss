@@ -5,11 +5,13 @@
 .help-block {
   font-size: 13px;
 
-  &.floating {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 2px 0;
+  @media (min-width: $screen-sm-min) {
+    &.floating {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 2px 0;
+    }
   }
 }
 
