@@ -44,6 +44,14 @@ describe Trestle::Form::Builder, type: :helper do
       end
     end
 
+    it "renders a floating help message if options[:help] is a Hash and options[:help][:float] is true" do
+      result = builder.text_field(:title, help: { text: "Floating help message", float: true })
+
+      expect(result).to have_tag('.form-group') do
+        with_tag "p.help-block.floating", text: "Floating help message"
+      end
+    end
+
     context "with errors" do
       before(:each) do
         object.errors.add(:title, "is required")

@@ -1,3 +1,18 @@
+.form-group {
+  position: relative;
+}
+
+.help-block {
+  font-size: 13px;
+
+  &.floating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2px 0;
+  }
+}
+
 .select2-container--bootstrap {
   // This is required to ensure the select field is rendered at full width
   // within Bootstrap tabs that are hidden when the page is first loaded.

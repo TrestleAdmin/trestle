@@ -16,7 +16,16 @@ module Trestle
         end
 
         def help_message
-          content_tag(:p, options[:help], class: "help-block")
+          classes = ["help-block"]
+
+          if options[:help].is_a?(Hash)
+            message = options[:help][:text]
+            classes << "floating" if options[:help][:float]
+          else
+            message = options[:help]
+          end
+
+          content_tag(:p, message, class: classes)
         end
 
         def error_message
