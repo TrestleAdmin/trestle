@@ -29,6 +29,10 @@ module Trestle
       options[:autolink] != false
     end
 
+    def header?
+      options[:header] != false
+    end
+
     def renderer(template)
       Renderer.new(self, template)
     end
@@ -38,7 +42,7 @@ module Trestle
     end
 
     class Renderer
-      delegate :options, to: :@table
+      delegate :options, :header?, to: :@table
 
       def initialize(table, template)
         @table, @template = table, template

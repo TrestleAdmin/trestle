@@ -25,6 +25,20 @@ describe Trestle::Table do
     it { is_expected.not_to be_autolink }
   end
 
+  context "without options[:header]" do
+    it "has a header by default" do
+      expect(table.header?).to be true
+    end
+  end
+
+  context "with options[:header] = false" do
+    subject(:table) { Trestle::Table.new(header: false) }
+
+    it "does not have a header" do
+      expect(table.header?).to be false
+    end
+  end
+
   describe "#renderer" do
     let(:template) { double }
 
