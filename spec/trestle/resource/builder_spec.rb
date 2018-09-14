@@ -172,13 +172,13 @@ describe Trestle::Resource::Builder, remove_const: true do
       instance = double
 
       Trestle::Resource::Builder.create(:tests) do
-        delete_instance do |instance|
-          repository.delete(instance)
+        delete_instance do |instance, params|
+          repository.delete(instance, params)
         end
       end
 
-      expect(repository).to receive(:delete).with(instance)
-      expect(::TestsAdmin.delete_instance(instance))
+      expect(repository).to receive(:delete).with(instance, name: "Test")
+      expect(::TestsAdmin.delete_instance(instance, name: "Test"))
     end
   end
 
