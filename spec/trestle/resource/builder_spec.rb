@@ -155,14 +155,14 @@ describe Trestle::Resource::Builder, remove_const: true do
       repository = double
 
       Trestle::Resource::Builder.create(:tests) do
-        save_instance do |instance|
-          repository.save(instance)
+        save_instance do |instance, params|
+          repository.save(instance, params)
         end
       end
 
       instance = double
-      expect(repository).to receive(:save).with(instance)
-      expect(::TestsAdmin.save_instance(instance))
+      expect(repository).to receive(:save).with(instance, context: :admin)
+      expect(::TestsAdmin.save_instance(instance, context: :admin))
     end
   end
 

@@ -25,7 +25,7 @@ module Trestle
       def create
         self.instance = admin.build_instance(admin.permitted_params(params), params)
 
-        if admin.save_instance(instance)
+        if admin.save_instance(instance, params)
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
@@ -68,7 +68,7 @@ module Trestle
       def update
         admin.update_instance(instance, admin.permitted_params(params), params)
 
-        if admin.save_instance(instance)
+        if admin.save_instance(instance, params)
           respond_to do |format|
             format.html do
               flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")

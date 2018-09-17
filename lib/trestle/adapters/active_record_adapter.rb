@@ -17,7 +17,7 @@ module Trestle
         instance.assign_attributes(attrs)
       end
 
-      def save_instance(instance)
+      def save_instance(instance, params={})
         instance.save
       end
 

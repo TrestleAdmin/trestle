@@ -47,9 +47,10 @@ module Trestle
       # Saves an instance (used by the create and update actions).
       #
       # instance - The instance to save
+      # params   - Unfiltered params hash from the controller
       #
       # Returns a boolean indicating the success/fail status of the save.
-      def save_instance(instance)
+      def save_instance(instance, params={})
         raise NotImplementedError
       end
 
