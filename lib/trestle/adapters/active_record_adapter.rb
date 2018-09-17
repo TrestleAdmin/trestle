@@ -21,7 +21,7 @@ module Trestle
         instance.save
       end
 
-      def delete_instance(instance)
+      def delete_instance(instance, params={})
         instance.destroy
       end
 

@@ -56,9 +56,10 @@ module Trestle
       # Deletes an instance (used by the destroy action).
       #
       # instance - The instance to delete
+      # params   - Unfiltered params hash from the controller
       #
       # Returns a boolean indicating the success/fail status of the deletion.
-      def delete_instance(instance)
+      def delete_instance(instance, params={})
         raise NotImplementedError
       end
 

@@ -90,7 +90,7 @@ module Trestle
       end
 
       def destroy
-        success = admin.delete_instance(instance)
+        success = admin.delete_instance(instance, params)
 
         respond_to do |format|
           format.html do
