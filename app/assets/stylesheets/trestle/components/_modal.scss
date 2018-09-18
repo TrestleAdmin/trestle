@@ -1,3 +1,12 @@
+.modal {
+  &.background {
+    .modal-dialog {
+      transform: scale(0.9);
+      opacity: 0.75;
+    }
+  }
+}
+
 .modal-content {
   border: none;
   border-radius: 0;

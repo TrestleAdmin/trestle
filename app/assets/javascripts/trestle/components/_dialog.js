@@ -1,7 +1,7 @@
 Trestle.Dialog = function(options) {
   options = options || {};
 
-  this.el = Trestle.Dialog.getElement();
+  this.el = Trestle.Dialog.createElement();
 
   if (options.modalClass) {
     this.el.find('.modal-dialog').addClass(options.modalClass);
@@ -9,30 +9,31 @@ Trestle.Dialog = function(options) {
 };
 
 Trestle.Dialog.TEMPLATE =
-  '<div id="dialog" class="modal fade" tabindex="-1">' +
+  '<div class="modal fade" tabindex="-1">' +
     '<div class="modal-dialog">' +
       '<div class="modal-content" data-context></div>' +
     '</div>' +
   '</div>';
 
-Trestle.Dialog.getElement = function() {
-  var el = $('#dialog');
+Trestle.Dialog.createElement = function() {
+  var el = $(Trestle.Dialog.TEMPLATE).appendTo('body');
 
-  if (el.length == 0) {
-    el = $(Trestle.Dialog.TEMPLATE).appendTo('body');
+  el.modal({ show: false });
 
-    el.modal({ show: false });
+  // Remove dialog elements once hidden
+  el.on('hidden.bs.modal', function() {
+    el.remove();
+  });
 
-    // Remove dialog elements once hidden
-    el.on('hidden.bs.modal', function() {
-      el.remove();
-    });
+  // Restore the next visible modal to the foreground
+  el.on('hide.bs.modal', function() {
+    el.prevAll('.modal.in').last().removeClass('background');
+  });
 
-    // Set X-Trestle-Dialog header on AJAX requests initiated from the dialog
-    el.on('ajax:beforeSend', '[data-remote]', function(e, xhr, options) {
-      xhr.setRequestHeader("X-Trestle-Dialog", true);
-    });
-  }
+  // Set X-Trestle-Dialog header on AJAX requests initiated from the dialog
+  el.on('ajax:beforeSend', '[data-remote]', function(e, xhr, options) {
+    xhr.setRequestHeader("X-Trestle-Dialog", true);
+  });
 
   return el;
 };
@@ -113,6 +114,9 @@ Trestle.Dialog.prototype.showError = function(title, content) {
 
 Trestle.Dialog.prototype.show = function() {
   this.el.modal('show');
+
+  // Background any existing visible modals
+  this.el.prevAll('.modal.in').addClass('background');
 };
 
 Trestle.Dialog.prototype.hide = function() {
