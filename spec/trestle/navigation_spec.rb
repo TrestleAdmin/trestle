@@ -38,6 +38,10 @@ describe Trestle::Navigation do
         group :agroup3, priority: 5 do
           item :group3_item1
         end
+
+        group :group1, label: "Group" do
+          item :group1_item2
+        end
       end
     end
 
@@ -63,6 +67,11 @@ describe Trestle::Navigation do
       item2 = items.find { |i| i.name == :group2_item2 }
 
       expect(items.index(item1)).to be > items.index(item2)
+    end
+
+    it "merges together options for the same group" do
+      group = result.keys.find { |g| g.respond_to?(:name) && g.name == :group1 }
+      expect(group.options).to eq({ priority: 10, label: "Group" })
     end
   end
 

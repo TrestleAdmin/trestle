@@ -26,6 +26,10 @@ module Trestle
         end
       end
 
+      def merge(other)
+        self.class.new(name, options.merge(other.options))
+      end
+
       def priority
         case options[:priority]
         when :first
@@ -69,6 +73,10 @@ module Trestle
 
       def <=>(other)
         -1
+      end
+
+      def merge(other)
+        self
       end
     end
   end

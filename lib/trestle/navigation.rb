@@ -14,7 +14,10 @@ module Trestle
     end
 
     def by_group
-      Hash[stable_sort(items.group_by(&:group)).map { |group, items| [group, stable_sort(items)] }]
+      sorted_groups = stable_sort(items.group_by { |item| groups[item.group.id] })
+      sorted_items = sorted_groups.map { |group, items| [group, stable_sort(items)] }
+
+      Hash[sorted_items]
     end
 
     def each(&block)
@@ -37,6 +40,15 @@ module Trestle
   private
     def stable_sort(items)
       items.sort_by.with_index { |item, i| [item, i] }
+    end
+
+    def groups
+      @groups ||= items.inject({}) { |groups, item|
+        group = groups[item.group.id]
+
+        groups[item.group.id] = group ? group.merge(item.group) : item.group
+        groups
+      }
     end
   end
 end
