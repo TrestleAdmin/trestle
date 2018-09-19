@@ -38,7 +38,11 @@ After restarting your Rails server, visit http://localhost:3000/admin to view yo
 ```ruby
 Trestle.resource(:posts) do
   # Add a link to this admin in the main navigation
-  menu :posts, icon: "fa fa-file-text-o", group: :blog_management
+  menu do
+    group :blog_management, priority: :first do
+      item :posts, icon: "fa fa-file-text-o"
+    end
+  end
 
   # Define custom scopes for the index view
   scope :all, default: true
