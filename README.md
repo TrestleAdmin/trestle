@@ -98,6 +98,7 @@ The following plugins are currently available:
 | *trestle-tinymce* | [TinyMCE](https://www.tinymce.com/) (WYSIWYG editor) integration | [GitHub](https://github.com/TrestleAdmin/trestle-tinymce) \| [RubyGems](https://rubygems.org/gems/trestle-tinymce) |
 | *trestle-simplemde* | [SimpleMDE](https://simplemde.com/) (Markdown editor) integration | [GitHub](https://github.com/TrestleAdmin/trestle-simplemde) \| [RubyGems](https://rubygems.org/gems/trestle-simplemde) |
 | *trestle-sidekiq* | [Sidekiq](http://sidekiq.org/) integration | [GitHub](https://github.com/TrestleAdmin/trestle-sidekiq) \| [RubyGems](https://rubygems.org/gems/trestle-sidekiq) |
+| *trestle-active_storage* | [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) integration | [GitHub](https://github.com/richardvenneman/trestle-active_storage) \| [RubyGems](https://rubygems.org/gems/trestle-active_storage) |
 
 
 ## License
