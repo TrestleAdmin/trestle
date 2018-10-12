@@ -18,6 +18,19 @@ describe Trestle::Toolbar do
     expect(toolbar.groups(template).to_a).to be_empty
   end
 
+  describe "#clear!" do
+    before(:each) do
+      toolbar.append do |t|
+        t.button "Button"
+      end
+    end
+
+    it "clears out any defined blocks" do
+      toolbar.clear!
+      expect(toolbar.groups(template).to_a).to be_empty
+    end
+  end
+
   describe "#append" do
     it "appends buttons and links defined in the block" do
       toolbar.append do |t|

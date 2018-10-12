@@ -7,6 +7,10 @@ module Trestle
 
     def initialize(builder=Builder)
       @builder = builder
+      clear!
+    end
+
+    def clear!
       @blocks = []
     end
 
