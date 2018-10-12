@@ -1,7 +1,8 @@
 module Trestle
   module ToolbarsHelper
-    def toolbar(name, &block)
+    def toolbar(name, options={}, &block)
       toolbar = (toolbars[name.to_s] ||= Toolbar.new)
+      toolbar.clear! if options[:clear]
       toolbar.prepend(&block) if block_given?
       toolbar
     end
