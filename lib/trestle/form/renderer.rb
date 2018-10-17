@@ -3,6 +3,7 @@ module Trestle
     class Renderer
       include ::ActionView::Context
       include ::ActionView::Helpers::CaptureHelper
+      include HookHelper
 
       # Whitelisted helpers will concatenate their result to the output buffer when called.
       WHITELISTED_HELPERS = [:row, :col, :render, :tab, :table, :divider, :h1, :h2, :h3, :h4, :h5, :h6, :panel, :well]
