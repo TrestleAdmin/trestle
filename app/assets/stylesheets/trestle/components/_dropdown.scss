@@ -40,4 +40,26 @@
       right: 11px;
     }
   }
+
+  .dropup & {
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    &:before {
+      top: auto;
+      bottom: -$dropdown-arrow-outer-width;
+
+      border-bottom: 0;
+      border-top: $dropdown-arrow-width solid $dropdown-fallback-border;
+      border-top-color: $dropdown-border;
+    }
+
+    &:after {
+      top: auto;
+      bottom: -$dropdown-arrow-width;
+
+      border-bottom: 0;
+      border-top: $dropdown-arrow-outer-width solid white;
+    }
+  }
 }
