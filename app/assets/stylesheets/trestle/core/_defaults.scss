@@ -84,6 +84,8 @@ $popover-arrow-width:        7px !default;
 $dropdown-arrow-width:       $popover-arrow-width !default;
 $dropdown-arrow-outer-width: $dropdown-arrow-width + 1px !default;
 
+$dropdown-header-color: #111 !default;
+
 $input-border:       #ccc !default;
 $input-border-focus: mix($brand-primary, $input-border) !default;
 $input-bg-disabled:  #fafafa !default;
