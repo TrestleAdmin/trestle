@@ -3,7 +3,7 @@ module Trestle
     def panel(options={}, &block)
       html_class = options.fetch(:class) { "panel-default" }
 
-      content_tag(:div, class: ["panel", html_class]) do
+      content_tag(:div, options.slice(:id, :data).merge(class: ["panel", html_class])) do
         if options[:title]
           concat content_tag(:div, options[:title], class: "panel-heading")
         end
