@@ -16,3 +16,9 @@ gemfile:
 
 addons:
   chrome: stable
+
+matrix:
+  include:
+    gemfile: gemfiles/rails-4.2.gemfile
+    before_install:
+      - gem install bundler -v ‘< 2’
