@@ -8,19 +8,20 @@ module Trestle
         @block = block
       end
 
-      def items
-        context = Context.new(@admin)
+      def items(context)
+        context = Evaluator.new(@admin, context)
         context.instance_exec(@admin, &block)
         context.items
       end
 
-      class Context
+      class Evaluator
         include Rails.application.routes.url_helpers if Rails.application
+        include EvaluationContext
 
         attr_reader :items
 
-        def initialize(admin=nil)
-          @admin = admin
+        def initialize(admin=nil, context=nil)
+          @admin, @context = admin, context
           @items = []
         end
 

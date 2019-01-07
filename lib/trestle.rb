@@ -58,8 +58,9 @@ module Trestle
     config.configure(&block)
   end
 
-  def self.navigation
-    Navigation.build(config.menus + admins.values.map(&:menu).compact)
+  def self.navigation(context)
+    blocks = config.menus + admins.values.map(&:menu).compact
+    Navigation.build(blocks, context)
   end
 end
 

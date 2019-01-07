@@ -34,6 +34,8 @@ describe Trestle::Admin::Builder, remove_const: true do
   end
 
   describe "#menu" do
+    let(:context) { double }
+
     it "sets the admin's menu to a bound navigation block" do
       Trestle::Admin::Builder.create(:test) do
         menu do
@@ -49,7 +51,7 @@ describe Trestle::Admin::Builder, remove_const: true do
         menu :test, "/path"
       end
 
-      expect(::TestAdmin.menu.items).to eq([Trestle::Navigation::Item.new(:test, "/path")])
+      expect(::TestAdmin.menu.items(context)).to eq([Trestle::Navigation::Item.new(:test, "/path")])
     end
   end
 

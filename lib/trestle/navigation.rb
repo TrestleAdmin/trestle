@@ -29,12 +29,12 @@ module Trestle
       sorted.first.first if sorted.any?
     end
 
-    def visible(context)
-      self.class.new(items.select { |item| item.visible?(context) })
-    end
-
-    def self.build(blocks)
-      new(blocks.map(&:items).flatten)
+    def self.build(blocks, context)
+      new(blocks.map { |block|
+        block.items(context)
+      }.flatten.select { |item|
+        item.visible?(context)
+      })
     end
 
   private

@@ -62,6 +62,8 @@ describe Trestle, remove_const: true do
   end
 
   describe "#navigation" do
+    let(:context) { double }
+
     it "returns a navigation object using menu blocks from configuration and admin" do
       Trestle.configure do |config|
         config.menu do
@@ -75,7 +77,7 @@ describe Trestle, remove_const: true do
         end
       end
 
-      expect(Trestle.navigation.items).to include(
+      expect(Trestle.navigation(context).items).to include(
         Trestle::Navigation::Item.new(:item1, "/path1"),
         Trestle::Navigation::Item.new(:item2, "/path2")
       )

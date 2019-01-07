@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe Trestle::Navigation do
-  subject(:navigation) { Trestle::Navigation.build(blocks) }
+  subject(:navigation) { Trestle::Navigation.build(blocks, context) }
+
   let(:blocks) { [block] }
+  let(:context) { double }
 
   describe "#items" do
     let(:blocks) do
@@ -115,26 +117,6 @@ describe Trestle::Navigation do
       it "returns nil" do
         expect(navigation.first).to be_nil
       end
-    end
-  end
-
-  describe "#visible" do
-    let(:block) do
-      Trestle::Navigation::Block.new do
-        item :default
-        item :if_false, if: -> { false }
-        item :if_true, if: -> { true }
-        item :unless_false, unless: -> { false }
-        item :unless_true, unless: -> { true }
-      end
-    end
-
-    it "returns a new Navigation object with only visible items" do
-      expect(navigation.visible(self).items).to eq([
-        Trestle::Navigation::Item.new(:default),
-        Trestle::Navigation::Item.new(:if_true),
-        Trestle::Navigation::Item.new(:unless_false)
-      ])
     end
   end
 end
