@@ -1,6 +1,8 @@
 module Trestle
   module Adapters
     class Adapter
+      include EvaluationContext
+
       attr_reader :admin
       delegate :model, to: :admin
 
@@ -178,23 +180,6 @@ module Trestle
       # Returns an Array of Trestle::Attribute and/or Trestle::Attribute::Association objects.
       def default_form_attributes
         raise NotImplementedError
-      end
-
-    protected
-      # Missing methods are called on the given context if available.
-      #
-      # We include private methods as methods such as current_user
-      # are usually declared as private or protected.
-      def method_missing(name, *args, &block)
-        if @context && @context.respond_to?(name, true)
-          @context.send(name, *args, &block)
-        else
-          super
-        end
-      end
-
-      def respond_to_missing?(name, include_private=false)
-        (@context && @context.respond_to?(name, true)) || super
       end
     end
   end
