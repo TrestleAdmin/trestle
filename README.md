@@ -9,6 +9,8 @@
 [![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat)](https://coveralls.io/github/TrestleAdmin/trestle)
 [![Code Climate](https://api.codeclimate.com/v1/badges/c529a7a9c500ed81baed/maintainability)](https://codeclimate.com/github/TrestleAdmin/trestle)
 
+[Demo Site](https://demo.trestle.io) | [Demo Source Code](https://github.com/TrestleAdmin/RailsFlixDemo)
+
 > A modern, responsive admin framework for Ruby on Rails
 
 <img src="https://trestle.io/images/Trestle-Screenshot-1-1x.png?" width="50%" /><img src="https://trestle.io/images/Trestle-Screenshot-2-1x.png?" width="50%" />
