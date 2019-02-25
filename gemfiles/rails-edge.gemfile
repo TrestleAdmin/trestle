@@ -14,4 +14,4 @@ end
 gem 'rails', github: 'rails/rails'
 gem 'arel', github: 'rails/arel'
 
-gemspec :path => "../"
+gemspec path: "../"
