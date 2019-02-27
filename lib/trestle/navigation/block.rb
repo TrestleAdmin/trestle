@@ -15,7 +15,6 @@ module Trestle
       end
 
       class Evaluator
-        include Rails.application.routes.url_helpers if Rails.application
         include EvaluationContext
 
         attr_reader :items
