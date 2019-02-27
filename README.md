@@ -47,9 +47,11 @@ Trestle.resource(:posts) do
   end
 
   # Define custom scopes for the index view
-  scope :all, default: true
-  scope :published
-  scope :drafts, -> { Post.unpublished }
+  scopes do
+    scope :all, default: true
+    scope :published
+    scope :drafts, -> { Post.unpublished }
+  end
 
   # Define the index view table listing
   table do

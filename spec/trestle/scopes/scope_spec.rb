@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Trestle::Scope do
+describe Trestle::Scopes::Scope do
   let(:admin) { double }
   let(:options) { {} }
   let(:block) { nil }
 
-  subject(:scope) { Trestle::Scope.new(admin, :my_scope, options, &block) }
+  subject(:scope) { Trestle::Scopes::Scope.new(admin, :my_scope, options, &block) }
 
   describe "#to_param" do
     it "returns the scope name" do

@@ -83,13 +83,14 @@ module Trestle
         admin.define_adapter_method(:count, &block)
       end
 
-      def scope(name, scope=nil, options={}, &block)
-        if scope.is_a?(Hash)
-          options = scope
-          scope = nil
-        end
+      def scopes(&block)
+        admin.scopes.append(&block)
+      end
 
-        admin.scopes[name] = Scope.new(admin, name, options, &(scope || block))
+      def scope(name, scope=nil, options={}, &block)
+        scopes do
+          scope(name, scope, options, &block)
+        end
       end
 
       def return_to(options={}, &block)

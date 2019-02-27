@@ -25,7 +25,7 @@ module Trestle
   autoload :Options
   autoload :Reloader
   autoload :Resource
-  autoload :Scope
+  autoload :Scopes
   autoload :Tab
   autoload :Table
   autoload :Toolbar

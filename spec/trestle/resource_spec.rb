@@ -5,15 +5,16 @@ describe Trestle::Resource, remove_const: true do
     class Test; end
   end
 
-  subject!(:admin) { Trestle.resource(:tests) }
+  let(:definition) { Trestle.resource(:tests) }
+  subject!(:admin) { definition.new }
 
   before(:each) do
     Rails.application.reload_routes!
   end
 
   it "is a subclass of Resource and Admin" do
-    expect(admin).to be < Trestle::Resource
-    expect(admin).to be < Trestle::Admin
+    expect(definition).to be < Trestle::Resource
+    expect(definition).to be < Trestle::Admin
   end
 
   it "infers the model from the admin name" do

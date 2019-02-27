@@ -233,11 +233,12 @@ describe Trestle::Resource::Builder, remove_const: true do
         end
       end
 
+      admin = ::TestsAdmin.new
       collection = double
-      allow(::TestsAdmin).to receive(:collection).and_return(collection)
 
+      allow(admin).to receive(:collection).and_return(collection)
       expect(collection).to receive(:order).with(field: :asc).and_return([1, 2, 3])
-      expect(::TestsAdmin.prepare_collection(sort: "field", order: "asc")).to eq([1, 2, 3])
+      expect(admin.prepare_collection(sort: "field", order: "asc")).to eq([1, 2, 3])
     end
   end
 
@@ -316,9 +317,11 @@ describe Trestle::Resource::Builder, remove_const: true do
         scope :my_scope, label: "Custom Label", &b
       end
 
-      expect(::TestsAdmin.scopes).to include(my_scope: be_a(Trestle::Scope))
-      expect(::TestsAdmin.scopes[:my_scope].options).to eq(label: "Custom Label")
-      expect(::TestsAdmin.scopes[:my_scope].block).to eq(b)
+      admin = ::TestsAdmin.new
+
+      expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
+      expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
+      expect(admin.scopes[:my_scope].block).to eq(b)
     end
 
     context "with a proc as the second parameter" do
@@ -329,9 +332,11 @@ describe Trestle::Resource::Builder, remove_const: true do
           scope :my_scope, b, label: "Custom Label"
         end
 
-        expect(::TestsAdmin.scopes).to include(my_scope: be_a(Trestle::Scope))
-        expect(::TestsAdmin.scopes[:my_scope].options).to eq(label: "Custom Label")
-        expect(::TestsAdmin.scopes[:my_scope].block).to eq(b)
+        admin = ::TestsAdmin.new
+
+        expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
+        expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
+        expect(admin.scopes[:my_scope].block).to eq(b)
       end
     end
   end

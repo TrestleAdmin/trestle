@@ -50,6 +50,11 @@ module Trestle
       Collection.new(self, options).prepare(params)
     end
 
+    # Evaluates the admin's scope block(s) and returns a hash of Scope objects keyed by the scope name
+    def scopes
+      @scopes ||= self.class.scopes.evaluate(@context)
+    end
+
     class << self
       # Deprecated: use instance method instead
       def prepare_collection(params, options={})
@@ -57,7 +62,7 @@ module Trestle
       end
 
       def scopes
-        @scopes ||= {}
+        @scopes ||= Scopes.new(self)
       end
 
       def column_sorts
