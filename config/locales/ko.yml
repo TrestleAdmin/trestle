@@ -1,0 +1,96 @@
+ko:
+  trestle:
+    title: "Trestle Admin"
+    footer: "Powered by Trestle"
+    version: "버전"
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "%{entry_name}을(를) 찾을 수 없습니다."
+            one: "<strong>1</strong> %{entry_name} 표시중"
+            other: "<strong>모든 %{count}</strong> %{entry_name} 표시중"
+
+        more_pages:
+          display_entries: "<b>%{total}</b> 중 <strong>%{first}&nbsp;-&nbsp;%{last}</strong> %{entry_name} 표시중"
+
+    onboarding:
+      welcome: "Trestle에 오신 것을 환영합니다."
+      no_admins: "사용하시려면 <code>app/admin</code>에 admin을 생성하십시오."
+      no_template: "이 템플릿을 사용자화 하시려면, <code>%{path}</code>를 생성하십시오."
+      no_form: "form block을 정의하시거나 <code>_form.html</code> partial를 생성하십시오."
+
+    ui:
+      toggle_navigation: "네비게이션 토글"
+      toggle_sidebar: "사이드바 토글"
+
+    dialog:
+      error: "완료될 수 없는 요청입니다."
+
+    confirmation:
+      title: "정말 하시겠습니까?"
+      delete: "삭제"
+      cancel: "취소"
+
+  admin:
+    titles:
+      index: "%{pluralized_model_name} 목록"
+      new: "%{model_name} 생성"
+      edit: "%{model_name} 수정"
+
+    buttons:
+      new: "%{model_name} 생성"
+      save: "%{model_name} 저장"
+      delete: "%{model_name} 삭제"
+      show: "%{model_name} 보기"
+      edit: "%{model_name} 수정"
+      ok: "확인"
+
+    breadcrumbs:
+      home: "Home"
+
+    flash:
+      create:
+        success:
+          title: "성공!"
+          message: "%{lowercase_model_name} 성공적으로 생성되었습니다."
+
+        failure:
+          title: "경고!"
+          message: "하기된 에러를 확인하십시오."
+
+      update:
+        success:
+          title: "성공!"
+          message: "%{lowercase_model_name} 성공적으로 수정되었습니다."
+
+        failure:
+          title: "경고!"
+          message: "하기된 에러를 확인하십시오."
+
+      destroy:
+        success:
+          title: "성공!"
+          message: "%{lowercase_model_name} 성공적으로 삭제되었습니다."
+
+        failure:
+          title: "경고!"
+          message: "%{lowercase_model_name} 삭제할 수 없습니다."
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- %{attribute_name} 선택 -"
+
+    format:
+      blank: "없음"
+
+    datepicker:
+      formats:
+        date: "Y/m/d"
+        datetime: "Y/m/d h:i K"
+        time: "h:i K"
