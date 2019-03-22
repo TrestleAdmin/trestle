@@ -13,6 +13,9 @@ module Trestle
     # Custom image for the collapsed/tablet navigation
     option :site_logo_small
 
+    # Favicon used within the admin
+    option :favicon
+
     # Text shown in the admin page footer
     option :footer, -> { I18n.t("trestle.footer", default: "Powered by Trestle") }
 

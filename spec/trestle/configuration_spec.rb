@@ -16,6 +16,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:site_logo_small)
   end
 
+  it "has a favicon configuration option" do
+    expect(config).to have_accessor(:favicon)
+  end
+
   it "has a timestamp precision configuration option" do
     expect(config).to have_accessor(:timestamp_precision).with_default(:minutes)
   end
