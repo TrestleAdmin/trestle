@@ -1,6 +1,5 @@
 Trestle.configure do |config|
   config.site_title = "Trestle Sandbox"
-  config.favicon = "logo.png"
 
   config.menu do
     group "Badges & Labels" do
