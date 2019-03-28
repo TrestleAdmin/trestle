@@ -23,13 +23,13 @@
     <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks %>
     <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
 
-    <script type="text/javascript">
+    <%= javascript_tag nonce: true do %>
       <% Trestle.config.javascript_i18n_keys.each do |key| %>
       Trestle.i18n['<%= key %>'] = "<%= escape_javascript(t(key, default: t(key, locale: :en))) %>";
       <% end %>
 
       Trestle.localize(<%= i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
-    </script>
+    <% end %>
 
     <%= hook :javascripts %>
 
