@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe Trestle::Form::Renderer, type: :helper do
-  include Trestle::GridHelper
-  include Trestle::IconHelper
+  include_context "template" do
+    before(:each) do
+      template.extend(Trestle::GridHelper)
+
+      allow(template).to receive(:form) { form }
+    end
+  end
 
   let(:instance) { double }
   let(:form) { double }
-  let(:template) { self }
 
   subject(:renderer) { Trestle::Form::Renderer.new(template) }
 

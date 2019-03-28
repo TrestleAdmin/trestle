@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Trestle::Table::SelectColumn do
-  let(:options) { {} }
-  let(:template) { double }
+  include_context "template"
+
   let(:table) { Trestle::Table.new }
 
   subject(:column) { Trestle::Table::SelectColumn.new(table) }

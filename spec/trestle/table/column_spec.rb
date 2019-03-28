@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Trestle::Table::Column do
+  include_context "template"
+
   let(:options) { {} }
-  let(:template) { double }
   let(:table) { Trestle::Table.new(sortable: true) }
 
   let(:instance) { double }

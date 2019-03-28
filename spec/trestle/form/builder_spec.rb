@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe Trestle::Form::Builder, type: :helper do
-  include Trestle::IconHelper
+  include_context "template" do
+    let(:admin) { double(readonly?: false) }
+  end
 
-  let(:admin) { double(readonly?: false) }
+  before(:each) do
+    allow(template).to receive(:admin).and_return(admin)
+  end
+
   let(:object_name) { :article }
   let(:object) { instance_double("Article", title: "Title", errors: ActiveModel::Errors.new([])) }
-  let(:template) { self }
   let(:options) { {} }
 
   subject(:builder) { Trestle::Form::Builder.new(object_name, object, template, options) }

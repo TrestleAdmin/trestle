@@ -40,7 +40,7 @@ describe Trestle::Table do
   end
 
   describe "#renderer" do
-    let(:template) { double }
+    include_context "template"
 
     subject(:renderer) { table.renderer(template) }
 
