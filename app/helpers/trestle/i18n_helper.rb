@@ -10,5 +10,11 @@ module Trestle
         [locale]
       end
     end
+
+    def default_translation(key)
+      translate(key, locale: :en)
+    rescue I18n::InvalidLocale
+      key.split(".").last.humanize
+    end
   end
 end

@@ -25,7 +25,7 @@
 
     <%= javascript_tag nonce: true do %>
       <% Trestle.config.javascript_i18n_keys.each do |key| %>
-      Trestle.i18n['<%= key %>'] = "<%= escape_javascript(t(key, default: t(key, locale: :en))) %>";
+      Trestle.i18n['<%= key %>'] = "<%= escape_javascript(t(key, default: default_translation(key))) %>";
       <% end %>
 
       Trestle.localize(<%= i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
