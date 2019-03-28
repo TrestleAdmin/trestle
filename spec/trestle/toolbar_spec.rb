@@ -1,17 +1,12 @@
 require 'spec_helper'
 
 describe Trestle::Toolbar do
+  include_context "template"
+
   subject(:toolbar) { Trestle::Toolbar.new }
 
-  let(:template) { ActionView::Base.new }
-
-  let(:button) { double}
-  let(:link) { double }
-
   before(:each) do
-    allow(template).to receive(:button_tag).and_return(button)
-    allow(template).to receive(:admin_link_to).and_return(link)
-    allow(template).to receive(:icon) { |klass| template.content_tag(:i, "", class: klass) }
+    template.extend(Trestle::UrlHelper)
   end
 
   it "initially has no groups" do
@@ -32,16 +27,21 @@ describe Trestle::Toolbar do
   end
 
   describe "#append" do
-    it "appends buttons and links defined in the block" do
+    it "appends buttons, links and dropdowns defined in the block" do
       toolbar.append do |t|
         t.button "Button"
       end
 
       toolbar.append do |t|
         t.link "Link", "#"
+        t.dropdown "Dropdown"
       end
 
-      expect(toolbar.groups(template).to_a).to eq [[button], [link]]
+      expect(toolbar.groups(template).to_a).to eq [
+        [Trestle::Toolbar::Button.new(template, "Button")],
+        [Trestle::Toolbar::Link.new(template, "Link", "#")],
+        [Trestle::Toolbar::Dropdown.new(template, "Dropdown")]
+      ]
     end
 
     it "allows organization of buttons and links into groups" do
@@ -52,7 +52,9 @@ describe Trestle::Toolbar do
         end
       end
 
-      expect(toolbar.groups(template).to_a).to eq [[button, link]]
+      expect(toolbar.groups(template).to_a).to eq [
+        [Trestle::Toolbar::Button.new(template, "Button"), Trestle::Toolbar::Link.new(template, "Link", "#")]
+      ]
     end
   end
 
@@ -66,7 +68,10 @@ describe Trestle::Toolbar do
         t.link "Link", "#"
       end
 
-      expect(toolbar.groups(template).to_a).to eq [[link], [button]]
+      expect(toolbar.groups(template).to_a).to eq [
+        [Trestle::Toolbar::Link.new(template, "Link", "#")],
+        [Trestle::Toolbar::Button.new(template, "Button")]
+      ]
     end
   end
 
@@ -74,40 +79,24 @@ describe Trestle::Toolbar do
     let(:builder) { Trestle::Toolbar::Builder.new(template) }
 
     it "has a list of registered builder methods" do
-      expect(builder.builder_methods).to eq([:button, :link])
+      expect(builder.builder_methods).to include(:button, :link, :dropdown)
     end
 
     describe "#button" do
-      it "creates a button tag" do
-        expect(template).to receive(:button_tag).with('<span class="btn-label">Button</span>', class: %w(btn btn-default)).and_return(button)
-        expect(builder.button("Button")).to eq(button)
-      end
-
-      it "allows the button style to be specified" do
-        expect(template).to receive(:button_tag).with('<span class="btn-label">Button</span>', class: %w(btn btn-success)).and_return(button)
-        expect(builder.button("Button", style: :success)).to eq(button)
-      end
-
-      it "allows an icon to be specified" do
-        expect(template).to receive(:button_tag).with('<i class="fa fa-trash"></i> <span class="btn-label">Button</span>', class: %w(btn btn-default has-icon)).and_return(button)
-        expect(builder.button("Button", icon: "fa fa-trash")).to eq(button)
+      it "creates a Button instance" do
+        expect(builder.button("Button Label", style: :success)).to eq(Trestle::Toolbar::Button.new(template, "Button Label", style: :success))
       end
     end
 
     describe "#link" do
-      it "creates a button link" do
-        expect(template).to receive(:admin_link_to).with('<span class="btn-label">Link</span>', "#", class: %w(btn btn-default)).and_return(link)
-        expect(builder.link("Link", "#")).to eq(link)
+      it "creates a Link instance" do
+        expect(builder.link("Link Label", "#", style: :info)).to eq(Trestle::Toolbar::Link.new(template, "Link Label", "#", style: :info))
       end
+    end
 
-      it "allows the button style to be specified" do
-        expect(template).to receive(:admin_link_to).with('<span class="btn-label">Link</span>', "#", class: %w(btn btn-success)).and_return(link)
-        expect(builder.link("Link", "#", style: :success)).to eq(link)
-      end
-
-      it "allows an icon to be specified" do
-        expect(template).to receive(:admin_link_to).with('<i class="fa fa-trash"></i> <span class="btn-label">Link</span>', "#", class: %w(btn btn-default has-icon)).and_return(link)
-        expect(builder.link("Link", "#", icon: "fa fa-trash")).to eq(link)
+    describe "#dropdown" do
+      it "creates a Dropdown instance" do
+        expect(builder.dropdown("Dropdown Label")).to eq(Trestle::Toolbar::Dropdown.new(template, "Dropdown Label"))
       end
     end
   end

@@ -4,6 +4,13 @@ module Trestle
 
     autoload :Builder
     autoload :Context
+    autoload :Menu
+
+    autoload_at "trestle/toolbar/item" do
+      autoload :Button
+      autoload :Dropdown
+      autoload :Link
+    end
 
     def initialize(builder=Builder)
       @builder = builder

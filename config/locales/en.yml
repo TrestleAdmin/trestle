@@ -24,6 +24,7 @@ en:
     ui:
       toggle_navigation: "Toggle navigation"
       toggle_sidebar: "Toggle sidebar"
+      toggle_dropdown: "Toggle dropdown"
 
     dialog:
       error: "The request could not be completed."

@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe Trestle::Table::ActionsColumn do
+  include_context "template"
+
   let(:options) { {} }
   let(:table) { Trestle::Table.new(admin: admin) }
-  let(:admin) { double }
+  let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false)) }
   let(:instance) { double }
-  let(:template) { ActionView::Base.new }
 
   before(:each) do
     allow(Trestle).to receive(:lookup).and_return(admin)
@@ -56,7 +57,6 @@ describe Trestle::Table::ActionsColumn do
       let(:admin) { double(actions: [:destroy]) }
 
       let(:button) { double }
-      let(:icon) { double }
 
       it "renders the actions block" do
         expect(template).to receive(:render_toolbar).with(column.toolbar, instance, admin)
@@ -71,54 +71,36 @@ describe Trestle::Table::ActionsColumn do
 
     let(:button) { double }
 
-    before(:each) do
-      allow(template).to receive(:icon) { |klass| template.content_tag(:i, "", class: klass) }
-    end
-
     it "has a list of registered builder methods" do
-      expect(builder.builder_methods).to eq([:button, :link, :show, :edit, :delete])
-    end
-
-    describe "#link" do
-      it "appends a button link to the template" do
-        expect(template).to receive(:admin_link_to)
-          .with('<span class="btn-label">Test</span>', "/path", class: %w(btn btn-info))
-          .and_return(button)
-
-        expect(builder.link("Test", "/path", style: :info)).to eq(button)
-      end
+      expect(builder.builder_methods).to include(:button, :link, :show, :edit, :delete)
     end
 
     describe "#delete" do
-      it "appends a delete link to the template" do
+      it "returns a delete link" do
         expect(admin).to receive(:translate).with("buttons.delete", default: "Delete").and_return("Delete")
-        expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-trash"></i> <span class="btn-label">Delete</span>', instance, admin: admin, action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }, class: %w(btn btn-danger has-icon))
-          .and_return(button)
-
-        expect(builder.delete).to eq(button)
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }))
       end
     end
 
     describe "#show" do
-      it "appends a show link to the template" do
+      it "returns a show link" do
         expect(admin).to receive(:translate).with("buttons.show", default: "Show").and_return("Show")
-        expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-info"></i> <span class="btn-label">Show</span>', instance, admin: admin, action: :show, class: %w(btn btn-info has-icon))
-          .and_return(button)
-
-        expect(builder.show).to eq(button)
+        expect(builder.show).to eq(Trestle::Toolbar::Link.new(template, "Show", instance, style: :info, icon: "fa fa-info"))
       end
     end
 
     describe "#edit" do
-      it "appends an edit link to the template" do
+      it "returns an edit link" do
         expect(admin).to receive(:translate).with("buttons.edit", default: "Edit").and_return("Edit")
-        expect(template).to receive(:admin_link_to)
-          .with('<i class="fa fa-pencil"></i> <span class="btn-label">Edit</span>', instance, admin: admin, action: :edit, class: %w(btn btn-warning has-icon))
-          .and_return(button)
+        expect(builder.edit).to eq(Trestle::Toolbar::Link.new(template, "Edit", instance, style: :warning, icon: "fa fa-pencil"))
+      end
+    end
 
-        expect(builder.edit).to eq(button)
+    describe "#button" do
+      it "returns a toolbar link instead of a button" do
+        expect(builder.button("Test", "/path", style: :info)).to eq(
+          Trestle::Toolbar::Link.new(template, "Test", "/path", style: :info)
+        )
       end
     end
   end
