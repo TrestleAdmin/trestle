@@ -20,6 +20,11 @@
   // within Bootstrap tabs that are hidden when the page is first loaded.
   // See: https://github.com/select2/select2/issues/4220
   width: 100% !important;
+
+  .select2-results__group {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
 }
 
 .date-select,
