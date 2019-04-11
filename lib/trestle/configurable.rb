@@ -2,15 +2,26 @@ module Trestle
   module Configurable
     extend ActiveSupport::Concern
 
-    def initialize
-      self.class.defaults.each do |name, default|
-        options[name] = default
-      end
-    end
+    delegate :defaults, to: :class
 
     def configure(&block)
       yield self if block_given?
       self
+    end
+
+    def fetch(name)
+      name = name.to_sym
+
+      options.fetch(name) {
+        if defaults.key?(name)
+          value = defaults[name]
+          assign(name, value)
+        end
+      }
+    end
+
+    def assign(name, value)
+      options[name.to_sym] = value
     end
 
     def options
@@ -36,17 +47,17 @@ module Trestle
         name = name.to_sym
 
         define_method("#{name}=") do |value|
-          options[name] = value
+          assign(name, value)
         end
 
         define_method(name) do |*args|
-          value = options[name]
+          value = fetch(name)
 
           if value.respond_to?(:call) && opts[:evaluate] != false
-            value.call(*args)
-          else
-            value
+            value = value.call(*args)
           end
+
+          value
         end
 
         defaults[name] = default

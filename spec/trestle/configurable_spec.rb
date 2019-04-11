@@ -25,6 +25,14 @@ describe Trestle::Configurable do
     expect(config.as_json({})).to eq({ myoption: "test" })
   end
 
+  it "lazily initializes default values" do
+    configurable.option :first, "first"
+    expect(config.first).to eq("first")
+
+    configurable.option :second, "second"
+    expect(config.second).to eq("second")
+  end
+
   describe "#configure" do
     it "yields itself" do
       expect { |b| config.configure(&b) }.to yield_with_args(config)
