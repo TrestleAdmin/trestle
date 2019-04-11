@@ -14,4 +14,6 @@ end
 gem 'rails', github: 'rails/rails'
 gem 'arel', github: 'rails/arel'
 
+gem 'sqlite3', '~> 1.4'
+
 gemspec path: "../"
