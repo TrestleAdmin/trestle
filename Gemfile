@@ -16,3 +16,4 @@ group :test do
 end
 
 gem 'haml'
+gem 'sassc-rails'
