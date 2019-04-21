@@ -6,6 +6,10 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<li<% if current_page.first? %> class="disabled"<% end %>>
-  <%= link_to_unless current_page.first?, content_tag(:span, "&laquo;".html_safe), url, remote: remote %>
+<li class="page-item<% if current_page.first? %> disabled<% end %>">
+  <% if current_page.first? %>
+    <span class="page-link">&laquo;</span>
+  <% else %>
+    <%= link_to content_tag(:span, "&laquo;".html_safe), url, class: "page-link", remote: remote %>
+  <% end %>
 </li>
