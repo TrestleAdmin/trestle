@@ -8,9 +8,7 @@ module Trestle
 
     # Vendor assets
     %w(eot svg ttf woff woff2).each do |ext|
-      config.assets.precompile << "trestle/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.#{ext}"
-      config.assets.precompile << "trestle/font-awesome/fonts/fontawesome-webfont.#{ext}"
-      config.assets.precompile << "trestle/ionicons/fonts/ionicons.#{ext}"
+      config.assets.precompile << "trestle/fa-*.#{ext}"
     end
 
     initializer "trestle.automount" do |app|
