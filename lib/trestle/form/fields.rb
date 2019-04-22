@@ -9,6 +9,9 @@ module Trestle
 
         autoload :DatePicker
 
+        autoload :CheckBoxHelpers
+        autoload :RadioButtonHelpers
+
         autoload :CheckBox
         autoload :CollectionCheckBoxes
         autoload :CollectionRadioButtons
