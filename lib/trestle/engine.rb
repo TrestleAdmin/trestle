@@ -4,7 +4,7 @@ module Trestle
     self.routes.default_scope = {}
 
     # Application assets
-    config.assets.precompile << "trestle/admin.css" << "trestle/admin.js"
+    config.assets.precompile << "trestle/admin.css" << "trestle/admin.js" << "trestle/custom.css"
 
     # Vendor assets
     %w(eot svg ttf woff woff2).each do |ext|
@@ -22,6 +22,14 @@ module Trestle
     initializer "trestle.draper" do |app|
       if defined?(Draper)
         Draper::CollectionDecorator.delegate :current_page, :total_pages, :limit_value, :entry_name, :total_count, :offset_value, :last_page?
+      end
+    end
+
+    initializer "trestle.theme" do |app|
+      # Enable theme compilation
+      if Trestle.config.theme
+        app.config.assets.paths << root.join("frontend/theme").to_s
+        app.config.assets.precompile << "trestle/theme.css"
       end
     end
 

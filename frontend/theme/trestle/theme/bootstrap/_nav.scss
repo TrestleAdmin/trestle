@@ -1,0 +1,6 @@
+.nav-pills {
+  .nav-link.active,
+  .show > .nav-link {
+    background-color: $nav-pills-link-active-bg;
+  }
+}

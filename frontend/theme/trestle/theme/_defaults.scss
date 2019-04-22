@@ -1,0 +1,140 @@
+// Theme colors to override
+
+$theme-colors: (
+  "primary": #4d6bb2
+) !default;
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:  #212529 !default;
+$yiq-text-light: #ffffff !default;
+
+
+// Links
+
+$link-color:       theme-color("primary") !default;
+$link-hover-color: darken($link-color, 15%) !default;
+
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+
+// Components
+
+$component-active-bg: theme-color("primary") !default;
+
+
+// Tables
+
+$table-bg-level:     -11 !default;
+$table-border-level: -7 !default;
+
+
+// Buttons + Forms
+
+$input-btn-focus-width:      .2rem !default;
+$input-btn-focus-color:      rgba($component-active-bg, 0.25) !default;
+$input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
+$btn-focus-width:            $input-btn-focus-width !default;
+
+
+// Forms
+
+$input-focus-border-color: lighten($component-active-bg, 25%) !default;
+$input-focus-width:        $input-btn-focus-width !default;
+$input-focus-box-shadow:   $input-btn-focus-box-shadow !default;
+
+$custom-control-indicator-checked-bg:           $component-active-bg !default;
+$custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), 0.5) !default;
+$custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
+
+$custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
+$custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
+
+$custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
+$custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
+
+$custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
+$custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg !default;
+
+$custom-select-focus-border-color: $input-focus-border-color !default;
+$custom-select-focus-width:        $input-focus-width !default;
+$custom-select-focus-box-shadow:   0 0 0 $custom-select-focus-width $input-btn-focus-color !default;
+
+$custom-range-thumb-bg:        $component-active-bg !default;
+$custom-range-thumb-active-bg: lighten($component-active-bg, 35%) !default;
+
+$custom-file-focus-border-color:    $input-focus-border-color !default;
+$custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
+
+
+// Navs
+
+$nav-pills-link-active-bg: $component-active-bg !default;
+
+
+// Dropdowns
+
+$dropdown-link-active-bg: $component-active-bg !default;
+
+
+// Pagination
+
+$pagination-color:               $link-color !default;
+
+$pagination-focus-box-shadow:    $input-btn-focus-box-shadow !default;
+
+$pagination-hover-color:         $link-hover-color !default;
+
+$pagination-active-bg:           $component-active-bg !default;
+$pagination-active-border-color: $pagination-active-bg !default;
+
+
+// Badges
+
+$badge-focus-width: $input-btn-focus-width !default;
+
+
+// Alerts
+
+$alert-bg-level:     -10 !default;
+$alert-border-level: -9 !default;
+$alert-color-level:  6 !default;
+
+
+// Progress bars
+
+$progress-bar-bg: theme-color("primary") !default;
+
+
+// List group
+
+$list-group-active-bg:           $component-active-bg !default;
+$list-group-active-border-color: $list-group-active-bg !default;
+
+
+// Select2
+
+$s2bs-input-border-focus:            $input-focus-border-color !default;
+$s2bs-form-control-focus-box-shadow: $input-focus-box-shadow !default;
+$s2bs-dropdown-link-active-bg:       $dropdown-link-active-bg !default;
+
+
+// Trestle
+
+$theme-bg:       null !default;
+$theme-bg-color: darken(theme-color("primary"), 15%) !default;
+
+$sidebar-active-border-color: theme-color("primary") !default;
+
+$tag-bg:      lighten(theme-color("primary"), 10%) !default;
+$tag-border:  theme-color("primary") !default;
+
+$tag-hover-bg:     theme-color("primary") !default;
+$tag-hover-border: darken(theme-color("primary"), 10%) !default;
