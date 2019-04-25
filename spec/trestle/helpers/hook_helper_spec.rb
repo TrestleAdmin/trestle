@@ -3,7 +3,10 @@ require 'spec_helper'
 require_relative '../../../app/helpers/trestle/hook_helper'
 
 describe Trestle::HookHelper do
+  include ActionView::Context
   include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::CaptureHelper
+
   include Trestle::HookHelper
 
   describe "#hook" do

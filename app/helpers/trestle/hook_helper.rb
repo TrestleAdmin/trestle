@@ -6,7 +6,7 @@ module Trestle
           hook.evaluate(self)
         }, "\n")
       elsif block_given?
-        yield
+        capture(&Proc.new)
       end
     end
 
