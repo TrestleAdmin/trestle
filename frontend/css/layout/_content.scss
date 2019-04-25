@@ -1,0 +1,153 @@
+.content-header {
+  display: flex;
+  justify-content: space-between;
+
+  background: $content-header-bg;
+  padding: 20px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 2.25rem;
+    }
+  }
+
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+
+  .content-header-title {
+    margin: 5px 0;
+  }
+
+  .btn-toolbar {
+    justify-content: flex-end;
+  }
+
+  .secondary-toolbar {
+    margin-top: 8px;
+  }
+}
+
+.main-content-area {
+  margin: 20px;
+}
+
+.main-content-container {
+  background: white;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.main-content,
+.main-content-sidebar {
+  padding: 20px;
+}
+
+.main-content {
+  // Allow nesting of tab panes directly within
+  @extend .tab-content;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.main-content-header,
+.main-content-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-content-header {
+  margin: -20px -20px 20px !important;
+  padding: $main-content-header-padding;
+  background: $main-content-header-bg;
+  border-bottom: $main-content-header-border;
+}
+
+.main-content-footer {
+  margin: 20px -20px -20px !important;
+  padding: $main-content-footer-padding;
+  background: $main-content-footer-bg;
+  border-top: $main-content-footer-border;
+}
+
+.main-content,
+.main-content-sidebar,
+.tab-pane {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.main-content-sidebar {
+  background: $content-sidebar-bg;
+  flex: 0 0 $content-sidebar-width;
+  max-width: $content-sidebar-width;
+}
+
+.utilities {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.error-iframe {
+  border: 0;
+  flex: 1;
+  width: 100%;
+  min-height: 400px;
+}
+
+@include media-breakpoint-down(sm) {
+  .content-header {
+    padding: 10px;
+  }
+
+  .main-content-area {
+    margin: 10px;
+  }
+
+  .main-content-container {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .main-content-sidebar {
+    flex-basis: 0;
+    max-width: none;
+  }
+
+  .main-content,
+  .main-content-sidebar {
+    padding: 15px;
+  }
+
+  .main-content-header,
+  .main-content-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-content-header {
+    margin: -15px -15px 15px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .main-content-footer {
+    margin: 15px -15px -15px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

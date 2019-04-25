@@ -1,0 +1,101 @@
+// Default theme
+
+$theme-bg: theme-color("primary");
+$error-bg: theme-color("danger");
+
+
+// Header
+
+$header-bg:   white;
+$header-color:#333333;
+
+$header-height: 50px;
+
+
+// Footer
+
+$footer-bg:    #f9f9f9;
+$footer-color: #888888;
+
+
+// Sidebar
+
+$sidebar-bg:          #222222;
+$sidebar-hover-bg:    #1a1a1a;
+$sidebar-active-bg:   #393939;
+$sidebar-active-border: 4px;
+
+$sidebar-link-color:  #919191;
+$sidebar-group-color: #595959;
+
+$sidebar-toggle-bg:    rgba(black, 0.25);
+$sidebar-toggle-color: rgba(white, 0.5);
+
+$sidebar-mobile-toggle-color: white;
+
+$sidebar-width:           250px;
+$sidebar-width-collapsed: 54px;
+
+$sidebar-transition-duration: 250ms;
+
+$sidebar-font-size-scale: 0.925;
+
+
+// Content
+
+$content-header-bg:  #fafafa;
+$content-sidebar-bg: #f9f9f9;
+
+$content-sidebar-width: 285px;
+
+$main-content-header-bg:      $content-sidebar-bg;
+$main-content-header-padding: 12px 20px;
+$main-content-header-border:  1px solid rgba(black, 0.1);
+
+$main-content-footer-bg:      $content-sidebar-bg;
+$main-content-footer-padding: 12px 20px;
+$main-content-footer-border:  1px solid rgba(black, 0.1);
+
+
+// Tags
+
+$tag-color:      white;
+$tag-bg:           lighten(theme-color("primary"), 10%);
+$tag-border:       theme-color("primary");
+
+$tag-hover-color:  white;
+$tag-hover-bg:     theme-color("primary");
+$tag-hover-border: darken(theme-color("primary"), 10%);
+
+
+// Scopes
+
+$scope-padding:      0.25rem 0.5rem;
+
+$scope-color:        rgba(black, 0.3);
+$scope-bg:           rgba(black, 0.025);
+
+$scope-label-color:  rgba(black, 0.4);
+
+$scope-hover-color:  rgba(black, 0.3);
+$scope-hover-bg:     rgba(black, 0.05);
+
+$scope-active-color: white;
+$scope-active-bg:    rgba(black, 0.25);
+
+
+// Alerts
+
+$alert-success-bg:     #7ac47a;
+$alert-success-color:  white;
+$alert-success-border: #66bb66;
+
+$alert-danger-bg:      #de7471;
+$alert-danger-color:   white;
+$alert-danger-border:  #d85956;
+
+
+// Modals
+
+$modal-header-bg: $theme-bg;
+$modal-footer-bg: $content-sidebar-bg;

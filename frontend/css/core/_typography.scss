@@ -1,0 +1,55 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  @include font-smoothing;
+}
+
+a {
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
+
+.empty, .blank {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.external-link {
+  &:after {
+    @include icon-fa($fa-var-external-link-alt);
+    font-size: 85%;
+    margin-left: 0.5rem;
+  }
+}
+
+.main-content-sidebar {
+  font-size: 1rem * $sidebar-font-size-scale;
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    border-bottom: 1px solid $hr-border-color;
+    padding-bottom: 0.325rem;
+
+    &:not(:first-child) {
+      margin-top: 1.75rem;
+    }
+  }
+
+  h1, .h1 { font-size: $h1-font-size * $sidebar-font-size-scale; }
+  h2, .h2 { font-size: $h2-font-size * $sidebar-font-size-scale; }
+  h3, .h3 { font-size: $h3-font-size * $sidebar-font-size-scale; }
+  h4, .h4 { font-size: $h4-font-size * $sidebar-font-size-scale; }
+  h5, .h5 { font-size: $h5-font-size * $sidebar-font-size-scale; }
+  h6, .h6 { font-size: $h6-font-size * $sidebar-font-size-scale; }
+
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: ($card-spacer-y * 0.75) ($card-spacer-x * 0.75);
+  }
+}

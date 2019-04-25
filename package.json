@@ -1,0 +1,46 @@
+{
+  "name": "trestle",
+  "version": "0.9.0",
+  "description": "A modern, responsive admin framework for Ruby on Rails",
+  "homepage": "https://trestle.io",
+  "repository": "https://github.com/TrestleAdmin/trestle.git",
+  "author": "Sam Pohlenz <sam@sampohlenz.com>",
+  "license": "LGPL-3.0",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^3.0.1",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "bootstrap": "^4.3.1",
+    "bootstrap-confirmation2": "^4.1.0",
+    "flatpickr": "^4.5.7",
+    "jquery": "^3.4.0",
+    "jquery-ujs": "^1.2.2",
+    "magnific-popup": "^1.1.0",
+    "popper.js": "^1.15.0",
+    "select2": "4.0.5",
+    "select2-theme-bootstrap4": "^0.2.0-beta.3"
+  }
+}

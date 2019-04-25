@@ -1,0 +1,40 @@
+.breadcrumb {
+  font-size: 0.85rem;
+
+  .active, .active a {
+    font-weight: normal;
+    color: $breadcrumb-active-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 0.75rem;
+  }
+}
+
+// Fine-tune spacing between breadcrumb separators
+
+.breadcrumb-item {
+  + .breadcrumb-item {
+    &::before {
+      padding-right: 0.35rem;
+    }
+  }
+}
+
+// Reduce breadcrumb separator spacing on mobile
+
+@include media-breakpoint-down(sm) {
+  .breadcrumb-item {
+    + .breadcrumb-item {
+      padding-left: $breadcrumb-item-padding / 2;
+
+      &::before {
+        padding-right: $breadcrumb-item-padding / 4;
+      }
+    }
+  }
+}

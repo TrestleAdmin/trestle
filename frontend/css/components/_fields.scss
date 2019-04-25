@@ -1,0 +1,27 @@
+.form-group {
+  position: relative;
+
+  &.has-error {
+    > .control-label {
+      color: $form-feedback-invalid-color;
+    }
+  }
+}
+
+.form-text {
+  font-size: 0.9rem;
+
+  @include media-breakpoint-up(sm) {
+    &.floating {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 2px 0;
+    }
+  }
+}
+
+.control-label {
+  font-weight: bold;
+  display: block;
+}

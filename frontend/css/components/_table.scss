@@ -1,0 +1,121 @@
+@mixin table-container-background($background) {
+  background-image: linear-gradient(to right, $background 30%, rgba($background, 0)),
+                    linear-gradient(to left, $background 30%, rgba($background, 0)),
+                    radial-gradient(at 0 50%, rgba(black, 0.2), rgba(black, 0) 70%),
+                    radial-gradient(at 100% 50%, rgba(black, 0.2), rgba(black, 0) 70%);
+
+  background-color: $background;
+
+  background-position: 0 0, 100% 0, 0 0, 100% 0;
+  background-repeat: no-repeat;
+  background-size: 50px 100%, 50px 100%, 15px 100%, 15px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.table-container {
+  overflow-x: auto;
+
+  // Momentum scrolling (touch) causes rendering issues on iOS with the
+  // scrolling background hints. Must be disabled explicitly.
+  -webkit-overflow-scrolling: auto;
+
+  @include table-container-background(white);
+
+  .main-content-sidebar & {
+    @include table-container-background($content-sidebar-bg);
+  }
+}
+
+.trestle-table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-hover;
+
+  margin-bottom: 0;
+
+  td, tr {
+    vertical-align: middle;
+  }
+
+  thead {
+    tr:first-child {
+      td, th {
+        border-top: 0;
+      }
+    }
+  }
+
+  tr[data-url] {
+    cursor: pointer;
+  }
+
+  th, a {
+    white-space: nowrap;
+
+    &.wrap {
+      white-space: normal;
+    }
+  }
+
+  tbody a {
+    font-weight: normal;
+  }
+
+  .select-row {
+    width: 2.5em;
+    text-align: center;
+  }
+
+  .actions {
+    text-align: right;
+    white-space: nowrap;
+
+    .btn {
+      @extend .btn-sm;
+
+      padding: 0.5rem;
+      line-height: 1;
+
+      i {
+        font-size: 0.85rem;
+
+        width: 1.25rem;
+        text-align: center;
+      }
+
+      &.has-icon .btn-label {
+        @include sr-only;
+      }
+    }
+
+    .btn,
+    .btn-group {
+      + .btn,
+      + .btn-group {
+        margin-left: 4px;
+      }
+    }
+
+    .btn-group {
+      .btn + .btn {
+        margin-left: -1px;
+      }
+    }
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+  }
+
+  .badge {
+    vertical-align: middle;
+  }
+
+  ul, ol {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-position: inside;
+  }
+}

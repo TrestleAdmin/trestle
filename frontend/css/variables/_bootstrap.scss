@@ -1,0 +1,172 @@
+// Color system
+
+$theme-colors: (
+  "primary": #4d6bb2,
+  "success": #7dc67d,
+  "info":    #7ccde5,
+  "warning": #f3bd71,
+  "danger":  #e17572,
+  "light":   #bbbbbb,
+
+  // Backwards compatibility
+  "default": #bbbbbb
+);
+
+
+// Body
+
+$body-bg:    #f3f3f3;
+$body-color: #333333;
+
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 5% !default;
+
+// Increase default color threshold for light vs dark
+$yiq-contrasted-threshold: 200;
+
+// Enable box shadows
+$enable-shadows: true;
+
+// Decrease default grid spacing
+$grid-gutter-width: 10px * 2;
+
+
+// Typography
+
+$headings-font-weight:   400;
+$headings-margin-bottom: 1rem;
+
+$h1-font-size: 2rem;
+$h2-font-size: 1.75rem;
+$h3-font-size: 1.5rem;
+$h4-font-size: 1.25rem;
+$h5-font-size: 1.1rem;
+$h6-font-size: 1rem;
+
+$hr-margin-y: 1.5rem;
+
+
+// Navs
+
+$nav-tabs-border-radius: 0;
+$nav-tabs-border-width:  0;
+
+$nav-tabs-link-bg:    #eeeeee;
+$nav-tabs-link-color: #555555;
+
+$nav-tabs-link-active-bg:  white;
+$nav-tabs-link-active-color: $body-color;
+
+
+// Navbar
+
+$navbar-toggler-padding-x: 0.4rem;
+$navbar-dark-color:        rgba(white, 0.75);
+
+
+// Breadcrumbs
+
+$breadcrumb-padding-y:      0;
+$breadcrumb-padding-x:      0;
+$breadcrumb-bg:             transparent;
+$breadcrumb-active-color: #777777;
+$breadcrumb-divider-color:#cccccc;
+
+
+// Tables
+
+$table-cell-padding: 6px 8px;
+$table-accent-bg:    rgba(black, 0.02);
+$table-hover-bg:     rgba(black, 0.04);
+$table-border-color: rgba(black, 0.13);
+
+$table-bg-level:     -11;
+$table-border-level: -7;
+
+
+// Alerts
+
+$alert-padding-y:     1.5rem;
+$alert-border-radius: 0.1rem;
+
+
+// Badges
+
+$badge-padding-y: 0.35em;
+$badge-padding-x: 0.6em;
+
+
+// Buttons
+
+$btn-padding-x-sm: 0.65rem;
+
+
+// Forms
+
+$input-border-color: #cccccc;
+$input-disabled-bg:  #fafafa;
+
+$input-box-shadow: none;
+
+$input-placeholder-color: #999999;
+
+$input-group-addon-bg: #eeeeee;
+
+$form-feedback-invalid-color: darken(theme-color("danger"), 20%);
+
+$form-feedback-margin-top: 0.5rem;
+$form-feedback-font-size:  90%;
+
+$custom-control-indicator-size:         1.15rem;
+$custom-control-indicator-border-width: 1px;
+
+$custom-control-gutter: 0.6rem;
+
+$custom-switch-width: 2.25rem;
+$custom-switch-indicator-size: calc(#{em($custom-control-indicator-size)} - #{$custom-control-indicator-border-width * 4}) !default;
+
+
+// Dropdowns
+
+$dropdown-spacer:            0.5rem;
+$dropdown-box-shadow:        0 3px 6px rgba(black, 0.175);
+$dropdown-arrow-width:       7px;
+$dropdown-arrow-outer-width: $dropdown-arrow-width + 1px;
+$dropdown-header-color:    #111111;
+$dropdown-font-size:         0.9rem;
+
+
+// Cards
+
+$card-bg:            rgba(white, 0.5);
+$card-border-radius: 0;
+
+
+// Popovers
+
+$popover-box-shadow:  $dropdown-box-shadow;
+$popover-arrow-width: $dropdown-arrow-width;
+$popover-font-size:   0.9rem;
+
+
+// Modals
+
+$modal-inner-padding:    1.5rem;
+
+$modal-header-padding-x: 1.5rem;
+$modal-header-padding-y: 1.05rem;
+
+$modal-content-border-radius: 0;
+$modal-content-border-width:  0;
+
+$modal-footer-border-width: 1px;
+$modal-footer-border-color: rgba(black, 0.1);
+
+$modal-md: 600px;
+$modal-lg: 900px;
+
+
+// Select2 Bootstrap Theme
+
+$s2bs-btn-default-border: #cccccc;

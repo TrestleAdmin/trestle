@@ -1,0 +1,35 @@
+// Convert custom controls to use em rather than rem sizing, so that they scale nicely.
+// This is planned for Bootstrap 5 (https://github.com/twbs/bootstrap/issues/27803)
+.custom-control-label {
+  &::before {
+    top: em(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+    left: em(-($custom-control-gutter + $custom-control-indicator-size));
+    width: em($custom-control-indicator-size);
+    height: em($custom-control-indicator-size);
+  }
+
+  &::after {
+    top: em(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+    left: em(-($custom-control-gutter + $custom-control-indicator-size));
+    width: em($custom-control-indicator-size);
+    height: em($custom-control-indicator-size);
+  }
+}
+
+.custom-switch {
+  padding-left: em($custom-switch-width + $custom-control-gutter);
+
+  .custom-control-label {
+    &::before {
+      left: em(-($custom-switch-width + $custom-control-gutter));
+      width: em($custom-switch-width);
+    }
+
+    &::after {
+      top: calc(#{em((($font-size-base * $line-height-base - $custom-control-indicator-size) / 2))} + #{$custom-control-indicator-border-width * 2});
+      left: calc(#{em(-($custom-switch-width + $custom-control-gutter))} + #{$custom-control-indicator-border-width * 2});
+      width: $custom-switch-indicator-size;
+      height: $custom-switch-indicator-size;
+    }
+  }
+}

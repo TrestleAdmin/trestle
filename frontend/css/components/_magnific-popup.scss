@@ -1,0 +1,36 @@
+// Fix z-index of Magnific Popup lightboxes so that they appear above Bootstrap modals
+
+$mfp-z-index-base: 1140;
+
+.mfp-bg { z-index: $mfp-z-index-base + 2; }
+.mfp-wrap { z-index: $mfp-z-index-base + 3; }
+.mfp-content { z-index: $mfp-z-index-base + 5; }
+.mfp-preloader { z-index: $mfp-z-index-base + 4; }
+
+button.mfp-close,
+button.mfp-arrow {
+  z-index: $mfp-z-index-base + 6;
+}
+
+
+// Smooth transition of lightbox background
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+	opacity: 0;
+
+  backface-visibility: hidden;
+	transition: all 150ms ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+	opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+	opacity: 0;
+}

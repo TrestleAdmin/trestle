@@ -1,0 +1,54 @@
+.btn-toolbar {
+  .btn,
+  .btn-group,
+  .input-group {
+    + .btn,
+    + .btn-group,
+    + .input-group {
+      margin-left: 5px;
+    }
+  }
+
+  .btn-group {
+    .btn,
+    .btn-group {
+      + .btn,
+      + .btn-group {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.primary-toolbar {
+  .btn {
+    @extend .btn-lg;
+
+    font-size: 1.35rem;
+    padding: 0.5rem 1.25rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+      padding: 0.35rem 0.75rem;
+    }
+  }
+}
+
+.secondary-toolbar {
+  .btn {
+    @extend .btn-sm;
+
+    > i {
+      font-size: 80%;
+
+      + .btn-label {
+        margin-left: 3px;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+}

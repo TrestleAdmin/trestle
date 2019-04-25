@@ -1,0 +1,24 @@
+.tag {
+  display: inline-block;
+  padding: 1px 6px 1px 5px;
+  font-size: 0.8rem;
+
+  border-left: 4px solid $tag-border;
+  border-radius: 4px;
+
+  color: $tag-color;
+  background-color: $tag-bg;
+
+  & + & {
+    margin-left: 4px;
+  }
+}
+
+a.tag {
+  &:hover, &:focus {
+    text-decoration: none;
+    color: $tag-hover-color;
+    background-color: $tag-hover-bg;
+    border-color: $tag-hover-border;
+  }
+}

@@ -1,0 +1,48 @@
+%textured-bg {
+  background-image: url(../images/bright-squares.png), linear-gradient(rgba(white, 0.05), rgba(black, 0.05));
+  background-repeat: repeat, no-repeat;
+}
+
+
+.theme-bg {
+  @extend %textured-bg;
+  background-color: $theme-bg;
+}
+
+
+.theme-bg-dark {
+  @extend %textured-bg;
+  background-color: darken($theme-bg, $theme-color-interval);
+}
+
+.theme-bg-darker {
+  @extend %textured-bg;
+  background-color: darken($theme-bg, $theme-color-interval * 2);
+}
+
+.theme-bg-darkest {
+  @extend %textured-bg;
+  background-color: darken($theme-bg, $theme-color-interval * 3);
+}
+
+
+.theme-bg-light {
+  @extend %textured-bg;
+  background-color: lighten($theme-bg, $theme-color-interval);
+}
+
+.theme-bg-lighter {
+  @extend %textured-bg;
+  background-color: lighten($theme-bg, $theme-color-interval * 2);
+}
+
+.theme-bg-lightest {
+  @extend %textured-bg;
+  background-color: lighten($theme-bg, $theme-color-interval * 3);
+}
+
+
+.error-bg {
+  @extend %textured-bg;
+  background-color: $error-bg;
+}

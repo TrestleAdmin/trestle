@@ -1,0 +1,56 @@
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+@mixin aspect-ratio($ratio) {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: percentage(1 / $ratio);
+  background-size: 100%;
+}
+
+@mixin fill-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+%fa {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+@mixin icon-fa($content) {
+  @extend %fa;
+  content: fa-content($content);
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function em($rem) {
+  @return strip-units($rem) * 1em;
+}
