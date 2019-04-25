@@ -1,7 +1,7 @@
 // Dependencies
 
 import 'jquery'
-import 'jquery-ujs'
+import Rails from '@rails/ujs'
 
 import 'bootstrap'
 import 'bootstrap-confirmation2'
@@ -33,6 +33,10 @@ import './components/sidebar'
 import './components/table'
 import { focusTab, focusActiveTab } from './components/tabs'
 import './components/tooltips'
+
+// Initialize
+
+Rails.start()
 
 // Export
 

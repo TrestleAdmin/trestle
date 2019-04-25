@@ -28,7 +28,8 @@ function createElement () {
   })
 
   // Set X-Trestle-Dialog header on AJAX requests initiated from the dialog
-  $el.on('ajax:beforeSend', '[data-remote]', function (e, xhr, options) {
+  $el.on('ajax:beforeSend', '[data-remote]', function (e) {
+    const xhr = e.detail[0]
     xhr.setRequestHeader('X-Trestle-Dialog', true)
   })
 

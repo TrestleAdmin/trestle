@@ -19,15 +19,17 @@ init(function (root) {
   const $form = $(root).find(FORM_SELECTOR)
 
   $form
-    .on('ajax:send', function (e, xhr) {
+    .on('ajax:send', function (e) {
       // Disable submit buttons
       $(this).find(':submit').prop('disabled', true)
 
       // Set loading status on button that triggered submission
-      var button = $(this).data('trestle:submitButton')
+      const button = $(this).data('trestle:submitButton')
       if (button) { $(button).addClass('loading') }
     })
-    .on('ajax:complete', function (e, xhr, status) {
+    .on('ajax:complete', function (e) {
+      const xhr = e.detail[0]
+
       // Reset submit buttons
       $(this).find(':submit').prop('disabled', false).removeClass('loading')
       $(this).removeData('trestle:submitButton')
@@ -59,7 +61,9 @@ init(function (root) {
         showError(title, xhr.responseText)
       }
     })
-    .on('ajax:success', function (e, data, status, xhr) {
+    .on('ajax:success', function (e) {
+      const xhr = e.detail[2]
+
       const $context = $(this).closest('[data-context]')
       let location = xhr.getResponseHeader('X-Trestle-Location')
 
