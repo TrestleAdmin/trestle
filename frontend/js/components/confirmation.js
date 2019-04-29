@@ -8,11 +8,11 @@ init(function (root) {
     singleton: true,
     popout: true,
     title: i18n['trestle.confirmation.title'] || 'Are you sure?',
-    btnOkClass: 'btn-primary',
+    btnOkClass: 'btn btn-sm btn-primary',
     btnOkLabel: i18n['trestle.confirmation.ok'] || 'OK',
-    btnCancelClass: 'btn-light',
+    btnCancelClass: 'btn btn-sm btn-light',
     btnCancelLabel: i18n['trestle.confirmation.cancel'] || 'Cancel',
-    copyAttributes: ''
+    copyAttributes: 'href target data-method data-url data-params data-type'
   }
 
   const CONFIRM = { ...DEFAULTS,
@@ -21,7 +21,7 @@ init(function (root) {
 
   const DELETE = { ...DEFAULTS,
     rootSelector: '[data-toggle="confirm-delete"]',
-    btnOkClass: 'btn-danger',
+    btnOkClass: 'btn btn-sm btn-danger',
     btnOkLabel: i18n['trestle.confirmation.delete'] || 'Delete'
   }
 
