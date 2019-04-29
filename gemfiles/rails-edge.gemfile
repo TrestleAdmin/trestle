@@ -15,5 +15,6 @@ gem 'rails', github: 'rails/rails'
 gem 'arel', github: 'rails/arel'
 
 gem 'sqlite3', '~> 1.4'
+gem 'sassc-rails'
 
 gemspec path: "../"
