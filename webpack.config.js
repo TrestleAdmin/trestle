@@ -1,5 +1,6 @@
 const path = require('path');
 
+const Uglify = require('uglify-js');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -85,7 +86,14 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       { from: 'node_modules/@fortawesome/fontawesome-free/webfonts/*', to: '[name].[ext]' },
-      { from: 'node_modules/flatpickr/dist/l10n/*.js', to: 'flatpickr/[name].[ext]', ignore: ['index.js'] }
+      {
+        from: 'node_modules/flatpickr/dist/l10n/*.js',
+        to: 'flatpickr/[name].[ext]',
+        ignore: ['index.js'],
+        transform: function(fileContent, path) {
+          return Uglify.minify(fileContent.toString()).code.toString();
+        }
+      }
     ]),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
