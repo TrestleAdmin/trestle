@@ -19,10 +19,15 @@
   align-items: center;
 
   .navbar-toggler {
+    outline: none;
     margin-left: $grid-gutter-width / 2;
 
     border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15);
     border-radius: 4px;
+
+    &:hover, &:focus {
+      background: rgba(white, 0.1);
+    }
   }
 
   .navbar-toggler-icon {
