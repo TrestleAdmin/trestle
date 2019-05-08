@@ -145,7 +145,19 @@ describe Trestle::Admin::Builder, remove_const: true do
         routes &b
       end
 
-      expect(::TestAdmin.additional_routes).to eq(b)
+      expect(::TestAdmin.additional_routes).to eq([b])
+    end
+
+    it "can be called multiple times" do
+      a = Proc.new {}
+      b = Proc.new {}
+
+      Trestle::Admin::Builder.create(:test) do
+        routes &a
+        routes &b
+      end
+
+      expect(::TestAdmin.additional_routes).to eq([a, b])
     end
   end
 

@@ -29,8 +29,6 @@ module Trestle
 
       attr_accessor :form
 
-      attr_accessor :additional_routes
-
       attr_writer :options
       attr_writer :breadcrumb
 
@@ -120,6 +118,10 @@ module Trestle
         :index
       end
 
+      def additional_routes
+        @additional_routes ||= []
+      end
+
       def routes
         admin = self
 
@@ -127,7 +129,9 @@ module Trestle
           scope controller: admin.controller_namespace, path: admin.options[:path] || admin.admin_name do
             get "", action: "index", as: admin.route_name
 
-            instance_exec(&admin.additional_routes) if admin.additional_routes
+            admin.additional_routes.each do |block|
+              instance_exec(&block)
+            end
           end
         end
       end

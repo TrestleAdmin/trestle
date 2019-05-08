@@ -67,7 +67,7 @@ module Trestle
       end
 
       def routes(&block)
-        @admin.additional_routes = block
+        @admin.additional_routes << block
       end
 
       def breadcrumb(label=nil, path=nil, &block)

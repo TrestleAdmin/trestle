@@ -131,7 +131,9 @@ module Trestle
 
         Proc.new do
           public_send(resource_method, resource_name, resource_options) do
-            instance_exec(&admin.additional_routes) if admin.additional_routes
+            admin.additional_routes.each do |block|
+              instance_exec(&block)
+            end
           end
         end
       end
