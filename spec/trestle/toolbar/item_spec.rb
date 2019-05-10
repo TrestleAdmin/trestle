@@ -64,7 +64,7 @@ shared_examples "a toolbar item with a dropdown" do |tag, attrs|
     expect(subject.to_s).to have_tag(".btn-group", with: { role: "group" }) do
       with_tag "li.dropdown-header", text: "Header", with: { role: "presentation" }
       with_tag "li", with: { role: "presentation" } do
-        with_tag "a", text: "Link", with: { href: "#" }
+        with_tag "a", text: "Link", with: { href: "#", class: "dropdown-item" }
       end
       with_tag "li.divider", with: { role: "presentation" }
     end
