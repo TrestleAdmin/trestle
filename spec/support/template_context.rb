@@ -1,7 +1,6 @@
 RSpec.shared_context "template" do
   let(:admin) { nil }
-  let(:controller) { ActionView::TestCase::TestController.new }
-  let(:template) { ActionView::Base.new(self, {}, controller) }
+  let(:template) { ActionView::Base.respond_to?(:empty) ? ActionView::Base.empty : ActionView::Base.new }
 
   before(:each) do
     template.extend(Trestle::IconHelper)
