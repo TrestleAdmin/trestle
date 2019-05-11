@@ -1,10 +1,10 @@
 module Trestle
   class Table
     class SelectColumn
-      attr_reader :table
+      attr_reader :table, :options
 
-      def initialize(table)
-        @table = table
+      def initialize(table, options={})
+        @table, @options = table, options
       end
 
       def renderer(template)

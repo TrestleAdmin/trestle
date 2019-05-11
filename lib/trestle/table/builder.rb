@@ -12,8 +12,8 @@ module Trestle
         table.row = Row.new(table, options, &block)
       end
 
-      def selectable_column
-        table.columns << SelectColumn.new(table)
+      def selectable_column(options={})
+        table.columns << SelectColumn.new(table, options)
       end
 
       def column(field, proc=nil, options={}, &block)
