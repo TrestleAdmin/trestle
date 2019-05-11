@@ -154,7 +154,8 @@ module Trestle
 
     private
       def infer_model_class
-        parent.const_get(admin_name.classify)
+        scope = respond_to?(:module_parent) ? module_parent : parent
+        scope.const_get(admin_name.classify)
       rescue NameError
         raise NameError, "Unable to find model #{admin_name.classify}. Specify a different model using Trestle.resource(:#{admin_name}, model: MyModel)"
       end
