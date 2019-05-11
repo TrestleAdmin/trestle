@@ -16,6 +16,6 @@ $(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function(e
   }
 });
 
-$(document).on('click', 'tr[data-url] a', function(e) {
+$(document).on('click', 'tr[data-url] a, tr[data-url] input', function(e) {
   e.stopPropagation();
 });
