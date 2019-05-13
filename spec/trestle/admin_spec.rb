@@ -21,8 +21,13 @@ describe Trestle::Admin, remove_const: true do
     expect(admin.parameter_name).to eq("test")
   end
 
-  it "has a controller path" do
-    expect(admin.controller_path).to eq("admin/test")
+  it "has a default view path" do
+    expect(admin.view_path).to eq("admin/test")
+  end
+
+  it "allows a custom view path to be specified" do
+    admin.view_path = "admin/custom"
+    expect(admin.view_path).to eq("admin/custom")
   end
 
   it "has a controller namespace" do
@@ -93,19 +98,19 @@ describe Trestle::Admin, remove_const: true do
       Trestle.admin(:test, scope: Scoped)
     end
 
-    it "has an admin name" do
+    it "has a scoped admin name" do
       expect(admin.admin_name).to eq("scoped/test")
     end
 
-    it "has a route name" do
+    it "has a prefixed route name" do
       expect(admin.route_name).to eq("scoped_test_admin")
     end
 
-    it "has a controller path" do
-      expect(admin.controller_path).to eq("admin/scoped/test")
+    it "has a scoped view path" do
+      expect(admin.view_path).to eq("admin/scoped/test")
     end
 
-    it "has a controller namespace" do
+    it "has a scoped controller namespace" do
       expect(admin.controller_namespace).to eq("scoped/test_admin/admin")
     end
 

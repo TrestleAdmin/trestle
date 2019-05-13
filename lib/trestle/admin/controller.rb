@@ -7,8 +7,9 @@ module Trestle
       class << self
         attr_reader :admin
 
-        def controller_path
-          admin ? admin.controller_path : super
+      private
+        def local_prefixes
+          admin ? admin.view_path_prefixes : super
         end
       end
 

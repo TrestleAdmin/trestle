@@ -94,8 +94,18 @@ module Trestle
         "#{admin_name.tr('/', '_')}_admin"
       end
 
-      def controller_path
+      attr_writer :view_path
+
+      def view_path
+        @view_path || default_view_path
+      end
+
+      def default_view_path
         "admin/#{name.underscore.sub(/_admin$/, '')}"
+      end
+
+      def view_path_prefixes
+        [view_path]
       end
 
       def controller_namespace
