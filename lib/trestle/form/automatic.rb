@@ -32,6 +32,9 @@ module Trestle
                 datetime_field attribute.name
               when :boolean
                 check_box attribute.name
+              when :json, :jsonb
+                value = instance.public_send(attribute.name)
+                text_area attribute.name, value: value.try(:to_json)
               else
                 text_field attribute.name
               end
