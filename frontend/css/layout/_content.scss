@@ -23,6 +23,10 @@
 
   .content-header-title {
     margin: 5px 0;
+
+    @include media-breakpoint-down(sm) {
+      margin: 2px 0;
+    }
   }
 
   .btn-toolbar {
