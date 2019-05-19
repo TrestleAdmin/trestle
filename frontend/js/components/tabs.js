@@ -2,9 +2,13 @@ import $ from 'jquery'
 
 import { init, ready } from '../core/events'
 
+const TAB_SELECTOR = 'a[data-toggle="tab"]'
+const TAB_PANE_SELECTOR = '.tab-pane'
+const ERROR_SELECTOR = '.is-invalid'
+
 // Save active tab to URL hash
 init(function (root) {
-  $(root).find("a[data-toggle='tab']").on('shown.bs.tab', function (e) {
+  $(root).find(TAB_SELECTOR).on('shown.bs.tab', function (e) {
     const hash = $(this).attr('href')
     const withinModal = $(this).closest('.modal').length > 0
 
@@ -21,19 +25,21 @@ ready(function () {
 
 // Add error count to tabs
 init(function (root) {
-  $(root).find('.tab-pane').each(function () {
-    const errorCount = $(this).find('.is-invalid').length
+  $(root).find(TAB_PANE_SELECTOR).each(function () {
+    const errorCount = $(this).find(ERROR_SELECTOR).length
 
     if (errorCount > 0) {
       const badge = $('<span>').addClass('badge badge-danger badge-pill').text(errorCount)
-      const selector = `.nav-tabs a[href="#${$(this).attr('id')}"]`
+      const id = $(this).attr('id')
+      const selector = `${TAB_SELECTOR}[href='#${id}']`
+
       $(selector).append(badge)
     }
   })
 })
 
 export function focusTab (id) {
-  const selector = `a[data-toggle='tab'][href='#${id}']`
+  const selector = `${TAB_SELECTOR}[href='#${id}']`
   $(selector).tab('show')
 }
 
@@ -42,7 +48,7 @@ export function focusActiveTab () {
     // Focus on active tab from URL
     focusTab(location.hash.substr(2))
   } else {
-    const $errorTabs = $('.tab-pane:has(.has-error)')
+    const $errorTabs = $(`${TAB_PANE_SELECTOR}:has(${ERROR_SELECTOR})`)
 
     if ($errorTabs.length) {
       focusTab($errorTabs.first().attr('id'))
