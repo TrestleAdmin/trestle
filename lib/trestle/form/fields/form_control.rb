@@ -34,7 +34,7 @@ module Trestle
           super.merge(class: ["form-control"])
         end
 
-        def extract_options!
+        def normalize_options!
           super
 
           @prepend = { content: options.delete(:prepend),  wrap: true }  if options[:prepend]

@@ -26,6 +26,10 @@ module Trestle
             ])
           end
         end
+
+        def extract_wrapper_options!
+          # Intentional no-op
+        end
       end
     end
   end

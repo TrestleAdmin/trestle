@@ -40,10 +40,13 @@ module Trestle
           super.merge(class: ["form-group"])
         end
 
-        def extract_options!
-          # Do not call super
-          @options[:class] = Array(@options[:class])
-          @options[:class] << "has-error" if errors.any?
+      protected
+        def extract_wrapper_options!
+          # Intentional no-op
+        end
+
+        def error_class
+          "has-error"
         end
       end
     end
