@@ -1200,6 +1200,11 @@ browserslist@^4.5.2, browserslist@^4.5.4:
     electron-to-chromium "^1.3.133"
     node-releases "^1.1.19"
 
+bs-custom-file-input@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/bs-custom-file-input/-/bs-custom-file-input-1.3.2.tgz#c141c94071cc5e9ac4ea98479a1c204dd18e3b9a"
+  integrity sha512-lzgtGX2GDo7nUmsTCcTvYkCc35d3/E14h+HXmFKV8z2EJmtkMcvYT8BsWOjK67+ogZR3kc8OfH5O8APjvDUtFg==
+
 buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"

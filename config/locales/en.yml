@@ -34,6 +34,10 @@ en:
       delete: "Delete"
       cancel: "Cancel"
 
+    file:
+      choose_file: "Choose file..."
+      browse: "Browse"
+
   admin:
     titles:
       index: "Listing %{pluralized_model_name}"
