@@ -42,7 +42,7 @@ fr:
       delete: "Supprimer"
 
     breadcrumbs:
-      home: "Acceuil"
+      home: "Accueil"
 
     flash:
       create:
