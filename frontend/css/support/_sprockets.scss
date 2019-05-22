@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+// Mixins & functions
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins";
+@import "trestle/frontend/css/core/mixins";
+
+// Variables
+@import "trestle/frontend/css/variables/bootstrap";
+@import "trestle/frontend/css/variables/trestle";
+@import "bootstrap/scss/variables";
+
+// Icon variables
+@import "@fortawesome/fontawesome-free/scss/variables";
