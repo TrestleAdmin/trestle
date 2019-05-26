@@ -9,7 +9,8 @@ module Trestle
 
       private
         def local_prefixes
-          admin ? admin.view_path_prefixes : super
+          return admin.view_path_prefixes if admin
+          [controller_path.sub(/\/$/, "")]
         end
       end
 
