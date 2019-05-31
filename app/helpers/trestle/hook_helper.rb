@@ -11,12 +11,19 @@ module Trestle
     end
 
     def hook?(name)
-      Trestle.config.hooks.key?(name.to_s) && hooks(name).any?
+      hook_sets.any? { |set| set.any?(name) }
     end
 
   protected
     def hooks(name)
-      Trestle.config.hooks[name.to_s].select { |h| h.visible?(self) }
+      hook_sets.map { |set| set.for(name) }.inject(&:+).select { |h| h.visible?(self) }
+    end
+
+    def hook_sets
+      @_hook_sets ||= [
+        (admin.hooks if defined?(admin) && admin),
+        Trestle.config.hooks
+      ].compact
     end
   end
 end

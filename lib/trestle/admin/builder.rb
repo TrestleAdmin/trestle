@@ -56,6 +56,10 @@ module Trestle
         admin.form = Form.new(options, &block)
       end
 
+      def hook(name, options={}, &block)
+        admin.hooks.append(name, options, &block)
+      end
+
       def admin(&block)
         @admin.instance_eval(&block) if block_given?
         @admin

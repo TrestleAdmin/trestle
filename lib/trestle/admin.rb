@@ -40,6 +40,10 @@ module Trestle
         @tables ||= {}
       end
 
+      def hooks
+        @hooks ||= Hook::Set.new
+      end
+
       # Deprecated: Use `tables[:index]` instead
       def table
         tables[:index]

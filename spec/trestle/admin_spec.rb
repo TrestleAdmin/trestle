@@ -65,6 +65,10 @@ describe Trestle::Admin, remove_const: true do
     expect(admin.breadcrumbs).to eq(trail)
   end
 
+  it "has a set of hooks" do
+    expect(admin.hooks).to eq(Trestle::Hook::Set.new)
+  end
+
   describe "#path" do
     it "returns the path for the given action" do
       expect(admin.path(:index, foo: "bar")).to eq("/admin/test?foo=bar")

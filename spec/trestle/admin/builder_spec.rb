@@ -180,4 +180,16 @@ describe Trestle::Admin::Builder, remove_const: true do
       expect(::TestAdmin.breadcrumb).to be_nil
     end
   end
+
+  describe "#hook" do
+    it "adds an admin-level hook" do
+      b = Proc.new {}
+
+      Trestle::Admin::Builder.create(:test) do
+        hook "myhook", {}, &b
+      end
+
+      expect(::TestAdmin.hooks.for("myhook")).to eq([Trestle::Hook.new("myhook", {}, &b)])
+    end
+  end
 end

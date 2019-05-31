@@ -29,13 +29,37 @@ describe Trestle::HookHelper do
   end
 
   describe "#hook?" do
-    it "returns true if there are hooks defined for the given name" do
+    it "returns true if there are global hooks defined for the given name" do
       Trestle.config.hook("test-hook") {}
       expect(hook?("test-hook")).to be true
     end
 
-    it "returns false if there are no hooks defined for the given name" do
+    it "returns false if there are no global hooks defined for the given name" do
       expect(hook?("no-hook")).to be false
+    end
+  end
+
+  context "when an admin is available" do
+    let(:admin) { double(hooks: Trestle::Hook::Set.new) }
+
+    describe "#hook" do
+      it "calls and concatenates global and admin hooks" do
+        Trestle.config.hook("test-hook") { "global" }
+        admin.hooks.append("test-hook") { "admin" }
+
+        expect(hook("test-hook")).to eq("admin\nglobal")
+      end
+    end
+
+    describe "#hook?" do
+      it "returns true if there are admin hooks defined for the given name" do
+        admin.hooks.append("admin-hook") { "admin" }
+        expect(hook?("admin-hook")).to be true
+      end
+
+      it "returns false if there are no admin hooks defined for the given name" do
+        expect(hook?("no-hook")).to be false
+      end
     end
   end
 end

@@ -36,7 +36,7 @@ RSpec.configure do |config|
   config.before(:example) do
     Trestle.admins.clear
 
-    Trestle.config.hooks = Hash.new { |h, k| h[k] = [] }
+    Trestle.config.hooks = Trestle::Hook::Set.new
     Trestle.config.menus = []
   end
 

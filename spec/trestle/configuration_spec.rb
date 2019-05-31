@@ -83,15 +83,16 @@ describe Trestle::Configuration do
   end
 
   it "has no default hooks" do
-    expect(config.hooks).to eq({})
+    expect(config.hooks).to be_empty
   end
 
   describe "#hook" do
-    it "adds a hook for the given name" do
-      b = proc {}
-      config.hook "myhook", &b
+    let(:block) { -> {} }
 
-      expect(config.hooks["myhook"]).to eq([Trestle::Hook.new("myhook", {}, &b)])
+    it "adds a hook for the given name" do
+      config.hook "myhook", &block
+
+      expect(config.hooks.for("myhook")).to eq([Trestle::Hook.new("myhook", {}, &block)])
     end
   end
 
