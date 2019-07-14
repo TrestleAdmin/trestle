@@ -21,7 +21,9 @@
   }
 
   input[value=""] ~ &,
-  input:not([value]) ~ & {
+  input:not([value]) ~ &,
+  input[disabled] ~ &,
+  input.disabled ~ & {
     display: none;
   }
 }

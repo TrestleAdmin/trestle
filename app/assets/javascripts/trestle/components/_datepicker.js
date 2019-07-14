@@ -1,9 +1,13 @@
 Trestle.setupDatePicker = function(selectedDates, dateStr, instance) {
-  if ($(instance.input).data('allow-clear')) {
+  var input = $(instance.input)
+
+  if (input.data('allow-clear')) {
     $('<a href="#">')
       .on('click', function(e) {
         e.preventDefault();
-        instance.clear();
+        if (!input.is(':disabled') && !input.hasClass('disabled')) {
+          instance.clear();
+        }
       })
       .addClass('clear-datepicker')
       .insertBefore(instance.altInput);
