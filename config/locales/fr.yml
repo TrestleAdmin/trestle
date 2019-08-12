@@ -25,8 +25,11 @@ fr:
       toggle_navigation: "Basculer navigation"
       toggle_sidebar: "Basculer vue latérale"
 
+    dialog:
+      error: "La requête n'a pas pu être traitée."
+
     confirmation:
-      title: "Voulez-vous supprimer?"
+      title: "Voulez-vous supprimer ?"
       delete: "Oui"
       cancel: "Non"
 
@@ -40,6 +43,9 @@ fr:
       new: "Nouveau"
       save: "Enregistrer"
       delete: "Supprimer"
+      show: "Voir %{model_name}"
+      edit: "Éditer %{model_name}"
+      ok: "Valider"
 
     breadcrumbs:
       home: "Accueil"
@@ -82,3 +88,9 @@ fr:
 
     format:
       blank: "Aucun"
+
+    datepicker:
+      formats:
+        date: "d/m/Y"
+        datetime: "d/m/Y H:i"
+        time: "H:i"
