@@ -5,6 +5,10 @@
     > .control-label {
       color: $form-feedback-invalid-color;
     }
+
+    > .invalid-feedback {
+      display: block;
+    }
   }
 }
 
