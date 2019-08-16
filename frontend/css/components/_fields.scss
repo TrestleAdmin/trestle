@@ -9,6 +9,7 @@
 }
 
 .form-text {
+  color: $form-text-color;
   font-size: 0.9rem;
 
   @include media-breakpoint-up(sm) {
