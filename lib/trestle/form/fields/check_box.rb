@@ -22,7 +22,7 @@ module Trestle
           content_tag(:div, class: wrapper_class) do
             safe_join([
               builder.raw_check_box(name, options.merge(class: input_class), checked_value, unchecked_value),
-              builder.label(name, options[:label] || admin.human_attribute_name(name), class: label_class)
+              builder.label(name, options[:label] || admin.human_attribute_name(name), class: label_class, value: (checked_value if options[:multiple]))
             ])
           end
         end
