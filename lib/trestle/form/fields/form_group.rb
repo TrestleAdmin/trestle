@@ -37,7 +37,7 @@ module Trestle
         end
 
         def defaults
-          super.merge(class: ["form-group"])
+          Trestle::Options.new(class: ["form-group"])
         end
 
       protected
