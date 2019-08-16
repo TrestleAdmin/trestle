@@ -36,6 +36,10 @@ module Trestle
         def label_class
           custom? ? ["custom-control-label"] : ["form-check-label"]
         end
+
+        def defaults
+          Trestle::Options.new(disabled: admin.readonly?)
+        end
       end
     end
   end
