@@ -12,4 +12,11 @@
       box-shadow: $s2bs-form-control-focus-box-shadow !important;
     }
   }
+
+  .select2-selection--multiple.tag-select {
+    .select2-selection__choice {
+      background-color: $tag-bg;
+      border-color: $tag-border;
+    }
+  }
 }
