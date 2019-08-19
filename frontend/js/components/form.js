@@ -1,3 +1,5 @@
+/* global history */
+
 import $ from 'jquery'
 
 import { init, triggerInit } from '../core/events'

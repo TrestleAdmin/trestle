@@ -1,3 +1,5 @@
+/* global history, location */
+
 import $ from 'jquery'
 
 import { init, ready } from '../core/events'

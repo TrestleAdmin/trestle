@@ -1,1 +1,3 @@
-export default typeof(Turbolinks) !== 'undefined' && Turbolinks.supported
+/* global Turbolinks */
+
+export default typeof Turbolinks !== 'undefined' && Turbolinks.supported
