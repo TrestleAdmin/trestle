@@ -105,7 +105,7 @@ export default class Dialog {
       </div>
 
       <div class="modal-body">
-        ${content.html()}
+        ${content.prop('outerHTML')}
       </div>
 
       <div class="modal-footer">
