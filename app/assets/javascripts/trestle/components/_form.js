@@ -22,9 +22,9 @@ Trestle.init(function(e, root) {
       $(this).find(':submit').prop('disabled', false).removeClass('loading');
       $(this).removeData('trestle:submitButton');
 
-      var contentType = xhr.getResponseHeader("Content-Type");
+      var contentType = (xhr.getResponseHeader('Content-Type') || '').split(';')[0];
 
-      if (contentType && contentType.split(";")[0] == "text/html") {
+      if (contentType == 'text/html') {
         if (/<html/i.test(xhr.responseText)) {
           // Response is a full HTML page, likely an error page. Render within an iframe.
           var context = $(this).closest('[data-context]');
@@ -43,7 +43,7 @@ Trestle.init(function(e, root) {
           // Focus the correct tab
           Trestle.focusActiveTab();
         }
-      } else {
+      } else if (contentType == 'text/plain') {
         // Assume an error response
         var title = xhr.status + " (" + xhr.statusText + ")";
         Trestle.Dialog.showError(title, xhr.responseText);
