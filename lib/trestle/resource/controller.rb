@@ -8,7 +8,8 @@ module Trestle
         respond_to do |format|
           format.html
           format.json { render json: collection }
-          format.js
+
+          yield format if block_given?
         end
       end
 
@@ -18,7 +19,8 @@ module Trestle
         respond_to do |format|
           format.html
           format.json { render json: instance }
-          format.js
+
+          yield format if block_given?
         end
       end
 
@@ -32,7 +34,8 @@ module Trestle
               redirect_to_return_location(:create, instance, default: admin.instance_path(instance))
             end
             format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
-            format.js
+
+            yield format if block_given?
           end
         else
           respond_to do |format|
@@ -41,7 +44,8 @@ module Trestle
               render "new", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
-            format.js
+
+            yield format if block_given?
           end
         end
       end
@@ -51,18 +55,35 @@ module Trestle
           respond_to do |format|
             format.html { redirect_to action: :new }
             format.json { head :not_found }
-            format.js
+
+            yield format if block_given?
           end
         else
           respond_to do |format|
             format.html
             format.json { render json: instance }
-            format.js
+
+            yield format if block_given?
           end
         end
       end
 
       def edit
+        if admin.singular? && instance.nil?
+          respond_to do |format|
+            format.html { redirect_to action: :new }
+            format.json { head :not_found }
+
+            yield format if block_given?
+          end
+        else
+          respond_to do |format|
+            format.html
+            format.json { render json: instance }
+
+            yield format if block_given?
+          end
+        end
       end
 
       def update
@@ -75,7 +96,8 @@ module Trestle
               redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
             end
             format.json { render json: instance, status: :ok }
-            format.js
+
+            yield format if block_given?
           end
         else
           respond_to do |format|
@@ -84,7 +106,8 @@ module Trestle
               render "show", status: :unprocessable_entity
             end
             format.json { render json: instance.errors, status: :unprocessable_entity }
-            format.js
+
+            yield format if block_given?
           end
         end
       end
@@ -108,7 +131,8 @@ module Trestle
             end
           end
           format.json { head :no_content }
-          format.js
+
+          yield format if block_given?
         end
       end
 
