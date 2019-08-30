@@ -63,6 +63,8 @@ img {
 .error-iframe {
   border: 0;
   flex: 1;
+  width: 100%;
+  min-height: 400px;
 }
 
 @include mobile {
