@@ -5,7 +5,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanCSS = require('clean-css');
 
 module.exports = {
   entry: path.resolve(__dirname, 'frontend/index.js'),
@@ -33,7 +32,9 @@ module.exports = {
         sourceMap: true
       }),
       new OptimizeCSSAssetsPlugin({
-        cssProcessor: CleanCSS
+        cssProcessorPluginOptions: {
+          preset: ['default', { normalizePositions: false }]
+        }
       })
     ]
   },
