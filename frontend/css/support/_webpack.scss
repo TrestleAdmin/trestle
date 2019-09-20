@@ -3,11 +3,11 @@
 // Mixins & functions
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/mixins";
-@import "core/mixins";
+@import "../core/mixins";
 
 // Variables
-@import "variables/bootstrap";
-@import "variables/trestle";
+@import "../variables/bootstrap";
+@import "../variables/trestle";
 @import "~bootstrap/scss/variables";
 
 // Icon variables
