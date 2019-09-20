@@ -1,0 +1,16 @@
+.timestamp {
+  line-height: 1.2;
+  white-space: nowrap;
+
+  small {
+    display: block;
+    color: #666;
+  }
+
+  &.timestamp-inline,
+  &.inline {
+    small {
+      display: inline;
+    }
+  }
+}

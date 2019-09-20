@@ -1,0 +1,19 @@
+.app-footer {
+  flex-shrink: 0;
+
+  background: $footer-bg;
+  color: $footer-color;
+
+  padding: 0.5rem 1.4rem;
+  font-size: 0.75rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+@include media-breakpoint-down(sm) {
+  .app-footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

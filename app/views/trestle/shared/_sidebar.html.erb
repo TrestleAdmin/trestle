@@ -1,13 +1,10 @@
-<aside class="app-sidebar">
+<aside class="app-sidebar navbar-expand-md" id="app-sidebar">
   <header class="app-sidebar-header">
-    <button class="navbar-toggle">
-      <span class="sr-only"><%= t("trestle.ui.toggle_navigation", default: "Toggle navigation") %></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+    <button class="navbar-toggler" type="button" aria-controls="app-sidebar" aria-expanded="false" aria-label="<%= t("trestle.ui.toggle_navigation", default: "Toggle navigation") %>">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <%= link_to Trestle.config.root, class: "navbar-brand" do %>
+    <%= link_to Trestle.config.root, class: "app-sidebar-title" do %>
       <%= hook("view.title") { render "trestle/shared/title" } %>
     <% end %>
   </header>
@@ -27,7 +24,7 @@
                 <%= icon("nav-icon", item.icon) %>
                 <span class="nav-label"><%= item.label %></span>
 
-                <%= content_tag(:span, item.badge.text, class: ["nav-badge", item.badge.html_class]) if item.badge? %>
+                <%= content_tag(:span, item.badge.text, class: ["badge", item.badge.html_class]) if item.badge? %>
               <% end %>
             </li>
           <% end %>

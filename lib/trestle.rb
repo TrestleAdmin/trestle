@@ -1,9 +1,6 @@
 require "trestle/version"
 
 require "active_support/all"
-
-require "sass-rails"
-require "autoprefixer-rails"
 require "kaminari"
 
 module Trestle

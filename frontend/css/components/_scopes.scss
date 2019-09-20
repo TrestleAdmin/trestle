@@ -1,0 +1,55 @@
+.scopes {
+  list-style: none;
+
+  margin-top: -0.25rem;
+  margin-bottom: 0;
+
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin-top: 0.25rem;
+    margin-right: 0.35rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    background-color: $scope-bg;
+
+    font-size: 0.8rem;
+    font-weight: normal;
+    white-space: nowrap;
+
+    border-radius: 50rem;
+    padding: $scope-padding;
+
+    &, &:hover, &:focus {
+      color: $scope-color;
+    }
+
+    &:hover, &:focus {
+      background-color: $scope-hover-bg;
+      text-decoration: none;
+    }
+  }
+
+  li.active a {
+    &, &:hover, &:focus, strong {
+      color: $scope-active-color;
+    }
+
+    &, &:hover, &:focus {
+      background-color: $scope-active-bg;
+    }
+  }
+
+  strong {
+    font-weight: 500;
+    color: $scope-label-color;
+  }
+}

@@ -22,6 +22,9 @@ module Trestle
     # Default timestamp precision
     option :timestamp_precision, :minutes
 
+    # Theme stylesheet compilation (requires Sass support)
+    option :theme, defined?(Sass) || defined?(SassC)
+
 
     ## Mounting Options
 

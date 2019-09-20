@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+// Mixins & functions
+@import "~bootstrap/scss/functions";
+@import "core/mixins";
+
+// Variables
+@import "variables/bootstrap";
+@import "variables/trestle";
+@import "~bootstrap/scss/variables";
+
+// Icons
+@import "icons/fontawesome";
+
+// Core
+@import "core/dependencies";
+@import "core/typography";
+
+// Layout
+@import "layout/base";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/navigation";
+@import "layout/content";
+
+// Components
+@import "components/color-vars";
+@import "components/alerts";
+@import "components/avatar";
+@import "components/background";
+@import "components/breadcrumbs";
+@import "components/buttons";
+@import "components/custom-forms";
+@import "components/datepicker";
+@import "components/dropdown";
+@import "components/fields";
+@import "components/magnific-popup";
+@import "components/media-grid";
+@import "components/modal";
+@import "components/pagination";
+@import "components/popover";
+@import "components/scopes";
+@import "components/select";
+@import "components/sort";
+@import "components/table";
+@import "components/tabs";
+@import "components/tags";
+@import "components/timestamp";
+@import "components/toolbars";
+@import "components/turbolinks";

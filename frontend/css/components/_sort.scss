@@ -1,0 +1,30 @@
+.sort {
+  &, &:hover, &:focus {
+    color: $body-color;
+    text-decoration: none;
+  }
+
+  &:after {
+    @include icon-fa($fa-var-bars);
+
+    font-size: 75%;
+    margin-left: 5px;
+    opacity: 0.25;
+  }
+
+  &:hover:after {
+    opacity: 0.5;
+  }
+
+  &.active:after {
+    opacity: 1.0;
+  }
+
+  &.sort-asc:after {
+    @include icon-fa($fa-var-chevron-up);
+  }
+
+  &.sort-desc:after {
+    @include icon-fa($fa-var-chevron-down);
+  }
+}

@@ -1,0 +1,66 @@
+.select2-container--bootstrap {
+  // This is required to ensure the select field is rendered at full width
+  // within Bootstrap tabs that are hidden when the page is first loaded.
+  // See: https://github.com/select2/select2/issues/4220
+  width: 100% !important;
+}
+
+.tag-select {
+  &.select2-selection--multiple {
+    .select2-selection__choice {
+      display: flex;
+      align-items: center;
+
+      padding: 2px 6px;
+
+      font-size: 0.9rem;
+
+      border: 0;
+      border-left: 4px solid $tag-border;
+      border-radius: 4px;
+
+      background: $tag-bg;
+      color: $tag-color;
+    }
+
+    .select2-selection__choice__remove {
+      order: 99;
+
+      color: $tag-color;
+
+      margin-right: 0;
+      margin-left: 4px;
+      line-height: 1.2;
+    }
+
+    .select2-search--inline {
+      position: relative;
+      left: -4px;
+    }
+  }
+
+  // Hide the results dropdown
+
+  &.select2-dropdown {
+    display: none;
+  }
+
+  .select2-container--open &.select2-selection {
+    border-radius: $s2bs-border-radius-base !important;
+    border-color: $s2bs-input-border-focus !important;
+  }
+}
+
+.date-select,
+.datetime-select,
+.time-select {
+  select {
+    display: inline-block;
+    width: auto;
+  }
+
+  .select2-container--bootstrap {
+    display: inline-block;
+    width: auto !important;
+  }
+}

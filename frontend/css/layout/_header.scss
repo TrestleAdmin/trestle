@@ -1,0 +1,27 @@
+.app-header {
+  flex: 0 0 $header-height;
+  height: $header-height;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+
+  background: $header-bg;
+}
+
+@include media-breakpoint-down(sm) {
+  .app-header {
+    margin-top: -$header-height;
+
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+
+    // Hide all elements by default
+    > * {
+      display: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<ul class="scopes pull-left">
+<ul class="scopes">
   <% admin.scopes.each do |name, scope| %>
     <%= content_tag(:li, class: ("active" if scope.active?(params))) do %>
       <%= link_to persistent_params.merge(scope: (name unless scope.active?(params))) do %>

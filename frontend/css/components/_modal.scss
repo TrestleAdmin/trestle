@@ -1,0 +1,113 @@
+.modal {
+  &.loading {
+    .modal-content {
+      min-height: 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:after {
+        @include icon-fa($fa-var-spinner);
+        @extend .fa-spin;
+
+        font-size: 2rem;
+        opacity: 0.25;
+      }
+    }
+  }
+
+  &.error {
+    .modal-header {
+      background-color: $error-bg;
+    }
+  }
+
+  &.background {
+    .modal-dialog {
+      transform: scale(0.9);
+      opacity: 0.75;
+    }
+  }
+}
+
+.modal-header {
+  @extend .theme-bg;
+
+  border-bottom: none;
+
+  .close {
+    opacity: 0.75;
+
+    &, &:hover, &:focus {
+      color: white;
+    }
+
+    &:not(.disabled):not(:disabled) {
+      &:hover, &:focus {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-shadow: rgba(black, 0.5) 0 1px 1px;
+  color: white;
+}
+
+.modal-tabs {
+  .nav-tabs {
+    background: $body-bg;
+    padding: 10px 15px 0 15px;
+  }
+}
+
+.modal-body {
+  // Allow nesting of tab panes directly within
+  @extend .tab-content;
+
+  pre.exception {
+    max-height: 75vh;
+  }
+}
+
+.modal-footer {
+  background: $modal-footer-bg;
+
+  align-items: flex-start;
+
+  .primary-toolbar {
+    margin-left: auto !important;
+  }
+
+  .secondary-toolbar {
+    margin-right: auto !important;
+  }
+}
+
+.modal-flash {
+  .alert {
+    margin-bottom: 0;
+    border-radius: 0;
+    border-width: 0 0 1px 0;
+
+    padding-top: $alert-padding-y / 2;
+    padding-bottom: $alert-padding-y / 2;
+
+    .alert-icon {
+      font-size: 36px;
+      margin-right: $alert-padding-x * 0.75;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+}

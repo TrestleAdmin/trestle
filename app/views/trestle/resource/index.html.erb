@@ -1,7 +1,7 @@
 <% content_for(:title, admin.t("titles.index", default: "Listing %{pluralized_model_name}")) %>
 
 <% toolbar(:primary) do |t| %>
-  <%= t.link admin.t("buttons.new", default: "New %{model_name}"), action: :new, icon: "fa fa-plus", class: "btn-new-resource" if admin.actions.include?(:new) %>
+  <%= t.link admin.t("buttons.new", default: "New %{model_name}"), action: :new, style: :light, icon: "fa fa-plus", class: "btn-new-resource" if admin.actions.include?(:new) %>
 <% end %>
 
 <% content_for(:utilities) do %>

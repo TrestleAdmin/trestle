@@ -6,7 +6,7 @@ module Trestle
       include HookHelper
 
       # Whitelisted helpers will concatenate their result to the output buffer when called.
-      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :table, :divider, :h1, :h2, :h3, :h4, :h5, :h6, :panel, :well]
+      WHITELISTED_HELPERS = [:row, :col, :render, :tab, :table, :divider, :h1, :h2, :h3, :h4, :h5, :h6, :card, :panel, :well]
 
       # Raw block helpers will pass their block argument directly to the method
       # without wrapping it in a new output buffer.

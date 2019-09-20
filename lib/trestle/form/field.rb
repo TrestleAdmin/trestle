@@ -7,9 +7,9 @@ module Trestle
 
       def initialize(builder, template, name, options={}, &block)
         @builder, @template, @name, @block = builder, template, name, block
-
         @options = defaults.merge(options)
-        extract_options!
+
+        normalize_options!
       end
 
       def errors
@@ -25,7 +25,11 @@ module Trestle
       end
 
       def render
-        form_group do
+        if @wrapper
+          form_group do
+            field
+          end
+        else
           field
         end
       end
@@ -38,11 +42,27 @@ module Trestle
         Trestle::Options.new(readonly: admin.readonly?)
       end
 
-      def extract_options!
-        @wrapper = extract_wrapper_options(*Fields::FormGroup::WRAPPER_OPTIONS).merge(options.delete(:wrapper))
+      def normalize_options!
+        extract_wrapper_options!
+        assign_error_class!
       end
 
-    private
+    protected
+      def extract_wrapper_options!
+        unless options[:wrapper] == false
+          @wrapper = extract_wrapper_options(*Fields::FormGroup::WRAPPER_OPTIONS).merge(options.delete(:wrapper))
+        end
+      end
+
+      def assign_error_class!
+        @options[:class] = Array(@options[:class])
+        @options[:class] << error_class if errors.any?
+      end
+
+      def error_class
+        "is-invalid"
+      end
+
       def extract_wrapper_options(*keys)
         wrapper = Trestle::Options.new
         keys.each { |k| wrapper[k] = options.delete(k) if options.key?(k) }

@@ -1,0 +1,55 @@
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+html {
+  position: relative;
+}
+
+body {
+  display: flex;
+  overflow: hidden;
+}
+
+.app-wrapper {
+  flex: 1;
+
+  display: flex;
+  align-items: stretch;
+
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-main {
+  flex: 1 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@include media-breakpoint-down(sm) {
+  body {
+    height: auto;
+  }
+
+  .app-container {
+    padding-top: $header-height;
+    -webkit-overflow-scrolling: auto;
+  }
+}

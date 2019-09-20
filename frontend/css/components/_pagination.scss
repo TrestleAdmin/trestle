@@ -1,0 +1,47 @@
+.pagination-container {
+  margin-left: auto;
+
+  display: inline-flex;
+  align-items: center;
+
+  p {
+    font-size: 0.85rem;
+    margin: 0 10px 0 0;
+  }
+
+  strong {
+    color: black;
+  }
+
+  .pagination {
+    display: inline-flex;
+    margin: 0;
+
+    a {
+      font-weight: normal;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .pagination-container {
+    margin-right: auto;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pagination {
+      margin: 0 auto;
+      order: -1;
+    }
+
+    p {
+      display: block;
+      margin-right: 0;
+      margin-top: 5px;
+    }
+  }
+}

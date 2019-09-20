@@ -1,0 +1,15 @@
+$theme-colors: null !default;
+
+// Import deprecated user-defined variables
+@import "trestle/_variables";
+
+$brand-primary: false !default;
+
+@if $brand-primary != false {
+  $theme-colors: (
+    "primary": $brand-primary
+  );
+}
+
+// Import user-defined theme variables
+@import "trestle/_theme";

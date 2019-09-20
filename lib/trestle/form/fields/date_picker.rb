@@ -1,5 +1,5 @@
 module Trestle::Form::Fields::DatePicker
-  def extract_options!
+  def normalize_options!
     options[:prepend] ||= options.delete(:icon) { default_icon }
 
     unless options[:disabled] || options[:readonly]

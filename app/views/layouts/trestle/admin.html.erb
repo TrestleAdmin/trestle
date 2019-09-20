@@ -17,6 +17,8 @@
     <%= favicon_link_tag Trestle.config.favicon if Trestle.config.favicon %>
 
     <%= stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "trestle/theme", 'data-turbolinks-track': 'reload' if Trestle.config.theme %>
+    <%= stylesheet_link_tag "trestle/custom", 'data-turbolinks-track': 'reload' %>
 
     <%= hook :stylesheets %>
 

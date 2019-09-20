@@ -1,0 +1,141 @@
+.btn {
+  border-width: 0;
+  box-shadow: none;
+
+  &.loading {
+    &::before {
+      @include icon-fa($fa-var-spinner);
+      @extend .fa-spin;
+      margin-right: 10px;
+    }
+  }
+
+  > i {
+    font-size: 90%;
+
+    + .btn-label {
+      margin-left: 5px;
+    }
+  }
+}
+
+
+// Alternative delete button (no background color until hover)
+
+.btn-delete {
+  color: theme-color("danger");
+
+  &:hover, &:focus {
+    color: color-yiq(theme-color("danger"));
+    background: theme-color("danger");
+  }
+}
+
+
+// New resource button does not show label by default
+
+.btn-new-resource {
+  > i {
+    font-size: 100%;
+  }
+
+  .btn-label {
+    @include sr-only;
+  }
+}
+
+
+// Button icon/label visibility
+
+@mixin button-child-visible($prefix, $selector) {
+  &.#{$prefix}-visible-xs,
+  &.#{$prefix}-visible-sm,
+  &.#{$prefix}-visible-md,
+  &.#{$prefix}-visible-lg {
+    #{$selector} { display: none; }
+  }
+
+  &.#{$prefix}-visible-xs {
+    @include media-breakpoint-only(xs) {
+      #{$selector} { display: inline-block; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-visible-sm {
+    @include media-breakpoint-only(sm) {
+      #{$selector} { display: inline-block; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-visible-md {
+    @include media-breakpoint-only(md) {
+      #{$selector} { display: inline-block; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-visible-lg {
+    @include media-breakpoint-up(lg) {
+      #{$selector} { display: inline-block; }
+      @content;
+    }
+  }
+}
+
+@mixin button-child-hidden($prefix, $selector) {
+  &.#{$prefix}-hidden-xs {
+    @include media-breakpoint-only(xs) {
+      #{$selector} { display: none; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-hidden-sm {
+    @include media-breakpoint-only(sm) {
+      #{$selector} { display: none; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-hidden-md {
+    @include media-breakpoint-only(md) {
+      #{$selector} { display: none; }
+      @content;
+    }
+  }
+
+  &.#{$prefix}-hidden-lg {
+    @include media-breakpoint-up(lg) {
+      #{$selector} { display: none; }
+      @content;
+    }
+  }
+}
+
+.btn {
+  &.icon-visible-xs,
+  &.icon-visible-sm,
+  &.icon-visible-md,
+  &.icon-visible-lg {
+    > i + .btn-label {
+      margin-left: 0;
+    }
+  }
+
+  @include button-child-visible('icon', '> i') {
+    > i + .btn-label {
+      margin-left: 5px;
+    }
+  };
+
+  @include button-child-hidden('icon', '> i') {
+    > i + .btn-label {
+      margin-left: 0;
+    }
+  };
+
+  @include button-child-visible('label', '> .btn-label');
+  @include button-child-hidden('label', '> .btn-label');
+}

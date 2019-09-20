@@ -5,8 +5,6 @@ module Trestle
         WRAPPER_OPTIONS = [:help, :label, :hide_label]
 
         def render
-          options[:class] << 'has-error' if errors.any?
-
           content_tag(:div, options.except(*WRAPPER_OPTIONS)) do
             concat label unless options[:label] == false
             concat template.capture(&block) if block
@@ -16,7 +14,7 @@ module Trestle
         end
 
         def help_message
-          classes = ["help-block"]
+          classes = ["form-text"]
 
           if options[:help].is_a?(Hash)
             message = options[:help][:text]
@@ -29,7 +27,7 @@ module Trestle
         end
 
         def error_message
-          content_tag(:p, class: "help-block") do
+          content_tag(:p, class: "invalid-feedback") do
             safe_join([icon("fa fa-warning"), errors.first], " ")
           end
         end
@@ -39,11 +37,16 @@ module Trestle
         end
 
         def defaults
-          super.merge(class: ["form-group"])
+          Trestle::Options.new(class: ["form-group"])
         end
 
-        def extract_options!
-          # Do not call super
+      protected
+        def extract_wrapper_options!
+          # Intentional no-op
+        end
+
+        def error_class
+          "has-error"
         end
       end
     end

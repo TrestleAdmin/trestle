@@ -1,0 +1,74 @@
+.nav-tabs {
+  border-bottom: none;
+
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $nav-tabs-link-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(black, 0.1);
+  }
+
+  .nav-item {
+    margin-bottom: 0;
+  }
+
+  .nav-link {
+    margin-right: 4px;
+    padding: 10px 20px;
+
+    background-color: $nav-tabs-link-bg;
+    color: $nav-tabs-link-color;
+
+    font-weight: 500;
+  }
+
+  .align-right {
+    margin-left: auto;
+
+    .nav-link {
+      margin-right: 0;
+      margin-left: 4px;
+    }
+
+    & + .align-right {
+      margin-left: 0;
+    }
+  }
+
+  .badge {
+    font-size: 0.65em;
+    margin-left: 0.35rem;
+    vertical-align: 1px;
+
+    // Default badge color when no badge- classes specified
+    &:not([class*="badge-"]) {
+      background: $gray-600;
+      color: color-yiq($gray-600);
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .nav-tabs {
+    .nav-link {
+      font-size: 0.95rem;
+      padding: 10px;
+      margin-right: 2px;
+    }
+
+    .align-right {
+      .nav-link {
+        margin-left: 2px;
+      }
+    }
+  }
+}

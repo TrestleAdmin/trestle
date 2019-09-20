@@ -27,11 +27,11 @@ describe Trestle::Form::Renderer, type: :helper do
   it "append whitelisted helpers to the result" do
     result = render_form do
       row do
-        col(xs: 12) {}
+        col(12) {}
       end
     end
 
-    expect(result).to eq('<div class="row"><div class="col-xs-12"></div></div>')
+    expect(result).to eq('<div class="row"><div class="col-12"></div></div>')
   end
 
   it "does not append non-whitelisted helpers to the result" do

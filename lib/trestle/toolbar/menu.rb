@@ -37,8 +37,11 @@ module Trestle
           @menu, @template = menu, template
         end
 
-        def link(*args)
-          item { admin_link_to(*args) }
+        def link(content, instance_or_url=nil, options={}, &block)
+          options[:class] = Array(options[:class])
+          options[:class] << "dropdown-item"
+
+          item { admin_link_to(content, instance_or_url, options, &block) }
         end
 
         def header(text)

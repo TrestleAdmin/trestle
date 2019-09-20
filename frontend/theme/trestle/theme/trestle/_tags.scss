@@ -1,0 +1,12 @@
+.tag {
+  background-color: $tag-bg;
+  border-color: $tag-border;
+}
+
+a.tag {
+  &:hover,
+  &:focus {
+    background-color: $tag-hover-bg;
+    border-color: $tag-hover-border;
+  }
+}
