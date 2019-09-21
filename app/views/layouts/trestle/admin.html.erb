@@ -22,7 +22,7 @@
 
     <%= hook :stylesheets %>
 
-    <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks %>
+    <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks rescue nil %>
     <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_tag nonce: true do %>
