@@ -2,6 +2,9 @@ require "active_model/naming"
 
 module Trestle
   class ModelName
+    # Matches :other i18n pluralization option for most languages
+    I18N_PLURAL_COUNT = 20
+
     attr_reader :klass
 
     delegate :downcase, :upcase, :titleize, :titlecase, to: :to_s
@@ -26,7 +29,7 @@ module Trestle
 
     def plural(options={})
       if i18n_supported? && i18n_pluralizations_available?
-        human(default_plural, { count: :many }.merge(options))
+        human(default_plural, { count: I18N_PLURAL_COUNT }.merge(options))
       else
         default_plural
       end
