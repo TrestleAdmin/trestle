@@ -44,7 +44,7 @@ module Trestle
 
     # Default plural version if it cannot be determined from i18n
     def default_plural
-      singular.pluralize(I18n.locale)
+      singular.pluralize
     end
 
     # Safely delegates to ActiveModel::Name#human, catching exceptions caused by missing pluralizations
