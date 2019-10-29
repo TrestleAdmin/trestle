@@ -1,8 +1,8 @@
-<% if tabs.size > 1 || render_sidebar_as_tab? -%>
+<% if tabs.size > 0 || render_sidebar_as_tab? -%>
   <ul class="nav nav-tabs">
     <% tabs.each do |name, tab| %>
-      <li class="nav-item">
-        <%= link_to tab.label, "##{tab.id(("modal" if dialog_request?))}", class: ["nav-link", ("active" if name == tabs.keys.first)], role: "tab", data: { toggle: "tab" } %>
+      <li class="nav-item <%= "active" if name == tabs.keys.first %>">
+        <%= link_to tab.label, "##{tab.id(("modal" if dialog_request?))}", class: "nav-link", role: "tab", data: { toggle: "tab" } %>
       </li>
     <% end %>
 
