@@ -85,6 +85,10 @@ module Trestle
         @model_name ||= Trestle::ModelName.new(model)
       end
 
+      def default_human_admin_name
+        model_name.plural
+      end
+
       def actions
         @actions ||= (readonly? ? READONLY_ACTIONS : RESOURCE_ACTIONS).dup
       end
