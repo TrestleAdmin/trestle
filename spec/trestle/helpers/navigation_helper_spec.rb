@@ -8,7 +8,7 @@ describe Trestle::NavigationHelper do
   describe "#current_admin?" do
     context "when admin is undefined" do
       it "returns false" do
-        expect(current_admin?(double)).to be false
+        expect(current_admin?(double)).to be_falsy
       end
     end
 
@@ -16,7 +16,7 @@ describe Trestle::NavigationHelper do
       let(:admin) { nil }
 
       it "returns false" do
-        expect(current_admin?(double)).to be false
+        expect(current_admin?(double)).to be_falsy
       end
     end
   end
@@ -28,8 +28,8 @@ describe Trestle::NavigationHelper do
       expect(current_admin?(double(name: "myadmin"))).to be true
     end
 
-    it "returns true if the admin's name does not match" do
-      expect(current_admin?(double(name: "another"))).to be false
+    it "returns false if the admin's name does not match" do
+      expect(current_admin?(double(name: "another"))).to be_falsy
     end
   end
 end
