@@ -11,8 +11,7 @@ group :test do
   gem 'puma'
 end
 
-gem 'rails', github: 'rails/rails'
-gem 'arel', github: 'rails/arel'
+gem 'rails', '~> 6.0.0'
 
 gem 'sqlite3', '~> 1.4'
 gem 'sassc-rails'
