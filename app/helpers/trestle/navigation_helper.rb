@@ -1,10 +1,11 @@
 module Trestle
   module NavigationHelper
     def current_navigation_item?(item)
-      return true if current_page?(item.path)
-      return true if defined?(admin) && admin.name == item.admin.name
+      current_page?(item.path) || current_admin?(item.admin)
+    end
 
-      false
+    def current_admin?(admin)
+      respond_to?(:admin) && self.admin.present? && self.admin.name == admin.name
     end
   end
 end
