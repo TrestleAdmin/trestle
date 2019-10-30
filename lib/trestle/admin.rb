@@ -79,7 +79,11 @@ module Trestle
       end
 
       def human_admin_name
-        I18n.t("admin.breadcrumbs.#{i18n_key}", default: name.demodulize.underscore.sub(/_admin$/, '').titleize)
+        I18n.t("admin.breadcrumbs.#{i18n_key}", default: default_human_admin_name)
+      end
+
+      def default_human_admin_name
+        name.demodulize.underscore.sub(/_admin$/, '').titleize
       end
 
       def translate(key, options={})
