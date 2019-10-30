@@ -4,13 +4,14 @@ module Trestle
       class CollectionRadioButtons < Field
         include RadioButtonHelpers
 
-        attr_reader :collection, :value_method, :text_method, :html_options
+        attr_reader :collection, :value_method, :text_method, :html_options, :block
 
         def initialize(builder, template, name, collection, value_method, text_method, options={}, html_options={}, &block)
           super(builder, template, name, options, &block)
 
           @collection, @value_method, @text_method = collection, value_method, text_method
           @html_options = default_html_options.merge(html_options)
+          @block = block
         end
 
         def field
