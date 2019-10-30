@@ -4,6 +4,11 @@ import { init } from '../core/events'
 import { i18n } from '../core/i18n'
 
 function setupDatePicker (selectedDates, dateStr, instance) {
+  addClearButton(instance)
+  enableDirectEntry(instance)
+}
+
+function addClearButton (instance) {
   const $input = $(instance.input)
 
   if ($input.data('allow-clear')) {
@@ -20,7 +25,22 @@ function setupDatePicker (selectedDates, dateStr, instance) {
       .addClass('clear-datepicker')
       .insertBefore(instance.altInput)
   }
-};
+}
+
+function enableDirectEntry (instance) {
+  const $altInput = $(instance.altInput)
+
+  $altInput.on('input', function (e) {
+    const value = $altInput.val()
+
+    const parsedDate = instance.parseDate(value, instance.config.altFormat)
+    const formattedDate = instance.formatDate(parsedDate, instance.config.altFormat)
+
+    if (value === formattedDate) {
+      instance.setDate(value, true, instance.config.altFormat)
+    }
+  })
+}
 
 init(function (root) {
   $(root).find('input[type="date"][data-picker="true"]').flatpickr({
