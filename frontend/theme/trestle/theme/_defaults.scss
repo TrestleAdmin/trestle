@@ -70,8 +70,8 @@ $custom-select-focus-box-shadow:   0 0 0 $custom-select-focus-width $input-btn-f
 $custom-range-thumb-bg:        $component-active-bg !default;
 $custom-range-thumb-active-bg: lighten($component-active-bg, 35%) !default;
 
-$custom-file-focus-border-color:    $input-focus-border-color !default;
-$custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
+$custom-file-focus-border-color: $input-focus-border-color !default;
+$custom-file-focus-box-shadow:   $input-focus-box-shadow !default;
 
 
 // Navs

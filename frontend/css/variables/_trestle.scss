@@ -6,8 +6,8 @@ $error-bg: theme-color("danger");
 
 // Header
 
-$header-bg:   white;
-$header-color:#333333;
+$header-bg:    white;
+$header-color: #333333;
 
 $header-height: 50px;
 
@@ -20,9 +20,9 @@ $footer-color: #888888;
 
 // Sidebar
 
-$sidebar-bg:          #222222;
-$sidebar-hover-bg:    #1a1a1a;
-$sidebar-active-bg:   #393939;
+$sidebar-bg:            #222222;
+$sidebar-hover-bg:      #1a1a1a;
+$sidebar-active-bg:     #393939;
 $sidebar-active-border: 4px;
 
 $sidebar-link-color:  #919191;
@@ -59,7 +59,7 @@ $main-content-footer-border:  1px solid rgba(black, 0.1);
 
 // Tags
 
-$tag-color:      white;
+$tag-color:        white;
 $tag-bg:           lighten(theme-color("primary"), 10%);
 $tag-border:       theme-color("primary");
 
