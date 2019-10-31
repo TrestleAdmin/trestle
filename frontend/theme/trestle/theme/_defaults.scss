@@ -79,6 +79,18 @@ $custom-file-focus-box-shadow:   $input-focus-box-shadow !default;
 $nav-pills-link-active-bg: $component-active-bg !default;
 
 
+// Navbar
+
+$sidebar-mobile-toggle-bg:     transparent !default;
+$sidebar-mobile-toggle-color:  white !default;
+$sidebar-mobile-toggle-border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15) !default;
+
+$sidebar-mobile-toggle-active-bg:     rgba($sidebar-mobile-toggle-color, 0.1) !default;
+$sidebar-mobile-toggle-active-border: $sidebar-mobile-toggle-border !default;
+
+$sidebar-mobile-toggle-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$sidebar-mobile-toggle-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
+
+
 // Dropdowns
 
 $dropdown-link-active-bg: $component-active-bg !default;

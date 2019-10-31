@@ -22,16 +22,17 @@
     outline: none;
     margin-left: $grid-gutter-width / 2;
 
-    border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15);
-    border-radius: 4px;
+    background: $sidebar-mobile-toggle-bg;
+    border: $sidebar-mobile-toggle-border;
 
     &:hover, &:focus {
-      background: rgba(white, 0.1);
+      background: $sidebar-mobile-toggle-active-bg;
+      border: $sidebar-mobile-toggle-active-border;
     }
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-dark-toggler-icon-bg;
+    background-image: $sidebar-mobile-toggle-icon-bg;
   }
 }
 

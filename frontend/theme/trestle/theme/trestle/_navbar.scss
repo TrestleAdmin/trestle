@@ -1,0 +1,15 @@
+.app-sidebar-header {
+  .navbar-toggler {
+    background: $sidebar-mobile-toggle-bg;
+    border: $sidebar-mobile-toggle-border;
+
+    &:hover, &:focus {
+      background: $sidebar-mobile-toggle-active-bg;
+      border: $sidebar-mobile-toggle-active-border;
+    }
+  }
+
+  .navbar-toggler-icon {
+    background-image: $sidebar-mobile-toggle-icon-bg;
+  }
+}
