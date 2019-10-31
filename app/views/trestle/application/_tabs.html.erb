@@ -1,4 +1,4 @@
-<% if tabs.size > 1 || render_sidebar_as_tab? -%>
+<% if tabs.any? || render_sidebar_as_tab? -%>
   <ul class="nav nav-tabs">
     <% tabs.each do |name, tab| %>
       <li class="nav-item">
