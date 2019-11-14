@@ -15,7 +15,10 @@ const TEMPLATE = `
 function createElement () {
   const $el = $(TEMPLATE).appendTo('body')
 
-  $el.modal({ show: false })
+  $el.modal({
+    show: false,
+    focus: false
+  })
 
   // Remove dialog elements once hidden
   $el.on('hidden.bs.modal', function () {
