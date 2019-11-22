@@ -1,5 +1,7 @@
 import $ from 'jquery'
 
+import turbolinks from './turbolinks'
+
 // The ready function sets up a callback to run on each page load.
 //
 //     Trestle.ready(function() {
@@ -41,6 +43,8 @@ ready(function () {
 })
 
 // Trigger the page load events.
-$(document).on('ready turbolinks:load', function () {
-  triggerReady()
-})
+if (turbolinks) {
+  $(document).on('turbolinks:load', triggerReady)
+} else {
+  $(document).ready(triggerReady)
+}
