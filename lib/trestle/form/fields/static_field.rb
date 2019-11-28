@@ -10,7 +10,6 @@ module Trestle
           else
             @value = value
           end
-          @value ||= builder.object.send(name) if builder.object
 
           super(builder, template, name, options, &block)
         end
@@ -19,8 +18,12 @@ module Trestle
           if block
             template.capture(&block)
           else
-            content_tag(:p, value, class: "form-control-static")
+            content_tag(:p, value || default_value, class: "form-control-static")
           end
+        end
+
+        def default_value
+          builder.object.send(name) if builder.object
         end
       end
     end
