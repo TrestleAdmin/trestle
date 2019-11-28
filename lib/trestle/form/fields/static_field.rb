@@ -10,6 +10,7 @@ module Trestle
           else
             @value = value
           end
+          @value ||= builder.object.send(name) if builder.object
 
           super(builder, template, name, options, &block)
         end
