@@ -12,6 +12,14 @@ describe Trestle::GridHelper do
     it "creates a div with class 'row'" do
       expect(row { "content" }).to have_tag(".row", text: "content")
     end
+
+    it "passes given attributes to the row div" do
+      expect(row(id: "my-row", data: { attr: "value" }) { "content" }).to have_tag(".row", text: "content", with: { id: "my-row", :"data-attr" => "value" })
+    end
+
+    it "adds any extra classes to the row div" do
+      expect(row(class: "row-cols-2") { "content" }).to have_tag(".row.row-cols-2", text: "content")
+    end
   end
 
   describe "#col" do
@@ -24,15 +32,25 @@ describe Trestle::GridHelper do
     end
 
     it "adds column classes for the given breakpoints" do
-      expect(col(3, md: 2, xl: 1) { "content"}).to have_tag(".col-3.col-md-2.col-xl-1", text: "content")
+      expect(col(3, md: 2, xl: 1) { "content" }).to have_tag(".col-3.col-md-2.col-xl-1", text: "content")
     end
 
     it "allows the primary column count to be omitted" do
-      expect(col(sm: 4, xl: 3) { "content"}).to have_tag(".col.col-sm-4.col-xl-3", text: "content")
+      expect(col(sm: 4, xl: 3) { "content" }).to have_tag(".col.col-sm-4.col-xl-3", text: "content")
     end
 
     it "fixes legacy usage of the xs breakpoint" do
-      expect(col(xs: 4, md: 3) { "content"}).to have_tag(".col-4.col-md-3", text: "content")
+      expect(col(xs: 4, md: 3) { "content" }).to have_tag(".col-4.col-md-3", text: "content")
+    end
+  end
+
+  describe "#divider" do
+    it "creates an hr tag" do
+      expect(divider).to have_tag("hr")
+    end
+
+    it "passes given attributes to the hr tag" do
+      expect(divider(class: "custom-hr")).to have_tag("hr.custom-hr")
     end
   end
 end
