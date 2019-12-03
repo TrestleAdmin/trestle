@@ -1,33 +1,50 @@
-import $ from 'jquery'
+import $ from "jquery";
 
-import { init } from '../core/events'
+import { init } from "../core/events";
 
-init(function (root) {
-  $(root).find('[data-behavior~="zoom"]').magnificPopup({
-    type: 'image',
-    closeOnContentClick: false,
-    closeBtnInside: false,
-    mainClass: 'mfp-with-zoom mfp-img-mobile',
-    zoom: {
-      enabled: true,
-      duration: 150
-    }
-  })
-
-  $(root).find('[data-behavior~="gallery"]').each(function () {
-    $(this).magnificPopup({
-      delegate: 'a',
-      type: 'image',
+init(function(root) {
+  $(root)
+    .find('[data-behavior~="zoom"]')
+    .magnificPopup({
+      type: "image",
       closeOnContentClick: false,
       closeBtnInside: false,
-      mainClass: 'mfp-with-zoom mfp-img-mobile',
-      gallery: {
-        enabled: true
-      },
+      mainClass: "mfp-with-zoom mfp-img-mobile",
       zoom: {
         enabled: true,
         duration: 150
       }
-    })
-  })
-})
+    });
+
+  $(root)
+    .find('[data-behavior~="gallery"]')
+    .each(function() {
+      $(this).magnificPopup({
+        delegate: "a",
+        type: "image",
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: "mfp-with-zoom mfp-img-mobile",
+        gallery: {
+          enabled: true
+        },
+        zoom: {
+          enabled: true,
+          duration: 150
+        }
+      });
+    });
+
+  $(root)
+    .find('[data-behavior~="video"]')
+    .magnificPopup({
+      callbacks: {
+        open: function() {
+          this.content[0].play();
+        },
+        close: function() {
+          this.content[0].pause();
+        }
+      }
+    });
+});
