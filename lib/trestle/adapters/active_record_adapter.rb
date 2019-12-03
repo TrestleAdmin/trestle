@@ -30,7 +30,7 @@ module Trestle
       end
 
       def count(collection)
-        collection.count
+        collection.count(:all)
       end
 
       def sort(collection, field, order)
