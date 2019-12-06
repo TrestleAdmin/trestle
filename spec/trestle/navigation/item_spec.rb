@@ -60,6 +60,11 @@ describe Trestle::Navigation::Item do
     expect(item.visible?(self)).to be false
   end
 
+  it "can set html_options" do
+    item = Trestle::Navigation::Item.new(:test, nil, icon: "fa", class: "text-danger")
+    expect(item.html_options).to eq({ class: "text-danger" })
+  end
+
   context "with a badge" do
     it "has a badge" do
       item = Trestle::Navigation::Item.new(:test, nil, badge: { text: "123", class: "badge-success" })
