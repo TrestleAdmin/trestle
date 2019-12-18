@@ -23,6 +23,13 @@ module Trestle
       def breadcrumbs
         @breadcrumbs ||= admin.breadcrumbs.dup
       end
+
+      def flash_message(type, title:, message:)
+        {
+          title:   admin.t("flash.#{type}.title", default: title),
+          message: admin.t("flash.#{type}.message", default: message)
+        }
+      end
     end
   end
 end

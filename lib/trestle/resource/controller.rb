@@ -148,13 +148,6 @@ module Trestle
       attr_accessor :instance, :collection
       helper_method :instance, :collection
 
-      def flash_message(type, title:, message:)
-        {
-          title:   admin.t("flash.#{type}.title", default: title),
-          message: admin.t("flash.#{type}.message", default: message)
-        }
-      end
-
       def redirect_to_return_location(action, instance, default:)
         if admin.return_locations[action] && !dialog_request?
           location = instance_exec(instance, &admin.return_locations[action])
