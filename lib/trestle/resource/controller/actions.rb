@@ -12,8 +12,6 @@ module Trestle
         end
 
         def new
-          self.instance = admin.build_instance(params.key?(admin.parameter_name) ? admin.permitted_params(params) : {}, params)
-
           respond_to do |format|
             format.html
             format.json { render json: instance }
@@ -23,9 +21,7 @@ module Trestle
         end
 
         def create
-          self.instance = admin.build_instance(admin.permitted_params(params), params)
-
-          if admin.save_instance(instance, params)
+          if save_instance
             respond_to do |format|
               format.html do
                 flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
@@ -85,9 +81,7 @@ module Trestle
         end
 
         def update
-          admin.update_instance(instance, admin.permitted_params(params), params)
-
-          if admin.save_instance(instance, params)
+          if update_instance
             respond_to do |format|
               format.html do
                 flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
@@ -111,7 +105,7 @@ module Trestle
         end
 
         def destroy
-          success = admin.delete_instance(instance, params)
+          success = delete_instance
 
           respond_to do |format|
             format.html do
@@ -121,7 +115,7 @@ module Trestle
               else
                 flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
 
-                if self.instance = admin.find_instance(params)
+                if load_instance
                   redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
                 else
                   redirect_to_return_location(:destroy, instance, default: admin.path(:index))
