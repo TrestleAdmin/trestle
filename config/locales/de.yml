@@ -1,0 +1,101 @@
+de:
+  trestle:
+    title: "Trestle Admin"
+    footer: "Powered by Trestle"
+    version: "Version"
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Kein %{entry_name} vorhanden"
+            one: "<strong>1</strong> %{entry_name}"
+            other: "<strong>%{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "%{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> von <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Willkommen bei Trestle"
+      no_admins: "Um zu beginnen, erstelle eine Trestle.resource in <code>app/admin</code>."
+      no_template: "Um dieses Tempalte anzupassen, erstelle <code>%{path}</code>."
+      no_form: "Definiere einen form block oder erstelle ein Partial <code>_form.html</code>."
+
+    ui:
+      toggle_navigation: "Navigation ein-/ausblenden"
+      toggle_sidebar: "Seitenleiste ein-/ausblenden"
+      toggle_dropdown: "Menü ein-/ausblenden"
+
+    dialog:
+      error: "Fehler: Die Aktion konnte nicht erfolgreich ausgeführt werden."
+
+    confirmation:
+      title: "Sind Sie sicher?"
+      delete: "Löschen"
+      cancel: "Abbrechen"
+
+    file:
+      choose_file: "Datei wählen..."
+      browse: "Durchsuchen"
+
+  admin:
+    titles:
+      index: "Liste von %{pluralized_model_name}"
+      new: "%{model_name} (neu)"
+      edit: "%{model_name} (bearbeiten)"
+
+    buttons:
+      new: "Neu"
+      save: "Speichern"
+      delete: "Löschen"
+      show: "Details"
+      edit: "Bearbeiten"
+      ok: "OK"
+
+    breadcrumbs:
+      home: "Home"
+
+    flash:
+      create:
+        success:
+          title: "Erfolgreich erstellt"
+          message: "%{model_name} wurde erfolgreich erstellt."
+
+        failure:
+          title: "Warnung: %{model_name} nicht erstellt"
+          message: "Bitte korrigieren Sie die unten angezeigten Fehler."
+
+      update:
+        success:
+          title: "Erfolgreich bearbeitet"
+          message: "%{model_name} wurde erfolgreich gespeichert."
+
+        failure:
+          title: "Warnung: %{model_name} nicht gespeichert"
+          message: "Bitte korrigieren Sie die unten angezeigten Fehler."
+
+      destroy:
+        success:
+          title: "Erfolgreich gelöscht"
+          message: "%{model_name} wurde erfolgreich gelöscht."
+
+        failure:
+          title: "Warnung: Nicht gelöscht"
+          message: "%{model_name} konnte nicht gelöscht werden."
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- %{attribute_name} auswählen -"
+
+    format:
+      blank: "n. a."
+
+    datepicker:
+      formats:
+        date: "d.m.Y"
+        datetime: "d.m.Y H:i"
+        time: "H:i"
