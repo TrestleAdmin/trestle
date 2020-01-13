@@ -21,7 +21,7 @@ module Trestle
 
     protected
       def breadcrumbs
-        @breadcrumbs ||= admin.breadcrumbs.dup
+        @_breadcrumbs ||= admin.breadcrumbs.dup
       end
 
       def flash_message(type, title:, message:)
