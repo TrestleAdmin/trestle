@@ -1,8 +1,6 @@
 <header class="content-header">
   <div class="content-header-title">
-    <h1>
-      <%= content_for(:title) %>
-    </h1>
+    <h1><%= title %></h1>
 
     <% unless local_assigns.fetch(:hide_breadcrumbs, false) %>
     <ol class="breadcrumb">

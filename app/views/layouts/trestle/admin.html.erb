@@ -12,7 +12,7 @@
 
     <%= csrf_meta_tags %>
 
-    <title><%= [yield(:title), Trestle.config.site_title].join(' :: ') %></title>
+    <title><%= [title, Trestle.config.site_title].join(' :: ') %></title>
 
     <%= favicon_link_tag Trestle.config.favicon if Trestle.config.favicon %>
 
