@@ -37,6 +37,7 @@ module Trestle
     autoload :Helpers
     autoload :Layout
     autoload :Location
+    autoload :Title
   end
 
   mattr_accessor :admins

@@ -8,5 +8,6 @@ module Trestle
     include Controller::Helpers
     include Controller::Layout
     include Controller::Location
+    include Controller::Title
   end
 end
