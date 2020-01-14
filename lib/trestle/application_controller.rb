@@ -9,5 +9,6 @@ module Trestle
     include Controller::Layout
     include Controller::Location
     include Controller::Title
+    include Controller::Toolbars
   end
 end

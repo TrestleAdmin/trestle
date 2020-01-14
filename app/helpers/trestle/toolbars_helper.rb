@@ -1,16 +1,5 @@
 module Trestle
   module ToolbarsHelper
-    def toolbar(name, options={}, &block)
-      toolbar = (toolbars[name.to_s] ||= Toolbar.new)
-      toolbar.clear! if options[:clear]
-      toolbar.prepend(&block) if block_given?
-      toolbar
-    end
-
-    def toolbars
-      @_toolbars ||= {}
-    end
-
     def render_toolbar(toolbar, *args)
       result = toolbar.groups(self, *args).map do |items|
         if items.many?
