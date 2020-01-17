@@ -4,11 +4,11 @@
 <% breadcrumb(title) %>
 
 <% toolbar(:primary) do |t| %>
-  <%= t.button admin.t("buttons.save", default: "Save %{model_name}"), style: :success if admin.actions.include?(:update) %>
+  <%= t.save if admin.actions.include?(:update) %>
 <% end %>
 
 <% toolbar(:secondary) do |t| %>
-  <%= t.link admin.t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" } if admin.actions.include?(:destroy) %>
+  <%= t.delete if admin.actions.include?(:destroy) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.actions.include?(:update) ? admin.instance_path(instance, action: :update) : "#", method: :patch do |f| %>

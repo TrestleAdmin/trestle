@@ -4,7 +4,7 @@
 <% breadcrumb(title) %>
 
 <% toolbar(:primary) do |t| %>
-  <%= t.button admin.t("buttons.save", default: "Save %{model_name}"), style: :success if admin.actions.include?(:create) %>
+  <%= t.save if admin.actions.include?(:create) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>

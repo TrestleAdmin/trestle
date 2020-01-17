@@ -56,8 +56,6 @@ describe Trestle::Table::ActionsColumn do
     describe "#content" do
       let(:admin) { double(actions: [:destroy]) }
 
-      let(:button) { double }
-
       it "renders the actions block" do
         expect(template).to receive(:render_toolbar).with(column.toolbar, instance, admin)
 
@@ -68,8 +66,6 @@ describe Trestle::Table::ActionsColumn do
 
   describe Trestle::Table::ActionsColumn::ActionsBuilder do
     subject(:builder) { Trestle::Table::ActionsColumn::ActionsBuilder.new(template, instance, admin) }
-
-    let(:button) { double }
 
     it "has a list of registered builder methods" do
       expect(builder.builder_methods).to include(:button, :link, :show, :edit, :delete)
