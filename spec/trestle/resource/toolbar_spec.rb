@@ -8,7 +8,7 @@ describe Trestle::Resource::Toolbar::Builder do
   subject(:builder) { Trestle::Resource::Toolbar::Builder.new(template) }
 
   it "has a list of registered builder methods" do
-    expect(builder.builder_methods).to include(:button, :link, :new, :save, :delete)
+    expect(builder.builder_methods).to include(:button, :link, :new, :save, :delete, :dismiss, :ok)
   end
 
   describe "#new" do
@@ -35,6 +35,34 @@ describe Trestle::Resource::Toolbar::Builder do
     it "returns a delete link" do
       expect(admin).to receive(:t).with("buttons.delete", default: "Delete %{model_name}").and_return("Delete Resource")
       expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" }))
+    end
+  end
+
+  describe "#dismiss" do
+    context "from a dialog request" do
+      before(:each) do
+        allow(template).to receive(:dialog_request?).and_return(true)
+      end
+
+      it "returns a dismiss dialog button" do
+        expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
+        expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
+      end
+
+      it "is aliased as #ok" do
+        expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK").twice
+        expect(builder.ok).to eq(builder.dismiss)
+      end
+    end
+
+    context "from a non-dialog request" do
+      before(:each) do
+        allow(template).to receive(:dialog_request?).and_return(false)
+      end
+
+      it "renders nothing" do
+        expect(builder.dismiss).to be_nil
+      end
     end
   end
 end

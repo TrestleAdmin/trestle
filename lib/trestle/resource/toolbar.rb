@@ -17,7 +17,12 @@ module Trestle
           link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" })
         end
 
-        builder_method :new, :save, :delete
+        def dismiss
+          button(t("buttons.ok", default: "OK"), style: :light, data: { dismiss: "modal" }) if @template.dialog_request?
+        end
+        alias ok dismiss
+
+        builder_method :new, :save, :delete, :dismiss, :ok
       end
     end
   end
