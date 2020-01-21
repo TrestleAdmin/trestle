@@ -1,8 +1,8 @@
 module Trestle
   class Form
     class Automatic < Form
-      def initialize(admin)
-        super() do |instance|
+      def initialize(admin, options={})
+        super(options) do |instance|
           admin.default_form_attributes.each do |attribute|
             if attribute.array?
               if [:string, :text].include?(attribute.type)

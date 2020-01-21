@@ -124,16 +124,29 @@ describe Trestle::Admin::Builder, remove_const: true do
   end
 
   describe "#form" do
-    it "builds a form" do
-      b = Proc.new {}
+    context "with a block" do
+      it "builds a custom form" do
+        b = Proc.new {}
 
-      Trestle::Admin::Builder.create(:test) do
-        form custom: "option", &b
+        Trestle::Admin::Builder.create(:test) do
+          form custom: "option", &b
+        end
+
+        expect(::TestAdmin.form).to be_a(Trestle::Form)
+        expect(::TestAdmin.form.options).to eq(custom: "option")
+        expect(::TestAdmin.form.block).to eq(b)
       end
+    end
 
-      expect(::TestAdmin.form).to be_a(Trestle::Form)
-      expect(::TestAdmin.form.options).to eq(custom: "option")
-      expect(::TestAdmin.form.block).to eq(b)
+    context "without a block" do
+      it "builds an automatic form using the given options" do
+        Trestle::Admin::Builder.create(:test) do
+          form dialog: true
+        end
+
+        expect(::TestAdmin.form).to be_a(Trestle::Form::Automatic)
+        expect(::TestAdmin.form.options).to eq(dialog: true)
+      end
     end
   end
 

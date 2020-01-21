@@ -53,7 +53,11 @@ module Trestle
       end
 
       def form(options={}, &block)
-        admin.form = Form.new(options, &block)
+        if block_given?
+          admin.form = Form.new(options, &block)
+        else
+          admin.form = Form::Automatic.new(admin, options)
+        end
       end
 
       def hook(name, options={}, &block)
