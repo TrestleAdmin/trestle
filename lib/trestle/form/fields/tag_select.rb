@@ -7,7 +7,7 @@ module Trestle
         end
 
         def default_html_options
-          super.merge(multiple: true, class: "tag-select", disabled: admin.readonly?, data: { tags: true })
+          super.merge(multiple: true, class: "tag-select", disabled: readonly?, data: { tags: true })
         end
       end
     end

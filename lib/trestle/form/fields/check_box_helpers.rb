@@ -38,7 +38,7 @@ module Trestle
         end
 
         def defaults
-          Trestle::Options.new(disabled: admin.readonly?)
+          Trestle::Options.new(disabled: readonly?)
         end
       end
     end

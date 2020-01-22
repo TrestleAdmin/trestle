@@ -7,8 +7,8 @@ module Trestle
 
       def initialize(builder, template, name, options={}, &block)
         @builder, @template, @name, @block = builder, template, name, block
-        @options = defaults.merge(options)
 
+        assign_options!(options)
         normalize_options!
       end
 
@@ -39,7 +39,11 @@ module Trestle
       end
 
       def defaults
-        Trestle::Options.new(readonly: admin.readonly?)
+        Trestle::Options.new(readonly: readonly?)
+      end
+
+      def readonly?
+        options[:readonly] || admin.readonly?
       end
 
       def normalize_options!
@@ -48,6 +52,12 @@ module Trestle
       end
 
     protected
+      def assign_options!(options)
+        # Assign @options first so that it can be referenced from within #defaults if required
+        @options = Trestle::Options.new(options)
+        @options = defaults.merge(options)
+      end
+
       def extract_wrapper_options!
         unless options[:wrapper] == false
           @wrapper = extract_wrapper_options(*Fields::FormGroup::WRAPPER_OPTIONS).merge(options.delete(:wrapper))
