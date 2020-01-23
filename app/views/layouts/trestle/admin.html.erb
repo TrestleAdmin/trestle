@@ -30,7 +30,7 @@
       Trestle.i18n['<%= key %>'] = "<%= escape_javascript(value) %>";
       <% end %>
 
-      Trestle.localize(<%= i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
+      Trestle.localize(<%= Trestle.i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
     <% end %>
 
     <%= hook :javascripts %>

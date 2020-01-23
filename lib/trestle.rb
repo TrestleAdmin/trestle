@@ -73,6 +73,17 @@ module Trestle
     blocks = config.menus + admins.values.map(&:menu).compact
     Navigation.build(blocks, context)
   end
+
+  def self.i18n_fallbacks(locale=I18n.locale)
+    if I18n.respond_to?(:fallbacks)
+      I18n.fallbacks[locale]
+    elsif locale.to_s.include?("-")
+      fallback = locale.to_s.split("-").first
+      [locale, fallback]
+    else
+      [locale]
+    end
+  end
 end
 
 require "trestle/engine" if defined?(Rails)
