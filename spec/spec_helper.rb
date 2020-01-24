@@ -15,7 +15,9 @@ Coveralls.wear!
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
+
 require 'rspec/rails'
+require 'ammeter/init'
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__), 'support', '**', '*.rb'))].each { |f| require f }
 

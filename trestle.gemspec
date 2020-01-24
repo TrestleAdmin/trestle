@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails",         "~> 3.5"
   spec.add_development_dependency "rspec-html-matchers", "~> 0.7.1"
   spec.add_development_dependency "database_cleaner",    "~> 1.6.2"
+  spec.add_development_dependency "ammeter",             "~> 1.1.4"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
