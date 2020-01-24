@@ -1,8 +1,14 @@
-Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><% end %>) do
+Trestle.resource(:<%= admin_name %><% if module? %>, scope: <%= module_name %><% end %><% if singular? %>, singular: true<% end %>) do
   menu do
-    item :<%= plural_name %>, icon: "fa fa-star"
+    item :<%= admin_name %>, icon: "fa fa-star"
   end
 
+<%- if singular? -%>
+  instance do
+    # Override this block to define the instance that this resource represents.
+    raise NotImplementedError, "Singular resources must define an instance block."
+  end
+<%- else -%>
   # Customize the table columns shown on the index view.
   #
   # table do
@@ -10,10 +16,11 @@ Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><
   #   column :created_at, align: :center
   #   actions
   # end
+<%- end -%>
 
-  # Customize the form fields shown on the new/edit views.
+  # Customize the form fields shown on the <% if singular? %>edit view<% else %>new/edit views<% end %>.
   #
-  # form do |<%= singular_table_name %>|
+  # form do |<%= parameter_name %>|
   #   text_field :name
   #
   #   row do
@@ -22,7 +29,7 @@ Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><
   #   end
   # end
 
-  # By default, all parameters passed to the update and create actions will be
+  # By default, all parameters passed to the <% if singular? %>update action<% else %>update and create actions<% end %> will be
   # permitted. If you do not have full trust in your users, you should explicitly
   # define the list of permitted parameters.
   #
@@ -30,6 +37,6 @@ Trestle.resource(:<%= plural_name %><% if module? %>, scope: <%= module_name %><
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:<%= singular_table_name %>).permit(:name, ...)
+  #   params.require(:<%= parameter_name %>).permit(:name, ...)
   # end
 end
