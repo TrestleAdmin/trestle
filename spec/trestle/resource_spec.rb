@@ -37,12 +37,15 @@ describe Trestle::Resource, remove_const: true do
   end
 
   it "has a breadcrumb trail" do
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.home", default: "Home").and_return("Home")
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.tests", default: "Tests").and_return("Tests")
+    expect(I18n).to receive(:t).with(:"admin.breadcrumbs.home", default: "Home").and_return("Home")
+
+    expect(I18n).to receive(:t).with(:"admin.tests.name", default: [:"admin.name", "Tests"], lowercase_model_name: "test", model_name: "Test", pluralized_model_name: "Tests").and_return("Tests Name")
+    expect(I18n).to receive(:t).with(:"admin.breadcrumbs.tests", default: "Tests Name").and_return("Tests Deprecated")
+    expect(I18n).to receive(:t).with(:"admin.tests.breadcrumbs.index", default: [:"admin.breadcrumbs.index", "Tests Deprecated"], lowercase_model_name: "test", model_name: "Test", pluralized_model_name: "Tests").and_return("Tests Breadcrumb")
 
     trail = Trestle::Breadcrumb::Trail.new([
       Trestle::Breadcrumb.new("Home", "/admin"),
-      Trestle::Breadcrumb.new("Tests", "/admin/tests")
+      Trestle::Breadcrumb.new("Tests Breadcrumb", "/admin/tests")
     ])
 
     expect(admin.breadcrumbs).to eq(trail)

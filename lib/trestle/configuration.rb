@@ -41,7 +41,7 @@ module Trestle
     option :root, -> { Trestle.config.path }
 
     # Initial breadcrumbs to display in the breadcrumb trail
-    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t("admin.breadcrumbs.home", default: "Home"), Trestle.config.root)] }
+    option :root_breadcrumbs, -> { [Trestle::Breadcrumb.new(I18n.t(:"admin.breadcrumbs.home", default: "Home"), Trestle.config.root)] }
 
     # Default icon class to use when it is not explicitly provided
     option :default_navigation_icon, "fa fa-arrow-circle-o-right"

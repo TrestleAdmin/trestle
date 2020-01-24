@@ -67,7 +67,10 @@ module Trestle
       end
 
       def default_breadcrumb
-        Breadcrumb.new(human_admin_name, path)
+        deprecated = I18n.t(:"admin.breadcrumbs.#{i18n_key}", default: human_admin_name)
+        label = translate("breadcrumbs.index", default: deprecated)
+
+        Breadcrumb.new(label, path)
       end
 
       def admin_name
@@ -79,7 +82,7 @@ module Trestle
       end
 
       def human_admin_name
-        I18n.t("admin.breadcrumbs.#{i18n_key}", default: default_human_admin_name)
+        translate("name", default: default_human_admin_name)
       end
 
       def default_human_admin_name

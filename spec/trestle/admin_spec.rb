@@ -48,21 +48,28 @@ describe Trestle::Admin, remove_const: true do
     expect(admin.options).to eq(options)
   end
 
-  it "has a default breadcrumb" do
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.test", default: "Test").and_return("Test")
-    expect(admin.default_breadcrumb).to eq(Trestle::Breadcrumb.new("Test", "/admin/test"))
-  end
+  context "breadcrumbs" do
+    before(:each) do
+      allow(I18n).to receive(:t).with(:"admin.test.name", default: [:"admin.name", "Test"]).and_return("Test Name")
+      allow(I18n).to receive(:t).with(:"admin.breadcrumbs.test", default: "Test Name").and_return("Test Deprecated")
+    end
 
-  it "has a breadcrumb trail" do
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.home", default: "Home").and_return("Home")
-    expect(I18n).to receive(:t).with("admin.breadcrumbs.test", default: "Test").and_return("Test")
+    it "has a default breadcrumb" do
+      expect(I18n).to receive(:t).with(:"admin.test.breadcrumbs.index", default: [:"admin.breadcrumbs.index", "Test Deprecated"]).and_return("Test Breadcrumb")
+      expect(admin.default_breadcrumb).to eq(Trestle::Breadcrumb.new("Test Breadcrumb", "/admin/test"))
+    end
 
-    trail = Trestle::Breadcrumb::Trail.new([
-      Trestle::Breadcrumb.new("Home", "/admin"),
-      Trestle::Breadcrumb.new("Test", "/admin/test")
-    ])
+    it "has a breadcrumb trail" do
+      expect(I18n).to receive(:t).with(:"admin.breadcrumbs.home", default: "Home").and_return("Home")
+      expect(I18n).to receive(:t).with(:"admin.test.breadcrumbs.index", default: [:"admin.breadcrumbs.index", "Test Deprecated"]).and_return("Test Breadcrumb")
 
-    expect(admin.breadcrumbs).to eq(trail)
+      trail = Trestle::Breadcrumb::Trail.new([
+        Trestle::Breadcrumb.new("Home", "/admin"),
+        Trestle::Breadcrumb.new("Test Breadcrumb", "/admin/test")
+      ])
+
+      expect(admin.breadcrumbs).to eq(trail)
+    end
   end
 
   it "has a set of hooks" do
@@ -119,7 +126,10 @@ describe Trestle::Admin, remove_const: true do
     end
 
     it "has a default breadcrumb" do
-      expect(I18n).to receive(:t).with("admin.breadcrumbs.scoped/test", default: "Test").and_return("Test")
+      expect(I18n).to receive(:t).with(:"admin.scoped/test.name", default: [:"admin.name", "Test"]).and_return("Test Name")
+      expect(I18n).to receive(:t).with(:"admin.breadcrumbs.scoped/test", default: "Test Name").and_return("Test Deprecated")
+      expect(I18n).to receive(:t).with(:"admin.scoped/test.breadcrumbs.index", default: [:"admin.breadcrumbs.index", "Test Deprecated"]).and_return("Test")
+
       expect(admin.default_breadcrumb).to eq(Trestle::Breadcrumb.new("Test", "/admin/scoped/test"))
     end
   end
