@@ -39,6 +39,23 @@ describe Trestle::Table do
     end
   end
 
+  describe "#with_options" do
+    let(:original) { Trestle::Table.new(header: false) }
+    subject(:table) { original.with_options(sortable: false) }
+
+    it "duplicates the table" do
+      expect(table).not_to be original
+    end
+
+    it "merges the options hash" do
+      expect(table.options).to eq({ header: false, sortable: false })
+    end
+
+    it "leaves the original options unchanged" do
+      expect(original.options).to eq({ header: false })
+    end
+  end
+
   describe "#renderer" do
     include_context "template"
 

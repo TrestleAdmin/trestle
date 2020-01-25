@@ -32,10 +32,14 @@ module Trestle
         end
 
         table = Table::Builder.build(options, &block)
-      elsif name.is_a?(Trestle::Table)
-        table = name
       else
-        table = admin.tables.fetch(name) { raise ArgumentError, "Unable to find table named #{name.inspect}" }
+        if name.is_a?(Trestle::Table)
+          table = name
+        else
+          table = admin.tables.fetch(name) { raise ArgumentError, "Unable to find table named #{name.inspect}" }
+        end
+
+        table = table.with_options(options.reverse_merge(sortable: false))
       end
 
       collection ||= options[:collection] || table.options[:collection]

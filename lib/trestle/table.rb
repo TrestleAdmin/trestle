@@ -17,6 +17,12 @@ module Trestle
       @columns = []
     end
 
+    def with_options(opts={})
+      dup.tap do |table|
+        table.options.replace(options.merge(opts))
+      end
+    end
+
     def admin
       Trestle.lookup(options[:admin]) if options.key?(:admin)
     end
