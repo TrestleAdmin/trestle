@@ -20,7 +20,9 @@
 
   .navbar-toggler {
     outline: none;
+
     margin-left: $grid-gutter-width / 2;
+    margin-right: $grid-gutter-width / 2;
 
     background: $sidebar-mobile-toggle-bg;
     border: $sidebar-mobile-toggle-border;
@@ -155,8 +157,11 @@
 
   .app-sidebar-title {
     justify-content: center;
-    margin-right: 65px;
     padding: 10px 5px;
+
+    // Match right margin with navbar toggler width:
+    // (margin + border + font-size * icon-width + padding)
+    margin-right: calc(#{$grid-gutter-width} + #{$border-width} + #{$navbar-toggler-font-size} * 1.5 + #{$navbar-toggler-padding-x} * 2);
   }
 
   .toggle-sidebar {
