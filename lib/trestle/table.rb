@@ -9,8 +9,9 @@ module Trestle
     autoload :SelectColumn
     autoload :Row
 
-    attr_reader :columns, :options
+    attr_reader :columns
     attr_writer :row
+    attr_accessor :options
 
     def initialize(options={})
       @options = options
@@ -19,7 +20,7 @@ module Trestle
 
     def with_options(opts={})
       dup.tap do |table|
-        table.options.replace(options.merge(opts))
+        table.options = options.merge(opts)
       end
     end
 

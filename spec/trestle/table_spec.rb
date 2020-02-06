@@ -41,7 +41,7 @@ describe Trestle::Table do
 
   describe "#with_options" do
     let(:original) { Trestle::Table.new(header: false) }
-    subject(:table) { original.with_options(sortable: false) }
+    subject!(:table) { original.with_options(sortable: false) }
 
     it "duplicates the table" do
       expect(table).not_to be original
