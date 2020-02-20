@@ -34,7 +34,7 @@ module Trestle
                 check_box attribute.name
               when :json, :jsonb
                 value = instance.public_send(attribute.name)
-                text_area attribute.name, value: value.try(:to_json)
+                json_text_area attribute.name, value: value.try(:to_json)
               else
                 text_field attribute.name
               end

@@ -24,6 +24,7 @@ module Trestle
         autoload :EmailField
         autoload :FileField
         autoload :GroupedCollectionSelect
+        autoload :JsonTextArea
         autoload :MonthField
         autoload :NumberField
         autoload :RadioButton
