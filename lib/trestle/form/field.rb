@@ -13,9 +13,7 @@ module Trestle
       end
 
       def errors
-        errors = builder.errors(name)
-        errors += builder.errors(name.to_s.sub(/_id$/, '')) if name.to_s =~ /_id$/
-        errors
+        error_keys.map { |key| builder.errors(key) }.flatten
       end
 
       def form_group(opts={})
@@ -71,6 +69,18 @@ module Trestle
 
       def error_class
         "is-invalid"
+      end
+
+      def error_keys
+        keys = [name]
+
+        # Singular associations (belongs_to)
+        keys << name.to_s.sub(/_id$/, '') if name.to_s =~ /_id$/
+
+         # Collection associations (has_many / has_and_belongs_to_many)
+        keys << name.to_s.sub(/_ids$/, 's') if name.to_s =~ /_ids$/
+
+        keys
       end
 
       def extract_wrapper_options(*keys)
