@@ -2,7 +2,7 @@ module Trestle
   class Resource
     class Builder < Admin::Builder
       self.admin_class = Resource
-      self.controller = Controller
+      self.controller = -> { Resource::Controller }
 
       def adapter(&block)
         klass = admin.adapter_class
