@@ -5,7 +5,6 @@ module Trestle
     autoload :AdapterMethods
     autoload :Builder
     autoload :Collection
-    autoload :Controller
     autoload :Toolbar
 
     include AdapterMethods

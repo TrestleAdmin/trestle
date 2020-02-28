@@ -3,7 +3,6 @@ module Trestle
     extend ActiveSupport::Autoload
 
     autoload :Builder
-    autoload :Controller
 
     delegate :to_param, to: :class
 

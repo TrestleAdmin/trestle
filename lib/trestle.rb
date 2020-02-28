@@ -8,7 +8,6 @@ module Trestle
 
   autoload :Adapters
   autoload :Admin
-  autoload :ApplicationController
   autoload :Attribute
   autoload :Breadcrumb
   autoload :Builder
@@ -27,19 +26,6 @@ module Trestle
   autoload :Tab
   autoload :Table
   autoload :Toolbar
-
-  module Controller
-    extend ActiveSupport::Autoload
-
-    autoload :Breadcrumbs
-    autoload :Callbacks
-    autoload :Dialog
-    autoload :Helpers
-    autoload :Layout
-    autoload :Location
-    autoload :Title
-    autoload :Toolbars
-  end
 
   mattr_accessor :admins
   self.admins = {}

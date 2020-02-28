@@ -1,6 +1,6 @@
 module Trestle
   class Admin
-    class Controller < Trestle::ApplicationController
+    class Controller < ApplicationController
       def index
       end
 
