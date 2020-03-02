@@ -1,3 +1,5 @@
+require_relative "select"
+
 module Trestle
   class Form
     module Fields
