@@ -15,17 +15,13 @@ Bundler.require(*Rails.groups)
 module Dummy
   class Application < Rails::Application
     # Initialize configuration defaults for current Rails version.
-    rails_version = Rails.version.split(".").first(2).join(".")
-
-    case rails_version
+    case Rails.version.split(".").first(2).join(".")
     when '6.0'
       config.load_defaults 6.0
     when '5.2'
       config.load_defaults 5.2
     when '5.1'
       config.load_defaults 5.1
-    when '5.0'
-      config.load_defaults 5.0
     end
 
     # Settings in config/environments/* take precedence over those specified here.
