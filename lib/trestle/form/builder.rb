@@ -48,6 +48,3 @@ module Trestle
     end
   end
 end
-
-# Load all form fields
-Trestle::Form::Fields.eager_load!

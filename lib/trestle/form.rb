@@ -1,12 +1,10 @@
 module Trestle
   class Form
-    extend ActiveSupport::Autoload
-
-    autoload :Automatic
-    autoload :Builder
-    autoload :Field
-    autoload :Fields
-    autoload :Renderer
+    require_relative "form/automatic"
+    require_relative "form/builder"
+    require_relative "form/field"
+    require_relative "form/fields"
+    require_relative "form/renderer"
 
     attr_reader :options, :block
 

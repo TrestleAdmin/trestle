@@ -1,8 +1,6 @@
 module Trestle
   class Admin
-    extend ActiveSupport::Autoload
-
-    autoload :Builder
+    require_relative "admin/builder"
 
     delegate :to_param, to: :class
 

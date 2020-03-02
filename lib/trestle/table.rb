@@ -1,13 +1,11 @@
 module Trestle
   class Table
-    extend ActiveSupport::Autoload
-
-    autoload :Automatic
-    autoload :Builder
-    autoload :Column
-    autoload :ActionsColumn
-    autoload :SelectColumn
-    autoload :Row
+    require_relative "table/automatic"
+    require_relative "table/builder"
+    require_relative "table/column"
+    require_relative "table/actions_column"
+    require_relative "table/select_column"
+    require_relative "table/row"
 
     attr_reader :columns
     attr_writer :row
