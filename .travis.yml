@@ -19,7 +19,7 @@ gemfile:
 addons:
   chrome: stable
 
-matrix:
+jobs:
   exclude:
     gemfile: gemfiles/rails-4.2.gemfile
 
