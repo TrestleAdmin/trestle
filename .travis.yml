@@ -10,7 +10,6 @@ rvm:
   - 2.6.5
 
 gemfile:
-  - gemfiles/rails-4.2.gemfile
   - gemfiles/rails-5.0.gemfile
   - gemfiles/rails-5.1.gemfile
   - gemfiles/rails-5.2.gemfile
@@ -20,9 +19,6 @@ addons:
   chrome: stable
 
 jobs:
-  exclude:
-    gemfile: gemfiles/rails-4.2.gemfile
-
   include:
     gemfile: gemfiles/rails-4.2.gemfile
     before_install:
