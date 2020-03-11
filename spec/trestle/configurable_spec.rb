@@ -80,6 +80,17 @@ describe Trestle::Configurable do
     end
   end
 
+  describe ".deprecated_option" do
+    it "defines accessors which produce the given deprecation warning" do
+      configurable.deprecated_option :deprecated, "deprecation message"
+
+      expect(ActiveSupport::Deprecation).to receive(:warn).twice.with("deprecation message")
+
+      config.deprecated
+      config.deprecated = :setting
+    end
+  end
+
   describe Trestle::Configurable::Open do
     subject(:configurable) do
       Class.new do

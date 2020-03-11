@@ -62,6 +62,16 @@ module Trestle
 
         defaults[name] = default
       end
+
+      def deprecated_option(name, message=nil)
+        define_method("#{name}=") do |value|
+          ActiveSupport::Deprecation.warn(message)
+        end
+
+        define_method(name) do |*args|
+          ActiveSupport::Deprecation.warn(message)
+        end
+      end
     end
 
     module Open
