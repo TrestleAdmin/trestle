@@ -51,8 +51,4 @@ RSpec.configure do |config|
       Object.send(:remove_const, const)
     end
   end
-
-  config.before(type: :feature) do
-    #Trestle::Engine.reloader.execute
-  end
 end

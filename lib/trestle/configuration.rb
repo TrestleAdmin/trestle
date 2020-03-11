@@ -105,8 +105,8 @@ module Trestle
       -> { ActiveSupport::Dependencies.autoload_paths.grep(/\/app\/admin\Z/) }
     ]
 
-    # When to reload Trestle admin within a to_prepare block (`:always` or `:on_update`)
-    option :reload, :on_update
+    # [DEPRECATED] When to reload Trestle admin within a to_prepare block
+    deprecated_option :reload, "The config.reload option is deprecated. Admins are now always reloaded when config.to_prepare is called."
 
 
     ## Debugging
