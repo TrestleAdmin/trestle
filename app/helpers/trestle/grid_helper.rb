@@ -45,9 +45,13 @@ module Trestle
         columns = breakpoints.delete("xs") || breakpoints.delete(:xs)
       end
 
-      classes = []
-      classes << (columns ? "col-#{columns}" : "col")
-      classes += breakpoints.map { |breakpoint, span| "col-#{breakpoint}-#{span}" }
+      if columns.nil? && breakpoints.empty?
+        classes = "col"
+      else
+        classes = []
+        classes << "col-#{columns}" if columns
+        classes += breakpoints.map { |breakpoint, span| "col-#{breakpoint}-#{span}" }
+      end
 
       content_tag(:div, class: classes) { yield }
     end
