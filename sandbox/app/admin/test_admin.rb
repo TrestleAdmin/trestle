@@ -1,11 +1,14 @@
 class Test
   include ActiveModel::Model
 
-  attr_accessor :name, :color, :file, :terms
-
   def self.all
-    (1..10).to_a
+    (1..10).collect{ |i| OpenStruct.new(id: i, name: "Test #{i}") }
   end
+
+  def self.find(id)
+    all[id.to_i - 1]
+  end
+
 end
 
 Trestle.resource(:test) do
@@ -16,8 +19,8 @@ Trestle.resource(:test) do
   table do
     selectable_column
     column(:avatar, header: nil, align: :center) { |i| gravatar(i) }
-    column(:name, link: true, class: "text-nowrap") { |i| "Person #{i}" }
-    column(:email) { |i| mail_to "person-#{i}@example.com" }
+    column(:name, link: true, class: "text-nowrap") { |i| "Person #{i.name}" }
+    column(:email) { |i| mail_to "person-#{i.name}@example.com" }
     column(:status, align: :center) { status_tag("Active", :success) }
     column(:followers, align: :center) { (1..100).to_a.sample }
     column(:registered, align: :center) { timestamp(Time.now) }

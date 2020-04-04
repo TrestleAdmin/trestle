@@ -105,6 +105,10 @@ The following plugins are currently available:
 | *trestle-active_storage* | [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) integration | [GitHub](https://github.com/richardvenneman/trestle-active_storage) \| [RubyGems](https://rubygems.org/gems/trestle-active_storage) |
 | *trestle-mobility* | [Mobility](https://github.com/shioyama/mobility) integration | [GitHub](https://github.com/richardvenneman/trestle-mobility) \| [RubyGems](https://rubygems.org/gems/trestle-mobility) |
 
+## Development
+
+$ cd sandbox
+$ bundle exec puma
 
 ## License
 
