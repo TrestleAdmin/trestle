@@ -128,6 +128,9 @@ export default class Dialog {
   }
 }
 
+// Expose showError as Trestle.Dialog.showError
+Dialog.showError = showError
+
 $(document).on('click', '[data-behavior="dialog"]', function (e) {
   e.preventDefault()
 
