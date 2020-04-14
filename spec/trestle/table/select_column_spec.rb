@@ -11,8 +11,10 @@ describe Trestle::Table::SelectColumn do
     subject(:renderer) { column.renderer(template) }
 
     it "has a checkbox header" do
-      expect(template).to receive(:check_box_tag).with("").and_return("checkbox")
-      expect(renderer.header).to eq("checkbox")
+      expect(renderer.header).to have_tag(".custom-control.custom-checkbox") do
+        with_tag("input", type: "checkbox", id: "select-all", class: "custom-control-input", name: "", value: "")
+        with_tag("label", for: "select-all", class: "custom-control-label")
+      end
     end
 
     it "has a class of 'select-row'" do
@@ -27,8 +29,10 @@ describe Trestle::Table::SelectColumn do
       let(:instance) { double(to_param: "abc") }
 
       it "returns a checkbox" do
-        expect(template).to receive(:check_box_tag).with("selected[]", "abc", false, id: nil).and_return("checkbox")
-        expect(renderer.content(instance)).to eq("checkbox")
+        expect(renderer.content(instance)).to have_tag(".custom-control.custom-checkbox") do
+          with_tag("input", type: "checkbox", id: "select-abc", class: "custom-control-input", name: "selected[]", value: "abc")
+          with_tag("label", for: "select-abc", class: "custom-control-label")
+        end
       end
     end
   end

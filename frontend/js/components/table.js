@@ -25,7 +25,7 @@ $(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function (
 })
 
 // Ignore the above event handler when clicking directly on a link or input element
-$(document).on('click', 'tr[data-url] a, tr[data-url] input', function (e) {
+$(document).on('click', 'tr[data-url] a, tr[data-url] input, .select-row', function (e) {
   e.stopPropagation()
 })
 
