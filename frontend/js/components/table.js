@@ -24,42 +24,38 @@ $(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function (
   }
 })
 
-$(document).on('click', 'th.select-row input', function(e) {
-
-  if ($(this).is(':checked')) {
-
-    $('td.select-row input').prop('checked', true);
-
-  } else {
-
-    $('td.select-row input').prop('checked', false);
-
-  }
-
-});
-
-// Manage single row selection to update master row status
-$(document).on('click', 'td.select-row input', function(e) {
-
-  var total_check_boxes = $("td.select-row input").length;
-  var total_checked_boxes = $("td.select-row input:checked").length;
-  var master = $("th.select-row input");
-
-  if (total_check_boxes === total_checked_boxes) {
-    master.prop("indeterminate", false);
-    master.prop("checked", true);
-  } else {
-    if (total_checked_boxes === 0) {
-      master.prop("checked", false);
-      master.prop("indeterminate", false);
-    } else {
-      master.prop("indeterminate", true);
-    }
-  }
-
-});
-
 // Ignore the above event handler when clicking directly on a link or input element
 $(document).on('click', 'tr[data-url] a, tr[data-url] input', function (e) {
   e.stopPropagation()
+})
+
+// Handle clicking on select all checkbox in table header
+$(document).on('click', 'th.select-row input', function (e) {
+  const table = $(this).closest('table')
+  const checked = $(this).is(':checked')
+
+  table.find('td.select-row input').prop('checked', checked)
+})
+
+// Handle single row selection to update header row status
+$(document).on('click', 'td.select-row input', function (e) {
+  const table = $(this).closest('table')
+
+  const checkboxes = table.find('td.select-row input')
+  const selectedCheckboxes = checkboxes.filter(':checked')
+
+  const header = table.find('th.select-row input')
+
+  if (checkboxes.length === selectedCheckboxes.length) {
+    // All checked
+    header.prop('indeterminate', false)
+    header.prop('checked', true)
+  } else if (selectedCheckboxes.length === 0) {
+    // None checked
+    header.prop('indeterminate', false)
+    header.prop('checked', false)
+  } else {
+    // Some checked
+    header.prop('indeterminate', true)
+  }
 })
