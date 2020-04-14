@@ -15,11 +15,13 @@ init(function (root) {
     copyAttributes: 'href target data-remote data-method data-url data-params data-type'
   }
 
-  const CONFIRM = { ...DEFAULTS,
+  const CONFIRM = {
+    ...DEFAULTS,
     rootSelector: '[data-toggle="confirm"]'
   }
 
-  const DELETE = { ...DEFAULTS,
+  const DELETE = {
+    ...DEFAULTS,
     rootSelector: '[data-toggle="confirm-delete"]',
     btnOkClass: 'btn btn-sm btn-danger',
     btnOkLabel: i18n['trestle.confirmation.delete'] || 'Delete'

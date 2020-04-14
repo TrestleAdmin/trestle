@@ -5,7 +5,7 @@ import visit from '../core/visit'
 // Allow clicking on any part of a table row to follow either the table's data-url
 // or the first link within the row (that is not in the actions column).
 $(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function (e) {
-  let row = $(e.currentTarget)
+  const row = $(e.currentTarget)
 
   let url
 
