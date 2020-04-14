@@ -105,6 +105,7 @@ The following plugins are currently available:
 | *trestle-active_storage* | [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html) integration | [GitHub](https://github.com/richardvenneman/trestle-active_storage) \| [RubyGems](https://rubygems.org/gems/trestle-active_storage) |
 | *trestle-mobility* | [Mobility](https://github.com/shioyama/mobility) integration | [GitHub](https://github.com/richardvenneman/trestle-mobility) \| [RubyGems](https://rubygems.org/gems/trestle-mobility) |
 | *trestle-omniauth* | OmniAuth authentication plugin | [GitHub](https://github.com/airhorns/trestle-omniauth) \| [RubyGems](https://rubygems.org/gems/trestle-omniauth) |
+| *trestle-auth-otp* | 2FA/OTP user authentication | [GitHub](https://github.com/McRipper/trestle-auth-otp) \| [RubyGems](https://rubygems.org/gems/trestle-auth-otp) |
 
 
 ## License
