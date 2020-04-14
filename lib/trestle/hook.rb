@@ -20,8 +20,8 @@ module Trestle
       end
     end
 
-    def evaluate(context)
-      context.instance_exec(&block)
+    def evaluate(context, *args)
+      context.instance_exec(*args, &block)
     end
 
     class Set

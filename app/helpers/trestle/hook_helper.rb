@@ -1,12 +1,12 @@
 module Trestle
   module HookHelper
-    def hook(name)
+    def hook(name, *args)
       if hook?(name)
         safe_join(hooks(name).map { |hook|
-          hook.evaluate(self)
+          hook.evaluate(self, *args)
         }, "\n")
       elsif block_given?
-        capture(&Proc.new)
+        capture(*args, &Proc.new)
       end
     end
 

@@ -17,14 +17,24 @@ describe Trestle::HookHelper do
       expect(hook("test-hook")).to eq("abc\n123")
     end
 
-    it "yields if a block is provided an no hooks exist" do
+    it "yields if a block is provided and no hooks exist" do
       expect { |b| hook("no-hook", &b) }.to yield_control
+    end
+
+    it "yields if a block is provided with arguments and no hooks exist" do
+      expect { |b| hook("no-hook", 123, &b) }.to yield_with_args(123)
     end
 
     it "does not yield if a hook exists" do
       Trestle.config.hook("test-hook") { "abc" }
 
       expect { |b| hook("test-hook", &b) }.not_to yield_control
+    end
+
+    it "passes any given arguments as parameters to the block" do
+      Trestle.config.hook("test-hook") { |a, b| "#{a}123#{b}" }
+
+      expect(hook("test-hook", "A", "B")).to eq("A123B")
     end
   end
 

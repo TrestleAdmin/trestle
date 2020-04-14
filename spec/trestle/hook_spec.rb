@@ -26,6 +26,15 @@ describe Trestle::Hook do
       expect(context).to receive(:foo)
       hook.evaluate(context)
     end
+
+    context "with arguments" do
+      let(:block) { ->(a, b) { foo(a, b) } }
+
+      it "passes the given arguments to the block" do
+        expect(context).to receive(:foo).with(1, 2)
+        hook.evaluate(context, 1, 2)
+      end
+    end
   end
 end
 
