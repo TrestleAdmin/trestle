@@ -64,6 +64,22 @@
   .select-row {
     width: 2.5em;
     text-align: center;
+
+    .custom-control {
+      padding-left: 1.5rem;
+    }
+
+    .custom-control-input {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .custom-control-label {
+      &::before,
+      &::after {
+        left: -1.325rem;
+      }
+    }
   }
 
   .actions {

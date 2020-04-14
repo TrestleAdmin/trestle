@@ -24,10 +24,10 @@ ready(function () {
   // Interacting outside of the sidebar closes the navigation
 
   $wrapper.on('click touchstart', function (e) {
-    let navExpanded = $('body').hasClass('mobile-nav-expanded')
+    const navExpanded = $('body').hasClass('mobile-nav-expanded')
 
-    let clickInHeader = $(e.target).closest('.app-header').length
-    let clickInSidebar = $(e.target).closest('.app-sidebar').length
+    const clickInHeader = $(e.target).closest('.app-header').length
+    const clickInSidebar = $(e.target).closest('.app-sidebar').length
 
     if (navExpanded && !clickInHeader && !clickInSidebar) {
       e.stopPropagation()
@@ -62,7 +62,7 @@ ready(function () {
 
     $(this).closest('ul').toggleClass('collapsed')
 
-    let collapsed = $sidebar.find('.collapsed .nav-header a').map(function () {
+    const collapsed = $sidebar.find('.collapsed .nav-header a').map(function () {
       return $(this).attr('href').replace(/^#/, '')
     }).toArray()
 
@@ -71,7 +71,7 @@ ready(function () {
 
   // Scroll sidebar to active item
 
-  let $active = $sidebar.find('.active')
+  const $active = $sidebar.find('.active')
   if ($active.length) {
     $sidebar.find('.app-sidebar-inner').scrollTop($active.offset().top - 100)
   }
