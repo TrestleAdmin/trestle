@@ -16,6 +16,21 @@ describe Trestle::Resource::Builder, remove_const: true do
     expect(::TestsAdmin::AdminController.admin).to eq(::TestsAdmin)
   end
 
+  it "autoloads the controller correctly" do
+    Trestle::Admin.send(:remove_const, :Controller)
+    Trestle::Resource.send(:remove_const, :Controller)
+
+    ActiveSupport::Dependencies.clear
+    ActiveSupport::Dependencies.mechanism = :load
+
+    # Force autoloading of Admin::Controller before Resource::Controller
+    Trestle::Admin::Controller
+
+    expect(Trestle::Resource::Controller).not_to be(Trestle::Admin::Controller)
+
+    ActiveSupport::Dependencies.mechanism = :require
+  end unless Rails.configuration.try(:autoloader) == :zeitwerk
+
   describe "#table" do
     it "builds an index table with the admin and sortable options set" do
       Trestle::Resource::Builder.create(:tests) do
