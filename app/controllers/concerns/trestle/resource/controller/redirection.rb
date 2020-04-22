@@ -1,6 +1,6 @@
 module Trestle
   class Resource
-    class Controller
+    module Controller
       module Redirection
       protected
         def redirect_to_return_location(action, instance, default:)

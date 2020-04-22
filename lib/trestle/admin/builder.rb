@@ -7,7 +7,7 @@ module Trestle
       self.admin_class = Admin
 
       class_attribute :controller
-      self.controller = -> { Admin::Controller }
+      self.controller = -> { AdminController }
 
       delegate :helper, :before_action, :after_action, :around_action, to: :@controller
 

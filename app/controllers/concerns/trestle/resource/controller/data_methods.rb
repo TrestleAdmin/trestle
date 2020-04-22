@@ -1,6 +1,6 @@
 module Trestle
   class Resource
-    class Controller
+    module Controller
       module DataMethods
         extend ActiveSupport::Concern
 

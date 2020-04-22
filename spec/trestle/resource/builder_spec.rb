@@ -12,21 +12,21 @@ describe Trestle::Resource::Builder, remove_const: true do
 
   it "creates an AdminController class" do
     Trestle::Resource::Builder.create(:tests)
-    expect(::TestsAdmin::AdminController).to be < Trestle::Resource::Controller
+    expect(::TestsAdmin::AdminController).to be < Trestle::ResourceController
     expect(::TestsAdmin::AdminController.admin).to eq(::TestsAdmin)
   end
 
   it "autoloads the controller correctly" do
-    Trestle::Admin.send(:remove_const, :Controller)
-    Trestle::Resource.send(:remove_const, :Controller)
+    Trestle.send(:remove_const, :AdminController)
+    Trestle.send(:remove_const, :ResourceController)
 
     ActiveSupport::Dependencies.clear
     ActiveSupport::Dependencies.mechanism = :load
 
     # Force autoloading of Admin::Controller before Resource::Controller
-    Trestle::Admin::Controller
+    Trestle::AdminController
 
-    expect(Trestle::Resource::Controller).not_to be(Trestle::Admin::Controller)
+    expect(Trestle::ResourceController).not_to be(Trestle::AdminController)
 
     ActiveSupport::Dependencies.mechanism = :require
   end unless Rails.configuration.try(:autoloader) == :zeitwerk

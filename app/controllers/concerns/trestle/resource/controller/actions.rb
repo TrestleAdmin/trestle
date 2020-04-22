@@ -1,6 +1,6 @@
 module Trestle
   class Resource
-    class Controller
+    module Controller
       module Actions
         def index
           respond_to do |format|

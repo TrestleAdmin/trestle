@@ -1,6 +1,6 @@
 module Trestle
   class Resource
-    class Controller
+    module Controller
       module Toolbar
         def default_toolbar_builder
           Resource::Toolbar::Builder

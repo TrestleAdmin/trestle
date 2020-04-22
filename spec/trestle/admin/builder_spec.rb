@@ -23,7 +23,7 @@ describe Trestle::Admin::Builder, remove_const: true do
 
   it "creates an AdminController class" do
     Trestle::Admin::Builder.create(:test)
-    expect(::TestAdmin::AdminController).to be < Trestle::Admin::Controller
+    expect(::TestAdmin::AdminController).to be < Trestle::AdminController
     expect(::TestAdmin::AdminController.admin).to eq(::TestAdmin)
   end
 
