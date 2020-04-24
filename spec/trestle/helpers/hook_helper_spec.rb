@@ -47,6 +47,11 @@ describe Trestle::HookHelper do
     it "returns false if there are no global hooks defined for the given name" do
       expect(hook?("no-hook")).to be false
     end
+
+    it "returns false if there are no visible global hooks defined for the given name" do
+      Trestle.config.hook("hidden-hook", if: -> { false }) {}
+      expect(hook?("hidden-hook")).to be false
+    end
   end
 
   context "when an admin is available" do
@@ -69,6 +74,11 @@ describe Trestle::HookHelper do
 
       it "returns false if there are no admin hooks defined for the given name" do
         expect(hook?("no-hook")).to be false
+      end
+
+      it "returns false if there are no visible admin hooks defined for the given name" do
+        admin.hooks.append("hidden-hook", if: -> { false }) { false }
+        expect(hook?("hidden-hook")).to be false
       end
     end
   end

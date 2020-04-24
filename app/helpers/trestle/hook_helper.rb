@@ -1,8 +1,10 @@
 module Trestle
   module HookHelper
     def hook(name, *args)
-      if hook?(name)
-        safe_join(hooks(name).map { |hook|
+      hooks = hooks(name)
+
+      if hooks.any?
+        safe_join(hooks.map { |hook|
           hook.evaluate(self, *args)
         }, "\n")
       elsif block_given?
@@ -11,7 +13,7 @@ module Trestle
     end
 
     def hook?(name)
-      hook_sets.any? { |set| set.any?(name) }
+      hooks(name).any?
     end
 
   protected
