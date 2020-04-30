@@ -28,7 +28,7 @@ Run `bundle install`, and then run the install generator to create the initial c
 
     $ rails generate trestle:install
 
-Then create your first admin resource:
+Then create your first admin resource (assuming you have an existing `Article` model):
 
     $ rails generate trestle:resource Article
 
