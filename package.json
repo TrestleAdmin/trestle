@@ -39,7 +39,7 @@
     "bootstrap-confirmation2": "^4.1.0",
     "bs-custom-file-input": "^1.3.2",
     "flatpickr": "^4.6.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "magnific-popup": "^1.1.0",
     "popper.js": "^1.15.0",
     "select2": "^4.0.10",
