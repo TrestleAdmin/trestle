@@ -6,7 +6,7 @@ module Trestle
         delegate :translate, :t, to: :admin
 
         def new
-          link(t("buttons.new", default: "New %{model_name}"), action: :new, style: :light, icon: "fa fa-plus", class: "btn-new-resource")
+          link(t("buttons.new", default: "New %{model_name}"), action: :new, style: :light, icon: "fa fa-plus", class: "btn-new-resource") if action?(:new)
         end
 
         def save
@@ -14,7 +14,7 @@ module Trestle
         end
 
         def delete
-          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" })
+          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" }) if action?(:destroy)
         end
 
         def dismiss
@@ -22,7 +22,20 @@ module Trestle
         end
         alias ok dismiss
 
-        builder_method :new, :save, :delete, :dismiss, :ok
+        def save_or_dismiss(action=:update)
+          if action?(action)
+            save
+          else
+            dismiss
+          end
+        end
+
+        builder_method :new, :save, :delete, :dismiss, :ok, :save_or_dismiss
+
+      protected
+        def action?(action)
+          admin.actions.include?(action)
+        end
       end
     end
   end

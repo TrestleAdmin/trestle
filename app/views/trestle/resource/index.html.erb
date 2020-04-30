@@ -1,7 +1,7 @@
 <% content_for(:title, admin.t("titles.index", default: "Listing %{pluralized_model_name}")) %>
 
 <% toolbar(:primary) do |t| %>
-  <%= t.new if admin.actions.include?(:new) %>
+  <%= t.new %>
 <% end %>
 
 <% content_for(:utilities) do %>

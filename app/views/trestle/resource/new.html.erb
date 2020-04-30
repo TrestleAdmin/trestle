@@ -4,7 +4,7 @@
 <% breadcrumb(title) %>
 
 <% toolbar(:primary) do |t| %>
-  <%= t.save if admin.actions.include?(:create) %>
+  <%= t.save_or_dismiss(:create) %>
 <% end %>
 
 <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>
