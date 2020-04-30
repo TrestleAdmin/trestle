@@ -1,10 +1,10 @@
 module Trestle
   class Table
     class ActionsColumn
-      attr_reader :table, :toolbar, :options
+      attr_reader :toolbar, :options
 
-      def initialize(table, options={}, &block)
-        @table, @options = table, options
+      def initialize(options={}, &block)
+        @options = options
         @toolbar = Toolbar.new(ActionsBuilder)
 
         if block_given?
@@ -14,8 +14,8 @@ module Trestle
         end
       end
 
-      def renderer(template)
-        Renderer.new(self, template)
+      def renderer(table:, template:)
+        Renderer.new(self, table: table, template: template)
       end
 
       def default_actions
@@ -71,7 +71,7 @@ module Trestle
         end
 
         def content(instance)
-          @template.render_toolbar(@column.toolbar, instance, table.admin)
+          @template.render_toolbar(@column.toolbar, instance, @table.admin)
         end
       end
     end

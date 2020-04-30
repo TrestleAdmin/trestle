@@ -43,7 +43,7 @@ module Trestle
     end
 
     def row
-      @row || Row.new(self)
+      @row || Row.new
     end
 
     class Renderer
@@ -54,7 +54,7 @@ module Trestle
       end
 
       def row
-        @row ||= @table.row.renderer(@template)
+        @row ||= @table.row.renderer(table: @table, template: @template)
       end
 
       def columns

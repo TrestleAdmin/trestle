@@ -13,15 +13,15 @@ module Trestle
         admin.default_table_attributes.map.with_index do |attribute, index|
           case attribute.type
           when :association
-            Column.new(self, attribute.association_name, sort: false)
+            Column.new(attribute.association_name, sort: false)
           else
-            Column.new(self, attribute.name, link: index.zero?, align: (:center if [:datetime, :boolean].include?(attribute.type)))
+            Column.new(attribute.name, link: index.zero?, align: (:center if [:datetime, :boolean].include?(attribute.type)))
           end
         end
       end
 
       def actions_column
-        ActionsColumn.new(self)
+        ActionsColumn.new
       end
     end
   end

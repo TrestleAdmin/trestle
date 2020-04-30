@@ -9,11 +9,11 @@ module Trestle
       end
 
       def row(options={}, &block)
-        table.row = Row.new(table, options, &block)
+        table.row = Row.new(options, &block)
       end
 
       def selectable_column(options={})
-        table.columns << SelectColumn.new(table, options)
+        table.columns << SelectColumn.new(options)
       end
 
       def column(field, proc=nil, options={}, &block)
@@ -22,11 +22,11 @@ module Trestle
           proc = nil
         end
 
-        table.columns << Column.new(table, field, options, &(proc || block))
+        table.columns << Column.new(field, options, &(proc || block))
       end
 
       def actions(options={}, &block)
-        table.columns << ActionsColumn.new(table, options, &block)
+        table.columns << ActionsColumn.new(options, &block)
       end
     end
   end

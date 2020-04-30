@@ -4,18 +4,16 @@ describe Trestle::Table::Column do
   include_context "template"
 
   let(:options) { {} }
-  let(:table) { Trestle::Table.new(sortable: true) }
-
   let(:instance) { double }
 
   subject(:column) do
-    Trestle::Table::Column.new(table, :my_field, options)
+    Trestle::Table::Column.new(:my_field, options)
   end
 
   describe "#sortable?" do
     context "with a block" do
       subject(:column) do
-        Trestle::Table::Column.new(table, :my_field, options) { |instance| instance }
+        Trestle::Table::Column.new(:my_field, options) { |instance| instance }
       end
 
       it { is_expected.to_not be_sortable }
@@ -33,16 +31,13 @@ describe Trestle::Table::Column do
         let(:options) { { sort: false } }
         it { is_expected.to_not be_sortable }
       end
-
-      context "with a non-sortable table" do
-        let(:table) { Trestle::Table.new(sortable: false) }
-        it { is_expected.to_not be_sortable }
-      end
     end
   end
 
   describe "#renderer" do
-    subject(:renderer) { column.renderer(template) }
+    let(:table) { Trestle::Table.new(sortable: true) }
+
+    subject(:renderer) { column.renderer(table: table, template: template) }
 
     describe "#render?" do
       it "returns true by default" do
@@ -140,7 +135,7 @@ describe Trestle::Table::Column do
 
       context "with a block" do
         subject(:column) do
-          Trestle::Table::Column.new(table, :my_field, options) { |instance| instance }
+          Trestle::Table::Column.new(:my_field, options) { |instance| instance }
         end
 
         it "returns the result of the block" do

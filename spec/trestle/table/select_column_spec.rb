@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Trestle::Table::SelectColumn do
   include_context "template"
 
-  let(:table) { Trestle::Table.new }
-
-  subject(:column) { Trestle::Table::SelectColumn.new(table) }
+  subject(:column) { Trestle::Table::SelectColumn.new }
 
   describe "#renderer" do
-    subject(:renderer) { column.renderer(template) }
+    let(:table) { Trestle::Table.new }
+
+    subject(:renderer) { column.renderer(table: table, template: template) }
 
     it "has a checkbox header" do
       expect(renderer.header).to have_tag(".custom-control.custom-checkbox") do

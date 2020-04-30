@@ -1,14 +1,14 @@
 module Trestle
   class Table
     class SelectColumn
-      attr_reader :table, :options
+      attr_reader :options
 
-      def initialize(table, options={})
-        @table, @options = table, options
+      def initialize(options={})
+        @options = options
       end
 
-      def renderer(template)
-        Renderer.new(self, template)
+      def renderer(table:, template:)
+        Renderer.new(self, table: table, template: template)
       end
 
       class Renderer < Column::Renderer
@@ -30,7 +30,7 @@ module Trestle
 
       private
         def checkbox_id(param)
-          [table.options[:id], "select", param].compact.join("-")
+          [@table.options[:id], "select", param].compact.join("-")
         end
 
         def checkbox(name, value="1", options={})

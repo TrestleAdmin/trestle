@@ -1,19 +1,19 @@
 module Trestle
   class Table
     class Column
-      attr_reader :table, :field, :options, :block
+      attr_reader :field, :options, :block
 
-      def initialize(table, field, options={}, &block)
-        @table, @field, @options = table, field, options
+      def initialize(field, options={}, &block)
+        @field, @options = field, options
         @block = block if block_given?
       end
 
-      def renderer(template)
-        Renderer.new(self, template)
+      def renderer(table:, template:)
+        Renderer.new(self, table: table, template: template)
       end
 
       def sortable?
-        table.sortable? && options[:sort] != false && (!@block || options.has_key?(:sort))
+        options[:sort] != false && (!@block || options.has_key?(:sort))
       end
 
       def sort_field
@@ -28,21 +28,11 @@ module Trestle
         options[:sort].is_a?(Hash) ? options[:sort] : {}
       end
 
-      def header
-        if options[:header]
-          options[:header]
-        elsif table.admin
-          table.admin.t("table.headers.#{field}", default: table.admin.human_attribute_name(field))
-        else
-          I18n.t("admin.table.headers.#{field}", default: field.to_s.humanize.titleize)
-        end
-      end
-
       class Renderer
-        delegate :options, :table, to: :@column
+        delegate :options, to: :@column
 
-        def initialize(column, template)
-          @column, @template = column, template
+        def initialize(column, table:, template:)
+          @column, @table, @template = column, table, template
         end
 
         def render(instance)
@@ -70,10 +60,11 @@ module Trestle
         def header
           return if options.key?(:header) && options[:header].in?([nil, false])
 
-          header = @column.header
-          header = @template.instance_exec(&header) if header.respond_to?(:call)
-          header = @template.sort_link(header, @column.sort_field, @column.sort_options) if @column.sortable?
-          header
+          if @table.sortable? && @column.sortable?
+            @template.sort_link(header_text, @column.sort_field, @column.sort_options)
+          else
+            header_text
+          end
         end
 
         def content(instance)
@@ -86,7 +77,7 @@ module Trestle
             content = @template.admin_link_to(content, value)
           elsif options[:link]
             # Explicitly link to the specified admin, or the table's admin
-            content = @template.admin_link_to(content, instance, admin: options[:admin] || table.admin)
+            content = @template.admin_link_to(content, instance, admin: options[:admin] || @table.admin)
           end
 
           content
@@ -101,6 +92,20 @@ module Trestle
         end
 
       private
+        def header_text
+          if header = options[:header]
+            if header.respond_to?(:call)
+              @template.instance_exec(&header)
+            else
+              header
+            end
+          elsif @table.admin
+            @table.admin.t("table.headers.#{@column.field}", default: @table.admin.human_attribute_name(@column.field))
+          else
+            I18n.t("admin.table.headers.#{@column.field}", default: @column.field.to_s.humanize.titleize)
+          end
+        end
+
         def column_value(instance)
           if @column.block
             if defined?(Haml) && Haml::Helpers.block_is_haml?(@column.block)

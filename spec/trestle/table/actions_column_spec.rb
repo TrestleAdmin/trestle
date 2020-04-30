@@ -4,7 +4,6 @@ describe Trestle::Table::ActionsColumn do
   include_context "template"
 
   let(:options) { {} }
-  let(:table) { Trestle::Table.new(admin: admin) }
   let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false)) }
   let(:instance) { double }
 
@@ -13,11 +12,13 @@ describe Trestle::Table::ActionsColumn do
   end
 
   subject(:column) do
-    Trestle::Table::ActionsColumn.new(table, options)
+    Trestle::Table::ActionsColumn.new(options)
   end
 
   describe "#renderer" do
-    subject(:renderer) { column.renderer(template) }
+    let(:table) { Trestle::Table.new(admin: admin) }
+
+    subject(:renderer) { column.renderer(table: table, template: template) }
 
     describe "#header" do
       it "is empty by default" do
