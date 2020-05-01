@@ -11,6 +11,9 @@
 
   &:focus,
   &.focus {
+    color: color-yiq($hover-background);
+    background-color: $hover-background;
+    border-color: $hover-border;
     box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
   }
 
