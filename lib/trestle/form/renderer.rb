@@ -1,3 +1,6 @@
+require "action_view/context"
+require "action_view/helpers"
+
 module Trestle
   class Form
     class Renderer

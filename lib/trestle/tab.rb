@@ -1,3 +1,5 @@
+require "action_view/helpers"
+
 module Trestle
   class Tab
     include ActionView::Helpers::TagHelper

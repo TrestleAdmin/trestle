@@ -1,3 +1,5 @@
+require "action_view/helpers"
+
 module Trestle
   class Form
     class Builder < ActionView::Helpers::FormBuilder
