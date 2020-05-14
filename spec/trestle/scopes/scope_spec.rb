@@ -23,7 +23,8 @@ describe Trestle::Scopes::Scope do
     end
 
     context "without an explicit label option" do
-      it "returns the humanized scope name" do
+      it "returns the internationalized scope name" do
+        expect(admin).to receive(:t).with("scopes.my_scope", default: "My Scope").and_return("My Scope")
         expect(scope.label).to eq("My Scope")
       end
     end

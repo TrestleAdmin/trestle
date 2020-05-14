@@ -12,7 +12,7 @@ module Trestle
       end
 
       def label
-        @options[:label] || I18n.t("admin.scopes.#{name}", default: name.to_s.humanize.titleize)
+        @options[:label] || @admin.t("scopes.#{name}", default: name.to_s.humanize.titleize)
       end
 
       def default?
