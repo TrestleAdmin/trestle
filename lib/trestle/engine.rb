@@ -45,7 +45,7 @@ module Trestle
     end
 
     config.after_initialize do |app|
-      reloader.install(app)
+      reloader.install(app) unless app.config.eager_load
     end
 
     def reloader
