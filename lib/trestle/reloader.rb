@@ -29,6 +29,27 @@ module Trestle
       Trestle.config.load_paths.map { |path| path.respond_to?(:call) ? path.call : path }.flatten.map(&:to_s)
     end
 
+    def install(app)
+      reloader = self
+
+      app.reloaders << reloader
+
+      if app.respond_to?(:reloader)
+        # Rails >= 5.0
+        app.reloader.to_run do
+          reloader.execute_if_updated
+          true # Rails <= 5.1
+        end
+      else
+        # Rails 4.2
+        ActionDispatch::Reloader.to_prepare do
+          reloader.execute_if_updated
+        end
+      end
+
+      reloader.execute
+    end
+
   private
     def compile_load_paths
       Hash[*load_paths.map { |path| [path, "rb"] }.flatten]

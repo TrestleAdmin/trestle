@@ -45,24 +45,7 @@ module Trestle
     end
 
     config.after_initialize do |app|
-      reloader = Engine.reloader
-
-      app.reloaders << reloader
-
-      if app.respond_to?(:reloader)
-        # Rails >= 5.0
-        app.reloader.to_run do
-          reloader.execute_if_updated
-          true # Rails <= 5.1
-        end
-      else
-        # Rails 4.2
-        ActionDispatch::Reloader.to_prepare do
-          reloader.execute_if_updated
-        end
-      end
-
-      reloader.execute
+      reloader.install(app)
     end
 
     def reloader
