@@ -45,11 +45,8 @@ module Trestle
     end
 
     config.after_initialize do |app|
+      reloader = Trestle::Reloader.new(*app.watchable_args)
       reloader.install(app) unless app.config.eager_load
-    end
-
-    def reloader
-      @reloader ||= Trestle::Reloader.new
     end
 
     def reset_helpers!

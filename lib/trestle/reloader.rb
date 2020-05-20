@@ -2,8 +2,12 @@ module Trestle
   class Reloader
     delegate :execute, :execute_if_updated, :updated?, to: :updater
 
+    def initialize(files, dirs = {})
+      @files, @dirs = files, dirs
+    end
+
     def updater
-      @updater ||= ActiveSupport::FileUpdateChecker.new([], compile_load_paths) do
+      @updater ||= ActiveSupport::FileUpdateChecker.new(@files, @dirs) do
         begin
           clear
 
@@ -48,11 +52,6 @@ module Trestle
       end
 
       reloader.execute
-    end
-
-  private
-    def compile_load_paths
-      Hash[*load_paths.map { |path| [path, "rb"] }.flatten]
     end
   end
 end
