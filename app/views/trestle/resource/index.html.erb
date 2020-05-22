@@ -15,11 +15,11 @@
     </header>
   <% end %>
 
-  <%= render "trestle/table/table", table: admin.table, collection: collection %>
+  <%= table admin.table, collection: collection %>
 
   <footer class="main-content-footer">
     <%= hook("resource.index.footer") %>
 
-    <%= render "trestle/table/pagination", collection: collection, entry_name: admin.model_name %>
+    <%= pagination collection: collection, entry_name: admin.model_name, remote: admin.pagination_options[:ajax] %>
   </footer>
 <% end %>

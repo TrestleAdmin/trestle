@@ -24,6 +24,10 @@
   .main-content-sidebar & {
     @include table-container-background($content-sidebar-bg);
   }
+
+  &.loading {
+    opacity: 0.5;
+  }
 }
 
 .trestle-table {

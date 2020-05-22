@@ -47,5 +47,20 @@ module Trestle
 
       render "trestle/table/table", table: table, collection: collection
     end
+
+    # Renders the pagination controls for a collection.
+    #
+    # collection - The paginated Kaminari collection to render controls for (required).
+    # options    - Hash of options that will be passed to the Kaminari #paginate method (default: {}):
+    #
+    # Examples
+    #
+    #   <%= pagination collection: Account.page(params[:page]), remote: true %>
+    #
+    # Returns the HTML representation of the pagination controls as a HTML-safe String.
+    def pagination(collection:, entry_name: nil, **options)
+      collection = collection.call if collection.respond_to?(:call)
+      render "trestle/table/pagination", collection: collection, entry_name: entry_name, options: options
+    end
   end
 end
