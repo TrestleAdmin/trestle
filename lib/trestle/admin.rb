@@ -95,7 +95,7 @@ module Trestle
       alias t translate
 
       def parameter_name
-        admin_name.singularize
+        unscope_path(admin_name.singularize)
       end
 
       def route_name
@@ -164,6 +164,16 @@ module Trestle
 
       def validate!
         # No validations by default. This can be overridden in subclasses.
+      end
+
+    private
+      def unscope_path(path)
+        path = path.to_s
+        if i = path.rindex("/")
+          path[(i + 1)..-1]
+        else
+          path
+        end
       end
     end
   end

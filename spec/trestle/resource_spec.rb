@@ -36,6 +36,10 @@ describe Trestle::Resource, remove_const: true do
     expect(admin.model_name).to eq(Trestle::ModelName.new(Test))
   end
 
+  it "has a singular parameter name" do
+    expect(admin.parameter_name).to eq("test")
+  end
+
   it "has a breadcrumb trail" do
     expect(I18n).to receive(:t).with(:"admin.breadcrumbs.home", default: "Home").and_return("Home")
 
@@ -143,6 +147,10 @@ describe Trestle::Resource, remove_const: true do
 
     it "infers the model from the module and admin name" do
       expect(admin.model).to eq(Scoped::Test)
+    end
+
+    it "has a singular unscoped parameter name" do
+      expect(admin.parameter_name).to eq("test")
     end
   end
 

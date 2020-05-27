@@ -125,6 +125,10 @@ describe Trestle::Admin, remove_const: true do
       expect(admin.controller_namespace).to eq("scoped/test_admin/admin")
     end
 
+    it "has an unscoped parameter name" do
+      expect(admin.parameter_name).to eq("test")
+    end
+
     it "has a default breadcrumb" do
       expect(I18n).to receive(:t).with(:"admin.scoped/test.name", default: [:"admin.name", "Test"]).and_return("Test Name")
       expect(I18n).to receive(:t).with(:"admin.breadcrumbs.scoped/test", default: "Test Name").and_return("Test Deprecated")
