@@ -1,5 +1,6 @@
 module Trestle
   class Hook
+    require_relative "hook/helpers"
     require_relative "hook/set"
 
     attr_reader :name, :options, :block

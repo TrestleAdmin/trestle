@@ -27,11 +27,12 @@ describe Trestle::Form::Renderer, type: :helper do
   it "append whitelisted helpers to the result" do
     result = render_form do
       row do
-        col(12) {}
+        col(3) {}
+        col(9) {}
       end
     end
 
-    expect(result).to eq('<div class="row"><div class="col-12"></div></div>')
+    expect(result).to eq('<div class="row"><div class="col-3"></div><div class="col-9"></div></div>')
   end
 
   it "does not append non-whitelisted helpers to the result" do
@@ -39,7 +40,22 @@ describe Trestle::Form::Renderer, type: :helper do
     expect(result).to be_blank
   end
 
-  it "correctly concats addition content" do
+  it "renders hooks within the context of the renderer" do
+    Trestle.config.hook("myhook") do
+      row do
+        col(3) {}
+        col(9) {}
+      end
+    end
+
+    result = render_form do
+      hook("myhook")
+    end
+
+    expect(result).to eq('<div class="row"><div class="col-3"></div><div class="col-9"></div></div>')
+  end
+
+  it "correctly concats additional content" do
     result = render_form do
       row {}
       concat "FROM CONCAT"
