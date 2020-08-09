@@ -90,7 +90,7 @@ module Trestle
         defaults = [:"admin.#{i18n_key}.#{key}", :"admin.#{key}"]
         defaults << options[:default] if options[:default]
 
-        I18n.t(defaults.shift, options.merge(default: defaults))
+        I18n.t(defaults.shift, **options.merge(default: defaults))
       end
       alias t translate
 
