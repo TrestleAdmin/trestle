@@ -15,6 +15,10 @@ module Trestle
         @options[:label] || @admin.t("scopes.#{name}", default: name.to_s.humanize.titleize)
       end
 
+      def group
+        @options[:group] || nil
+      end
+
       def default?
         @options[:default] == true
       end

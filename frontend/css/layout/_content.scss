@@ -105,9 +105,8 @@
 
 .utilities {
   display: flex;
-  justify-content: space-between;
-
-  margin-bottom: 10px;
+  justify-content: flex-start;
+  margin: 5px 0 15px 0;
 }
 
 .error-iframe {
