@@ -1,0 +1,101 @@
+vi:
+  trestle:
+    title: "Trestle Admin"
+    footer: "Powered by Trestle"
+    version: "Version"
+
+    helpers:
+      page_entries_info:
+        one_page:
+          display_entries:
+            zero: "Không có %{entry_name} được tìm thấy"
+            one: "Hiển thị <strong>1</strong> %{entry_name}"
+            other: "Hiển thị <strong>tất cả %{count}</strong> %{entry_name}"
+
+        more_pages:
+          display_entries: "Hiển thị %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> của <b>%{total}</b>"
+
+    onboarding:
+      welcome: "Welcome to Trestle"
+      no_admins: "To begin, please create an admin within <code>app/admin</code>."
+      no_template: "To customize this template, please create <code>%{path}</code>."
+      no_form: "Please define a form block or create a <code>_form.html</code> partial."
+
+    ui:
+      toggle_navigation: "Toggle navigation"
+      toggle_sidebar: "Toggle sidebar"
+      toggle_dropdown: "Toggle dropdown"
+
+    dialog:
+      error: "Yêu cầu chưa hoàn thành."
+
+    confirmation:
+      title: "Bạn có chắc?"
+      delete: "Xoá"
+      cancel: "Huỷ"
+
+    file:
+      choose_file: "Chọn tập tin..."
+      browse: "Tải lên"
+
+  admin:
+    titles:
+      index: "Danh sách %{pluralized_model_name}"
+      new: "Tạo mới %{model_name}"
+      edit: Chỉnh sửa %{model_name}"
+
+    buttons:
+      new: "Tạo mới %{model_name}"
+      save: "Lưu %{model_name}"
+      delete: "Xoá %{model_name}"
+      show: "Xem %{model_name}"
+      edit: "Chỉnh sửa %{model_name}"
+      ok: "Đồng ý"
+
+    breadcrumbs:
+      home: "Trang Chủ"
+
+    flash:
+      create:
+        success:
+          title: "Thành công!"
+          message: "%{lowercase_model_name} được tạo mới thành công!"
+
+        failure:
+          title: "Cảnh báo!"
+          message: "Vui lòng chính xác các thông tin bên dưới!"
+
+      update:
+        success:
+          title: "Thành công!"
+          message: "%{lowercase_model_name} đã được cập nhật thành công!"
+
+        failure:
+          title: "Cảnh báo!"
+          message: "Vui lòng chính xác các thông tin bên dưới!."
+
+      destroy:
+        success:
+          title: "Thành công!"
+          message: "%{lowercase_model_name} đã được xoá thành công!"
+
+        failure:
+          title: "Cảnh báo!"
+          message: "Không thể xoá %{lowercase_model_name}."
+
+    table:
+      headers:
+        id: "ID"
+
+    form:
+      select:
+        prompt: "- Chọn %{attribute_name} -"
+
+    format:
+      blank: "Chưa có"
+
+    datepicker:
+      formats:
+        date: "m/d/Y"
+        datetime: "m/d/Y h:i K"
+        time: "h:i K"
