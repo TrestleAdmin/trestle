@@ -1,9 +1,5 @@
 RSpec.shared_examples "a form control" do |field, value|
-  include_context "form"
-
-  before(:each) do
-    allow(object).to receive_messages(field => value)
-  end if field && value
+  include_context "form", field, value
 
   it "renders a label within a form group" do
     expect(subject).to have_tag('.form-group') do

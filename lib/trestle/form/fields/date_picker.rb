@@ -1,15 +1,16 @@
 module Trestle::Form::Fields::DatePicker
   def normalize_options!
     options[:prepend] ||= options.delete(:icon) { default_icon }
-
-    unless options[:disabled] || options[:readonly]
-      options.reverse_merge!(data: { picker: options.delete(:picker) { true }, allow_clear: true })
-    end
+    options.reverse_merge!(data: { picker: true, allow_clear: true }) if enable_date_picker?
 
     super
   end
 
   def default_icon
     icon("fa fa-calendar")
+  end
+
+  def enable_date_picker?
+    options[:disabled] != true && !readonly? && options[:picker] != false
   end
 end
