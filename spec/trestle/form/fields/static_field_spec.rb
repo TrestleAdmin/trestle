@@ -5,6 +5,10 @@ describe Trestle::Form::Fields::StaticField, type: :helper do
 
   let(:value) { "Custom title" }
 
+  before(:each) do
+    allow(object).to receive_messages(title: "Title")
+  end
+
   describe "#static_field" do
     it "renders the field value by default" do
       result = builder.static_field(:title)
