@@ -40,6 +40,10 @@ module Trestle
         Trestle::Options.new(readonly: readonly?)
       end
 
+      def disabled?
+        options[:disabled]
+      end
+
       def readonly?
         options[:readonly] || admin.readonly?
       end

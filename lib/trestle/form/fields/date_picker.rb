@@ -11,6 +11,6 @@ module Trestle::Form::Fields::DatePicker
   end
 
   def enable_date_picker?
-    options[:disabled] != true && !readonly? && options[:picker] != false
+    !disabled? && !readonly? && options[:picker] != false
   end
 end
