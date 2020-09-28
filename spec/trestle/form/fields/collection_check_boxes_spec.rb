@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require_relative "form_field_examples"
+
 describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
   include_context "form", :countries, ["AUS", "NZ"]
 
@@ -16,6 +18,8 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
   let(:html_options) { {} }
 
   subject { builder.collection_check_boxes(:countries, countries, :code, :text, options, html_options) }
+
+  it_behaves_like "a form field", :countries
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do
