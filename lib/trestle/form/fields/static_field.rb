@@ -5,8 +5,8 @@ module Trestle
         attr_reader :value
 
         def initialize(builder, template, name, value=nil, options={}, &block)
-          if block_given? && value.is_a?(Hash)
-            options = value
+          if value.is_a?(Hash)
+            @value, options = nil, value
           else
             @value = value
           end

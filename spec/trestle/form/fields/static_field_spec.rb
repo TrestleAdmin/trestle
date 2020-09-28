@@ -1,39 +1,38 @@
 require 'spec_helper'
 
+require_relative "form_field_examples"
+
 describe Trestle::Form::Fields::StaticField, type: :helper do
-  include_context "form"
+  include_context "form", :title, "Title"
 
-  let(:value) { "Custom title" }
+  it_behaves_like "a form field", :title
 
-  before(:each) do
-    allow(object).to receive_messages(title: "Title")
+  subject { builder.static_field(:title, options) }
+
+  it "renders the field value by default" do
+    expect(subject).to have_tag('.form-group') do
+      with_tag "p", text: "Title"
+    end
   end
 
-  describe "#static_field" do
-    it "renders the field value by default" do
-      result = builder.static_field(:title)
+  context "when passed a custom value" do
+    subject { builder.static_field(:title, "Custom title", options) }
 
-      expect(result).to have_tag('.form-group') do
-        with_tag "label.control-label", text: "Title", without: { class: "sr-only" }
-        with_tag "p", text: object.title
+    it "renders the given value" do
+      expect(subject).to have_tag('.form-group') do
+        with_tag "p", text: "Custom title"
       end
     end
+  end
 
-    it "renders the given value if provided" do
-      result = builder.static_field(:title, value)
-
-      expect(result).to have_tag('.form-group') do
-        with_tag "label.control-label", text: "Title", without: { class: "sr-only" }
-        with_tag "p", text: value
-      end
+  context "when passed a block" do
+    subject do
+      builder.static_field(:title) { content_tag(:span, "Title from block") }
     end
 
-    it "renders the given block if provided" do
-      result = builder.static_field(:title) { content_tag(:span, value) }
-
-      expect(result).to have_tag('.form-group') do
-        with_tag "label.control-label", text: "Title", without: { class: "sr-only" }
-        with_tag "span", text: value
+    it "renders the given block" do
+      expect(subject).to have_tag('.form-group') do
+        with_tag "span", text: "Title from block"
       end
     end
   end
