@@ -1,7 +1,12 @@
 module Trestle::Form::Fields::DatePicker
   def normalize_options!
-    options[:prepend] ||= options.delete(:icon) { default_icon }
-    options.reverse_merge!(data: { picker: true, allow_clear: true }) if enable_date_picker?
+    unless options[:prepend] == false
+      options[:prepend] ||= options.delete(:icon) { default_icon }
+    end
+
+    if enable_date_picker?
+      options.reverse_merge!(data: { picker: true, allow_clear: true })
+    end
 
     super
   end
