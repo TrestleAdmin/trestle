@@ -4,12 +4,19 @@ module Trestle
       class FormGroup < Field
         WRAPPER_OPTIONS = [:help, :label, :hide_label]
 
+        def initialize(builder, template, name=nil, options={}, &block)
+          # Normalize options passed as name parameter
+          name, options = nil, name if name.is_a?(Hash)
+
+          super(builder, template, name, options, &block)
+        end
+
         def render
           content_tag(:div, options.except(*WRAPPER_OPTIONS)) do
-            concat label unless options[:label] == false
+            concat label if name && options[:label] != false
             concat template.capture(&block) if block
             concat help_message if options[:help]
-            concat error_message if errors.any?
+            concat error_message if name && errors.any?
           end
         end
 
@@ -47,6 +54,10 @@ module Trestle
 
         def error_class
           "has-error"
+        end
+
+        def error_keys
+          name ? super : []
         end
       end
     end
