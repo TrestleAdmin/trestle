@@ -18,7 +18,7 @@ module Trestle
         end
 
         def choose_file_text
-          I18n.t("trestle.file.choose_file", default: "Choose file")
+          I18n.t("trestle.file.choose_file", default: "Choose file...")
         end
 
         def browse_text
