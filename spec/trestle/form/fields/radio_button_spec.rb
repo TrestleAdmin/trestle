@@ -7,8 +7,8 @@ describe Trestle::Form::Fields::RadioButton, type: :helper do
 
   it "renders a custom radio button control by default" do
     expect(subject).to have_tag(".custom-control.custom-radio") do
-      with_tag "input.custom-control-input", type: "radio", value: "value", checked: true, id: "article_choice"
-      with_tag "label.custom-control-label", for: "article_choice", text: "Value"
+      with_tag "input.custom-control-input[checked]", with: { type: "radio", value: "value", id: "article_choice_value" }
+      with_tag "label.custom-control-label", with: { for: "article_choice_value" }, text: "Value"
     end
   end
 
@@ -41,8 +41,8 @@ describe Trestle::Form::Fields::RadioButton, type: :helper do
 
     it "renders a regular radio button control" do
       expect(subject).to have_tag(".form-check") do
-        with_tag "input.form-check-input", type: "checkbox", value: "value", checked: true, id: "article_choice"
-        with_tag "label.form-check-label", for: "article_choice", text: "Value"
+        with_tag "input.form-check-input[checked]", with: { type: "radio", value: "value", id: "article_choice_value" }
+        with_tag "label.form-check-label", with: { for: "article_choice_value" }, text: "Value"
       end
     end
 

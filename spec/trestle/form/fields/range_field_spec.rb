@@ -10,14 +10,14 @@ describe Trestle::Form::Fields::RangeField, type: :helper do
   subject { builder.range_field(:level, options) }
 
   it "renders a custom file field by default" do
-    expect(subject).to have_tag("input.custom-range", type: "range", id: "article_level")
+    expect(subject).to have_tag("input.custom-range", with: { type: "range", id: "article_level" })
   end
 
   context "when options[:custom] is set to false" do
     let(:options) { { custom: false } }
 
     it "renders a regular file field" do
-      expect(subject).to have_tag("input", type: "range", without: { class: "custom-range" })
+      expect(subject).to have_tag("input", with: { type: "range" }, without: { class: "custom-range" })
     end
   end
 end

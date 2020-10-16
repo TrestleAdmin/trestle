@@ -11,9 +11,9 @@ describe Trestle::Form::Fields::CheckBox, type: :helper do
 
   it "renders a custom check box control by default" do
     expect(subject).to have_tag(".custom-control.custom-checkbox") do
-      with_tag "input", type: "hidden", value: "0"
-      with_tag "input.custom-control-input", type: "checkbox", value: "1", checked: true, id: "article_enabled"
-      with_tag "label.custom-control-label", for: "article_enabled", text: "Enabled"
+      with_tag "input", with: { type: "hidden", value: "0" }
+      with_tag "input.custom-control-input[checked]", with: { type: "checkbox", value: "1", id: "article_enabled" }
+      with_tag "label.custom-control-label", with: { for: "article_enabled" }, text: "Enabled"
     end
   end
 
@@ -25,8 +25,8 @@ describe Trestle::Form::Fields::CheckBox, type: :helper do
     subject { builder.check_box(:enabled, options, "YES", "NO") }
 
     it "sets the values on the input elements" do
-      expect(subject).to have_tag("input", type: "hidden", value: "NO")
-      expect(subject).to have_tag("input.custom-control-input", type: "checkbox", value: "YES", checked: true, id: "article_enabled")
+      expect(subject).to have_tag("input", with: { type: "hidden", value: "NO" })
+      expect(subject).to have_tag("input.custom-control-input[checked]", with: { type: "checkbox", value: "YES", id: "article_enabled" })
     end
   end
 
@@ -55,8 +55,8 @@ describe Trestle::Form::Fields::CheckBox, type: :helper do
 
     it "renders a regular check box control" do
       expect(subject).to have_tag(".form-check") do
-        with_tag "input.form-check-input", type: "checkbox", value: "1", checked: true, id: "article_enabled"
-        with_tag "label.form-check-label", for: "article_enabled", text: "Enabled"
+        with_tag "input.form-check-input[checked]", with: { type: "checkbox", value: "1", id: "article_enabled" }
+        with_tag "label.form-check-label", with: { for: "article_enabled" }, text: "Enabled"
       end
     end
 
@@ -91,7 +91,7 @@ describe Trestle::Form::Fields::CheckBox, type: :helper do
     subject { builder.check_box(:enabled, options, "value") }
 
     it "sets the label for attribute based on the checked value" do
-      expect(subject).to have_tag("label", for: "article_enabled_value")
+      expect(subject).to have_tag("label", with: { for: "article_enabled_value" })
     end
   end
 end

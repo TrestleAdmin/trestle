@@ -12,8 +12,8 @@ describe Trestle::Table::SelectColumn do
 
     it "has a checkbox header" do
       expect(renderer.header).to have_tag(".custom-control.custom-checkbox") do
-        with_tag("input", type: "checkbox", id: "select-all", class: "custom-control-input", name: "", value: "")
-        with_tag("label", for: "select-all", class: "custom-control-label")
+        with_tag("input.custom-control-input", with: { type: "checkbox", id: "select-all", name: "" })
+        with_tag("label.custom-control-label", with: { for: "select-all" })
       end
     end
 
@@ -30,8 +30,8 @@ describe Trestle::Table::SelectColumn do
 
       it "returns a checkbox" do
         expect(renderer.content(instance)).to have_tag(".custom-control.custom-checkbox") do
-          with_tag("input", type: "checkbox", id: "select-abc", class: "custom-control-input", name: "selected[]", value: "abc")
-          with_tag("label", for: "select-abc", class: "custom-control-label")
+          with_tag("input.custom-control-input", with: { type: "checkbox", id: "select-abc", name: "selected[]", value: "abc" })
+          with_tag("label.custom-control-label", with: { for: "select-abc" })
         end
       end
     end

@@ -14,7 +14,7 @@ describe Trestle::GridHelper do
     end
 
     it "passes given attributes to the row div" do
-      expect(row(id: "my-row", data: { attr: "value" }) { "content" }).to have_tag(".row", text: "content", with: { id: "my-row", :"data-attr" => "value" })
+      expect(row(id: "my-row", data: { attr: "value" }) { "content" }).to have_tag(".row", text: "content", with: { id: "my-row", "data-attr": "value" })
     end
 
     it "adds any extra classes to the row div" do
