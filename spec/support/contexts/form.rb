@@ -12,5 +12,5 @@ RSpec.shared_context "form" do |field, value|
 
   before(:each) do
     allow(object).to receive_messages(field => value)
-  end if field && value
+  end if field
 end
