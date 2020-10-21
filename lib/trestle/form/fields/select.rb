@@ -18,7 +18,7 @@ module Trestle
         end
 
         def default_html_options
-          Trestle::Options.new(class: ["form-control"], disabled: readonly?, data: { enable_select2: true })
+          Trestle::Options.new(class: ["form-control"], disabled: disabled? || readonly?, data: { enable_select2: true })
         end
 
         def default_choices
@@ -44,8 +44,7 @@ module Trestle
         protected
           def option_text_and_value(option)
             if !option.is_a?(String) && option.respond_to?(:first) && option.respond_to?(:last)
-              option = option.reject { |e| Hash === e } if Array === option
-              [option.first, option.last]
+              option
             elsif option.respond_to?(:id)
               [Trestle::Display.new(option).to_s, option.id]
             else
