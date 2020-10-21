@@ -1,9 +1,9 @@
 require_relative "form_field_examples"
 
-RSpec.shared_examples "a form control" do |field, value|
+RSpec.shared_examples "a form control" do |field, value, html_options|
   include_context "form", field, value
 
-  it_behaves_like "a form field", field, value
+  it_behaves_like "a form field", field, html_options
 
   context "when options[:prepend] is present" do
     let(:options) { { prepend: "Prepended" } }

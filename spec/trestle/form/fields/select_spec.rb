@@ -10,7 +10,7 @@ describe Trestle::Form::Fields::Select, type: :helper do
 
   subject { builder.select :country, choices, options, html_options }
 
-  it_behaves_like "a form field", :country
+  it_behaves_like "a form field", :country, :html_options
 
   it "renders a select control" do
     expect(subject).to have_tag("select.form-control", with: { id: "article_country", "data-enable-select2": true })

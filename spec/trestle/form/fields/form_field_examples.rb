@@ -1,9 +1,24 @@
-RSpec.shared_examples "a form field" do |field|
+RSpec.shared_examples "a form field" do |field, html_options|
+  html_options ||= :options
+
   include_context "form", field
 
   it "renders a label within a form group" do
     expect(subject).to have_tag(".form-group") do
       with_tag "label.control-label", text: field.to_s.humanize, without: { class: "sr-only" }
+    end
+  end
+
+  unless described_class == Trestle::Form::Fields::StaticField
+    context "when class/id/data attributes are provided" do
+      let(html_options) { { class: "custom-field", id: "my-field", data: { foo: "bar" } } }
+      let(:expected_attrs) { { class: "custom-field", id: "my-field", "data-foo": "bar" } }
+
+      it "sets the attributes on the field" do
+        expect(subject).to have_tag(".form-group") do
+          with_tag ".custom-field", with: expected_attrs
+        end
+      end
     end
   end
 
@@ -47,6 +62,27 @@ RSpec.shared_examples "a form field" do |field|
         expect(subject).to have_tag(".form-group") do
           with_tag "p.form-text.floating", text: "Floating help message"
         end
+      end
+    end
+  end
+
+  unless described_class == Trestle::Form::Fields::FormGroup
+    context "wehn options[:wrapper] is a Hash of attributes" do
+      let(:attrs) { { class: "custom-wrapper", id: "my-wrapper", data: { foo: "bar" } } }
+      let(:expected_attrs) { { class: "custom-wrapper", id: "my-wrapper", "data-foo": "bar" } }
+
+      let(:options) { { wrapper: attrs } }
+
+      it "sets the attributes on the form group wrapper" do
+        expect(subject).to have_tag(".form-group", with: expected_attrs)
+      end
+    end
+
+    context "when options[:wrapper] is set to false" do
+      let(:options) { { wrapper: false } }
+
+      it "does not render a form group wrapper" do
+        expect(subject).not_to have_tag(".form-group")
       end
     end
   end

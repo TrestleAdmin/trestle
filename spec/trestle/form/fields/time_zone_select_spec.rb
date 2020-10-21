@@ -9,7 +9,7 @@ describe Trestle::Form::Fields::TimeZoneSelect, type: :helper do
 
   subject { builder.time_zone_select :timezone, nil, options, html_options }
 
-  it_behaves_like "a form field", :timezone
+  it_behaves_like "a form field", :timezone, :html_options
 
   it "renders a collection of time zone options" do
     expect(subject).to have_tag("select.form-control", with: { id: "article_timezone", "data-enable-select2": true }) do

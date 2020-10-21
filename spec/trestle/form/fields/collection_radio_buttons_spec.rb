@@ -10,7 +10,7 @@ describe Trestle::Form::Fields::CollectionRadioButtons, type: :helper do
 
   subject { builder.collection_radio_buttons(:country, countries, :code, :name, options, html_options) }
 
-  it_behaves_like "a form field", :country
+  it_behaves_like "a form field", :country, :html_options
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do

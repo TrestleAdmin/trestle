@@ -9,6 +9,8 @@ describe Trestle::Form::Fields::TagSelect, type: :helper do
 
   subject { builder.tag_select :tags, options, html_options }
 
+  it_behaves_like "a form field", :tags, :html_options
+
   it "renders a select control" do
     expect(subject).to have_tag("select.form-control.tag-select", with: { multiple: "multiple", id: "article_tags", "data-enable-select2": true, "data-tags": true }) do
       with_tag "option[selected]", text: "rails", with: { value: "rails" }

@@ -17,17 +17,17 @@ module Trestle
       end
 
       def form_group(opts={})
-        @builder.form_group(name, @wrapper.merge(opts)) do
+        if @wrapper
+          @builder.form_group(name, @wrapper.merge(opts)) do
+            yield
+          end
+        else
           yield
         end
       end
 
       def render
-        if @wrapper
-          form_group do
-            field
-          end
-        else
+        form_group do
           field
         end
       end
@@ -61,8 +61,11 @@ module Trestle
       end
 
       def extract_wrapper_options!
-        unless options[:wrapper] == false
-          @wrapper = extract_wrapper_options(*Fields::FormGroup::WRAPPER_OPTIONS).merge(options.delete(:wrapper))
+        wrapper = options.delete(:wrapper)
+
+        unless wrapper == false
+          @wrapper = extract_options(*Fields::FormGroup::WRAPPER_OPTIONS)
+          @wrapper.merge!(wrapper) if wrapper.is_a?(Hash)
         end
       end
 
@@ -87,10 +90,10 @@ module Trestle
         keys
       end
 
-      def extract_wrapper_options(*keys)
-        wrapper = Trestle::Options.new
-        keys.each { |k| wrapper[k] = options.delete(k) if options.key?(k) }
-        wrapper
+      def extract_options(*keys)
+        extracted = Trestle::Options.new
+        keys.each { |k| extracted[k] = options.delete(k) if options.key?(k) }
+        extracted
       end
     end
   end

@@ -9,7 +9,7 @@ describe Trestle::Form::Fields::DatetimeSelect, type: :helper do
 
   subject { builder.datetime_select :published_at, options, html_options }
 
-  it_behaves_like "a form field", :published_at
+  it_behaves_like "a form field", :published_at, :html_options
 
   it "renders a date select within a .datetime-select container" do
     expect(subject).to have_tag(".datetime-select") do

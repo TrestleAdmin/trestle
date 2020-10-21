@@ -10,7 +10,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
   subject { builder.collection_check_boxes(:countries, countries, :code, :name, options, html_options) }
 
-  it_behaves_like "a form field", :countries
+  it_behaves_like "a form field", :countries, :html_options
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do

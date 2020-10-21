@@ -10,7 +10,7 @@ describe Trestle::Form::Fields::CollectionSelect, type: :helper do
 
   subject { builder.collection_select :country, countries, :code, :name, options, html_options }
 
-  it_behaves_like "a form field", :country
+  it_behaves_like "a form field", :country, :html_options
 
   it "renders a collection of options" do
     expect(subject).to have_tag("select.form-control", with: { id: "article_country", "data-enable-select2": true }) do
