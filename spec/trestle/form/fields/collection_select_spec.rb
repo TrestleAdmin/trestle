@@ -13,7 +13,7 @@ describe Trestle::Form::Fields::CollectionSelect, type: :helper do
   it_behaves_like "a form field", :country
 
   it "renders a collection of options" do
-    expect(subject).to have_tag("select.form-control", with: { id: "article_country", "data-enable-select2" => true }) do
+    expect(subject).to have_tag("select.form-control", with: { id: "article_country", "data-enable-select2": true }) do
       with_tag "option[selected]", text: "Australia", with: { value: "AUS" }
       with_tag "option", text: "United States", with: { value: "USA" }
       with_tag "option", text: "New Zealand", with: { value: "NZ" }
