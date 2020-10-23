@@ -7,7 +7,7 @@ describe Trestle::Form::Fields::DatetimeField, type: :helper do
     subject { builder.datetime_field(:date, options) }
 
     it "renders as a datetime-local field" do
-      expect(subject).to have_tag("input.form-control", with: { type: "datetime-local", value: "2020-09-01T00:00:00" })
+      expect(subject).to have_tag("input.form-control[value^='2020-09-01T00:00:00'][type^='datetime']")
     end
 
     it "is aliased as #datetime_local_field" do
