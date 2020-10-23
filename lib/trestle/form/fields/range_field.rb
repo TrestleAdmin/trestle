@@ -10,10 +10,8 @@ module Trestle
           options[:custom] != false
         end
 
-        def normalize_options!
-          options.reverse_merge!(class: ["custom-range"]) if custom?
-
-          super
+        def defaults
+          custom? ? super.merge(class: ["custom-range"]) : super
         end
       end
     end
