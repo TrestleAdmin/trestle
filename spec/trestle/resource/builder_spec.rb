@@ -356,6 +356,24 @@ describe Trestle::Resource::Builder, remove_const: true do
     end
   end
 
+  describe "#scopes" do
+    it "adds a scopes block" do
+      b = Proc.new {}
+
+      Trestle::Resource::Builder.create(:tests) do
+        scopes do
+          scope :my_scope, label: "Custom Label", &b
+        end
+      end
+
+      admin = ::TestsAdmin.new
+
+      expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
+      expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
+      expect(admin.scopes[:my_scope].block).to eq(b)
+    end
+  end
+
   describe "#return_to" do
     context "given options[:on]" do
       it "sets a return location block for the given action" do

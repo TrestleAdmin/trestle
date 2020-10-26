@@ -48,9 +48,10 @@ module Trestle
       Collection.new(self, options).prepare(params)
     end
 
-    # Evaluates the admin's scope block(s) and returns a hash of Scope objects keyed by the scope name
+    # Evaluates the admin's scope block(s) using the adapter context
+    # and returns a hash of Scope objects keyed by the scope name.
     def scopes
-      @scopes ||= self.class.scopes.evaluate(@context)
+      @scopes ||= self.class.scopes.evaluate(adapter)
     end
 
     class << self
@@ -60,7 +61,7 @@ module Trestle
       end
 
       def scopes
-        @scopes ||= Scopes.new(self)
+        @scopes ||= Scopes.new
       end
 
       def column_sorts

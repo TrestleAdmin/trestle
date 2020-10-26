@@ -1,16 +1,17 @@
 module Trestle
   class Scopes
     class Block
-      attr_reader :block, :admin
+      attr_reader :block
 
-      def initialize(admin=nil, &block)
-        @admin = admin
+      def initialize(&block)
         @block = block
       end
 
+      # Evaluates the scope block within the given admin context
+      # and returns an array of the scopes that were defined.
       def scopes(context)
-        context = Evaluator.new(@admin, context)
-        context.instance_exec(@admin, &block)
+        context = Evaluator.new(context)
+        context.instance_exec(context, &block)
         context.scopes
       end
 
@@ -19,8 +20,8 @@ module Trestle
 
         attr_reader :scopes
 
-        def initialize(admin, context=nil)
-          @admin, @context = admin, context
+        def initialize(context=nil)
+          @context = context
           @scopes = []
         end
 
@@ -30,7 +31,7 @@ module Trestle
             scope = nil
           end
 
-          scopes << Scope.new(@admin, name, options, &(scope || block))
+          scopes << Scope.new(@context, name, options, &(scope || block))
         end
       end
     end
