@@ -1,14 +1,12 @@
-module Trestle
-  class ApplicationController < ActionController::Base
-    protect_from_forgery
+class Trestle::ApplicationController < ActionController::Base
+  protect_from_forgery
 
-    include Controller::Breadcrumbs
-    include Controller::Callbacks
-    include Controller::Dialog
-    include Controller::Helpers
-    include Controller::Layout
-    include Controller::Location
-    include Controller::Title
-    include Controller::Toolbars
-  end
+  include Trestle::Controller::Breadcrumbs
+  include Trestle::Controller::Callbacks
+  include Trestle::Controller::Dialog
+  include Trestle::Controller::Helpers
+  include Trestle::Controller::Layout
+  include Trestle::Controller::Location
+  include Trestle::Controller::Title
+  include Trestle::Controller::Toolbars
 end

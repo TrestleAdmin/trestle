@@ -1,8 +1,6 @@
-module Trestle
-  class ResourceController < AdminController
-    include Resource::Controller::Actions
-    include Resource::Controller::DataMethods
-    include Resource::Controller::Redirection
-    include Resource::Controller::Toolbar
-  end
+class Trestle::ResourceController < Trestle::AdminController
+  include Trestle::Resource::Controller::Actions
+  include Trestle::Resource::Controller::DataMethods
+  include Trestle::Resource::Controller::Redirection
+  include Trestle::Resource::Controller::Toolbar
 end
