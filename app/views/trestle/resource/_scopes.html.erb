@@ -1,11 +1,20 @@
-<% admin.scopes.group_by { |k,v| v.group }.each do |group, scopes| %>
-  <ul class="scopes" aria-label=<%= group %>>
-    <% scopes.each do |name, scope| %>
-      <%= content_tag(:li, class: ("active" if scope.active?(params))) do %>
-        <%= link_to persistent_params.merge(scope: (name unless scope.active?(params))) do %>
-          <strong><%= scope.label %></strong> (<%= number_with_delimiter(scope.count(admin.collection(params))) %>)
-        <% end %>
-      <% end %>
+<dl class="scopes grouped">
+  <% admin.scopes.group_by { |k, v| v.group }.each do |group, scopes| %>
+    <% if true %>
+    <dt class="scope-group"><%= group %></dt>
     <% end %>
-  </ul>
-<% end %>
+
+    <dd>
+      <ul class="scope-list">
+        <% scopes.each do |name, scope| %>
+          <li>
+            <%= link_to persistent_params.merge(scope: (name unless scope.active?(params))), class: ["scope", ("active" if scope.active?(params))] do %>
+              <strong><%= scope.label %></strong>
+              (<%= number_with_delimiter(scope.count(admin.collection(params))) %>)
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </dd>
+  <% end %>
+</dl>

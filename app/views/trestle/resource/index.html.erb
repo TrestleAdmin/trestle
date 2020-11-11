@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for(:utilities) do %>
-  <%= render "scopes" if admin.scopes.any? %>
+  <%= render "scopes" %>
 <% end if admin.scopes.any? %>
 
 <%= render layout: "layout" do %>

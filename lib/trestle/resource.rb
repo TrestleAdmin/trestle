@@ -61,7 +61,7 @@ module Trestle
       end
 
       def scopes
-        @scopes ||= Scopes.new
+        @scopes ||= Scopes::Definition.new
       end
 
       def column_sorts

@@ -83,7 +83,8 @@ module Trestle
         admin.define_adapter_method(:count, &block)
       end
 
-      def scopes(&block)
+      def scopes(options={}, &block)
+        admin.scopes.options.merge!(options)
         admin.scopes.append(&block)
       end
 

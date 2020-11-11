@@ -77,14 +77,14 @@ $tag-hover-border: darken(theme-color("primary"), 10%);
 
 // Scopes
 
-$scope-padding:      0.25rem 0.5rem;
+$scope-padding:      0.25rem 0.675rem;
 
-$scope-color:        rgba(black, 0.3);
-$scope-bg:           rgba(black, 0.025);
+$scope-color:        rgba(black, 0.4);
+$scope-bg:           rgba(black, 0.035);
 
-$scope-label-color:  rgba(black, 0.4);
+$scope-label-color:  rgba(black, 0.5);
 
-$scope-hover-color:  rgba(black, 0.3);
+$scope-hover-color:  rgba(black, 0.5);
 $scope-hover-bg:     rgba(black, 0.05);
 
 $scope-active-color: white;

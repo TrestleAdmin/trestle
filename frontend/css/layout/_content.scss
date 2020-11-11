@@ -106,7 +106,7 @@
 .utilities {
   display: flex;
   justify-content: flex-start;
-  margin: 5px 0 15px 0;
+  margin-bottom: 10px;
 }
 
 .error-iframe {
@@ -143,6 +143,10 @@
   .main-content,
   .main-content-sidebar {
     padding: 15px;
+  }
+
+  .utilities {
+    margin-bottom: 10px;
   }
 
   .main-content-header,
