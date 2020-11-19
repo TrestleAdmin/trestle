@@ -12,6 +12,11 @@
   }
 }
 
+ul.invalid-feedback {
+  list-style: none;
+  padding-left: 0;
+}
+
 .form-text {
   color: $form-text-color;
   font-size: 0.9rem;

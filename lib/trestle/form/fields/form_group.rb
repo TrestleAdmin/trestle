@@ -16,7 +16,7 @@ module Trestle
             concat label if name && options[:label] != false
             concat template.capture(&block) if block
             concat help_message if options[:help]
-            concat error_message if name && errors.any?
+            concat error_messages if name && errors.any?
           end
         end
 
@@ -33,9 +33,11 @@ module Trestle
           content_tag(:p, message, class: classes)
         end
 
-        def error_message
-          content_tag(:p, class: "invalid-feedback") do
-            safe_join([icon("fa fa-warning"), errors.first], " ")
+        def error_messages
+          content_tag(:ul, class: "invalid-feedback") do
+            safe_join(errors.map { |error|
+              content_tag(:li, safe_join([icon("fa fa-warning"), error], " "))
+            }, "\n")
           end
         end
 
