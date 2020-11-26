@@ -39,13 +39,13 @@ module Trestle
           content_tag(:span, blank, class: "blank")
         end
       when String
-        if value.html_safe? || options[:truncate] == false
+        if value.html_safe? || options.fetch(:truncate, false) == false
           value
         else
           truncate(value, options[:truncate] || {})
         end
       when ->(value) { value.respond_to?(:id) }
-        display(value)
+        autoformat_value(display(value), options)
       else
         value
       end
