@@ -51,7 +51,7 @@ module Trestle
     # Evaluates the admin's scope block(s) using the adapter context
     # and returns a hash of Scope objects keyed by the scope name.
     def scopes
-      @scopes ||= self.class.scopes.evaluate(adapter)
+      @scopes ||= Scopes.new(self.class.scopes, adapter)
     end
 
     class << self

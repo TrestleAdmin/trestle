@@ -42,13 +42,9 @@ module Trestle
       def apply_scopes(collection, params)
         unscoped = collection(params)
 
-        active_scopes(params).reduce(collection) do |collection, scope|
+        scopes.active(params).reduce(collection) do |collection, scope|
           merge_scopes(collection, scope.apply(unscoped))
         end
-      end
-
-      def active_scopes(params)
-        scopes.values.select { |s| s.active?(params) }
       end
 
       def apply_sorting(collection, params)

@@ -1,15 +1,20 @@
 .scopes {
   margin-bottom: 0;
 
+  dd {
+    margin-bottom: 0;
+  }
+
   &.grouped {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    @include media-breakpoint-up(md) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
 
     background: #fafafa;
 
     dd {
       padding: 0.375rem 0.5rem 0.375rem;
-      margin-bottom: 0;
     }
   }
 

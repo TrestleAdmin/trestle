@@ -1,14 +1,14 @@
-<dl class="scopes grouped">
-  <% admin.scopes.group_by { |k, v| v.group }.each do |group, scopes| %>
-    <% if true %>
+<%= content_tag(:dl, class: admin.scopes.classes) do %>
+  <% admin.scopes.grouped.each do |group, scopes| %>
+    <% if admin.scopes.grouped? %>
     <dt class="scope-group"><%= group %></dt>
     <% end %>
 
     <dd>
       <ul class="scope-list">
-        <% scopes.each do |name, scope| %>
+        <% scopes.each do |scope| %>
           <li>
-            <%= link_to persistent_params.merge(scope: (name unless scope.active?(params))), class: ["scope", ("active" if scope.active?(params))] do %>
+            <%= link_to persistent_params.merge(scope: (scope unless scope.active?(params))), class: ["scope", ("active" if scope.active?(params))] do %>
               <strong><%= scope.label %></strong>
               (<%= number_with_delimiter(scope.count(admin.collection(params))) %>)
             <% end %>
@@ -17,4 +17,4 @@
       </ul>
     </dd>
   <% end %>
-</dl>
+<% end %>

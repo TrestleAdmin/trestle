@@ -8,7 +8,7 @@ module Trestle
       end
 
       def to_param
-        name
+        name unless default?
       end
 
       def label
@@ -16,7 +16,7 @@ module Trestle
       end
 
       def group
-        @options[:group] || nil
+        @options[:group]
       end
 
       def default?
