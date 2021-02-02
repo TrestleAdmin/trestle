@@ -9,9 +9,9 @@ module Trestle
     #
     # We include private methods as methods such as current_user
     # are usually declared as private or protected.
-    def method_missing(name, *args, &block)
+    def method_missing(name, *args, **kwargs, &block)
       if @context && @context.respond_to?(name, true)
-        @context.send(name, *args, &block)
+        @context.send(name, *args, **kwargs, &block)
       else
         super
       end
