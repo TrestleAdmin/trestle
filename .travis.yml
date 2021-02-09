@@ -26,8 +26,8 @@ jobs:
       before_install:
         - gem install bundler -v '< 2'
 
-    - gemfile: gemfiles/rails-6.0.gemfile
-      rvm: 3.0.0
+    # - gemfile: gemfiles/rails-6.0.gemfile
+    #   rvm: 3.0.0
 
     - gemfile: gemfiles/rails-6.1.gemfile
       rvm: 3.0.0
