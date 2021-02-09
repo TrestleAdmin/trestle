@@ -40,7 +40,7 @@
     <%= hook :head %>
   </head>
 
-  <body<%=raw " class=\"sidebar-#{cookies["trestle:sidebar"]}\"" if cookies["trestle:sidebar"] %>>
+  <%= content_tag :body, body_attributes do %>
     <div class="app-wrapper">
       <%= render "trestle/shared/sidebar" %>
 
@@ -54,5 +54,5 @@
         <%= render "trestle/shared/footer" %>
       </div>
     </div>
-  </body>
+  <% end %>
 </html>
