@@ -9,6 +9,7 @@ group :test do
 
   gem 'capybara'
   gem 'capybara-selenium'
+  gem 'rexml'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'puma'
