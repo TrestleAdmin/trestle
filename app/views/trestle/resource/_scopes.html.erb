@@ -1,8 +1,6 @@
 <%= content_tag(:dl, class: admin.scopes.classes) do %>
   <% admin.scopes.grouped.each do |group, scopes| %>
-    <% if admin.scopes.grouped? %>
-    <dt class="scope-group"><%= group %></dt>
-    <% end %>
+    <%= content_tag(:dt, group, class: ["scope-group", ("scope-group-empty" if group.blank?)]) if admin.scopes.grouped? %>
 
     <dd>
       <ul class="scope-list">

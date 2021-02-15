@@ -11,6 +11,13 @@
       grid-template-columns: auto 1fr;
     }
 
+
+    @include media-breakpoint-down(sm) {
+      .scope-group-empty:first-child {
+        display: none;
+      }
+    }
+
     background: #fafafa;
 
     dd {
