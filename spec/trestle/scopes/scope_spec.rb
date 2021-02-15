@@ -11,6 +11,14 @@ describe Trestle::Scopes::Scope do
     it "returns the scope name" do
       expect(scope.to_param).to eq(:my_scope)
     end
+
+    context "scope is default" do
+      let(:options) { { default: true} }
+
+      it "returns nil" do
+        expect(scope.to_param).to be_nil
+      end
+    end
   end
 
   describe "#label" do
@@ -27,6 +35,14 @@ describe Trestle::Scopes::Scope do
         expect(admin).to receive(:t).with("scopes.my_scope", default: "My Scope").and_return("My Scope")
         expect(scope.label).to eq("My Scope")
       end
+    end
+  end
+
+  describe "#group" do
+    let(:options) { { group: :testing } }
+
+    it "returns the scope group if set" do
+      expect(scope.group).to eq(:testing)
     end
   end
 

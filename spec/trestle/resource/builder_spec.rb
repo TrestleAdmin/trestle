@@ -334,9 +334,13 @@ describe Trestle::Resource::Builder, remove_const: true do
 
       admin = ::TestsAdmin.new
 
-      expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
-      expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
-      expect(admin.scopes[:my_scope].block).to eq(b)
+      expect(admin.scopes.to_a.length).to eq(1)
+
+      scope = admin.scopes.first
+
+      expect(scope.name).to eq(:my_scope)
+      expect(scope.options).to eq(label: "Custom Label")
+      expect(scope.block).to eq(b)
     end
 
     context "with a proc as the second parameter" do
@@ -349,9 +353,13 @@ describe Trestle::Resource::Builder, remove_const: true do
 
         admin = ::TestsAdmin.new
 
-        expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
-        expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
-        expect(admin.scopes[:my_scope].block).to eq(b)
+        expect(admin.scopes.to_a.length).to eq(1)
+
+        scope = admin.scopes.first
+
+        expect(scope.name).to eq(:my_scope)
+        expect(scope.options).to eq(label: "Custom Label")
+        expect(scope.block).to eq(b)
       end
     end
   end
@@ -368,9 +376,23 @@ describe Trestle::Resource::Builder, remove_const: true do
 
       admin = ::TestsAdmin.new
 
-      expect(admin.scopes).to include(my_scope: be_a(Trestle::Scopes::Scope))
-      expect(admin.scopes[:my_scope].options).to eq(label: "Custom Label")
-      expect(admin.scopes[:my_scope].block).to eq(b)
+      expect(admin.scopes.to_a.length).to eq(1)
+
+      scope = admin.scopes.first
+
+      expect(scope.name).to eq(:my_scope)
+      expect(scope.options).to eq(label: "Custom Label")
+      expect(scope.block).to eq(b)
+    end
+
+    it "sets the scope definition options" do
+      Trestle::Resource::Builder.create(:tests) do
+        scopes group: true, class: "tags"
+      end
+
+      admin = ::TestsAdmin.new
+
+      expect(admin.scopes.options).to eq(group: true, class: "tags")
     end
   end
 

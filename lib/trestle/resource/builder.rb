@@ -85,7 +85,7 @@ module Trestle
 
       def scopes(options={}, &block)
         admin.scopes.options.merge!(options)
-        admin.scopes.append(&block)
+        admin.scopes.append(&block) if block_given?
       end
 
       def scope(name, scope=nil, options={}, &block)
