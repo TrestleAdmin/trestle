@@ -41,6 +41,10 @@ module Trestle
         end
       end
 
+      def collapse?
+        options[:collapse]
+      end
+
       def label
         I18n.t("admin.navigation.groups.#{name}", default: name.to_s.titlecase)
       end

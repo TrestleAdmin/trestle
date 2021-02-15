@@ -3,6 +3,8 @@ import $ from 'jquery'
 import { ready } from '../core/events'
 import cookie from '../core/cookie'
 
+import Navigation from './navigation'
+
 ready(function () {
   const $body = $('body')
   const $wrapper = $('.app-wrapper')
@@ -60,13 +62,8 @@ ready(function () {
   $sidebar.find('.nav-header a').on('click', function (e) {
     e.preventDefault()
 
-    $(this).closest('ul').toggleClass('collapsed')
-
-    const collapsed = $sidebar.find('.collapsed .nav-header a').map(function () {
-      return $(this).attr('href').replace(/^#/, '')
-    }).toArray()
-
-    cookie.set('trestle:navigation:collapsed', collapsed.join(','))
+    const list = $(this).closest('ul')
+    Navigation.toggle(list)
   })
 
   // Scroll sidebar to active item

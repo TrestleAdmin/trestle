@@ -11,24 +11,23 @@
 
   <div class="app-sidebar-inner">
     <nav class="app-nav">
-      <% collapsed = cookies["trestle:navigation:collapsed"].try(:split, ",") || [] %>
       <% Trestle.navigation(self).each do |group, items| %>
-        <ul<% if group.present? && collapsed.include?(group.id) %> class="collapsed"<% end %>>
+        <%= content_tag(:ul, class: ("collapsed" if group.present? && navigation_group_collapsed?(group)), data: { group: group.id }) do %>
           <% if group.present? %>
             <li class="nav-header"><%= link_to group.label, "##{group.id}" %></li>
           <% end %>
 
           <% items.each do |item| %>
-            <li<% if current_navigation_item?(item) %> class="active"<% end %>>
+            <%= content_tag(:li, class: ("active" if current_navigation_item?(item))) do %>
               <%= link_to item.path, item.html_options do %>
                 <%= icon("nav-icon", item.icon) %>
                 <span class="nav-label"><%= item.label %></span>
 
                 <%= content_tag(:span, item.badge.text, class: ["badge", item.badge.html_class]) if item.badge? %>
               <% end %>
-            </li>
+            <% end %>
           <% end %>
-        </ul>
+        <% end %>
       <% end %>
     </nav>
 
