@@ -810,9 +810,9 @@
   integrity sha512-7l/AX41m609L/EXI9EKH3Vs3v0iA8tKlIOGtw+kgcoanI7p+e4I4GYLqW3UXWiTnjSFymKSmTTPKYrivzbxxqA==
 
 "@rails/ujs@^6.0.3":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.0.tgz#9a48df6511cb2b472c9f596c1f37dc0af022e751"
-  integrity sha512-kQNKyM4ePAc4u9eR1c4OqrbAHH+3SJXt++8izIjeaZeg+P7yBtgoF/dogMD/JPPowNC74ACFpM/4op0Ggp/fPw==
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.2.tgz#ccafb8d8e7ae3bfd21824b018be9f1c417bef5b4"
+  integrity sha512-WEXne46Srl3CegO4ngPSWLL7UYWoL1N78254LSzWJgE2mr7XZlbX8S0vltLHDYj5YRFCYEslsBMPisVb59tpYA==
 
 "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
@@ -1309,9 +1309,9 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
 bootstrap-confirmation2@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/bootstrap-confirmation2/-/bootstrap-confirmation2-4.1.0.tgz#2b1338c00fa327e8e89d46ceb4da25a36c5b764e"
-  integrity sha512-ks1UXTZwdKV6iCQQrYRWA4e0iiq6S36CP+SUQ7F83SDHFh1mZE4kALawbwE4110WymiNYdgBRQmrU/bbLO41Zw==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/bootstrap-confirmation2/-/bootstrap-confirmation2-4.2.0.tgz#7e5f288b38cbc2c1047dfc99b7bf15d5a44a621c"
+  integrity sha512-f9L4DW0XjXtXE7Gk74s3HbXbkmo96fKQJctNiK17Lrh4e+m4bgyjjkwF1RM3pf8niEl+ZzJhJ6thw9OyceQ99w==
 
 bootstrap@^4.5.0:
   version "4.6.0"
