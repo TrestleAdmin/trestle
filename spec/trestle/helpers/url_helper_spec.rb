@@ -9,6 +9,7 @@ describe Trestle::UrlHelper do
   let(:admin) { double(form: form) }
 
   before(:each) do
+    allow(Trestle).to receive(:lookup).and_return(nil)
     allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
   end
 
@@ -121,7 +122,7 @@ describe Trestle::UrlHelper do
 
   describe "#admin_for" do
     before(:each) do
-      allow(Trestle).to receive(:admins).and_return({ "my_classes" => admin})
+      allow(Trestle).to receive(:lookup).with("my_classes").and_return(admin)
     end
 
     it "returns the admin associated with an object's class type" do

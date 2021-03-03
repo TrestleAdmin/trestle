@@ -76,7 +76,7 @@ module Trestle
       klass = instance.class
 
       while klass
-        admin = Trestle.admins[klass.name.underscore.pluralize]
+        admin = Trestle.lookup(klass.name.underscore.pluralize)
         return admin if admin
 
         klass = klass.superclass

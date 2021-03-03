@@ -1,5 +1,5 @@
 Trestle::Engine.routes.draw do
-  Trestle.admins.each do |name, admin|
+  Trestle.registry.each do |admin|
     instance_eval(&admin.routes)
   end
 

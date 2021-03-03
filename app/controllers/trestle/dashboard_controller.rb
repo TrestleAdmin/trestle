@@ -8,8 +8,8 @@ private
   def primary_admin
     if navigation = Trestle.navigation(self).first
       navigation.admin
-    elsif Trestle.admins.values.any?
-      Trestle.admins.values.first
+    elsif Trestle.registry.any?
+      Trestle.registry.first
     end
   end
 end

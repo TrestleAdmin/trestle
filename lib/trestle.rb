@@ -23,27 +23,29 @@ module Trestle
   require_relative "trestle/tab"
   require_relative "trestle/table"
   require_relative "trestle/admin"
+  require_relative "trestle/registry"
   require_relative "trestle/resource"
 
-  mattr_accessor :admins
-  self.admins = {}
+  # The registry records all active Trestle admins and facilitates lookups.
 
+  mattr_accessor :registry
+  self.registry = Registry.new
+
+  class << self
+    delegate :register, :lookup, :admins, to: :registry
+  end
+
+  # Builds and registers a new plain admin
   def self.admin(name, options={}, &block)
     register(Admin::Builder.create(name, options, &block))
   end
 
+  # Builds and registers a new admin resource
   def self.resource(name, options={}, &block)
     register(Resource::Builder.create(name, options, &block))
   end
 
-  def self.register(admin)
-    self.admins[admin.admin_name] = admin
-  end
-
-  def self.lookup(admin)
-    return admin if admin.is_a?(Class) && admin < Trestle::Admin
-    self.admins[admin.to_s]
-  end
+  # Configuration methods
 
   def self.config
     @configuration ||= Configuration.new
@@ -53,11 +55,21 @@ module Trestle
     config.configure(&block)
   end
 
+  # Builds the global navigation by combining the menu options from the
+  # Trestle configuration along with menu blocks from admin resources.
   def self.navigation(context)
-    blocks = config.menus + admins.values.map(&:menu).compact
+    blocks = config.menus + registry.map(&:menu).compact
     Navigation.build(blocks, context)
   end
 
+  # Returns the I18n fallbacks for the given locale
+  #
+  # Examples
+  #
+  #   Trestle.i18n_fallbacks("pt-BR") => ["pt-BR", "pt"]
+  #   Trestle.i18n_fallbacks("ca") => ["ca", "es-ES", "es"] %>
+  #
+  # Returns an array of locale Strings.
   def self.i18n_fallbacks(locale=I18n.locale)
     if I18n.respond_to?(:fallbacks)
       I18n.fallbacks[locale]

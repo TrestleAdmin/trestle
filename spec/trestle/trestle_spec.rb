@@ -23,7 +23,6 @@ describe Trestle, remove_const: true do
 
       expect(Trestle::Admin::Builder).to receive(:create).with(:test, {}).and_return(admin)
       expect(Trestle.admin(:test)).to eq(admin)
-      expect(Trestle.admins).to include({ "test" => admin })
     end
   end
 
@@ -33,31 +32,6 @@ describe Trestle, remove_const: true do
 
       expect(Trestle::Resource::Builder).to receive(:create).with(:test, {}).and_return(admin)
       expect(Trestle.resource(:test)).to eq(admin)
-      expect(Trestle.admins).to include({ "test" => admin })
-    end
-  end
-
-  describe "#lookup" do
-    context "given an admin class" do
-      before(:each) do
-        Trestle.admin(:test)
-      end
-
-      it "returns the admin class" do
-        expect(Trestle.lookup(TestAdmin)).to eq(TestAdmin)
-      end
-    end
-
-    context "given a string" do
-      it "returns the admin class corresponding to the given string/symbol" do
-        admin = double
-        Trestle.admins["test"] = admin
-        expect(Trestle.lookup(:test)).to eq(admin)
-      end
-
-      it "returns nil if no matching admin is found" do
-        expect(Trestle.lookup(:missing)).to be_nil
-      end
     end
   end
 

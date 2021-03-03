@@ -26,7 +26,7 @@ module Trestle
     end
 
     def clear
-      Trestle.admins = {}
+      Trestle.registry.reset!
     end
 
     def load_paths
