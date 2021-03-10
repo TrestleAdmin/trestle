@@ -121,22 +121,14 @@ describe Trestle::UrlHelper do
   end
 
   describe "#admin_for" do
+    let(:model) { stub_const("Model", Class.new) }
+    let(:instance) { model.new }
+
     before(:each) do
-      allow(Trestle).to receive(:lookup).with("my_classes").and_return(admin)
+      allow(Trestle).to receive(:lookup_model).with(model).and_return(admin)
     end
 
-    it "returns the admin associated with an object's class type" do
-      klass = double(name: "MyClass", superclass: nil)
-      instance = double(class: klass)
-
-      expect(admin_for(instance)).to eq(admin)
-    end
-
-    it "tries the object class's ancestors" do
-      parent = double(name: "MyClass", superclass: nil)
-      klass = double(name: "Subclass", superclass: parent)
-      instance = double(class: klass)
-
+    it "looks up the model's admin in the registry" do
       expect(admin_for(instance)).to eq(admin)
     end
   end

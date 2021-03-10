@@ -32,7 +32,7 @@ module Trestle
   self.registry = Registry.new
 
   class << self
-    delegate :register, :lookup, :admins, to: :registry
+    delegate :register, :lookup, :lookup_model, :admins, to: :registry
   end
 
   # Builds and registers a new plain admin

@@ -51,4 +51,28 @@ describe Trestle::Registry, remove_const: true do
       end
     end
   end
+
+  describe "#lookup_model" do
+    let(:model) { stub_const("Model", Class.new) }
+    let(:subclass) { stub_const("SubClass", model) }
+
+    let(:admin) { Trestle.resource(:test, model: model) }
+
+    before(:each) do
+      registry.register(admin)
+    end
+
+    it "returns the admin associated with the given model's class" do
+      expect(registry.lookup_model(model)).to eq(admin)
+    end
+
+    it "tries the given model's ancestors" do
+      expect(registry.lookup_model(subclass)).to eq(admin)
+    end
+
+    it "returns nil if there is no associated admin" do
+      missing = stub_const("Missing", Class.new)
+      expect(registry.lookup_model(missing)).to be_nil
+    end
+  end
 end

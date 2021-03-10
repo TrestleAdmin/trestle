@@ -15,6 +15,7 @@ module Trestle
 
     def reset!
       @admins = {}
+      @models = {}
     end
 
     def empty?
@@ -23,11 +24,33 @@ module Trestle
 
     def register(admin)
       @admins[admin.admin_name] = admin
+
+      if admin.respond_to?(:model)
+        @models[admin.model] = admin
+      end
+
+      admin
     end
 
-    def lookup(admin)
+    def lookup_admin(admin)
+      # Given object is already an admin class
       return admin if admin.is_a?(Class) && admin < Trestle::Admin
+
       @admins[admin.to_s]
+    end
+    alias lookup lookup_admin
+
+    def lookup_model(model)
+      # Lookup each class in the model's ancestor chain
+      while model
+        admin = @models[model]
+        return admin if admin
+
+        model = model.superclass
+      end
+
+      # No admin found
+      nil
     end
   end
 end

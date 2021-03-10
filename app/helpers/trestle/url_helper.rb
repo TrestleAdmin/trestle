@@ -73,17 +73,7 @@ module Trestle
     end
 
     def admin_for(instance)
-      klass = instance.class
-
-      while klass
-        admin = Trestle.lookup(klass.name.underscore.pluralize)
-        return admin if admin
-
-        klass = klass.superclass
-      end
-
-      # No admin found
-      nil
+      Trestle.lookup_model(instance.class)
     end
   end
 end

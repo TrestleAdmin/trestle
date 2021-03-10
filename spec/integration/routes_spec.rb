@@ -52,6 +52,8 @@ end
 describe "Trestle::Resource routes", type: :routing, remove_const: true do
   routes { Trestle::Engine.routes }
 
+  let!(:model) { stub_const("Test", Class.new) }
+
   subject!(:admin) do
     Trestle.resource(:test)
   end

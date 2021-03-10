@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Trestle::Resource, remove_const: true do
-  before(:each) do
-    class Test; end
-  end
+  let!(:model) { stub_const("Test", Class.new) }
 
-  let(:definition) { Trestle.resource(:tests) }
+  let(:options) { {} }
+  let(:definition) { Trestle.resource(:tests, options) }
+
   subject!(:admin) { definition.new }
 
   before(:each) do
@@ -21,15 +21,23 @@ describe Trestle::Resource, remove_const: true do
     expect(admin.model).to eq(Test)
   end
 
-  it "raises an exception if the inferred model does not exist" do
-    Object.send(:remove_const, :Test)
-    expect { admin.model }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:tests, model: MyModel)")
+  context "if the inferred model does not exist" do
+    let!(:model) { nil }
+    subject!(:admin) { nil }
+
+    it "raises a NameError exception" do
+      expect { definition }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:tests, model: MyModel)")
+    end
   end
 
-  it "allows the model to be specified manually via options" do
-    class AlternateModel; end
-    admin.options = { model: AlternateModel }
-    expect(admin.model).to eq(AlternateModel)
+  context "when a model is explicitly passed via options" do
+    let!(:alternate_model) { stub_const("AlternateModel", Class.new) }
+
+    let(:options) { { model: alternate_model} }
+
+    it "sets the model on the admin" do
+      expect(admin.model).to eq(alternate_model)
+    end
   end
 
   it "has a model name" do
@@ -156,7 +164,7 @@ describe Trestle::Resource, remove_const: true do
 
   context "a singular resource" do
     subject!(:admin) do
-      Trestle.resource(:singular, singular: true) do
+      Trestle.resource(:singular, singular: true, model: Test) do
         instance {}
       end
     end
