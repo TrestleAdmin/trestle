@@ -26,7 +26,7 @@ module Trestle
       @admins[admin.admin_name] = admin
 
       if admin.respond_to?(:model)
-        @models[admin.model] = admin
+        @models[admin.model.name] = admin
       end
 
       admin
@@ -43,7 +43,7 @@ module Trestle
     def lookup_model(model)
       # Lookup each class in the model's ancestor chain
       while model
-        admin = @models[model]
+        admin = @models[model.name]
         return admin if admin
 
         model = model.superclass
