@@ -27,11 +27,11 @@ module Trestle
   require_relative "trestle/resource"
 
   # The registry records all active Trestle admins and facilitates lookups.
-
   mattr_accessor :registry
   self.registry = Registry.new
 
   class << self
+    # Expose registry methods on Trestle module
     delegate :register, :lookup, :lookup_model, :admins, to: :registry
   end
 
@@ -62,7 +62,10 @@ module Trestle
     Navigation.build(blocks, context)
   end
 
-  # Returns the I18n fallbacks for the given locale
+  # Returns the I18n fallbacks for the given locale.
+  #
+  # This is used from within a Sprockets asset (JavaScript)
+  # to determine which locale files to include.
   #
   # Examples
   #
