@@ -16,4 +16,7 @@
 /spec/dummy/*.sqlite3-journal
 /spec/dummy/log/*.log
 /spec/dummy/tmp/*
+/spec/dummy/config/credentials.yml.enc
+/spec/dummy/config/master.key
+/spec/dummy/public/assets/
 /node_modules
