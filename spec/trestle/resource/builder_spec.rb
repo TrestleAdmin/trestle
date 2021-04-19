@@ -29,7 +29,7 @@ describe Trestle::Resource::Builder, remove_const: true do
     expect(Trestle::ResourceController).not_to be(Trestle::AdminController)
 
     ActiveSupport::Dependencies.mechanism = :require
-  end unless Rails.configuration.try(:autoloader) == :zeitwerk
+  end unless (Rails.application.config.eager_load || Rails.configuration.try(:autoloader) == :zeitwerk)
 
   describe "#table" do
     it "builds an index table with the admin and sortable options set" do
