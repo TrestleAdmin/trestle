@@ -13,6 +13,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'puma'
+  gem 'launchy'
+  gem 'capybara-screenshot'
 end
 
 gem 'haml'

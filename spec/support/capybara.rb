@@ -6,3 +6,5 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.javascript_driver = :chrome
+
+Capybara.asset_host = "http://localhost:3000" unless ENV["CI"]

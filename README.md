@@ -108,6 +108,35 @@ The following plugins are currently available:
 | *trestle-auth-otp* | 2FA/OTP user authentication | [GitHub](https://github.com/McRipper/trestle-auth-otp) \| [RubyGems](https://rubygems.org/gems/trestle-auth-otp) |
 
 
+## Development
+
+When running tests, you may want to run tests as per CI
+
+    CI=1 rspec spec
+
+You may want to run the development server for the dummy app (used by specs):
+
+```shell
+# setup
+rails credentials:edit
+rails db:setup:all
+rails db:migrate
+# run server on port 3000
+rails s
+```
+
+You may want to run the production server for the dummy app (used by specs):
+
+```shell
+# setup
+export RAILS_ENV=production RAILS_SERVE_STATIC_FILES=1
+rails credentials:edit
+rails db:setup:all
+rails db:migrate
+rails assets:precompile
+# allows you to run server on port 3001 in parallel with dev server
+rails s -p 3001 -e production --pid tmp/pids/production.pid
+```
 ## License
 
 The gem is available as open source under the terms of the [LGPLv3 License](https://opensource.org/licenses/LGPL-3.0).
