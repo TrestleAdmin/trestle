@@ -30,7 +30,7 @@
     "webpack-cli": "^4.6.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.1",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@rails/ujs": "^6.0.3",
     "bootstrap": "^4.5.0",
     "bootstrap-confirmation2": "^4.1.0",
