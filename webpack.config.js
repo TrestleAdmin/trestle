@@ -1,12 +1,12 @@
 const path = require('path');
 
-const Uglify = require('uglify-js');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: path.resolve(__dirname, 'frontend/index.js'),
   output: {
     library: 'Trestle',
@@ -15,27 +15,11 @@ module.exports = {
     path: path.resolve(__dirname, 'app/assets/bundle/trestle')
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    },
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
+      new TerserPlugin({
+        extractComments: false
       }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorPluginOptions: {
-          preset: ['default', { normalizePositions: false }]
-        }
-      })
+      new CssMinimizerPlugin()
     ]
   },
   module: {
@@ -49,26 +33,27 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg|woff2?)(\?[\s\S]+)?$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]'
-          }
-        }
+        type: 'asset/resource'
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'url-loader'
-        }
+        type: 'asset/inline'
       },
       {
         test: /\.s?[ac]ss$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
-          { loader: 'postcss-loader', options: { plugins: [ require('autoprefixer') ] } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ['autoprefixer', {}]
+                ]
+              }
+            }
+          },
           { loader: 'sass-loader' }
         ]
       },
@@ -76,26 +61,29 @@ module.exports = {
         test: require.resolve('jquery'),
         use: [{
           loader: 'expose-loader',
-          options: 'jQuery'
-        }, {
-          loader: 'expose-loader',
-          options: '$'
+          options: {
+            exposes: ['$', 'jQuery']
+          }
         }]
       }
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      { from: 'node_modules/@fortawesome/fontawesome-free/webfonts/*', to: '[name].[ext]' },
-      {
-        from: 'node_modules/flatpickr/dist/l10n/*.js',
-        to: 'flatpickr/[name].[ext]',
-        ignore: ['index.js'],
-        transform: function(fileContent, path) {
-          return Uglify.minify(fileContent.toString()).code.toString();
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+          to: '[name][ext]'
+        },
+        {
+          from: 'node_modules/flatpickr/dist/l10n/*.js',
+          to: 'flatpickr/[name][ext]',
+          globOptions: {
+            ignore: ['**/index.js']
+          }
         }
-      }
-    ]),
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
     })
