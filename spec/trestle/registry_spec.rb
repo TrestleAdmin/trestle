@@ -19,6 +19,18 @@ describe Trestle::Registry, remove_const: true do
     end
   end
 
+  describe "enumeration" do
+    let(:first_admin) { double(admin_name: "a-test") }
+    let(:last_admin) { double(admin_name: "z-test") }
+
+    it "provides them in alphabetical order no matter how they are added" do
+      registry.register(admin)
+      registry.register(last_admin)
+      registry.register(first_admin)
+      expect(registry.map(&:admin_name)).to eq(["a-test", "test", "z-test"])
+    end
+  end
+
   describe "#reset!" do
     it "clears out the registry" do
       registry.register(admin)
