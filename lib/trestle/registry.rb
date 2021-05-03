@@ -10,7 +10,7 @@ module Trestle
     end
 
     def each(&block)
-      @admins.values.each(&block)
+      @admins.values.sort_by(&:admin_name).each(&block)
     end
 
     def reset!
