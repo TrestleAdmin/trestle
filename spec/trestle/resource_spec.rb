@@ -4,7 +4,7 @@ describe Trestle::Resource, remove_const: true do
   let!(:model) { stub_const("Test", Class.new) }
 
   let(:options) { {} }
-  let(:definition) { Trestle.resource(:tests, options) }
+  let(:definition) { Trestle.resource(:tests, **options) }
 
   subject!(:admin) { definition.new }
 
