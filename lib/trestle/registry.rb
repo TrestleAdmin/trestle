@@ -22,11 +22,11 @@ module Trestle
       none?
     end
 
-    def register(admin)
+    def register(admin, register_model: true)
       @admins[admin.admin_name] = admin
 
-      if admin.respond_to?(:model)
-        @models[admin.model.name] = admin
+      if admin.respond_to?(:model) && register_model
+        @models[admin.model.name] ||= admin
       end
 
       admin

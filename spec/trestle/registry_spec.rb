@@ -17,6 +17,32 @@ describe Trestle::Registry, remove_const: true do
       expect(registry).not_to be_empty
       expect(registry.to_a).to eq([admin])
     end
+
+    context "registering for model lookup" do
+      let(:model) { stub_const("Model", Class.new) }
+
+      let(:admin) { Trestle.resource(:test, model: model) }
+      let(:alternate) { Trestle.resource(:alternate, model: model) }
+
+      it "registers the admin for model lookup" do
+        registry.register(admin)
+        expect(registry.lookup_model(model)).to eq(admin)
+      end
+
+      it "does not overwrite an existing model registration" do
+        registry.register(admin)
+        registry.register(alternate)
+
+        expect(registry.lookup_model(model)).to eq(admin)
+      end
+
+      context "with register_model: false" do
+        it "does not register the admin for model lookup" do
+          registry.register(admin, register_model: false)
+          expect(registry.lookup_model(model)).to be_nil
+        end
+      end
+    end
   end
 
   describe "#each" do

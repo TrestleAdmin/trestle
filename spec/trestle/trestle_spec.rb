@@ -18,20 +18,56 @@ describe Trestle, remove_const: true do
   end
 
   describe "#admin" do
-    it "builds an admin" do
-      admin = double(:admin, admin_name: "test")
+    let(:admin) { double(:admin, admin_name: "test") }
 
-      expect(Trestle::Admin::Builder).to receive(:create).with(:test, {}).and_return(admin)
+    before(:each) do
+      allow(Trestle::Admin::Builder).to receive(:create).and_return(admin)
+    end
+
+    it "builds and returns the admin" do
+      expect(Trestle::Admin::Builder).to receive(:create).with(:test, {})
       expect(Trestle.admin(:test)).to eq(admin)
+    end
+
+    it "passes options to the admin builder" do
+      expect(Trestle::Admin::Builder).to receive(:create).with(:test, { path: "/custom" })
+      Trestle.admin(:test, path: "/custom")
+    end
+
+    it "registers the admin in the registry" do
+      expect(Trestle.registry).to receive(:register).with(admin)
+      Trestle.admin(:test)
     end
   end
 
   describe "#resource" do
-    it "builds a resource admin" do
-      admin = double(:admin, admin_name: "test")
+    let(:model) { stub_const("Model", Class.new) }
+    let(:admin) { double(:admin, admin_name: "test", model: model) }
 
-      expect(Trestle::Resource::Builder).to receive(:create).with(:test, {}).and_return(admin)
+    before(:each) do
+      allow(Trestle::Resource::Builder).to receive(:create).and_return(admin)
+    end
+
+    it "builds and returns a resourceful admin" do
+      expect(Trestle::Resource::Builder).to receive(:create).with(:test, {})
       expect(Trestle.resource(:test)).to eq(admin)
+    end
+
+    it "passes options to the resource builder" do
+      expect(Trestle::Resource::Builder).to receive(:create).with(:test, { path: "/custom" })
+      Trestle.resource(:test, path: "/custom")
+    end
+
+    it "registers the admin in the registry" do
+      expect(Trestle::Resource::Builder).to receive(:create).with(:test, { path: "/custom" })
+      expect(Trestle.registry).to receive(:register).with(admin, register_model: true)
+      Trestle.resource(:test, path: "/custom")
+    end
+
+    it "passes the :register_model option to Registry#register" do
+      expect(Trestle::Resource::Builder).to receive(:create).with(:test, { path: "/custom" })
+      expect(Trestle.registry).to receive(:register).with(admin, register_model: false)
+      Trestle.resource(:test, path: "/custom", register_model: false)
     end
   end
 
