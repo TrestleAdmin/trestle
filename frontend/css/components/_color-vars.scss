@@ -1,6 +1,6 @@
 :root {
   $color: "primary";
-  $value: theme-color($color);
+  $value: $primary;
 
   --#{$color}-rgb: #{red($value), green($value), blue($value)};
 

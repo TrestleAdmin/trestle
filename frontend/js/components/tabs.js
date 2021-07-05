@@ -4,7 +4,7 @@ import $ from 'jquery'
 
 import { init } from '../core/events'
 
-const TAB_SELECTOR = 'a[data-toggle="tab"]'
+const TAB_SELECTOR = 'a[data-bs-toggle="tab"]'
 const TAB_PANE_SELECTOR = '.tab-pane'
 const ERROR_SELECTOR = '.has-error'
 

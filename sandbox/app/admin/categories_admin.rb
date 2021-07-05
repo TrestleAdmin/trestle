@@ -10,7 +10,7 @@ Trestle.resource(:categories) do
   table do
     column :name, link: true
     column :color do |category|
-      status_tag category.color, :dark, style: "background: #{category.color}"
+      status_tag category.color, :none, style: "background: #{category.color}"
     end
     actions
   end

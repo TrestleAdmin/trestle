@@ -105,7 +105,7 @@
       <%= f.text_field :prepend_icon, prepend: icon("fas fa-book-open") %>
       <%= f.text_field :append_icon, append: icon("fas fa-bolt") %>
 
-      <%= f.text_field :prepend_checkbox, prepend: f.raw_check_box(:prepended_checkbox) %>
+      <%= f.text_field :prepend_checkbox, prepend: f.raw_check_box(:prepended_checkbox, class: "form-check-input mt-0") %>
 
       <%= f.text_field :prepend_button, prepend!: button_tag(icon("fas fa-archive"), class: "btn btn-info") %>
       <%= f.text_field :append_button, append!: button_tag("Button", class: "btn btn-primary") %>

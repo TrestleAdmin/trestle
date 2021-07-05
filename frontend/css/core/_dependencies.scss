@@ -1,5 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
+@import "./bootstrap";
+
 @import "~magnific-popup/dist/magnific-popup";
 @import "~flatpickr/dist/flatpickr";
 @import "~select2/src/scss/core";
-@import "~select2-theme-bootstrap4/src/select2-bootstrap";
+@import "~select2-bootstrap-5-theme/src/include-all";

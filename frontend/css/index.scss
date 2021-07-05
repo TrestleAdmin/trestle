@@ -6,8 +6,10 @@
 
 // Variables
 @import "variables/bootstrap";
-@import "variables/trestle";
 @import "~bootstrap/scss/variables";
+@import "variables/maps";
+
+@import "variables/trestle";
 
 // Icons
 @import "icons/fontawesome";
@@ -31,7 +33,6 @@
 @import "components/background";
 @import "components/breadcrumbs";
 @import "components/buttons";
-@import "components/custom-forms";
 @import "components/datepicker";
 @import "components/dropdown";
 @import "components/fields";

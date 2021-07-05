@@ -32,7 +32,7 @@ img {
 
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
-    border-bottom: 1px solid $hr-border-color;
+    border-bottom: 1px solid $headings-border;
     padding-bottom: 0.325rem;
 
     &:not(:first-child) {

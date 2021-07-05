@@ -1,54 +1,95 @@
-.select2-container--bootstrap {
+.select2-dropdown {
+  z-index: $zindex-modal + 1;
+}
+
+.select2-container--bootstrap-5 {
   // This is required to ensure the select field is rendered at full width
   // within Bootstrap tabs that are hidden when the page is first loaded.
   // See: https://github.com/select2/select2/issues/4220
   width: 100% !important;
-}
 
-.tag-select {
-  &.select2-selection--multiple {
-    .select2-selection__choice {
-      display: flex;
-      align-items: center;
+  .select2-dropdown {
+    .select2-search {
+      padding: $s2bs5-padding-y $s2bs5-padding-y;
 
-      padding: 2px 6px;
-
-      font-size: 0.9rem;
-
-      border: 0;
-      border-left: 4px solid $tag-border;
-      border-radius: 4px;
-
-      background: $tag-bg;
-      color: $tag-color;
+      .select2-search__field {
+        padding: $s2bs5-padding-y $s2bs5-padding-y;
+      }
     }
+  }
 
-    .select2-selection__choice__remove {
-      order: 99;
+  .select2-selection--multiple {
+    padding: $s2bs5-padding-y $s2bs5-padding-y;
 
-      color: $tag-color;
+    .select2-selection__rendered {
+      gap: $s2bs5-padding-y;
 
-      margin-right: 0;
-      margin-left: 4px;
-      line-height: 1.2;
+      .select2-selection__choice {
+        background: #eee;
+        margin: 0;
+      }
+
+      .select2-selection__choice__remove {
+        cursor: pointer;
+      }
     }
 
     .select2-search--inline {
-      position: relative;
-      left: -4px;
+      width: auto;
+    }
+  }
+
+  .tag-select.select2-selection--multiple {
+    .select2-selection__rendered {
+      .select2-selection__choice {
+        display: flex;
+        align-items: center;
+
+        padding: 2px 6px;
+
+        font-size: 0.9rem;
+
+        border: 0;
+        border-left: 4px solid $tag-border;
+        border-radius: 4px;
+
+        background: $tag-bg;
+        color: $tag-color;
+      }
+
+      .select2-selection__choice__remove {
+        order: 99;
+
+        background: $s2bs5-clear-tag-bg;
+
+        margin-right: 0;
+        margin-left: 4px;
+        line-height: 1.2;
+
+        &:hover {
+          background: $s2bs5-clear-tag-bg;
+        }
+      }
     }
   }
 
   // Hide the results dropdown
+  &.select2-container--open {
+    .tag-select {
+      &.select2-dropdown {
+        display: none;
+      }
 
-  &.select2-dropdown {
-    display: none;
+      &.select2-selection {
+        border-radius: $s2bs5-border-radius !important;
+        border-color: $s2bs5-focus-border-color !important;
+      }
+    }
   }
+}
 
-  .select2-container--open &.select2-selection {
-    border-radius: $s2bs-border-radius-base !important;
-    border-color: $s2bs-input-border-focus !important;
-  }
+.tag-select {
+  background-image: none;
 }
 
 .date-select,
@@ -59,7 +100,7 @@
     width: auto;
   }
 
-  .select2-container--bootstrap {
+  .select2-container--bootstrap-5 {
     display: inline-block;
     width: auto !important;
   }

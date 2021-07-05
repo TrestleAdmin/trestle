@@ -67,7 +67,7 @@ module Trestle
         end
 
         def classes
-          super + ["actions"]
+          super + ["table-actions"]
         end
 
         def content(instance)

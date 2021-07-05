@@ -69,7 +69,7 @@
   }
 
   .active a {
-    border-left: $sidebar-active-border solid theme-color("primary");
+    border-left: $sidebar-active-border solid $primary;
     padding-left: 18px - $sidebar-active-border;
 
     background: $sidebar-active-bg;

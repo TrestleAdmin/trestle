@@ -1,17 +1,12 @@
 // Color system
 
-$theme-colors: (
-  "primary": #4d6bb2,
-  "success": #7dc67d,
-  "info":    #7ccde5,
-  "warning": #f3bd71,
-  "danger":  #e17572,
-  "light":   #bbbbbb,
-  "dark":    #444444,
-
-  // Backwards compatibility
-  "default": #bbbbbb
-);
+$primary: #4d6bb2;
+$success: #7dc67d;
+$info:    #7ccde5;
+$warning: #f3bd71;
+$danger:  #e17572;
+$light:   #bbbbbb;
+$dark:    #444444;
 
 
 // Body
@@ -20,20 +15,29 @@ $body-bg:    #f3f3f3;
 $body-color: #333333;
 
 
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 5% !default;
-
-// Increase default color threshold for light vs dark
-$yiq-contrasted-threshold: 200;
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark".
+$min-contrast-ratio: 1.7;
 
 // Enable box shadows
 $enable-shadows: true;
 
 // Decrease default grid spacing
-$grid-gutter-width: 10px * 2;
+$grid-gutter-width: 1.375rem;
+
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;
 
 
 // Typography
+
+$link-decoration: none;
 
 $headings-font-weight:   400;
 $headings-margin-bottom: 1rem;
@@ -45,6 +49,7 @@ $h4-font-size: 1.25rem;
 $h5-font-size: 1.1rem;
 $h6-font-size: 1rem;
 
+$hr-color: rgba(black, 0.375);
 $hr-margin-y: 1.5rem;
 
 
@@ -53,10 +58,11 @@ $hr-margin-y: 1.5rem;
 $nav-tabs-border-radius: 0;
 $nav-tabs-border-width:  0;
 
+// (non-Bootstrap variables)
 $nav-tabs-link-bg:    #eeeeee;
 $nav-tabs-link-color: #555555;
 
-$nav-tabs-link-active-bg:  white;
+$nav-tabs-link-active-bg:    white;
 $nav-tabs-link-active-color: $body-color;
 
 
@@ -70,26 +76,30 @@ $navbar-dark-color:        rgba(white, 0.75);
 
 $breadcrumb-padding-y:     0;
 $breadcrumb-padding-x:     0;
-$breadcrumb-bg:            transparent;
 $breadcrumb-active-color:  #777777;
 $breadcrumb-divider-color: #cccccc;
 
 
 // Tables
 
-$table-cell-padding: 6px 8px;
-$table-accent-bg:    rgba(black, 0.02);
+$table-cell-padding-x: 0.625rem;
+$table-cell-padding-y: 0.375rem;
+
+$table-striped-bg:   rgba(black, 0.02);
 $table-hover-bg:     rgba(black, 0.04);
 $table-border-color: rgba(black, 0.13);
-
-$table-bg-level:     -11;
-$table-border-level: -7;
 
 
 // Alerts
 
 $alert-padding-y:     1.5rem;
 $alert-border-radius: 0.1rem;
+
+
+// Close
+
+$btn-close-color: white;
+$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
 
 
 // Badges
@@ -108,26 +118,23 @@ $btn-padding-x-sm: 0.65rem;
 $input-border-color: #cccccc;
 $input-disabled-bg:  #fafafa;
 
-$input-box-shadow: none;
-
 $input-placeholder-color: #999999;
 
 $input-group-addon-bg: #eeeeee;
 
-$form-feedback-invalid-color: darken(theme-color("danger"), 20%);
+$form-feedback-invalid-color: shade-color($danger, 10%);
 
 $form-feedback-margin-top: 0.5rem;
 $form-feedback-font-size:  90%;
 
+$form-label-font-weight: bold;
+
 $form-text-color: #666666;
 
-$custom-control-indicator-size:         1.15rem;
-$custom-control-indicator-border-width: 1px;
+$form-check-input-width: 1.25em;
+$form-check-padding-start: $form-check-input-width + 0.6em;
 
-$custom-control-gutter: 0.6rem;
-
-$custom-switch-width: 2.25rem;
-$custom-switch-indicator-size: calc(#{em($custom-control-indicator-size)} - #{$custom-control-indicator-border-width * 4}) !default;
+$form-switch-width: 2.25em;
 
 
 // Dropdowns
@@ -172,4 +179,30 @@ $modal-lg: 900px;
 
 // Select2 Bootstrap Theme
 
-$s2bs-btn-default-border: #cccccc;
+$s2bs5-border-color: #ced4da;
+
+$s2bs5-item-active-bg: tint-color($primary, 90%);
+
+$s2b25-clear-width: 0.5rem;
+$s2b25-clear-height: 0.5rem;
+$s2b25-clear-height-sm: 0.5rem;
+$s2b25-clear-height-lg: 1rem;
+
+$s2bs5-clear-icon:        str-replace($btn-close-bg, #{$btn-close-color}, #{shade-color($s2bs5-border-color, 50%)});
+$s2bs5-clear-bg:          transparent escape-svg($s2bs5-clear-icon) center / $s2b25-clear-height auto no-repeat;
+$s2bs5-clear-hover-bg:    $s2bs5-clear-bg;
+
+$s2bs5-clear-bg-sm:       transparent escape-svg($s2bs5-clear-icon) center / $s2b25-clear-height-sm auto no-repeat;
+$s2bs5-clear-hover-bg-sm: $s2bs5-clear-bg-sm;
+
+$s2bs5-clear-bg-lg:       transparent escape-svg($s2bs5-clear-icon) center / $s2b25-clear-height-lg auto no-repeat;
+$s2bs5-clear-hover-bg-lg: $s2bs5-clear-bg-lg;
+
+$s2bs5-clear-tag-icon:    $btn-close-bg;
+$s2bs5-clear-tag-bg:      transparent escape-svg($s2bs5-clear-tag-icon) center / $s2b25-clear-height-sm auto no-repeat;
+
+$s2bs5-padding-x: 0.75rem;
+$s2bs5-padding-y: 0.375rem;
+
+$s2bs5-multi-item-padding-x: 0.375rem;
+$s2bs5-multi-item-padding-y: 0;

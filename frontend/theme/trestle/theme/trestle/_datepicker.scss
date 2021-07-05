@@ -20,7 +20,7 @@
   .flatpickr-prev-month,
   .flatpickr-next-month {
     &:hover svg {
-      fill: lighten(theme-color("primary"), 15%);
+      fill: lighten($primary, 15%);
     }
   }
 }
@@ -43,16 +43,16 @@
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: theme-color("primary");
-  border-color: theme-color("primary");
+  background: $primary;
+  border-color: $primary;
 }
 
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-  box-shadow: -10px 0 0 theme-color("primary");
+  box-shadow: -10px 0 0 $primary;
 }
 
 .flatpickr-day.week.selected {
-  box-shadow: -5px 0 0 theme-color("primary"), 5px 0 0 theme-color("primary");
+  box-shadow: -5px 0 0 $primary, 5px 0 0 $primary;
 }

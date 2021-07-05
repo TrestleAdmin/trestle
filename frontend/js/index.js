@@ -4,7 +4,7 @@ import 'jquery'
 import Rails from '@rails/ujs'
 
 import 'bootstrap'
-import 'bootstrap-confirmation2'
+//import 'bootstrap-confirmation2'
 
 import 'magnific-popup'
 
@@ -23,7 +23,7 @@ import visit from './core/visit'
 
 // Components
 
-import './components/confirmation'
+//import './components/confirmation'
 import './components/datepicker'
 import Dialog from './components/dialog'
 import './components/file'

@@ -1,8 +1,9 @@
 .form-group {
   position: relative;
+  margin-bottom: 1rem;
 
   &.has-error {
-    > .control-label {
+    > .form-label {
       color: $form-feedback-invalid-color;
     }
 
@@ -32,7 +33,6 @@ ul.invalid-feedback {
   }
 }
 
-.control-label {
-  font-weight: bold;
+.form-label {
   display: block;
 }

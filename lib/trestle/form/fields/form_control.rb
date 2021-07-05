@@ -13,9 +13,9 @@ module Trestle
         def input_group
           if @prepend || @append
             content_tag(:div, class: "input-group") do
-              concat content_tag(:div, input_group_addon(@prepend), class: "input-group-prepend") if @prepend
+              concat input_group_addon(@prepend) if @prepend
               concat yield
-              concat content_tag(:div, input_group_addon(@append), class: "input-group-append") if @append
+              concat input_group_addon(@append) if @append
             end
           else
             yield

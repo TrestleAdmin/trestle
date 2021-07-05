@@ -3,14 +3,14 @@ import $ from 'jquery'
 import { init } from '../core/events'
 
 // Use Bootstrap theme
-$.fn.select2.defaults.set('theme', 'bootstrap')
+$.fn.select2.defaults.set('theme', 'bootstrap-5')
 
 // Copy all classes from select tag to replacement select field (.select2-selection)
 $.fn.select2.defaults.set('containerCssClass', ':all:')
 
-// Copy all classes excluding 'form-control'/'form-control-*' from select tag to dropdown container (.select2-dropdown)
+// Copy all classes excluding 'form-control'/'form-control-*'/'form-select'/'form-select-*' from select tag to dropdown container (.select2-dropdown)
 $.fn.select2.defaults.set('dropdownCssClass', function (el) {
-  return el[0].className.replace(/\s*form-control(-\w+)?\s*/g, '')
+  return el[0].className.replace(/\s*form-(control|select)(-\w+)?\s*/g, '')
 })
 
 init(function (root) {

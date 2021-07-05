@@ -30,10 +30,10 @@
 @include media-breakpoint-down(sm) {
   .breadcrumb-item {
     + .breadcrumb-item {
-      padding-left: $breadcrumb-item-padding / 2;
+      padding-left: divide($breadcrumb-item-padding-x, 2);
 
       &::before {
-        padding-right: $breadcrumb-item-padding / 4;
+        padding-right: divide($breadcrumb-item-padding-x, 4);
       }
     }
   }

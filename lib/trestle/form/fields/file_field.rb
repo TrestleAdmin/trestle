@@ -3,18 +3,11 @@ module Trestle
     module Fields
       class FileField < Field
         def field
-          if custom?
-            content_tag(:div, class: "custom-file") do
-              concat builder.raw_file_field(name, options.merge(class: "custom-file-input"))
-              concat builder.label(name, choose_file_text, class: "custom-file-label", data: { browse: browse_text })
-            end
-          else
-            builder.raw_file_field(name, options)
-          end
+          builder.raw_file_field(name, options)
         end
 
-        def custom?
-          options[:custom] != false
+        def defaults
+          super.merge(class: ["form-control"])
         end
 
         def choose_file_text

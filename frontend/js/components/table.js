@@ -10,7 +10,7 @@ $(document).on('click', 'tr[data-url]:not([data-behavior="dialog"])', function (
   let url
 
   if (row.data('url') === 'auto') {
-    url = row.find('td:not(.actions) a:first').attr('href')
+    url = row.find('td:not(.table-actions) a:first').attr('href')
   } else {
     url = row.data('url')
   }
