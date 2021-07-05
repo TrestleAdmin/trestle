@@ -1,8 +1,13 @@
-<%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { toggle: "collapse" } %>
-<div id="debug-errors" class="debug-errors collapse">
-  <ul>
-    <% instance.errors.each do |key, message| %>
-      <li class="small"><tt><%= key %>:</tt> <%= message %></li>
-    <% end %>
-  </ul>
-</div>
+<% errors = local_assigns.fetch(:errors, {}) %>
+
+<% if errors.any? %>
+  <%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { toggle: "collapse" } %>
+
+  <div id="debug-errors" class="debug-errors collapse">
+    <ul>
+      <% errors.each do |key, message| %>
+        <li class="small"><tt><%= key %>:</tt> <%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
