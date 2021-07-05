@@ -1,0 +1,29 @@
+<% content_for(:title, "Components: Typography") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= row do %>
+    <%= col(xl: 6) do %>
+      <%= render "headings" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "lists" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "inline" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "colors" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "blockquotes" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "code" %>
+    <% end %>
+  <% end %>
+<% end %>

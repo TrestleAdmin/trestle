@@ -1,0 +1,18 @@
+<%= container do |c| %>
+  <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>. Be sure to escape HTML angle brackets.</p>
+  <p>For indicating variables use the <code>&lt;var&gt;</code> tag. e.g. <var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+  <p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard. e.g. <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
+  <p>
+    For indicating sample output from a program use the <code>&lt;samp&gt;</code> tag. e.g.<br />
+    <samp>>> This text is meant to be treated as sample output.</samp>
+  </p>
+
+  <p>Regular abbreviation with title attribute: <abbr title="attribute">attr</abbr></p>
+  <p>Initialism with class <code>initialism</code>: <abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
+
+  <% c.sidebar do %>
+    <h1>Code & abbreviations</h1>
+    <p>Documentation and examples for displaying inline and multiline blocks of code.</p>
+    <p>Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.</p>
+  <% end %>
+<% end %>

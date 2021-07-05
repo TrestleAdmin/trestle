@@ -1,0 +1,30 @@
+<%= container do |c| %>
+  <ul>
+    <li>This is an unordered list <code>&lt;ul&gt;</code></li>
+    <li>This item contains an ordered list <code>&lt;ol&gt;</code>
+      <ol>
+        <li>Phasellus iaculis neque</li>
+        <li>Purus sodales ultricies</li>
+        <li>Vestibulum laoreet porttitor sem</li>
+        <li>Ac tristique libero volutpat at</li>
+      </ol>
+    </li>
+    <li>
+      This is an inline list <code>&lt;ul class="list-inline"&gt;</code>
+      <ul class="list-inline">
+        <li class="list-inline-item">Each item in the list</li>
+        <li class="list-inline-item">has a class of</li>
+        <li class="list-inline-item"><code>list-item-inline</code></li>
+      </ul>
+    </li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+  </ul>
+
+  <% c.sidebar do %>
+    <h1>Lists</h1>
+    <p>Standard HTML lists, <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code>, are available as well as inline lists.</p>
+  <% end %>
+<% end %>
