@@ -8,7 +8,9 @@
       <h3><%= alert[:title] %></h3>
     <% end %>
 
-    <p><%= alert[:message] %></p>
+    <% if alert[:message] %>
+      <p><%= alert[:message] %></p>
+    <% end %>
 
     <%= yield if block_given? %>
   </div>

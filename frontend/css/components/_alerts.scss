@@ -32,13 +32,18 @@
 
 .alert-icon {
   margin-right: $alert-padding-x;
+
   font-size: 40px;
+  width: 40px;
+
+  text-align: center;
 
   @include media-breakpoint-down(sm) {
     margin-left: $alert-padding-x * 0.25;
     margin-right: $alert-padding-x * 0.75;
 
     font-size: 32px;
+    width: 32px;
   }
 }
 
