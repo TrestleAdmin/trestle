@@ -1,0 +1,23 @@
+<% content_for(:title, "Components: Grid") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= container do |c| %>
+    <% [12, 6, 4, 3, 2, 1].each do |columns| %>
+      <%= row do %>
+        <% columns.times do %>
+          <%= col(lg: (12 / columns)) do %>
+            <div class="grid-example">
+              <%= pluralize(columns, "column") %>
+              <code><%= ".col-lg-#{(12 / columns)}" %></code>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% c.sidebar class: "order-first" do %>
+      <h1>Grid system</h1>
+      <p>Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with flexbox and is fully responsive.</p>
+    <% end %>
+  <% end %>
+<% end %>

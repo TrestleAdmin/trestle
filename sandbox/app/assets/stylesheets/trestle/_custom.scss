@@ -6,3 +6,16 @@
 //
 //    @import "trestle/custom/my_custom_css";
 //
+
+.grid-example {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0.5rem 0;
+
+  border: 1px solid #ddd;
+  background: #fafafa;
+
+  code {
+    display: block;
+  }
+}
