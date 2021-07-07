@@ -1,0 +1,69 @@
+<%= container do |c| %>
+  <div class="mb-2">
+    <div class="btn-group btn-group-sm" role="group">
+      <%= button_tag "Left", class: "btn btn-primary" %>
+      <%= button_tag "Middle", class: "btn btn-primary" %>
+      <%= button_tag "Right", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <div class="btn-group" role="group">
+      <%= button_tag "Left", class: "btn btn-primary" %>
+      <%= button_tag "Middle", class: "btn btn-primary" %>
+      <%= button_tag "Right", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <div class="btn-group btn-group-lg" role="group">
+      <%= button_tag "Left", class: "btn btn-primary" %>
+      <%= button_tag "Middle", class: "btn btn-primary" %>
+      <%= button_tag "Right", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <div class="btn-toolbar primary-toolbar" role="toolbar">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">4</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary">5</button>
+        <button type="button" class="btn btn-secondary">6</button>
+        <button type="button" class="btn btn-secondary">7</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary">8</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <div class="btn-toolbar secondary-toolbar" role="toolbar">
+      <div class="btn-group role="group">
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">4</button>
+      </div>
+      <div class="btn-group role="group">
+        <button type="button" class="btn btn-secondary">5</button>
+        <button type="button" class="btn btn-secondary">6</button>
+        <button type="button" class="btn btn-secondary">7</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary">8</button>
+      </div>
+    </div>
+  </div>
+
+  <% c.sidebar class: "order-first" do %>
+    <h1>Button groups</h1>
+    <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+    <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
+  <% end %>
+<% end %>

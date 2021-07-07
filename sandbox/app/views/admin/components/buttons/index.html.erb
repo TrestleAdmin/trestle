@@ -1,0 +1,29 @@
+<% content_for(:title, "Components: Buttons") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= row do %>
+    <%= col(xl: 6) do %>
+      <%= render "basic" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "outline" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "icon" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "sizes" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "groups" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "dropdowns" %>
+    <% end %>
+  <% end %>
+<% end %>

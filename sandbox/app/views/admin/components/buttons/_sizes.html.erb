@@ -1,0 +1,29 @@
+<%= container do |c| %>
+  <div class="mb-3">
+    <%= button_tag "Small", class: "btn btn-primary btn-sm" %>
+    <%= button_tag "Medium", class: "btn btn-primary" %>
+    <%= button_tag "Large", class: "btn btn-primary btn-lg" %>
+  </div>
+
+  <div>
+    <%= button_tag class: "btn btn-primary btn-sm" do %>
+      <%= icon("fas fa-trophy") %>
+      <span class="btn-label">Small</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-primary" do %>
+      <%= icon("fas fa-trophy") %>
+      <span class="btn-label">Medium</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-primary btn-lg" do %>
+      <%= icon("fas fa-trophy") %>
+      <span class="btn-label">Large</span>
+    <% end %>
+  </div>
+
+  <% c.sidebar class: "order-first" do %>
+    <h1>Button sizes</h1>
+    <p>Add <code>.btn-lg</code> or <code>.btn-sm</code> for additional sizes.</p>
+  <% end %>
+<% end %>

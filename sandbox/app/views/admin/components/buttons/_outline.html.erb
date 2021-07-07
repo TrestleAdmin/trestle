@@ -1,0 +1,28 @@
+<%= container do |c| %>
+  <div class="mb-3">
+    <%= button_tag "Primary", class: "btn btn-outline-primary" %>
+    <%= button_tag "Secondary", class: "btn btn-outline-secondary" %>
+    <%= button_tag "Success", class: "btn btn-outline-success" %>
+    <%= button_tag "Danger", class: "btn btn-outline-danger" %>
+    <%= button_tag "Warning", class: "btn btn-outline-warning" %>
+    <%= button_tag "Info", class: "btn btn-outline-info" %>
+    <%= button_tag "Light", class: "btn btn-outline-light" %>
+    <%= button_tag "Dark", class: "btn btn-outline-dark" %>
+  </div>
+
+  <div>
+    <%= button_tag "Primary", class: "btn btn-outline-primary", disabled: true %>
+    <%= button_tag "Secondary", class: "btn btn-outline-secondary", disabled: true %>
+    <%= button_tag "Success", class: "btn btn-outline-success", disabled: true %>
+    <%= button_tag "Danger", class: "btn btn-outline-danger", disabled: true %>
+    <%= button_tag "Warning", class: "btn btn-outline-warning", disabled: true %>
+    <%= button_tag "Info", class: "btn btn-outline-info", disabled: true %>
+    <%= button_tag "Light", class: "btn btn-outline-light", disabled: true %>
+    <%= button_tag "Dark", class: "btn btn-outline-dark", disabled: true %>
+  </div>
+
+  <% c.sidebar class: "order-first" do %>
+    <h1>Outline buttons</h1>
+    <p>Replace the default modifier classes with the <code>.btn-outline-*</code> ones to remove all background images and colors on any button.</p>
+  <% end %>
+<% end %>

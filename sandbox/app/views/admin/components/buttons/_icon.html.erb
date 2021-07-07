@@ -1,0 +1,60 @@
+<%= container do |c| %>
+  <div class="mb-3">
+    <%= button_tag class: "btn btn-primary" do %>
+      <%= icon("fas fa-trophy") %>
+      <span class="btn-label">Primary</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-secondary" do %>
+      <%= icon("fas fa-award") %>
+      <span class="btn-label">Secondary</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-success" do %>
+      <%= icon("fas fa-check") %>
+      <span class="btn-label">Success</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-danger" do %>
+      <%= icon("fas fa-bomb") %>
+      <span class="btn-label">Danger</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-warning" do %>
+      <%= icon("fas fa-exclamation-triangle") %>
+      <span class="btn-label">Warning</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-info" do %>
+      <%= icon("fas fa-info") %>
+      <span class="btn-label">Info</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-light" do %>
+      <%= icon("fas fa-sun") %>
+      <span class="btn-label">Light</span>
+    <% end %>
+
+    <%= button_tag class: "btn btn-dark" do %>
+      <%= icon("fas fa-moon") %>
+      <span class="btn-label">Dark</span>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= button_tag icon("fas fa-trophy"), class: "btn btn-primary", title: "Primary" %>
+    <%= button_tag icon("fas fa-award"), class: "btn btn-secondary", title: "Secondary" %>
+    <%= button_tag icon("fas fa-check"), class: "btn btn-success", title: "Success" %>
+    <%= button_tag icon("fas fa-bomb"), class: "btn btn-danger", title: "Danger" %>
+    <%= button_tag icon("fas fa-exclamation-triangle"), class: "btn btn-warning", title: "Warning" %>
+    <%= button_tag icon("fas fa-info"), class: "btn btn-info", title: "Info" %>
+    <%= button_tag icon("fas fa-sun"), class: "btn btn-light", title: "Light" %>
+    <%= button_tag icon("fas fa-moon"), class: "btn btn-dark", title: "Dark" %>
+    <%= button_tag icon("fas fa-trash-alt"), class: "btn btn-delete", title: "Delete" %>
+  </div>
+
+  <% c.sidebar class: "order-first" do %>
+    <h1>Icon buttons</h1>
+    <p>When using an icon, wrap the label with <code>&lt;span class="btn-label"&gt;</code> to correct the positioning.
+  <% end %>
+<% end %>
