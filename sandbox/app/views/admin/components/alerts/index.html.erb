@@ -9,7 +9,7 @@
       <%= render "trestle/flash/debug", errors: { field: "is required", another: "is already taken" } %>
     <% end %>
 
-    <% c.sidebar do %>
+    <% c.sidebar class: "order-first" do %>
       <h1>Flash messages</h1>
       <p>These alert types are generated internally by Trestle within resourceful admins.</p>
     <% end %>
@@ -36,7 +36,7 @@
       <p>This custom alert has the <code>alert-dark</code> class.</p>
     <% end %>
 
-    <% c.sidebar do %>
+    <% c.sidebar class: "order-first" do %>
       <h1>Custom alerts</h1>
     <% end %>
   <% end %>

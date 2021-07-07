@@ -6,7 +6,7 @@ module Trestle
 
       content_tag(:div, class: "main-content-container") do
         concat content_tag(:div, content, class: "main-content")
-        concat content_tag(:aside, context.sidebar, class: "main-content-sidebar") unless context.sidebar.blank?
+        concat context.sidebar if context.sidebar
       end
     end
 
@@ -15,9 +15,17 @@ module Trestle
         @template = template
       end
 
-      def sidebar(&block)
-        @sidebar = @template.capture(&block) if block_given?
-        @sidebar
+      def sidebar(options={}, &block)
+        if block_given?
+          @sidebar = @template.content_tag(:aside, default_sidebar_options.merge(options), &block)
+          nil
+        else
+          @sidebar
+        end
+      end
+
+      def default_sidebar_options
+        Trestle::Options.new(class: ["main-content-sidebar"])
       end
     end
   end
