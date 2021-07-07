@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Dropdowns</h2>
+    <p>Wrap the dropdown’s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>.</p>
+  <% end %>
+
   <div class="mb-2">
     <span class="dropdown">
       <%= button_tag "Dropdown", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } %>
@@ -35,9 +40,4 @@
       </div>
     </span>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Dropdowns</h1>
-    <p>Wrap the dropdown’s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>.</p>
-  <% end %>
 <% end %>

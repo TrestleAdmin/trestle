@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Button sizes</h2>
+    <p>Add <code>.btn-lg</code> or <code>.btn-sm</code> for additional sizes.</p>
+  <% end %>
+
   <div class="mb-3">
     <%= button_tag "Small", class: "btn btn-primary btn-sm" %>
     <%= button_tag "Medium", class: "btn btn-primary" %>
@@ -21,9 +26,4 @@
       <span class="btn-label">Large</span>
     <% end %>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Button sizes</h1>
-    <p>Add <code>.btn-lg</code> or <code>.btn-sm</code> for additional sizes.</p>
-  <% end %>
 <% end %>

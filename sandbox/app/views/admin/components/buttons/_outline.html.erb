@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Outline buttons</h2>
+    <p>Replace the default modifier classes with the <code>.btn-outline-*</code> ones to remove all background images and colors on any button.</p>
+  <% end %>
+
   <div class="mb-3">
     <%= button_tag "Primary", class: "btn btn-outline-primary" %>
     <%= button_tag "Secondary", class: "btn btn-outline-secondary" %>
@@ -20,9 +25,4 @@
     <%= button_tag "Light", class: "btn btn-outline-light", disabled: true %>
     <%= button_tag "Dark", class: "btn btn-outline-dark", disabled: true %>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Outline buttons</h1>
-    <p>Replace the default modifier classes with the <code>.btn-outline-*</code> ones to remove all background images and colors on any button.</p>
-  <% end %>
 <% end %>

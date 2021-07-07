@@ -2,6 +2,12 @@
 
 <%= render layout: "layout", locals: { wrapper: false } do %>
   <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Font Awesome: <small>Solid</small></h2>
+      <p>Insert a solid icon using the icon helper with <code>icon("fas fa-{{name}}")</code>.
+      <p>This produces the following HTML:<br /><code>&lt;i class="fas fa-{{name}}&gt;&lt;i&gt;</code>.</p>
+    <% end %>
+
     <%= row do %>
       <% FontAwesome::SOLID.each do |icon_name| %>
         <%= col(6, md: 4, lg: 3) do %>
@@ -10,15 +16,16 @@
         <% end %>
       <% end %>
     <% end %>
-
-    <% c.sidebar class: "order-first" do %>
-      <h2>Font Awesome: <small>Solid</small></h2>
-      <p>Insert a solid icon using the icon helper with <code>icon("fas fa-{{name}}")</code>.
-      <p>This produces the following HTML:<br /><code>&lt;i class="fas fa-{{name}}&gt;&lt;i&gt;</code>.</p>
-    <% end %>
   <% end %>
 
   <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Font Awesome: <small>Regular</small></h2>
+
+      <p>Insert a regular icon using the icon helper with <code>icon("far fa-{{name}}")</code>.
+      <p>This produces the following HTML:<br /><code>&lt;i class="far fa-{{name}}&gt;&lt;i&gt;</code>.</p>
+    <% end %>
+
     <%= row do %>
       <% FontAwesome::REGULAR.each do |icon_name| %>
         <%= col(6, md: 4, lg: 3) do %>
@@ -27,17 +34,16 @@
         <% end %>
       <% end %>
     <% end %>
-
-    <% c.sidebar class: "order-first" do %>
-      <h2>Font Awesome: <small>Regular</small></h2>
-
-      <p>Insert a regular icon using the icon helper with <code>icon("far fa-{{name}}")</code>.
-      <p>This produces the following HTML:<br /><code>&lt;i class="far fa-{{name}}&gt;&lt;i&gt;</code>.</p>
-    <% end %>
   <% end %>
 
-
   <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Font Awesome: <small>Brands</small></h2>
+
+      <p>Insert a brand icon using the icon helper with <code>icon("fab fa-{{name}}")</code>.
+      <p>This produces the following HTML:<br /><code>&lt;i class="fab fa-{{name}}&gt;&lt;i&gt;</code>.</p>
+    <% end %>
+
     <%= row do %>
       <% FontAwesome::BRANDS.each do |icon_name| %>
         <%= col(6, md: 4, lg: 3) do %>
@@ -45,13 +51,6 @@
           <span class="text-dark"><%= icon_name %></span>
         <% end %>
       <% end %>
-    <% end %>
-
-    <% c.sidebar class: "order-first" do %>
-      <h2>Font Awesome: <small>Brands</small></h2>
-
-      <p>Insert a brand icon using the icon helper with <code>icon("fab fa-{{name}}")</code>.
-      <p>This produces the following HTML:<br /><code>&lt;i class="fab fa-{{name}}&gt;&lt;i&gt;</code>.</p>
     <% end %>
   <% end %>
 <% end %>

@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Icon buttons</h2>
+    <p>When using an icon, wrap the label with <code>&lt;span class="btn-label"&gt;</code> to correct the positioning.
+  <% end %>
+
   <div class="mb-3">
     <%= button_tag class: "btn btn-primary" do %>
       <%= icon("fas fa-trophy") %>
@@ -52,9 +57,4 @@
     <%= button_tag icon("fas fa-moon"), class: "btn btn-dark", title: "Dark" %>
     <%= button_tag icon("fas fa-trash-alt"), class: "btn btn-delete", title: "Delete" %>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Icon buttons</h1>
-    <p>When using an icon, wrap the label with <code>&lt;span class="btn-label"&gt;</code> to correct the positioning.
-  <% end %>
 <% end %>

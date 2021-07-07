@@ -1,4 +1,10 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Button groups</h2>
+    <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+    <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
+  <% end %>
+
   <div class="mb-2">
     <div class="btn-group btn-group-sm" role="group">
       <%= button_tag "Left", class: "btn btn-primary" %>
@@ -60,10 +66,4 @@
       </div>
     </div>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Button groups</h1>
-    <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
-    <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
-  <% end %>
 <% end %>

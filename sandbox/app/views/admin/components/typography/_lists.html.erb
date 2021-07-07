@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Lists</h2>
+    <p>Standard HTML lists, <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code>, are available as well as inline lists.</p>
+  <% end %>
+
   <ul>
     <li>This is an unordered list <code>&lt;ul&gt;</code></li>
     <li>This item contains an ordered list <code>&lt;ol&gt;</code>
@@ -22,9 +27,4 @@
     <li>Aenean sit amet erat nunc</li>
     <li>Eget porttitor lorem</li>
   </ul>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Lists</h1>
-    <p>Standard HTML lists, <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code>, are available as well as inline lists.</p>
-  <% end %>
 <% end %>

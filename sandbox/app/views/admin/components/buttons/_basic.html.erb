@@ -1,4 +1,9 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Basic buttons</h2>
+    <p>Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+  <% end %>
+
   <div class="mb-3">
     <%= button_tag "Primary", class: "btn btn-primary" %>
     <%= button_tag "Secondary", class: "btn btn-secondary" %>
@@ -20,9 +25,4 @@
     <%= button_tag "Light", class: "btn btn-light", disabled: true %>
     <%= button_tag "Dark", class: "btn btn-dark", disabled: true %>
   </div>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Basic buttons</h1>
-    <p>Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
-  <% end %>
 <% end %>

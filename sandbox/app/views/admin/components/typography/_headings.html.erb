@@ -1,14 +1,14 @@
 <%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Headings</h2>
+    <p>All HTML headings, <code>&lt;h1&gt;</code> through <Code>&lt;h6&gt;</code>, are available.</p>
+    <p><code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
+  <% end %>
+
   <h1>h1. Bootstrap heading</h1>
   <h2>h2. Bootstrap heading</h2>
   <h3>h3. Bootstrap heading</h3>
   <h4>h4. Bootstrap heading</h4>
   <h5>h5. Bootstrap heading</h5>
   <h6>h6. Bootstrap heading</h6>
-
-  <% c.sidebar class: "order-first" do %>
-    <h1>Headings</h1>
-    <p>All HTML headings, <code>&lt;h1&gt;</code> through <Code>&lt;h6&gt;</code>, are available.</p>
-    <p><code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
-  <% end %>
 <% end %>
