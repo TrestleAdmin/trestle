@@ -1,0 +1,30 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Progress bars</h2>
+    <p>Bootstrap custom progress bars feature support for stacked bars, animated backgrounds, and text labels.</p>
+  <% end %>
+
+  <p>Use background utility classes to change the appearance of individual progress bars.</p>
+
+  <div class="progress mb-3">
+    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <p>Add labels to your progress bars by placing text within the <code>.progress-bar</code>.</p>
+
+  <div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
+  </div>
+
+  <p>Add <code>.progress-bar-striped</code> to any <code>.progress-bar</code> to apply a stripe via CSS gradient over the progress bar’s background color.</p>
+
+  <div class="progress mb-3">
+    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <p>Add <code>.progress-bar-animated</code> to <code>.progress-bar</code> to animate the stripes right to left via CSS3 animations.</p>
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+  </div>
+<% end %>

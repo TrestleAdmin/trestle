@@ -1,0 +1,21 @@
+<% content_for(:title, "Components: Miscellaneous") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= row do %>
+    <%= col(xl: 6) do %>
+      <%= render "badges" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "tooltips" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "progress" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "cards" %>
+    <% end %>
+  <% end %>
+<% end %>

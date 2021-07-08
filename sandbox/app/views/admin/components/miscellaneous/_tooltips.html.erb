@@ -1,0 +1,20 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Tooltips</h2>
+    <p>Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.</p>
+  <% end %>
+
+  <div class="mb-2">
+    <%= button_tag "Tooltip on top", class: "btn btn-secondary", title: "Tooltip on top", data: { toggle: "tooltip", placement: "top" } %>
+    <%= button_tag "Tooltip on bottom", class: "btn btn-secondary", title: "Tooltip on bottom", data: { toggle: "tooltip", placement: "bottom" } %>
+  </div>
+
+  <div class="mb-2">
+    <%= button_tag "Tooltip on left", class: "btn btn-secondary", title: "Tooltip on left", data: { toggle: "tooltip", placement: "left" } %>
+    <%= button_tag "Tooltip on right", class: "btn btn-secondary", title: "Tooltip on right", data: { toggle: "tooltip", placement: "right" } %>
+  </div>
+
+  <div>
+    <%= button_tag "Tooltip with HTML", class: "btn btn-primary", title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>", data: { toggle: "tooltip", html: true } %>
+  </div>
+<% end %>
