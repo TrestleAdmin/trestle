@@ -1,0 +1,42 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Avatars</h2>
+    <p>Trestle supports rendering avatars from image sources or as a <%= link_to "Gravatar", "https://en.gravatar.com/", target: "_blank" %>.</p>
+  <% end %>
+
+  <div class="mb-3">
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/men/1.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/men/2.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/men/3.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/women/1.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/women/2.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/women/3.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/lego/1.jpg") } %>
+    <%= avatar { image_tag("https://randomuser.me/api/portraits/lego/2.jpg") } %>
+    <%= avatar { image_tag("http://placekitten.com/200/200") } %>
+  </div>
+
+  <div class="mb-3">
+    <%= avatar { gravatar("test@example.com") } %>
+    <%= avatar { gravatar("test@example.com", d: nil) } %>
+    <%= avatar { gravatar("test@example.com", d: "identicon") } %>
+    <%= avatar { gravatar("test@example.com", d: "monsterid") } %>
+    <%= avatar { gravatar("test@example.com", d: "wavatar") } %>
+    <%= avatar { gravatar("test@example.com", d: "retro") } %>
+    <%= avatar { gravatar("test@example.com", d: "robohash") } %>
+  </div>
+
+  <div class="mb-3">
+    <%= avatar(fallback: "MS", style: "background-color: #2d4059") %>
+    <%= avatar(fallback: "JB", style: "background-color: #ea5455") %>
+    <%= avatar(fallback: "KR", style: "background-color: #f07b3f") %>
+    <%= avatar(fallback: "DR", style: "background-color: #ffd460") %>
+    <%= avatar(fallback: "?", style: "background-color: #5d8233") %>
+  </div>
+
+  <div class="mb-3">
+    <%= avatar(class: "avatar-sm") { gravatar("test@example.com") } %>
+    <%= avatar { gravatar("test@example.com") } %>
+    <%= avatar(class: "avatar-lg") { gravatar("test@example.com") } %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Timestamps</h2>
+    <p>Trestle includes helpers for timestamps and datestamps that can be added within tables or forms.</p>
+  <% end %>
+
+  <div class="mb-3">
+    <%= timestamp Time.now %>
+  </div>
+
+  <div class="mb-3">
+    <%= timestamp Time.now, precision: :seconds %>
+  </div>
+
+  <div class="mb-3">
+    <%= timestamp Time.now, class: "timestamp-inline" %>
+  </div>
+
+  <div class="mb-3">
+    <%= datestamp Date.today %>
+  </div>
+
+  <div class="mb-3">
+    <%= datestamp Date.today, format: :trestle_date %>
+  </div>
+
+  <div>
+    <%= status_tag timestamp(Time.now) %>
+    <%= status_tag timestamp(Time.now, class: "timestamp-inline"), :danger %>
+    <%= status_tag datestamp(Date.today), :success %>
+  </div>
+<% end %>
