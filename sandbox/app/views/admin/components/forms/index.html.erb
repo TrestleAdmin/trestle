@@ -1,0 +1,87 @@
+<% content_for(:title, "Components: Forms") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= form_with builder: Trestle::Form::Builder, method: :get do |f| %>
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Basic inputs</h2>
+      <% end %>
+
+      <%= f.text_field :text_field, label: "Standard text field" %>
+      <%= f.text_field :text_field_with_help_text, help: "The help text appears below the field." %>
+      <%= f.text_field :text_field_with_placeholder, placeholder: "Placeholder text appears here..." %>
+      <%= f.text_field :text_field_with_hidden_label, hide_label: "True", placeholder: "Text field with hidden label" %>
+      <%= f.text_field :text_field_with_no_label, label: false, placeholder: "Text field with no label" %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Extended inputs</h2>
+      <% end %>
+
+      <%= f.text_area :text_area %>
+      <%= f.password_field :password_field %>
+      <%= f.search_field :search_field %>
+      <%= f.telephone_field :telephone_field %>
+      <%= f.email_field :email_field %>
+      <%= f.url_field :url_field %>
+      <%= f.number_field :number_field %>
+      <%= f.color_field :color_field %>
+      <%= f.range_field :range_field %>
+      <%= f.file_field :file_field %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Date pickers</h2>
+      <% end %>
+
+      <%= f.date_field :date_field %>
+      <%= f.datetime_field :datetime_field %>
+      <%= f.time_field :time_field %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Standard date inputs</h2>
+      <% end %>
+
+      <%= f.month_field :month_field %>
+      <%= f.week_field :week_field %>
+      <%= f.date_select :date_select %>
+      <%= f.datetime_select :datetime_select %>
+      <%= f.time_select :time_select %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Select fields</h2>
+      <% end %>
+
+      <%= f.select :basic_select_field, ["Red", "Green", "Blue", "Yellow"] %>
+      <%= f.collection_select :collection_select_field, Color.all, :code, :name_with_code %>
+      <%= f.grouped_collection_select :grouped_collection_select_field, Color.categorized, :colors, :name, :code, :name_with_code, {}, { multiple: true } %>
+      <%= f.time_zone_select :time_zone_select, /Australia/ %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Checkboxes & radios</h2>
+      <% end %>
+
+      <%= f.form_group :check_box_form_group do %>
+        <%= f.check_box :check_box, label: "Check box" %>
+      <% end %>
+
+      <%= f.form_group :radio_buttons_form_group do %>
+        <%= f.radio_button :radio_buttons, "Red" %>
+        <%= f.radio_button :radio_buttons, "Green" %>
+        <%= f.radio_button :radio_buttons, "Blue" %>
+        <%= f.radio_button :radio_buttons, nil, label: "No Color" %>
+      <% end %>
+
+      <%= f.collection_check_boxes :collection_checkboxes, Color.all, :code, :name_with_code %>
+      <%= f.collection_radio_buttons :collection_radio_buttons, Color.all, :code, :name_with_code %>
+    <% end %>
+  <% end %>
+<% end %>

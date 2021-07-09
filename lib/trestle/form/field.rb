@@ -45,7 +45,7 @@ module Trestle
       end
 
       def readonly?
-        options[:readonly] || admin.readonly?
+        options[:readonly] || admin.try(:readonly?)
       end
 
       def normalize_options!

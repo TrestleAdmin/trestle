@@ -58,19 +58,5 @@ Trestle.resource(:form, model: FormStub, as: "Form") do
       collection_check_boxes :name, Color.all, :code, :name_with_code, label: "Collection Checkboxes"
       collection_radio_buttons :color, Color.all, :code, :name_with_code, label: "Collection Radio Buttons"
     end
-
-    tab :grid do
-      [12, 6, 4, 3, 2].each do |columns|
-        row do
-          columns.times do
-            col(sm: (12 / columns)) { text_field :name, label: "#{columns} Columns" }
-          end
-        end
-      end
-    end
-
-    tab :wells
-
-    tab :panels
   end
 end
