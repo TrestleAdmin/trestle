@@ -73,6 +73,10 @@
         <%= f.check_box :check_box, label: "Check box" %>
       <% end %>
 
+      <%= f.form_group :toggle_switch_form_group do %>
+        <%= f.check_box :toggle_switch, label: "Toggle switch", switch: true %>
+      <% end %>
+
       <%= f.form_group :radio_buttons_form_group do %>
         <%= f.radio_button :radio_buttons, "Red" %>
         <%= f.radio_button :radio_buttons, "Green" %>
@@ -81,7 +85,37 @@
       <% end %>
 
       <%= f.collection_check_boxes :collection_checkboxes, Color.all, :code, :name_with_code %>
+      <%= f.collection_check_boxes :collection_toggle_switches, Color.all, :code, :name_with_code, switch: true %>
       <%= f.collection_radio_buttons :collection_radio_buttons, Color.all, :code, :name_with_code %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Input group add-ons</h2>
+      <% end %>
+
+      <%= f.text_field :prepend, prepend: "@" %>
+      <%= f.text_field :append, append: "@example.com" %>
+      <%= f.text_field :prepend_and_append, prepend: "$", append: ".00" %>
+
+      <%= f.text_field :prepend_icon, prepend: icon("fas fa-book-open") %>
+      <%= f.text_field :append_icon, append: icon("fas fa-bolt") %>
+
+      <%= f.text_field :prepend_checkbox, prepend: f.raw_check_box(:prepended_checkbox) %>
+
+      <%= f.text_field :prepend_button, prepend!: button_tag(icon("fas fa-archive"), class: "btn btn-info") %>
+      <%= f.text_field :append_button, append!: button_tag("Button", class: "btn btn-primary") %>
+    <% end %>
+
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Static fields</h2>
+      <% end %>
+
+      <%= f.static_field :static_field_with_parameter, "Field value" %>
+      <%= f.static_field :static_field_with_block do %>
+        <strong>Field</strong> <em>value</em> <u>from block</u>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
