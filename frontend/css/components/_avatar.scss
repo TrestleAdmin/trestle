@@ -50,4 +50,8 @@
 .avatar-lg {
   width: 64px;
   height: 64px;
+
+  .avatar-fallback {
+    font-size: 1.5rem;
+  }
 }
