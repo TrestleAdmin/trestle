@@ -1,0 +1,22 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Tags</h2>
+    <p>Tags can be rendered as a list of <code>&lt;span&gt;</code> or <code>&lt;a&gt;</code> tags.</p>
+  <% end %>
+
+  <div class="mb-2">
+    <span class="tag">Ruby</span>
+    <span class="tag">Rails</span>
+    <span class="tag">Trestle</span>
+    <span class="tag">Admin</span>
+    <span class="tag">Framework</span>
+  </div>
+
+  <div>
+    <a href="#" class="tag">Ruby</a>
+    <a href="#" class="tag">Rails</a>
+    <a href="#" class="tag">Trestle</a>
+    <a href="#" class="tag">Admin</a>
+    <a href="#" class="tag">Framework</a>
+  </div>
+<% end %>

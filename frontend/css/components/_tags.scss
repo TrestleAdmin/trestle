@@ -16,6 +16,8 @@
 }
 
 a.tag {
+  font-weight: inherit;
+
   &:hover, &:focus {
     text-decoration: none;
     color: $tag-hover-color;
