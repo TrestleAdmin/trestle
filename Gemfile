@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in trestle.gemspec
 gemspec
 
+group :development do
+  gem 'bcrypt'
+  gem 'faker'
+end
+
 group :test do
   gem 'coveralls_reborn', require: false
   gem 'guard-rspec',      require: false

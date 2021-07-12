@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_064032) do
+ActiveRecord::Schema.define(version: 2021_07_12_071021) do
 
   create_table "offices", force: :cascade do |t|
     t.string "city"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 2021_07_12_064032) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.string "avatar_type"
+    t.string "time_zone"
+    t.integer "office_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["office_id"], name: "index_users_on_office_id"
   end
 
 end
