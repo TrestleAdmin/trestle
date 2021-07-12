@@ -19,3 +19,16 @@ users = 100.times do
     office: offices.sample
   })
 end
+
+categories = Category.create!([
+  { name: "Arts", color: Faker::Color.hex_color },
+  { name: "Automotive", color: Faker::Color.hex_color },
+  { name: "Business", color: Faker::Color.hex_color },
+  { name: "Community", color: Faker::Color.hex_color },
+  { name: "Economics", color: Faker::Color.hex_color },
+  { name: "Entertainment", color: Faker::Color.hex_color },
+  { name: "Lifestyle", color: Faker::Color.hex_color },
+  { name: "Sport", color: Faker::Color.hex_color },
+  { name: "Technology", color: Faker::Color.hex_color },
+  { name: "Travel", color: Faker::Color.hex_color }
+])

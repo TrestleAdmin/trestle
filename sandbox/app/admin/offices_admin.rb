@@ -13,7 +13,7 @@ Trestle.resource(:offices) do
     actions
   end
 
-  form do
+  form dialog: true do
     row do
       col { text_field :city }
       col { text_field :country }
