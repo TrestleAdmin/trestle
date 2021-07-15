@@ -3,6 +3,10 @@ Trestle.resource(:categories) do
     item :categories, icon: "fa fa-tags"
   end
 
+  collection do
+    model.alphabetical
+  end
+
   table do
     column :name, link: true
     column :color do |category|

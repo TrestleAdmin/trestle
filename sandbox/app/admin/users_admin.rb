@@ -4,7 +4,7 @@ Trestle.resource(:users) do
   end
 
   collection do
-    model.includes(:office)
+    model.alphabetical.includes(:office)
   end
 
   table do
