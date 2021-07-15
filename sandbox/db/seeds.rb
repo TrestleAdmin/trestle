@@ -7,7 +7,7 @@ offices = Office.create!([
   { city: "Singapore", country: "Singapore", address_1: "155 North Bridge Road", address_2: "#26-01 Peninsula Plaza", phone: "65-6336 4010", url: "https://www.example.sg" }
 ])
 
-users = 100.times do
+users = 100.times.map do
   User.create!({
     email: Faker::Internet.email,
     password: Faker::Internet.password,
@@ -32,3 +32,20 @@ categories = Category.create!([
   { name: "Technology", color: Faker::Color.hex_color },
   { name: "Travel", color: Faker::Color.hex_color }
 ])
+
+articles = 70.times.map do
+  active = Faker::Boolean.boolean(true_ratio: 0.9)
+  content = rand(3..6).times.map {
+    Faker::Hipster.paragraph(sentence_count: rand(4..10))
+  }.join("\n\n")
+
+  Article.create!({
+    title: Faker::Hipster.sentence(word_count: rand(4..7)),
+    content: content,
+    published_at: (Faker::Time.between(from: 6.months.ago, to: 1.week.from_now) if active),
+    active: active,
+    tags: Faker::Hipster.words(number: rand(2..7)).uniq,
+    categories: categories.sample(rand(1..3)),
+    author: users.sample
+  })
+end

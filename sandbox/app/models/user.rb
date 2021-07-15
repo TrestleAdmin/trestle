@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :alphabetical, -> { order(:last_name, :first_name) }
+
   def full_name
     [first_name, last_name].join(" ")
   end
