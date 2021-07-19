@@ -1,0 +1,69 @@
+<% content_for(:title, "Components: Media") %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Media Grid</h2>
+
+      <p>A set of images can be displayed as a grid by adding the <code>.media-grid</code> class to a <code>&lt;ul&gt;</code> element.</p>
+      <p>Wrap image tags in <code>&lt;figure class="fill"&gt;</code> for consistent sizing regardless of aspect ratio.</p>
+    <% end %>
+
+    <ul class="media-grid">
+      <% 8.times do |i| %>
+        <li>
+          <figure class="fill"><%= random_image(300, 200, "1-#{i}") %></figure>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Media Grid <small>(Large)</small></h2>
+      <p>Add <code>.media-grid-lg</code> for large images (three columns on desktop, full-width on mobile).</p>
+    <% end %>
+
+    <ul class="media-grid media-grid-lg">
+      <% 6.times do |i| %>
+        <li>
+          <figure class="fill"><%= random_image(600, 400, "2-#{i}") %></figure>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Media Grid <small>(Small)</small></h2>
+      <p>Add <code>.media-grid-sm</code> for small images (six columns on desktop, three on mobile).</p>
+    <% end %>
+
+    <ul class="media-grid media-grid-sm">
+      <% 12.times do |i| %>
+        <li>
+          <figure class="fill"><%= random_image(320, 200, "3-#{i}") %></figure>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= container do |c| %>
+    <% c.sidebar class: "order-first" do %>
+      <h2>Gallery</h2>
+
+      <p>To have the images function as a lightbox gallery (using <%= link_to "Magnific Popup", "https://dimsemenov.com/plugins/magnific-popup/", target: "_blank" %>), add <code>data-behavior="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag.</p>
+      <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
+    <% end %>
+
+    <ul class="media-grid media-grid-sm" data-behavior="gallery">
+      <% 12.times do |i| %>
+        <li>
+          <%= link_to random_image_url(800, 600, "4-#{i}") do %>
+            <figure class="fill zoom"><%= random_image(800, 600, "4-#{i}") %></figure>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
