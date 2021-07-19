@@ -79,9 +79,15 @@
   border-color: $border;
 
   a {
+    color: $color;
+
     &:hover, &:focus {
       color: mix($color, $background, 80%);
     }
+  }
+
+  code {
+    color: $color;
   }
 }
 
@@ -91,6 +97,26 @@
 
 .alert-danger {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-color);
+}
+
+.alert-info {
+  @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-color);
+}
+
+.alert-warning {
+  @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-color);
+}
+
+.alert-light {
+  @include alert-variant($alert-light-bg, $alert-light-border, $alert-light-color);
+}
+
+.alert-dark {
+  @include alert-variant($alert-dark-bg, $alert-dark-border, $alert-dark-color);
+}
+
+.alert-primary {
+  @include alert-variant($alert-primary-bg, $alert-primary-border, $alert-primary-color);
 }
 
 

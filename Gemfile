@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in trestle.gemspec
-gemspec
-
 group :development do
   gem 'bcrypt'
   gem 'faker'
@@ -25,3 +22,6 @@ end
 gem 'haml'
 gem 'sassc-rails'
 gem 'sqlite3', '~> 1.4'
+
+# Specify your gem's dependencies in trestle.gemspec
+gemspec

@@ -101,6 +101,26 @@ $alert-danger-bg:      #de7471;
 $alert-danger-color:   white;
 $alert-danger-border:  #d85956;
 
+$alert-info-bg:        darken(theme-color("info"), 10%);
+$alert-info-color:     white;
+$alert-info-border:    darken($alert-info-bg, 10%);
+
+$alert-warning-bg:     darken(theme-color("warning"), 5%);
+$alert-warning-color:  white;
+$alert-warning-border: darken($alert-warning-bg, 5%);
+
+$alert-light-bg:       theme-color("light");
+$alert-light-color:    $body-color;
+$alert-light-border:   darken($alert-light-bg, 5%);
+
+$alert-dark-bg:        theme-color("dark");
+$alert-dark-color:     white;
+$alert-dark-border:    darken($alert-dark-bg, 10%);
+
+$alert-primary-bg:     darken(theme-color("primary"), 5%);
+$alert-primary-color:  white;
+$alert-primary-border: darken($alert-primary-bg, 10%);
+
 
 // Modals
 
