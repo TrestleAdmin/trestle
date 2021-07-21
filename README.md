@@ -108,6 +108,11 @@ The following plugins are currently available:
 | *trestle-auth-otp* | 2FA/OTP user authentication | [GitHub](https://github.com/McRipper/trestle-auth-otp) \| [RubyGems](https://rubygems.org/gems/trestle-auth-otp) |
 
 
+## Development
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for information on developing and contributing to Trestle.
+
+
 ## License
 
 The gem is available as open source under the terms of the [LGPLv3 License](https://opensource.org/licenses/LGPL-3.0).
