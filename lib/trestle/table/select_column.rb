@@ -34,10 +34,7 @@ module Trestle
         end
 
         def checkbox(name, value="1", options={})
-          @template.content_tag(:div, class: "custom-control custom-checkbox") do
-            @template.check_box_tag(name, value, false, options.merge(class: "custom-control-input")) +
-              @template.tag(:label, for: options.fetch(:id), class: "custom-control-label")
-          end
+          @template.check_box_tag(name, value, false, options.merge(class: "form-check-input"))
         end
       end
     end

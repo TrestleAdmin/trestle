@@ -8,6 +8,7 @@ Trestle.resource(:articles) do
   end
 
   table do
+    selectable_column
     column :title, link: true, truncate: false
     column :author do |article|
       admin_link_to article.author do

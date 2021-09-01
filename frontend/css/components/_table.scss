@@ -67,22 +67,15 @@
 
   .select-row {
     width: 2.5em;
+
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+
     text-align: center;
+    vertical-align: middle;
 
-    .custom-control {
-      padding-left: 1.5rem;
-    }
-
-    .custom-control-input {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    .custom-control-label {
-      &::before,
-      &::after {
-        left: -1.325rem;
-      }
+    .form-check-input {
+      display: block;
     }
   }
 
