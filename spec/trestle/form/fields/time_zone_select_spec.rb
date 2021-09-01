@@ -12,7 +12,7 @@ describe Trestle::Form::Fields::TimeZoneSelect, type: :helper do
   it_behaves_like "a form field", :timezone, :html_options
 
   it "renders a collection of time zone options" do
-    expect(subject).to have_tag("select.form-control", with: { id: "article_timezone", "data-enable-select2": true }) do
+    expect(subject).to have_tag("select.form-select", with: { id: "article_timezone", "data-enable-select2": true }) do
       with_tag "option", text: "(GMT-10:00) Hawaii", with: { value: "Hawaii" }
       with_tag "option", text: "(GMT+12:00) Auckland", with: { value: "Auckland" }
       with_tag "option[selected]", text: "(GMT+09:30) Adelaide", with: { value: "Adelaide" }

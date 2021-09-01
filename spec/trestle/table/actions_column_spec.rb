@@ -38,7 +38,7 @@ describe Trestle::Table::ActionsColumn do
       let(:options) { { class: "custom-class" } }
 
       it "includes class of 'actions'" do
-        expect(renderer.classes).to include("actions")
+        expect(renderer.classes).to include("table-actions")
       end
 
       it "includes classes specified in options" do

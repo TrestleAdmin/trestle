@@ -39,7 +39,8 @@ feature 'Dialog forms', js: true do
     click_link "First Post"
 
     within_modal { click_link "Delete Post" }
-    within_popover { click_link "Delete" }
+    # Temporarily disable until confirmation popovers are restored
+    # within_popover { click_link "Delete" }
 
     expect(page).to have_content("The post was successfully deleted.")
     expect(page).not_to have_content("First Post")

@@ -14,22 +14,22 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do
-      with_tag "label.control-label", text: "Countries", without: { class: "sr-only" }
+      with_tag "label.form-label", text: "Countries", without: { class: "sr-only" }
       with_tag "input", with: { type: "hidden", name: "article[countries][]", value: "" }
 
-      with_tag ".custom-control.custom-checkbox.custom-control-inline" do
-        with_tag "input.custom-control-input[checked]", with: { type: "checkbox", value: "AUS", id: "article_countries_aus" }
-        with_tag "label.custom-control-label", with: { for: "article_countries_aus" }, text: "Australia"
+      with_tag ".form-check.form-check-inline" do
+        with_tag "input.form-check-input[checked]", with: { type: "checkbox", value: "AUS", id: "article_countries_aus" }
+        with_tag "label.form-check-label", with: { for: "article_countries_aus" }, text: "Australia"
       end
 
-      with_tag ".custom-control.custom-checkbox.custom-control-inline" do
-        with_tag "input.custom-control-input:not([checked])", with: { type: "checkbox", value: "USA", id: "article_countries_usa" }
-        with_tag "label.custom-control-label", with: { for: "article_countries_usa" }, text: "United States"
+      with_tag ".form-check.form-check-inline" do
+        with_tag "input.form-check-input:not([checked])", with: { type: "checkbox", value: "USA", id: "article_countries_usa" }
+        with_tag "label.form-check-label", with: { for: "article_countries_usa" }, text: "United States"
       end
 
-      with_tag ".custom-control.custom-checkbox.custom-control-inline" do
-        with_tag "input.custom-control-input[checked]", with: { type: "checkbox", value: "NZ", id: "article_countries_nz" }
-        with_tag "label.custom-control-label", with: { for: "article_countries_nz" }, text: "New Zealand"
+      with_tag ".form-check.form-check-inline" do
+        with_tag "input.form-check-input[checked]", with: { type: "checkbox", value: "NZ", id: "article_countries_nz" }
+        with_tag "label.form-check-label", with: { for: "article_countries_nz" }, text: "New Zealand"
       end
     end
   end
@@ -38,25 +38,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
     let(:options) { { inline: false } }
 
     it "renders the checkboxes as not inline" do
-      expect(subject).to have_tag(".custom-control.custom-checkbox", without: { class: "custom-control-inline" })
-    end
-  end
-
-  context "when options[:custom] is set to false" do
-    let(:options) { { custom: false } }
-
-    it "renders the checkboxes as regular check box controls" do
-      expect(subject).to have_tag(".form-group") do
-        with_tag ".form-check.form-check-inline"
-      end
-    end
-
-    context "when options[:inline] is set to false" do
-      let(:options) { { custom: false, inline: false } }
-
-      it "renders the checkboxes as not inline" do
-        expect(subject).to have_tag(".form-check", without: { class: "form-check-inline" })
-      end
+      expect(subject).to have_tag(".form-check", without: { class: "form-check-inline" })
     end
   end
 
@@ -65,7 +47,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
     it "renders the checkboxes as switches" do
       expect(subject).to have_tag(".form-group") do
-        with_tag ".custom-control.custom-switch.custom-control-inline"
+        with_tag ".form-check.form-switch.form-check-inline"
       end
     end
   end
@@ -87,7 +69,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
     it "uses the block to build each check box" do
       expect(subject).to have_tag(".form-group") do
-        with_tag "label.control-label", text: "Countries", without: { class: "sr-only" }
+        with_tag "label.form-label", text: "Countries", without: { class: "sr-only" }
         with_tag "input", with: { type: "hidden", name: "article[countries][]", value: "" }
 
         with_tag "input.from-block[checked]", with: { type: "checkbox", value: "AUS", id: "article_countries_aus" }

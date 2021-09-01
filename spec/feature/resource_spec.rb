@@ -36,7 +36,7 @@ feature 'Resources' do
     create_test_post
 
     visit '/admin/posts'
-    within('tbody tr:first .actions') { click_link }
+    within('tbody tr:first .table-actions') { click_link }
 
     expect(page).to have_content("The post was successfully deleted.")
     expect(page).not_to have_content("First Post")

@@ -16,9 +16,7 @@ RSpec.shared_examples "a date picker control" do |field, value|
 
   it "prepends an icon to the input group" do
     expect(subject).to have_tag('.input-group') do
-      with_tag "div.input-group-prepend" do
-        with_tag(:i, with: { class: icon })
-      end
+      with_tag(:i, with: { class: icon })
     end
   end
 

@@ -13,11 +13,11 @@ describe Trestle::Form::Fields::TimeSelect, type: :helper do
 
   it "renders a date select within a .time-select container" do
     expect(subject).to have_tag(".time-select") do
-      with_tag "select.form-control", with: { name: "article[published_at(4i)]", "data-enable-select2": true } do
+      with_tag "select.form-select", with: { name: "article[published_at(4i)]", "data-enable-select2": true } do
         with_tag "option[selected]", with: { value: 14 }
       end
 
-      with_tag "select.form-control", with: { name: "article[published_at(5i)]", "data-enable-select2": true } do
+      with_tag "select.form-select", with: { name: "article[published_at(5i)]", "data-enable-select2": true } do
         with_tag "option[selected]", with: { value: 30 }
       end
     end
