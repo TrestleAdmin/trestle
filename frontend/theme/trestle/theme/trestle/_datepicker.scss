@@ -11,7 +11,7 @@
 .flatpickr-calendar {
   &.arrowTop {
     &::after {
-      border-bottom-color: mix($theme-bg-color, white, 95%);
+      border-bottom-color: tint-color($theme-bg-color, 10%);
     }
   }
 }
@@ -20,7 +20,7 @@
   .flatpickr-prev-month,
   .flatpickr-next-month {
     &:hover svg {
-      fill: lighten($primary, 15%);
+      fill: tint-color($primary, 30%);
     }
   }
 }
