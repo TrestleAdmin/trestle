@@ -71,12 +71,12 @@ $headings-border: 1px solid rgba(black, 0.1);
 
 // Tags
 
-$tag-color:        white;
 $tag-bg:           tint-color($primary, 20%);
+$tag-color:        color-contrast($tag-bg);
 $tag-border:       $primary;
 
-$tag-hover-color:  white;
 $tag-hover-bg:     $primary;
+$tag-hover-color:  color-contrast($tag-hover-bg);
 $tag-hover-border: shade-color($primary, 20%);
 
 

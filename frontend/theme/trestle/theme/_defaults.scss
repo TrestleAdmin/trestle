@@ -203,12 +203,14 @@ $s2bs5-item-active-bg:     tint-color($primary, 90%) !default;
 // Trestle
 
 $theme-bg:       null !default;
-$theme-bg-color: darken($primary, 15%) !default;
+$theme-bg-color: shade-color($primary, 30%) !default;
 
 $sidebar-active-border-color: $primary !default;
 
-$tag-bg:      lighten($primary, 10%) !default;
-$tag-border:  $primary !default;
+$tag-bg:           tint-color($primary, 15%) !default;
+$tag-color:        color-contrast($tag-bg) !default;
+$tag-border:       $primary !default;
 
 $tag-hover-bg:     $primary !default;
-$tag-hover-border: darken($primary, 10%) !default;
+$tag-hover-color:  color-contrast($tag-hover-bg) !default;
+$tag-hover-border: shade-color($primary, 10%) !default;

@@ -1,4 +1,5 @@
 .tag {
+  color: $tag-color;
   background-color: $tag-bg;
   border-color: $tag-border;
 }
@@ -6,6 +7,7 @@
 a.tag {
   &:hover,
   &:focus {
+    color: $tag-hover-color;
     background-color: $tag-hover-bg;
     border-color: $tag-hover-border;
   }
