@@ -83,11 +83,11 @@ describe Trestle::Navigation::Item do
 
   context "with a badge" do
     it "has a badge" do
-      item = Trestle::Navigation::Item.new(:test, nil, badge: { text: "123", class: "badge-success" })
+      item = Trestle::Navigation::Item.new(:test, nil, badge: { text: "123", class: "bg-success" })
 
       expect(item.badge?).to be true
       expect(item.badge.text).to eq("123")
-      expect(item.badge.html_class).to eq("badge-success")
+      expect(item.badge.html_class).to eq("bg-success")
     end
 
     it "has a badge with a default class if full options not provided" do
@@ -95,7 +95,7 @@ describe Trestle::Navigation::Item do
 
       expect(item.badge?).to be true
       expect(item.badge.text).to eq("123")
-      expect(item.badge.html_class).to eq("badge-primary")
+      expect(item.badge.html_class).to eq("bg-primary")
     end
   end
 end
