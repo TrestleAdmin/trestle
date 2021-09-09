@@ -28,10 +28,12 @@
 
     background: $sidebar-mobile-toggle-bg;
     border: $sidebar-mobile-toggle-border;
+    color: $sidebar-mobile-toggle-border-color;
 
     &:hover, &:focus {
       background: $sidebar-mobile-toggle-active-bg;
       border: $sidebar-mobile-toggle-active-border;
+      color: $sidebar-mobile-toggle-active-border-color;
     }
   }
 
