@@ -1,6 +1,4 @@
-.form-control {
-  &:focus {
-    border-color: $input-focus-border-color;
-    box-shadow: $input-focus-box-shadow;
-  }
-}
+@import "./forms/form-control";
+@import "./forms/form-check";
+@import "./forms/form-select";
+@import "./forms/form-range";

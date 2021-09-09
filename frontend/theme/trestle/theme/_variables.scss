@@ -13,3 +13,14 @@ $brand-primary: false !default;
 
 // Import user-defined theme variables
 @import "trestle/_theme";
+
+$primary: false !default;
+
+@if $primary != false {
+  $theme-colors: (
+    "primary": $primary
+  );
+} @else {
+  // $primary not provided -- reset to null to allow default override in _defaults.scss
+  $primary: null;
+}

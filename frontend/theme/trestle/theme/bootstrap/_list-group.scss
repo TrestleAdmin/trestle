@@ -14,11 +14,11 @@
       &:hover,
       &:focus {
         color: $color;
-        background-color: darken($background, 5%);
+        background-color: shade-color($background, 10%);
       }
 
       &.active {
-        color: white;
+        color: $white;
         background-color: $color;
         border-color: $color;
       }
@@ -26,6 +26,12 @@
   }
 }
 
-@each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, theme-color-level($color, -9), theme-color-level($color, 6));
+@each $state, $value in $theme-colors {
+  $list-group-variant-bg: shift-color($value, $list-group-item-bg-scale);
+  $list-group-variant-color: shift-color($value, $list-group-item-color-scale);
+  @if (contrast-ratio($list-group-variant-bg, $list-group-variant-color) < $min-contrast-ratio) {
+    $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+  }
+
+  @include list-group-item-variant($state, $list-group-variant-bg, $list-group-variant-color);
 }

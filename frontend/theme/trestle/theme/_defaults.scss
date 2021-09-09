@@ -1,29 +1,44 @@
 // Theme colors to override
 
-$primary: #4d6bb2 !default;
-
 $theme-colors: (
-  "primary": $primary
+  "primary": #4d6bb2
 ) !default;
 
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
+$primary: theme-color("primary") !default;
 
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 175 !default;
+$white: #fff !default;
+$black: #000 !default;
 
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:  #212529 !default;
-$yiq-text-light: #ffffff !default;
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark".
+$min-contrast-ratio: 1.7;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark:  $black !default;
+$color-contrast-light: $white !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;
+
+// Prefix for :root CSS variables
+$variable-prefix: bs- !default;
+
+
+// Body
+
+$body-bg: $white;
 
 
 // Links
 
-$link-color:       $primary !default;
-$link-hover-color: darken($link-color, 15%) !default;
-
-// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
-$emphasized-link-hover-darken-percentage: 15% !default;
+$link-color:            $primary !default;
+$link-shade-percentage: 20% !default;
+$link-hover-color:      shift-color($link-color, $link-shade-percentage) !default;
 
 
 // Components
@@ -33,8 +48,16 @@ $component-active-bg: $primary !default;
 
 // Tables
 
-$table-bg-level:     -11 !default;
-$table-border-level: -7 !default;
+$table-striped-bg-factor: .05 !default;
+$table-active-bg-factor:  .1 !default;
+$table-hover-bg-factor:   .075 !default;
+$table-border-factor:     .1 !default;
+
+$table-bg-scale:          -80% !default;
+
+$table-variants: (
+  "primary": shift-color($primary, $table-bg-scale)
+) !default;
 
 
 // Buttons + Forms
@@ -43,40 +66,58 @@ $input-btn-focus-width:      .2rem !default;
 $input-btn-focus-color:      rgba($component-active-bg, 0.25) !default;
 $input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
 
+
+// Buttons
+
+$btn-box-shadow:             inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
 $btn-focus-width:            $input-btn-focus-width !default;
+$btn-focus-box-shadow:       $input-btn-focus-box-shadow !default;
+$btn-active-box-shadow:      inset 0 3px 5px rgba($black, .125) !default;
+
+$btn-link-color:       $link-color !default;
+$btn-link-hover-color: $link-hover-color !default;
+
+$btn-hover-bg-shade-amount:      15% !default;
+$btn-hover-bg-tint-amount:       15% !default;
+$btn-hover-border-shade-amount:  20% !default;
+$btn-hover-border-tint-amount:   10% !default;
+$btn-active-bg-shade-amount:     20% !default;
+$btn-active-bg-tint-amount:      20% !default;
+$btn-active-border-shade-amount: 25% !default;
+$btn-active-border-tint-amount:  10% !default;
 
 
 // Forms
 
-$input-focus-border-color: lighten($component-active-bg, 25%) !default;
+$input-focus-border-color: tint-color($component-active-bg, 50%) !default;
 $input-focus-width:        $input-btn-focus-width !default;
 $input-focus-box-shadow:   $input-btn-focus-box-shadow !default;
 
-$custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-disabled-bg:  rgba($primary, 0.5) !default;
-$custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
+$form-check-input-focus-border:         $input-focus-border-color !default;
+$form-check-input-focus-box-shadow:     $input-btn-focus-box-shadow !default;
 
-$custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
-$custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
+$form-check-input-checked-bg-color:     $component-active-bg !default;
+$form-check-input-checked-border-color: $form-check-input-checked-bg-color !default;
 
-$custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
-$custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
+$form-check-input-indeterminate-bg-color:     $component-active-bg !default;
+$form-check-input-indeterminate-border-color: $form-check-input-indeterminate-bg-color !default;
 
-$custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
-$custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg !default;
+$form-switch-focus-color:    $input-focus-border-color !default;
+$form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
 
-$custom-select-focus-border-color: $input-focus-border-color !default;
-$custom-select-focus-width:        $input-focus-width !default;
-$custom-select-focus-box-shadow:   0 0 0 $custom-select-focus-width $input-btn-focus-color !default;
+$form-select-focus-border-color: $input-focus-border-color !default;
+$form-select-focus-width:        $input-focus-width !default;
+$form-select-focus-box-shadow:   0 0 0 $form-select-focus-width $input-btn-focus-color !default;
 
-$custom-range-thumb-bg:        $component-active-bg !default;
-$custom-range-thumb-active-bg: lighten($component-active-bg, 35%) !default;
-
-$custom-file-focus-border-color: $input-focus-border-color !default;
-$custom-file-focus-box-shadow:   $input-focus-box-shadow !default;
+$form-range-thumb-bg:               $component-active-bg !default;
+$form-range-thumb-active-bg:        tint-color($component-active-bg, 70%) !default;
+$form-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 
 
 // Navs
+
+$nav-link-color:           $link-color !default;
+$nav-link-hover-color:     $link-hover-color !default;
 
 $nav-pills-link-active-bg: $component-active-bg !default;
 
@@ -84,7 +125,7 @@ $nav-pills-link-active-bg: $component-active-bg !default;
 // Navbar
 
 $sidebar-mobile-toggle-bg:     transparent !default;
-$sidebar-mobile-toggle-color:  white !default;
+$sidebar-mobile-toggle-color:  $white !default;
 $sidebar-mobile-toggle-border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15) !default;
 
 $sidebar-mobile-toggle-active-bg:     rgba($sidebar-mobile-toggle-color, 0.1) !default;
@@ -95,13 +136,15 @@ $sidebar-mobile-toggle-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewB
 
 // Dropdowns
 
-$dropdown-link-active-bg: $component-active-bg !default;
+$dropdown-link-active-bg:      $component-active-bg !default;
+$dropdown-dark-link-active-bg: $dropdown-link-active-bg !default;
 
 
 // Pagination
 
 $pagination-color:               $link-color !default;
 
+$pagination-focus-color:         $link-hover-color !default;
 $pagination-focus-box-shadow:    $input-btn-focus-box-shadow !default;
 
 $pagination-hover-color:         $link-hover-color !default;
@@ -110,16 +153,23 @@ $pagination-active-bg:           $component-active-bg !default;
 $pagination-active-border-color: $pagination-active-bg !default;
 
 
-// Badges
+// Accordion
 
-$badge-focus-width: $input-btn-focus-width !default;
+$accordion-button-active-bg:          tint-color($component-active-bg, 90%) !default;
+$accordion-button-active-color:       shade-color($primary, 10%) !default;
+
+$accordion-button-focus-border-color: $input-focus-border-color !default;
+$accordion-button-focus-box-shadow:   $btn-focus-box-shadow !default;
+
+$accordion-icon-active-color:         $accordion-button-active-color !default;
+$accordion-button-active-icon:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 
 
 // Alerts
 
-$alert-bg-level:     2 !default;
-$alert-border-level: 3 !default;
-$alert-color-level:  -12 !default;
+$alert-bg-scale:     20% !default;
+$alert-border-scale: 25% !default;
+$alert-color-scale:  -100% !default;
 
 
 // Progress bars
@@ -129,18 +179,25 @@ $progress-bar-bg: $primary !default;
 
 // List group
 
+$list-group-item-bg-scale:       -80% !default;
+$list-group-item-color-scale:    40% !default;
+
 $list-group-active-bg:           $component-active-bg !default;
 $list-group-active-border-color: $list-group-active-bg !default;
 
 
+// Close
+
+$btn-close-focus-shadow: $input-btn-focus-box-shadow !default;
+
+
 // Select2
 
-$s2bs-input-border-focus:            $input-focus-border-color !default;
-$s2bs-form-control-focus-box-shadow: $input-focus-box-shadow !default;
-$s2bs-dropdown-link-active-bg:       $dropdown-link-active-bg !default;
+$s2bs5-focus-border-color: $form-select-focus-border-color !default;
+$s2bs5-focus-width:        $form-select-focus-width !default;
+$s2bs5-focus-box-shadow:   $form-select-focus-box-shadow !default;
 
-
-$s2bs5-item-active-bg: $primary !default;
+$s2bs5-item-active-bg:     tint-color($primary, 90%) !default;
 
 
 // Trestle

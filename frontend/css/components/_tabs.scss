@@ -50,9 +50,9 @@
     vertical-align: 1px;
 
     // Default badge color when no badge- classes specified
-    &:not([class*="badge-"]) {
+    &:not([class*="bg-"]) {
       background: $gray-600;
-      color: color-yiq($gray-600);
+      color: color-contrast($gray-600);
     }
   }
 }

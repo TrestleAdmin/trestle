@@ -1,0 +1,6 @@
+.form-select {
+  &:focus {
+    border-color: $form-select-focus-border-color;
+    box-shadow: $form-select-focus-box-shadow;
+  }
+}

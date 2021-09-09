@@ -1,3 +1,12 @@
+.nav-link {
+  color: $nav-link-color;
+
+  &:hover,
+  &:focus {
+    color: $nav-link-hover-color;
+  }
+}
+
 .nav-pills {
   .nav-link.active,
   .show > .nav-link {

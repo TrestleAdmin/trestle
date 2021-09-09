@@ -4,3 +4,12 @@
     background-color: $dropdown-link-active-bg;
   }
 }
+
+.dropdown-menu-dark {
+  .dropdown-item {
+    &.active,
+    &:active {
+      background-color: $dropdown-dark-link-active-bg;
+    }
+  }
+}

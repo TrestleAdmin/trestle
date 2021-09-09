@@ -1,0 +1,15 @@
+.accordion-button {
+  &:not(.collapsed) {
+    color: $accordion-button-active-color;
+    background-color: $accordion-button-active-bg;
+
+    &::after {
+      background-image: escape-svg($accordion-button-active-icon);
+    }
+  }
+
+  &:focus {
+    border-color: $accordion-button-focus-border-color;
+    box-shadow: $accordion-button-focus-box-shadow;
+  }
+}
