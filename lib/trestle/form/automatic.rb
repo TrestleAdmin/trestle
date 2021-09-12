@@ -32,6 +32,15 @@ module Trestle
                 datetime_field attribute.name
               when :boolean
                 check_box attribute.name
+              when :integer
+                if instance.class.respond_to?(attribute.name.to_s.pluralize)
+                  # AR Enum
+                  values = instance.class.send(attribute.name.to_s.pluralize).keys.map { |status| [status, status.humanize] }
+
+                  collection_radio_buttons(attribute.name, values, :first, :last)
+                else
+                  text_field attribute.name
+                end
               when :json, :jsonb
                 value = instance.public_send(attribute.name)
                 text_area attribute.name, value: value.try(:to_json)
