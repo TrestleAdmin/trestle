@@ -127,7 +127,7 @@
   }
 }
 
-@include media-breakpoint-between(md, lg) {
+@include media-breakpoint-between(md, xl) {
   .nav-tooltip {
     display: block !important;
   }

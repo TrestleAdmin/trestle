@@ -57,7 +57,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .nav-tabs {
     .nav-link {
       font-size: 0.95rem;

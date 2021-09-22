@@ -124,7 +124,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   html, body {
     overflow-x: hidden;
   }
@@ -172,7 +172,7 @@
   }
 }
 
-@include media-breakpoint-between(md, lg) {
+@include media-breakpoint-between(md, xl) {
   .app-sidebar {
     width: $sidebar-width-collapsed;
 

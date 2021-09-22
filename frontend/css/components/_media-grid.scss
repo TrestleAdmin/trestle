@@ -88,7 +88,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .media-grid {
     margin-left: -5px;
     margin-right: -5px;

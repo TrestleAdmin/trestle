@@ -12,7 +12,7 @@
   background: $header-bg;
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .app-header {
     margin-top: -$header-height;
 

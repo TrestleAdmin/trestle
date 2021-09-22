@@ -10,7 +10,7 @@
     }
   }
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     font-size: 0.75rem;
   }
 }
@@ -27,7 +27,7 @@
 
 // Reduce breadcrumb separator spacing on mobile
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .breadcrumb-item {
     + .breadcrumb-item {
       padding-left: divide($breadcrumb-item-padding-x, 2);

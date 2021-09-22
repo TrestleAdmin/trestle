@@ -27,7 +27,7 @@
     font-size: 1.35rem;
     padding: 0.5rem 1.25rem;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 1.25rem;
       padding: 0.35rem 0.75rem;
     }
@@ -46,7 +46,7 @@
       }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 0.75rem;
       padding: 0.2rem 0.5rem;
     }

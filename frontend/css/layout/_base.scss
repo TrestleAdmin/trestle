@@ -43,7 +43,7 @@ body {
   flex-direction: column;
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   body {
     height: auto;
   }

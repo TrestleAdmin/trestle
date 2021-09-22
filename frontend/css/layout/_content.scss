@@ -12,7 +12,7 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 2.25rem;
     }
   }
@@ -24,7 +24,7 @@
   .content-header-title {
     margin: 5px 0;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       margin: 2px 0;
     }
   }
@@ -116,7 +116,7 @@
   min-height: 400px;
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .main-content-container {
     flex-direction: column;
   }
@@ -127,7 +127,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .content-header {
     padding: 10px;
   }
