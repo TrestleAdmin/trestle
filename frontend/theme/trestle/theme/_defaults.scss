@@ -211,10 +211,10 @@ $theme-bg-color: shade-color($primary, 30%) !default;
 
 $sidebar-active-border-color: $primary !default;
 
-$tag-bg:           tint-color($primary, 15%) !default;
-$tag-color:        color-contrast($tag-bg) !default;
+$tag-bg:           tint-color($primary, 30%) !default;
+$tag-color:        color-contrast($tag-bg, shade-color($primary, 60%)) !default;
 $tag-border:       $primary !default;
 
 $tag-hover-bg:     $primary !default;
-$tag-hover-color:  color-contrast($tag-hover-bg) !default;
-$tag-hover-border: shade-color($primary, 10%) !default;
+$tag-hover-color:  color-contrast($tag-hover-bg, shade-color($primary, 60%)) !default;
+$tag-hover-border: shade-color($primary, 30%) !default;
