@@ -26,6 +26,19 @@
   height: 100%;
 }
 
+@function soft-shadow($distance: 0.5rem, $blur: 1.5rem, $color: rgba(black, 0.125), $layers: 5, $reduce: ($distance / -4)) {
+  $val: 0 #{$distance} #{$blur} #{$reduce} #{$color};
+
+  @for $i from 1 through ($layers - 1) {
+    $distance: $distance / 2;
+    $blur: $blur / 2;
+
+    $val: 0 #{$distance} #{$blur} #{$reduce} #{$color}, #{$val};
+  }
+
+  @return $val;
+}
+
 %fa {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;

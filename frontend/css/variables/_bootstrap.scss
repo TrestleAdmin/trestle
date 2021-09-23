@@ -52,6 +52,9 @@ $h6-font-size: 1rem;
 $hr-color: rgba(black, 0.375);
 $hr-margin-y: 1.5rem;
 
+$box-shadow: soft-shadow(1rem, 1.5em, rgba(black, 0.25));
+$box-shadow-sm: soft-shadow(0.5rem, 0.75em, rgba(black, 0.075), $layers: 4);
+
 
 // Navs
 
@@ -140,7 +143,7 @@ $form-switch-width: 2.25em;
 // Dropdowns
 
 $dropdown-spacer:            0.5rem;
-$dropdown-box-shadow:        0 3px 6px rgba(black, 0.175);
+$dropdown-box-shadow:        $box-shadow-sm;
 $dropdown-arrow-width:       7px;
 $dropdown-arrow-outer-width: $dropdown-arrow-width + 1px;
 $dropdown-header-color:      #111111;
