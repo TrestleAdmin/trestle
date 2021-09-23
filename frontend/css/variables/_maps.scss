@@ -12,3 +12,4 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // This is done after importing the default Bootstrap variables as a null value would be overwritten.
 
 $input-box-shadow: null;
+$form-select-box-shadow: null;
