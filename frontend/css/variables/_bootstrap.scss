@@ -62,8 +62,11 @@ $nav-tabs-border-radius: 0;
 $nav-tabs-border-width:  0;
 
 // (non-Bootstrap variables)
-$nav-tabs-link-bg:    #eeeeee;
-$nav-tabs-link-color: #555555;
+$nav-tabs-link-bg:          #eeeeee;
+$nav-tabs-link-color:       #555555;
+$nav-tabs-link-hover-bg:    #eaeaea;
+$nav-tabs-link-hover-color: #505050;
+$nav-tabs-link-transition:  color .1s ease-in-out, background-color .1s ease-in-out;
 
 $nav-tabs-link-active-bg:    white;
 $nav-tabs-link-active-color: $body-color;

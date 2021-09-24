@@ -25,10 +25,17 @@
     margin-right: 4px;
     padding: 10px 20px;
 
+    font-weight: 500;
+
+    transition: $nav-tabs-link-transition;
+
     background-color: $nav-tabs-link-bg;
     color: $nav-tabs-link-color;
 
-    font-weight: 500;
+    &:not(.active):hover {
+      background-color: $nav-tabs-link-hover-bg;
+      color: $nav-tabs-link-hover-color;
+    }
   }
 
   .align-right {
