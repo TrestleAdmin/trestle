@@ -3,10 +3,7 @@
 }
 
 .select2-container--bootstrap-5 {
-  // This is required to ensure the select field is rendered at full width
-  // within Bootstrap tabs that are hidden when the page is first loaded.
-  // See: https://github.com/select2/select2/issues/4220
-  width: 100% !important;
+  width: auto !important;
 
   .select2-dropdown {
     .select2-search {
@@ -112,6 +109,15 @@
       &.select2-selection {
         border-radius: $s2bs5-border-radius !important;
         border-color: $s2bs5-focus-border-color !important;
+      }
+    }
+  }
+
+  // Prevent input zooming on mobile devices
+  @include media-breakpoint-down(sm) {
+    .select2-search--inline {
+      .select2-search__field {
+        font-size: 16px;
       }
     }
   }

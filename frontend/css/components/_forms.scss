@@ -36,3 +36,12 @@ ul.invalid-feedback {
 .form-label {
   display: block;
 }
+
+// Prevent input zooming on mobile devices
+@include media-breakpoint-down(sm) {
+  .form-control,
+  .form-select,
+  .input-group-text {
+    font-size: 16px;
+  }
+}
