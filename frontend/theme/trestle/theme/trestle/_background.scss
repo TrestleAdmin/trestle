@@ -35,27 +35,27 @@
 
 
   .theme-bg-dark {
-    background-color: shade-color($theme-bg-color, 10%);
+    background-color: shade-color($theme-bg-color, 25%);
   }
 
   .theme-bg-darker {
-    background-color: shade-color($theme-bg-color, 20%);
+    background-color: shade-color($theme-bg-color, 40%);
   }
 
   .theme-bg-darkest {
-    background-color: shade-color($theme-bg-color, 30%);
+    background-color: shade-color($theme-bg-color, 55%);
   }
 
 
   .theme-bg-light {
-    background-color: tint-color($theme-bg-color, 10%);
+    background-color: tint-color($theme-bg-color, 15%);
   }
 
   .theme-bg-lighter {
-    background-color: tint-color($theme-bg-color, 20%);
+    background-color: tint-color($theme-bg-color, 30%);
   }
 
   .theme-bg-lightest {
-    background-color: tint-color($theme-bg-color, 30%);
+    background-color: tint-color($theme-bg-color, 45%);
   }
 }

@@ -12,33 +12,33 @@
 
 .theme-bg-dark {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 5%);
+  background-color: shade-color($theme-bg, 25%);
 }
 
 .theme-bg-darker {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 10%);
+  background-color: shade-color($theme-bg, 40%);
 }
 
 .theme-bg-darkest {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 15%);
+  background-color: shade-color($theme-bg, 55%);
 }
 
 
 .theme-bg-light {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 5%);
+  background-color: tint-color($theme-bg, 15%);
 }
 
 .theme-bg-lighter {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 10%);
+  background-color: tint-color($theme-bg, 30%);
 }
 
 .theme-bg-lightest {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 15%);
+  background-color: tint-color($theme-bg, 45%);
 }
 
 
