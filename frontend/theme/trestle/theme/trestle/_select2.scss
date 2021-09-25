@@ -7,6 +7,13 @@
     }
   }
 
+  &.select2-container--open {
+    .select2-dropdown {
+      border-color: $s2bs5-focus-border-color;
+      box-shadow: $s2bs5-focus-box-shadow;
+    }
+  }
+
   .select2-dropdown {
     .select2-search {
       .select2-search__field {

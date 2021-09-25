@@ -39,6 +39,35 @@
     }
   }
 
+  &.select2-container--open {
+    $inset: -$input-btn-focus-width;
+
+    &.select2-container--below {
+      .select2-selection {
+        clip-path: inset($inset $inset 0 $inset);
+      }
+    }
+
+    &.select2-container--above {
+      .select2-selection {
+        clip-path: inset(0 $inset $inset $inset);
+      }
+    }
+
+    .select2-dropdown {
+      border-color: $s2bs5-focus-border-color;
+      box-shadow: $s2bs5-focus-box-shadow;
+    }
+
+    .select2-dropdown--below {
+      clip-path: inset(0 $inset $inset $inset);
+    }
+
+    .select2-dropdown--above {
+      clip-path: inset($inset $inset 0 $inset);
+    }
+  }
+
   .tag-select.select2-selection--multiple {
     .select2-selection__rendered {
       .select2-selection__choice {
