@@ -66,6 +66,8 @@
   }
 
   .tag-select.select2-selection--multiple {
+    clip-path: none !important;
+
     .select2-selection__rendered {
       .select2-selection__choice {
         display: flex;

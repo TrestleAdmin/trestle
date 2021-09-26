@@ -66,6 +66,7 @@
       <%= f.collection_select :collection_select_field, Color.all, :code, :name_with_code %>
       <%= f.grouped_collection_select :grouped_collection_select_field, Color.categorized, :colors, :name, :code, :name_with_code, {}, { multiple: true } %>
       <%= f.time_zone_select :time_zone_select, /Australia/ %>
+      <%= f.tag_select :tag_select %>
     <% end %>
 
     <%= container do |c| %>
