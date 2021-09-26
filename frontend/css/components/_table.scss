@@ -10,14 +10,16 @@
   background-repeat: no-repeat;
   background-size: 50px 100%, 50px 100%, 15px 100%, 15px 100%;
   background-attachment: local, local, scroll, scroll;
+
+  // iOS 13 no longer supports -wekbit-overflow-scrolling so
+  // we must unfortunately disable the overflow shadows.
+  @supports (-webkit-touch-callout: none) {
+    background: none;
+  }
 }
 
 .table-container {
   overflow-x: auto;
-
-  // Momentum scrolling (touch) causes rendering issues on iOS with the
-  // scrolling background hints. Must be disabled explicitly.
-  -webkit-overflow-scrolling: auto;
 
   @include table-container-background(white);
 
