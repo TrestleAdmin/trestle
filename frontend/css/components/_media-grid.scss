@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .media-grid {
   @include list-unstyled;
   @include make-row;
@@ -6,8 +8,8 @@
     position: relative;
     width: 100%;
 
-    padding-right: $grid-gutter-width / 2;
-    padding-left: $grid-gutter-width / 2;
+    padding-right: math.div($grid-gutter-width, 2);
+    padding-left: math.div($grid-gutter-width, 2);
 
     @include make-col(6);
 
@@ -25,7 +27,7 @@
   figure {
     margin: 0;
 
-    @include aspect-ratio(4 / 3);
+    @include aspect-ratio(math.div(4, 3));
 
     background: #eee;
     overflow: hidden;

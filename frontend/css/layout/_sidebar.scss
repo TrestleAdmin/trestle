@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .app-sidebar {
   background: $sidebar-bg;
 
@@ -23,8 +25,8 @@
 
     align-self: center;
 
-    margin-left: $grid-gutter-width / 2;
-    margin-right: $grid-gutter-width / 2;
+    margin-left: math.div($grid-gutter-width, 2);
+    margin-right: math.div($grid-gutter-width, 2);
 
     background: $sidebar-mobile-toggle-bg;
     border: $sidebar-mobile-toggle-border;

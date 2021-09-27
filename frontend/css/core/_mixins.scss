@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin font-smoothing($value: on) {
   @if $value == on {
     -webkit-font-smoothing: antialiased;
@@ -12,7 +14,7 @@
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: percentage(1 / $ratio);
+  padding-bottom: percentage(math.div(1, $ratio));
   background-size: 100%;
 }
 
@@ -26,12 +28,12 @@
   height: 100%;
 }
 
-@function soft-shadow($distance: 0.5rem, $blur: 1.5rem, $color: rgba(black, 0.125), $layers: 5, $reduce: ($distance / -4)) {
+@function soft-shadow($distance: 0.5rem, $blur: 1.5rem, $color: rgba(black, 0.125), $layers: 5, $reduce: math.div($distance, -4)) {
   $val: 0 #{$distance} #{$blur} #{$reduce} #{$color};
 
   @for $i from 1 through ($layers - 1) {
-    $distance: $distance / 2;
-    $blur: $blur / 2;
+    $distance: math.div($distance, 2);
+    $blur: math.div($blur, 2);
 
     $val: 0 #{$distance} #{$blur} #{$reduce} #{$color}, #{$val};
   }
@@ -39,13 +41,9 @@
   @return $val;
 }
 
-%fa {
+@mixin icon-fa($content) {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-}
-
-@mixin icon-fa($content) {
-  @extend %fa;
   content: fa-content($content);
 }
 
