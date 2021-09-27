@@ -31,7 +31,7 @@ init(function (root) {
     const errorCount = $(this).find(ERROR_SELECTOR).length
 
     if (errorCount > 0) {
-      const badge = $('<span>').addClass('badge bg-danger rounded-pill').text(errorCount)
+      const badge = $('<span>').addClass('badge badge-danger badge-pill').text(errorCount)
       const id = $(this).attr('id')
       const selector = `${TAB_SELECTOR}[href='#${id}']`
 

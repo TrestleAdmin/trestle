@@ -83,7 +83,7 @@ module Trestle
         end
 
         def html_class
-          @html_class || "bg-primary"
+          @html_class || "badge-primary"
         end
       end
     end

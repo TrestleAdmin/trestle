@@ -1,0 +1,22 @@
+@mixin badge-variant($bg) {
+  color: color-contrast($bg);
+  background-color: $bg;
+
+  @at-root a#{&} {
+    &:hover,
+    &:focus {
+      color: color-contrast($bg);
+      background-color: shift-color($bg, $badge-hover-scale);
+    }
+  }
+}
+
+.badge-pill {
+  border-radius: $border-radius-pill;
+}
+
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include badge-variant($value);
+  }
+}

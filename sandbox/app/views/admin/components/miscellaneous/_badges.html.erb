@@ -1,29 +1,41 @@
 <%= container do |c| %>
   <% c.sidebar class: "order-first" do %>
     <h2>Badges</h2>
-    <p>Add any of the <code>.bg-*</code> background utility classes to change the appearance of a badge.</p>
+    <p>Add any of the <code>.badge-*</code> background utility classes to change the appearance of a badge.</p>
+    <p>The <code>.badge-*</code> classes were removed in Bootstrap 5 but a compatibility layer has been implemented in Trestle.</p>
   <% end %>
 
   <div class="mb-3">
-    <span class="badge bg-primary">Primary</span>
-    <span class="badge bg-secondary">Secondary</span>
-    <span class="badge bg-success">Success</span>
-    <span class="badge bg-danger">Danger</span>
-    <span class="badge bg-warning">Warning</span>
-    <span class="badge bg-info">Info</span>
-    <span class="badge bg-light">Light</span>
-    <span class="badge bg-dark">Dark</span>
+    <span class="badge badge-primary">Primary</span>
+    <span class="badge badge-secondary">Secondary</span>
+    <span class="badge badge-success">Success</span>
+    <span class="badge badge-danger">Danger</span>
+    <span class="badge badge-warning">Warning</span>
+    <span class="badge badge-info">Info</span>
+    <span class="badge badge-light">Light</span>
+    <span class="badge badge-dark">Dark</span>
   </div>
 
   <div class="mb-3">
-    <p>Use the <code>.rounded-pill</code> modifier class to make badges more rounded.</p>
-    <span class="badge rounded-pill bg-primary">Primary</span>
-    <span class="badge rounded-pill bg-secondary">Secondary</span>
-    <span class="badge rounded-pill bg-success">Success</span>
-    <span class="badge rounded-pill bg-danger">Danger</span>
-    <span class="badge rounded-pill bg-warning">Warning</span>
-    <span class="badge rounded-pill bg-info">Info</span>
-    <span class="badge rounded-pill bg-light">Light</span>
-    <span class="badge rounded-pill bg-dark">Dark</span>
+    <a href="#" class="badge badge-primary">Primary</a>
+    <a href="#" class="badge badge-secondary">Secondary</a>
+    <a href="#" class="badge badge-success">Success</a>
+    <a href="#" class="badge badge-danger">Danger</a>
+    <a href="#" class="badge badge-warning">Warning</a>
+    <a href="#" class="badge badge-info">Info</a>
+    <a href="#" class="badge badge-light">Light</a>
+    <a href="#" class="badge badge-dark">Dark</a>
+  </div>
+
+  <div>
+    <p>Use the <code>.badge-pill</code> modifier class to make badges more rounded.</p>
+    <span class="badge badge-primary badge-pill">Primary</span>
+    <span class="badge badge-secondary badge-pill">Secondary</span>
+    <span class="badge badge-success badge-pill">Success</span>
+    <span class="badge badge-danger badge-pill">Danger</span>
+    <span class="badge badge-warning badge-pill">Warning</span>
+    <span class="badge badge-info badge-pill">Info</span>
+    <span class="badge badge-light badge-pill">Light</span>
+    <span class="badge badge-dark badge-pill">Dark</span>
   </div>
 <% end %>

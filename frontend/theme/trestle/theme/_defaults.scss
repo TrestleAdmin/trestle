@@ -211,8 +211,10 @@ $theme-bg-color: shade-color($primary, 30%) !default;
 
 $sidebar-active-border-color: $primary !default;
 
-$tag-bg-scale:           -30%;
-$tag-border-scale:       0;
+$badge-hover-scale: -15% !default;
 
-$tag-hover-bg-scale:     -15%;
-$tag-hover-border-scale: 15%;
+$tag-bg-scale:           -30% !default;
+$tag-border-scale:       0 !default;
+
+$tag-hover-bg-scale:     -15% !default;
+$tag-hover-border-scale: 15% !default;
