@@ -211,10 +211,8 @@ $theme-bg-color: shade-color($primary, 30%) !default;
 
 $sidebar-active-border-color: $primary !default;
 
-$tag-bg:           tint-color($primary, 30%) !default;
-$tag-color:        color-contrast($tag-bg, shade-color($primary, 60%)) !default;
-$tag-border:       $primary !default;
+$tag-bg-scale:           -30%;
+$tag-border-scale:       0;
 
-$tag-hover-bg:     $primary !default;
-$tag-hover-color:  color-contrast($tag-hover-bg, shade-color($primary, 60%)) !default;
-$tag-hover-border: shade-color($primary, 30%) !default;
+$tag-hover-bg-scale:     -15%;
+$tag-hover-border-scale: 15%;

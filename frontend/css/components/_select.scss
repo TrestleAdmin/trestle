@@ -78,10 +78,15 @@
         font-size: 0.9rem;
 
         border: 0;
-        border-left: 4px solid $tag-border;
+        border-left: 4px solid;
         border-radius: 4px;
 
-        background: $tag-bg;
+        $tag-background: shift-color($primary, $tag-bg-scale);
+        $tag-border: shift-color($primary, $tag-border-scale);
+        $tag-color: color-contrast($tag-background);
+
+        background-color: $tag-background;
+        border-color: $tag-border;
         color: $tag-color;
       }
 

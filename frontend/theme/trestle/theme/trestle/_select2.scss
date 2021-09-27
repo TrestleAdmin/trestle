@@ -39,8 +39,13 @@
     &.select2-selection--multiple {
       .select2-selection__rendered {
         .select2-selection__choice {
-          background-color: $tag-bg;
+          $tag-background: shift-color($primary, $tag-bg-scale);
+          $tag-border: shift-color($primary, $tag-border-scale);
+          $tag-color: color-contrast($tag-background);
+
+          background-color: $tag-background;
           border-color: $tag-border;
+          color: $tag-color;
         }
       }
     }
