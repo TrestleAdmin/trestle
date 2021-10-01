@@ -15,7 +15,7 @@ Trestle.configure do |config|
   #
   # config.site_logo_small = "logo-small.png"
 
-  # Speficy a favicon to be used within the admin.
+  # Specify a favicon to be used within the admin.
   #
   # config.favicon = "favicon.ico"
 
