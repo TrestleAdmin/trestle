@@ -10,6 +10,8 @@
   text-align: center;
 
   color: #ccc;
+  background: none;
+  border: none;
 
   &:hover, &:focus {
     color: #aaa;
@@ -55,7 +57,7 @@
     margin-top: -$dropdown-spacer;
   }
 
-  &.showTimeInput.hasTime {
+  &.hasTime {
     .flatpickr-time {
       border-radius: 0 0 5px 5px;
     }
@@ -66,7 +68,7 @@
       border-bottom-color: white;
     }
 
-    &.showTimeInput.hasTime {
+    &.hasTime {
       .flatpickr-time {
         border-top: 0;
         border-radius: 5px;

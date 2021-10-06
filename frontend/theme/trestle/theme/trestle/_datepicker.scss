@@ -9,7 +9,7 @@
 }
 
 .flatpickr-calendar {
-  &.arrowTop {
+  &.arrowTop:not(.noCalendar) {
     &::after {
       border-bottom-color: tint-color($theme-bg-color, 10%);
     }
