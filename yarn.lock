@@ -958,6 +958,21 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
   integrity sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==
 
+"@hotwired/stimulus-webpack-helpers@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@hotwired/stimulus-webpack-helpers/-/stimulus-webpack-helpers-1.0.1.tgz#4cd74487adeca576c9865ac2b9fe5cb20cef16dd"
+  integrity sha512-wa/zupVG0eWxRYJjC1IiPBdt3Lruv0RqGN+/DTMmUWUyMAEB27KXmVY6a8YpUVTM7QwVuaLNGW4EqDgrS2upXQ==
+
+"@hotwired/stimulus@^3.0.0":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.2.2.tgz#071aab59c600fed95b97939e605ff261a4251608"
+  integrity sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==
+
+"@hotwired/turbo@^7.0.1":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.3.0.tgz#2226000fff1aabda9fd9587474565c9929dbf15d"
+  integrity sha512-Dcu+NaSvHLT7EjrDrkEmH4qET2ZJZ5IcCWmNXxNQTBwlnE5tBZfN6WxZ842n5cHV52DH/AKNirbPBtcEXDLW4g==
+
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz#7e02e6eb5df901aaedb08514203b096614024098"

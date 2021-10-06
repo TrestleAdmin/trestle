@@ -111,14 +111,14 @@ module Trestle
             format.html do
               if success
                 flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
-                redirect_to_return_location(:destroy, instance, default: admin.path(:index))
+                redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index))
               else
                 flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
 
                 if load_instance
                   redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
                 else
-                  redirect_to_return_location(:destroy, instance, default: admin.path(:index))
+                  redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index))
                 end
               end
             end

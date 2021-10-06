@@ -42,7 +42,7 @@ module Trestle
         end
 
         def delete
-          link(t("buttons.delete", default: "Delete"), instance, admin: admin, action: :destroy, method: :delete, icon: "fa fa-trash", style: :danger, data: { toggle: "confirm-delete", placement: "left" })
+          link(t("buttons.delete", default: "Delete"), instance, admin: admin, action: :destroy, icon: "fa fa-trash", style: :danger, data: { turbo_method: "delete", toggle: "confirm-delete", placement: "left" })
         end
 
         builder_method :show, :edit, :delete

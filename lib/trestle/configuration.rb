@@ -68,8 +68,8 @@ module Trestle
       self.helper_module.module_eval(&block) if block_given?
     end
 
-    # Enable or disable Turbolinks within the Trestle admin
-    option :turbolinks, defined?(Turbolinks)
+    # [DEPRECATED] Enable or disable Turbolinks within the Trestle admin
+    option :turbolinks, false
 
     # List of parameters that should persist across requests when paginating or reordering
     option :persistent_params, [:sort, :order, :scope]
