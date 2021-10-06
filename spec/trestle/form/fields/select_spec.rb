@@ -13,7 +13,7 @@ describe Trestle::Form::Fields::Select, type: :helper do
   it_behaves_like "a form field", :country, :html_options
 
   it "renders a select control" do
-    expect(subject).to have_tag("select.form-select", with: { id: "article_country", "data-enable-select2": true })
+    expect(subject).to have_tag("select.form-select", with: { id: "article_country", "data-controller": "select" })
   end
 
   context "given an Array of String choices" do

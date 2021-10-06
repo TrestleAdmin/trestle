@@ -13,15 +13,15 @@ describe Trestle::Form::Fields::DateSelect, type: :helper do
 
   it "renders a date select within a .date-select container" do
     expect(subject).to have_tag(".date-select") do
-      with_tag "select.form-select", with: { name: "article[published_on(1i)]", "data-enable-select2": true } do
+      with_tag "select.form-select", with: { name: "article[published_on(1i)]", "data-controller": "select" } do
         with_tag "option[selected]", with: { value: 2020 }
       end
 
-      with_tag "select.form-select", with: { name: "article[published_on(2i)]", "data-enable-select2": true } do
+      with_tag "select.form-select", with: { name: "article[published_on(2i)]", "data-controller": "select" } do
         with_tag "option[selected]", with: { value: 10 }
       end
 
-      with_tag "select.form-select", with: { name: "article[published_on(3i)]", "data-enable-select2": true } do
+      with_tag "select.form-select", with: { name: "article[published_on(3i)]", "data-controller": "select" } do
         with_tag "option[selected]", with: { value: 16 }
       end
     end
@@ -31,9 +31,9 @@ describe Trestle::Form::Fields::DateSelect, type: :helper do
     let(:options) { { disabled: true } }
 
     it "sets the disabled attribute on the select controls" do
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(1i)]", "data-enable-select2": true })
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(2i)]", "data-enable-select2": true })
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(3i)]", "data-enable-select2": true })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(1i)]", "data-controller": "select" })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(2i)]", "data-controller": "select" })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(3i)]", "data-controller": "select" })
     end
   end
 
@@ -41,9 +41,9 @@ describe Trestle::Form::Fields::DateSelect, type: :helper do
     let(:options) { { readonly: true } }
 
     it "sets the disabled attribute on the select controls" do
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(1i)]", "data-enable-select2": true })
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(2i)]", "data-enable-select2": true })
-      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(3i)]", "data-enable-select2": true })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(1i)]", "data-controller": "select" })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(2i)]", "data-controller": "select" })
+      expect(subject).to have_tag('select[disabled]', with: { name: "article[published_on(3i)]", "data-controller": "select" })
     end
   end
 end
