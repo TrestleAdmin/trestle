@@ -34,6 +34,7 @@ module Trestle
 
           if @table.admin && @table.autolink? && @table.admin.actions.include?(:show)
             options.merge!(data: { url: admin_url_for(instance) })
+            options.merge!(data: { controller: "follow-url", action: "click->follow-url#follow" })
             options.merge!(data: { behavior: "dialog" }) if @table.admin.form.dialog?
           end
 
