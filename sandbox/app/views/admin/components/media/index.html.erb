@@ -52,14 +52,16 @@
     <% c.sidebar class: "order-first" do %>
       <h2>Gallery</h2>
 
-      <p>To have the images function as a lightbox gallery (using <%= link_to "Magnific Popup", "https://dimsemenov.com/plugins/magnific-popup/", target: "_blank" %>), add <code>data-behavior="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag.</p>
+      <p>To have the images function as a lightbox gallery (using <%= link_to "Magnific Popup", "https://dimsemenov.com/plugins/magnific-popup/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
       <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
+
+      <p>Individual image links can implement a lightbox popup using <code>data-controller="lightbox"</code>.</p>
     <% end %>
 
-    <ul class="media-grid media-grid-sm" data-behavior="gallery">
+    <ul class="media-grid media-grid-sm" data-controller="gallery">
       <% 12.times do |i| %>
         <li>
-          <%= link_to random_image_url(800, 600, "4-#{i}") do %>
+          <%= link_to random_image_url(800, 600, "4-#{i}"), data: { gallery_target: "image" } do %>
             <figure class="fill zoom"><%= random_image(800, 600, "4-#{i}") %></figure>
           <% end %>
         </li>
