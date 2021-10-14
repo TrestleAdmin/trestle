@@ -16,10 +16,12 @@
   height: $header-height;
 
   display: flex;
-  align-items: center;
+  align-items: stretch;
 
   .navbar-toggler {
     outline: none;
+
+    align-self: center;
 
     margin-left: $grid-gutter-width / 2;
     margin-right: $grid-gutter-width / 2;
@@ -44,7 +46,6 @@
   display: flex;
   align-items: center;
 
-  height: 100%;
   padding: 10px 15px;
 
   font-size: 1.4rem;
