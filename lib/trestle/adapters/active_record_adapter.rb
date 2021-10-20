@@ -60,6 +60,8 @@ module Trestle
             Attribute::Association.new(column.name, class: -> { reflection.klass }, name: name, polymorphic: reflection.polymorphic?, type_column: reflection.foreign_type)
           elsif column.name.end_with?("_type") && (name = column.name.sub(/_type$/, '')) && (reflection = model.reflections[name])
             # Ignore type columns for polymorphic associations
+          elsif enum_column?(column)
+            Attribute.new(column.name, :enum, values: enum_values(column))
           else
             Attribute.new(column.name, column.type, array_column?(column) ? { array: true } : {})
           end
@@ -80,6 +82,20 @@ module Trestle
 
       def array_column?(column)
         column.respond_to?(:array?) && column.array?
+      end
+
+      def enum_column?(column)
+        model.defined_enums.key?(column.name)
+      end
+
+      def enum_values(column)
+        model.defined_enums[column.name].map { |key, value|
+          [value, enum_human_name(column, key)]
+        }
+      end
+
+      def enum_human_name(column, value)
+        human_attribute_name([column.name.pluralize, value].join("."), default: value.humanize)
       end
     end
   end

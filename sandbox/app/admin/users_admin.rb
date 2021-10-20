@@ -9,7 +9,7 @@ Trestle.resource(:users) do
 
   table do
     column :avatar, header: false, align: :center do |user|
-      avatar(fallback: user.initials, style: "background: #{user.avatar_color}") { gravatar(user.email, d: user.avatar_type) }
+      avatar(fallback: user.initials, style: "background: #{user.avatar_color}") { gravatar(user.email, d: user.avatar_type_value) }
     end
     column :name, ->(user) { user.full_name }, link: true
     column :email, truncate: false do |user|
@@ -49,10 +49,10 @@ Trestle.resource(:users) do
 
       divider
 
-      select :avatar_type, { "Mystery Person" => "mp", "Identicon" => "identicon", "MonsterID" => "monsterid", "Wavatar" => "wavatar", "Retro" => "retro", "RoboHash" => "robohash", "Initials" => "blank" }
+      select :avatar_type, User.avatar_types
 
       static_field :avatar, label: false do
-        avatar(fallback: user.initials, style: "background: #{user.avatar_color}", class: "avatar-lg") { gravatar(user.email, d: user.avatar_type) }
+        avatar(fallback: user.initials, style: "background: #{user.avatar_color}", class: "avatar-lg") { gravatar(user.email, d: user.avatar_type_value) }
       end
     end
   end
