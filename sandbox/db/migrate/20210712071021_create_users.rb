@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :time_zone
 
       t.references :office
+      t.integer :level
 
       t.timestamps
     end

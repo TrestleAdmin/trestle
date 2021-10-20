@@ -16,7 +16,8 @@ users = 100.times.map do
     date_of_birth: Faker::Date.between(from: 60.years.ago, to: 17.years.ago),
     avatar_type: %w(mp identicon monsterid wavatar retro robohash blank).sample,
     time_zone: ActiveSupport::TimeZone::MAPPING.key(Faker::Address.time_zone),
-    office: offices.sample
+    office: offices.sample,
+    level: User.levels.keys.sample
   })
 end
 

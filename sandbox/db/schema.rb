@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_014917) do
     t.string "avatar_type"
     t.string "time_zone"
     t.integer "office_id"
+    t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["office_id"], name: "index_users_on_office_id"

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   scope :alphabetical, -> { order(:last_name, :first_name) }
 
+  enum level: [:executive, :manager, :staff, :intern, :contractor]
+
   def full_name
     [first_name, last_name].join(" ")
   end

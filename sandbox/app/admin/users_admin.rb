@@ -16,6 +16,9 @@ Trestle.resource(:users) do
       mail_to user.email
     end
     column :office
+    column :level, align: :center do |user|
+      status_tag(user.level.humanize)
+    end
     actions
   end
 
@@ -41,6 +44,8 @@ Trestle.resource(:users) do
 
     sidebar do
       select :office_id, Office.all
+
+      collection_radio_buttons :level, User.levels.keys.map { |l| [l, l.humanize] }, :first, :last
 
       divider
 
