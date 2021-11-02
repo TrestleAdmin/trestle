@@ -1,9 +1,16 @@
 require 'spec_helper'
 
 describe Trestle::Form::Renderer, type: :helper do
+  module ExampleHelper
+    def kwarg_helper(arg: 'bar')
+      arg
+    end
+  end
+
   include_context "template" do
     before(:each) do
       template.extend(Trestle::GridHelper)
+      template.extend(ExampleHelper)
 
       allow(template).to receive(:form) { form }
     end
@@ -38,6 +45,11 @@ describe Trestle::Form::Renderer, type: :helper do
   it "does not append non-whitelisted helpers to the result" do
     result = render_form { icon("fa fa-warning"); nil }
     expect(result).to be_blank
+  end
+
+  it "correctly forwards kwargs" do
+    result = render_form { kwarg_helper(arg: 'foo') }
+    expect(result).to eq('foo')
   end
 
   it "renders hooks within the context of the renderer" do

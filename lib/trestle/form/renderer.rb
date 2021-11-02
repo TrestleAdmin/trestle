@@ -4,6 +4,9 @@ require "action_view/helpers"
 module Trestle
   class Form
     class Renderer
+      def self.ruby2_keywords(*)
+      end unless respond_to?(:ruby2_keywords, true)
+
       include ::ActionView::Context
       include ::ActionView::Helpers::CaptureHelper
 
@@ -40,7 +43,7 @@ module Trestle
         concat(result)
       end
 
-      def method_missing(name, *args, &block)
+      ruby2_keywords def method_missing(name, *args, &block)
         target = @form.respond_to?(name) ? @form : @template
 
         if block_given? && !RAW_BLOCK_HELPERS.include?(name)
