@@ -11,7 +11,7 @@ module Trestle
             when :back
               redirect_back fallback_location: default, turbolinks: false
             else
-              redirect_to location, turbolinks: false
+              redirect_to location, turbolinks: true
             end
           else
             redirect_to default, turbolinks: false
