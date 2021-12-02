@@ -20,8 +20,13 @@ function createElement () {
     focus: false
   })
 
-  // Remove dialog elements once hidden
   $el.on('hidden.bs.modal', function () {
+    // Restore modal-open class on body if background modals still visible
+    if ($el.prevAll('.modal.show').length) {
+      $(document.body).addClass('modal-open')
+    }
+
+    // Remove dialog elements once hidden
     $el.remove()
   })
 
