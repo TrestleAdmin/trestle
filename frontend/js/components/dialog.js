@@ -27,7 +27,7 @@ function createElement () {
 
   // Restore the next visible modal to the foreground
   $el.on('hide.bs.modal', function () {
-    $el.prevAll('.modal.in').last().removeClass('background')
+    $el.prevAll('.modal.show').last().removeClass('background')
   })
 
   // Set X-Trestle-Dialog header on AJAX requests initiated from the dialog
@@ -120,7 +120,7 @@ export default class Dialog {
     this.$el.modal('show')
 
     // Background any existing visible modals
-    this.$el.prevAll('.modal.in').addClass('background')
+    this.$el.prevAll('.modal.show').addClass('background')
   }
 
   hide () {
