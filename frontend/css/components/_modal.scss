@@ -24,6 +24,8 @@
   }
 
   &.background {
+    overflow-y: hidden;
+
     .modal-dialog {
       transform: scale(0.9);
       opacity: 0.75;
