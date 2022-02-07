@@ -13,11 +13,11 @@ module Trestle
 
       class Renderer < Column::Renderer
         def header
-          checkbox "", nil, id: checkbox_id("all")
+          checkbox "", nil, id: checkbox_id("all"), data: { checkbox_select_target: "selectAll", action: "change->checkbox-select#toggleAll" }
         end
 
         def content(instance)
-          checkbox "selected[]", instance.to_param, id: checkbox_id(instance.to_param)
+          checkbox "selected[]", instance.to_param, id: checkbox_id(instance.to_param), data: { checkbox_select_target: "checkbox", action: "change->checkbox-select#toggle" }
         end
 
         def classes

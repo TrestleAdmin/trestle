@@ -11,7 +11,7 @@ describe Trestle::Table::SelectColumn do
     subject(:renderer) { column.renderer(table: table, template: template) }
 
     it "has a checkbox header" do
-      expect(renderer.header).to have_tag("input.form-check-input", with: { type: "checkbox", id: "select-all", name: "" })
+      expect(renderer.header).to have_tag("input.form-check-input", with: { type: "checkbox", id: "select-all", name: "", "data-checkbox-select-target": "selectAll", "data-action": "change->checkbox-select#toggleAll" })
     end
 
     it "has a class of 'select-row'" do
@@ -26,7 +26,7 @@ describe Trestle::Table::SelectColumn do
       let(:instance) { double(to_param: "abc") }
 
       it "returns a checkbox" do
-        expect(renderer.content(instance)).to have_tag("input.form-check-input", with: { type: "checkbox", id: "select-abc", name: "selected[]", value: "abc" })
+        expect(renderer.content(instance)).to have_tag("input.form-check-input", with: { type: "checkbox", id: "select-abc", name: "selected[]", value: "abc", "data-checkbox-select-target": "checkbox", "data-action": "change->checkbox-select#toggle" })
       end
     end
   end

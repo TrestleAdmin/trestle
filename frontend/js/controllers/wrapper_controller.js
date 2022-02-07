@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 const EVENTS = ['transitionend', 'webkitTransitionEnd']
 
 export default class extends Controller {
-  static targets = ["sidebar"]
+  static targets = ['sidebar']
 
   connect () {
     this.boundStopAnimating = this.stopAnimating.bind(this)

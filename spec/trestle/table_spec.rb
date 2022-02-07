@@ -75,9 +75,14 @@ describe Trestle::Table do
       expect(table.renderer(template).id).to eq("custom-id")
     end
 
-    it "returns the data from options" do
+    it "returns the data from options along with the Stimulus controller" do
       table = Trestle::Table.new(data: { attr: :custom })
-      expect(table.renderer(template).data).to eq({ attr: :custom })
+      expect(table.renderer(template).data).to eq({ attr: :custom, controller: "checkbox-select" })
+    end
+
+    it "merges any existing Stimulus contollers" do
+      table = Trestle::Table.new(data: { controller: "mycontroller" })
+      expect(table.renderer(template).data).to eq({ controller: "mycontroller checkbox-select" })
     end
   end
 end
