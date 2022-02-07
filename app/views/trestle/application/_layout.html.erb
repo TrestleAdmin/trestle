@@ -3,7 +3,7 @@
 <div class="main-content-area">
   <%= render "trestle/flash/flash" %>
   <%= render "utilities" %>
-  <%= render "tabs", data: { controller: "tabs" } %>
+  <%= render "tabs", data: { controller: "tabs tab-errors" } %>
 
   <% if local_assigns.fetch(:wrapper, true) %>
     <%= container do |c| %>
