@@ -8,6 +8,7 @@ import 'bootstrap'
 
 import cookie from './core/cookie'
 import { i18n, localize } from './core/i18n'
+import './core/compatibility'
 
 // Stimulus controllers
 

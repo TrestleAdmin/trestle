@@ -42,7 +42,6 @@
     "flatpickr": "^4.6.2",
     "jquery": "^3.6.0",
     "magnific-popup": "^1.1.0",
-    "popper.js": "^1.15.0",
     "select2": "^4.0.10",
     "select2-bootstrap-5-theme": "~1.1.1"
   }

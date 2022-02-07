@@ -44,7 +44,7 @@ body {
 }
 
 @include media-breakpoint-down(md) {
-  body {
+  html, body {
     height: auto;
   }
 
