@@ -14,5 +14,5 @@ $.fn.select2.defaults.set('dropdownCssClass', function (el) {
 })
 
 init(function (root) {
-  $(root).find('select[data-enable-select2]').select2()
+  $(root).find('select[data-enable-select2="true"]').select2()
 })
