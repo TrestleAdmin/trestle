@@ -35,11 +35,6 @@ module Trestle
       end
     end
 
-    initializer "trestle.turbolinks" do |app|
-      # Optional turbolinks
-      app.config.assets.precompile << "turbolinks.js" if Trestle.config.turbolinks
-    end
-
     config.to_prepare do
       Engine.reset_helpers!
     end

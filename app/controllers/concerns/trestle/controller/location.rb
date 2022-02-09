@@ -14,11 +14,6 @@ module Trestle
           headers["X-Trestle-Location"] = request.path
         end
       end
-
-      # Do not use Turbolinks for redirects from a dialog request
-      def visit_location_with_turbolinks(location, action)
-        super unless dialog_request?
-      end
     end
   end
 end
