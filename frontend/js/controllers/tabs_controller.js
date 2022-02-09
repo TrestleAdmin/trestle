@@ -2,6 +2,7 @@
 
 import { Controller } from '@hotwired/stimulus'
 
+import { navigator } from '@hotwired/turbo'
 import { Tab } from 'bootstrap'
 
 export default class extends Controller {
@@ -20,10 +21,13 @@ export default class extends Controller {
   }
 
   saveActiveTab (e) {
-    const url = e.target.getAttribute('href')
+    const hash = e.target.getAttribute('href')
 
-    if (url.substring(0, 1) === '#') {
-      history.replaceState({}, '', `#!${url.substring(1)}`)
+    if (hash.substring(0, 1) === '#') {
+      const url = `${location.pathname}#!${hash.substring(1)}`
+
+      history.replaceState({}, null, url)
+      navigator.history.replace(new URL(url, location.origin))
     }
   }
 
