@@ -1,6 +1,6 @@
 <% flatpickr_locale_conversions = { ca: "cat", el: "gr", nb: "no", vi: "vn" } %>
 
-<% I18n.available_locales.each do |locale| %>
+<% I18n.available_locales.sort.each do |locale| %>
   <% Trestle.i18n_fallbacks(locale).each do |candidate| %>
     <% candidate = flatpickr_locale_conversions[candidate] || candidate %>
     <% require_asset("trestle/flatpickr/#{candidate}") rescue nil %>
