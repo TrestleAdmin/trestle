@@ -25,12 +25,12 @@
     }
   }
 
-  &.background {
+  &.show:not(:last-child) {
+    opacity: 0.75;
     overflow-y: hidden;
 
     .modal-dialog {
       transform: scale(0.9);
-      opacity: 0.75;
     }
   }
 }
@@ -114,4 +114,8 @@
       font-size: 0.9rem;
     }
   }
+}
+
+.modal-backdrop.show + .modal-backdrop.show {
+  opacity: 0;
 }

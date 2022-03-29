@@ -45,9 +45,12 @@ module Trestle
           end
 
           # Determine link data options
+          options[:data] ||= {}
+
           if DIALOG_ACTIONS.include?(action) && admin.form.dialog?
-            options[:data] ||= {}
-            options[:data][:behavior] ||= "dialog"
+            options[:data][:controller] ||= "modal-link"
+          else
+            options[:data][:turbo_frame] = "_top"
           end
 
           link_to(content, path, options)

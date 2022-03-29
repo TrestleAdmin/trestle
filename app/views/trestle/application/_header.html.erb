@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
       <% breadcrumbs.each do |breadcrumb| %>
         <li class="breadcrumb-item<% if breadcrumb == breadcrumbs.last %> active<% end %>">
-          <%= link_to breadcrumb.label, breadcrumb.path %>
+          <%= link_to breadcrumb.label, breadcrumb.path, data: { turbo_frame: "_top" } %>
         </li>
       <% end %>
     </ol>

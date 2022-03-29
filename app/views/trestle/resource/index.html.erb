@@ -8,18 +8,20 @@
   <%= render "scopes" %>
 <% end if admin.scopes.any? %>
 
-<%= render layout: "layout" do %>
-  <% if hook?("resource.index.header") %>
-    <header class="main-content-header">
-      <%= hook("resource.index.header") %>
-    </header>
+<turbo-frame id="index" data-controller="index-frame" data-turbo-action="advance">
+  <%= render layout: "layout" do %>
+    <% if hook?("resource.index.header") %>
+      <header class="main-content-header">
+        <%= hook("resource.index.header") %>
+      </header>
+    <% end %>
+
+    <%= render "trestle/table/table", table: admin.table, collection: collection %>
+
+    <footer class="main-content-footer">
+      <%= hook("resource.index.footer") %>
+
+      <%= pagination collection: collection, entry_name: admin.model_name, remote: admin.pagination_options[:ajax] %>
+    </footer>
   <% end %>
-
-  <%= render "trestle/table/table", table: admin.table, collection: collection %>
-
-  <footer class="main-content-footer">
-    <%= hook("resource.index.footer") %>
-
-    <%= pagination collection: collection, entry_name: admin.model_name, remote: admin.pagination_options[:ajax] %>
-  </footer>
-<% end %>
+</turbo-frame>

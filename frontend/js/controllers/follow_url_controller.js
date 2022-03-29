@@ -1,5 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
+
 import { visit } from '@hotwired/turbo'
+import { loadModal } from '../core/modal'
 
 export default class extends Controller {
   follow (e) {
@@ -7,7 +9,9 @@ export default class extends Controller {
       return
     }
 
-    if (e.metaKey || e.ctrlKey) {
+    if (this.isModal) {
+      loadModal(this.url)
+    } else if (e.metaKey || e.ctrlKey) {
       window.open(this.url, '_blank')
     } else {
       visit(this.url)
@@ -22,7 +26,11 @@ export default class extends Controller {
     }
   }
 
+  get isModal () {
+    return this.element.dataset.modal
+  }
+
   ignoreElement (node) {
-    return node.matches('a, input, .select-row')
+    return node.matches('a, input, button, .select-row')
   }
 }

@@ -1,13 +1,14 @@
 module Trestle
   module FormHelper
     IDENTITY_FIELD_ERROR_PROC = Proc.new { |html_tag, instance| html_tag }
+    DEFAULT_FORM_CONTROLLERS = %w(form)
 
     def trestle_form_for(instance, options={}, &block)
       options[:builder] ||= Form::Builder
       options[:as] ||= admin.parameter_name
 
       options[:data] ||= {}
-      options[:data].reverse_merge!(remote: true, type: :html, behavior: "trestle-form", turbolinks: false)
+      options[:data][:controller] = (Array(options[:data][:controller]) + DEFAULT_FORM_CONTROLLERS).join(" ")
 
       form_for(instance, options) do |f|
         with_identity_field_error_proc do
