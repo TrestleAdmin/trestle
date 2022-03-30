@@ -75,7 +75,7 @@ describe Trestle::Table::ActionsColumn do
     describe "#delete" do
       it "returns a delete link" do
         expect(admin).to receive(:translate).with("buttons.delete", { default: "Delete" }).and_return("Delete")
-        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }))
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "left" }))
       end
     end
 

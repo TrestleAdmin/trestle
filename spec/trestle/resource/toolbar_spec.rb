@@ -49,7 +49,7 @@ describe Trestle::Resource::Toolbar::Builder do
 
       it "returns a delete link" do
         expect(admin).to receive(:t).with("buttons.delete", default: "Delete %{model_name}").and_return("Delete Resource")
-        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" }))
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
       end
     end
 

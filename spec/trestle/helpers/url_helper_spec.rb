@@ -36,12 +36,12 @@ describe Trestle::UrlHelper do
       end
 
       it "renders a link to the given instance" do
-        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(self).to receive(:link_to).with("link content", url, { data: { turbo_frame: "_top" } }).and_return(link)
         expect(admin_link_to("link content", instance)).to eq(link)
       end
 
       it "passes additional options to link_to" do
-        expect(self).to receive(:link_to).with("link content", url, { class: "btn" }).and_return(link)
+        expect(self).to receive(:link_to).with("link content", url, { class: "btn", data: { turbo_frame: "_top" } }).and_return(link)
         expect(admin_link_to("link content", instance, class: "btn")).to eq(link)
       end
 
@@ -52,7 +52,7 @@ describe Trestle::UrlHelper do
           expect(block).to be(blk)
         }.and_return("captured content")
 
-        expect(self).to receive(:link_to).with("captured content", url, {}).and_return(link)
+        expect(self).to receive(:link_to).with("captured content", url, { data: { turbo_frame: "_top" } }).and_return(link)
         expect(admin_link_to(instance, &blk)).to eq(link)
       end
 
@@ -60,7 +60,7 @@ describe Trestle::UrlHelper do
         let(:form) { double(dialog?: true) }
 
         it "renders the admin link with data-behavior='dialog' set" do
-          expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
+          expect(self).to receive(:link_to).with("link content", url, { data: { controller: "modal-link" } }).and_return(link)
           expect(admin_link_to("link content", instance)).to eq(link)
         end
       end
@@ -70,7 +70,7 @@ describe Trestle::UrlHelper do
       it "renders a link using the given admin, action and params" do
         expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
         expect(admin).to receive(:path).with(:new, { foo: "bar" }).and_return(url)
-        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(self).to receive(:link_to).with("link content", url, { data: { turbo_frame: "_top" } }).and_return(link)
         expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
       end
 
@@ -80,7 +80,7 @@ describe Trestle::UrlHelper do
         it "renders the admin link with data-behavior='dialog' set" do
           expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
           expect(admin).to receive(:path).with(:new, { foo: "bar" }).and_return(url)
-          expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
+          expect(self).to receive(:link_to).with("link content", url, { data: { controller: "modal-link" } }).and_return(link)
           expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
         end
       end
@@ -89,7 +89,7 @@ describe Trestle::UrlHelper do
     context "when no admin or instance is provided" do
       it "uses the current admin" do
         expect(admin).to receive(:path).with(:new, {}).and_return(url)
-        expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
+        expect(self).to receive(:link_to).with("link content", url, { data: { turbo_frame: "_top" } }).and_return(link)
         expect(admin_link_to("link content", action: :new)).to eq(link)
       end
 

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'Dialog forms', js: true do
+  include FeatureHelper
+
   scenario 'index' do
     create_test_post
 
@@ -39,28 +41,9 @@ feature 'Dialog forms', js: true do
     click_link "First Post"
 
     within_modal { click_link "Delete Post" }
-    # Temporarily disable until confirmation popovers are restored
-    # within_popover { click_link "Delete" }
+    confirm_delete
 
     expect(page).to have_content("The post was successfully deleted.")
     expect(page).not_to have_content("First Post")
-  end
-
-  def create_test_post
-    Post.create!(id: 1, title: "First Post", body: "This is a test post", published: true)
-  end
-
-  def within_modal(&block)
-    delay
-    within('.modal', &block)
-  end
-
-  def within_popover(&block)
-    delay
-    within('.popover', &block)
-  end
-
-  def delay
-    sleep 0.5
   end
 end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-feature 'Resources' do
+feature 'Resources', js: true do
+  include FeatureHelper
+
   scenario 'index' do
     create_test_post
 
@@ -36,13 +38,11 @@ feature 'Resources' do
     create_test_post
 
     visit '/admin/posts'
-    within('tbody tr:first .table-actions') { click_link }
+
+    within('tbody tr:first-child .table-actions') { click_link }
+    confirm_delete
 
     expect(page).to have_content("The post was successfully deleted.")
     expect(page).not_to have_content("First Post")
-  end
-
-  def create_test_post
-    Post.create!(id: 1, title: "First Post", body: "This is a test post", published: true)
   end
 end
