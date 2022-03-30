@@ -9,7 +9,7 @@ RSpec.shared_examples "a date picker control" do |field, value|
 
   let(:data_attributes) {
     {
-      "data-picker" => true,
+      "data-controller" => js_controller,
       "data-allow-clear" => true
     }
   }

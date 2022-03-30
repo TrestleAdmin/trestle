@@ -6,6 +6,8 @@ describe Trestle::Form::Fields::DatetimeField, type: :helper do
   it_behaves_like "a date picker control", :date, Time.new(2020, 9, 1) do
     subject { builder.datetime_field(:date, options) }
 
+    let(:js_controller) { "datetimepicker" }
+
     it "renders as a datetime-local field" do
       expect(subject).to have_tag("input.form-control[value^='2020-09-01T00:00:00'][type^='datetime']")
     end
