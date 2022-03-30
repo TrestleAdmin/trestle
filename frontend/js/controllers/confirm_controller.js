@@ -38,6 +38,7 @@ export default class extends PopoverController {
   onClick (e) {
     if (!this.confirmed) {
       e.preventDefault()
+      e.stopPropagation()
     }
   }
 

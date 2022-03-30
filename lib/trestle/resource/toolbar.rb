@@ -14,7 +14,7 @@ module Trestle
         end
 
         def delete
-          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", toggle: "confirm-delete", placement: "bottom" }) if action?(:destroy)
+          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }) if action?(:destroy)
         end
 
         def dismiss
