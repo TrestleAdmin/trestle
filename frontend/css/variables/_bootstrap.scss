@@ -166,9 +166,16 @@ $card-border-radius: 0;
 
 // Popovers
 
-$popover-box-shadow:  $dropdown-box-shadow;
-$popover-arrow-width: $dropdown-arrow-width;
-$popover-font-size:   0.9rem;
+$popover-font-size:      0.9rem;
+$popover-box-shadow:     $dropdown-box-shadow;
+
+$popover-header-bg:      #f7f7f7;
+$popover-header-border:  #ebebeb;
+
+$popover-body-padding-y: 0.5rem;
+$popover-body-padding-x: 0.75rem;
+
+$popover-arrow-width:    $dropdown-arrow-width;
 
 
 // Modals
