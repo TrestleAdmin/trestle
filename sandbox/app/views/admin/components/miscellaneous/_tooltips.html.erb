@@ -5,16 +5,16 @@
   <% end %>
 
   <div class="mb-2">
-    <%= button_tag "Tooltip on top", class: "btn btn-secondary", title: "Tooltip on top", data: { bs_toggle: "tooltip", bs_placement: "top" } %>
-    <%= button_tag "Tooltip on bottom", class: "btn btn-secondary", title: "Tooltip on bottom", data: { bs_toggle: "tooltip", bs_placement: "bottom" } %>
+    <%= button_tag "Tooltip on top", class: "btn btn-secondary", title: "Tooltip on top", data: { controller: "tooltip", bs_placement: "top" } %>
+    <%= button_tag "Tooltip on bottom", class: "btn btn-secondary", title: "Tooltip on bottom", data: { controller: "tooltip", bs_placement: "bottom" } %>
   </div>
 
   <div class="mb-2">
-    <%= button_tag "Tooltip on left", class: "btn btn-secondary", title: "Tooltip on left", data: { bs_toggle: "tooltip", bs_placement: "left" } %>
-    <%= button_tag "Tooltip on right", class: "btn btn-secondary", title: "Tooltip on right", data: { bs_toggle: "tooltip", bs_placement: "right" } %>
+    <%= button_tag "Tooltip on left", class: "btn btn-secondary", title: "Tooltip on left", data: { controller: "tooltip", bs_placement: "left" } %>
+    <%= button_tag "Tooltip on right", class: "btn btn-secondary", title: "Tooltip on right", data: { controller: "tooltip", bs_placement: "right" } %>
   </div>
 
   <div>
-    <%= button_tag "Tooltip with HTML", class: "btn btn-primary", title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>", data: { bs_toggle: "tooltip", bs_html: true } %>
+    <%= button_tag "Tooltip with HTML", class: "btn btn-primary", title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>", data: { controller: "tooltip", bs_html: true } %>
   </div>
 <% end %>
