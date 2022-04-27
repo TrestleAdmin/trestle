@@ -33,15 +33,15 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "@hotwired/stimulus": "^3.0.0",
+    "@hotwired/stimulus": "^3.0.1",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
-    "@hotwired/turbo": "^7.0.1",
-    "@popperjs/core": "^2.9.2",
-    "bootstrap": "~5.1.2",
-    "flatpickr": "^4.6.2",
+    "@hotwired/turbo": "^7.1.0",
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "~5.1.3",
+    "flatpickr": "^4.6.13",
     "jquery": "^3.6.0",
     "magnific-popup": "^1.1.0",
-    "select2": "^4.0.10",
-    "select2-bootstrap-5-theme": "~1.1.1"
+    "select2": "^4.0.13",
+    "select2-bootstrap-5-theme": "~1.2.0"
   }
 }
