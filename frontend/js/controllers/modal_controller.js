@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 
-import { Modal } from 'bootstrap'
+import Modal from '../core/modal'
 
 export default class extends Controller {
   connect () {

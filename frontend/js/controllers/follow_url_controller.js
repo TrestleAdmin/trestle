@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
-
 import { visit } from '@hotwired/turbo'
-import { loadModal } from '../core/modal'
+
+import Modal from '../core/modal'
 
 export default class extends Controller {
   follow (e) {
@@ -10,7 +10,7 @@ export default class extends Controller {
     }
 
     if (this.isModal) {
-      loadModal(this.url)
+      Modal.load(this.url)
     } else if (e.metaKey || e.ctrlKey) {
       window.open(this.url, '_blank')
     } else {

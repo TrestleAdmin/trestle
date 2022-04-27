@@ -110,10 +110,12 @@
 }
 
 .error-iframe {
+  display: block;
+  width: 100%;
   border: 0;
   flex: 1;
-  width: 100%;
-  min-height: 400px;
+  min-height: 60vh;
+  max-height: 75vh;
 }
 
 @include media-breakpoint-down(lg) {

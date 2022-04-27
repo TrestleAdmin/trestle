@@ -43,7 +43,8 @@ module Trestle
               end
               format.turbo_stream do
                 flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
-              end
+                render "create", status: :unprocessable_entity
+              end if dialog_request?
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
@@ -111,6 +112,7 @@ module Trestle
               end
               format.turbo_stream do
                 flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
+                render "update", status: :unprocessable_entity
               end
               format.json { render json: instance.errors, status: :unprocessable_entity }
 

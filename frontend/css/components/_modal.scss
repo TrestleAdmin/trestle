@@ -19,14 +19,19 @@
     }
   }
 
-  &.error {
+  &.error-modal {
     .modal-header {
       background-color: $error-bg;
     }
+
+    .modal-body {
+      padding: 0;
+    }
   }
 
-  &.show:not(:last-child) {
-    opacity: 0.75;
+  &.show:not(:last-child),
+  &.background {
+    z-index: $zindex-modal-backdrop - 1;
     overflow-y: hidden;
 
     .modal-dialog {
@@ -116,6 +121,24 @@
   }
 }
 
-.modal-backdrop.show + .modal-backdrop.show {
-  opacity: 0;
+.modal-backdrop {
+  &.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:after {
+      @include icon-fa($fa-var-spinner);
+      @extend .fa-spin;
+
+      font-size: 5rem;
+
+      color: white;
+      opacity: 0.25;
+    }
+  }
+
+  &.show + &.show {
+    opacity: 0;
+  }
 }

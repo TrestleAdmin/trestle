@@ -1,10 +1,13 @@
 import { Controller } from '@hotwired/stimulus'
 
-import { loadModal } from '../core/modal'
+import Modal from '../core/modal'
 
 export default class extends Controller {
-  connect () {
+  initialize () {
     this.boundLoad = this.load.bind(this)
+  }
+
+  connect () {
     this.element.addEventListener('click', this.boundLoad)
   }
 
@@ -14,7 +17,7 @@ export default class extends Controller {
 
   load (e) {
     e.preventDefault()
-    loadModal(this.url)
+    Modal.load(this.url)
   }
 
   get url () {
