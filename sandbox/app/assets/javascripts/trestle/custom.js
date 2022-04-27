@@ -5,3 +5,11 @@
 // within individual partials and `require` them here.
 //
 //  e.g. //= require "trestle/custom/my_custom_js"
+
+Trestle.ready(function () {
+  console.log('Trestle.ready')
+})
+
+Trestle.init(function (root) {
+  console.log('Trestle.init', root)
+})
