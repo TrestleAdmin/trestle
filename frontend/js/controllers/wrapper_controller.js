@@ -1,17 +1,18 @@
 import { Controller } from '@hotwired/stimulus'
 
-const EVENTS = ['transitionend', 'webkitTransitionEnd']
-
 export default class extends Controller {
   static targets = ['sidebar']
 
-  connect () {
+  initialize () {
     this.boundStopAnimating = this.stopAnimating.bind(this)
-    EVENTS.forEach((event) => this.element.addEventListener(event, this.boundStopAnimating))
+  }
+
+  connect () {
+    this.element.addEventListener('transitionend', this.boundStopAnimating)
   }
 
   disconnect () {
-    EVENTS.forEach((event) => this.element.removeEventListener(event, this.boundStopAnimating))
+    this.element.removeEventListener('transitionend', this.boundStopAnimating)
   }
 
   animate () {
