@@ -7,8 +7,8 @@
   <%= t.save_or_dismiss(:create) %>
 <% end %>
 
-<turbo-frame id="<%= dom_id(instance) %>" data-controller="<%= 'modal-frame reload-index' if dialog_request? %>" target="_top">
+<%= resource_turbo_frame(instance, target: "_top") do %>
   <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>
     <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
   <% end %>
-</turbo-frame>
+<% end %>
