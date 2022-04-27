@@ -7,7 +7,6 @@ import 'bootstrap'
 
 import cookie from './core/cookie'
 import { i18n, localize } from './core/i18n'
-import './core/compatibility'
 
 // Stimulus Controllers
 
@@ -16,6 +15,8 @@ import './controllers'
 // Deprecated Functionality
 
 import { init, ready, triggerInit, triggerReady } from './deprecated/events'
+import './deprecated/tooltip'
+import './deprecated/popover'
 
 // Export
 
