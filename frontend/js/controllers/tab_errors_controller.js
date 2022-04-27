@@ -1,5 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
+import { Tab } from 'bootstrap'
+
 export default class extends Controller {
   static values = {
     errorSelector: { type: String, default: '.is-invalid:not([type="hidden"])' }
@@ -9,6 +11,8 @@ export default class extends Controller {
     this.element.querySelectorAll('.nav-link').forEach((link) => {
       this.updateErrorCount(link)
     })
+
+    this.focusFirstTabWithErrors()
   }
 
   updateErrorCount (link) {
@@ -19,6 +23,15 @@ export default class extends Controller {
       const badge = this._createErrorBadge(errorCount)
       link.appendChild(badge)
     }
+  }
+
+  focusFirstTabWithErrors () {
+    this.element.querySelectorAll('.nav-link').forEach((link) => {
+      if (link.querySelector('.badge-danger')) {
+        Tab.getOrCreateInstance(link).show()
+        return
+      }
+    })
   }
 
   _createErrorBadge (count) {
