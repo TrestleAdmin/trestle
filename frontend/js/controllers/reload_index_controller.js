@@ -1,15 +1,22 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  connect () {
+  initialize () {
     this.boundReloadIndexFrames = this.reloadIndexFrames.bind(this)
+  }
+
+  connect () {
     this.element.addEventListener('turbo:submit-end', this.boundReloadIndexFrames)
   }
 
-  reloadIndexFrames () {
-    this.indexFrames.forEach((frame) => {
-      this.controllerForFrame(frame).reload()
-    })
+  reloadIndexFrames (e) {
+    const response = e.detail.fetchResponse.response
+
+    if (response.ok) {
+      this.indexFrames.forEach((frame) => {
+        this.controllerForFrame(frame).reload()
+      })
+    }
   }
 
   controllerForFrame (frame) {
