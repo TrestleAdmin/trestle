@@ -3,6 +3,7 @@
 
   &.loading {
     &::before {
+      display: inline-block;
       @include icon-fa($fa-var-spinner);
       @extend .fa-spin;
       margin-right: 10px;
