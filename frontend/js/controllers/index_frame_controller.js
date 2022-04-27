@@ -7,7 +7,7 @@ export default class extends Controller {
 
   scrollToTop (e) {
     const table = e.target.querySelector('.table-container').parentElement
-    table.scrollIntoView({ behavior: 'smooth' })
+    table.scrollIntoView()
   }
 
   reload () {
