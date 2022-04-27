@@ -33,7 +33,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(ttf|eot|svg|woff2?)(\?[\s\S]+)?$/,
+        test: /\.(ttf|woff2?)(\?[\s\S]+)?$/,
         type: 'asset/resource'
       },
       {
