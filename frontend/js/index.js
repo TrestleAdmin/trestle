@@ -10,7 +10,7 @@ import { i18n, localize } from './core/i18n'
 
 // Stimulus Controllers
 
-import './controllers'
+import { ApplicationController, Controllers } from './controllers'
 
 // Deprecated Functionality
 
@@ -24,6 +24,10 @@ const Trestle = {
   cookie,
   i18n,
   localize,
+
+  // Stimulus
+  ApplicationController,
+  Controllers,
 
   // Deprecated
   init,
