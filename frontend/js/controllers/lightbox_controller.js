@@ -1,10 +1,9 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import $ from 'jquery'
-
 import 'magnific-popup'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   static targets = ["image"]
 
   connect () {

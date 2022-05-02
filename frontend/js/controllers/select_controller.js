@@ -1,7 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import $ from 'jquery'
-
 import 'select2/dist/js/select2.full'
 
 // Use Bootstrap theme
@@ -15,7 +14,7 @@ $.fn.select2.defaults.set('dropdownCssClass', function (el) {
   return el[0].className.replace(/\s*form-(control|select)(-\w+)?\s*/g, '')
 })
 
-export default class extends Controller {
+export default class extends ApplicationController {
   connect () {
     $(this.element).select2()
   }

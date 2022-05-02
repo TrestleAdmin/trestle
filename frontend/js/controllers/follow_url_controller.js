@@ -1,9 +1,9 @@
-import { Controller } from '@hotwired/stimulus'
-import { visit } from '@hotwired/turbo'
+import ApplicationController from './application_controller'
 
+import { visit } from '@hotwired/turbo'
 import Modal from '../core/modal'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   follow (e) {
     if (this.ignoreElement(e.target) || !this.url) {
       return

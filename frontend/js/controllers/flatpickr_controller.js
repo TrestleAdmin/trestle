@@ -1,8 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import flatpickr from 'flatpickr'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   connect () {
     this.flatpickr = flatpickr(this.element, {
       ...this.options,

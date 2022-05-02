@@ -1,8 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 const SUBMIT_BUTTON_SELECTOR = 'input[type="submit"], button[type="submit"]'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   initialize () {
     this.boundSubmit = this.submit.bind(this)
     this.boundReset = this.reset.bind(this)

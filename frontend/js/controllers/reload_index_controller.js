@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   initialize () {
     this.boundReloadIndexFrames = this.reloadIndexFrames.bind(this)
   }

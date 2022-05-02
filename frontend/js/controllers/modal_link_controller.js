@@ -1,8 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import Modal from '../core/modal'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   initialize () {
     this.boundLoad = this.load.bind(this)
   }

@@ -1,8 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import { Popover } from 'bootstrap'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   static values = {
     title: { type: String, default: '' },
     content: { type: String, default: '' },

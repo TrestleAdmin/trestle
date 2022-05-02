@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import cookie from '../core/cookie'
 
@@ -30,7 +30,7 @@ class NavigationCookieStore {
   }
 }
 
-export default class extends Controller {
+export default class extends ApplicationController {
   initialize () {
     this.store = new NavigationCookieStore()
   }

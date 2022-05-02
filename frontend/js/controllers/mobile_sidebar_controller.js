@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   show () {
     this.wrapperController.animate()
     document.body.classList.add('mobile-nav-expanded')

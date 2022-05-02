@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import { Tooltip } from 'bootstrap'
 
@@ -9,7 +9,7 @@ const TEMPLATE = `
 </div>
 `
 
-export default class extends Controller {
+export default class extends ApplicationController {
   static targets = ["label"]
 
   connect () {

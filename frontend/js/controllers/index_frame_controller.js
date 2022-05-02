@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   connect () {
     this.element.addEventListener('turbo:frame-load', this.scrollToTop)
   }

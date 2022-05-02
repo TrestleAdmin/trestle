@@ -1,8 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
+import ApplicationController from './application_controller'
 
 import { Tab } from 'bootstrap'
 
-export default class extends Controller {
+export default class extends ApplicationController {
   static values = {
     errorSelector: { type: String, default: '.is-invalid:not([type="hidden"])' }
   }
