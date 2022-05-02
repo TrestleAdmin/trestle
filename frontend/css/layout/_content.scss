@@ -63,6 +63,8 @@
 
   flex: 1;
   min-width: 0;
+
+  scroll-margin: 20px;
 }
 
 .main-content-header,
@@ -140,6 +142,10 @@
 
   .main-content-container {
     margin-bottom: 10px;
+  }
+
+  .main-content {
+    scroll-margin: 10px;
   }
 
   .main-content,
