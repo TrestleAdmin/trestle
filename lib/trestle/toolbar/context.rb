@@ -25,8 +25,8 @@ module Trestle
         builder.respond_to?(name) || super
       end
 
-      def method_missing(name, *args, &block)
-        result = builder.send(name, *args, &block)
+      def method_missing(name, *args, **kwargs, &block)
+        result = builder.send(name, *args, **kwargs, &block)
 
         if builder.builder_methods.include?(name)
           group { @current_group << result }

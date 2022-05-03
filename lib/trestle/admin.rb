@@ -9,9 +9,9 @@ module Trestle
     end
 
     # Delegate all missing methods to corresponding class method if available
-    def method_missing(name, *args, &block)
+    def method_missing(name, *args, **kwargs, &block)
       if self.class.respond_to?(name)
-        self.class.send(name, *args, &block)
+        self.class.send(name, *args, **kwargs, &block)
       else
         super
       end

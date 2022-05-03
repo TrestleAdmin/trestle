@@ -29,9 +29,9 @@ module Trestle
         self.class.fields.has_key?(name) || super
       end
 
-      def method_missing(name, *args, &block)
+      def method_missing(name, *args, **kwargs, &block)
         if field = self.class.fields[name]
-          field.new(self, @template, *args, &block).render
+          field.new(self, @template, *args, **kwargs, &block).render
         else
           super
         end
