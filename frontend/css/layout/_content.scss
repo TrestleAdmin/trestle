@@ -44,6 +44,7 @@
 
 .main-content-area {
   margin: 20px;
+  scroll-margin: 20px;
 }
 
 .main-content-container {
@@ -63,8 +64,6 @@
 
   flex: 1;
   min-width: 0;
-
-  scroll-margin: 20px;
 }
 
 .main-content-header,
@@ -138,14 +137,11 @@
 
   .main-content-area {
     margin: 10px;
+    scroll-margin: 10px;
   }
 
   .main-content-container {
     margin-bottom: 10px;
-  }
-
-  .main-content {
-    scroll-margin: 10px;
   }
 
   .main-content,

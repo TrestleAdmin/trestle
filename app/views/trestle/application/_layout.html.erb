@@ -1,6 +1,6 @@
 <%= render "header", hide_breadcrumbs: local_assigns.fetch(:hide_breadcrumbs, false) if local_assigns.fetch(:header, true) %>
 
-<div class="main-content-area">
+<div class="main-content-area" data-index-frame-target="scroll">
   <%= render "trestle/flash/flash" %>
   <%= render "utilities" %>
   <%= render "tabs", data: { controller: "tabs tab-errors" } %>

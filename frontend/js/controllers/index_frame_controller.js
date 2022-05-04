@@ -1,13 +1,18 @@
 import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
+  static targets = ["scroll"]
+
+  initialize () {
+    this.boundScrollToTop = this.scrollToTop.bind(this)
+  }
+
   connect () {
-    this.element.addEventListener('turbo:frame-load', this.scrollToTop)
+    this.element.addEventListener('turbo:frame-load', this.boundScrollToTop)
   }
 
   scrollToTop (e) {
-    const table = e.target.querySelector('.table-container').parentElement
-    table.scrollIntoView()
+    this.scrollTarget.scrollIntoView()
   }
 
   reload () {
