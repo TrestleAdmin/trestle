@@ -4,7 +4,7 @@ module Trestle
       module Redirection
       protected
         def redirect_to_return_location(action, instance, status: :found, default:)
-          if admin.return_locations[action] && !dialog_request?
+          if admin.return_locations[action] && !modal_request?
             location = instance_exec(instance, &admin.return_locations[action])
 
             case location

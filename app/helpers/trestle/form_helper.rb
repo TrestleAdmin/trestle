@@ -42,7 +42,7 @@ module Trestle
     end
 
     def render_sidebar_as_tab?
-      dialog_request? && content_for?(:sidebar)
+      modal_request? && content_for?(:sidebar)
     end
   end
 end

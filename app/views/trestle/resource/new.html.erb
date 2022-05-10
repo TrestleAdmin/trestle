@@ -9,6 +9,6 @@
 
 <%= resource_turbo_frame(instance, target: "_top") do %>
   <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>
-    <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
+    <%= render partial: "form", layout: modal_request? ? "modal" : "layout" %>
   <% end %>
 <% end %>

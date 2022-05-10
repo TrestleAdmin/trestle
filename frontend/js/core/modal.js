@@ -17,7 +17,7 @@ export default class Modal extends BootstrapModal {
     fetch(url, {
       headers: {
         Accept: 'text/vnd.turbo-stream.html',
-        'X-Trestle-Dialog': true
+        'X-Trestle-Modal': true
       }
     })
       .then(response => {

@@ -63,12 +63,12 @@ describe Trestle::Resource::Toolbar::Builder do
   end
 
   describe "#dismiss" do
-    context "from a dialog request" do
+    context "from a modal request" do
       before(:each) do
-        allow(template).to receive(:dialog_request?).and_return(true)
+        allow(template).to receive(:modal_request?).and_return(true)
       end
 
-      it "returns a dismiss dialog button" do
+      it "returns a dismiss modal button" do
         expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
         expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
       end
@@ -79,9 +79,9 @@ describe Trestle::Resource::Toolbar::Builder do
       end
     end
 
-    context "from a non-dialog request" do
+    context "from a non-modal request" do
       before(:each) do
-        allow(template).to receive(:dialog_request?).and_return(false)
+        allow(template).to receive(:modal_request?).and_return(false)
       end
 
       it "renders nothing" do
@@ -103,20 +103,20 @@ describe Trestle::Resource::Toolbar::Builder do
     context "when the admin action does not include :update" do
       let(:actions) { [] }
 
-      context "from a dialog request" do
+      context "from a modal request" do
         before(:each) do
-          allow(template).to receive(:dialog_request?).and_return(true)
+          allow(template).to receive(:modal_request?).and_return(true)
         end
 
-        it "returns a dismiss dialog button" do
+        it "returns a dismiss modal button" do
           expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
           expect(builder.save_or_dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
         end
       end
 
-      context "from a non-dialog request" do
+      context "from a non-modal request" do
         before(:each) do
-          allow(template).to receive(:dialog_request?).and_return(false)
+          allow(template).to receive(:modal_request?).and_return(false)
         end
 
         it "renders nothing" do

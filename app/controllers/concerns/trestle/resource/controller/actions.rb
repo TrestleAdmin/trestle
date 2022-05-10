@@ -14,7 +14,7 @@ module Trestle
         def new
           respond_to do |format|
             format.html
-            format.turbo_stream
+            format.turbo_stream { render turbo_stream: turbo_stream_modal }
             format.json { render json: instance }
 
             yield format if block_given?
@@ -30,7 +30,7 @@ module Trestle
               end
               format.turbo_stream do
                 flash.now[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
-              end if dialog_request?
+              end if modal_request?
               format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
 
               yield format if block_given?
@@ -44,7 +44,7 @@ module Trestle
               format.turbo_stream do
                 flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
                 render "create", status: :unprocessable_entity
-              end if dialog_request?
+              end if modal_request?
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
@@ -63,7 +63,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
-              format.turbo_stream if dialog_request?
+              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?
@@ -82,7 +82,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
-              format.turbo_stream if dialog_request?
+              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?

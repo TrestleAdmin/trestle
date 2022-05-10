@@ -2,10 +2,10 @@ import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
   connect () {
-    this.element.addEventListener('turbo:before-fetch-request', this.addTrestleDialogHeader)
+    this.element.addEventListener('turbo:before-fetch-request', this.addTrestleModalHeader)
   }
 
-  addTrestleDialogHeader (event) {
-    event.detail.fetchOptions.headers['X-Trestle-Dialog'] = true
+  addTrestleModalHeader (event) {
+    event.detail.fetchOptions.headers['X-Trestle-Modal'] = true
   }
 }
