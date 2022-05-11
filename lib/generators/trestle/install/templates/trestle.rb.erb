@@ -103,6 +103,11 @@ Trestle.configure do |config|
   #
   # config.persistent_params << :query
 
+  # List of methods to try calling on an instance when displayed by the `display` helper.
+  # Defaults to [:display_name, :full_name, :name, :title, :username, :login, :email].
+  #
+  # config.display_methods.unshift(:admin_label)
+
   # Customize the default adapter class used by all admin resources.
   # See the documentation on Trestle::Adapters::Adapter for details on
   # the adapter methods that can be customized.
@@ -119,10 +124,6 @@ Trestle.configure do |config|
   # end
   #
   # config.form_field :custom, CustomFormField
-  #
-  # List of methods to try calling on an instance when displayed by the `display` helper
-  # config.display_methods = [:display_name, :full_name, :name, :title, :username, :login, :email]
-  #
 
   # == Debugging Options
   #
