@@ -25,7 +25,7 @@ module Trestle
     def register(admin, register_model: true)
       @admins[admin.admin_name] = admin
 
-      if admin.respond_to?(:model) && register_model
+      if register_model && register_admin_for_model_loookup?(admin)
         @models[admin.model.name] ||= admin
       end
 
@@ -51,6 +51,11 @@ module Trestle
 
       # No admin found
       nil
+    end
+
+  private
+    def register_admin_for_model_loookup?(admin)
+      admin.respond_to?(:model) && !(admin.respond_to?(:singular?) && admin.singular?)
     end
   end
 end
