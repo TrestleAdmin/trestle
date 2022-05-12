@@ -1,8 +1,12 @@
 require 'capybara/rails'
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new app, browser: :chrome,
-    options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu no-sandbox])
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument '--headless'
+  options.add_argument '--disable-gpu'
+  options.add_argument '--no-sandbox'
+
+  Capybara::Selenium::Driver.new app, browser: :chrome, capabilities: [options]
 end
 
 Capybara.javascript_driver = :chrome
