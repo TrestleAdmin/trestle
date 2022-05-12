@@ -75,7 +75,7 @@ module Trestle
   # Returns an array of locale Strings.
   def self.i18n_fallbacks(locale=I18n.locale)
     if I18n.respond_to?(:fallbacks)
-      I18n.fallbacks[locale]
+      I18n.fallbacks[locale].map(&:to_s)
     elsif locale.to_s.include?("-")
       fallback = locale.to_s.split("-").first
       [locale, fallback]

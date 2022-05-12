@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+
+group :test do
+  gem 'coveralls_reborn', require: false
+  gem 'simplecov', require: false
+
+  gem 'capybara'
+  gem 'capybara-selenium'
+  gem 'rexml'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'puma'
+end
+
+gem 'rails', '~> 7.0.0'
+
+gem 'sqlite3', '~> 1.4'
+gem 'sassc-rails'
+
+gemspec path: "../"
