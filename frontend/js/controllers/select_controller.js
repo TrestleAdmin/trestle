@@ -16,10 +16,14 @@ $.fn.select2.defaults.set('dropdownCssClass', function (el) {
 
 export default class extends ApplicationController {
   connect () {
-    $(this.element).select2()
+    $(this.element).select2(this.options)
   }
 
   disconnect () {
     $(this.element).select2('destroy')
+  }
+
+  get options () {
+    return {}
   }
 }
