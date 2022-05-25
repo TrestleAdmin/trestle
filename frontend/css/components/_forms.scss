@@ -37,6 +37,10 @@ ul.invalid-feedback {
   display: block;
 }
 
+.control-label {
+  @extend .form-label;
+}
+
 // Prevent input zooming on mobile devices
 @include media-breakpoint-down(sm) {
   .form-control,
