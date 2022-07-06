@@ -27,7 +27,7 @@ module Trestle
       end
 
       def render_items
-        content_tag(:ul, safe_join(items, "\n"), class: "dropdown-menu dropdown-menu-right", role: "menu")
+        content_tag(:ul, safe_join(items, "\n"), class: "dropdown-menu dropdown-menu-end", role: "menu")
       end
 
       class Builder
