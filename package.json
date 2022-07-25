@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus": "^3.2.2",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
-    "@hotwired/turbo": "^7.1.0",
+    "@hotwired/turbo": "^7.3.0",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "~5.1.3",
     "flatpickr": "^4.6.13",
