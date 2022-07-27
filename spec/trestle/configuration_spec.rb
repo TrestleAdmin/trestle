@@ -97,22 +97,42 @@ describe Trestle::Configuration do
   end
 
   it "has no default helpers" do
-    expect(config.helpers).to eq([])
+    expect(config.helpers.to_a).to eq([])
   end
 
   describe "#helper" do
+    let(:helper_module) { double }
+    let(:helper_name) { "Helper" }
+
     it "appends the given helpers" do
       config.helper :all
-      expect(config.helpers).to eq([:all])
+      expect(config.helpers.to_a).to eq([:all])
+    end
+
+    it "evaluates proc arguments when accessed" do
+      config.helper -> { helper_module }
+      expect(config.helpers.to_a).to eq([helper_module])
+    end
+
+    it "does not evaluate proc arguments when added" do
+      expect(self).not_to receive(:helper_module)
+      config.helper -> { helper_module }
+    end
+
+    it "constantizes string arguments when accessed" do
+      config.helper helper_name
+
+      expect(helper_name).to receive(:safe_constantize).and_return(helper_module)
+      expect(config.helpers.to_a).to eq([helper_module])
     end
   end
 
   describe "#form_field" do
-    let(:klass) { double }
+    let(:proc) { -> { double } }
 
     it "registers a form field type" do
-      expect(Trestle::Form::Builder).to receive(:register).with(:custom, klass)
-      config.form_field :custom, klass
+      expect(Trestle::Form::Builder).to receive(:register).with(:custom, proc)
+      config.form_field :custom, proc
     end
   end
 

@@ -5,5 +5,5 @@ Trestle.admin(:media, scope: Components) do
     end
   end
 
-  helper ImageHelper
+  # helper ImageHelper
 end

@@ -10,4 +10,10 @@ Trestle.configure do |config|
       item "Item with badge", "#", badge: { text: "NEW!", class: "badge-success" }, icon: "fa fa-car"
     end
   end
+
+  # config.helper -> { ImageHelper }
+  config.helper "ImageHelper"
+
+  # config.form_field :custom_field, -> { CustomField }
+  config.form_field :custom_field, "CustomField"
 end

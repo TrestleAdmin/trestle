@@ -15,6 +15,8 @@ module Trestle
       options.fetch(name) {
         if defaults.key?(name)
           value = defaults[name]
+          value = value.dup if value.respond_to?(:dup)
+
           assign(name, value)
         end
       }

@@ -54,18 +54,17 @@ module Trestle
       menus << Navigation::Block.new(&block)
     end
 
-
     ## Extension Options
 
     # [Internal] List of helper modules to include in all Trestle controllers
-    option :helpers, []
+    option :helpers, Lazy::List.new
 
     # [Internal] Container module for block-defined helpers
     option :helper_module, Module.new
 
     # Register global helpers available to all Trestle admins
     def helper(*helpers, &block)
-      self.helpers += helpers
+      self.helpers << helpers
       self.helper_module.module_eval(&block) if block_given?
     end
 
@@ -82,8 +81,8 @@ module Trestle
     option :default_adapter, Adapters.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
 
     # Register a custom form field class
-    def form_field(name, klass)
-      Form::Builder.register(name, klass)
+    def form_field(name, field)
+      Form::Builder.register(name, field)
     end
 
     # [Internal] List of registered hooks

@@ -9,7 +9,7 @@ module Trestle
       undef_method :display
 
       cattr_accessor :fields
-      self.fields = {}
+      self.fields = Lazy::Hash.new
 
       def errors(name)
         if object.respond_to?(:errors) && object.errors.respond_to?(:[])
@@ -19,14 +19,14 @@ module Trestle
         end
       end
 
-      def self.register(name, klass)
+      def self.register(name, field)
         rename_existing_helper_method(name)
-        self.fields[name] = klass
+        self.fields[name] = field
       end
 
     protected
       def respond_to_missing?(name, include_all=false)
-        self.class.fields.has_key?(name) || super
+        self.class.fields.key?(name) || super
       end
 
       def method_missing(name, *args, &block)
