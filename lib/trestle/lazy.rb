@@ -44,7 +44,7 @@ module Trestle
 
       def each(&block)
         @hash.each do |key, value|
-          yield key, self[value]
+          yield key, constantize(value)
         end
       end
 
