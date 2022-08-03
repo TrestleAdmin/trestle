@@ -15,7 +15,7 @@ After checking out the repository and installing dependencies by running `bundle
 $ bundle exec rake
 ```
 
-When submitting a pull request, please ensure that all of the tests are passing. Builds will be automatically checked for a passing test suite by [Travis CI](https://travis-ci.com/github/TrestleAdmin/trestle).
+When submitting a pull request, please ensure that all of the tests are passing. Builds will be automatically checked for a passing test suite by [GitHub Actions](https://github.com/TrestleAdmin/trestle/actions).
 
 
 ## Sandbox Application
