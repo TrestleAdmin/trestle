@@ -9,12 +9,12 @@ group :test do
   gem 'coveralls_reborn', require: false
   gem 'guard-rspec',      require: false
 
-  gem 'capybara'
+  gem 'capybara', github: 'teamcapybara/capybara', ref: '2d05c20'
   gem 'capybara-selenium'
   gem 'rexml'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'puma'
+  gem 'puma', '~> 6.0.0'
   gem 'launchy'
   gem 'capybara-screenshot'
 end
