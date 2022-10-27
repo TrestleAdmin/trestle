@@ -108,25 +108,12 @@ module Trestle
 
         def column_value(instance)
           if @column.block
-            if defined?(Haml) && Haml::Helpers.block_is_haml?(@column.block)
-              # In order for table column blocks to work properly within Haml templates,
-              # the _hamlout local variable needs to be defined in the scope of the block,
-              # so that the Haml version of the capture method is used. Because we
-              # evaluate the block using instance_exec, we need to set this up manually.
-              -> {
-                _hamlout = eval('_hamlout', @column.block.binding)
-                value = nil
-                buffer = @template.capture { value = @template.instance_exec(instance, &@column.block) }
-                value.is_a?(String) ? buffer : value
-              }.call
-            else
-              # Capture both the immediate value and captured output of the block.
-              # If the result of the block is a string, then use the contents of the buffer.
-              # Otherwise return the result of the block as a raw value (for auto-formatting).
-              value = nil
-              buffer = @template.capture { value = @template.instance_exec(instance, &@column.block) }
-              value.is_a?(String) ? buffer : value
-            end
+            # Capture both the immediate value and captured output of the block.
+            # If the result of the block is a string, then use the contents of the buffer.
+            # Otherwise return the result of the block as a raw value (for auto-formatting).
+            value = nil
+            buffer = @template.capture { value = @template.instance_exec(instance, &@column.block) }
+	    value.is_a?(String) ? buffer : value
           else
             instance.send(@column.field)
           end
