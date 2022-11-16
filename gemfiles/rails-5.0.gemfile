@@ -10,6 +10,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'puma'
+
+  gem 'haml', '~> 5.0'
 end
 
 gem 'rails', '~> 5.0.0'
