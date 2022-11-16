@@ -17,7 +17,7 @@ module Trestle
       end
 
       def <=>(other)
-        priority == other.priority ? name <=> other.name : priority <=> other.priority
+        [priority, name] <=> [other.priority, other.name]
       end
 
       def priority

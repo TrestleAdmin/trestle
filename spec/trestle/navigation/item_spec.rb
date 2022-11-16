@@ -46,6 +46,14 @@ describe Trestle::Navigation::Item do
     expect([i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3])
   end
 
+  it "sorts by name if priority is equal" do
+    i1 = Trestle::Navigation::Item.new(:test1, nil, priority: 1)
+    i2 = Trestle::Navigation::Item.new(:test2, nil, priority: 1)
+    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: 1)
+
+    expect([i3, i1, i2].sort).to eq([i1, i2, i3])
+  end
+
   it "is visible by default" do
     expect(item.visible?(self)).to be true
   end
