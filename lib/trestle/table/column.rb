@@ -108,7 +108,7 @@ module Trestle
 
         def column_value(instance)
           if @column.block
-            if defined?(Haml) && Haml::Helpers.block_is_haml?(@column.block)
+            if block_is_legacy_haml?
               # In order for table column blocks to work properly within Haml templates,
               # the _hamlout local variable needs to be defined in the scope of the block,
               # so that the Haml version of the capture method is used. Because we
@@ -130,6 +130,10 @@ module Trestle
           else
             instance.send(@column.field)
           end
+        end
+
+        def block_is_legacy_haml?
+          defined?(Haml) && Haml::Helpers.respond_to?(:block_is_haml?) && Haml::Helpers.block_is_haml?(@column.block)
         end
       end
     end
