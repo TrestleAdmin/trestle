@@ -56,6 +56,7 @@ Trestle.configure do |config|
   # Specify helper modules to expose to the admin.
   #
   # config.helper :all
+  # config.helper -> { CustomHelper }
 
   # Register callbacks to run before, after or around all Trestle actions.
   #
@@ -104,5 +105,5 @@ Trestle.configure do |config|
   #   def render; end
   # end
   #
-  # config.form_field :custom, CustomFormField
+  # config.form_field :custom, -> { CustomFormField }
 end
