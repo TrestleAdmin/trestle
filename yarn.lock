@@ -1001,9 +1001,9 @@
     rimraf "^3.0.2"
 
 "@rails/ujs@^6.1.3-1":
-  version "6.1.6"
-  resolved "https://registry.npmjs.org/@rails/ujs/-/ujs-6.1.6.tgz#de486ae0a663e1bed637a012cbb2739bfcfa2031"
-  integrity sha512-2M4zlthYmOC6X/tcPcFd//sIL26a7JbCpGNl8uIrQf+pR1Z47uhYt9cOwVqJTJZPurdy2k+YY3Pn64pqruAPEA==
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.7.tgz#b09dc5b2105dd267e8374c47e4490240451dc7f6"
+  integrity sha512-0e7WQ4LE/+LEfW2zfAw9ppsB6A8RmxbdAUPAF++UT80epY+7emuQDkKXmaK0a9lp6An50RvzezI0cIQjp1A58w==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -1448,9 +1448,9 @@ bootstrap-confirmation2@^4.2.1:
   integrity sha512-v/CBCi68Pma5mx77Yr7L9xOjsSX4gvlg4t2WZbVM0AxX6k4is1NbjSRLkdkY8FvpVntKVOrAliAr26DThPF0HQ==
 
 bootstrap@^4.5.0:
-  version "4.6.1"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.6.1.tgz#bc25380c2c14192374e8dec07cf01b2742d222a2"
-  integrity sha512-0dj+VgI9Ecom+rvvpNZ4MUZJz8dcX7WCX+eTID9+/8HgOkv3dsRzi8BGeZJCQU6flWQVYxwTQnEZFrmJSEO7og==
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.2.tgz#8e0cd61611728a5bf65a3a2b8d6ff6c77d5d7479"
+  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2550,9 +2550,9 @@ jest-worker@^27.0.2, jest-worker@^27.4.5:
     supports-color "^8.0.0"
 
 jquery@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
-  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.1.tgz#fab0408f8b45fc19f956205773b62b292c147a16"
+  integrity sha512-opJeO4nCucVnsjiXOE+/PcCgYw9Gwpvs/a6B1LL/lQhwWwpbVEVYDZ1FokFr8PRc7ghYlrFPuyHuiiDNTQxmcw==
 
 js-base64@^2.4.9:
   version "2.6.4"
@@ -3710,9 +3710,9 @@ scss-tokenizer@^0.4.3:
     source-map "^0.7.3"
 
 select2-theme-bootstrap4@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/select2-theme-bootstrap4/-/select2-theme-bootstrap4-1.0.1.tgz#aa476930988cb61b05c77d1173a937688d2bb4be"
-  integrity sha512-gn9zN+ZppzsjRCQzHMfhDyizcCNlzbsB059qAXjyEaFYx7OA3677LYEIbYiGmliuF6y9Dbuae8X8Rk/Z4SBleQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/select2-theme-bootstrap4/-/select2-theme-bootstrap4-1.0.2.tgz#309236ddf521e3f70eb1f9c107813fb2f0069d7f"
+  integrity sha512-/tAPPIIAzjsywl78lFfu7YopFnL9HjnM2pxaYxju38ZBBW5tqK9eollhFJJqBCSa+gLJT9uP2iFt6vJYw5REmw==
 
 select2@^4.0.10:
   version "4.0.13"
