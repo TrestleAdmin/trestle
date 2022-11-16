@@ -1,6 +1,6 @@
 {
   "name": "trestle",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "A modern, responsive admin framework for Ruby on Rails",
   "homepage": "https://trestle.io",
   "repository": "https://github.com/TrestleAdmin/trestle.git",
