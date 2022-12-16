@@ -54,6 +54,14 @@ describe Trestle::Navigation::Item do
     expect([i3, i1, i2].sort).to eq([i1, i2, i3])
   end
 
+  it "sorts with string and symbol names" do
+    i1 = Trestle::Navigation::Item.new(:test1)
+    i2 = Trestle::Navigation::Item.new("test2")
+    i3 = Trestle::Navigation::Item.new(:test3)
+
+    expect([i3, i1, i2].sort).to eq([i1, i2, i3])
+  end
+
   it "is visible by default" do
     expect(item.visible?(self)).to be true
   end

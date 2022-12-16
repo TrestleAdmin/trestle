@@ -4,7 +4,7 @@ module Trestle
       attr_reader :name, :path, :options
 
       def initialize(name, path=nil, options={})
-        @name, @path, @options = name, path, options
+        @name, @path, @options = name.to_s, path, options
       end
 
       def ==(other)
@@ -40,7 +40,7 @@ module Trestle
       end
 
       def label
-        options[:label] || I18n.t("admin.navigation.items.#{name}", default: name.to_s.titlecase)
+        options[:label] || I18n.t("admin.navigation.items.#{name}", default: name.titlecase)
       end
 
       def icon
