@@ -4,12 +4,17 @@
   background: $sidebar-bg;
 
   width: $sidebar-width;
+  padding: 0;
+
   flex-shrink: 0;
 
   position: relative;
 
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: stretch;
 }
 
 .app-sidebar-header {
