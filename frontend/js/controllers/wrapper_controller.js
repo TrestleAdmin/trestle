@@ -1,7 +1,7 @@
 import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
-  static targets = ['sidebar']
+  static outlets = ['mobile-sidebar']
 
   initialize () {
     this.boundStopAnimating = this.stopAnimating.bind(this)
@@ -24,9 +24,9 @@ export default class extends ApplicationController {
   }
 
   hideMobileSidebar (e) {
-    const mobileSidebar = this.mobileSidebarController
+    const sidebarController = this.mobileSidebarOutlet
 
-    if (!mobileSidebar.isExpanded) {
+    if (!sidebarController.isExpanded) {
       return
     }
 
@@ -37,11 +37,7 @@ export default class extends ApplicationController {
       e.stopPropagation()
       e.preventDefault()
 
-      mobileSidebar.hide()
+      sidebarController.hide()
     }
-  }
-
-  get mobileSidebarController () {
-    return this.application.getControllerForElementAndIdentifier(this.sidebarTarget, 'mobile-sidebar')
   }
 }
