@@ -13,7 +13,7 @@ Trestle.resource(:articles) do
     column :author do |article|
       admin_link_to article.author do
         safe_join([
-          avatar(fallback: article.author.initials, style: "background: #{article.author.avatar_color}", class: "avatar-sm mr-1") { gravatar(article.author.email, d: article.author.avatar_type) },
+          avatar(fallback: article.author.initials, style: "background: #{article.author.avatar_color}", class: "avatar-sm mr-1") { gravatar(article.author.email, d: article.author.avatar_type_value) },
           article.author.full_name
         ], " ")
       end
