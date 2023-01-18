@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   def initials
-    [first_name, last_name].map(&:first).join.upcase
+    [first_name, last_name].compact.map(&:first).join.upcase
   end
 
   def avatar_type_value
@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def avatar_color
-    "##{Digest::MD5.hexdigest(email)[0..5]}"
+    "##{Digest::MD5.hexdigest(email)[0..5]}" if email
   end
 end

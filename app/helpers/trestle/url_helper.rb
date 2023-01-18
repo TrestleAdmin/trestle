@@ -48,7 +48,7 @@ module Trestle
           options[:data] ||= {}
 
           if MODAL_ACTIONS.include?(action) && admin.form.dialog?
-            options[:data][:controller] ||= "modal-link"
+            options[:data][:controller] ||= "modal-trigger"
           else
             options[:data][:turbo_frame] = "_top"
           end

@@ -70,7 +70,7 @@ describe Trestle::Resource::Toolbar::Builder do
 
       it "returns a dismiss modal button" do
         expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
-        expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
+        expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { bs_dismiss: "modal" }))
       end
 
       it "is aliased as #ok" do
@@ -110,7 +110,7 @@ describe Trestle::Resource::Toolbar::Builder do
 
         it "returns a dismiss modal button" do
           expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
-          expect(builder.save_or_dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
+          expect(builder.save_or_dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { bs_dismiss: "modal" }))
         end
       end
 

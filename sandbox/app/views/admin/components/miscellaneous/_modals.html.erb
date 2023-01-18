@@ -1,0 +1,13 @@
+<%= container do |c| %>
+  <% c.sidebar class: "order-first" do %>
+    <h2>Modals</h2>
+    <p>WIP</p>
+  <% end %>
+
+  <div data-controller="modal-demo--trigger">
+    <%= link_to "Launch Modal (GET)", { action: :modal }, class: "btn btn-primary", data: { controller: "modal-trigger", action: "modal-trigger:loading->modal-demo--trigger#setLoading modal-trigger:loaded->modal-demo--trigger#setLoaded modal-trigger:submit->modal-demo--trigger#updateStatus" } %>
+    <%= button_to "Launch Modal (POST)", { action: :modal_post }, class: "btn btn-warning", data: { controller: "modal-trigger" }, form: { style: "display: inline" } %>
+
+    <p data-modal-demo--trigger-target="status" class="mt-2"></p>
+  </div>
+<% end %>

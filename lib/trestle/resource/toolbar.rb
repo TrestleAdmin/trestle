@@ -18,7 +18,7 @@ module Trestle
         end
 
         def dismiss
-          button(t("buttons.ok", default: "OK"), style: :light, data: { dismiss: "modal" }) if @template.modal_request?
+          button(t("buttons.ok", default: "OK"), style: :light, data: { bs_dismiss: "modal" }) if @template.modal_request?
         end
         alias ok dismiss
 

@@ -6,6 +6,12 @@
 //
 //  e.g. //= require "trestle/custom/my_custom_js"
 
+//= require "trestle/custom/controllers/modal_demo/trigger_controller"
+//= require "trestle/custom/controllers/modal_demo/modal_controller"
+
+Stimulus.register('modal-demo--trigger', ModalDemo.TriggerController)
+Stimulus.register('modal-demo--modal', ModalDemo.ModalController)
+
 Trestle.ready(function () {
   console.log('Trestle.ready')
 })
