@@ -4,8 +4,7 @@ module Trestle
       attr_reader :name, :options
 
       def initialize(name, options={})
-        @name = name
-        @options = options
+        @name, @options = name.to_s, options
       end
 
       def ==(other)

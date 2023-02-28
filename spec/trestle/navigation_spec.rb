@@ -65,14 +65,14 @@ describe Trestle::Navigation do
       group = Trestle::Navigation::Group.new(:group2)
       items = result[group]
 
-      item1 = items.find { |i| i.name == :group2_item1 }
-      item2 = items.find { |i| i.name == :group2_item2 }
+      item1 = items.find { |i| i.name == "group2_item1" }
+      item2 = items.find { |i| i.name == "group2_item2" }
 
       expect(items.index(item1)).to be > items.index(item2)
     end
 
     it "merges together options for the same group" do
-      group = result.keys.find { |g| g.respond_to?(:name) && g.name == :group1 }
+      group = result.keys.find { |g| g.respond_to?(:name) && g.name == "group1" }
       expect(group.options).to eq({ priority: 10, label: "Group" })
     end
   end
