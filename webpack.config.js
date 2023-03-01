@@ -95,7 +95,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
     }),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
   resolve: {
     mainFields: ['main']
