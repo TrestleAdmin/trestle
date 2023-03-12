@@ -11,6 +11,7 @@ module Trestle
   require_relative "trestle/adapters"
   require_relative "trestle/attribute"
   require_relative "trestle/breadcrumb"
+  require_relative "trestle/debug_errors"
   require_relative "trestle/lazy"
   require_relative "trestle/configurable"
   require_relative "trestle/configuration"
