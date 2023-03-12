@@ -6,7 +6,7 @@ Capybara.register_driver :chrome do |app|
   options.add_argument '--disable-gpu'
   options.add_argument '--no-sandbox'
 
-  Capybara::Selenium::Driver.new app, browser: :chrome, capabilities: [options]
+  Capybara::Selenium::Driver.new app, browser: :chrome, options: options
 end
 
 Capybara.javascript_driver = :chrome
