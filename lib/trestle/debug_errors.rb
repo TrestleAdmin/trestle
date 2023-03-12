@@ -9,14 +9,16 @@ module Trestle
     end
 
     def each
-      @errors.each { |error, message|
-        if defined?(ActiveModel::Error)
-          # Rails 6.1 introduces a unified Error class
+      if defined?(ActiveModel::Error)
+        # Rails 6.1 introduces a unified Error class
+        @errors.each do |error|
           yield error.attribute, error.message
-        else
+        end
+      else
+        @errors.each do |error, message|
           yield error, message
         end
-      }
+      end
     end
   end
 end
