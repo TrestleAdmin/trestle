@@ -93,8 +93,12 @@ RSpec.shared_examples "a form field" do |field, html_options|
       object.errors.add(field, "has another error")
     end
 
-    it "renders the error message" do
-      expect(subject).to have_tag(".form-group.has-error") do
+    it "adds an error classe to the form group" do
+      expect(subject).to have_tag(".form-group.has-error")
+    end
+
+    it "renders the error messages within the form group" do
+      expect(subject).to have_tag(".form-group") do
         with_tag "ul.invalid-feedback" do
           with_tag "li", text: " is required" do
             with_tag "i.fa.fa-warning"

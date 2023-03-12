@@ -6,7 +6,7 @@ import { init } from '../core/events'
 
 const TAB_SELECTOR = 'a[data-toggle="tab"]'
 const TAB_PANE_SELECTOR = '.tab-pane'
-const ERROR_SELECTOR = '.is-invalid:not([type="hidden"])'
+const ERROR_SELECTOR = '.has-error'
 
 // Save active tab to URL hash
 init(function (root) {
