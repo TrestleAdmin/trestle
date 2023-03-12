@@ -2,6 +2,6 @@
   <%= render "trestle/flash/alert", html_class: "alert-success", icon: icon("alert-icon far fa-check-circle"), alert: normalize_flash_alert(flash[:message]) %>
 <% elsif flash[:error] -%>
   <%= render layout: "trestle/flash/alert", locals: { html_class: "alert-danger", icon: icon("alert-icon far fa-times-circle"), alert: normalize_flash_alert(flash[:error]) } do %>
-    <%= render "trestle/flash/debug", errors: instance.errors if debug_form_errors? %>
+    <%= render "trestle/flash/debug", errors: Trestle::DebugErrors.new(instance.errors) if debug_form_errors? %>
   <% end %>
 <% end -%>
