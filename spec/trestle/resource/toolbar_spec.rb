@@ -4,7 +4,7 @@ describe Trestle::Resource::Toolbar::Builder do
   include_context "template"
 
   let(:actions) { [:index, :new, :create, :show, :edit, :update, :destroy] }
-  let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false), actions: actions) }
+  let(:admin) { double(path: "/admin", to_param: double, form: double(modal?: false), actions: actions) }
 
   subject(:builder) { Trestle::Resource::Toolbar::Builder.new(template) }
 

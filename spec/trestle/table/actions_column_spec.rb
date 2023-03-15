@@ -4,7 +4,7 @@ describe Trestle::Table::ActionsColumn do
   include_context "template"
 
   let(:options) { {} }
-  let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false)) }
+  let(:admin) { double(path: "/admin", to_param: double, form: double(modal?: false)) }
   let(:instance) { double }
 
   before(:each) do

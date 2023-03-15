@@ -5,7 +5,7 @@ require_relative '../../../app/helpers/trestle/url_helper'
 describe Trestle::UrlHelper do
   include Trestle::UrlHelper
 
-  let(:form) { double(dialog?: false) }
+  let(:form) { double(modal?: false) }
   let(:admin) { double(form: form) }
 
   before(:each) do
@@ -56,8 +56,8 @@ describe Trestle::UrlHelper do
         expect(admin_link_to(instance, &blk)).to eq(link)
       end
 
-      context "target admin's form is a dialog" do
-        let(:form) { double(dialog?: true) }
+      context "target admin's form is a modal" do
+        let(:form) { double(modal?: true) }
 
         it "renders the admin link with data-controller='modal-trigger' set" do
           expect(self).to receive(:link_to).with("link content", url, { data: { controller: "modal-trigger" } }).and_return(link)
@@ -74,8 +74,8 @@ describe Trestle::UrlHelper do
         expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
       end
 
-      context "target admin's form is a dialog" do
-        let(:form) { double(dialog?: true) }
+      context "target admin's form is a modal" do
+        let(:form) { double(modal?: true) }
 
         it "renders the admin link with data-controller='modal-trigger' set" do
           expect(Trestle).to receive(:lookup).with(:test).and_return(admin)

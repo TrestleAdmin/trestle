@@ -12,7 +12,12 @@ module Trestle
       @options, @block = options, block
     end
 
+    def modal?
+      options[:modal] || options[:dialog] == true
+    end
+
     def dialog?
+      ActiveSupport::Deprecation.warn("`Trestle::Form#dialog?` is deprecated. Please use `modal?` instead.")
       options[:dialog] == true
     end
 
