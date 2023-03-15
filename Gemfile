@@ -19,8 +19,10 @@ group :test do
   gem 'capybara-screenshot'
 end
 
+#gem 'sassc-rails'
+gem 'dartsass-sprockets'
+
 gem 'haml'
-gem 'sassc-rails'
 gem 'sqlite3', '~> 1.4'
 
 # Specify your gem's dependencies in trestle.gemspec
