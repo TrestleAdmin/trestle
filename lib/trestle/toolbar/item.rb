@@ -97,7 +97,7 @@ module Trestle
 
     class Dropdown < Button
       def options
-        super.merge(type: "button", data: { toggle: "dropdown" })
+        super.merge(type: "button", data: { bs_toggle: "dropdown" })
       end
 
       def label

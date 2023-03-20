@@ -86,7 +86,7 @@ shared_examples "a toolbar item with a split dropdown" do |tag, attrs|
 
   it "renders a dropdown toggle button" do
     expect(subject.to_s).to have_tag(".btn-group", with: { role: "group" }) do
-      with_tag "button.btn.btn-default.dropdown-toggle", with: { type: "button", "data-toggle": "dropdown" } do
+      with_tag "button.btn.btn-default.dropdown-toggle", with: { type: "button", "data-bs-toggle": "dropdown" } do
         with_tag "span.caret"
         with_tag "span.sr-only", text: "Toggle dropdown"
       end
@@ -120,8 +120,8 @@ describe Trestle::Toolbar::Dropdown do
   let(:options) { {} }
   let(:block) { nil }
 
-  it_should_behave_like "a toolbar item", "button.dropdown-toggle", type: "button", "data-toggle": "dropdown"
-  it_should_behave_like "a toolbar item with a dropdown", "button.dropdown-toggle", type: "button", "data-toggle": "dropdown"
+  it_should_behave_like "a toolbar item", "button.dropdown-toggle", type: "button", "data-bs-toggle": "dropdown"
+  it_should_behave_like "a toolbar item with a dropdown", "button.dropdown-toggle", type: "button", "data-bs-toggle": "dropdown"
 
   include_context "template"
 

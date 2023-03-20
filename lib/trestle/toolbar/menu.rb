@@ -18,7 +18,7 @@ module Trestle
       end
 
       def render_toggle(options={})
-        content_tag(:button, type: "button", class: Array(options[:class]) + ["dropdown-toggle"], data: { toggle: "dropdown" }) do
+        content_tag(:button, type: "button", class: Array(options[:class]) + ["dropdown-toggle"], data: { bs_toggle: "dropdown" }) do
           safe_join([
             content_tag(:span, "", class: "caret"),
             content_tag(:span, I18n.t("trestle.ui.toggle_dropdown", default: "Toggle dropdown"), class: "sr-only")
