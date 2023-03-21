@@ -10,6 +10,10 @@ module Trestle
 
     def initialize(options={}, &block)
       @options, @block = options, block
+
+      if @options[:modal] == true
+        @options[:modal] = {}
+      end
     end
 
     def modal?

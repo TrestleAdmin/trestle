@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-feature 'Dialog forms', js: true do
+feature 'Modal forms', js: true do
   include FeatureHelper
 
   scenario 'index' do
     create_test_post
 
-    visit '/admin/dialog'
+    visit '/admin/modal'
     expect(page).to have_content "First Post"
   end
 
   scenario 'new record' do
-    visit '/admin/dialog'
+    visit '/admin/modal'
     click_link "New Post"
 
     fill_in "Title", with: "Post Title"
@@ -19,13 +19,13 @@ feature 'Dialog forms', js: true do
     click_button "Save Post"
 
     expect(page).to have_content("The post was successfully created.")
-    expect(page).to have_current_path(/\/admin\/dialog/)
+    expect(page).to have_current_path(/\/admin\/modal/)
   end
 
   scenario 'update record' do
     create_test_post
 
-    visit '/admin/dialog'
+    visit '/admin/modal'
     click_link "First Post"
 
     fill_in "Title", with: "Updated Title"
@@ -37,7 +37,7 @@ feature 'Dialog forms', js: true do
   scenario 'delete record' do
     create_test_post
 
-    visit '/admin/dialog'
+    visit '/admin/modal'
     click_link "First Post"
 
     within_modal { click_link "Delete Post" }
