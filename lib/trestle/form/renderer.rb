@@ -23,6 +23,9 @@ module Trestle
       # that they can be delegated to the form builder or template by method_missing.
       undef_method :select, :display
 
+      # These methods defined in ActionView::Helpers::CaptureHelper should be called directly on the existing template object.
+      delegate :content_for, :content_for?, :provide, to: :@template
+
       delegate :concat, to: :output_buffer
 
       def initialize(template, form=nil)
