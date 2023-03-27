@@ -3,8 +3,6 @@ import ApplicationController from './application_controller'
 import Modal from '../core/modal'
 
 export default class extends ApplicationController {
-  static outlets = ['modal-trigger']
-
   connect () {
     this.modal = new Modal(this.element)
     this.modal.show()
@@ -25,14 +23,14 @@ export default class extends ApplicationController {
   }
 
   submit (detail) {
-    if (this.hasModalTriggerOutlet) {
-      const event = this.modalTriggerOutlet.dispatch('submit', { detail: detail })
+    let event = this.dispatch('submit', { detail: detail })
+    if (event.defaultPrevented) return
 
-      if (!event.defaultPrevented) {
-        this.hide()
-      }
-    } else {
-      this.hide()
+    if (this.modalTrigger) {
+      event = this.modalTrigger.dispatch('submit', { detail: detail })
+      if (event.defaultPrevented) return
     }
+
+    this.hide()
   }
 }

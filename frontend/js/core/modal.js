@@ -4,20 +4,25 @@ import Backdrop from './backdrop'
 import { fetchTurboStream } from './fetch'
 
 export default class Modal extends BootstrapModal {
-  static load (url, modalId, fetchParams) {
+  static load (url, fetchParams) {
     const backdrop = Backdrop.getInstance()
     backdrop.loading(true)
     backdrop.show()
 
     Modal.existing.forEach((modal) => modal.classList.add('background'))
 
-    return fetchTurboStream(url, {
-      ...fetchParams,
+    return new Promise((resolve) => {
+      document.addEventListener('modal:render', (e) => {
+        resolve(e.detail)
+      }, { capture: true, once: true })
 
-      headers: {
-        'X-Trestle-Modal': true,
-        'X-Trestle-Modal-ID': modalId
-      }
+      fetchTurboStream(url, {
+        ...fetchParams,
+
+        headers: {
+          'X-Trestle-Modal': true
+        }
+      })
     })
   }
 

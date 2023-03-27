@@ -5,8 +5,13 @@ import 'bootstrap'
 
 // Core Functionality
 
+import './core/stream_actions'
+
 import cookie from './core/cookie'
 import { i18n, localize } from './core/i18n'
+
+import Modal from './core/modal'
+import ErrorModal from './core/error_modal'
 
 // Stimulus Controllers
 
@@ -28,6 +33,10 @@ const Trestle = {
   // Stimulus
   ApplicationController,
   Controllers,
+
+  // Modals
+  Modal,
+  ErrorModal,
 
   // Deprecated
   init,

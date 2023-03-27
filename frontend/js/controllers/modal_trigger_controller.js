@@ -20,16 +20,16 @@ export default class extends ApplicationController {
   load (e) {
     e.preventDefault()
 
-    this.modalIdentifier = Date.now()
-
     this.dispatch('loading')
 
-    Modal.load(this.url, this.modalIdentifier, this.fetchParams)
-      .then(() => {
-        this.dispatch('loaded')
-      })
-      .catch(() => {
-        this.modalIdentifier = null
+    Modal.load(this.url, this.fetchParams)
+      .then((modal) => {
+        this.modal = modal
+
+        const modalController = this._getModalController(modal)
+        modalController.modalTrigger = this
+
+        this.dispatch('loaded', { detail: modal })
       })
   }
 
@@ -64,16 +64,11 @@ export default class extends ApplicationController {
     }
   }
 
-  get modalIdentifier () {
-    return this._modalIdentifier
-  }
-
-  set modalIdentifier (id) {
-    this._modalIdentifier = id
-    this.element.setAttribute('data-modal-id', id)
-  }
-
   get isLink () {
     return this.element.nodeName === 'A'
+  }
+
+  _getModalController (modal) {
+    return this.application.getControllerForElementAndIdentifier(modal, 'modal')
   }
 }

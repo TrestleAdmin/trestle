@@ -1,4 +1,4 @@
-<%= content_tag(:div, class: ["modal", "fade", yield(:modal_wrapper_class)], tabindex: "-1", role: "dialog", data: { controller: ["modal", yield(:modal_controller)].compact.join(" "), modal_modal_trigger_outlet: "[data-modal-id=\"#{request.headers["X-Trestle-Modal-ID"]}\"]" }) do %>
+<%= content_tag(:div, class: ["modal", "fade", yield(:modal_wrapper_class)], tabindex: "-1", role: "dialog", data: { controller: ["modal", yield(:modal_controller)].compact.join(" ") }) do %>
   <%= content_tag(:div, class: ["modal-dialog", yield(:modal_class)], role: "document") do %>
     <%= yield %>
   <% end %>
