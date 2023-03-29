@@ -1,5 +1,5 @@
-<%= content_tag(:div, class: ["modal", "fade", yield(:modal_wrapper_class)], tabindex: "-1", role: "dialog", data: { controller: ["modal", yield(:modal_controller)].compact.join(" ") }) do %>
-  <%= content_tag(:div, class: ["modal-dialog", yield(:modal_class)], role: "document") do %>
+<%= content_tag(:div, modal_wrapper_attributes) do %>
+  <%= content_tag(:div, modal_dialog_attributes) do %>
     <%= yield %>
   <% end %>
 <% end %>

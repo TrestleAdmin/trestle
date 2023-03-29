@@ -1,7 +1,6 @@
 <% content_for(:title, "Modal Demo") %>
 
-<% content_for(:modal_class, "modal-sm") %>
-<% content_for(:modal_controller, "modal-demo--modal") %>
+<% modal_options!(class: "modal-sm", controller: "modal-demo--modal") %>
 
 <% toolbar(:primary) do |t| %>
   <%= t.button "Update", style: :success, data: { action: "modal-demo--modal#submit" } %>

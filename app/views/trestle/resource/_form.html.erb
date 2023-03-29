@@ -1,7 +1,7 @@
 <% if admin.form -%>
   <% if admin.form.modal? && modal_options = admin.form.options[:modal] %>
-    <% content_for(:modal_class, modal_options[:class]) %>
-    <% content_for(:modal_controller, modal_options[:controller]) %>
+    <% modal_options!(class: modal_options[:class]) %>
+    <% modal_options!(controller: modal_options[:controller]) %>
   <% end %>
 
   <%= admin.form.render(self, instance) %>
