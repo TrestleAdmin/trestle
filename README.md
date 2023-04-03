@@ -5,7 +5,7 @@
 # Trestle
 
 [![RubyGem](https://img.shields.io/gem/v/trestle.svg?style=flat&colorB=4065a9)](https://rubygems.org/gems/trestle)
-[![Build Status](https://img.shields.io/github/workflow/status/TrestleAdmin/trestle/RSpec?style=flat)](https://github.com/TrestleAdmin/trestle/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/TrestleAdmin/trestle/rspec.yml?style=flat)](https://github.com/TrestleAdmin/trestle/actions)
 [![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle.svg?style=flat)](https://coveralls.io/github/TrestleAdmin/trestle)
 [![Code Climate](https://api.codeclimate.com/v1/badges/c529a7a9c500ed81baed/maintainability)](https://codeclimate.com/github/TrestleAdmin/trestle)
 
