@@ -10,8 +10,12 @@ module Trestle
       end
 
       def create_assets
-        template "_theme.scss",  "app/assets/stylesheets/trestle/_theme.scss"
-        template "_custom.scss", "app/assets/stylesheets/trestle/_custom.scss"
+        if defined?(Sass) || defined?(SassC)
+          template "_custom.scss", "app/assets/stylesheets/trestle/_custom.scss"
+          template "_theme.scss",  "app/assets/stylesheets/trestle/_theme.scss"
+        else
+          template "_custom.css", "app/assets/stylesheets/trestle/_custom.css"
+        end
 
         template "custom.js",    "app/assets/javascripts/trestle/custom.js"
       end
