@@ -42,7 +42,7 @@ vi:
     titles:
       index: "Danh sách %{pluralized_model_name}"
       new: "Tạo mới %{model_name}"
-      edit: Chỉnh sửa %{model_name}"
+      edit: "Chỉnh sửa %{model_name}"
 
     buttons:
       new: "Tạo mới %{model_name}"
