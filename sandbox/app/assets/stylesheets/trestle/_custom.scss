@@ -7,6 +7,29 @@
 //    @import "trestle/custom/my_custom_css";
 //
 
+:root {
+  --primary: #e50914;
+  --primary-rgb: 229, 9, 20;
+  --primary-h: 357;
+  --primary-s: 92.4%;
+  --primary-l: 46.7%;
+}
+
+.color-swatch {
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  width: 3rem;
+  height: 3rem;
+
+  &::-webkit-color-swatch {
+    border: 0;
+    border-radius: 50%;
+  }
+}
+
 .grid-example {
   text-align: center;
   padding: 1rem 0;

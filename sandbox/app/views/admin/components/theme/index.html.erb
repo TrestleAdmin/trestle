@@ -1,0 +1,181 @@
+<% content_for(:title, "Components: Theme") %>
+
+<% toolbar(:primary) do %>
+  <%= color_field_tag :theme, "", class: "color-swatch", data: { controller: "theme", action: "input->theme#update", theme_variable_value: "primary" } %>
+  <%= color_field_tag :theme, "", class: "color-swatch ms-2", data: { controller: "theme", action: "input->theme#update", theme_variable_value: "secondary" } %>
+<% end %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= row do %>
+    <%= col(xl: 6) do %>
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Typography</h2>
+        <% end %>
+
+        <p class="text-primary mb-0">This line of text contains the text-primary class.</p>
+        <p class="text-primary-emphasis">This line of text contains the text-primary-emphasis class.</p>
+
+        <p class="text-secondary mb-0">This line of text contains the text-secondary class.</p>
+        <p class="text-secondary-emphasis">This line of text contains the text-secondary-emphasis class.</p>
+
+        <p class="mb-0"><a href="#">This line of text is formatted as a link.</a></p>
+        <p class="link-primary">This line of text is a paragraph styled as a link.</p>
+      <% end %>
+
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Buttons</h2>
+        <% end %>
+
+        <div class="mb-3">
+          <%= button_tag "Primary", class: "btn btn-primary" %>
+          <%= button_tag "Primary", class: "btn btn-primary", disabled: true %>
+          <%= button_tag "Primary", class: "btn btn-outline-primary" %>
+          <%= button_tag "Primary", class: "btn btn-outline-primary", disabled: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= button_tag "Secondary", class: "btn btn-secondary" %>
+          <%= button_tag "Secondary", class: "btn btn-secondary", disabled: true %>
+          <%= button_tag "Secondary", class: "btn btn-outline-secondary" %>
+          <%= button_tag "Secondary", class: "btn btn-outline-secondary", disabled: true %>
+        </div>
+
+        <div class="mb-3">
+          <div class="btn-group" role="group">
+            <%= button_tag "Left", class: "btn btn-primary" %>
+            <%= button_tag "Middle", class: "btn btn-primary" %>
+            <%= button_tag "Right", class: "btn btn-primary" %>
+          </div>
+
+          <%= button_tag icon("fas fa-fw fa-trophy"), class: "btn btn-primary", title: "Primary" %>
+
+          <span class="dropdown">
+            <%= button_tag "Dropdown", class: "btn btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <div class="btn-group" role="group">
+            <%= button_tag "Left", class: "btn btn-secondary" %>
+            <%= button_tag "Middle", class: "btn btn-secondary" %>
+            <%= button_tag "Right", class: "btn btn-secondary" %>
+          </div>
+
+          <%= button_tag icon("fas fa-fw fa-award"), class: "btn btn-secondary", title: "Secondary" %>
+
+          <span class="dropdown">
+            <%= button_tag "Dropdown", class: "btn btn-secondary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </span>
+        </div>
+      <% end %>
+
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Badges, Tags & Progress&nbsp;Bars</h2>
+        <% end %>
+
+        <div class="mb-3">
+          <span class="badge badge-primary">Primary</span>
+          <span class="badge badge-secondary">Secondary</span>
+          <a href="#" class="badge badge-primary">Primary</a>
+          <a href="#" class="badge badge-secondary">Secondary</a>
+          <span class="badge badge-primary badge-pill">Primary</span>
+          <span class="badge badge-secondary badge-pill">Secondary</span>
+        </div>
+
+        <div class="mb-3">
+          <span class="tag tag-primary">Primary</span>
+          <span class="tag tag-secondary">Secondary</span>
+          <a href="#" class="tag tag-primary">Primary</a>
+          <a href="#" class="tag tag-secondary">Secondary</a>
+        </div>
+
+        <div class="mb-3">
+          <div class="progress mb-1">
+            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="progress mb-1">
+            <div class="progress-bar bg-secondary" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-secondary progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Backgrounds & Borders</h2>
+        <% end %>
+
+        <p class="text-bg-primary p-2 mb-0">This line of text contains the text-bg-primary class.</p>
+        <p class="bg-primary text-white p-2 mb-0">This line of text contains the bg-primary class.</p>
+        <p class="bg-primary-subtle p-2">This line of text contains the bg-primary-subtle class.</p>
+
+        <p class="border border-primary p-2 mb-1">This line of text contains the border-primary class.</p>
+        <p class="border border-primary-subtle p-2">This line of text contains the border-primary-subtle class.</p>
+
+        <p class="text-bg-secondary p-2 mb-0">This line of text contains the text-bg-secondary class.</p>
+        <p class="bg-secondary text-white p-2 mb-0">This line of text contains the bg-secondary class.</p>
+        <p class="bg-secondary-subtle p-2">This line of text contains the bg-secondary-subtle class.</p>
+
+        <p class="border border-secondary p-2 mb-1">This line of text contains the border-secondary class.</p>
+        <p class="border border-secondary-subtle p-2">This line of text contains the border-secondary-subtle class.</p>
+      <% end %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Form Fields</h2>
+        <% end %>
+
+        <%= form_with builder: Trestle::Form::Builder, method: :get do |f| %>
+          <%= f.text_field :text_field, label: "Standard text field" %>
+          <%= f.text_field :append_button, append!: button_tag("Button", class: "btn btn-primary") %>
+          <%= f.datetime_field :datetime_field %>
+          <%= f.range_field :range_field %>
+          <%= f.collection_check_boxes :checkboxes, Color.all, :code, :name_with_code %>
+          <%= f.collection_check_boxes :toggle_switches, Color.all, :code, :name_with_code, switch: true %>
+          <%= f.collection_radio_buttons :radio_buttons, Color.all, :code, :name_with_code %>
+        <% end %>
+      <% end %>
+
+      <%= container do |c| %>
+        <% c.sidebar class: "order-first" do %>
+          <h2>Alerts</h2>
+        <% end %>
+
+        <%= render "trestle/flash/alert", html_class: "alert-primary", icon: icon("alert-icon fas fa-bell"), alert: { title: "Primary" } do %>
+          <p>This custom alert has the <code>.alert-primary</code> class. This is the <a href="#">Link style</a>.</p>
+        <% end %>
+
+        <%= render "trestle/flash/alert", html_class: "alert-secondary", icon: icon("alert-icon fas fa-bell"), alert: { title: "Secondary" } do %>
+          <p>This custom alert has the <code>.alert-secondary</code> class. This is the <a href="#">Link style</a>.</p>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
