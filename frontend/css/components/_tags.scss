@@ -60,3 +60,16 @@
     @include tag-variant($value);
   }
 }
+
+.tag-list {
+  --tag-spacing-y: #{$tag-spacing-y};
+  --tag-spacing-x: #{$tag-spacing-x};
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--tag-spacing-y) var(--tag-spacing-x);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
