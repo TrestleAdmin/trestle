@@ -2,6 +2,7 @@
 
 // Mixins & functions
 @import "~bootstrap/scss/functions";
+@import "core/functions";
 @import "core/mixins";
 
 // Variables
@@ -28,7 +29,6 @@
 @import "layout/content";
 
 // Components
-@import "components/color-vars";
 @import "components/alerts";
 @import "components/avatar";
 @import "components/background";
@@ -52,3 +52,6 @@
 @import "components/timestamp";
 @import "components/toolbars";
 @import "components/turbo";
+
+// Theming
+@import "core/theme";

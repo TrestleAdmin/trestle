@@ -103,6 +103,11 @@ $alert-padding-y:     1.5rem;
 $alert-border-radius: 0.1rem;
 
 
+// Progress bars
+
+$progress-bar-bg: var(--primary);
+
+
 // Close
 
 $btn-close-color: white;
@@ -144,10 +149,12 @@ $form-check-input-width: 1.25em;
 $form-check-padding-start: $form-check-input-width + 0.6em;
 
 $form-switch-width: 2.25em;
+$form-switch-focus-color: #aaaaaa;
 
 
 // Dropdowns
 
+$dropdown-bg:                white;
 $dropdown-spacer:            0.5rem;
 $dropdown-box-shadow:        $box-shadow-sm;
 $dropdown-arrow-width:       7px;
@@ -157,6 +164,12 @@ $dropdown-font-size:         0.9rem;
 
 $dropdown-dark-bg:           #222222;
 $dropdown-dark-divider-bg:   rgba(white, 0.15);
+
+
+// Pagination
+
+$pagination-bg:          white;
+$pagination-disabled-bg: white;
 
 
 // Cards
@@ -186,6 +199,7 @@ $modal-inner-padding:    1.5rem;
 $modal-header-padding-x: 1.5rem;
 $modal-header-padding-y: 1.05rem;
 
+$modal-content-bg: white;
 $modal-content-border-radius: 0;
 $modal-content-border-width:  0;
 

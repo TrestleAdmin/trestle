@@ -6,39 +6,39 @@
 
 .theme-bg {
   @extend %textured-bg;
-  background-color: $theme-bg;
+  background-color: adjust-theme-hsl(primary, $lightness: -30%);
 }
 
 
 .theme-bg-dark {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 25%);
+  background-color: adjust-theme-hsl(primary, $lightness: -25%);
 }
 
 .theme-bg-darker {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 40%);
+  background-color: adjust-theme-hsl(primary, $lightness: -40%);
 }
 
 .theme-bg-darkest {
   @extend %textured-bg;
-  background-color: shade-color($theme-bg, 55%);
+  background-color: adjust-theme-hsl(primary, $lightness: -55%);
 }
 
 
 .theme-bg-light {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 15%);
+  background-color: adjust-theme-hsl(primary, $lightness: 15%);
 }
 
 .theme-bg-lighter {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 30%);
+  background-color: adjust-theme-hsl(primary, $lightness: 30%);
 }
 
 .theme-bg-lightest {
   @extend %textured-bg;
-  background-color: tint-color($theme-bg, 45%);
+  background-color: adjust-theme-hsl(primary, $lightness: 45%);
 }
 
 

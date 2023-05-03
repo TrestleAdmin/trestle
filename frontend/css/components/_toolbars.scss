@@ -22,21 +22,23 @@
 
 .primary-toolbar {
   .btn {
-    @extend .btn-lg;
-
-    font-size: 1.35rem;
-    padding: 0.5rem 1.25rem;
+    --#{$prefix}btn-padding-x: 1.25rem;
+    --#{$prefix}btn-padding-y: 0.5rem;
+    --#{$prefix}btn-font-size: 1.35rem;
 
     @include media-breakpoint-down(md) {
-      font-size: 1.25rem;
-      padding: 0.35rem 0.75rem;
+      --#{$prefix}btn-padding-x: 0.75rem;
+      --#{$prefix}btn-padding-y: 0.35rem;
+      --#{$prefix}btn-font-size: 1.25rem;
     }
   }
 }
 
 .secondary-toolbar {
   .btn {
-    @extend .btn-sm;
+    --#{$prefix}btn-padding-x: #{$btn-padding-x-sm};
+    --#{$prefix}btn-padding-y: #{$btn-padding-y-sm};
+    --#{$prefix}btn-font-size: #{$btn-font-size-sm};
 
     > i {
       font-size: 80%;
@@ -47,8 +49,9 @@
     }
 
     @include media-breakpoint-down(md) {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
+      --#{$prefix}btn-padding-x: 0.5rem;
+      --#{$prefix}btn-padding-y: 0.2rem;
+      --#{$prefix}btn-font-size: 0.75rem;
     }
   }
 }

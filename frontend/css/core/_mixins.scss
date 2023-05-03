@@ -28,19 +28,6 @@
   height: 100%;
 }
 
-@function soft-shadow($distance: 0.5rem, $blur: 1.5rem, $color: rgba(black, 0.125), $layers: 5, $reduce: math.div($distance, -4)) {
-  $val: 0 #{$distance} #{$blur} #{$reduce} #{$color};
-
-  @for $i from 1 through ($layers - 1) {
-    $distance: math.div($distance, 2);
-    $blur: math.div($blur, 2);
-
-    $val: 0 #{$distance} #{$blur} #{$reduce} #{$color}, #{$val};
-  }
-
-  @return $val;
-}
-
 @mixin icon-fa($content) {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
@@ -56,12 +43,4 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-@function strip-units($number) {
-  @return $number / ($number * 0 + 1);
-}
-
-@function em($rem) {
-  @return strip-units($rem) * 1em;
 }

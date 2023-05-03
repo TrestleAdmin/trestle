@@ -1,62 +1,69 @@
-@mixin tag-variant-color($background, $border, $color) {
-  background-color: $background;
-  border-color: $border;
-  color: $color;
-}
+@mixin tag-variant(
+  $base-color,
+  $background: shift-color($base-color, $tag-bg-scale),
+  $border: shift-color($base-color, $tag-border-scale),
+  $color: color-contrast($background),
+  $hover-background: shift-color($base-color, $tag-hover-bg-scale),
+  $hover-border: shift-color($base-color, $tag-hover-border-scale),
+  $hover-color: $color
+) {
+  --tag-bg: #{$background};
+  --tag-border-color: #{$border};
+  --tag-color: #{$color};
 
-@mixin tag-variant($color, $bg-scale: $tag-bg-scale, $border-scale: $tag-border-scale, $hover-bg-scale: $tag-hover-bg-scale, $hover-border-scale: $tag-hover-border-scale) {
-  $tag-background: shift-color($color, $bg-scale);
-  $tag-border: shift-color($color, $border-scale);
-  $tag-color: color-contrast($tag-background);
-
-  $tag-hover-background: shift-color($color, $hover-bg-scale);
-  $tag-hover-border: shift-color($color, $hover-border-scale);
-  $tag-hover-color: color-contrast($tag-background);
-
-  @include tag-variant-color($tag-background, $tag-border, $tag-color);
-
-  @at-root a#{&} {
-    &:hover, &:focus {
-      @include tag-variant-color($tag-hover-background, $tag-hover-border, $tag-hover-color);
-    }
-  }
+  --tag-hover-bg: #{$hover-background};
+  --tag-hover-border-color: #{$hover-border};
+  --tag-hover-color: #{$hover-color};
 }
 
 .tag {
-  display: inline-block;
-  padding: 3px 6px 3px 4px;
-  margin: 1px 4px 1px 0;
+  --tag-padding-y: 0.25rem;
+  --tag-padding-x: 6px;
 
-  font-size: 0.8rem;
-  line-height: 1.1;
+  --tag-border-width: 0.325rem;
+  --tag-border-radius: 0.25rem;
+
+  --tag-font-size: 0.8rem;
+  --tag-font-weight: normal;
+  --tag-line-height: 1.1;
+
+  --tag-bg: #{shift-color($primary, $tag-bg-scale)};
+  --tag-border-color: #{rgba(black, 0.25)};
+  --tag-color: white;
+
+  --tag-hover-border-color: #{rgba(black, 0.35)};
+
+  display: inline-block;
+  padding: var(--tag-padding-y) var(--tag-padding-x) var(--tag-padding-y) calc(var(--tag-padding-x) - var(--tag-border-width) / 2);
+
+  font-size: var(--tag-font-size);
+  font-weight: var(--tag-font-weight);
+  line-height: var(--tag-line-height);
 
   white-space: nowrap;
 
-  border-left: 4px solid;
-  border-radius: 4px;
+  border-left: var(--tag-border-width) solid var(--tag-border-color);
+  border-radius: var(--tag-border-radius);
+
+  background-color: var(--tag-bg);
+  color: var(--tag-color);
 
   @at-root a#{&} {
+    color: var(--tag-color);
     font-weight: inherit;
 
     &:hover, &:focus {
       text-decoration: none;
+
+      background-color: var(--tag-hover-bg, var(--tag-bg));
+      border-color: var(--tag-hover-border-color, var(--tag-border-color));
+      color: var(--tag-hover-color, var(--tag-color));
     }
   }
-
-  // Default tag color
-  @include tag-variant($primary);
 }
 
 @each $state, $value in $theme-colors {
-  $tag-background: shift-color($value, $tag-bg-scale);
-  $tag-border: shift-color($value, $tag-border-scale);
-  $tag-color: color-contrast($tag-background);
-
-  $tag-hover-background: shift-color($value, $tag-hover-bg-scale);
-  $tag-hover-border: shift-color($value, $tag-hover-border-scale);
-  $tag-hover-color: color-contrast($tag-background);
-
-  .tag.tag-#{$state} {
+  .tag-#{$state} {
     @include tag-variant($value);
   }
 }

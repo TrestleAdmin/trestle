@@ -13,8 +13,16 @@
     margin-bottom: 0;
   }
 
+  code {
+    color: var(--#{$prefix}alert-color);
+  }
+
   a {
-    color: white;
+    color: var(--#{$prefix}alert-link-color, white);
+
+    &:hover, &:focus {
+      color: var(--#{$prefix}alert-link-hover-color, inherit);
+    }
   }
 
   @include media-breakpoint-down(sm) {
@@ -74,21 +82,11 @@
 // Alert colors
 
 @mixin alert-variant($background, $border, $color) {
-  color: $color;
-  background: $background;
-  border-color: $border;
-
-  a {
-    color: $color;
-
-    &:hover, &:focus {
-      color: mix($color, $background, 80%);
-    }
-  }
-
-  code {
-    color: $color;
-  }
+  --#{$prefix}alert-color: #{$color};
+  --#{$prefix}alert-bg: #{$background};
+  --#{$prefix}alert-border-color: #{$border};
+  --#{$prefix}alert-link-color: #{$color};
+  --#{$prefix}alert-link-hover-color: #{mix($color, $background, 80%)};
 }
 
 .alert-success {
@@ -117,6 +115,10 @@
 
 .alert-primary {
   @include alert-variant($alert-primary-bg, $alert-primary-border, $alert-primary-color);
+}
+
+.alert-secondary {
+  @include alert-variant($alert-secondary-bg, $alert-secondary-border, $alert-secondary-color);
 }
 
 

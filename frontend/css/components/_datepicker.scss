@@ -134,16 +134,16 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: $primary;
-  border-color: $primary;
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-  box-shadow: -10px 0 0 $primary;
+  box-shadow: -10px 0 0 var(--primary);
 }
 
 .flatpickr-day.week.selected {
-  box-shadow: -5px 0 0 $primary, 5px 0 0 $primary;
+  box-shadow: -5px 0 0 var(--primary), 5px 0 0 var(--primary);
 }

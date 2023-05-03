@@ -1,12 +1,21 @@
-@mixin badge-variant($bg) {
-  color: color-contrast($bg);
-  background-color: $bg;
+@mixin badge-variant(
+  $background,
+  $color: color-contrast($background),
+  $hover-background: shift-color($background, $badge-hover-scale)
+) {
+  --#{$prefix}badge-bg: #{$background};
+  --#{$prefix}badge-color: #{$color};
+  --#{$prefix}badge-hover-bg: #{$hover-background};
+}
+
+.badge {
+  background: var(--#{$prefix}badge-bg);
 
   @at-root a#{&} {
     &:hover,
     &:focus {
-      color: color-contrast($bg);
-      background-color: shift-color($bg, $badge-hover-scale);
+      color: var(--#{$prefix}badge-color);
+      background-color: var(--#{$prefix}badge-hover-bg);
     }
   }
 }
