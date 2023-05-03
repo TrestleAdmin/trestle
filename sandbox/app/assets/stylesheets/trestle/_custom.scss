@@ -15,6 +15,14 @@
   --primary-l: 46.7%;
 }
 
+.user-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
 .color-swatch {
   cursor: pointer;
   padding: 0;

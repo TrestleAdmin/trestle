@@ -7,11 +7,16 @@ Trestle.resource(:articles) do
     model.order(created_at: :desc).includes(:author, :categories)
   end
 
+  scopes do
+    scope :all, default: true
+    scope :active
+  end
+
   table do
     selectable_column
     column :title, link: true, truncate: false
     column :author do |article|
-      admin_link_to article.author do
+      admin_link_to article.author, class: "user-link" do
         safe_join([
           avatar(fallback: article.author.initials, style: "background: #{article.author.avatar_color}", class: "avatar-sm mr-1") { gravatar(article.author.email, d: article.author.avatar_type_value) },
           article.author.full_name
