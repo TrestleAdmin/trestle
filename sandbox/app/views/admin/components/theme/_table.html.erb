@@ -1,0 +1,27 @@
+<%= container do %>
+  <header class="main-content-header">
+    <h2 class="m-0">Table Rows</h2>
+  </header>
+
+  <div class="table-container">
+    <table class="trestle-table">
+      <thead>
+        <tr><th>Row Style</th></tr>
+      </thead>
+
+      <tbody>
+        <% 2.times do %>
+          <tr class="table-primary"><td>Primary Row</td></tr>
+        <% end %>
+
+        <% 2.times do %>
+          <tr class="table-secondary"><td>Secondary Row</td></tr>
+        <% end %>
+
+        <% 3.times do %>
+          <tr><td>Regular Row</td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

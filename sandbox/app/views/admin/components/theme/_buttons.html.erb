@@ -1,0 +1,59 @@
+<%= container do %>
+  <header class="main-content-header">
+    <h2 class="m-0">Buttons</h2>
+  </header>
+
+  <div class="mb-3">
+    <%= button_tag "Primary", class: "btn btn-primary" %>
+    <%= button_tag "Primary", class: "btn btn-primary", disabled: true %>
+    <%= button_tag "Primary", class: "btn btn-outline-primary" %>
+    <%= button_tag "Primary", class: "btn btn-outline-primary", disabled: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= button_tag "Secondary", class: "btn btn-secondary" %>
+    <%= button_tag "Secondary", class: "btn btn-secondary", disabled: true %>
+    <%= button_tag "Secondary", class: "btn btn-outline-secondary" %>
+    <%= button_tag "Secondary", class: "btn btn-outline-secondary", disabled: true %>
+  </div>
+
+  <div class="mb-3">
+    <div class="btn-group" role="group">
+      <%= button_tag "Left", class: "btn btn-primary" %>
+      <%= button_tag "Middle", class: "btn btn-primary" %>
+      <%= button_tag "Right", class: "btn btn-primary" %>
+    </div>
+
+    <%= button_tag icon("fas fa-fw fa-trophy"), class: "btn btn-primary", title: "Primary" %>
+
+    <span class="dropdown">
+      <%= button_tag "Dropdown", class: "btn btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </span>
+  </div>
+
+  <div>
+    <div class="btn-group" role="group">
+      <%= button_tag "Left", class: "btn btn-secondary" %>
+      <%= button_tag "Middle", class: "btn btn-secondary" %>
+      <%= button_tag "Right", class: "btn btn-secondary" %>
+    </div>
+
+    <%= button_tag icon("fas fa-fw fa-award"), class: "btn btn-secondary", title: "Secondary" %>
+
+    <span class="dropdown">
+      <%= button_tag "Dropdown", class: "btn btn-secondary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </span>
+  </div>
+<% end %>

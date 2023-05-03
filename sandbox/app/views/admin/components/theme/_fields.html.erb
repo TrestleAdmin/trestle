@@ -1,0 +1,20 @@
+<%= container do %>
+  <header class="main-content-header">
+    <h2 class="m-0">Form Fields</h2>
+  </header>
+
+  <%= form_with builder: Trestle::Form::Builder, method: :get do |f| %>
+    <%= f.text_field :text_field, label: "Text field" %>
+
+    <%= f.select :select_field, ["Red", "Green", "Blue", "Yellow"] %>
+    <%= f.tag_select :tag_select %>
+
+    <%= f.text_field :append_button, append!: button_tag("Button", class: "btn btn-primary") %>
+    <%= f.datetime_field :datetime_field %>
+    <%= f.range_field :range_field %>
+
+    <%= f.collection_check_boxes :checkboxes, Color.all, :code, :name_with_code %>
+    <%= f.collection_check_boxes :toggle_switches, Color.all, :code, :name_with_code, switch: true %>
+    <%= f.collection_radio_buttons :radio_buttons, Color.all, :code, :name_with_code %>
+  <% end %>
+<% end %>
