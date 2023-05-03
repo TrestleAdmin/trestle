@@ -1,0 +1,15 @@
+<% if Trestle.config.theme.any? %>
+<style type="text/css">
+  :root {
+    <% Trestle.config.theme.each do |name, color| %>
+      --<%= name %>: <%= color.hex %>;
+      --<%= name %>-rgb: <%= color.rgb.join(", ") %>;
+
+      <% h, s, l = color.hsl %>
+      --<%= name %>-h: <%= h %>;
+      --<%= name %>-s: <%= s %>%;
+      --<%= name %>-l: <%= l %>%;
+    <% end %>
+  }
+</style>
+<% end %>

@@ -22,8 +22,19 @@ module Trestle
     # Default timestamp precision
     option :timestamp_precision, :minutes
 
-    # Theme stylesheet compilation (requires Sass support)
-    option :theme, defined?(Sass) || defined?(SassC)
+    # Theme colors
+    option :theme, {}
+
+    def theme=(colors)
+      if [true, false].include?(colors)
+        ActiveSupport::Deprecation.warn("Passing a boolean to config.theme is deprecated. Please pass primary and secondary theme colors as a hash.")
+      else
+        original = fetch(:colors) || {}
+        colors = colors.transform_values { |color| Trestle::Color.parse(color) }
+
+        assign(:theme, original.merge(colors))
+      end
+    end
 
 
     ## Mounting Options

@@ -27,14 +27,6 @@ module Trestle
       end
     end
 
-    initializer "trestle.theme" do |app|
-      # Enable theme compilation
-      if Trestle.config.theme
-        app.config.assets.paths << root.join("frontend/theme").to_s
-        app.config.assets.precompile << "trestle/theme.css"
-      end
-    end
-
     initializer "turbo.mimetype" do
       Mime::Type.register "text/vnd.turbo-stream.html", :turbo_stream unless Mime[:turbo_stream]
     end

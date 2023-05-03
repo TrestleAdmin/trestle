@@ -6,6 +6,7 @@ require "kaminari"
 module Trestle
   require_relative "trestle/evaluation_context"
   require_relative "trestle/builder"
+  require_relative "trestle/color"
   require_relative "trestle/hook"
   require_relative "trestle/toolbar"
   require_relative "trestle/adapters"
