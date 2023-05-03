@@ -49,8 +49,6 @@ $sidebar-width-collapsed: 54px;
 
 $sidebar-transition-duration: 250ms;
 
-$sidebar-font-size-scale: 0.925;
-
 
 // Content
 
@@ -71,6 +69,9 @@ $main-content-footer-border:  1px solid rgba(black, 0.1);
 // Typography
 
 $headings-border: 1px solid rgba(black, 0.1);
+
+$header-font-size-scale: 0.925;
+$sidebar-font-size-scale: 0.925;
 
 $badge-hover-scale: -15%;
 
