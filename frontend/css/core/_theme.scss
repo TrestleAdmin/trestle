@@ -45,6 +45,20 @@ a {
   }
 }
 
+.nav-link {
+  &:focus-visible {
+    box-shadow: 0 0 #{$focus-ring-blur} #{$focus-ring-width} rgba(var(--primary-rgb), #{$focus-ring-opacity});
+  }
+}
+
+.btn-link {
+  --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}link-color-rgb), .25);
+}
+
+.btn-close {
+  --#{$prefix}btn-close-focus-shadow: 0 0 #{$focus-ring-blur} #{$focus-ring-width} rgba(var(--primary-rgb), #{$focus-ring-opacity});
+}
+
 .pagination {
   --#{$prefix}pagination-active-bg: var(--primary);
   --#{$prefix}pagination-active-border-color: var(--primary);
@@ -209,6 +223,7 @@ a {
     --#{$prefix}btn-disabled-border-color: var(--#{$color});
 
     --#{$prefix}btn-focus-shadow-rgb: var(--#{$color}-rgb);
+    --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .25);
   }
 
   .alert-#{$color} {

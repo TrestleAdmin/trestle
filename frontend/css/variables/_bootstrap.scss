@@ -59,6 +59,8 @@ $box-shadow-sm: soft-shadow(0.5rem, 0.75em, rgba(black, 0.075), $layers: 4);
 
 // Navs
 
+$nav-pills-link-active-bg: var(--primary);
+
 $nav-tabs-border-radius: 0;
 $nav-tabs-border-width:  0;
 
@@ -106,6 +108,12 @@ $alert-border-radius: 0.1rem;
 // Progress bars
 
 $progress-bar-bg: var(--primary);
+
+
+// List group
+
+$list-group-bg: white;
+$list-group-active-bg: var(--primary);
 
 
 // Close
@@ -162,6 +170,8 @@ $dropdown-arrow-outer-width: $dropdown-arrow-width + 1px;
 $dropdown-header-color:      #111111;
 $dropdown-font-size:         0.9rem;
 
+$dropdown-link-active-bg:    var(--primary);
+
 $dropdown-dark-bg:           #222222;
 $dropdown-dark-divider-bg:   rgba(white, 0.15);
 
@@ -176,6 +186,17 @@ $pagination-disabled-bg: white;
 
 $card-bg:            rgba(white, 0.5);
 $card-border-radius: 0;
+
+
+// Accordion
+
+$accordion-bg:                white;
+$accordion-icon-active-color: #111111;
+
+
+// Tooltips
+
+$tooltip-color: white;
 
 
 // Popovers

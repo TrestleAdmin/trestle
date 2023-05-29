@@ -1,0 +1,54 @@
+<%= container do %>
+  <header class="main-content-header">
+    <h2 class="m-0">Accordions, List Groups & Navs</h2>
+  </header>
+
+  <div class="row mb-3">
+    <div class="col">
+      <div class="accordion" id="accordion-example">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1">
+              Accordion Item #1
+            </button>
+          </h2>
+
+          <div id="accordion-1" class="accordion-collapse collapse show" data-bs-parent="accordion-example">
+            <div class="accordion-body">
+              This is the accordion body for Item #1. It is shown by default.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-2">
+              Accordion Item #2
+            </button>
+          </h2>
+
+          <div id="accordion-2" class="accordion-collapse collapse" data-bs-parent="accordion-example">
+            <div class="accordion-body">
+              This is the accordion body for Item #2.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item active">An active item</li>
+        <li class="list-group-item list-group-item-primary">A primary item</li>
+        <li class="list-group-item list-group-item-secondary">A secondary item</li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a href="#" class="nav-link active">Link</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+  </ul>
+<% end %>

@@ -1,0 +1,7 @@
+<%= container do %>
+  <header class="main-content-header">
+    <h2 class="m-0">Modal</h2>
+  </header>
+
+  <%= admin_link_to "Launch Modal", admin: :"components/miscellaneous", action: :modal, class: "btn btn-primary", data: { controller: "modal-trigger" } %>
+<% end %>
