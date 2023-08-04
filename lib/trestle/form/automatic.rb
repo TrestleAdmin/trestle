@@ -33,7 +33,8 @@ module Trestle
               when :boolean
                 check_box attribute.name
               when :enum
-                collection_radio_buttons attribute.name, attribute.options[:values] || [], :first, :last
+                value = instance.has_attribute?(attribute.name) ? instance.public_send(attribute.name.to_sym) : nil
+                collection_radio_buttons(attribute.name, attribute.options[:values] || [], :first, :last, { checked: [value] })
               when :json, :jsonb
                 value = instance.public_send(attribute.name)
                 text_area attribute.name, value: value.try(:to_json)
