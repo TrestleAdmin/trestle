@@ -90,7 +90,7 @@ module Trestle
 
       def enum_values(column)
         model.defined_enums[column.name].map { |key, value|
-          [value, enum_human_name(column, key)]
+          [key, enum_human_name(column, key)]
         }
       end
 
