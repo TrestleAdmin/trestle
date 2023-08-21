@@ -106,13 +106,13 @@ a {
       .select2-results__option {
         // Highlighted item
         &.select2-results__option--highlighted {
-          background-color: #{adjust-theme-hsl(primary, $lightness: 90%)};
+          background-color: rgba(var(--primary-rgb), 0.2);
         }
 
         // Selected item
         &.select2-results__option--selected,
         &[aria-selected="true"]:not(.select2-results__option--highlighted) {
-          background-color: #{adjust-theme-hsl(primary, $lightness: 95%)};
+          background-color: rgba(var(--primary-rgb), 0.1);
         }
       }
     }
