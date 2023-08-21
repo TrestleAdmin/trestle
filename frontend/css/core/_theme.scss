@@ -15,6 +15,10 @@ $theme-colors: (
     --#{$color}-s: #{saturation($value)};
     --#{$color}-l: #{lightness($value)};
 
+    --#{$color}-hue: var(--#{$color}-h);
+    --#{$color}-saturation: var(--#{$color}-s);
+    --#{$color}-lightness: var(--#{$color}-l);
+
     --#{$color}-rgb: #{to-rgb($value)};
 
     --#{$color}-hsl: var(--#{$color}-h) var(--#{$color}-s) var(--#{$color}-l);
