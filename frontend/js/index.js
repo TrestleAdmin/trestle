@@ -21,7 +21,6 @@ import { ApplicationController, Controllers } from './controllers'
 
 import { init, ready, triggerInit, triggerReady } from './deprecated/events'
 import './deprecated/tooltip'
-import './deprecated/popover'
 
 // Export
 
