@@ -3,6 +3,18 @@
 $theme-bg: $primary;
 $error-bg: $danger;
 
+$theme-bg-variations: (
+  default:  -20%,
+
+  dark:     -35%,
+  darker:   -50%,
+  darkest:  -65%,
+
+  light:    0,
+  lighter:  15%,
+  lightest: 30%
+);
+
 
 // Header
 
