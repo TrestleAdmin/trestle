@@ -26,19 +26,21 @@ export default class extends PopoverController {
   connect () {
     super.connect()
 
-    this.element.addEventListener('click', this.boundOnClick)
+    this.element.addEventListener('click', this.boundOnClick, { capture: true })
   }
 
   disconnect () {
     super.disconnect()
 
-    this.element.removeEventListener('click', this.boundOnClick)
+    this.element.removeEventListener('click', this.boundOnClick, { capture: true })
   }
 
   onClick (e) {
     if (!this.confirmed) {
       e.preventDefault()
-      e.stopPropagation()
+      e.stopImmediatePropagation()
+
+      this.toggle()
     }
   }
 

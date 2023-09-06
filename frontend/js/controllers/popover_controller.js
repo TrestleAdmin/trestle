@@ -36,6 +36,14 @@ export default class extends ApplicationController {
     this.popover.dispose()
   }
 
+  show () {
+    this.popover.show()
+  }
+
+  toggle () {
+    this.popover.toggle()
+  }
+
   hide (e) {
     if (!this.popover.tip.contains(e.target)) {
       this.popover.hide()
