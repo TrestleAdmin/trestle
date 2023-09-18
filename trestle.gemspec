@@ -25,10 +25,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sprockets-rails", ">= 2.0.0"
   spec.add_dependency "kaminari",        ">= 1.1.0"
 
-  spec.add_development_dependency "rspec-rails",         "~> 3.5"
-  spec.add_development_dependency "rspec-html-matchers", "~> 0.9.2"
-  spec.add_development_dependency "database_cleaner",    "~> 1.8.3"
-  spec.add_development_dependency "ammeter",             "~> 1.1.4"
+  spec.add_development_dependency "rspec-rails",         ">= 5.1.2"
+  spec.add_development_dependency "rspec-html-matchers", "~> 0.10.0"
+  spec.add_development_dependency "database_cleaner",    "~> 2.0.2"
+  spec.add_development_dependency "ammeter",             "~> 1.1.5"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
