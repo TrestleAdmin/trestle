@@ -3,9 +3,9 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
-  serialize :tags, Array
+  serialize :tags, Array, coder: YAML
 
-  validates :title, :author, presence: true
+  validates :title, presence: true
 
   def tags=(tags)
     super(tags.reject(&:blank?))

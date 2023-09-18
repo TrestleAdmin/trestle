@@ -53,7 +53,7 @@ Trestle.resource(:users) do
 
       static_field :avatar, label: false do
         avatar(fallback: user.initials, style: "background: #{user.avatar_color}", class: "avatar-lg") { gravatar(user.email, d: user.avatar_type_value) }
-      end
+      end if user.persisted?
     end
   end
 end
