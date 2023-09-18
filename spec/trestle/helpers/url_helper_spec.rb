@@ -31,7 +31,7 @@ describe Trestle::UrlHelper do
 
       before(:each) do
         expect(admin).to receive(:to_param).with(instance).and_return(123)
-        expect(admin).to receive(:path).with(:show, id: 123).and_return(url)
+        expect(admin).to receive(:path).with(:show, { id: 123 }).and_return(url)
         expect(self).to receive(:admin_for).with(instance).and_return(admin)
       end
 
@@ -41,7 +41,7 @@ describe Trestle::UrlHelper do
       end
 
       it "passes additional options to link_to" do
-        expect(self).to receive(:link_to).with("link content", url, class: "btn").and_return(link)
+        expect(self).to receive(:link_to).with("link content", url, { class: "btn" }).and_return(link)
         expect(admin_link_to("link content", instance, class: "btn")).to eq(link)
       end
 
@@ -69,7 +69,7 @@ describe Trestle::UrlHelper do
     context "when no instance is provided" do
       it "renders a link using the given admin, action and params" do
         expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
-        expect(admin).to receive(:path).with(:new, foo: "bar").and_return(url)
+        expect(admin).to receive(:path).with(:new, { foo: "bar" }).and_return(url)
         expect(self).to receive(:link_to).with("link content", url, {}).and_return(link)
         expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
       end
@@ -79,7 +79,7 @@ describe Trestle::UrlHelper do
 
         it "renders the admin link with data-behavior='dialog' set" do
           expect(Trestle).to receive(:lookup).with(:test).and_return(admin)
-          expect(admin).to receive(:path).with(:new, foo: "bar").and_return(url)
+          expect(admin).to receive(:path).with(:new, { foo: "bar" }).and_return(url)
           expect(self).to receive(:link_to).with("link content", url, { data: { behavior: "dialog" } }).and_return(link)
           expect(admin_link_to("link content", action: :new, admin: :test, params: { foo: "bar" })).to eq(link)
         end
@@ -111,7 +111,7 @@ describe Trestle::UrlHelper do
 
     it "returns the path to the show action of the given admin and instance" do
       expect(admin).to receive(:to_param).with(instance).and_return(param)
-      expect(admin).to receive(:path).with(:show, id: param)
+      expect(admin).to receive(:path).with(:show, { id: param })
       admin_url_for(instance, admin: admin)
     end
 

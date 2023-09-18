@@ -74,21 +74,21 @@ describe Trestle::Table::ActionsColumn do
 
     describe "#delete" do
       it "returns a delete link" do
-        expect(admin).to receive(:translate).with("buttons.delete", default: "Delete").and_return("Delete")
+        expect(admin).to receive(:translate).with("buttons.delete", { default: "Delete" }).and_return("Delete")
         expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }))
       end
     end
 
     describe "#show" do
       it "returns a show link" do
-        expect(admin).to receive(:translate).with("buttons.show", default: "Show").and_return("Show")
+        expect(admin).to receive(:translate).with("buttons.show", { default: "Show" }).and_return("Show")
         expect(builder.show).to eq(Trestle::Toolbar::Link.new(template, "Show", instance, style: :info, icon: "fa fa-info"))
       end
     end
 
     describe "#edit" do
       it "returns an edit link" do
-        expect(admin).to receive(:translate).with("buttons.edit", default: "Edit").and_return("Edit")
+        expect(admin).to receive(:translate).with("buttons.edit", { default: "Edit" }).and_return("Edit")
         expect(builder.edit).to eq(Trestle::Toolbar::Link.new(template, "Edit", instance, style: :warning, icon: "fa fa-pencil"))
       end
     end

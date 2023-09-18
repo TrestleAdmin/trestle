@@ -162,7 +162,7 @@ describe Trestle::Resource::Builder, remove_const: true do
       end
 
       instance = double
-      expect(instance).to receive(:update_attributes).with(name: "Test")
+      expect(instance).to receive(:update_attributes).with({ name: "Test" })
       expect(::TestsAdmin.update_instance(instance, name: "Test"))
     end
   end
@@ -178,7 +178,7 @@ describe Trestle::Resource::Builder, remove_const: true do
       end
 
       instance = double
-      expect(repository).to receive(:save).with(instance, context: :admin)
+      expect(repository).to receive(:save).with(instance, { context: :admin })
       expect(::TestsAdmin.save_instance(instance, context: :admin))
     end
   end
@@ -194,7 +194,7 @@ describe Trestle::Resource::Builder, remove_const: true do
         end
       end
 
-      expect(repository).to receive(:delete).with(instance, name: "Test")
+      expect(repository).to receive(:delete).with(instance, { name: "Test" })
       expect(::TestsAdmin.delete_instance(instance, name: "Test"))
     end
   end
