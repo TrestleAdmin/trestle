@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.2.2"
 
-  spec.add_dependency "railties",        ">= 4.2.0"
-  spec.add_dependency "activemodel",     ">= 4.2.0"
+  spec.add_dependency "railties",        ">= 5.2.0"
+  spec.add_dependency "activemodel",     ">= 5.2.0"
   spec.add_dependency "sprockets-rails", ">= 2.0.0"
   spec.add_dependency "kaminari",        ">= 1.1.0"
 
@@ -32,6 +32,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "sqlite3", "~> 1.3.6"
+  spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "turbolinks"
 end

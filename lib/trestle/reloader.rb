@@ -38,17 +38,8 @@ module Trestle
 
       app.reloaders << reloader
 
-      if app.respond_to?(:reloader)
-        # Rails >= 5.0
-        app.reloader.to_run do
-          reloader.execute_if_updated
-          true # Rails <= 5.1
-        end
-      else
-        # Rails 4.2
-        ActionDispatch::Reloader.to_prepare do
-          reloader.execute_if_updated
-        end
+      app.reloader.to_run do
+        reloader.execute_if_updated
       end
 
       reloader.execute

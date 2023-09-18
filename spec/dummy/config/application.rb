@@ -22,8 +22,6 @@ module Dummy
       config.load_defaults 6.0
     when '5.2'
       config.load_defaults 5.2
-    when '5.1'
-      config.load_defaults 5.1
     end
 
     # Settings in config/environments/* take precedence over those specified here.
