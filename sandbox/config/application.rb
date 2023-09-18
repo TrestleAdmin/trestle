@@ -11,6 +11,8 @@ module Sandbox
   class Application < Rails::Application
     # Initialize configuration defaults for current Rails version.
     case Rails.version.split(".").first(2).join(".")
+    when '7.1'
+      config.load_defaults 7.1
     when '7.0'
       config.load_defaults 7.0
     when '6.0'
