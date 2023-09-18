@@ -16,7 +16,7 @@ module Trestle
 
     def deprecated_toolbar(name)
       if content_for?(:"#{name}_toolbar")
-        ActiveSupport::Deprecation.warn("Using content_for(:#{name}_toolbar) is deprecated. Please use toolbar(:#{name}) instead.")
+        Trestle.deprecator.warn("Using content_for(:#{name}_toolbar) is deprecated. Please use toolbar(:#{name}) instead.")
         content_for(:"#{name}_toolbar")
       end
     end

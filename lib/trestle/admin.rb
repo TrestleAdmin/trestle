@@ -2,8 +2,6 @@ module Trestle
   class Admin
     require_relative "admin/builder"
 
-    delegate :to_param, to: :class
-
     def initialize(context=nil)
       @context = context
     end
@@ -176,5 +174,9 @@ module Trestle
         end
       end
     end
+
+    # This delegate call is deferred until the class method is defined,
+    # since the method signature is different from Object#to_param.
+    delegate :to_param, to: :class
   end
 end

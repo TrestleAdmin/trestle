@@ -71,11 +71,11 @@ module Trestle
 
       def deprecated_option(name, message=nil)
         define_method("#{name}=") do |value|
-          ActiveSupport::Deprecation.warn(message)
+          Trestle.deprecator.warn(message)
         end
 
         define_method(name) do |*args|
-          ActiveSupport::Deprecation.warn(message)
+          Trestle.deprecator.warn(message)
         end
       end
     end

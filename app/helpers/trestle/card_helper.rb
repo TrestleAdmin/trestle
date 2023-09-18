@@ -11,12 +11,12 @@ module Trestle
     end
 
     def panel(options={}, &block)
-      ActiveSupport::Deprecation.warn("The panel helper is deprecated and will be removed in future versions of Trestle. Please use the card helper instead.")
+      Trestle.deprecator.warn("The panel helper is deprecated and will be removed in future versions of Trestle. Please use the card helper instead.")
       card(options.merge(header: options[:title]), &block)
     end
 
     def well(options={}, &block)
-      ActiveSupport::Deprecation.warn("The well helper is deprecated and will be removed in future versions of Trestle. Please use the card helper instead.")
+      Trestle.deprecator.warn("The well helper is deprecated and will be removed in future versions of Trestle. Please use the card helper instead.")
       card(options, &block)
     end
   end

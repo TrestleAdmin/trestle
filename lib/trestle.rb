@@ -85,6 +85,10 @@ module Trestle
       [locale]
     end
   end
+
+  def self.deprecator
+    @deprecator ||= ActiveSupport::Deprecation.new
+  end
 end
 
 require_relative "trestle/engine" if defined?(Rails)
