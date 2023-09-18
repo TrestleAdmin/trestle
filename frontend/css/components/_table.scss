@@ -116,7 +116,7 @@
     }
 
     &.has-icon .btn-label {
-      @include sr-only;
+      @include visually-hidden;
     }
   }
 

@@ -14,7 +14,7 @@ describe Trestle::Form::Fields::CollectionRadioButtons, type: :helper do
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do
-      with_tag "label.form-label", text: "Country", without: { class: "sr-only" }
+      with_tag "label.form-label", text: "Country", without: { class: "visually-hidden" }
 
       with_tag ".form-check.form-check-inline" do
         with_tag "input.form-check-input[checked]", with: { type: "radio", value: "AUS", id: "article_country_aus" }
@@ -58,7 +58,7 @@ describe Trestle::Form::Fields::CollectionRadioButtons, type: :helper do
 
     it "uses the block to build each check box" do
       expect(subject).to have_tag(".form-group") do
-        with_tag "label.form-label", text: "Country", without: { class: "sr-only" }
+        with_tag "label.form-label", text: "Country", without: { class: "visually-hidden" }
 
         with_tag "input.from-block[checked]", with: { type: "radio", value: "AUS", id: "article_country_aus" }
         with_tag "input.from-block:not([checked])", with: { type: "radio", value: "USA", id: "article_country_usa" }

@@ -14,7 +14,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
   it "renders a collection of inline check boxes within a form group" do
     expect(subject).to have_tag(".form-group") do
-      with_tag "label.form-label", text: "Countries", without: { class: "sr-only" }
+      with_tag "label.form-label", text: "Countries", without: { class: "visually-hidden" }
       with_tag "input", with: { type: "hidden", name: "article[countries][]", value: "" }
 
       with_tag ".form-check.form-check-inline" do
@@ -69,7 +69,7 @@ describe Trestle::Form::Fields::CollectionCheckBoxes, type: :helper do
 
     it "uses the block to build each check box" do
       expect(subject).to have_tag(".form-group") do
-        with_tag "label.form-label", text: "Countries", without: { class: "sr-only" }
+        with_tag "label.form-label", text: "Countries", without: { class: "visually-hidden" }
         with_tag "input", with: { type: "hidden", name: "article[countries][]", value: "" }
 
         with_tag "input.from-block[checked]", with: { type: "checkbox", value: "AUS", id: "article_countries_aus" }

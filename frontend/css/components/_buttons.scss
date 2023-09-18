@@ -40,7 +40,7 @@
   }
 
   .btn-label {
-    @include sr-only;
+    @include visually-hidden;
   }
 }
 

@@ -5,7 +5,7 @@ RSpec.shared_examples "a form field" do |field, html_options|
 
   it "renders a label within a form group" do
     expect(subject).to have_tag(".form-group") do
-      with_tag "label.form-label", text: field.to_s.humanize, without: { class: "sr-only" }
+      with_tag "label.form-label", text: field.to_s.humanize, without: { class: "visually-hidden" }
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.shared_examples "a form field" do |field, html_options|
     let(:options) { { hide_label: true } }
 
     it "renders the label for screen readers only" do
-      expect(subject).to have_tag("label.form-label.sr-only", text: field.to_s.humanize)
+      expect(subject).to have_tag("label.form-label.visually-hidden", text: field.to_s.humanize)
     end
   end
 
