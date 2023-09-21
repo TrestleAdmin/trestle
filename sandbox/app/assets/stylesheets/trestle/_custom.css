@@ -1,0 +1,44 @@
+/* This file may be used for providing additional customizations to the Trestle
+ * admin. It will be automatically included within all admin pages.
+ *
+ * For organizational purposes, you may wish to define your customizations
+ * within individual partials in this folder and they'll be required below.
+ *
+ *= require_tree .
+*/
+
+.user-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.color-swatch {
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  width: 3rem;
+  height: 3rem;
+}
+
+.color-swatch::-webkit-color-swatch {
+  border: 0;
+  border-radius: 50%;
+}
+
+.grid-example {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0.5rem 0;
+
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+
+.grid-example code {
+  display: block;
+}

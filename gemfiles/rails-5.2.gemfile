@@ -16,7 +16,4 @@ end
 
 gem 'rails', '~> 5.2.0'
 
-#gem 'sassc-rails'
-gem 'dartsass-sprockets'
-
 gemspec path: "../"

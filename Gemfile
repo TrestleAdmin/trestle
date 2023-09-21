@@ -19,9 +19,6 @@ group :test do
   gem 'capybara-screenshot'
 end
 
-#gem 'sassc-rails'
-gem 'dartsass-sprockets'
-
 gem 'haml'
 gem 'sqlite3', '~> 1.4'
 

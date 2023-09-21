@@ -22,7 +22,4 @@ end
 gem 'rails', '~> 7.1.0.beta1'
 gem 'sqlite3', '~> 1.4'
 
-#gem 'sassc-rails'
-gem 'dartsass-sprockets'
-
 gemspec path: "../"
