@@ -8,9 +8,7 @@ Trestle.resource(:modal, model: Post) do
     actions
   end
 
-  form modal: true do |post|
-    modal_options!(class: "modal-lg")
-
+  form modal: { class: "modal-lg" } do |post|
     text_field :title
     text_area :body
   end

@@ -16,7 +16,7 @@ Trestle.resource(:categories) do
     actions
   end
 
-  form dialog: true do
+  form modal: true do
     text_field :name
     color_field :color
   end

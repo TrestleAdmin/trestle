@@ -141,11 +141,11 @@ describe Trestle::Admin::Builder, remove_const: true do
     context "without a block" do
       it "builds an automatic form using the given options" do
         Trestle::Admin::Builder.create(:test) do
-          form dialog: true
+          form modal: true
         end
 
         expect(::TestAdmin.form).to be_a(Trestle::Form::Automatic)
-        expect(::TestAdmin.form.options).to eq(dialog: true)
+        expect(::TestAdmin.form.options).to eq(modal: {})
       end
     end
   end

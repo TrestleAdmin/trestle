@@ -27,7 +27,7 @@ module Trestle
 
     def theme=(colors)
       if [true, false].include?(colors)
-        ActiveSupport::Deprecation.warn("Passing a boolean to config.theme is deprecated. Please pass primary and secondary theme colors as a hash.")
+        Trestle.deprecator.warn("Passing a boolean to config.theme is deprecated. Please pass primary and secondary theme colors as a hash.")
       else
         original = fetch(:colors) || {}
         colors = colors.transform_values { |color| Trestle::Color.parse(color) }

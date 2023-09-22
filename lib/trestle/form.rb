@@ -14,15 +14,21 @@ module Trestle
       if @options[:modal] == true
         @options[:modal] = {}
       end
+
+      if options[:dialog]
+        Trestle.deprecator.warn("`form dialog: true` is deprecated. Please use `form modal: true` instead.")
+        @options.delete(:dialog)
+        @options[:modal] = {}
+      end
     end
 
     def modal?
-      options[:modal] || options[:dialog] == true
+      options[:modal]
     end
 
     def dialog?
-      ActiveSupport::Deprecation.warn("`Trestle::Form#dialog?` is deprecated. Please use `modal?` instead.")
-      options[:dialog] == true
+      Trestle.deprecator.warn("`Trestle::Form#dialog?` is deprecated. Please use `modal?` instead.")
+      options[:modal]
     end
 
     def render(template, instance)

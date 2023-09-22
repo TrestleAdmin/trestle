@@ -15,7 +15,7 @@ module Trestle
       end
 
       def dialog_request?
-        ActiveSupport::Deprecation.warn("The #dialog_request? helper has been renamed to #modal_request?")
+        Trestle.deprecator.warn("The #dialog_request? helper has been renamed to #modal_request?")
         modal_request?
       end
     end
