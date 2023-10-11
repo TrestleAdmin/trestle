@@ -26,6 +26,10 @@
   align-items: stretch;
 
   .navbar-toggler {
+    --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-bg};
+    --bs-navbar-toggler-color: #{$sidebar-mobile-toggle-border-color};
+    --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-border-color};
+
     outline: none;
 
     align-self: center;
@@ -33,19 +37,16 @@
     margin-left: math.div($grid-gutter-width, 2);
     margin-right: math.div($grid-gutter-width, 2);
 
-    background: $sidebar-mobile-toggle-bg;
-    border: $sidebar-mobile-toggle-border;
-    color: $sidebar-mobile-toggle-border-color;
+    background: var(--bs-navbar-toggler-bg);
 
     &:hover, &:focus {
-      background: $sidebar-mobile-toggle-active-bg;
-      border: $sidebar-mobile-toggle-active-border;
-      color: $sidebar-mobile-toggle-active-border-color;
+      --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-active-border-color};
+      --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-active-bg};
     }
   }
 
   .navbar-toggler-icon {
-    background-image: $sidebar-mobile-toggle-icon-bg;
+    --bs-navbar-toggler-icon-bg: #{$sidebar-mobile-toggle-icon-bg};
   }
 }
 
