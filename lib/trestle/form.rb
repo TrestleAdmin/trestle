@@ -16,7 +16,7 @@ module Trestle
       end
 
       if options[:dialog]
-        Trestle.deprecator.warn("`form dialog: true` is deprecated. Please use `form modal: true` instead.")
+        Trestle.deprecator.warn("`form dialog: true` is deprecated. Please use `form modal: true` instead.", caller_locations(3))
         @options.delete(:dialog)
         @options[:modal] = {}
       end
