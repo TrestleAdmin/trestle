@@ -12,7 +12,9 @@ export default class extends ApplicationController {
   }
 
   scrollToTop (e) {
-    this.scrollTarget.scrollIntoView()
+    if (this.hasScrollTarget) {
+      this.scrollTarget.scrollIntoView()
+    }
   }
 
   reload () {
