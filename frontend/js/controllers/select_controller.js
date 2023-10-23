@@ -24,6 +24,12 @@ export default class extends ApplicationController {
   }
 
   get options () {
-    return {}
+    return {
+      dropdownParent: this.dropdownParent
+    }
+  }
+
+  get dropdownParent () {
+    return this.element.closest('.modal')
   }
 }
