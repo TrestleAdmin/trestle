@@ -33,7 +33,9 @@ export default class extends ApplicationController {
 
     document.removeEventListener('click', this.boundHide)
 
-    this.popover.dispose()
+    if (this.popover._isEnabled) {
+      this.popover.dispose()
+    }
   }
 
   show () {
@@ -45,9 +47,11 @@ export default class extends ApplicationController {
   }
 
   hide (e) {
-    if (!this.popover.tip.contains(e.target)) {
-      this.popover.hide()
+    if (e && this.popover.tip && this.popover.tip.contains(e.target)) {
+      return
     }
+
+    this.popover.hide()
   }
 
   onShown () {

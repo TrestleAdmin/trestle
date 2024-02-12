@@ -45,8 +45,11 @@ export default class extends PopoverController {
   }
 
   confirm () {
+    this.popover.dispose()
+
     this.confirmed = true
     this.element.click()
+    this.confirmed = false
   }
 
   cancel () {
