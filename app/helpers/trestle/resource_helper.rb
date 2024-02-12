@@ -12,7 +12,7 @@ module Trestle
     def resource_turbo_frame_controllers
       controllers = []
       controllers << "modal-frame" << "reload-index" if modal_request?
-      controllers << "deprecated--init" if modal_request? || request.post? || request.headers["Turbo-Frame"]
+      controllers << "deprecated--init" if modal_request? || request.post? || turbo_frame_request?
       controllers
     end
   end
