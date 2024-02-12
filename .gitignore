@@ -20,3 +20,5 @@
 /spec/dummy/config/master.key
 /spec/dummy/public/assets/
 /node_modules
+*.sqlite3-shm
+*.sqlite3-wal
