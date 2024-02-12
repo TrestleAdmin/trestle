@@ -108,26 +108,34 @@ module Trestle
         end
 
         def destroy
-          success = delete_instance
+          deleting_referer = URI(request.referer).path == admin.instance_path(instance)
 
-          respond_to do |format|
-            format.html do
-              if success
-                flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
-                redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index))
-              else
-                flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
+          if delete_instance
+            respond_to do |format|
+              flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
 
+              format.html { redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index)) }
+              format.turbo_stream { flash.discard } unless deleting_referer
+              format.json { head :no_content }
+
+              yield format if block_given?
+            end
+          else
+            respond_to do |format|
+              flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
+
+              format.html do
                 if load_instance
                   redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
                 else
                   redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index))
                 end
               end
-            end
-            format.json { head :no_content }
+              format.turbo_stream { flash.discard }
+              format.json { head :no_content }
 
-            yield format if block_given?
+              yield format if block_given?
+            end
           end
         end
       end
