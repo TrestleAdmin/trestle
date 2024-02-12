@@ -36,6 +36,12 @@ $escaped-characters: (
 ) !default;
 
 
+// Components
+
+$box-shadow: soft-shadow(1rem, 1.5em, rgba(black, 0.25));
+$box-shadow-sm: soft-shadow(0.5rem, 0.75em, rgba(black, 0.075), $layers: 4);
+
+
 // Typography
 
 $link-decoration: none;
@@ -52,9 +58,6 @@ $h6-font-size: 1rem;
 
 $hr-color: rgba(black, 0.375);
 $hr-margin-y: 1.5rem;
-
-$box-shadow: soft-shadow(1rem, 1.5em, rgba(black, 0.25));
-$box-shadow-sm: soft-shadow(0.5rem, 0.75em, rgba(black, 0.075), $layers: 4);
 
 
 // Navs
