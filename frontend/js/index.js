@@ -6,6 +6,7 @@ import 'bootstrap'
 // Core Functionality
 
 import './core/stream_actions'
+import './core/turbo_errors'
 
 import cookie from './core/cookie'
 import { i18n, localize } from './core/i18n'
