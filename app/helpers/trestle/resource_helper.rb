@@ -3,7 +3,10 @@ module Trestle
     def resource_turbo_frame(instance, options={}, &block)
       defaults = {
         id: dom_id(instance),
-        data: { controller: resource_turbo_frame_controllers.join(" ") }
+        target: ("_top" unless modal_request?),
+        data: {
+          controller: resource_turbo_frame_controllers.join(" ").presence
+        }
       }
 
       content_tag("turbo-frame", defaults.merge(options), &block)
@@ -11,7 +14,7 @@ module Trestle
 
     def resource_turbo_frame_controllers
       controllers = []
-      controllers << "modal-frame" << "reload-index" if modal_request?
+      controllers << "modal-frame" if modal_request?
       controllers << "deprecated--init" if modal_request? || request.post? || turbo_frame_request?
       controllers
     end

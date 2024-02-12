@@ -1,6 +1,6 @@
 <%= render "header", hide_breadcrumbs: local_assigns.fetch(:hide_breadcrumbs, false) if local_assigns.fetch(:header, true) %>
 
-<div class="main-content-area" data-index-frame-target="scroll">
+<div class="main-content-area" data-scroll-target>
   <turbo-frame id="flash">
     <%= render "trestle/flash/flash" %>
   </turbo-frame>
