@@ -24,27 +24,20 @@ module Trestle
         def create
           if save_instance
             respond_to do |format|
-              format.html do
-                flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
-                redirect_to_return_location(:create, instance, default: admin.instance_path(instance))
-              end
-              format.turbo_stream do
-                flash.now[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
-              end if modal_request?
+              flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
+
+              format.html { redirect_to_return_location(:create, instance, default: admin.instance_path(instance)) }
+              format.turbo_stream { flash.discard } if modal_request?
               format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
 
               yield format if block_given?
             end
           else
             respond_to do |format|
-              format.html do
-                flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "new", status: :unprocessable_entity
-              end
-              format.turbo_stream do
-                flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "create", status: :unprocessable_entity
-              end if modal_request?
+              flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
+
+              format.html { render "new", status: :unprocessable_entity }
+              format.turbo_stream { render "create", status: :unprocessable_entity } if modal_request?
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
@@ -93,27 +86,20 @@ module Trestle
         def update
           if update_instance
             respond_to do |format|
-              format.html do
-                flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
-                redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
-              end
-              format.turbo_stream do
-                flash.now[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
-              end
+              flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
+
+              format.html { redirect_to_return_location(:update, instance, default: admin.instance_path(instance)) }
+              format.turbo_stream { flash.discard }
               format.json { render json: instance, status: :ok }
 
               yield format if block_given?
             end
           else
             respond_to do |format|
-              format.html do
-                flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "show", status: :unprocessable_entity
-              end
-              format.turbo_stream do
-                flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "update", status: :unprocessable_entity
-              end
+              flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
+
+              format.html { render "show", status: :unprocessable_entity }
+              format.turbo_stream { render "update", status: :unprocessable_entity }
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
