@@ -15,7 +15,11 @@ export default class extends ApplicationController {
 
   scrollToTop (e) {
     const scrollTarget = this.element.closest('[data-scroll-target]')
-    if (scrollTarget) { scrollTarget.scrollIntoView() }
+    const boundingRect = scrollTarget.getBoundingClientRect()
+
+    if (scrollTarget && boundingRect.top < 0) {
+      scrollTarget.scrollIntoView()
+    }
   }
 
   reload () {
