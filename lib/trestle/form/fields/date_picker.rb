@@ -4,11 +4,13 @@ module Trestle::Form::Fields::DatePicker
       options[:prepend] ||= options.delete(:icon) { default_icon }
     end
 
-    if enable_date_picker?
-      options.reverse_merge!(data: { controller: controller, allow_clear: true })
-    end
-
     super
+  end
+
+  def defaults
+    defaults = super
+    defaults.merge!(data: { controller: controller, allow_clear: true }) if enable_date_picker?
+    defaults
   end
 
   def default_icon

@@ -24,6 +24,22 @@ RSpec.shared_examples "a date picker control" do |field, value|
     expect(subject).to have_tag('.form-control', with: data_attributes)
   end
 
+  context "with provided data attributes" do
+    let(:options) { { data: { mode: "range", allow_clear: false } } }
+
+    let(:data_attributes) {
+      {
+        "data-controller" => js_controller,
+        "data-allow-clear" => false,
+        "data-mode" => "range"
+      }
+    }
+
+    it "merges data attributes together" do
+      expect(subject).to have_tag(".form-control", with: data_attributes)
+    end
+  end
+
   context "when options[:disabled] is set to true" do
     let(:options) { { disabled: true } }
 
