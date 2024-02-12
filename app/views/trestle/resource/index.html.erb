@@ -9,7 +9,7 @@
 <% end if admin.scopes.any? %>
 
 <%= render layout: "layout" do %>
-  <turbo-frame id="index" data-controller="reloadable" data-turbo-action="advance">
+  <%= index_turbo_frame do %>
     <% if hook?("resource.index.header") %>
       <header class="main-content-header">
         <%= hook("resource.index.header") %>
@@ -23,5 +23,5 @@
 
       <%= pagination collection: collection, entry_name: admin.model_name, remote: admin.pagination_options[:ajax] %>
     </footer>
-  </turbo-frame>
+  <% end %>
 <% end %>

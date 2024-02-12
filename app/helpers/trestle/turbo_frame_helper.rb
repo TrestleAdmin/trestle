@@ -1,5 +1,17 @@
 module Trestle
-  module ResourceHelper
+  module TurboFrameHelper
+    def index_turbo_frame(options={}, &block)
+      defaults = {
+        id: "index",
+        data: {
+          controller: "reloadable",
+          turbo_action: "advance"
+        }
+      }
+
+      content_tag("turbo-frame", defaults.merge(options), &block)
+    end
+
     def resource_turbo_frame(instance, options={}, &block)
       defaults = {
         id: dom_id(instance),
