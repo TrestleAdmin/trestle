@@ -9,10 +9,15 @@
 /spec/reports/
 /tmp/
 /sandbox/db/*.sqlite3
+/sandbox/db/*.sqlite3-shm
+/sandbox/db/*.sqlite3-wal
 /sandbox/*.sqlite3-journal
+/sandbox/
 /sandbox/log/*.log
 /sandbox/tmp/
 /spec/dummy/db/*.sqlite3
+/spec/dummy/db/*.sqlite3-shm
+/spec/dummy/db/*.sqlite3-wal
 /spec/dummy/*.sqlite3-journal
 /spec/dummy/log/*.log
 /spec/dummy/tmp/*
