@@ -19,7 +19,8 @@ group :test do
   gem 'haml', '~> 6.0'
 end
 
-gem 'rails', '~> 7.1.0.beta1'
+gem 'rails', '~> 7.1.0'
+
 gem 'sqlite3', '~> 1.4'
 
 gemspec path: "../"
