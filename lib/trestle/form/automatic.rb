@@ -22,7 +22,11 @@ module Trestle
                 else
                   prompt = I18n.t("admin.form.select.prompt", default: "- Select %{attribute_name} -", attribute_name: admin.human_attribute_name(attribute.association_name))
 
-                  select attribute.name, attribute.association_class.all, include_blank: prompt
+                  if admin.remove_select_attributes.include?(attribute.name.to_s)
+                    text_field attribute.name
+                  else
+                    select attribute.name, attribute.association_class.all, include_blank: prompt
+                  end
                 end
               when :text
                 text_area attribute.name
