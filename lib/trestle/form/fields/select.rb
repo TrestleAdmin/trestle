@@ -18,11 +18,27 @@ module Trestle
         end
 
         def default_html_options
-          Trestle::Options.new(class: ["form-select"], disabled: disabled? || readonly?, data: { controller: "select" })
+          Trestle::Options.new(class: ["form-select"], disabled: disabled? || readonly?, data: { controller: "select", placeholder: placeholder, allow_clear: clearable? })
         end
 
         def default_choices
           builder.object.send(name) if builder.object
+        end
+
+        def placeholder
+          prompt = options[:prompt] || options[:include_blank]
+
+          if prompt.kind_of?(String)
+            prompt
+          elsif options[:prompt]
+            I18n.translate("helpers.select.prompt", default: "Please select")
+          elsif options[:include_blank]
+            ""
+          end
+        end
+
+        def clearable?
+          options[:allow_clear] || options[:prompt].present? || options[:include_blank].present?
         end
 
         # Allows an array of model instances (or a scope) to be

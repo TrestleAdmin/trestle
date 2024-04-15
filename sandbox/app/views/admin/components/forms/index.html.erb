@@ -63,7 +63,10 @@
       <% end %>
 
       <%= f.select :basic_select_field, ["Red", "Green", "Blue", "Yellow"] %>
-      <%= f.select :clearable_select_field, ["Red", "Green", "Blue", "Yellow"], { include_blank: '- Select Option -' }, data: { placeholder: '- Select Option -', allow_clear: true } %>
+      <%= f.select :clearable_select_field, ["Red", "Green", "Blue", "Yellow"], { include_blank: true } %>
+      <%= f.select :select_field_with_placeholder, ["Red", "Green", "Blue", "Yellow"], { include_blank: "- Select Color -" } %>
+      <%= f.select :select_field_with_prompt, ["Red", "Green", "Blue", "Yellow"], { prompt: true } %>
+      <%= f.select :select_field_with_custom_prompt, ["Red", "Green", "Blue", "Yellow"], { prompt: "- Select Color -" } %>
       <%= f.collection_select :collection_select_field, Color.all, :code, :name_with_code %>
       <%= f.grouped_collection_select :grouped_collection_select_field, Color.categorized, :colors, :name, :code, :name_with_code, {}, { multiple: true } %>
       <%= f.time_zone_select :time_zone_select, /Australia/ %>
