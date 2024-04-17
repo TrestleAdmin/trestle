@@ -15,6 +15,14 @@
     }
   }
 
+  .select2-selection--single {
+    .select2-selection__rendered {
+      height: 100%;
+      overflow: visible;
+      padding-right: 1.25em;
+    }
+  }
+
   .select2-selection--multiple {
     padding: $s2bs5-padding-y $s2bs5-padding-y;
 
@@ -47,12 +55,14 @@
     &.select2-container--below {
       .select2-selection {
         clip-path: inset($inset $inset 0 $inset);
+        border-bottom-width: 1px;
       }
     }
 
     &.select2-container--above {
       .select2-selection {
         clip-path: inset(0 $inset $inset $inset);
+        border-top-width: 1px;
       }
     }
 
