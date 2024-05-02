@@ -174,6 +174,19 @@ describe Trestle::Admin::Builder, remove_const: true do
     end
   end
 
+  describe "#remove_action" do
+    it "removes the given action(s) from the admin" do
+      Trestle::Admin::Builder.create(:test) do
+        remove_action :index
+      end
+
+      expect(::TestAdmin.actions).to be_empty
+
+      controller = ::TestAdmin::AdminController.new
+      expect(controller).not_to respond_to(:index)
+    end
+  end
+
   describe "#breadcrumb" do
     it "overrides the default breadcrumb" do
       b = Trestle::Breadcrumb.new("Custom")

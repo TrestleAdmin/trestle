@@ -126,8 +126,12 @@ module Trestle
         raise NoMethodError, "#to_param called on non-resourceful admin. You may need to explicitly specify the admin."
       end
 
-      def actions
+      def default_actions
         [:index]
+      end
+
+      def actions
+        @actions ||= default_actions.dup
       end
 
       def root_action
@@ -143,7 +147,7 @@ module Trestle
 
         Proc.new do
           scope controller: admin.controller_namespace, path: admin.options[:path] || admin.admin_name do
-            get "", action: "index", as: admin.route_name
+            get "", action: "index", as: admin.route_name if admin.actions.include?(:index)
 
             admin.additional_routes.each do |block|
               instance_exec(&block)

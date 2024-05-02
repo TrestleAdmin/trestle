@@ -88,8 +88,8 @@ module Trestle
         model_name.plural
       end
 
-      def actions
-        @actions ||= (readonly? ? READONLY_ACTIONS : RESOURCE_ACTIONS).dup
+      def default_actions
+        readonly? ? READONLY_ACTIONS : RESOURCE_ACTIONS
       end
 
       def root_action
