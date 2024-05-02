@@ -50,13 +50,13 @@ module Trestle
       end
 
       def breadcrumbs
-        Breadcrumb::Trail.new(Array(Trestle.config.root_breadcrumbs) + [breadcrumb])
+        Breadcrumb::Trail.new(Array(Trestle.config.root_breadcrumbs) + [breadcrumb].compact)
       end
 
       def breadcrumb
         if @breadcrumb
           Breadcrumb.cast(@breadcrumb.call)
-        else
+        elsif actions.include?(:index)
           default_breadcrumb
         end
       end

@@ -70,6 +70,24 @@ describe Trestle::Admin, remove_const: true do
 
       expect(admin.breadcrumbs).to eq(trail)
     end
+
+    context "when the index action has been explicitly removed" do
+      subject!(:admin) do
+        Trestle.admin(:test) do
+          remove_action :index
+        end
+      end
+
+      it "does not include the index in the breadcrumb trail" do
+        expect(I18n).to receive(:t).with(:"admin.breadcrumbs.home", default: "Home").and_return("Home")
+
+        trail = Trestle::Breadcrumb::Trail.new([
+          Trestle::Breadcrumb.new("Home", "/admin")
+        ])
+
+        expect(admin.breadcrumbs).to eq(trail)
+      end
+    end
   end
 
   it "has a set of hooks" do
