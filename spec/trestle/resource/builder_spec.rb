@@ -101,9 +101,13 @@ describe Trestle::Resource::Builder, remove_const: true do
         remove_action :edit, :update
       end
 
-      expect(::TestsAdmin.actions).to eq([:index, :show, :new, :create, :destroy])
-      expect(::TestsAdmin::AdminController).not_to respond_to(:edit)
-      expect(::TestsAdmin::AdminController).not_to respond_to(:update)
+      actions = [:index, :show, :new, :create, :destroy]
+      expect(::TestsAdmin.actions).to eq(actions)
+
+      controller = ::TestsAdmin::AdminController.new
+      actions.each { |action| expect(controller).to respond_to(action) }
+      expect(controller).not_to respond_to(:edit)
+      expect(controller).not_to respond_to(:update)
     end
   end
 
