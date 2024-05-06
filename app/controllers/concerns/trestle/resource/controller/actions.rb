@@ -26,7 +26,7 @@ module Trestle
             respond_to do |format|
               flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
 
-              format.html { redirect_to_return_location(:create, instance, default: admin.instance_path(instance)) }
+              format.html { redirect_to_return_location(:create, instance) { admin.instance_path(instance) } }
               format.turbo_stream { flash.discard } if modal_request?
               format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
 
@@ -88,7 +88,7 @@ module Trestle
             respond_to do |format|
               flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
 
-              format.html { redirect_to_return_location(:update, instance, default: admin.instance_path(instance)) }
+              format.html { redirect_to_return_location(:update, instance) { admin.instance_path(instance) } }
               format.turbo_stream { flash.discard }
               format.json { render json: instance, status: :ok }
 
@@ -114,7 +114,7 @@ module Trestle
             respond_to do |format|
               flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
 
-              format.html { redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index)) }
+              format.html { redirect_to_return_location(:destroy, instance, status: :see_other) { admin.path(:index) } }
               format.turbo_stream { flash.discard } unless deleting_referer
               format.json { head :no_content }
 
@@ -126,9 +126,9 @@ module Trestle
 
               format.html do
                 if load_instance
-                  redirect_to_return_location(:update, instance, default: admin.instance_path(instance))
+                  redirect_to_return_location(:update, instance) { admin.instance_path(instance) }
                 else
-                  redirect_to_return_location(:destroy, instance, status: :see_other, default: admin.path(:index))
+                  redirect_to_return_location(:destroy, instance, status: :see_other) { admin.path(:index) }
                 end
               end
               format.turbo_stream { flash.discard }
