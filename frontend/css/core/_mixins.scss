@@ -26,13 +26,10 @@
   height: 100%;
 }
 
-%fa {
+@mixin icon-fa($content) {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-}
 
-@mixin icon-fa($content) {
-  @extend %fa;
   content: fa-content($content);
 }
 
