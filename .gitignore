@@ -12,7 +12,6 @@
 /sandbox/db/*.sqlite3-shm
 /sandbox/db/*.sqlite3-wal
 /sandbox/*.sqlite3-journal
-/sandbox/
 /sandbox/log/*.log
 /sandbox/tmp/
 /spec/dummy/db/*.sqlite3
