@@ -18,7 +18,7 @@ module Trestle
 
         toolbar = (toolbars[name.to_s] ||= Toolbar.new(builder))
         toolbar.clear! if options[:clear]
-        toolbar.prepend(&block) if block_given?
+        toolbar.append(&block) if block_given?
         toolbar
       end
 
