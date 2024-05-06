@@ -52,7 +52,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Raise error when a before_action's only/except options reference missing actions
-  if config.action_controller.respond_to?(:raise_on_missing_callback_actions=)
+  if ActionController::Base.respond_to?(:raise_on_missing_callback_actions)
     config.action_controller.raise_on_missing_callback_actions = true
   end
 end
