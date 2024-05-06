@@ -1,4 +1,8 @@
 class Trestle::AdminController < Trestle::ApplicationController
+  if respond_to?(:raise_on_missing_callback_actions=)
+    self.raise_on_missing_callback_actions = false
+  end
+
   def index
   end
 
