@@ -17,10 +17,24 @@ $.fn.select2.defaults.set('dropdownCssClass', function (el) {
 export default class extends ApplicationController {
   connect () {
     $(this.element).select2(this.options)
+
+    $(this.element).on('change.select2', (e) => {
+      if (!e.originalEvent) {
+        e.preventDefault()
+
+        const nativeEvent = new CustomEvent('change', {
+          bubbles: true,
+          cancelable: true
+        })
+
+        e.target.dispatchEvent(nativeEvent)
+      }
+    })
   }
 
   disconnect () {
     $(this.element).select2('destroy')
+    $(this.element).off('change.select2')
   }
 
   get options () {
