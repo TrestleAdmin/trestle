@@ -16,10 +16,15 @@
   }
 
   .select2-selection--single {
+    padding: 0;
+
     .select2-selection__rendered {
       height: 100%;
-      overflow: visible;
-      padding-right: 1.25em;
+      padding: $s2bs5-padding-y $s2bs5-indicator-padding $s2bs5-padding-y $s2bs5-padding-x;
+
+      &:has(.select2-selection__clear) {
+        padding-right: $s2bs5-indicator-padding + 1rem;
+      }
     }
   }
 
@@ -135,6 +140,38 @@
     .select2-search--inline {
       .select2-search__field {
         font-size: 16px;
+      }
+    }
+  }
+}
+
+.form-select-sm {
+  ~ .select2-container--bootstrap-5 {
+    .select2-selection--single {
+      padding: 0;
+
+      .select2-selection__rendered {
+        padding: map-get($s2bs5-small, padding-y) map-get($s2bs5-small, padding-x);
+
+        &:has(.select2-selection__clear) {
+          padding-right: $s2bs5-indicator-padding + 1rem;
+        }
+      }
+    }
+  }
+}
+
+.form-select-lg {
+  ~ .select2-container--bootstrap-5 {
+    .select2-selection--single {
+      padding: 0;
+
+      .select2-selection__rendered {
+        padding: map-get($s2bs5-large, padding-y) map-get($s2bs5-large, padding-x);
+
+        &:has(.select2-selection__clear) {
+          padding-right: $s2bs5-indicator-padding + 1.5rem;
+        }
       }
     }
   }
