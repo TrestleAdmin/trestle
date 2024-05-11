@@ -33,6 +33,9 @@ module Trestle
 
     initializer "turbo.renderer" do
       ActiveSupport.on_load(:action_controller) do
+        # Compatibility fix for Rails 5.2
+        delegate :media_type, to: "@_response" unless instance_methods.include?(:media_type)
+
         ActionController::Renderers.add :turbo_stream do |turbo_streams_html, options|
           self.content_type = Mime[:turbo_stream] if media_type.nil?
           turbo_streams_html
