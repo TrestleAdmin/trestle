@@ -23,6 +23,10 @@ module Trestle
         @options[:default] == true
       end
 
+      def count?
+        @options[:count] != false
+      end
+
       def apply(collection)
         if @block
           if @block.arity == 1

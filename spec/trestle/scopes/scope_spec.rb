@@ -118,13 +118,29 @@ describe Trestle::Scopes::Scope do
       let(:options) { { default: true } }
 
       it "returns true" do
-        expect(scope).to be_default
+        expect(scope.default?).to be true
       end
     end
 
     context "without options[:default]" do
       it "returns false" do
-        expect(scope).not_to be_default
+        expect(scope.default?).to be false
+      end
+    end
+  end
+
+  describe "#count?" do
+    context "with options[:count] = false" do
+      let(:options) { { count: false } }
+
+      it "returns true" do
+        expect(scope.count?).to be false
+      end
+    end
+
+    context "without options[:count]" do
+      it "returns true by default" do
+        expect(scope.count?).to be true
       end
     end
   end

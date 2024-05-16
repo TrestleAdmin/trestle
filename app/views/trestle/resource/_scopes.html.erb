@@ -8,7 +8,7 @@
           <li>
             <%= link_to persistent_params.merge(scope: (scope unless scope.active?(params))), class: ["scope", ("active" if scope.active?(params))] do %>
               <strong><%= scope.label %></strong>
-              (<%= number_with_delimiter(scope.count(admin.collection(params))) %>)
+              <% if scope.count? %>(<%= number_with_delimiter(scope.count(admin.collection(params))) %>)<% end %>
             <% end %>
           </li>
         <% end %>
