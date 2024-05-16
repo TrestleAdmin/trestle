@@ -8,8 +8,8 @@ module Trestle
         @options = {}
       end
 
-      def append(&block)
-        @blocks << Block.new(&block)
+      def append(options={}, &block)
+        @blocks << Block.new(options, &block)
       end
 
       # Evaluates each of the scope blocks within the given admin context
