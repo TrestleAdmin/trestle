@@ -18,6 +18,9 @@ feature "Scopes" do
     expect(page).to have_content "Context Variable (1)"
     expect(page).to have_content "Context Boolean (0)"
     expect(page).to have_content "Second Block (0)"
+
+    expect(page).to have_content "Count Disabled"
+    expect(page).not_to have_content "Count Disabled (0)"
   end
 
   scenario "View scoped index" do

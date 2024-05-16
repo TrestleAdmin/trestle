@@ -13,6 +13,8 @@ Trestle.resource(:scopes, model: Post) do
 
     scope :context_variable, -> { Post.where(title: context_variable) }
     scope :context_boolean, -> { Post.none } if context_boolean?
+
+    scope :count_disabled, -> { Post.none }, count: false
   end
 
   scopes do
