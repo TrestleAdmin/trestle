@@ -31,7 +31,9 @@ module Trestle
               when :datetime
                 datetime_field attribute.name
               when :boolean
-                check_box attribute.name
+                form_group label: false do
+                  check_box attribute.name
+                end
               when :enum
                 collection_radio_buttons attribute.name, attribute.options[:values] || [], :first, :last
               when :json, :jsonb
