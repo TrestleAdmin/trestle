@@ -5,7 +5,9 @@ module Trestle
     end
 
     def current_admin?(admin)
-      respond_to?(:admin) && self.admin && self.admin.name == admin.name
+      respond_to?(:admin) &&
+        self.admin.respond_to?(:name) &&
+        self.admin.name == admin.name
     end
 
     def navigation_group_collapsed?(group)
