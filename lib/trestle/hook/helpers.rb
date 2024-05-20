@@ -24,7 +24,7 @@ module Trestle
 
       def hook_sets
         @_hook_sets ||= [
-          (admin.hooks if defined?(admin) && admin),
+          (admin.hooks if defined?(admin) && admin.respond_to?(:hooks)),
           Trestle.config.hooks
         ].compact
       end
