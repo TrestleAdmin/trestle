@@ -88,7 +88,7 @@ module Trestle
   end
 
   def self.deprecator
-    @deprecator ||= ActiveSupport::Deprecation.new
+    @deprecator ||= ActiveSupport::Deprecation.new('1.0', 'Trestle')
   end
 end
 
