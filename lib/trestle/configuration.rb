@@ -80,7 +80,7 @@ module Trestle
     end
 
     # [DEPRECATED] Enable or disable Turbolinks within the Trestle admin
-    option :turbolinks, false
+    deprecated_option :turbolinks, "The config.turbolinks option is deprecated. Turbo is included and enabled by default within Trestle."
 
     # List of parameters that should persist across requests when paginating or reordering
     option :persistent_params, [:sort, :order, :scope]
