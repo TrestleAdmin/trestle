@@ -22,7 +22,7 @@ module Trestle
     end
 
     initializer "trestle.deprecator" do |app|
-      app.deprecators[:trestle] = Trestle.deprecator
+      app.deprecators[:trestle] = Trestle.deprecator if app.respond_to?(:deprecators)
     end
 
     initializer "trestle.draper" do |app|
