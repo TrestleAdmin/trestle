@@ -21,6 +21,10 @@ module Trestle
       end
     end
 
+    initializer "trestle.deprecator" do |app|
+      app.deprecators[:trestle] = Trestle.deprecator
+    end
+
     initializer "trestle.draper" do |app|
       if defined?(Draper)
         Draper::CollectionDecorator.delegate :current_page, :total_pages, :limit_value, :entry_name, :total_count, :offset_value, :last_page?
