@@ -8,9 +8,9 @@ pt-BR:
       page_entries_info:
         one_page:
           display_entries:
-            zero: "Nenhum %{entry_name} encontrado"
-            one: "Mostrando <strong>1</strong> %{entry_name}"
-            other: "Mostrando <strong>all %{count}</strong> %{entry_name}"
+            zero: "Nenhum registro de %{entry_name} encontrado"
+            one: "Mostrando <strong>1 registro de</strong> %{entry_name}"
+            other: "Mostrando <strong>%{count} registros</strong> de %{entry_name}"
 
         more_pages:
           display_entries: "Mostrando %{entry_name} <strong>%{first}&nbsp;-&nbsp;%{last}</strong> de <b>%{total}</b>"
@@ -32,14 +32,14 @@ pt-BR:
 
   admin:
     titles:
-      index: "Listando %{pluralized_model_name}"
-      new: "Novo %{model_name}"
-      edit: "Editando %{model_name}"
+      index: "Listando registros de %{pluralized_model_name}"
+      new: "Novo registro de %{model_name}"
+      edit: "Editando registro de %{model_name}"
 
     buttons:
-      new: "Novo %{model_name}"
-      save: "Salvar %{model_name}"
-      delete: "Excluir %{model_name}"
+      new: "Novo registro de %{model_name}"
+      save: "Salvar registro de %{model_name}"
+      delete: "Excluir registro de %{model_name}"
 
     breadcrumbs:
       home: "Home"
@@ -48,7 +48,7 @@ pt-BR:
       create:
         success:
           title: "Sucesso!"
-          message: "O %{model_name} foi criado com sucesso."
+          message: "O registro de %{model_name} foi criado com sucesso."
 
         failure:
           title: "Atenção!"
@@ -57,7 +57,7 @@ pt-BR:
       update:
         success:
           title: "Sucesso!"
-          message: "O %{model_name} foi atualizado com sucesso."
+          message: "O registro de %{model_name} foi atualizado com sucesso."
 
         failure:
           title: "Atenção!"
@@ -66,11 +66,11 @@ pt-BR:
       destroy:
         success:
           title: "Sucesso!"
-          message: "O %{model_name} foi deletado com sucesso."
+          message: "O registro de %{model_name} foi deletado com sucesso."
 
         failure:
           title: "Atenção!"
-          message: "Falha ao excluir %{model_name}."
+          message: "O registro de %{model_name} foi deletado com sucesso."
 
     table:
       headers:
