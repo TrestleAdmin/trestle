@@ -23,15 +23,24 @@ module Trestle
       end
     end
 
-    # Returns an array of I18n key/value pairs for passing to JS.
-    def i18n_javascript_translations
-      Trestle.config.javascript_i18n_keys.map { |key|
-        begin
-          [key, t(key, raise: true)]
-        rescue I18n::MissingTranslationData
-          nil
+    # Returns a nested hash of I18n key/value pairs for passing to JS.
+    def i18n_javascript_translations(keys=Trestle.config.javascript_i18n_keys)
+      result = {}
+
+      keys.each do |key|
+        if translation = I18n.t(key, default: nil)
+          *parts, last = key.split(".")
+
+          # Create nesting from period-separated i18n key
+          target = parts.inject(result) { |hash, part|
+            hash[part] ||= {}
+          }
+
+          target[last] = translation
         end
-      }.compact
+      end
+
+      result
     end
 
     # Returns the Flatpickr locale code corresponding to the given locale,

@@ -1,0 +1,14 @@
+---
+translations:
+  - file: i18n/locale/:locale.json
+    patterns:
+    - "*"
+    - "!*.activerecord"
+    - "!*.errors"
+    - "!*.number.nth"
+
+export_files:
+  enabled: true
+  files:
+    - template: i18n/template.erb
+      output: app/assets/bundle/trestle/locale/%{base_name}.js

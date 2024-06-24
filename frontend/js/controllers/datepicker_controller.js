@@ -6,7 +6,7 @@ export default class extends FlatpickrController {
   get options () {
     return {
       ...super.options,
-      altFormat: i18n['admin.datepicker.formats.date'] || 'm/d/Y'
+      altFormat: i18n.t('admin.datepicker.formats.date', { defaultValue: 'm/d/Y' })
     }
   }
 }

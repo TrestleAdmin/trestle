@@ -15,7 +15,7 @@ const TEMPLATE = () => `
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="OK">${i18n['admin.buttons.ok'] || 'OK'}</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="OK">${i18n.t('admin.buttons.ok', { defaultValue: 'OK' })}</button>
       </div
     </div>
   </div>

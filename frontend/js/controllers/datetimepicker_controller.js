@@ -7,7 +7,7 @@ export default class extends FlatpickrController {
     return {
       ...super.options,
       enableTime: true,
-      altFormat: i18n['admin.datepicker.formats.datetime'] || 'm/d/Y h:i K'
+      altFormat: i18n.t('admin.datepicker.formats.datetime', { defaultValue: 'm/d/Y h:i K' })
     }
   }
 }

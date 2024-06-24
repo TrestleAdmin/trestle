@@ -85,7 +85,7 @@ module.exports = {
         },
         {
           from: 'node_modules/flatpickr/dist/l10n/*.js',
-          to: 'flatpickr/[name][ext]',
+          to: 'locale/flatpickr/[name][ext]',
           globOptions: {
             ignore: ['**/index.js']
           }

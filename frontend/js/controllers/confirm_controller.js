@@ -94,15 +94,15 @@ export default class extends PopoverController {
   }
 
   get title () {
-    return this.titleValue || i18n['trestle.confirmation.title'] || 'Are you sure?'
+    return this.titleValue || i18n.t('trestle.confirmation.title', { defaultValue: 'Are you sure?' })
   }
 
   get confirmLabel () {
-    return this.confirmLabelValue || i18n['trestle.confirmation.ok'] || 'OK'
+    return this.confirmLabelValue || i18n.t('trestle.confirmation.ok', { defaultValue: 'OK' })
   }
 
   get cancelLabel () {
-    return this.cancelLabelValue || i18n['trestle.confirmation.cancel'] || 'Cancel'
+    return this.cancelLabelValue || i18n.t('trestle.confirmation.cancel', { defaultValue: 'Cancel' })
   }
 
   get confirmButtonClass () {

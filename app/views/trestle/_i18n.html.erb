@@ -1,0 +1,12 @@
+<% i18n_fallbacks.each do |locale| %>
+  <%= javascript_include_tag "trestle/locale/#{locale}", 'data-turbo-track': 'reload' rescue nil %>
+  <%= javascript_include_tag "trestle/locale/flatpickr/#{flatpickr_locale(locale)}", 'data-turbo-track': 'reload' rescue nil %>
+<% end %>
+
+<%= javascript_tag nonce: true do %>
+  <% if Trestle.config.javascript_i18n_keys.any? %>
+  Trestle.i18n.store(<%=raw JSON.pretty_generate(I18n.locale => i18n_javascript_translations) %>);
+  <% end %>
+
+  Trestle.localize(<%= i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
+<% end %>

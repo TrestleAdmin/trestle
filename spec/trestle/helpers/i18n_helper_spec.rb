@@ -21,13 +21,24 @@ describe Trestle::I18nHelper do
   end
 
   describe "#i18n_javascript_translations" do
-    it "returns an Array of key/value pairs corresponding to translations for keys in Trestle.config.javascript_i18n_keys" do
-      expect(Trestle.config).to receive(:javascript_i18n_keys).and_return(["admin.key"])
-      expect(self).to receive(:t).with("admin.key", raise: true).and_return("Translated value")
+    it "returns a nested hash of i18n translations for keys in Trestle.config.javascript_i18n_keys" do
+      expect(Trestle.config).to receive(:javascript_i18n_keys).and_return(["admin.key", "admin.another", "deeply.nested.key"])
 
-      expect(i18n_javascript_translations).to eq([
-        ["admin.key", "Translated value"]
-      ])
+      expect(I18n).to receive(:t).with("admin.key", default: nil).and_return("Translated value")
+      expect(I18n).to receive(:t).with("admin.another", default: nil).and_return("Another value")
+      expect(I18n).to receive(:t).with("deeply.nested.key", default: nil).and_return("Deeply nested translation")
+
+      expect(i18n_javascript_translations).to eq({
+        "admin" => {
+          "key" => "Translated value",
+          "another" => "Another value"
+        },
+        "deeply" => {
+          "nested" => {
+            "key" => "Deeply nested translation"
+          }
+        }
+      })
     end
   end
 

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bundle exec i18n export -c i18n/config.yml -r i18n/environment.rb
