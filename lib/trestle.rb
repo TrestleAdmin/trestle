@@ -65,28 +65,6 @@ module Trestle
     Navigation.build(blocks, context)
   end
 
-  # Returns the I18n fallbacks for the given locale.
-  #
-  # This is used from within a Sprockets asset (JavaScript)
-  # to determine which locale files to include.
-  #
-  # Examples
-  #
-  #   Trestle.i18n_fallbacks("pt-BR") => ["pt-BR", "pt"]
-  #   Trestle.i18n_fallbacks("ca") => ["ca", "es-ES", "es"] %>
-  #
-  # Returns an array of locale Strings.
-  def self.i18n_fallbacks(locale=I18n.locale)
-    if I18n.respond_to?(:fallbacks)
-      I18n.fallbacks[locale].map(&:to_s)
-    elsif locale.to_s.include?("-")
-      fallback = locale.to_s.split("-").first
-      [locale, fallback]
-    else
-      [locale]
-    end
-  end
-
   def self.deprecator
     @deprecator ||= ActiveSupport::Deprecation.new('1.0', 'Trestle')
   end

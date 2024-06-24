@@ -2,6 +2,27 @@ module Trestle
   module I18nHelper
     FLATPICKR_LOCALE_CONVERSIONS = { ca: "cat", el: "gr", nb: "no", vi: "vn" }.stringify_keys
 
+    # Returns the I18n fallbacks for the given locale.
+    #
+    # This is used to determine which locale files to include.
+    #
+    # Examples
+    #
+    #   i18n_fallbacks("pt-BR") => ["pt-BR", "pt"]
+    #   i18n_fallbacks("ca") => ["ca", "es-ES", "es"] %>
+    #
+    # Returns an array of locale Strings.
+    def i18n_fallbacks(locale=I18n.locale)
+      if I18n.respond_to?(:fallbacks)
+        I18n.fallbacks[locale].map(&:to_s)
+      elsif locale.to_s.include?("-")
+        fallback = locale.to_s.split("-").first
+        [locale, fallback]
+      else
+        [locale]
+      end
+    end
+
     def i18n_javascript_translations
       Trestle.config.javascript_i18n_keys.map { |key|
         begin
