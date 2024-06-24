@@ -23,6 +23,7 @@ module Trestle
       end
     end
 
+    # Returns an array of I18n key/value pairs for passing to JS.
     def i18n_javascript_translations
       Trestle.config.javascript_i18n_keys.map { |key|
         begin
@@ -33,6 +34,8 @@ module Trestle
       }.compact
     end
 
+    # Returns the Flatpickr locale code corresponding to the given locale,
+    # as some of their codes are different to the Rails' counterparts.
     def flatpickr_locale(locale)
       FLATPICKR_LOCALE_CONVERSIONS.fetch(locale.to_s) { locale }
     end

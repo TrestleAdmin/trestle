@@ -19,4 +19,25 @@ describe Trestle::I18nHelper do
       expect(i18n_fallbacks("de")).to eq(["de"])
     end
   end
+
+  describe "#i18n_javascript_translations" do
+    it "returns an Array of key/value pairs corresponding to translations for keys in Trestle.config.javascript_i18n_keys" do
+      expect(Trestle.config).to receive(:javascript_i18n_keys).and_return(["admin.key"])
+      expect(self).to receive(:t).with("admin.key", raise: true).and_return("Translated value")
+
+      expect(i18n_javascript_translations).to eq([
+        ["admin.key", "Translated value"]
+      ])
+    end
+  end
+
+  describe "#flatpickr_locale" do
+    it "returns the Flatpickr locale if it is different" do
+      expect(flatpickr_locale("el")).to eq("gr")
+    end
+
+    it "returns the given locale if there is no Flatpickr override" do
+      expect(flatpickr_locale("es")).to eq("es")
+    end
+  end
 end
