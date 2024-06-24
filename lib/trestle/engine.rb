@@ -5,13 +5,8 @@ module Trestle
     isolate_namespace Trestle
     self.routes.default_scope = {}
 
-    # Application assets
-    config.assets.precompile << "trestle/admin.css" << "trestle/admin.js" << "trestle/custom.css"
-
-    # Vendor assets
-    %w(eot svg ttf woff woff2).each do |ext|
-      config.assets.precompile << "trestle/fa-*.#{ext}"
-    end
+    # Sprockets manifest
+    config.assets.precompile << "trestle.js"
 
     initializer "trestle.automount" do |app|
       if Trestle.config.automount

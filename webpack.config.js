@@ -12,7 +12,7 @@ module.exports = {
   output: {
     library: 'Trestle',
     libraryExport: 'Trestle',
-    filename: 'bundle.js',
+    filename: 'admin.js',
     path: path.resolve(__dirname, 'app/assets/bundle/trestle')
   },
   optimization: {
@@ -93,7 +93,7 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: 'bundle.css'
+      filename: 'admin.css'
     }),
     // new BundleAnalyzerPlugin()
   ],
