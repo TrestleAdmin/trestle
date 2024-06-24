@@ -2,7 +2,7 @@
 
 import { i18n } from '../core/i18n'
 
-const TEMPLATE = `
+const TEMPLATE = () => `
 <div class="modal fade error-modal" tabindex="-1" data-controller="modal">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -49,7 +49,7 @@ export default class ErrorModal {
   }
 
   _buildWrapper () {
-    return new DOMParser().parseFromString(TEMPLATE, 'text/html').body.childNodes[0]
+    return new DOMParser().parseFromString(TEMPLATE(), 'text/html').body.childNodes[0]
   }
 
   _buildIframe () {

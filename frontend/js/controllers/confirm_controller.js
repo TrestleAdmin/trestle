@@ -4,10 +4,8 @@ import { i18n } from '../core/i18n'
 
 export default class extends PopoverController {
   static values = {
-    title: { type: String, default: i18n['trestle.confirmation.title'] || 'Are you sure?' },
-
-    confirmLabel: i18n['trestle.confirmation.ok'] || 'OK',
-    cancelLabel: i18n['trestle.confirmation.cancel'] || 'Cancel'
+    confirmLabel: String,
+    cancelLabel: String
   }
 
   static classes = [ 'confirm', 'cancel' ]
@@ -77,7 +75,7 @@ export default class extends PopoverController {
     const button = document.createElement('button')
 
     button.classList.add('btn', 'btn-sm', this.confirmButtonClass)
-    button.textContent = this.confirmLabelValue
+    button.textContent = this.confirmLabel
 
     button.addEventListener('click', this.confirm.bind(this))
 
@@ -88,11 +86,23 @@ export default class extends PopoverController {
     const button = document.createElement('button')
 
     button.classList.add('btn', 'btn-sm', this.cancelButtonClass)
-    button.textContent = this.cancelLabelValue
+    button.textContent = this.cancelLabel
 
     button.addEventListener('click', this.cancel.bind(this))
 
     return button
+  }
+
+  get title () {
+    return this.titleValue || i18n['trestle.confirmation.title'] || 'Are you sure?'
+  }
+
+  get confirmLabel () {
+    return this.confirmLabelValue || i18n['trestle.confirmation.ok'] || 'OK'
+  }
+
+  get cancelLabel () {
+    return this.cancelLabelValue || i18n['trestle.confirmation.cancel'] || 'Cancel'
   }
 
   get confirmButtonClass () {

@@ -68,13 +68,17 @@ export default class extends ApplicationController {
 
   get popoverOptions () {
     return {
-      title: this.titleValue,
+      title: this.title,
       content: this.content,
       placement: this.placementValue,
       trigger: this.triggerValue,
       html: this.htmlValue,
       customClass: this.hasCustomClass ? this.customClass : ''
     }
+  }
+
+  get title () {
+    return this.titleValue
   }
 
   get content () {
