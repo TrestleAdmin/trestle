@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'sprockets-rails'
+  # gem 'propshaft'
+end
+
 group :development do
   gem 'bcrypt'
   gem 'faker'

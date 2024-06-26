@@ -13,7 +13,8 @@ module.exports = {
     library: 'Trestle',
     libraryExport: 'Trestle',
     filename: 'admin.js',
-    path: path.resolve(__dirname, 'app/assets/bundle/trestle')
+    path: path.resolve(__dirname, 'app/assets/bundle/trestle'),
+    assetModuleFilename: '[name][ext]'
   },
   optimization: {
     minimizer: [
@@ -79,10 +80,6 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        {
-          from: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
-          to: '[name][ext]'
-        },
         {
           from: 'node_modules/flatpickr/dist/l10n/*.js',
           to: 'locale/flatpickr/[name][ext]',

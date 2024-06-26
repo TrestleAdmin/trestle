@@ -1,12 +1,16 @@
-require "sprockets/railtie"
-
 module Trestle
   class Engine < ::Rails::Engine
     isolate_namespace Trestle
     self.routes.default_scope = {}
 
-    # Sprockets manifest
-    config.assets.precompile << "trestle.js"
+    initializer "trestle.sprockets" do |app|
+      # Sprockets manifest
+      config.assets.precompile << "trestle/manifest.js"
+    end if defined?(Sprockets)
+
+    initializer "trestle.propshaft" do |app|
+      app.config.assets.excluded_paths << Trestle::Engine.root.join("app/assets/sprockets")
+    end if defined?(Propshaft)
 
     initializer "trestle.automount" do |app|
       if Trestle.config.automount

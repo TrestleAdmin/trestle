@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "railties",        ">= 5.2.0"
   spec.add_dependency "activemodel",     ">= 5.2.0"
-  spec.add_dependency "sprockets-rails", ">= 2.0.0"
   spec.add_dependency "kaminari",        ">= 1.1.0"
 
   spec.add_development_dependency "rspec-rails",         ">= 5.1.2"

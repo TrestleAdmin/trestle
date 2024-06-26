@@ -1,32 +1,6 @@
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/v4-shims";
-
-:root, :host {
-  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
-  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
-  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
-}
-
-.far,
-.fa-regular {
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 400;
-}
-
-.fa,
-.fas,
-.fa-solid {
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-}
-
-.fab,
-.fa-brands {
-  font-family: 'Font Awesome 6 Brands';
-  font-weight: 400;
-}
-
-@each $name, $icon in $fa-brand-icons {
-  .#{$fa-css-prefix}-#{$name}:before { content: unquote("\"#{ $icon }\""); }
-}
