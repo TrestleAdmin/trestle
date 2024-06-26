@@ -15,6 +15,7 @@ group :test do
 end
 
 gem 'rails', '~> 6.0.0'
+gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.4'
 
 gemspec path: "../"
