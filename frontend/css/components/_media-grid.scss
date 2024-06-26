@@ -3,7 +3,7 @@
 .media-grid {
   @include list-unstyled;
 
-  --media-grid-aspect-ratio: #{math.div(4, 3)};
+  --media-grid-aspect-ratio: 4 / 3;
   --media-grid-gap: #{$grid-gutter-width};
   --media-grid-columns: 2;
 
@@ -84,4 +84,10 @@
   @include media-breakpoint-up(lg) {
     --media-grid-columns: 3;
   }
+}
+
+.media-grid-auto {
+  --media-grid-item-size: 240px;
+
+  grid-template-columns: repeat(auto-fill, minmax(var(--media-grid-item-size), 1fr));
 }
