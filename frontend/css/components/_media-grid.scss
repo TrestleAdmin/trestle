@@ -2,32 +2,31 @@
 
 .media-grid {
   @include list-unstyled;
-  @include make-row;
 
-  li {
-    position: relative;
-    width: 100%;
+  --media-grid-aspect-ratio: #{math.div(4, 3)};
+  --media-grid-gap: #{$grid-gutter-width};
+  --media-grid-columns: 2;
 
-    padding-right: math.div($grid-gutter-width, 2);
-    padding-left: math.div($grid-gutter-width, 2);
+  display: grid;
+  grid-template-columns: repeat(var(--media-grid-columns), 1fr);
+  gap: var(--media-grid-gap);
 
-    @include make-col(6);
+  @include media-breakpoint-up(md) {
+    --media-grid-columns: 3;
+  }
 
-    @include media-breakpoint-up(md) {
-      @include make-col(4);
-    }
+  @include media-breakpoint-up(xl) {
+    --media-grid-columns: 4;
+  }
 
-    @include media-breakpoint-up(xl) {
-      @include make-col(3);
-    }
-
-    margin-bottom: 20px;
+  @include media-breakpoint-down(md) {
+    --media-grid-gap: #{math.div($grid-gutter-width, 2)};
   }
 
   figure {
     margin: 0;
 
-    @include aspect-ratio(math.div(4, 3));
+    aspect-ratio: var(--media-grid-aspect-ratio);
 
     background: #eee;
     overflow: hidden;
@@ -36,7 +35,8 @@
     align-items: center;
 
     img {
-      @include fill-area;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
   }
@@ -63,43 +63,25 @@
 }
 
 .media-grid-sm {
-  li {
-    @include make-col(4);
+  --media-grid-columns: 3;
 
-    @include media-breakpoint-up(md) {
-      @include make-col(3);
-    }
+  @include media-breakpoint-up(md) {
+    --media-grid-columns: 4;
+  }
 
-    @include media-breakpoint-up(lg) {
-      @include make-col(2);
-    }
+  @include media-breakpoint-up(lg) {
+    --media-grid-columns: 6;
   }
 }
 
 .media-grid-lg {
-  li {
-    @include make-col(12);
+  --media-grid-columns: 1;
 
-    @include media-breakpoint-up(sm) {
-      @include make-col(6);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-col(4);
-    }
+  @include media-breakpoint-up(sm) {
+    --media-grid-columns: 2;
   }
-}
 
-@include media-breakpoint-down(md) {
-  .media-grid {
-    margin-left: -5px;
-    margin-right: -5px;
-
-    li {
-      padding-left: 5px;
-      padding-right: 5px;
-
-      margin-bottom: 10px;
-    }
+  @include media-breakpoint-up(lg) {
+    --media-grid-columns: 3;
   }
 }
