@@ -52,7 +52,7 @@
     <% c.sidebar class: "order-first" do %>
       <h2>Gallery</h2>
 
-      <p>To have the images function as a lightbox gallery (using <%= link_to "Magnific Popup", "https://dimsemenov.com/plugins/magnific-popup/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
+      <p>To have the images function as a lightbox gallery (using <%= link_to "PhotoSwipe", "https://photoswipe.com/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
       <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
 
       <p>Individual image links can implement a lightbox popup using <code>data-controller="lightbox"</code>.</p>
@@ -61,8 +61,20 @@
     <ul class="media-grid media-grid-sm" data-controller="gallery">
       <% 12.times do |i| %>
         <li>
-          <%= link_to random_image_url(1920, 1080, "4-#{i}"), data: { gallery_target: "image" } do %>
-            <figure class="fill zoom"><%= random_image(400, 300, "4-#{i}") %></figure>
+          <%= link_to random_image_url(1920, 1080, "4-#{i}"), data: { gallery_target: "image", width: 1920, height: 1080 } do %>
+            <figure class="fill zoom"><%= random_image(576, 324, "4-#{i}") %></figure>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <hr />
+
+    <ul class="media-grid media-grid-sm">
+      <% 4.times do |i| %>
+        <li>
+          <%= link_to random_image_url(1920, 1080, "5-#{i}"), data: { controller: "lightbox", lightbox_animation_type_value: "fade", lightbox_animation_duration_value: 500, width: 1920, height: 1080 } do %>
+            <figure class="fill zoom"><%= random_image(576, 324, "5-#{i}") %></figure>
           <% end %>
         </li>
       <% end %>

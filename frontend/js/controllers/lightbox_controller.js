@@ -1,33 +1,46 @@
 import ApplicationController from './application_controller'
 
-import $ from 'jquery'
-import 'magnific-popup'
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
+// import PhotoSwipe from 'photoswipe'
 
 export default class extends ApplicationController {
   static targets = ["image"]
 
-  connect () {
-    $(this.lightboxTarget).magnificPopup(this.options)
+  static values = {
+    animationType: { type: String, default: 'zoom' },
+    animationDuration: { type: Number, default: 150 }
   }
 
-  get lightboxTarget () {
-    if (this.hasImageTarget) {
-      return this.imageTargets
-    } else {
-      return this.element
-    }
+  connect () {
+    this.lightbox = new PhotoSwipeLightbox(this.options)
+
+    this.lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
+      if (linkEl) {
+        const width = linkEl.dataset.width
+        const height = linkEl.dataset.height
+
+        if (width) itemData.w = width
+        if (height) itemData.h = height
+      }
+
+      return itemData
+    })
+
+    this.lightbox.init()
+  }
+
+  disconnect () {
+    this.lightbox.destroy()
   }
 
   get options () {
     return {
-      type: 'image',
-      closeOnContentClick: false,
-      closeBtnInside: false,
-      mainClass: 'mfp-with-zoom mfp-img-mobile',
-      zoom: {
-        enabled: true,
-        duration: 150
-      }
+      gallery: this.element,
+      pswpModule: () => import(/* webpackChunkName: "photoswipe" */ 'photoswipe'),
+
+      showHideAnimationType: this.animationTypeValue,
+      showAnimationDuration: this.animationDurationValue,
+      hideAnimationDuration: this.animationDurationValue
     }
   }
 }

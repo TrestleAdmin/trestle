@@ -14,6 +14,7 @@ module.exports = {
     libraryExport: 'Trestle',
     filename: 'admin.js',
     path: path.resolve(__dirname, 'app/assets/bundle/trestle'),
+    chunkFilename: '[name]-[contenthash].digested.js',
     assetModuleFilename: '[name][ext]'
   },
   optimization: {
