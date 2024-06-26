@@ -61,8 +61,8 @@
     <ul class="media-grid media-grid-sm" data-controller="gallery">
       <% 12.times do |i| %>
         <li>
-          <%= link_to random_image_url(800, 600, "4-#{i}"), data: { gallery_target: "image" } do %>
-            <figure class="fill zoom"><%= random_image(800, 600, "4-#{i}") %></figure>
+          <%= link_to random_image_url(1920, 1080, "4-#{i}"), data: { gallery_target: "image" } do %>
+            <figure class="fill zoom"><%= random_image(400, 300, "4-#{i}") %></figure>
           <% end %>
         </li>
       <% end %>
