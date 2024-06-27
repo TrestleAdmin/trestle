@@ -17,6 +17,7 @@ import ErrorModal from './core/error_modal'
 // Stimulus Controllers
 
 import { ApplicationController, Controllers } from './controllers'
+import Mixins from './mixins'
 
 // Deprecated Functionality
 
@@ -33,6 +34,7 @@ const Trestle = {
   // Stimulus
   ApplicationController,
   Controllers,
+  Mixins,
 
   // Modals
   Modal,

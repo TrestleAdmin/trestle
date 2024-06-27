@@ -1,7 +1,7 @@
 import ApplicationController from './application_controller'
+import usePhotoSwipe from '../mixins/photoswipe'
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
-// import PhotoSwipe from 'photoswipe'
 
 export default class extends ApplicationController {
   static targets = ["image"]
@@ -9,6 +9,10 @@ export default class extends ApplicationController {
   static values = {
     animationType: { type: String, default: 'zoom' },
     animationDuration: { type: Number, default: 150 }
+  }
+
+  initialize () {
+    usePhotoSwipe(this)
   }
 
   connect () {
@@ -36,7 +40,7 @@ export default class extends ApplicationController {
   get options () {
     return {
       gallery: this.element,
-      pswpModule: () => import(/* webpackChunkName: "photoswipe" */ 'photoswipe'),
+      pswpModule: this.loadPhotoSwipe,
 
       showHideAnimationType: this.animationTypeValue,
       showAnimationDuration: this.animationDurationValue,
