@@ -1,6 +1,6 @@
 /* global CustomEvent */
 
-import { StreamActions } from '@hotwired/turbo'
+import { StreamActions, visit } from '@hotwired/turbo'
 
 import { Modal } from 'bootstrap'
 
@@ -49,4 +49,8 @@ StreamActions.reload = function () {
     const controller = Stimulus.getControllerForElementAndIdentifier(frame, 'reloadable')
     if (controller) { controller.reload() }
   })
+}
+
+StreamActions.redirect = function () {
+  visit(this.target)
 }
