@@ -8,7 +8,8 @@ export default class extends ApplicationController {
 
   static values = {
     animationType: { type: String, default: 'zoom' },
-    animationDuration: { type: Number, default: 150 }
+    animationDuration: { type: Number, default: 150 },
+    padding: { type: Object, default: { top: 20, bottom: 20, left: 20, right: 20 } }
   }
 
   initialize () {
@@ -41,6 +42,8 @@ export default class extends ApplicationController {
     return {
       gallery: this.element,
       pswpModule: this.loadPhotoSwipe,
+
+      padding: this.paddingValue,
 
       showHideAnimationType: this.animationTypeValue,
       showAnimationDuration: this.animationDurationValue,
