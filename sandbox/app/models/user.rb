@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  scope :alphabetical, -> { order(:last_name, :first_name) }
+  scope :alphabetical, ->(order=:asc) { reorder(last_name: order, first_name: order) }
 
   enum level: [:executive, :manager, :staff, :intern, :contractor]
   enum avatar_type: { "Mystery Person" => "mp", "Identicon" => "identicon", "MonsterID" => "monsterid", "Wavatar" => "wavatar", "Retro" => "retro", "RoboHash" => "robohash", "Initials" => "blank" }

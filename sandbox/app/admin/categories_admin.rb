@@ -9,7 +9,7 @@ Trestle.resource(:categories) do
 
   table do
     selectable_column
-    column :name, link: true
+    column :name, link: true, sort: { default: true }
     column :color do |category|
       status_tag category.color, :none, style: "background: #{category.color}"
     end

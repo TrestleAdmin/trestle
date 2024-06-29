@@ -15,7 +15,7 @@ Trestle.resource(:articles) do
   table do
     selectable_column
     column :title, link: true, truncate: false
-    column :author do |article|
+    column :author, sort: :author do |article|
       admin_link_to article.author, class: "user-link" do
         safe_join([
           avatar(fallback: article.author.initials, style: "background: #{article.author.avatar_color}", class: "avatar-sm mr-1") { gravatar(article.author.email, d: article.author.avatar_type_value) },
@@ -23,10 +23,14 @@ Trestle.resource(:articles) do
         ], " ")
       end
     end
-    column :categories, format: :tags
+    column :categories, format: :tags, sort: false
     column :active, align: :center
     column :published_at, align: :center
     actions
+  end
+
+  sort_column :author do |collection, order|
+    collection.joins(:author).merge(User.alphabetical(order))
   end
 
   form do |article|
