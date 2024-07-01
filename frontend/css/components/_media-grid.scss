@@ -25,6 +25,7 @@
 
   figure {
     margin: 0;
+    position: relative;
 
     aspect-ratio: var(--media-grid-aspect-ratio);
 
@@ -55,6 +56,23 @@
     &:hover img {
       transform: scale(1.05);
     }
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba(black, 0.25);
+    color: white;
+
+    padding: 0.25rem 0.5rem;
+
+    display: flex;
+
+    font-size: 85%;
+    font-weight: normal;
   }
 
   a {
