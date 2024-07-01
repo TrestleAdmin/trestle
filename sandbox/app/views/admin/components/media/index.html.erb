@@ -66,7 +66,7 @@
 
   <%= container do |c| %>
     <% c.sidebar class: "order-first" do %>
-      <h2>Gallery</h2>
+      <h2>Lightbox Gallery</h2>
 
       <p>To have the images function as a lightbox gallery (using <%= link_to "PhotoSwipe", "https://photoswipe.com/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
       <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
@@ -94,6 +94,37 @@
           <% end %>
         </li>
       <% end %>
+    </ul>
+
+    <hr />
+
+    <ul class="media-grid media-grid" style="--media-grid-aspect-ratio: 16 / 9">
+      <li>
+        <%= link_to "https://www.youtube.com/watch?v=7NOSDKb0HlU", data: { controller: "lightbox", width: 1600, height: 900 } do %>
+          <figure class="fill zoom">
+            <%= image_tag "https://img.youtube.com/vi/7NOSDKb0HlU/hqdefault.jpg" %>
+            <figcaption>YouTube Video</figcaption>
+          </figure>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "https://vimeo.com/512832238", data: { controller: "lightbox", width: 1600, height: 900 } do %>
+          <figure class="fill zoom">
+            <%= image_tag "https://i.vimeocdn.com/video/1061850981-fdc96307fd9b725d338835338bdbaf7e2cf536efdd20e06fd0e450ed590ef813-d_640" %>
+            <figcaption>Vimeo Video</figcaption>
+          </figure>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", data: { controller: "lightbox", type: "video" } do %>
+          <figure class="fill zoom">
+            <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/400px-Big_Buck_Bunny_thumbnail_vlc.png" %>
+            <figcaption>MP4 Video</figcaption>
+          </figure>
+        <% end %>
+      </li>
     </ul>
   <% end %>
 <% end %>

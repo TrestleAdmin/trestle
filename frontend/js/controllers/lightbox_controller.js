@@ -2,6 +2,7 @@ import ApplicationController from './application_controller'
 import usePhotoSwipe from '../mixins/photoswipe'
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import getVideoId from 'get-video-id'
 
 const waitForImageDimensions = (element) => {
   return new Promise((resolve, reject) => {
@@ -19,13 +20,21 @@ const waitForImageDimensions = (element) => {
   })
 }
 
+const VideoIframeUrl = {
+  youtube: (id) => `https://www.youtube.com/embed/${id}`,
+  vimeo: (id) => `https://player.vimeo.com/video/${id}`
+}
+
 export default class extends ApplicationController {
   static targets = ["image"]
 
   static values = {
     animationType: { type: String, default: 'zoom' },
     animationDuration: { type: Number, default: 150 },
-    padding: { type: Object, default: { top: 20, bottom: 20, left: 20, right: 20 } }
+    padding: { type: Object, default: { top: 20, bottom: 20, left: 20, right: 20 } },
+
+    defaultVideoWidth: { type: Number, default: 800 },
+    defaultVideoHeight: { type: Number, default: 450 }
   }
 
   initialize () {
@@ -44,8 +53,12 @@ export default class extends ApplicationController {
 
   addFilters () {
     this.lightbox.on('contentLoadImage', this.contentLoadImageHandler.bind(this))
+    this.lightbox.on('contentActivate', this.contentActivateHandler.bind(this))
+    this.lightbox.on('contentDeactivate', this.contentDeactivateHandler.bind(this))
 
-    this.lightbox.addFilter('domItemData', this.domItemDataFilter.bind(this))
+    this.lightbox.addFilter('domItemData', this.domItemDimensionsFilter.bind(this))
+    this.lightbox.addFilter('domItemData', this.domItemVideoFilter.bind(this))
+    this.lightbox.addFilter('domItemData', this.domItemEmbedFilter.bind(this))
     this.lightbox.addFilter('useContentPlaceholder', this.useContentPlaceholderFilter.bind(this))
   }
 
@@ -65,14 +78,58 @@ export default class extends ApplicationController {
     }
   }
 
+  // Append HTML slide content when slide is reactivated
+  contentActivateHandler({ content }) {
+    if (content.type == 'html') {
+      content.append()
+    }
+  }
+
+  // Remove HTML slide content when slide is deactivated
+  contentDeactivateHandler ({ content }) {
+    if (content.type == 'html') {
+      content.remove()
+    }
+  }
+
   // Sets the width and height from data-width and data-height attributes on the link element
-  domItemDataFilter (itemData, element, linkEl) {
+  domItemDimensionsFilter (itemData, element, linkEl) {
     if (linkEl) {
       const width = linkEl.dataset.width
       const height = linkEl.dataset.height
 
-      if (width) itemData.w = parseInt(width, 10)
-      if (height) itemData.h = parseInt(height, 10)
+      if (width) itemData.w = Number(width)
+      if (height) itemData.h = Number(height)
+    }
+
+    return itemData
+  }
+
+  // Use <video> tag to play media when data-type="video"
+  domItemVideoFilter (itemData, element, linkEl) {
+    if (linkEl && linkEl.dataset.type == 'video') {
+      itemData.type = 'html'
+      itemData.html = `<video controls><source src="${itemData.src}"></video>`
+
+      this.setDefaultVideoDimensions(itemData)
+    }
+
+    return itemData
+  }
+
+  // Automatically detect video links and convert to an iframe
+  domItemEmbedFilter (itemData, element, linkEl) {
+    if (linkEl && !itemData.type) {
+      const video = getVideoId(itemData.src)
+
+      if (video.service && VideoIframeUrl[video.service]) {
+        const src = VideoIframeUrl[video.service](video.id)
+
+        itemData.type = 'html'
+        itemData.html = `<iframe src="${src}" allowfullscreen></iframe>`
+
+        this.setDefaultVideoDimensions(itemData)
+      }
     }
 
     return itemData
@@ -80,7 +137,7 @@ export default class extends ApplicationController {
 
   // Use the thumbnail as the content placeholder only when an explicit width/height is set
   useContentPlaceholderFilter (useContentPlaceholder, content) {
-    return content.width && content.height
+    return content.width && content.height && content.type !== 'html'
   }
 
   get options () {
@@ -94,5 +151,10 @@ export default class extends ApplicationController {
       showAnimationDuration: this.animationDurationValue,
       hideAnimationDuration: this.animationDurationValue
     }
+  }
+
+  setDefaultVideoDimensions(itemData) {
+    itemData.w ||= this.defaultVideoWidthValue
+    itemData.h ||= this.defaultVideoHeightValue
   }
 }
