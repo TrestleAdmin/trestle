@@ -24,6 +24,8 @@ jobs:
             ruby: '3.3'
           - gemfile: rails-7.2
             ruby: '3.3'
+          - gemfile: rails-7.2-propshaft
+            ruby: '3.3'
     runs-on: ubuntu-latest
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
