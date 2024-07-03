@@ -13,7 +13,7 @@ describe Trestle::Form::Fields::Select, type: :helper do
   it_behaves_like "a form field", :country, :html_options
 
   it "renders a select control" do
-    expect(subject).to have_tag("select.form-control", with: { id: "article_country", "data-enable-select2": true })
+    expect(subject).to have_tag("select.form-select", with: { id: "article_country", "data-controller": "select" })
   end
 
   context "given an Array of String choices" do
@@ -109,6 +109,82 @@ describe Trestle::Form::Fields::Select, type: :helper do
 
     it "sets the disabled attribute on the select control" do
       expect(subject).to have_tag('select[disabled]')
+    end
+  end
+
+  context "when options[:include_blank] is provided" do
+    context "as a string" do
+      let(:options) { { include_blank: "- Select -" } }
+
+      it "sets the data-placeholder attribute" do
+        expect(subject).to have_tag('select[data-placeholder="- Select -"]')
+      end
+
+      it "sets the data-allow-clear attribute" do
+        expect(subject).to have_tag('select[data-allow-clear]')
+      end
+
+      it "includes a blank option with the prompt text" do
+        expect(subject).to have_tag("select") do
+          with_tag "option", text: "- Select -", with: { value: "" }
+        end
+      end
+    end
+
+    context "as true" do
+      let(:options) { { include_blank: true } }
+
+      it "sets the data-placeholder attribute to an empty string" do
+        expect(subject).to have_tag('select[data-placeholder=""]')
+      end
+
+      it "sets the data-allow-clear attribute" do
+        expect(subject).to have_tag('select[data-allow-clear]')
+      end
+
+      it "includes a blank option with empty text" do
+        expect(subject).to have_tag("select") do
+          with_tag "option", text: "", with: { value: "" }
+        end
+      end
+    end
+  end
+
+  context "when options[:prompt] is provided" do
+    context "as a string" do
+      let(:options) { { prompt: "- Select -", selected: nil } }
+
+      it "sets the data-placeholder attribute" do
+        expect(subject).to have_tag('select[data-placeholder="- Select -"]')
+      end
+
+      it "sets the data-allow-clear attribute" do
+        expect(subject).to have_tag('select[data-allow-clear]')
+      end
+
+      it "includes a blank option with the prompt text" do
+        expect(subject).to have_tag("select") do
+          with_tag "option", text: "- Select -", with: { value: "" }
+        end
+      end
+    end
+
+    context "as true" do
+      let(:options) { { prompt: true, selected: nil } }
+
+      it "sets the data-placeholder attribute to the default prompt text" do
+        expect(subject).to have_tag('select[data-placeholder="Please select"]')
+      end
+
+      it "sets the data-allow-clear attribute" do
+        expect(subject).to have_tag('select[data-allow-clear]')
+      end
+
+      it "includes a blank option with default text" do
+        expect(subject).to have_tag("select") do
+          with_tag "option", text: "Please select", with: { value: "" }
+        end
+      end
     end
   end
 end

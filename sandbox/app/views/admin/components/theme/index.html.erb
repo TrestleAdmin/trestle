@@ -1,0 +1,25 @@
+<% content_for(:title, "Components: Theme") %>
+
+<% toolbar(:primary) do %>
+  <%= color_field_tag :theme, "", class: "color-swatch", title: "Secondary", data: { controller: "theme tooltip", action: "input->theme#update", theme_variable_value: "secondary", bs_placement: "bottom" } %>
+  <%= color_field_tag :theme, "", class: "color-swatch", title: "Primary", data: { controller: "theme tooltip", action: "input->theme#update", theme_variable_value: "primary", bs_placement: "bottom" } %>
+<% end %>
+
+<%= render layout: "layout", locals: { wrapper: false } do %>
+  <%= row do %>
+    <%= col(xl: 6) do %>
+      <%= render "typography" %>
+      <%= render "buttons" %>
+      <%= render "badges" %>
+      <%= render "backgrounds" %>
+      <%= render "accordion" %>
+    <% end %>
+
+    <%= col(xl: 6) do %>
+      <%= render "fields" %>
+      <%= render "alerts" %>
+      <%= render "table" %>
+      <%= render "modal" %>
+    <% end %>
+  <% end %>
+<% end %>

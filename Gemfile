@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'sprockets-rails'
+  # gem 'propshaft'
+end
+
 group :development do
   gem 'bcrypt'
   gem 'faker'
@@ -20,7 +25,6 @@ group :test do
 end
 
 gem 'haml'
-gem 'sassc-rails'
 gem 'sqlite3', '~> 1.4'
 
 # Specify your gem's dependencies in trestle.gemspec

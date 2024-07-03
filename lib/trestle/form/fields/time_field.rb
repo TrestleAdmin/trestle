@@ -8,6 +8,10 @@ class Trestle::Form::Fields::TimeField < Trestle::Form::Fields::FormControl
   def default_icon
     icon("fa fa-clock-o")
   end
+
+  def controller
+    "timepicker"
+  end
 end
 
 Trestle::Form::Builder.register(:time_field, Trestle::Form::Fields::TimeField)

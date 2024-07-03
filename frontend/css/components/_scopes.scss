@@ -12,7 +12,7 @@
     }
 
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       .scope-group-empty:first-child {
         display: none;
       }

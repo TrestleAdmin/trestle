@@ -1,0 +1,21 @@
+source 'https://rubygems.org'
+
+group :test do
+  gem 'coveralls_reborn', require: false
+  gem 'simplecov', require: false
+
+  gem 'capybara'
+  gem 'capybara-selenium'
+  gem 'rexml'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'puma'
+
+  gem 'haml', '~> 6.0'
+end
+
+gem 'rails', '~> 7.1.0'
+gem 'propshaft'
+gem 'sqlite3', '~> 1.4'
+
+gemspec path: "../"

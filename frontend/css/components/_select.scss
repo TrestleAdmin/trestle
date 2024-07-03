@@ -1,54 +1,184 @@
-.select2-container--bootstrap {
-  // This is required to ensure the select field is rendered at full width
-  // within Bootstrap tabs that are hidden when the page is first loaded.
-  // See: https://github.com/select2/select2/issues/4220
-  width: 100% !important;
+.select2-dropdown {
+  z-index: $zindex-modal + 1;
 }
 
-.tag-select {
-  &.select2-selection--multiple {
-    .select2-selection__choice {
-      display: flex;
-      align-items: center;
+.select2-container--bootstrap-5 {
+  width: auto !important;
 
-      padding: 2px 6px;
+  .select2-dropdown {
+    .select2-search {
+      padding: $s2bs5-padding-y $s2bs5-padding-y;
 
-      font-size: 0.9rem;
-
-      border: 0;
-      border-left: 4px solid $tag-border;
-      border-radius: 4px;
-
-      background: $tag-bg;
-      color: $tag-color;
+      .select2-search__field {
+        padding: $s2bs5-padding-y $s2bs5-padding-y;
+      }
     }
+  }
 
-    .select2-selection__choice__remove {
-      order: 99;
+  .select2-selection--single {
+    padding: 0;
 
-      color: $tag-color;
+    .select2-selection__rendered {
+      height: 100%;
+      padding: $s2bs5-padding-y $s2bs5-indicator-padding $s2bs5-padding-y $s2bs5-padding-x;
 
-      margin-right: 0;
-      margin-left: 4px;
-      line-height: 1.2;
+      &:has(.select2-selection__clear) {
+        padding-right: $s2bs5-indicator-padding + 1rem;
+      }
+    }
+  }
+
+  .select2-selection--multiple {
+    padding: $s2bs5-padding-y $s2bs5-padding-y;
+
+    .select2-selection__rendered {
+      gap: $s2bs5-padding-y;
+
+      .select2-selection__choice {
+        background: #eee;
+        margin: 0;
+      }
+
+      .select2-selection__choice__remove {
+        cursor: pointer;
+      }
     }
 
     .select2-search--inline {
-      position: relative;
-      left: -4px;
+      width: auto;
+      margin-left: 0.12rem;
+
+      &:first-child {
+        margin-left: 0.375rem;
+      }
+    }
+  }
+
+  &.select2-container--open {
+    $inset: -$input-btn-focus-width;
+
+    &.select2-container--below {
+      .select2-selection {
+        clip-path: inset($inset $inset 0 $inset);
+        border-bottom-width: 1px;
+      }
+    }
+
+    &.select2-container--above {
+      .select2-selection {
+        clip-path: inset(0 $inset $inset $inset);
+        border-top-width: 1px;
+      }
+    }
+
+    .select2-dropdown {
+      border-color: $s2bs5-focus-border-color;
+      box-shadow: $s2bs5-focus-box-shadow;
+    }
+
+    .select2-dropdown--below {
+      clip-path: inset(0 $inset $inset $inset);
+    }
+
+    .select2-dropdown--above {
+      clip-path: inset($inset $inset 0 $inset);
+    }
+  }
+
+  .tag-select.select2-selection--multiple {
+    clip-path: none !important;
+
+    .select2-selection__rendered {
+      .select2-selection__choice {
+        @extend .tag;
+
+        display: inline-flex !important;
+        align-items: center;
+        border: 0;
+      }
+
+      .select2-selection__choice__remove {
+        order: 99;
+
+        background: $s2bs5-clear-tag-bg;
+
+        margin-right: 0;
+        margin-left: 4px;
+        font-size: 0;
+        line-height: 1.2;
+
+        &:hover {
+          background: $s2bs5-clear-tag-bg;
+        }
+      }
     }
   }
 
   // Hide the results dropdown
+  &.select2-container--open {
+    .tag-select {
+      &.select2-dropdown {
+        display: none;
+      }
 
-  &.select2-dropdown {
-    display: none;
+      &.select2-selection {
+        border-radius: $s2bs5-border-radius !important;
+      }
+    }
+
+    &.select2-container--below .tag-select {
+      border-bottom-width: 1px;
+    }
+
+    &.select2-container--above .tag-select {
+      border-top-width: 1px;
+    }
   }
 
-  .select2-container--open &.select2-selection {
-    border-radius: $s2bs-border-radius-base !important;
-    border-color: $s2bs-input-border-focus !important;
+  // Prevent input zooming on mobile devices
+  @include media-breakpoint-down(sm) {
+    .select2-search--inline {
+      .select2-search__field {
+        font-size: 16px;
+      }
+    }
   }
+}
+
+.form-select-sm {
+  ~ .select2-container--bootstrap-5 {
+    .select2-selection--single {
+      padding: 0;
+
+      .select2-selection__rendered {
+        padding: map-get($s2bs5-small, padding-y) map-get($s2bs5-small, padding-x);
+
+        &:has(.select2-selection__clear) {
+          padding-right: $s2bs5-indicator-padding + 1rem;
+        }
+      }
+    }
+  }
+}
+
+.form-select-lg {
+  ~ .select2-container--bootstrap-5 {
+    .select2-selection--single {
+      padding: 0;
+
+      .select2-selection__rendered {
+        padding: map-get($s2bs5-large, padding-y) map-get($s2bs5-large, padding-x);
+
+        &:has(.select2-selection__clear) {
+          padding-right: $s2bs5-indicator-padding + 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.tag-select {
+  background-image: none;
 }
 
 .date-select,
@@ -59,7 +189,7 @@
     width: auto;
   }
 
-  .select2-container--bootstrap {
+  .select2-container--bootstrap-5 {
     display: inline-block;
     width: auto !important;
   }

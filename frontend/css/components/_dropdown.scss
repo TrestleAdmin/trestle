@@ -20,10 +20,10 @@
 
     border-left: $dropdown-arrow-outer-width solid transparent;
     border-right: $dropdown-arrow-outer-width solid transparent;
-    border-bottom: $dropdown-arrow-outer-width solid white;
+    border-bottom: $dropdown-arrow-outer-width solid $dropdown-bg;
   }
 
-  &.dropdown-menu-right {
+  &.dropdown-menu-end {
     &:before {
       left: auto;
       right: 12px;
@@ -49,7 +49,27 @@
       bottom: -$dropdown-arrow-width;
 
       border-bottom: 0;
-      border-top: $dropdown-arrow-outer-width solid white;
+      border-top: $dropdown-arrow-outer-width solid $dropdown-bg;
+    }
+  }
+}
+
+.dropdown-menu-dark {
+  &:before {
+    border-bottom-color: $dropdown-dark-border-color;
+  }
+
+  &:after {
+    border-bottom-color: $dropdown-dark-bg;
+  }
+
+  .dropup & {
+    &:before {
+      border-top-color: $dropdown-dark-border-color;
+    }
+
+    &:after {
+      border-top-color: $dropdown-dark-bg;
     }
   }
 }

@@ -1,7 +1,19 @@
 // Default theme
 
-$theme-bg: theme-color("primary");
-$error-bg: theme-color("danger");
+$theme-bg: $primary;
+$error-bg: $danger;
+
+$theme-bg-variations: (
+  default:  -20%,
+
+  dark:     -35%,
+  darker:   -50%,
+  darkest:  -65%,
+
+  light:    0,
+  lighter:  15%,
+  lightest: 30%
+);
 
 
 // Header
@@ -31,21 +43,23 @@ $sidebar-group-color: #595959;
 $sidebar-toggle-bg:    rgba(black, 0.25);
 $sidebar-toggle-color: rgba(white, 0.5);
 
-$sidebar-mobile-toggle-bg:     transparent;
-$sidebar-mobile-toggle-color:  white;
-$sidebar-mobile-toggle-border: 1px solid rgba($sidebar-mobile-toggle-color, 0.15);
-
-$sidebar-mobile-toggle-active-bg:     rgba($sidebar-mobile-toggle-color, 0.1);
-$sidebar-mobile-toggle-active-border: $sidebar-mobile-toggle-border;
-
+$sidebar-mobile-toggle-color:   white;
 $sidebar-mobile-toggle-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$sidebar-mobile-toggle-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+
+$sidebar-mobile-toggle-bg:           transparent;
+$sidebar-mobile-toggle-border-width: 1px;
+$sidebar-mobile-toggle-border-color: rgba($sidebar-mobile-toggle-color, 0.15);
+$sidebar-mobile-toggle-border:       $sidebar-mobile-toggle-border-width solid $sidebar-mobile-toggle-border-color;
+
+$sidebar-mobile-toggle-active-bg:           rgba($sidebar-mobile-toggle-color, 0.1);
+$sidebar-mobile-toggle-active-border-width: $sidebar-mobile-toggle-border-width;
+$sidebar-mobile-toggle-active-border-color: $sidebar-mobile-toggle-border-color;
+$sidebar-mobile-toggle-active-border:       $sidebar-mobile-toggle-border-width solid $sidebar-mobile-toggle-active-border-color;
 
 $sidebar-width:           250px;
 $sidebar-width-collapsed: 54px;
 
 $sidebar-transition-duration: 250ms;
-
-$sidebar-font-size-scale: 0.925;
 
 
 // Content
@@ -64,15 +78,26 @@ $main-content-footer-padding: 12px 20px;
 $main-content-footer-border:  1px solid rgba(black, 0.1);
 
 
+// Typography
+
+$headings-border: 1px solid rgba(black, 0.1);
+
+$header-font-size-scale: 0.925;
+$sidebar-font-size-scale: 0.925;
+
+$badge-hover-scale: -15%;
+
+
 // Tags
 
-$tag-color:        white;
-$tag-bg:           lighten(theme-color("primary"), 10%);
-$tag-border:       theme-color("primary");
+$tag-bg-scale:           -30%;
+$tag-border-scale:       0;
 
-$tag-hover-color:  white;
-$tag-hover-bg:     theme-color("primary");
-$tag-hover-border: darken(theme-color("primary"), 10%);
+$tag-hover-bg-scale:     -15%;
+$tag-hover-border-scale: 15%;
+
+$tag-spacing-x: 0.325rem;
+$tag-spacing-y: 0.25rem;
 
 
 // Scopes
@@ -101,25 +126,29 @@ $alert-danger-bg:      #de7471;
 $alert-danger-color:   white;
 $alert-danger-border:  #d85956;
 
-$alert-info-bg:        darken(theme-color("info"), 10%);
+$alert-info-bg:        shade-color($info, 10%);
 $alert-info-color:     white;
-$alert-info-border:    darken($alert-info-bg, 10%);
+$alert-info-border:    shade-color($alert-info-bg, 5%);
 
-$alert-warning-bg:     darken(theme-color("warning"), 5%);
+$alert-warning-bg:     shade-color($warning, 5%);
 $alert-warning-color:  white;
-$alert-warning-border: darken($alert-warning-bg, 5%);
+$alert-warning-border: shade-color($alert-warning-bg, 5%);
 
-$alert-light-bg:       theme-color("light");
+$alert-light-bg:       $light;
 $alert-light-color:    $body-color;
-$alert-light-border:   darken($alert-light-bg, 5%);
+$alert-light-border:   shade-color($alert-light-bg, 5%);
 
-$alert-dark-bg:        theme-color("dark");
+$alert-dark-bg:        $dark;
 $alert-dark-color:     white;
-$alert-dark-border:    darken($alert-dark-bg, 10%);
+$alert-dark-border:    shade-color($alert-dark-bg, 20%);
 
-$alert-primary-bg:     darken(theme-color("primary"), 5%);
+$alert-primary-bg:     shade-color($primary, 10%);
 $alert-primary-color:  white;
-$alert-primary-border: darken($alert-primary-bg, 10%);
+$alert-primary-border: shade-color($alert-primary-bg, 10%);
+
+$alert-secondary-bg:     shade-color($secondary, 10%);
+$alert-secondary-color:  white;
+$alert-secondary-border: shade-color($alert-secondary-bg, 10%);
 
 
 // Modals

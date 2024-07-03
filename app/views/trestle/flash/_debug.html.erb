@@ -1,7 +1,7 @@
 <% errors = local_assigns.fetch(:errors, {}) %>
 
 <% if errors.any? %>
-  <%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { toggle: "collapse" } %>
+  <%= link_to "Debug errors", "#debug-errors", class: "toggle-debug-errors small", data: { bs_toggle: "collapse" } %>
 
   <div id="debug-errors" class="debug-errors collapse">
     <ul>

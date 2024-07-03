@@ -1,6 +1,6 @@
 module Trestle
   module UrlHelper
-    DIALOG_ACTIONS = [:new, :show, :edit]
+    MODAL_ACTIONS = [:new, :show, :edit]
 
     def admin_link_to(content, instance_or_url=nil, options={}, &block)
       # Block given - ignore content parameter and capture content from block
@@ -45,9 +45,12 @@ module Trestle
           end
 
           # Determine link data options
-          if DIALOG_ACTIONS.include?(action) && admin.form.dialog?
-            options[:data] ||= {}
-            options[:data][:behavior] ||= "dialog"
+          options[:data] ||= {}
+
+          if MODAL_ACTIONS.include?(action) && admin.form.modal?
+            options[:data][:controller] ||= "modal-trigger"
+          else
+            options[:data][:turbo_frame] = "_top"
           end
 
           link_to(content, path, options)

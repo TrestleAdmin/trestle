@@ -16,6 +16,10 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:site_logo_small)
   end
 
+  it "has a theme configuration option" do
+    expect(config).to have_accessor(:theme).with_default({})
+  end
+
   it "has a favicon configuration option" do
     expect(config).to have_accessor(:favicon)
   end
@@ -36,8 +40,11 @@ describe Trestle::Configuration do
     expect(config).to have_accessor(:automount).with_default(true)
   end
 
-  it "has a Turbolinks configuration option" do
-    expect(config).to have_accessor(:turbolinks).with_default(false)
+  it "has a Turbolinks configuration option (deprecated)" do
+    expect(config).to have_accessor(:turbolinks)
+
+    expect(Trestle.deprecator).to receive(:warn)
+    config.turbolinks
   end
 
   it "has a display methods configuration option" do

@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  scope :alphabetical, -> { order(:last_name, :first_name) }
+  scope :alphabetical, ->(order=:asc) { reorder(last_name: order, first_name: order) }
 
   enum level: [:executive, :manager, :staff, :intern, :contractor]
   enum avatar_type: { "Mystery Person" => "mp", "Identicon" => "identicon", "MonsterID" => "monsterid", "Wavatar" => "wavatar", "Retro" => "retro", "RoboHash" => "robohash", "Initials" => "blank" }
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   def initials
-    [first_name, last_name].map(&:first).join.upcase
+    [first_name, last_name].compact.map(&:first).join.upcase
   end
 
   def avatar_type_value
@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def avatar_color
-    "##{Digest::MD5.hexdigest(email)[0..5]}"
+    "##{Digest::MD5.hexdigest(email)[0..5]}" if email
   end
 end

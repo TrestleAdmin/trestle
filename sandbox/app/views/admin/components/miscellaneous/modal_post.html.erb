@@ -1,0 +1,9 @@
+<% content_for(:title, "Modal POST") %>
+
+<% toolbar(:primary) do |t| %>
+  <%= t.button "Dismiss", style: :success, data: { action: "modal#hide" } %>
+<% end %>
+
+<%= render layout: "modal" do %>
+  <p>Modal POST response.</p>
+<% end %>

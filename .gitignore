@@ -24,3 +24,6 @@
 /spec/dummy/config/master.key
 /spec/dummy/public/assets/
 /node_modules
+/i18n/locale/*.json
+*.sqlite3-shm
+*.sqlite3-wal

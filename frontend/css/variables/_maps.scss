@@ -1,0 +1,15 @@
+// Update color maps
+
+$custom-colors: (
+  // Backwards compatibility
+  "default": #bbbbbb
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+// Disable box shadows on form controls.
+// This is done after importing the default Bootstrap variables as a null value would be overwritten.
+
+$input-box-shadow: null;
+$form-select-box-shadow: null;

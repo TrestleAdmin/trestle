@@ -1,4 +1,9 @@
 <% if admin.form -%>
+  <% if admin.form.modal? && modal_options = admin.form.options[:modal] %>
+    <% modal_options!(class: modal_options[:class]) %>
+    <% modal_options!(controller: modal_options[:controller]) %>
+  <% end %>
+
   <%= admin.form.render(self, instance) %>
 <% else %>
   <p><%= t("trestle.onboarding.no_form", default: "Please define a form block or create a <code>_form.html</code> partial.").html_safe %></p>

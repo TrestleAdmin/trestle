@@ -6,12 +6,8 @@ module Trestle
           builder.raw_range_field(name, options)
         end
 
-        def custom?
-          options[:custom] != false
-        end
-
         def defaults
-          custom? ? super.merge(class: ["custom-range"]) : super
+          super.merge(class: ["form-range"])
         end
       end
     end

@@ -1,15 +1,15 @@
 <% if tabs.any? || render_sidebar_as_tab? -%>
-  <ul class="nav nav-tabs">
+  <%= content_tag :ul, class: "nav nav-tabs", data: local_assigns.fetch(:data, {}) do %>
     <% tabs.each do |name, tab| %>
       <li class="nav-item">
-        <%= link_to tab.label, "##{tab.id(("modal" if dialog_request?))}", class: ["nav-link", ("active" if name == tabs.keys.first)], role: "tab", data: { toggle: "tab" } %>
+        <%= link_to tab.label, "##{tab.id(("modal" if modal_request?))}", class: ["nav-link", ("active" if name == tabs.keys.first)], role: "tab", data: { bs_toggle: "tab" } %>
       </li>
     <% end %>
 
     <% if render_sidebar_as_tab? %>
       <li class="nav-item align-right">
-        <%= link_to icon("fa fa-list-alt"), "#tab-sidebar", class: "nav-link", role: "tab", data: { toggle: "tab" } %>
+        <%= link_to icon("fa fa-list-alt"), "#tab-sidebar", class: "nav-link", role: "tab", data: { bs_toggle: "tab" } %>
       </li>
     <% end %>
-  </ul>
+  <% end %>
 <% end %>

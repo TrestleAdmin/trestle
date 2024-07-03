@@ -7,6 +7,7 @@ describe Trestle::Form::Fields::TimeField, type: :helper do
     subject { builder.time_field(:date, options) }
 
     let(:icon) { "fa fa-clock-o" }
+    let(:js_controller) { "timepicker" }
 
     it "renders as a time field" do
       expect(subject).to have_tag("input.form-control", with: { type: "time", value: "00:00:00.000" })

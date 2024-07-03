@@ -1,17 +1,16 @@
-require "sprockets/railtie"
-
 module Trestle
   class Engine < ::Rails::Engine
     isolate_namespace Trestle
     self.routes.default_scope = {}
 
-    # Application assets
-    config.assets.precompile << "trestle/admin.css" << "trestle/admin.js" << "trestle/custom.css"
+    initializer "trestle.sprockets" do |app|
+      # Sprockets manifest
+      config.assets.precompile << "trestle/manifest.js"
+    end if defined?(Sprockets)
 
-    # Vendor assets
-    %w(eot svg ttf woff woff2).each do |ext|
-      config.assets.precompile << "trestle/fa-*.#{ext}"
-    end
+    initializer "trestle.propshaft" do |app|
+      app.config.assets.excluded_paths << Trestle::Engine.root.join("app/assets/sprockets")
+    end if defined?(Propshaft)
 
     initializer "trestle.automount" do |app|
       if Trestle.config.automount
@@ -21,23 +20,30 @@ module Trestle
       end
     end
 
+    initializer "trestle.deprecator" do |app|
+      app.deprecators[:trestle] = Trestle.deprecator if app.respond_to?(:deprecators)
+    end
+
     initializer "trestle.draper" do |app|
       if defined?(Draper)
         Draper::CollectionDecorator.delegate :current_page, :total_pages, :limit_value, :entry_name, :total_count, :offset_value, :last_page?
       end
     end
 
-    initializer "trestle.theme" do |app|
-      # Enable theme compilation
-      if Trestle.config.theme
-        app.config.assets.paths << root.join("frontend/theme").to_s
-        app.config.assets.precompile << "trestle/theme.css"
-      end
+    initializer "turbo.mimetype" do
+      Mime::Type.register "text/vnd.turbo-stream.html", :turbo_stream unless Mime[:turbo_stream]
     end
 
-    initializer "trestle.turbolinks" do |app|
-      # Optional turbolinks
-      app.config.assets.precompile << "turbolinks.js" if Trestle.config.turbolinks
+    initializer "turbo.renderer" do
+      ActiveSupport.on_load(:action_controller) do
+        # Compatibility fix for Rails 5.2
+        delegate :media_type, to: "@_response" unless instance_methods.include?(:media_type)
+
+        ActionController::Renderers.add :turbo_stream do |turbo_streams_html, options|
+          self.content_type = Mime[:turbo_stream] if media_type.nil?
+          turbo_streams_html
+        end
+      end
     end
 
     config.to_prepare do

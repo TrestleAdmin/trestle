@@ -1,10 +1,5 @@
 source 'https://rubygems.org'
 
-group :development do
-  gem 'bcrypt'
-  gem 'faker'
-end
-
 group :test do
   gem 'coveralls_reborn', require: false
   gem 'simplecov', require: false
@@ -20,8 +15,7 @@ group :test do
 end
 
 gem 'rails', '~> 7.1.0'
-
+gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.4'
-gem 'sassc-rails'
 
 gemspec path: "../"

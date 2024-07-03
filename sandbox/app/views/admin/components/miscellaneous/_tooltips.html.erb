@@ -5,16 +5,21 @@
   <% end %>
 
   <div class="mb-2">
-    <%= button_tag "Tooltip on top", class: "btn btn-secondary", title: "Tooltip on top", data: { toggle: "tooltip", placement: "top" } %>
-    <%= button_tag "Tooltip on bottom", class: "btn btn-secondary", title: "Tooltip on bottom", data: { toggle: "tooltip", placement: "bottom" } %>
+    <%= button_tag "Tooltip on top", class: "btn btn-secondary", title: "Tooltip on top", data: { controller: "tooltip", bs_placement: "top" } %>
+    <%= button_tag "Tooltip on bottom", class: "btn btn-secondary", title: "Tooltip on bottom", data: { controller: "tooltip", bs_placement: "bottom" } %>
   </div>
 
   <div class="mb-2">
-    <%= button_tag "Tooltip on left", class: "btn btn-secondary", title: "Tooltip on left", data: { toggle: "tooltip", placement: "left" } %>
-    <%= button_tag "Tooltip on right", class: "btn btn-secondary", title: "Tooltip on right", data: { toggle: "tooltip", placement: "right" } %>
+    <%= button_tag "Tooltip on left", class: "btn btn-secondary", title: "Tooltip on left", data: { controller: "tooltip", bs_placement: "left" } %>
+    <%= button_tag "Tooltip on right", class: "btn btn-secondary", title: "Tooltip on right", data: { controller: "tooltip", bs_placement: "right" } %>
+  </div>
+
+  <div class="mb-2">
+    <%= button_tag "Tooltip with HTML", class: "btn btn-primary", title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>", data: { controller: "tooltip", bs_html: true } %>
   </div>
 
   <div>
-    <%= button_tag "Tooltip with HTML", class: "btn btn-primary", title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>", data: { toggle: "tooltip", html: true } %>
+    <%= button_tag "Deprecated trigger", class: "btn btn-warning", title: 'This tooltip uses the deprecated data-toggle="tooltip" trigger', data: { toggle: "tooltip" } %>
+    <%= button_tag "Deprecated popover", class: "btn btn-warning", title: 'This popover uses the deprecated data-toggle="popover" trigger', data: { toggle: "popover" } %>
   </div>
 <% end %>

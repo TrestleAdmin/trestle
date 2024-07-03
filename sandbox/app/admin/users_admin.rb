@@ -11,15 +11,23 @@ Trestle.resource(:users) do
     column :avatar, header: false, align: :center do |user|
       avatar(fallback: user.initials, style: "background: #{user.avatar_color}") { gravatar(user.email, d: user.avatar_type_value) }
     end
-    column :name, ->(user) { user.full_name }, link: true
-    column :email, truncate: false do |user|
+    column :name, ->(user) { user.full_name }, link: true, sort: { field: :name, default: true }
+    column :email, truncate: false, sort: :email do |user|
       mail_to user.email
     end
-    column :office
-    column :level, align: :center do |user|
+    column :office, sort: :office
+    column :level, align: :center, sort: :level do |user|
       status_tag(user.level.humanize)
     end
     actions
+  end
+
+  sort_column :name do |collection, order|
+    collection.alphabetical(order)
+  end
+
+  sort_column :office do |collection, order|
+    collection.joins(:office).merge(Office.alphabetical(order))
   end
 
   form do |user|

@@ -3,6 +3,8 @@ module Trestle
     module Helpers
       extend ActiveSupport::Concern
 
+      include Trestle::FlashHelper
+
       included do
         # Allow inclusion of helpers from Rails application
         self.helpers_path += Rails.application.helpers_paths

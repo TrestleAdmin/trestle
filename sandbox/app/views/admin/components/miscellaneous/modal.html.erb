@@ -1,0 +1,18 @@
+<% content_for(:title, "Modal Demo") %>
+
+<% modal_options!(class: "modal-sm", controller: "modal-demo--modal") %>
+
+<% toolbar(:primary) do |t| %>
+  <%= t.button "Update", style: :success, data: { action: "modal-demo--modal#submit" } %>
+<% end %>
+
+<% toolbar(:secondary) do |t| %>
+  <%= t.link "Launch Nested Modal", action: :modal, style: :primary, data: { controller: "modal-trigger", action: "modal-trigger:submit->modal-demo--modal#setMessage" } %>
+<% end %>
+
+<%= render layout: "modal" do %>
+  <div>
+    <%= label_tag :message, "Message", class: "form-label" %>
+    <%= text_field_tag :message, "", class: "form-control", data: { modal_demo__modal_target: "message" } %>
+  </div>
+<% end %>

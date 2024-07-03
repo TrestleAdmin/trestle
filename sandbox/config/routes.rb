@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root to: 'test#index'
+  root to: redirect('/admin')
 end

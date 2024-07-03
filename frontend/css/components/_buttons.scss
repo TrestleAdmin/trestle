@@ -3,6 +3,7 @@
 
   &.loading {
     &::before {
+      display: inline-block;
       @include icon-fa($fa-var-spinner);
       @extend .fa-spin;
       margin-right: 10px;
@@ -22,11 +23,11 @@
 // Alternative delete button (no background color until hover)
 
 .btn-delete {
-  color: theme-color("danger");
+  color: $danger;
 
   &:hover, &:focus {
-    color: color-yiq(theme-color("danger"));
-    background: theme-color("danger");
+    color: color-contrast($danger);
+    background: $danger;
   }
 }
 
@@ -39,7 +40,7 @@
   }
 
   .btn-label {
-    @include sr-only;
+    @include visually-hidden;
   }
 }
 

@@ -3,6 +3,8 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
+  scope :active, -> { where(active: true) }
+
   serialize :tags, Array, coder: YAML
 
   validates :title, presence: true

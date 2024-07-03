@@ -4,6 +4,10 @@ class Trestle::Form::Fields::DatetimeField < Trestle::Form::Fields::FormControl
   def field
     builder.raw_datetime_field(name, options)
   end
+
+  def controller
+    "datetimepicker"
+  end
 end
 
 Trestle::Form::Builder.register(:datetime_field, Trestle::Form::Fields::DatetimeField)

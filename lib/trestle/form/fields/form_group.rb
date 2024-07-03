@@ -42,7 +42,7 @@ module Trestle
         end
 
         def label
-          builder.label(name, options[:label], class: ["control-label", ("sr-only" if options[:hide_label])].compact)
+          builder.label(name, options[:label], class: ["form-label", ("visually-hidden" if options[:hide_label])].compact)
         end
 
         def defaults

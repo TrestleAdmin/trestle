@@ -22,8 +22,19 @@ module Trestle
     # Default timestamp precision
     option :timestamp_precision, :minutes
 
-    # Theme stylesheet compilation (requires Sass support)
-    option :theme, defined?(Sass) || defined?(SassC)
+    # Theme colors
+    option :theme, {}
+
+    def theme=(colors)
+      if [true, false].include?(colors)
+        Trestle.deprecator.warn("Passing a boolean to config.theme is deprecated. Please pass primary and secondary theme colors as a hash.")
+      else
+        original = fetch(:colors) || {}
+        colors = colors.transform_values { |color| Trestle::Color.parse(color) }
+
+        assign(:theme, original.merge(colors))
+      end
+    end
 
 
     ## Mounting Options
@@ -68,8 +79,8 @@ module Trestle
       self.helper_module.module_eval(&block) if block_given?
     end
 
-    # Enable or disable Turbolinks within the Trestle admin
-    option :turbolinks, defined?(Turbolinks)
+    # [DEPRECATED] Enable or disable Turbolinks within the Trestle admin
+    deprecated_option :turbolinks, "The config.turbolinks option is deprecated. Turbo is included and enabled by default within Trestle."
 
     # List of parameters that should persist across requests when paginating or reordering
     option :persistent_params, [:sort, :order, :scope]
@@ -94,10 +105,7 @@ module Trestle
     end
 
     # List of i18n keys to pass into the Trestle.i18n JavaScript object
-    option :javascript_i18n_keys, [
-      "trestle.confirmation.title", "trestle.confirmation.delete", "trestle.confirmation.cancel", "trestle.dialog.error",
-      "admin.buttons.ok", "admin.datepicker.formats.date", "admin.datepicker.formats.datetime", "admin.datepicker.formats.time"
-    ]
+    option :javascript_i18n_keys, []
 
     # List of load paths for where to find admin definitions
     option :load_paths, [

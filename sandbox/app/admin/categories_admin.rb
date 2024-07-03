@@ -8,14 +8,15 @@ Trestle.resource(:categories) do
   end
 
   table do
-    column :name, link: true
+    selectable_column
+    column :name, link: true, sort: { default: true }
     column :color do |category|
-      status_tag category.color, :dark, style: "background: #{category.color}"
+      status_tag category.color, :none, style: "background: #{category.color}"
     end
     actions
   end
 
-  form dialog: true do
+  form modal: true do
     text_field :name
     color_field :color
   end

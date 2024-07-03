@@ -4,30 +4,23 @@
   <%= row do %>
     <%= col(xl: 6) do %>
       <%= render "badges" %>
-    <% end %>
-
-    <%= col(xl: 6) do %>
-      <%= render "tooltips" %>
-    <% end %>
-
-    <%= col(xl: 6) do %>
+      <%= render "tags" %>
       <%= render "progress" %>
-    <% end %>
-
-    <%= col(xl: 6) do %>
-      <%= render "cards" %>
-    <% end %>
-
-    <%= col(xl: 6) do %>
-      <%= render "avatars" %>
+      <%= render "modals" %>
     <% end %>
 
     <%= col(xl: 6) do %>
       <%= render "timestamps" %>
+      <%= render "tooltips" %>
+      <%= render "avatars" %>
     <% end %>
 
-    <%= col(xl: 6) do %>
-      <%= render "tags" %>
+    <%= col(xs: 12) do %>
+      <%= render "cards" %>
+    <% end %>
+
+    <%= col(xs: 12) do %>
+      <%= render "tabs_example" %>
     <% end %>
   <% end %>
 <% end %>

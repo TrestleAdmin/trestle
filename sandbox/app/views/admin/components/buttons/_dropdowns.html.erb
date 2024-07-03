@@ -6,7 +6,7 @@
 
   <div class="mb-2">
     <span class="dropdown">
-      <%= button_tag "Dropdown", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } %>
+      <%= button_tag "Dropdown", class: "btn btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
 
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Action</a>
@@ -15,10 +15,10 @@
       </div>
     </span>
 
-    <span class="dropdown">
-      <%= button_tag "Right-aligned menu", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } %>
+    <span class="dropdown d-inline-block">
+      <%= button_tag "Right-aligned menu", class: "btn btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
 
-      <div class="dropdown-menu dropdown-menu-right">
+      <div class="dropdown-menu dropdown-menu-end">
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
@@ -26,11 +26,26 @@
     </span>
   </div>
 
-  <div>
+  <div class="mb-2">
     <span class="dropdown">
-      <%= button_tag "Menu headers & dividers", class: "btn btn-secondary dropdown-toggle", data: { toggle: "dropdown" } %>
+      <%= button_tag "Menu headers & dividers", class: "btn btn-secondary dropdown-toggle", data: { bs_toggle: "dropdown" } %>
 
       <div class="dropdown-menu">
+        <h6 class="dropdown-header">Dropdown header</h6>
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </span>
+  </div>
+
+  <div>
+    <span class="dropdown">
+      <%= button_tag "Dark dropdown menu", class: "btn btn-dark dropdown-toggle", data: { bs_toggle: "dropdown" } %>
+
+      <div class="dropdown-menu dropdown-menu-dark">
         <h6 class="dropdown-header">Dropdown header</h6>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>

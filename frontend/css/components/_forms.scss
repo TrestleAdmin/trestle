@@ -1,0 +1,51 @@
+.form-group {
+  position: relative;
+  margin-bottom: 1rem;
+
+  &.has-error {
+    > .form-label {
+      color: $form-feedback-invalid-color;
+    }
+
+    > .invalid-feedback {
+      display: block;
+    }
+  }
+}
+
+ul.invalid-feedback {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.form-text {
+  color: $form-text-color;
+  font-size: 0.9rem;
+
+  @include media-breakpoint-up(sm) {
+    &.floating {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 2px 0;
+    }
+  }
+}
+
+.form-label {
+  display: block;
+}
+
+.control-label {
+  @extend .form-label;
+}
+
+// Prevent input zooming on mobile devices
+@include media-breakpoint-down(sm) {
+  .form-control,
+  .form-select,
+  .input-group-text {
+    font-size: 16px;
+  }
+}

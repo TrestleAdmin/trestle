@@ -10,9 +10,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
 
     it "prepends the addon within an input group (wrapped in an input-group-text span)" do
       expect(subject).to have_tag(".input-group") do
-        with_tag ".input-group-prepend" do
-          with_tag "span.input-group-text", text: "Prepended"
-        end
+        with_tag "span.input-group-text", text: "Prepended"
       end
     end
   end
@@ -22,9 +20,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
 
     it "appends the addon within an input group (wrapped in an input-group-text span)" do
       expect(subject).to have_tag(".input-group") do
-        with_tag ".input-group-append" do
-          with_tag "span.input-group-text", text: "Appended"
-        end
+        with_tag "span.input-group-text", text: "Appended"
       end
     end
   end
@@ -35,9 +31,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
 
     it "prepends the addon within an input group without wrapping" do
       expect(subject).to have_tag(".input-group") do
-        with_tag ".input-group-prepend" do
-          with_tag "button.btn.btn-primary", text: "Label"
-        end
+        with_tag "button.btn.btn-primary", text: "Label"
       end
     end
   end
@@ -48,9 +42,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
 
     it "appends the addon within an input group without wrapping" do
       expect(subject).to have_tag(".input-group") do
-        with_tag ".input-group-append" do
-          with_tag "button.btn.btn-primary", text: "Label"
-        end
+        with_tag "button.btn.btn-primary", text: "Label"
       end
     end
   end

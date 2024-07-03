@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .app-header {
   flex: 0 0 $header-height;
   height: $header-height;
@@ -12,12 +14,12 @@
   background: $header-bg;
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .app-header {
     margin-top: -$header-height;
 
-    padding-left: $grid-gutter-width / 2;
-    padding-right: $grid-gutter-width / 2;
+    padding-left: math.div($grid-gutter-width, 2);
+    padding-right: math.div($grid-gutter-width, 2);
 
     // Hide all elements by default
     > * {

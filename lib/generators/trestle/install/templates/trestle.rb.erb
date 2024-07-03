@@ -15,6 +15,11 @@ Trestle.configure do |config|
   #
   # config.site_logo_small = "logo-small.png"
 
+  # Define primary and secondary theme colors. Color values may be specified
+  # as either 3- or 6-digit hex codes, or rgb/hsl() triplets.
+  #
+  # config.theme = { primary: "#338ab7", secondary: "#719dc3" }
+
   # Specify a favicon to be used within the admin.
   #
   # config.favicon = "favicon.ico"
@@ -93,11 +98,6 @@ Trestle.configure do |config|
   # config.hook(:stylesheets) do
   #   stylesheet_link_tag "custom"
   # end
-
-  # Toggle whether Turbolinks is enabled within the admin.
-  # Defaults to true if Turbolinks is available.
-  #
-  # config.turbolinks = false
 
   # Specify the parameters that should persist across requests when
   # paginating or reordering. Defaults to [:sort, :order, :scope].

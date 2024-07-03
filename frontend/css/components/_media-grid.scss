@@ -1,31 +1,33 @@
+@use "sass:math";
+
 .media-grid {
   @include list-unstyled;
-  @include make-row;
 
-  li {
-    position: relative;
-    width: 100%;
+  --media-grid-aspect-ratio: 4 / 3;
+  --media-grid-gap: #{$grid-gutter-width};
+  --media-grid-columns: 2;
 
-    padding-right: $grid-gutter-width / 2;
-    padding-left: $grid-gutter-width / 2;
+  display: grid;
+  grid-template-columns: repeat(var(--media-grid-columns), 1fr);
+  gap: var(--media-grid-gap);
 
-    @include make-col(6);
+  @include media-breakpoint-up(md) {
+    --media-grid-columns: 3;
+  }
 
-    @include media-breakpoint-up(md) {
-      @include make-col(4);
-    }
+  @include media-breakpoint-up(xl) {
+    --media-grid-columns: 4;
+  }
 
-    @include media-breakpoint-up(xl) {
-      @include make-col(3);
-    }
-
-    margin-bottom: 20px;
+  @include media-breakpoint-down(md) {
+    --media-grid-gap: #{math.div($grid-gutter-width, 2)};
   }
 
   figure {
     margin: 0;
+    position: relative;
 
-    @include aspect-ratio(4 / 3);
+    aspect-ratio: var(--media-grid-aspect-ratio);
 
     background: #eee;
     overflow: hidden;
@@ -34,7 +36,8 @@
     align-items: center;
 
     img {
-      @include fill-area;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
   }
@@ -55,49 +58,54 @@
     }
   }
 
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba(black, 0.25);
+    color: white;
+
+    padding: 0.25rem 0.5rem;
+
+    display: flex;
+
+    font-size: 85%;
+    font-weight: normal;
+  }
+
   a {
     cursor: zoom-in;
   }
 }
 
 .media-grid-sm {
-  li {
-    @include make-col(4);
+  --media-grid-columns: 3;
 
-    @include media-breakpoint-up(md) {
-      @include make-col(3);
-    }
+  @include media-breakpoint-up(md) {
+    --media-grid-columns: 4;
+  }
 
-    @include media-breakpoint-up(lg) {
-      @include make-col(2);
-    }
+  @include media-breakpoint-up(lg) {
+    --media-grid-columns: 6;
   }
 }
 
 .media-grid-lg {
-  li {
-    @include make-col(12);
+  --media-grid-columns: 1;
 
-    @include media-breakpoint-up(sm) {
-      @include make-col(6);
-    }
+  @include media-breakpoint-up(sm) {
+    --media-grid-columns: 2;
+  }
 
-    @include media-breakpoint-up(lg) {
-      @include make-col(4);
-    }
+  @include media-breakpoint-up(lg) {
+    --media-grid-columns: 3;
   }
 }
 
-@include media-breakpoint-down(sm) {
-  .media-grid {
-    margin-left: -5px;
-    margin-right: -5px;
+.media-grid-auto {
+  --media-grid-item-size: 240px;
 
-    li {
-      padding-left: 5px;
-      padding-right: 5px;
-
-      margin-bottom: 10px;
-    }
-  }
+  grid-template-columns: repeat(auto-fill, minmax(var(--media-grid-item-size), 1fr));
 }

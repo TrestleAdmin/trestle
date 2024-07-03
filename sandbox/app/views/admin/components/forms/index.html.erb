@@ -62,10 +62,15 @@
         <h2>Select fields</h2>
       <% end %>
 
-      <%= f.select :basic_select_field, ["Red", "Green", "Blue", "Yellow"] %>
+      <%= f.select :basic_select_field, ["Red", "Green", "Blue", "Yellow", "This label is really quite long and may overflow the select field container if we don't handle overflow correctly"] %>
+      <%= f.select :clearable_select_field, ["Red", "Green", "Blue", "Yellow", "This label is really quite long and may overflow the select field container if we don't handle overflow correctly"], { include_blank: true } %>
+      <%= f.select :select_field_with_placeholder, ["Red", "Green", "Blue", "Yellow"], { include_blank: "- Select Color -" } %>
+      <%= f.select :select_field_with_prompt, ["Red", "Green", "Blue", "Yellow"], { prompt: true } %>
+      <%= f.select :select_field_with_custom_prompt, ["Red", "Green", "Blue", "Yellow"], { prompt: "- Select Color -" } %>
       <%= f.collection_select :collection_select_field, Color.all, :code, :name_with_code %>
       <%= f.grouped_collection_select :grouped_collection_select_field, Color.categorized, :colors, :name, :code, :name_with_code, {}, { multiple: true } %>
       <%= f.time_zone_select :time_zone_select, /Australia/ %>
+      <%= f.tag_select :tag_select %>
     <% end %>
 
     <%= container do |c| %>
@@ -105,7 +110,7 @@
       <%= f.text_field :prepend_icon, prepend: icon("fas fa-book-open") %>
       <%= f.text_field :append_icon, append: icon("fas fa-bolt") %>
 
-      <%= f.text_field :prepend_checkbox, prepend: f.raw_check_box(:prepended_checkbox) %>
+      <%= f.text_field :prepend_checkbox, prepend: f.raw_check_box(:prepended_checkbox, class: "form-check-input mt-0") %>
 
       <%= f.text_field :prepend_button, prepend!: button_tag(icon("fas fa-archive"), class: "btn btn-info") %>
       <%= f.text_field :append_button, append!: button_tag("Button", class: "btn btn-primary") %>

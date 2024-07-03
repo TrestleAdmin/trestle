@@ -11,6 +11,8 @@
   <%= t.delete %>
 <% end %>
 
-<%= trestle_form_for instance, url: admin.actions.include?(:update) ? admin.instance_path(instance, action: :update) : "#", method: :patch do |f| %>
-  <%= render partial: "form", layout: dialog_request? ? "dialog" : "layout" %>
+<%= resource_turbo_frame(instance) do %>
+  <%= trestle_form_for instance, url: admin.actions.include?(:update) ? admin.instance_path(instance, action: :update) : "#", method: :patch do |f| %>
+    <%= render partial: "form", layout: modal_request? ? "modal" : "layout" %>
+  <% end %>
 <% end %>

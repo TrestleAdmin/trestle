@@ -4,7 +4,7 @@ describe Trestle::Resource::Toolbar::Builder do
   include_context "template"
 
   let(:actions) { [:index, :new, :create, :show, :edit, :update, :destroy] }
-  let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false), actions: actions) }
+  let(:admin) { double(path: "/admin", to_param: double, form: double(modal?: false), actions: actions) }
 
   subject(:builder) { Trestle::Resource::Toolbar::Builder.new(template) }
 
@@ -49,7 +49,7 @@ describe Trestle::Resource::Toolbar::Builder do
 
       it "returns a delete link" do
         expect(admin).to receive(:t).with("buttons.delete", default: "Delete %{model_name}").and_return("Delete Resource")
-        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" }))
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
       end
     end
 
@@ -63,14 +63,14 @@ describe Trestle::Resource::Toolbar::Builder do
   end
 
   describe "#dismiss" do
-    context "from a dialog request" do
+    context "from a modal request" do
       before(:each) do
-        allow(template).to receive(:dialog_request?).and_return(true)
+        allow(template).to receive(:modal_request?).and_return(true)
       end
 
-      it "returns a dismiss dialog button" do
+      it "returns a dismiss modal button" do
         expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
-        expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
+        expect(builder.dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { bs_dismiss: "modal" }))
       end
 
       it "is aliased as #ok" do
@@ -79,9 +79,9 @@ describe Trestle::Resource::Toolbar::Builder do
       end
     end
 
-    context "from a non-dialog request" do
+    context "from a non-modal request" do
       before(:each) do
-        allow(template).to receive(:dialog_request?).and_return(false)
+        allow(template).to receive(:modal_request?).and_return(false)
       end
 
       it "renders nothing" do
@@ -103,20 +103,20 @@ describe Trestle::Resource::Toolbar::Builder do
     context "when the admin action does not include :update" do
       let(:actions) { [] }
 
-      context "from a dialog request" do
+      context "from a modal request" do
         before(:each) do
-          allow(template).to receive(:dialog_request?).and_return(true)
+          allow(template).to receive(:modal_request?).and_return(true)
         end
 
-        it "returns a dismiss dialog button" do
+        it "returns a dismiss modal button" do
           expect(admin).to receive(:t).with("buttons.ok", default: "OK").and_return("OK")
-          expect(builder.save_or_dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { dismiss: "modal" }))
+          expect(builder.save_or_dismiss).to eq(Trestle::Toolbar::Button.new(template, "OK", style: :light, data: { bs_dismiss: "modal" }))
         end
       end
 
-      context "from a non-dialog request" do
+      context "from a non-modal request" do
         before(:each) do
-          allow(template).to receive(:dialog_request?).and_return(false)
+          allow(template).to receive(:modal_request?).and_return(false)
         end
 
         it "renders nothing" do

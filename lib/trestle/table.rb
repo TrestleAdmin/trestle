@@ -70,7 +70,12 @@ module Trestle
       end
 
       def data
-        options[:data]
+        data = options[:data] || {}
+
+        controllers = Array(data[:controller])
+        controllers << "checkbox-select"
+
+        data.merge(controller: controllers.join(" "))
       end
     end
   end

@@ -4,7 +4,7 @@ describe Trestle::Table::ActionsColumn do
   include_context "template"
 
   let(:options) { {} }
-  let(:admin) { double(path: "/admin", to_param: double, form: double(dialog?: false)) }
+  let(:admin) { double(path: "/admin", to_param: double, form: double(modal?: false)) }
   let(:instance) { double }
 
   before(:each) do
@@ -38,7 +38,7 @@ describe Trestle::Table::ActionsColumn do
       let(:options) { { class: "custom-class" } }
 
       it "includes class of 'actions'" do
-        expect(renderer.classes).to include("actions")
+        expect(renderer.classes).to include("table-actions")
       end
 
       it "includes classes specified in options" do
@@ -75,7 +75,7 @@ describe Trestle::Table::ActionsColumn do
     describe "#delete" do
       it "returns a delete link" do
         expect(admin).to receive(:translate).with("buttons.delete", { default: "Delete" }).and_return("Delete")
-        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, method: :delete, data: { toggle: "confirm-delete", placement: "left" }))
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete", instance, style: :danger, icon: "fa fa-trash", action: :destroy, data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "left" }))
       end
     end
 

@@ -12,7 +12,7 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 2.25rem;
     }
   }
@@ -24,7 +24,7 @@
   .content-header-title {
     margin: 5px 0;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       margin: 2px 0;
     }
   }
@@ -44,6 +44,7 @@
 
 .main-content-area {
   margin: 20px;
+  scroll-margin: 20px;
 }
 
 .main-content-container {
@@ -110,13 +111,15 @@
 }
 
 .error-iframe {
+  display: block;
+  width: 100%;
   border: 0;
   flex: 1;
-  width: 100%;
-  min-height: 400px;
+  min-height: 60vh;
+  max-height: 75vh;
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .main-content-container {
     flex-direction: column;
   }
@@ -127,13 +130,14 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .content-header {
     padding: 10px;
   }
 
   .main-content-area {
     margin: 10px;
+    scroll-margin: 10px;
   }
 
   .main-content-container {

@@ -69,7 +69,7 @@
   }
 
   .active a {
-    border-left: $sidebar-active-border solid theme-color("primary");
+    border-left: $sidebar-active-border solid var(--primary);
     padding-left: 18px - $sidebar-active-border;
 
     background: $sidebar-active-bg;
@@ -127,7 +127,7 @@
   }
 }
 
-@include media-breakpoint-between(md, lg) {
+@include media-breakpoint-between(md, xl) {
   .nav-tooltip {
     display: block !important;
   }

@@ -88,12 +88,14 @@ describe Trestle::FormatHelper do
 
     it "formats values as tags" do
       tags = double
+      list = double
       first_tag, second_tag = double, double
 
-      expect(self).to receive(:content_tag).with(:span, "First", class: "tag").and_return(first_tag)
-      expect(self).to receive(:content_tag).with(:span, "Second", class: "tag").and_return(second_tag)
+      expect(self).to receive(:content_tag).with(:span, "First", class: "tag tag-primary").and_return(first_tag)
+      expect(self).to receive(:content_tag).with(:span, "Second", class: "tag tag-primary").and_return(second_tag)
       expect(self).to receive(:safe_join).with([first_tag, second_tag]).and_return(tags)
-      expect(format_value(["First", "Second"], format: :tags)).to eq(tags)
+      expect(self).to receive(:content_tag).with(:div, tags, class: "tag-list").and_return(list)
+      expect(format_value(["First", "Second"], format: :tags)).to eq(list)
     end
   end
 end

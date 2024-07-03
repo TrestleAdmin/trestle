@@ -14,6 +14,7 @@ module Trestle
         def new
           respond_to do |format|
             format.html
+            format.turbo_stream { render turbo_stream: turbo_stream_modal }
             format.json { render json: instance }
 
             yield format if block_given?
@@ -23,20 +24,20 @@ module Trestle
         def create
           if save_instance
             respond_to do |format|
-              format.html do
-                flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
-                redirect_to_return_location(:create, instance) { admin.instance_path(instance) }
-              end
+              flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")
+
+              format.html { redirect_to_return_location(:create, instance) { admin.instance_path(instance) } }
+              format.turbo_stream { flash.discard } if modal_request?
               format.json { render json: instance, status: :created, location: admin.instance_path(instance) }
 
               yield format if block_given?
             end
           else
             respond_to do |format|
-              format.html do
-                flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "new", status: :unprocessable_entity
-              end
+              flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
+
+              format.html { render "new", status: :unprocessable_entity }
+              format.turbo_stream { render "create", status: :unprocessable_entity } if modal_request?
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
@@ -55,6 +56,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
+              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?
@@ -73,6 +75,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
+              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?
@@ -83,20 +86,20 @@ module Trestle
         def update
           if update_instance
             respond_to do |format|
-              format.html do
-                flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
-                redirect_to_return_location(:update, instance) { admin.instance_path(instance) }
-              end
+              flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")
+
+              format.html { redirect_to_return_location(:update, instance) { admin.instance_path(instance) } }
+              format.turbo_stream { flash.discard }
               format.json { render json: instance, status: :ok }
 
               yield format if block_given?
             end
           else
             respond_to do |format|
-              format.html do
-                flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
-                render "show", status: :unprocessable_entity
-              end
+              flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
+
+              format.html { render "show", status: :unprocessable_entity }
+              format.turbo_stream { render "update", status: :unprocessable_entity }
               format.json { render json: instance.errors, status: :unprocessable_entity }
 
               yield format if block_given?
@@ -105,26 +108,34 @@ module Trestle
         end
 
         def destroy
-          success = delete_instance
+          deleting_referer = URI(request.referer).path == admin.instance_path(instance)
 
-          respond_to do |format|
-            format.html do
-              if success
-                flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
-                redirect_to_return_location(:destroy, instance) { admin.path(:index) }
-              else
-                flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
+          if delete_instance
+            respond_to do |format|
+              flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
 
+              format.html { redirect_to_return_location(:destroy, instance, status: :see_other) { admin.path(:index) } }
+              format.turbo_stream { flash.discard } unless deleting_referer
+              format.json { head :no_content }
+
+              yield format if block_given?
+            end
+          else
+            respond_to do |format|
+              flash[:error] = flash_message("destroy.failure", title: "Warning!", message: "Could not delete %{lowercase_model_name}.")
+
+              format.html do
                 if load_instance
                   redirect_to_return_location(:update, instance) { admin.instance_path(instance) }
                 else
-                  redirect_to_return_location(:destroy, instance) { admin.path(:index) }
+                  redirect_to_return_location(:destroy, instance, status: :see_other) { admin.path(:index) }
                 end
               end
-            end
-            format.json { head :no_content }
+              format.turbo_stream { flash.discard }
+              format.json { head :no_content }
 
-            yield format if block_given?
+              yield format if block_given?
+            end
           end
         end
       end

@@ -15,6 +15,6 @@ group :test do
 end
 
 gem 'rails', '~> 5.2.0'
-gem 'sassc-rails'
+gem 'sprockets-rails'
 
 gemspec path: "../"

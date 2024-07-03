@@ -5,10 +5,9 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
 
-    <% if Trestle.config.turbolinks %>
-      <meta name='turbolinks-cache-control' content='no-cache'>
-      <meta name="turbolinks-root" content="<%= Trestle.config.path %>">
-    <% end %>
+    <meta name='turbo-cache-control' content='no-cache'>
+    <meta name="turbo-prefetch" content="false" />
+    <meta name="turbo-root" content="<%= Trestle.config.path %>">
 
     <%= csrf_meta_tags %>
 
@@ -16,24 +15,21 @@
 
     <%= favicon_link_tag Trestle.config.favicon if Trestle.config.favicon %>
 
-    <%= stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag "trestle/theme", 'data-turbolinks-track': 'reload' if Trestle.config.theme %>
-    <%= stylesheet_link_tag "trestle/custom", 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "trestle/admin", 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "trestle/icons/font-awesome", 'data-turbo-track': 'reload' if defined?(Sprockets) %>
+
+    <%= stylesheet_link_tag "trestle/custom", 'data-turbo-track': 'reload' %>
 
     <%= hook :stylesheets %>
 
-    <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks rescue nil %>
-    <%= javascript_include_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "trestle/admin", 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag "trestle/custom", 'data-turbo-track': 'reload' %>
 
-    <%= javascript_tag nonce: true do %>
-      <% i18n_javascript_translations.each do |key, value| %>
-      Trestle.i18n['<%= key %>'] = "<%= escape_javascript(value) %>";
-      <% end %>
-
-      Trestle.localize(<%= Trestle.i18n_fallbacks.map { |l| "'#{l}'" }.join(", ").html_safe %>);
-    <% end %>
+    <%= render "trestle/i18n" unless I18n.locale == :en %>
 
     <%= hook :javascripts %>
+
+    <%= render "trestle/theme" %>
 
     <%= content_for(:head) %>
 
@@ -41,18 +37,20 @@
   </head>
 
   <%= content_tag :body, body_attributes do %>
-    <div class="app-wrapper">
+    <div id="app-wrapper" class="app-wrapper" data-controller="wrapper" data-action="click->wrapper#hideMobileSidebar touchstart->wrapper#hideMobileSidebar" data-wrapper-mobile-sidebar-outlet=".app-sidebar">
       <%= render "trestle/shared/sidebar" %>
 
       <div class="app-container">
         <%= render "trestle/shared/header" %>
 
-        <main class="app-main" data-context="<%= request.fullpath %>">
+        <main class="app-main">
           <%= yield %>
         </main>
 
         <%= render "trestle/shared/footer" %>
       </div>
     </div>
+
+    <turbo-frame id="modal"></turbo-frame>
   <% end %>
 </html>

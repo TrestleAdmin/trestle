@@ -3,6 +3,7 @@
 // Mixins & functions
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/mixins";
+@import "../core/functions";
 @import "../core/mixins";
 
 // Variables
@@ -11,4 +12,5 @@
 @import "~bootstrap/scss/variables";
 
 // Icon variables
+@import "~@fortawesome/fontawesome-free/scss/functions";
 @import "~@fortawesome/fontawesome-free/scss/variables";

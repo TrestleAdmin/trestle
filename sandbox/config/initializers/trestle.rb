@@ -4,6 +4,8 @@ Trestle.configure do |config|
   config.site_logo = "logo.svg"
   config.site_logo_small = "logo-small.svg"
 
+  config.theme = { primary: "#337ab7", secondary: "#719dc3" }
+
   config.menu do
     group "Badges & Labels", priority: :last do
       item "Item with counter", "#", badge: { text: 99, class: "badge-primary badge-pill" }, priority: :first

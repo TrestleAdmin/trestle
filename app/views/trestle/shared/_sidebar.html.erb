@@ -1,6 +1,6 @@
-<aside class="app-sidebar navbar-expand-md" id="app-sidebar">
+<aside class="app-sidebar navbar navbar-expand-md" id="app-sidebar" data-controller="sidebar mobile-sidebar">
   <header class="app-sidebar-header">
-    <button class="navbar-toggler" type="button" aria-controls="app-sidebar" aria-expanded="false" aria-label="<%= t("trestle.ui.toggle_navigation", default: "Toggle navigation") %>">
+    <button class="navbar-toggler" type="button" aria-controls="app-sidebar" aria-expanded="false" aria-label="<%= t("trestle.ui.toggle_navigation", default: "Toggle navigation") %>" data-action="mobile-sidebar#toggle">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -9,19 +9,19 @@
     <% end %>
   </header>
 
-  <div class="app-sidebar-inner">
-    <nav class="app-nav">
+  <div class="app-sidebar-inner" data-sidebar-target="inner">
+    <nav class="app-nav" data-controller="navigation">
       <% Trestle.navigation(self).each do |group, items| %>
         <%= content_tag(:ul, class: ("collapsed" if group.present? && navigation_group_collapsed?(group)), data: { group: group.id }) do %>
           <% if group.present? %>
-            <li class="nav-header"><%= link_to group.label, "##{group.id}" %></li>
+            <li class="nav-header"><%= link_to group.label, "##{group.id}", data: { action: "navigation#toggle" } %></li>
           <% end %>
 
           <% items.each do |item| %>
             <%= content_tag(:li, class: ("active" if current_navigation_item?(item))) do %>
-              <%= link_to item.path, item.html_options do %>
+              <%= link_to item.path, item.html_options.merge(data: { controller: "navigation-tooltip" }) do %>
                 <%= icon("nav-icon", item.icon) %>
-                <span class="nav-label"><%= item.label %></span>
+                <span class="nav-label" data-navigation-tooltip-target="label"><%= item.label %></span>
 
                 <%= content_tag(:span, item.badge.text, class: ["badge", item.badge.html_class]) if item.badge? %>
               <% end %>
@@ -31,8 +31,8 @@
       <% end %>
     </nav>
 
-    <button class="toggle-sidebar">
-      <span class="sr-only"><%= t("trestle.ui.toggle_sidebar", default: "Toggle sidebar") %></span>
+    <button class="toggle-sidebar" data-action="sidebar#toggle">
+      <span class="visually-hidden"><%= t("trestle.ui.toggle_sidebar", default: "Toggle sidebar") %></span>
     </button>
   </div>
 </aside>

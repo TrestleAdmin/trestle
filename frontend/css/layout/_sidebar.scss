@@ -1,13 +1,20 @@
+@use "sass:math";
+
 .app-sidebar {
   background: $sidebar-bg;
 
   width: $sidebar-width;
+  padding: 0;
+
   flex-shrink: 0;
 
   position: relative;
 
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: stretch;
 }
 
 .app-sidebar-header {
@@ -19,24 +26,27 @@
   align-items: stretch;
 
   .navbar-toggler {
+    --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-bg};
+    --bs-navbar-toggler-color: #{$sidebar-mobile-toggle-border-color};
+    --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-border-color};
+
     outline: none;
 
     align-self: center;
 
-    margin-left: $grid-gutter-width / 2;
-    margin-right: $grid-gutter-width / 2;
+    margin-left: math.div($grid-gutter-width, 2);
+    margin-right: math.div($grid-gutter-width, 2);
 
-    background: $sidebar-mobile-toggle-bg;
-    border: $sidebar-mobile-toggle-border;
+    background: var(--bs-navbar-toggler-bg);
 
     &:hover, &:focus {
-      background: $sidebar-mobile-toggle-active-bg;
-      border: $sidebar-mobile-toggle-active-border;
+      --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-active-border-color};
+      --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-active-bg};
     }
   }
 
   .navbar-toggler-icon {
-    background-image: $sidebar-mobile-toggle-icon-bg;
+    --bs-navbar-toggler-icon-bg: #{$sidebar-mobile-toggle-icon-bg};
   }
 }
 
@@ -122,7 +132,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   html, body {
     overflow-x: hidden;
   }
@@ -170,7 +180,7 @@
   }
 }
 
-@include media-breakpoint-between(md, lg) {
+@include media-breakpoint-between(md, xl) {
   .app-sidebar {
     width: $sidebar-width-collapsed;
 

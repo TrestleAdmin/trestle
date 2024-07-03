@@ -1,0 +1,39 @@
+@use "sass:math";
+
+@function soft-shadow($distance: 0.5rem, $blur: 1.5rem, $color: rgba(black, 0.125), $layers: 5, $reduce: math.div($distance, -4)) {
+  $val: 0 #{$distance} #{$blur} #{$reduce} #{$color};
+
+  @for $i from 1 through ($layers - 1) {
+    $distance: math.div($distance, 2);
+    $blur: math.div($blur, 2);
+
+    $val: 0 #{$distance} #{$blur} #{$reduce} #{$color}, #{$val};
+  }
+
+  @return $val;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function em($rem) {
+  @return strip-units($rem) * 1em;
+}
+
+@function adjust-theme-hsl($name, $hue: null, $saturation: null, $lightness: null, $wrap: true) {
+  $hsl:
+    adjust-css-value(var(--#{$name}-h), $hue)
+    adjust-css-value(var(--#{$name}-s), $saturation)
+    adjust-css-value(var(--#{$name}-l), $lightness);
+
+  @return if($wrap, hsl($hsl), $hsl);
+}
+
+@function adjust-css-value($var, $adjustment) {
+  @if ($adjustment and $adjustment != 0) {
+    @return calc(#{$var} * #{1 + math.div($adjustment, 100%)});
+  } @else {
+    @return $var;
+  }
+}

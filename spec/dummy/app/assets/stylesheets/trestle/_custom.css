@@ -1,0 +1,8 @@
+/* This file may be used for providing additional customizations to the Trestle
+ * admin. It will be automatically included within all admin pages.
+ *
+ * For organizational purposes, you may wish to define your customizations
+ * within individual partials in this folder and they'll be required below.
+ *
+ *= require_tree .
+*/

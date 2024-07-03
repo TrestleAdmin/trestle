@@ -13,7 +13,8 @@ module Trestle
       when :currency
         number_to_currency(value)
       when :tags
-        safe_join(Array(value).map { |tag| content_tag(:span, tag, class: "tag") })
+        tags = Array(value).map { |tag| content_tag(:span, tag, class: "tag tag-primary") }
+        content_tag(:div, safe_join(tags), class: "tag-list")
       else
         value
       end

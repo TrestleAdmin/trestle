@@ -14,11 +14,11 @@ module Trestle
         end
 
         def delete
-          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, method: :delete, style: :danger, icon: "fa fa-trash", data: { toggle: "confirm-delete", placement: "bottom" }) if action?(:destroy)
+          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }) if action?(:destroy)
         end
 
         def dismiss
-          button(t("buttons.ok", default: "OK"), style: :light, data: { dismiss: "modal" }) if @template.dialog_request?
+          button(t("buttons.ok", default: "OK"), style: :light, data: { bs_dismiss: "modal" }) if @template.modal_request?
         end
         alias ok dismiss
 

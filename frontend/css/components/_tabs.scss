@@ -25,10 +25,17 @@
     margin-right: 4px;
     padding: 10px 20px;
 
+    font-weight: 500;
+
+    transition: $nav-tabs-link-transition;
+
     background-color: $nav-tabs-link-bg;
     color: $nav-tabs-link-color;
 
-    font-weight: 500;
+    &:not(.active):hover {
+      background-color: $nav-tabs-link-hover-bg;
+      color: $nav-tabs-link-hover-color;
+    }
   }
 
   .align-right {
@@ -52,12 +59,12 @@
     // Default badge color when no badge- classes specified
     &:not([class*="badge-"]) {
       background: $gray-600;
-      color: color-yiq($gray-600);
+      color: color-contrast($gray-600);
     }
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .nav-tabs {
     .nav-link {
       font-size: 0.95rem;
