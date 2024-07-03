@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "A modern, responsive admin framework for Ruby on Rails"
   spec.description   = "Trestle is a modern, responsive admin framework for Ruby on Rails."
   spec.homepage      = "https://www.trestle.io"
-  spec.license       = "LGPL-3.0"
+  spec.license       = "LGPL-3.0-only"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|coverage|gemfiles|node_modules|spec|sandbox)/}) }
 
