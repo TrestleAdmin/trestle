@@ -57,4 +57,25 @@ Trestle.resource(:articles) do
       tag_select :tags
     end
   end
+
+  controller do
+    def batch_get
+      ids = params[:ids].split(",")
+      flash[:message] = { title: "Success!", message: "Performed batch action via GET with #{ids.size} articles." }
+      redirect_back fallback_location: admin.path
+    end
+
+    def batch_post
+      ids = params[:ids].split(",")
+      flash[:message] = { title: "Success!", message: "Performed batch action via POST with #{ids.size} articles." }
+      redirect_back fallback_location: admin.path
+    end
+  end
+
+  routes do
+    collection do
+      get :batch_get
+      post :batch_post
+    end
+  end
 end

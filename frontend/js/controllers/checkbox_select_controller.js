@@ -5,6 +5,7 @@ export default class extends ApplicationController {
 
   toggle () {
     this.updateSelectAllState()
+    this.dispatch('change')
   }
 
   toggleAll () {
@@ -13,6 +14,8 @@ export default class extends ApplicationController {
     this.checkboxTargets.forEach((checkbox) => {
       checkbox.checked = isChecked
     })
+
+    this.dispatch('change')
   }
 
   updateSelectAllState () {
