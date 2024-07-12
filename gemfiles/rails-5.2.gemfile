@@ -16,5 +16,6 @@ end
 
 gem 'rails', '~> 5.2.0'
 gem 'sprockets-rails'
+gem 'sqlite3', '~> 1.4'
 
 gemspec path: "../"
