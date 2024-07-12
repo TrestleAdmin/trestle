@@ -19,7 +19,7 @@ group :test do
   gem 'haml', '~> 6.0'
 end
 
-gem 'rails', '7.2.0.beta2'
+gem 'rails', '7.2.0.beta3'
 gem 'propshaft'
 gem 'sqlite3', '~> 1.4'
 gem 'sassc-rails'
