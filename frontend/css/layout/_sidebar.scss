@@ -1,9 +1,16 @@
 @use "sass:math";
 
-.app-sidebar {
-  background: $sidebar-bg;
+.app-wrapper {
+  --sidebar-width: #{$sidebar-width};
+  --sidebar-width-collapsed: #{$sidebar-width-collapsed};
+  --sidebar-transition-duration: #{$sidebar-transition-duration};
+  --sidebar-bg: #{$sidebar-bg};
+}
 
-  width: $sidebar-width;
+.app-sidebar {
+  background: var(--sidebar-bg);
+
+  width: var(--sidebar-width);
   padding: 0;
 
   flex-shrink: 0;
@@ -138,10 +145,10 @@
   }
 
   .app-wrapper {
-    width: calc(100% + #{$sidebar-width});
+    width: calc(100% + var(--sidebar-width));
 
-    translate: calc(#{$sidebar-width} * -1);
-    transition: translate $sidebar-transition-duration ease-out;
+    translate: calc(var(--sidebar-width) * -1);
+    transition: translate var(--sidebar-transition-duration) ease-out;
 
     .mobile-nav-expanded & {
       translate: 0;
@@ -155,7 +162,7 @@
   .app-sidebar-header {
     position: absolute;
     top: 0;
-    left: $sidebar-width;
+    left: var(--sidebar-width);
     right: 0;
     z-index: 1;
   }
@@ -176,7 +183,7 @@
 
 @include media-breakpoint-between(md, xl) {
   .app-sidebar {
-    width: $sidebar-width-collapsed;
+    width: var(--sidebar-width-collapsed);
 
     .app-sidebar-header {
       text-align: center;
@@ -204,7 +211,7 @@
     }
 
     .sidebar-expanded & {
-      width: $sidebar-width;
+      width: var(--sidebar-width);
 
       .app-sidebar-header {
         text-align: left;
@@ -237,7 +244,7 @@
 @include media-breakpoint-up(xl) {
   .app-sidebar {
     .sidebar-collapsed & {
-      width: $sidebar-width-collapsed;
+      width: var(--sidebar-width-collapsed);
 
       .app-sidebar-header {
         text-align: center;
