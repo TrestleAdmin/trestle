@@ -80,8 +80,11 @@ $nav-tabs-link-active-color: $body-color;
 
 // Navbar
 
-$navbar-toggler-padding-x: 0.4rem;
-$navbar-dark-color:        rgba(white, 0.75);
+$navbar-light-color: rgba(white, 0.75);
+$navbar-dark-color:  rgba(white, 0.75);
+
+$navbar-toggler-padding-x:   0.4rem;
+$navbar-toggler-focus-width: 0.25rem;
 
 
 // Breadcrumbs
