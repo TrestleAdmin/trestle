@@ -55,6 +55,22 @@ module Trestle
       reloader.install(app) unless app.config.eager_load
     end
 
+    # For compatibility with the `sassc-rails`` gem, register a custom compressor that excludes the
+    # Trestle admin stylesheets as a) they are already minimized and b) libsass is not compatible with
+    # some of the newer CSS syntax that is used.
+    #
+    # To avoid this being necessary, it is recommended that either
+    #   1) `sassc-rails` is removed from the Gemfile (if not required),
+    #   2) the `sassc-embedded` gem is added to the Gemfile, or
+    #   3) `sassc-rails` is replaced with `dartsass-sprockets`
+    config.assets.configure do |env|
+      if original_compressor = config.assets.css_compressor
+        require "trestle/sprockets_compressor"
+        original_compressor = Sprockets.compressors['text/css'][original_compressor] if original_compressor.is_a?(Symbol)
+        config.assets.css_compressor = Trestle::SprocketsCompressor.new(original_compressor)
+      end
+    end if defined?(SassC::Rails)
+
     def reset_helpers!
       @helpers = nil
     end
