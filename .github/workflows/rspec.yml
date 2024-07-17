@@ -22,6 +22,8 @@ jobs:
             ruby: '3.3'
           - gemfile: rails-7.1-propshaft
             ruby: '3.3'
+          - gemfile: rails-7.1-sassc-rails
+            ruby: '3.3'
           - gemfile: rails-7.2
             ruby: '3.3'
           - gemfile: rails-7.2-propshaft
