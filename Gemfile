@@ -1,10 +1,5 @@
 source 'https://rubygems.org'
 
-group :development, :test do
-  gem 'sprockets-rails'
-  # gem 'propshaft'
-end
-
 group :development do
   gem 'bcrypt'
   gem 'faker'
@@ -24,8 +19,19 @@ group :test do
   gem 'capybara-screenshot'
 end
 
+# gem 'rails', '~> 5.2.0'
+# gem 'rails', '~> 6.0.0'
+# gem 'rails', '~> 6.1.0'
+# gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.1.0'
+# gem 'rails', '7.2.0.beta3'
+
 gem 'haml'
 gem 'sqlite3', '~> 1.4'
+
+gem 'sprockets-rails'
+# gem 'sassc-rails'
+# gem 'propshaft'
 
 # Specify your gem's dependencies in trestle.gemspec
 gemspec
