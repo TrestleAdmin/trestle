@@ -30,6 +30,9 @@ $theme-colors: (
     --#{$prefix}#{$color}-border-subtle: #{adjust-theme-hsl($color, $lightness: 60%)};
   }
 
+  --theme-texture: url(../images/bright-squares.png);
+  --theme-gradient: #{linear-gradient(rgba(white, 0.05), rgba(black, 0.05))};
+
   --#{$prefix}link-color: var(--primary);
   --#{$prefix}link-color-rgb: var(--primary-rgb);
   --#{$prefix}link-color-hsl: var(--primary-hsl);
