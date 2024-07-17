@@ -138,21 +138,13 @@
   }
 
   .app-wrapper {
-    margin-left: -$sidebar-width;
-    margin-right: 0;
-
     width: calc(100% + #{$sidebar-width});
 
-    &.animate {
-      transition: all $sidebar-transition-duration ease-out;
-      transition-property: margin-left, margin-right;
-    }
-  }
+    translate: calc(#{$sidebar-width} * -1);
+    transition: translate $sidebar-transition-duration ease-out;
 
-  .mobile-nav-expanded {
-    .app-wrapper {
-      margin-left: 0;
-      margin-right: -$sidebar-width;
+    .mobile-nav-expanded & {
+      translate: 0;
     }
   }
 
