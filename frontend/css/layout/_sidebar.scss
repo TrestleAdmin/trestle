@@ -141,6 +141,8 @@
     margin-left: -$sidebar-width;
     margin-right: 0;
 
+    width: calc(100% + #{$sidebar-width});
+
     &.animate {
       transition: all $sidebar-transition-duration ease-out;
       transition-property: margin-left, margin-right;
