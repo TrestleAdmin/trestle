@@ -1,130 +1,132 @@
 <% content_for(:title, "Components: Media") %>
 
 <%= render layout: "layout", locals: { wrapper: false } do %>
-  <%= container do |c| %>
-    <% c.sidebar class: "order-first" do %>
-      <h2>Media Grid</h2>
+  <div class="grid">
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Media Grid</h2>
 
-      <p>A set of images can be displayed as a grid by adding the <code>.media-grid</code> class to a <code>&lt;ul&gt;</code> element.</p>
-      <p>Wrap image tags in <code>&lt;figure class="fill"&gt;</code> for consistent sizing regardless of aspect ratio.</p>
-    <% end %>
-
-    <ul class="media-grid">
-      <% 8.times do |i| %>
-        <li>
-          <figure class="fill"><%= random_image(300, 200, "1-#{i}") %></figure>
-        </li>
+        <p>A set of images can be displayed as a grid by adding the <code>.media-grid</code> class to a <code>&lt;ul&gt;</code> element.</p>
+        <p>Wrap image tags in <code>&lt;figure class="fill"&gt;</code> for consistent sizing regardless of aspect ratio.</p>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= container do |c| %>
-    <% c.sidebar class: "order-first" do %>
-      <h2>Media Grid <small>(Large)</small></h2>
-      <p>Add <code>.media-grid-lg</code> for large images (three columns on desktop, full-width on mobile).</p>
+      <ul class="media-grid">
+        <% 8.times do |i| %>
+          <li>
+            <figure class="fill"><%= random_image(300, 200, "1-#{i}") %></figure>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
-    <ul class="media-grid media-grid-lg">
-      <% 6.times do |i| %>
-        <li>
-          <figure class="fill"><%= random_image(600, 400, "2-#{i}") %></figure>
-        </li>
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Media Grid <small>(Large)</small></h2>
+        <p>Add <code>.media-grid-lg</code> for large images (three columns on desktop, full-width on mobile).</p>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= container do |c| %>
-    <% c.sidebar class: "order-first" do %>
-      <h2>Media Grid <small>(Small)</small></h2>
-      <p>Add <code>.media-grid-sm</code> for small images (six columns on desktop, three on mobile).</p>
+      <ul class="media-grid media-grid-lg">
+        <% 6.times do |i| %>
+          <li>
+            <figure class="fill"><%= random_image(600, 400, "2-#{i}") %></figure>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
-    <ul class="media-grid media-grid-sm">
-      <% 12.times do |i| %>
-        <li>
-          <figure class="fill"><%= random_image(320, 200, "3-#{i}") %></figure>
-        </li>
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Media Grid <small>(Small)</small></h2>
+        <p>Add <code>.media-grid-sm</code> for small images (six columns on desktop, three on mobile).</p>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= container do |c| %>
-    <% c.sidebar class: "order-first" do %>
-      <h2>Media Grid <small>(Auto)</small></h2>
-      <p>Add <code>.media-grid-auto</code> and set the <code>--media-grid-item-size</code> CSS variable for best-fit layout.</p>
-      <p>This example also shows specifying a custom aspect ratio using the <code>--media-grid-aspect-ratio</code> CSS variable.</p>
+      <ul class="media-grid media-grid-sm">
+        <% 12.times do |i| %>
+          <li>
+            <figure class="fill"><%= random_image(320, 200, "3-#{i}") %></figure>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
-    <ul class="media-grid media-grid-auto" style="--media-grid-aspect-ratio: 16 / 9">
-      <% 12.times do |i| %>
-        <li>
-          <figure class="fill"><%= random_image(320, 200, "4-#{i}") %></figure>
-        </li>
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Media Grid <small>(Auto)</small></h2>
+        <p>Add <code>.media-grid-auto</code> and set the <code>--media-grid-item-size</code> CSS variable for best-fit layout.</p>
+        <p>This example also shows specifying a custom aspect ratio using the <code>--media-grid-aspect-ratio</code> CSS variable.</p>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= container do |c| %>
-    <% c.sidebar class: "order-first" do %>
-      <h2>Lightbox Gallery</h2>
-
-      <p>To have the images function as a lightbox gallery (using <%= link_to "PhotoSwipe", "https://photoswipe.com/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
-      <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
-
-      <p>Individual image links can implement a lightbox popup using <code>data-controller="lightbox"</code>.</p>
+      <ul class="media-grid media-grid-auto" style="--media-grid-aspect-ratio: 16 / 9">
+        <% 12.times do |i| %>
+          <li>
+            <figure class="fill"><%= random_image(320, 200, "4-#{i}") %></figure>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
-    <ul class="media-grid media-grid-sm" data-controller="gallery">
-      <% 12.times do |i| %>
+    <%= container do |c| %>
+      <% c.sidebar class: "order-first" do %>
+        <h2>Lightbox Gallery</h2>
+
+        <p>To have the images function as a lightbox gallery (using <%= link_to "PhotoSwipe", "https://photoswipe.com/", target: "_blank" %>), add <code>data-controller="gallery"</code> to the containing element, and wrap each <code>&lt;figure&gt;</code> in a link tag with <code>data-gallery-target="image"</code>.</p>
+        <p>Optionally add <code>.zoom</code> to the <code>&lt;figure&gt;</code> elements for a hover zoom effect.</p>
+
+        <p>Individual image links can implement a lightbox popup using <code>data-controller="lightbox"</code>.</p>
+      <% end %>
+
+      <ul class="media-grid media-grid-sm" data-controller="gallery">
+        <% 12.times do |i| %>
+          <li>
+            <%= link_to random_image_url(1920, 1080, "5-#{i}"), data: { gallery_target: "image", width: 1920, height: 1080 } do %>
+              <figure class="fill zoom"><%= random_image(576, 324, "5-#{i}") %></figure>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <hr />
+
+      <ul class="media-grid media-grid-sm">
+        <% 4.times do |i| %>
+          <li>
+            <%= link_to random_image_url(1920, 1080, "6-#{i}"), data: { controller: "lightbox", lightbox_animation_type_value: "fade", lightbox_animation_duration_value: 500, width: 1920, height: 1080 } do %>
+              <figure class="fill zoom"><%= random_image(576, 324, "6-#{i}") %></figure>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <hr />
+
+      <ul class="media-grid media-grid" style="--media-grid-aspect-ratio: 16 / 9">
         <li>
-          <%= link_to random_image_url(1920, 1080, "5-#{i}"), data: { gallery_target: "image", width: 1920, height: 1080 } do %>
-            <figure class="fill zoom"><%= random_image(576, 324, "5-#{i}") %></figure>
+          <%= link_to "https://www.youtube.com/watch?v=7NOSDKb0HlU", data: { controller: "lightbox", width: 1600, height: 900 } do %>
+            <figure class="fill zoom">
+              <%= image_tag "https://img.youtube.com/vi/7NOSDKb0HlU/hqdefault.jpg" %>
+              <figcaption>YouTube Video</figcaption>
+            </figure>
           <% end %>
         </li>
-      <% end %>
-    </ul>
 
-    <hr />
-
-    <ul class="media-grid media-grid-sm">
-      <% 4.times do |i| %>
         <li>
-          <%= link_to random_image_url(1920, 1080, "6-#{i}"), data: { controller: "lightbox", lightbox_animation_type_value: "fade", lightbox_animation_duration_value: 500, width: 1920, height: 1080 } do %>
-            <figure class="fill zoom"><%= random_image(576, 324, "6-#{i}") %></figure>
+          <%= link_to "https://vimeo.com/512832238", data: { controller: "lightbox", width: 1600, height: 900 } do %>
+            <figure class="fill zoom">
+              <%= image_tag "https://i.vimeocdn.com/video/1061850981-fdc96307fd9b725d338835338bdbaf7e2cf536efdd20e06fd0e450ed590ef813-d_640" %>
+              <figcaption>Vimeo Video</figcaption>
+            </figure>
           <% end %>
         </li>
-      <% end %>
-    </ul>
 
-    <hr />
-
-    <ul class="media-grid media-grid" style="--media-grid-aspect-ratio: 16 / 9">
-      <li>
-        <%= link_to "https://www.youtube.com/watch?v=7NOSDKb0HlU", data: { controller: "lightbox", width: 1600, height: 900 } do %>
-          <figure class="fill zoom">
-            <%= image_tag "https://img.youtube.com/vi/7NOSDKb0HlU/hqdefault.jpg" %>
-            <figcaption>YouTube Video</figcaption>
-          </figure>
-        <% end %>
-      </li>
-
-      <li>
-        <%= link_to "https://vimeo.com/512832238", data: { controller: "lightbox", width: 1600, height: 900 } do %>
-          <figure class="fill zoom">
-            <%= image_tag "https://i.vimeocdn.com/video/1061850981-fdc96307fd9b725d338835338bdbaf7e2cf536efdd20e06fd0e450ed590ef813-d_640" %>
-            <figcaption>Vimeo Video</figcaption>
-          </figure>
-        <% end %>
-      </li>
-
-      <li>
-        <%= link_to "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", data: { controller: "lightbox", type: "video" } do %>
-          <figure class="fill zoom">
-            <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/400px-Big_Buck_Bunny_thumbnail_vlc.png" %>
-            <figcaption>MP4 Video</figcaption>
-          </figure>
-        <% end %>
-      </li>
-    </ul>
-  <% end %>
+        <li>
+          <%= link_to "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", data: { controller: "lightbox", type: "video" } do %>
+            <figure class="fill zoom">
+              <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/400px-Big_Buck_Bunny_thumbnail_vlc.png" %>
+              <figcaption>MP4 Video</figcaption>
+            </figure>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
 <% end %>

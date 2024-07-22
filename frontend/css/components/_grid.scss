@@ -1,0 +1,22 @@
+.grid {
+  --grid-margin: var(--content-area-margin, 0);
+  --grid-columns: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-margin);
+
+  > .grid-col-full {
+    grid-column: 1 / -1;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    @for $cols from 2 through 12 {
+      .grid-cols-#{$breakpoint}-#{$cols} {
+        --grid-columns: #{$cols};
+      }
+    }
+  }
+}

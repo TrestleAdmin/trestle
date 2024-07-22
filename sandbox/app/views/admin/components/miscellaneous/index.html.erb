@@ -1,26 +1,26 @@
 <% content_for(:title, "Components: Miscellaneous") %>
 
 <%= render layout: "layout", locals: { wrapper: false } do %>
-  <%= row do %>
-    <%= col(xl: 6) do %>
+  <div class="grid grid-cols-lg-2">
+    <div class="grid">
       <%= render "badges" %>
       <%= render "tags" %>
       <%= render "progress" %>
       <%= render "modals" %>
-    <% end %>
+    </div>
 
-    <%= col(xl: 6) do %>
+    <div class="grid">
       <%= render "timestamps" %>
       <%= render "tooltips" %>
       <%= render "avatars" %>
-    <% end %>
+    </div>
 
-    <%= col(xs: 12) do %>
+    <div class="grid-col-full">
       <%= render "cards" %>
-    <% end %>
+    </div>
 
-    <%= col(xs: 12) do %>
+    <div class="grid-col-full">
       <%= render "tabs_example" %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 <% end %>

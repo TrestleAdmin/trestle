@@ -6,20 +6,20 @@
 <% end %>
 
 <%= render layout: "layout", locals: { wrapper: false } do %>
-  <%= row do %>
-    <%= col(xl: 6) do %>
+  <div class="grid grid-cols-lg-2">
+    <div class="grid">
       <%= render "typography" %>
       <%= render "buttons" %>
       <%= render "badges" %>
       <%= render "backgrounds" %>
       <%= render "accordion" %>
-    <% end %>
+    </div>
 
-    <%= col(xl: 6) do %>
+    <div class="grid">
       <%= render "fields" %>
       <%= render "alerts" %>
       <%= render "table" %>
       <%= render "modal" %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 <% end %>
