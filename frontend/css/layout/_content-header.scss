@@ -1,0 +1,62 @@
+.content-header {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-template-areas: "title toolbars"
+                       "breadcrumbs toolbars";
+
+  background: $content-header-bg;
+  padding: 20px;
+
+  @include media-breakpoint-down(md) {
+    padding: 10px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    grid-template-areas: "title toolbars"
+                         "breadcrumbs breadcrumbs";
+  }
+}
+
+.content-header-title {
+  grid-area: title;
+  margin: 5px 0;
+
+  @include media-breakpoint-down(md) {
+    margin: 2px 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+
+    margin: 0;
+
+    @include media-breakpoint-down(md) {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+.content-header-toolbars {
+  grid-area: toolbars;
+
+  .btn {
+    white-space: nowrap;
+  }
+
+  .btn-toolbar {
+    flex-direction: row-reverse;
+  }
+
+  .secondary-toolbar {
+    margin-top: 8px;
+  }
+}
+
+.content-header-breadcrumbs {
+  grid-area: breadcrumbs;
+
+  .breadcrumb {
+    margin: 0;
+  }
+}
