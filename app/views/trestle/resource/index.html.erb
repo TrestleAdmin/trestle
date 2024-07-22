@@ -2,6 +2,11 @@
 
 <% toolbar(:primary) do |t| %>
   <%= t.new %>
+  <%= hook("index.toolbar.primary", t) %>
+<% end %>
+
+<% toolbar(:secondary) do |t| %>
+  <%= hook("index.toolbar.secondary", t) %>
 <% end %>
 
 <% content_for(:utilities) do %>

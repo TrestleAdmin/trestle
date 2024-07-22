@@ -12,6 +12,15 @@ Trestle.resource(:articles) do
     scope :active
   end
 
+  hook "index.toolbar.secondary" do |t|
+    t.link "Batch Action (GET)", action: :batch_get, style: :info, data: { controller: "batch-action" }
+    t.link "Batch Action (POST)", action: :batch_post, style: :warning, data: { controller: "confirm batch-action", turbo_method: :post }
+  end
+
+  hook "new.toolbar.secondary" do |t|
+    t.link "Cancel", action: :index
+  end
+
   table do
     selectable_column
     column :title, link: true, truncate: false

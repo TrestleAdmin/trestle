@@ -5,6 +5,11 @@
 
 <% toolbar(:primary) do |t| %>
   <%= t.save_or_dismiss(:create) %>
+  <%= hook("new.toolbar.primary", t) %>
+<% end %>
+
+<% toolbar(:secondary) do |t| %>
+  <%= hook("new.toolbar.secondary", t) %>
 <% end %>
 
 <%= resource_turbo_frame(instance) do %>

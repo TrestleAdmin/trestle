@@ -5,10 +5,12 @@
 
 <% toolbar(:primary) do |t| %>
   <%= t.save_or_dismiss(:update) %>
+  <%= hook("edit.toolbar.primary", t) %>
 <% end %>
 
 <% toolbar(:secondary) do |t| %>
   <%= t.delete %>
+  <%= hook("edit.toolbar.secondary", t) %>
 <% end %>
 
 <%= resource_turbo_frame(instance) do %>
