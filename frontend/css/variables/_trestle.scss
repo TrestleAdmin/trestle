@@ -67,15 +67,13 @@ $sidebar-transition-duration: 200ms;
 $content-header-bg:  #fafafa;
 $content-sidebar-bg: #f9f9f9;
 
-$content-sidebar-width: 285px;
+$content-sidebar-width: 20rem;
 
-$main-content-header-bg:      $content-sidebar-bg;
-$main-content-header-padding: 12px 20px;
-$main-content-header-border:  1px solid rgba(black, 0.1);
+$main-content-header-bg:     $content-sidebar-bg;
+$main-content-header-border: 1px solid rgba(black, 0.1);
 
-$main-content-footer-bg:      $content-sidebar-bg;
-$main-content-footer-padding: 12px 20px;
-$main-content-footer-border:  1px solid rgba(black, 0.1);
+$main-content-footer-bg:     $content-sidebar-bg;
+$main-content-footer-border: 1px solid rgba(black, 0.1);
 
 
 // Typography

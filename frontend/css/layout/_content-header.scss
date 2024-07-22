@@ -5,10 +5,10 @@
                        "breadcrumbs toolbars";
 
   background: $content-header-bg;
-  padding: 20px;
+  padding: 1rem 1.5rem;
 
   @include media-breakpoint-down(md) {
-    padding: 10px;
+    padding: 0.75rem;
   }
 
   @include media-breakpoint-down(sm) {
@@ -19,10 +19,10 @@
 
 .content-header-title {
   grid-area: title;
-  margin: 5px 0;
+  margin: 0.25rem 0;
 
   @include media-breakpoint-down(md) {
-    margin: 2px 0;
+    margin: 0.125rem 0;
   }
 
   h1 {
@@ -40,16 +40,15 @@
 .content-header-toolbars {
   grid-area: toolbars;
 
+  display: grid;
+  gap: 0.5rem;
+
   .btn {
     white-space: nowrap;
   }
 
   .btn-toolbar {
     flex-direction: row-reverse;
-  }
-
-  .secondary-toolbar {
-    margin-top: 8px;
   }
 }
 
