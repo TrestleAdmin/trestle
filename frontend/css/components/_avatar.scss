@@ -1,11 +1,15 @@
 .avatar {
+  --avatar-bg: #ccc;
+  --avatar-size: 40px;
+  --avatar-fallback-font-size: 0.8rem;
+
   display: inline-block;
   position: relative;
 
-  width: 40px;
-  height: 40px;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
 
-  background: #ccc;
+  background: var(--avatar-bg);
   border-radius: 50%;
   box-shadow: rgba(black, 0.25) 0 1px 0;
 
@@ -37,21 +41,16 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 0.8rem;
+    font-size: var(--avatar-fallback-font-size);
     font-weight: 500;
   }
 }
 
 .avatar-sm {
-  width: 24px !important;
-  height: 24px !important;
+  --avatar-size: 24px;
 }
 
 .avatar-lg {
-  width: 64px !important;
-  height: 64px !important;
-
-  .avatar-fallback {
-    font-size: 1.5rem;
-  }
+  --avatar-size: 64px;
+  --avatar-fallback-font-size: 1.5rem;
 }
