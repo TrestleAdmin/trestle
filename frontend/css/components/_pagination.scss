@@ -3,10 +3,11 @@
 
   display: inline-flex;
   align-items: center;
+  gap: 0.75rem;
 
   p {
     font-size: 0.85rem;
-    margin: 0 10px 0 0;
+    margin: 0;
   }
 
   strong {
@@ -32,16 +33,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
 
     .pagination {
       margin: 0 auto;
       order: -1;
-    }
-
-    p {
-      display: block;
-      margin-right: 0;
-      margin-top: 5px;
     }
   }
 }

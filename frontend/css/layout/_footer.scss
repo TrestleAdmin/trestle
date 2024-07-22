@@ -4,7 +4,7 @@
   background: $footer-bg;
   color: $footer-color;
 
-  padding: 0.5rem 1.4rem;
+  padding: $footer-padding;
   font-size: 0.75rem;
 
   display: flex;
@@ -13,7 +13,7 @@
 
 @include media-breakpoint-down(md) {
   .app-footer {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
