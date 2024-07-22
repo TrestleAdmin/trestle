@@ -28,13 +28,17 @@ module Trestle
       end
 
       class Builder
-        delegate :admin_link_to, :content_tag, to: :@template
+        delegate :admin_link_to, :content_tag, :tag, to: :@template
 
         def initialize(menu, template)
           @menu, @template = menu, template
         end
 
         def link(content, instance_or_url=nil, options={}, &block)
+          if instance_or_url.is_a?(Hash)
+            instance_or_url, options = nil, instance_or_url
+          end
+
           options[:class] = Array(options[:class])
           options[:class] << "dropdown-item"
 
@@ -42,16 +46,15 @@ module Trestle
         end
 
         def header(text)
-          item(class: "dropdown-header") { text }
+          item { content_tag(:h6, text, class: "dropdown-header") }
         end
 
         def divider
-          item(class: "divider")
+          item { tag(:hr, class: "dropdown-divider") }
         end
 
         def item(options={}, &block)
-          opts = { role: "presentation" }.merge(options)
-          item = block_given? ? content_tag(:li, opts, &block) : content_tag(:li, "", opts)
+          item = block_given? ? content_tag(:li, options, &block) : content_tag(:li, "", options)
 
           @menu.items << item
 

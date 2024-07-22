@@ -13,8 +13,10 @@ Trestle.resource(:articles) do
   end
 
   hook "index.toolbar.secondary" do |t|
-    t.link "Batch Action (GET)", action: :batch_get, style: :info, data: { controller: "batch-action" }
-    t.link "Batch Action (POST)", action: :batch_post, style: :warning, data: { controller: "confirm batch-action", turbo_method: :post }
+    t.dropdown "Batch Actions", style: :info do |l|
+      l.link "Batch Action (GET)", action: :batch_get, data: { controller: "batch-action" }
+      l.link "Batch Action (POST)", action: :batch_post, data: { controller: "confirm batch-action", turbo_method: :post }
+    end
   end
 
   hook "new.toolbar.secondary" do |t|

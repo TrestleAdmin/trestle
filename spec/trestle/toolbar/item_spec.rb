@@ -44,15 +44,23 @@ end
 shared_examples "a toolbar item with a dropdown" do |tag, attrs|
   include_context "template"
 
+  let(:admin) { double }
+
   let(:options) { {} }
 
   let(:block) do
     ->(d) {
       d.header "Header"
       d.link "Link", "#"
+      d.link "Disabled Link", class: "disabled", admin: :test
       d.divider
     }
   end
+
+  before(:each) {
+    allow(Trestle).to receive(:lookup).with(:test).and_return(admin)
+    allow(admin).to receive(:path).and_return("/admin/test")
+  }
 
   it "renders the button within a button group" do
     expect(subject.to_s).to have_tag(".btn-group", with: { role: "group" }) do
@@ -62,11 +70,18 @@ shared_examples "a toolbar item with a dropdown" do |tag, attrs|
 
   it "renders the block items within a dropdown menu" do
     expect(subject.to_s).to have_tag(".btn-group", with: { role: "group" }) do
-      with_tag "li.dropdown-header", text: "Header", with: { role: "presentation" }
-      with_tag "li", with: { role: "presentation" } do
+      with_tag "li" do
+        with_tag "h6", text: "Header", with: { class: "dropdown-header" }
+      end
+      with_tag "li" do
         with_tag "a", text: "Link", with: { href: "#", class: "dropdown-item" }
       end
-      with_tag "li.divider", with: { role: "presentation" }
+      with_tag "li" do
+        with_tag "a", text: "Disabled Link", with: { href: "/admin/test", class: "disabled dropdown-item" }
+      end
+      with_tag "li" do
+        with_tag "hr", class: "dropdown-divider"
+      end
     end
   end
 end
