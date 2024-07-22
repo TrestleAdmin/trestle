@@ -1,8 +1,9 @@
 .content-header {
   display: grid;
-  grid-template-columns: max-content auto;
+  grid-template-columns: auto auto;
   grid-template-areas: "title toolbars"
                        "breadcrumbs toolbars";
+  align-items: center;
 
   background: $content-header-bg;
   padding: 1rem 1.5rem;
@@ -19,6 +20,7 @@
 
 .content-header-title {
   grid-area: title;
+  align-self: start;
   margin: 0.25rem 0;
 
   @include media-breakpoint-down(md) {
@@ -33,6 +35,10 @@
 
     @include media-breakpoint-down(md) {
       font-size: 2.25rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: 2rem;
     }
   }
 }
