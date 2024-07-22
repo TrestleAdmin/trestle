@@ -137,10 +137,9 @@
 
   // Prevent input zooming on mobile devices
   @include media-breakpoint-down(sm) {
-    .select2-search--inline {
-      .select2-search__field {
-        font-size: 16px;
-      }
+    .select2-selection,
+    .select2-dropdown .select2-search .select2-search__field {
+      font-size: 16px;
     }
   }
 }
