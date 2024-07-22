@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
 
-  padding: 10px 15px;
+  padding: 0.625rem 1rem;
 
   font-size: 1.4rem;
   font-weight: 500;
@@ -79,7 +79,7 @@
     max-height: 100%;
 
     & + .title-large {
-      margin-left: 10px;
+      margin-left: 0.75rem;
     }
   }
 
@@ -120,7 +120,8 @@
   border: none;
 
   font-size: 1.4rem;
-  padding: 10px 20px;
+  width: var(--sidebar-width-collapsed);
+  padding: 0.625rem;
 
   cursor: pointer;
 
@@ -169,7 +170,7 @@
 
   .app-sidebar-title {
     justify-content: center;
-    padding: 10px 5px;
+    padding: 0.625rem 0.325rem;
 
     // Match right margin with navbar toggler width:
     // (margin + border + font-size * icon-width + padding)
@@ -190,7 +191,7 @@
     }
 
     .app-sidebar-title {
-      padding: 10px 5px;
+      padding: 0.625rem 0.325rem;
       justify-content: center;
 
       img {
@@ -218,7 +219,7 @@
       }
 
       .app-sidebar-title {
-        padding: 10px 15px;
+        padding: 0.625rem 1rem;
         justify-content: flex-start;
 
         img {
@@ -251,7 +252,7 @@
       }
 
       .app-sidebar-title {
-        padding: 10px 5px;
+        padding: 0.625rem 0.325rem;
         justify-content: center;
 
         img {
