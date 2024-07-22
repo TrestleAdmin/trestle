@@ -5,6 +5,11 @@
   flex-wrap: nowrap;
   white-space: nowrap;
 
+  gap: 0.325rem;
+
+  --bs-nav-link-padding-x: 1.5rem;
+  --bs-nav-link-padding-y: 0.75rem;
+
   &::-webkit-scrollbar {
     height: 4px;
   }
@@ -22,9 +27,6 @@
   }
 
   .nav-link {
-    margin-right: 4px;
-    padding: 10px 20px;
-
     font-weight: 500;
 
     transition: $nav-tabs-link-transition;
@@ -40,11 +42,6 @@
 
   .align-right {
     margin-left: auto;
-
-    .nav-link {
-      margin-right: 0;
-      margin-left: 4px;
-    }
 
     & + .align-right {
       margin-left: 0;
@@ -66,16 +63,12 @@
 
 @include media-breakpoint-down(md) {
   .nav-tabs {
+    --bs-nav-link-padding-x: 0.75rem;
+
+    gap: 0.175rem;
+
     .nav-link {
       font-size: 0.95rem;
-      padding: 10px;
-      margin-right: 2px;
-    }
-
-    .align-right {
-      .nav-link {
-        margin-left: 2px;
-      }
     }
   }
 }
