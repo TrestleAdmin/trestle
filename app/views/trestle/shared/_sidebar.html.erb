@@ -14,11 +14,11 @@
       <% Trestle.navigation(self).each do |group, items| %>
         <%= content_tag(:ul, class: ("collapsed" if group.present? && navigation_group_collapsed?(group)), data: { group: group.id }) do %>
           <% if group.present? %>
-            <li class="nav-header"><%= link_to group.label, "##{group.id}", data: { action: "navigation#toggle" } %></li>
+            <li class="nav-header"><%= link_to content_tag(:span, group.label), "##{group.id}", data: { action: "navigation#toggle" } %></li>
           <% end %>
 
           <% items.each do |item| %>
-            <%= content_tag(:li, class: ("active" if current_navigation_item?(item))) do %>
+            <%= content_tag(:li, class: ["nav-item", ("active" if current_navigation_item?(item))]) do %>
               <%= link_to item.path, item.html_options.merge(data: { controller: "navigation-tooltip" }) do %>
                 <%= icon("nav-icon", item.icon) %>
                 <span class="nav-label" data-navigation-tooltip-target="label"><%= item.label %></span>

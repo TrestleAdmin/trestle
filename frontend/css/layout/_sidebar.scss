@@ -4,6 +4,7 @@
   --sidebar-width: #{$sidebar-width};
   --sidebar-width-collapsed: #{$sidebar-width-collapsed};
   --sidebar-transition-duration: #{$sidebar-transition-duration};
+  --sidebar-transition-timing: ease-out;
   --sidebar-bg: #{$sidebar-bg};
 }
 
@@ -22,6 +23,8 @@
   flex-wrap: nowrap;
 
   align-items: stretch;
+
+  transition: width var(--sidebar-transition-duration) var(--sidebar-transition-timing);
 }
 
 .app-sidebar-header {
@@ -31,6 +34,8 @@
 
   display: flex;
   align-items: stretch;
+
+  overflow: hidden;
 
   .navbar-toggler {
     --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-bg};
@@ -58,7 +63,8 @@
 }
 
 .app-sidebar-title {
-  flex: 1;
+  flex: 1 0 var(--sidebar-width);
+  width: var(--sidebar-width);
 
   display: flex;
   align-items: center;
@@ -191,6 +197,9 @@
     }
 
     .app-sidebar-title {
+      width: var(--sidebar-width-collapsed);
+      flex-basis: var(--sidebar-width-collapsed);
+
       padding: 0.625rem 0.325rem;
       justify-content: center;
 
@@ -219,6 +228,9 @@
       }
 
       .app-sidebar-title {
+        width: var(--sidebar-width);
+        flex-basis: var(--sidebar-width);
+
         padding: 0.625rem 1rem;
         justify-content: flex-start;
 
@@ -252,6 +264,9 @@
       }
 
       .app-sidebar-title {
+        width: var(--sidebar-width-collapsed);
+        flex-basis: var(--sidebar-width-collapsed);
+
         padding: 0.625rem 0.325rem;
         justify-content: center;
 

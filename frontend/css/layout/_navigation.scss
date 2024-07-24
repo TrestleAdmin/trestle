@@ -12,7 +12,7 @@
     list-style: none;
   }
 
-  a {
+  .nav-item a {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -35,7 +35,7 @@
     }
   }
 
-  .active a {
+  .nav-item.active a {
     border-left: $sidebar-active-border solid var(--primary);
     padding-left: calc(1.25rem - #{$sidebar-active-border});
 
@@ -55,6 +55,15 @@
     height: 1.375rem;
   }
 
+  .nav-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    opacity: 1;
+    transition: opacity var(--sidebar-transition-duration) var(--sidebar-transition-timing);
+  }
+
   .nav-header a {
     position: relative;
     color: $sidebar-group-color;
@@ -69,6 +78,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    white-space: nowrap;
+
+    span {
+      opacity: 1;
+      transition: opacity var(--sidebar-transition-duration) var(--sidebar-transition-timing);
+    }
 
     &::after {
       @include icon-fa($fa-var-caret-down);
@@ -106,7 +122,9 @@
 }
 
 @mixin collapsed-nav-header {
-  text-indent: -99999px;
+  span {
+    opacity: 0;
+  }
 
   &::after {
     display: none;
@@ -133,6 +151,10 @@
   }
 }
 
+@mixin collapsed-nav-label {
+  opacity: 0;
+}
+
 @mixin collapsed-nav-badge {
   text-indent: -99999px;
   position: absolute;
@@ -140,7 +162,7 @@
   height: 0.5rem;
   padding: 0;
   top: 0.75rem;
-  right: 1rem;
+  left: 2.25rem;
 }
 
 @include media-breakpoint-between(md, xl) {
@@ -150,7 +172,7 @@
 
   .app-nav {
     .nav-label {
-      display: none;
+      @include collapsed-nav-label;
     }
 
     .badge {
@@ -171,7 +193,9 @@
   .sidebar-expanded {
     .app-nav {
       .nav-header a {
-        text-indent: 0;
+        span {
+          opacity: 1;
+        }
 
         &::before {
           display: none;
@@ -180,12 +204,21 @@
         &::after {
           display: block;
           position: static;
-          margin-left: 0;
+          translate: 0;
         }
       }
 
-      .nav-label { display: inline; }
-      .badge { display: block; }
+      .nav-label {
+        opacity: 1;
+      }
+
+      .badge {
+        position: static;
+        width: auto;
+        height: auto;
+        text-indent: 0;
+        padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+      }
     }
 
     .nav-tooltip {
@@ -198,7 +231,7 @@
   .sidebar-collapsed {
     .app-nav {
       .nav-label {
-        display: none;
+        @include collapsed-nav-label;
       }
 
       .badge {
