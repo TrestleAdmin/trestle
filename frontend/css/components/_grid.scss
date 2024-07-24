@@ -4,7 +4,7 @@
   --grid-column-min-width: 0;
 
   display: grid;
-  grid-template-columns: repeat(var(--grid-column-count), minmax(var(--grid-count-min-width), 1fr));
+  grid-template-columns: repeat(var(--grid-column-count), minmax(var(--grid-column-min-width), 1fr));
   gap: var(--grid-gap);
 
   > .grid-col-full {
