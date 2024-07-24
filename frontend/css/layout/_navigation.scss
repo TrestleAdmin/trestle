@@ -22,6 +22,8 @@
 
     padding: 0.875rem 1.25rem;
 
+    position: relative;
+
     &:hover, &:focus {
       color: $sidebar-link-color;
       background: $sidebar-hover-bg;
@@ -131,14 +133,28 @@
   }
 }
 
+@mixin collapsed-nav-badge {
+  text-indent: -99999px;
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  top: 0.75rem;
+  right: 1rem;
+}
+
 @include media-breakpoint-between(md, xl) {
   .nav-tooltip {
     display: block !important;
   }
 
   .app-nav {
-    .nav-label, .badge {
+    .nav-label {
       display: none;
+    }
+
+    .badge {
+      @include collapsed-nav-badge;
     }
 
     .nav-header a {
@@ -181,8 +197,12 @@
 @include media-breakpoint-up(xl) {
   .sidebar-collapsed {
     .app-nav {
-      .nav-label, .badge {
+      .nav-label {
         display: none;
+      }
+
+      .badge {
+        @include collapsed-nav-badge;
       }
 
       .nav-header a {
