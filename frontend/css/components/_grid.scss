@@ -1,10 +1,11 @@
 .grid {
-  --grid-margin: var(--content-area-margin, 0);
-  --grid-columns: 1;
+  --grid-gap: var(--content-area-margin, 0);
+  --grid-column-count: 1;
+  --grid-column-min-width: 0;
 
   display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
-  gap: var(--grid-margin);
+  grid-template-columns: repeat(var(--grid-column-count), minmax(var(--grid-count-min-width), 1fr));
+  gap: var(--grid-gap);
 
   > .grid-col-full {
     grid-column: 1 / -1;
@@ -15,7 +16,7 @@
   @include media-breakpoint-up($breakpoint) {
     @for $cols from 2 through 12 {
       .grid-cols-#{$breakpoint}-#{$cols} {
-        --grid-columns: #{$cols};
+        --grid-column-count: #{$cols};
       }
     }
   }
