@@ -21,7 +21,7 @@ $theme-bg-variations: (
 $header-bg:    white;
 $header-color: #333333;
 
-$header-height: 50px;
+$header-height: 3.125rem;
 
 
 // Footer
@@ -29,7 +29,7 @@ $header-height: 50px;
 $footer-bg:    #f9f9f9;
 $footer-color: #888888;
 
-$footer-padding: 0.5rem 1.5rem;
+$footer-padding: 0.375rem 1.25rem;
 
 
 // Sidebar
@@ -37,7 +37,7 @@ $footer-padding: 0.5rem 1.5rem;
 $sidebar-bg:            #222222;
 $sidebar-hover-bg:      #1a1a1a;
 $sidebar-active-bg:     #393939;
-$sidebar-active-border: 4px;
+$sidebar-active-border: 0.25rem;
 
 $sidebar-link-color:  #919191;
 $sidebar-group-color: #595959;
@@ -58,8 +58,8 @@ $sidebar-mobile-toggle-active-border-width: $sidebar-mobile-toggle-border-width;
 $sidebar-mobile-toggle-active-border-color: $sidebar-mobile-toggle-border-color;
 $sidebar-mobile-toggle-active-border:       $sidebar-mobile-toggle-border-width solid $sidebar-mobile-toggle-active-border-color;
 
-$sidebar-width:           250px;
-$sidebar-width-collapsed: 54px;
+$sidebar-width:           15.625rem;
+$sidebar-width-collapsed: 3.5rem;
 
 $sidebar-transition-duration: 200ms;
 
@@ -69,7 +69,7 @@ $sidebar-transition-duration: 200ms;
 $content-header-bg:  #fafafa;
 $content-sidebar-bg: #f9f9f9;
 
-$content-sidebar-width: 20rem;
+$content-sidebar-width: 17.5rem;
 
 $main-content-header-bg:     $content-sidebar-bg;
 $main-content-header-border: 1px solid rgba(black, 0.1);
@@ -82,8 +82,8 @@ $main-content-footer-border: 1px solid rgba(black, 0.1);
 
 $headings-border: 1px solid rgba(black, 0.1);
 
-$header-font-size-scale: 0.925;
-$sidebar-font-size-scale: 0.925;
+$header-font-size-scale: 0.8125;
+$sidebar-font-size-scale: 0.8125;
 
 $badge-hover-scale: -15%;
 
@@ -96,13 +96,13 @@ $tag-border-scale:       0;
 $tag-hover-bg-scale:     -15%;
 $tag-hover-border-scale: 15%;
 
-$tag-spacing-x: 0.325rem;
-$tag-spacing-y: 0.25rem;
+$tag-spacing-x: 0.25rem;
+$tag-spacing-y: 0.2rem;
 
 
 // Scopes
 
-$scope-padding:      0.25rem 0.675rem;
+$scope-padding:      0.2rem 0.625rem;
 
 $scope-color:        rgba(black, 0.4);
 $scope-bg:           rgba(black, 0.035);

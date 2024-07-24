@@ -23,7 +23,7 @@ $min-contrast-ratio: 1.7;
 $enable-shadows: true;
 
 // Decrease default grid spacing
-$grid-gutter-width: 1.375rem;
+$grid-gutter-width: 1.25rem;
 
 
 // Characters which are escaped by the escape-svg function
@@ -49,15 +49,17 @@ $link-decoration: none;
 $headings-font-weight:   400;
 $headings-margin-bottom: 1rem;
 
-$h1-font-size: 2rem;
-$h2-font-size: 1.75rem;
-$h3-font-size: 1.5rem;
-$h4-font-size: 1.25rem;
-$h5-font-size: 1.1rem;
-$h6-font-size: 1rem;
+$font-size-base: 0.875rem;
+
+$h1-font-size: 1.75rem;
+$h2-font-size: 1.5rem;
+$h3-font-size: 1.25rem;
+$h4-font-size: 1.125rem;
+$h5-font-size: 0.95rem;
+$h6-font-size: 0.875rem;
 
 $hr-color: rgba(black, 0.375);
-$hr-margin-y: 1.5rem;
+$hr-margin-y: 1.25rem;
 
 
 // Navs
@@ -83,7 +85,7 @@ $nav-tabs-link-active-color: $body-color;
 $navbar-light-color: rgba(white, 0.75);
 $navbar-dark-color:  rgba(white, 0.75);
 
-$navbar-toggler-padding-x:   0.4rem;
+$navbar-toggler-padding-x:   0.375rem;
 $navbar-toggler-focus-width: 0.25rem;
 
 
@@ -97,7 +99,7 @@ $breadcrumb-divider-color: #cccccc;
 
 // Tables
 
-$table-cell-padding-x: 0.625rem;
+$table-cell-padding-x: 0.5rem;
 $table-cell-padding-y: 0.375rem;
 
 $table-bg:           transparent;
@@ -108,7 +110,7 @@ $table-border-color: rgba(black, 0.13);
 
 // Alerts
 
-$alert-padding-y:     1.5rem;
+$alert-padding-y:     1.25rem;
 $alert-border-radius: 0.1rem;
 
 
@@ -137,7 +139,8 @@ $badge-padding-x: 0.6em;
 
 // Buttons
 
-$btn-padding-x-sm: 0.65rem;
+$btn-padding-x-sm: 0.625rem;
+$btn-padding-y-sm: 0.25rem;
 
 
 // Forms
@@ -166,7 +169,7 @@ $form-check-padding-start: $form-check-input-width + 0.6em;
 $form-switch-width: 2.25em;
 $form-switch-focus-color: #aaaaaa;
 
-$form-select-padding-x-sm: 0.62rem;
+$form-select-padding-x-sm: 0.625rem;
 $form-select-padding-x-lg: 0.75rem;
 
 
@@ -178,7 +181,7 @@ $dropdown-box-shadow:        $box-shadow-sm;
 $dropdown-arrow-width:       7px;
 $dropdown-arrow-outer-width: $dropdown-arrow-width + 1px;
 $dropdown-header-color:      #111111;
-$dropdown-font-size:         0.9rem;
+$dropdown-font-size:         0.8125rem;
 
 $dropdown-link-active-bg:    var(--primary);
 
@@ -211,24 +214,27 @@ $tooltip-color: white;
 
 // Popovers
 
-$popover-font-size:      0.9rem;
+$popover-font-size:      0.75rem;
 $popover-box-shadow:     $dropdown-box-shadow;
 
 $popover-header-bg:      #f7f7f7;
 $popover-header-border:  #ebebeb;
 
+$popover-header-padding-x: 0.625rem;
+$popover-header-padding-y: 0.375rem;
+
+$popover-body-padding-x: 0.625rem;
 $popover-body-padding-y: 0.5rem;
-$popover-body-padding-x: 0.75rem;
 
 $popover-arrow-width:    $dropdown-arrow-width;
 
 
 // Modals
 
-$modal-inner-padding:    1.5rem;
+$modal-inner-padding:    1.25rem;
 
-$modal-header-padding-x: 1.5rem;
-$modal-header-padding-y: 1.05rem;
+$modal-header-padding-x: 1.25rem;
+$modal-header-padding-y: 1rem;
 
 $modal-content-bg: white;
 $modal-content-border-radius: 0;
@@ -265,7 +271,7 @@ $s2bs5-clear-hover-bg-lg: $s2bs5-clear-bg-lg;
 $s2bs5-clear-tag-icon:    $btn-close-bg;
 $s2bs5-clear-tag-bg:      transparent escape-svg($s2bs5-clear-tag-icon) center / $s2b25-clear-height-sm auto no-repeat;
 
-$s2bs5-padding-x: 0.75rem;
+$s2bs5-padding-x: 0.625rem;
 $s2bs5-padding-y: 0.375rem;
 
 $s2bs5-multi-item-padding-x: 0.375rem;

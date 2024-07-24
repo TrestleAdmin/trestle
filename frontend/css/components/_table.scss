@@ -82,8 +82,8 @@
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     vertical-align: middle;
   }
 
@@ -109,9 +109,9 @@
     line-height: 1;
 
     i {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
 
-      width: 1.25rem;
+      width: 1.125rem;
       text-align: center;
     }
 
@@ -124,7 +124,7 @@
   .btn-group {
     + .btn,
     + .btn-group {
-      margin-left: 4px;
+      margin-left: 0.25rem;
     }
   }
 

@@ -1,7 +1,3 @@
-html {
-  font-size: 14px;
-}
-
 body {
   @include font-smoothing;
 }
@@ -37,12 +33,7 @@ img {
 }
 
 .main-content-header {
-  h1, .h1 { font-size: $h1-font-size * $header-font-size-scale; }
-  h2, .h2 { font-size: $h2-font-size * $header-font-size-scale; }
-  h3, .h3 { font-size: $h3-font-size * $header-font-size-scale; }
-  h4, .h4 { font-size: $h4-font-size * $header-font-size-scale; }
-  h5, .h5 { font-size: $h5-font-size * $header-font-size-scale; }
-  h6, .h6 { font-size: $h6-font-size * $header-font-size-scale; }
+  font-size: 1rem * $header-font-size-scale;
 }
 
 .main-content-sidebar {
@@ -51,19 +42,12 @@ img {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
     border-bottom: $headings-border;
-    padding-bottom: 0.325rem;
+    padding-bottom: 0.275rem;
 
     &:not(:first-child) {
-      margin-top: 1.75rem;
+      margin-top: 1.5rem;
     }
   }
-
-  h1, .h1 { font-size: $h1-font-size * $sidebar-font-size-scale; }
-  h2, .h2 { font-size: $h2-font-size * $sidebar-font-size-scale; }
-  h3, .h3 { font-size: $h3-font-size * $sidebar-font-size-scale; }
-  h4, .h4 { font-size: $h4-font-size * $sidebar-font-size-scale; }
-  h5, .h5 { font-size: $h5-font-size * $sidebar-font-size-scale; }
-  h6, .h6 { font-size: $h6-font-size * $sidebar-font-size-scale; }
 
   .card-header,
   .card-body,

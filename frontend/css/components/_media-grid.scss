@@ -105,7 +105,7 @@
 }
 
 .media-grid-auto {
-  --media-grid-item-size: 240px;
+  --media-grid-item-size: 15rem;
 
   grid-template-columns: repeat(auto-fill, minmax(var(--media-grid-item-size), 1fr));
 }

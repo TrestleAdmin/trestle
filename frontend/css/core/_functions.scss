@@ -13,14 +13,6 @@
   @return $val;
 }
 
-@function strip-units($number) {
-  @return $number / ($number * 0 + 1);
-}
-
-@function em($rem) {
-  @return strip-units($rem) * 1em;
-}
-
 @function adjust-theme-hsl($name, $hue: null, $saturation: null, $lightness: null, $wrap: true) {
   $hsl:
     adjust-css-value(var(--#{$name}-h), $hue)

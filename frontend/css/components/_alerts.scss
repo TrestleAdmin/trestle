@@ -4,7 +4,6 @@
 
   h3 {
     margin-bottom: 0.125rem;
-    font-size: 1.5rem;
     font-weight: 600;
   }
 
@@ -25,19 +24,19 @@
   }
 
   @include media-breakpoint-down(md) {
-    --#{$prefix}alert-padding-y: 1rem;
+    --#{$prefix}alert-padding-y: 0.875rem;
   }
 
   @include media-breakpoint-down(sm) {
-    --#{$prefix}alert-padding-x: 0.75rem;
+    --#{$prefix}alert-padding-x: 0.625rem;
     --#{$prefix}alert-padding-y: 0.75rem;
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
     }
 
     p {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
     }
   }
 }
@@ -45,8 +44,8 @@
 .alert-icon {
   margin-right: var(--#{$prefix}alert-padding-x);
 
-  font-size: 2.75rem;
-  width: 2.75rem;
+  font-size: 2.375rem;
+  width: 2.375rem;
 
   text-align: center;
 
@@ -54,8 +53,8 @@
     margin-left: calc(var(--#{$prefix}alert-padding-x) * 0.25);
     margin-right: calc(var(--#{$prefix}alert-padding-x) * 0.75);
 
-    font-size: 2.25rem;
-    width: 2.25rem;
+    font-size: 2rem;
+    width: 2rem;
   }
 }
 

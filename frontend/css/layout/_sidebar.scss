@@ -38,9 +38,9 @@
   overflow: hidden;
 
   .navbar-toggler {
-    --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-bg};
-    --bs-navbar-toggler-color: #{$sidebar-mobile-toggle-border-color};
-    --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-border-color};
+    --#{$prefix}navbar-toggler-bg: #{$sidebar-mobile-toggle-bg};
+    --#{$prefix}navbar-toggler-color: #{$sidebar-mobile-toggle-border-color};
+    --#{$prefix}navbar-toggler-border-color: #{$sidebar-mobile-toggle-border-color};
 
     outline: none;
 
@@ -49,16 +49,16 @@
     margin-left: math.div($grid-gutter-width, 2);
     margin-right: math.div($grid-gutter-width, 2);
 
-    background: var(--bs-navbar-toggler-bg);
+    background: var(--#{$prefix}navbar-toggler-bg);
 
     &:hover, &:focus {
-      --bs-navbar-toggler-border-color: #{$sidebar-mobile-toggle-active-border-color};
-      --bs-navbar-toggler-bg: #{$sidebar-mobile-toggle-active-bg};
+      --#{$prefix}navbar-toggler-border-color: #{$sidebar-mobile-toggle-active-border-color};
+      --#{$prefix}navbar-toggler-bg: #{$sidebar-mobile-toggle-active-bg};
     }
   }
 
   .navbar-toggler-icon {
-    --bs-navbar-toggler-icon-bg: #{$sidebar-mobile-toggle-icon-bg};
+    --#{$prefix}navbar-toggler-icon-bg: #{$sidebar-mobile-toggle-icon-bg};
   }
 }
 
@@ -69,9 +69,9 @@
   display: flex;
   align-items: center;
 
-  padding: 0.625rem 1rem;
+  padding: 0.5rem 0.875rem;
 
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 500;
   text-shadow: rgba(black, 0.5) 0 1px 1px;
   color: white;
@@ -125,7 +125,7 @@
   color: $sidebar-toggle-color;
   border: none;
 
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   width: var(--sidebar-width-collapsed);
   padding: 0.625rem;
 
@@ -176,7 +176,7 @@
 
   .app-sidebar-title {
     justify-content: center;
-    padding: 0.625rem 0.325rem;
+    padding: 0.5rem 0.25rem;
 
     // Match right margin with navbar toggler width:
     // (margin + border + font-size * icon-width + padding)
@@ -200,7 +200,7 @@
       width: var(--sidebar-width-collapsed);
       flex-basis: var(--sidebar-width-collapsed);
 
-      padding: 0.625rem 0.325rem;
+      padding: 0.5rem 0.25rem;
       justify-content: center;
 
       img {
@@ -231,7 +231,7 @@
         width: var(--sidebar-width);
         flex-basis: var(--sidebar-width);
 
-        padding: 0.625rem 1rem;
+        padding: 0.5rem 0.25rem;
         justify-content: flex-start;
 
         img {
@@ -267,7 +267,7 @@
         width: var(--sidebar-width-collapsed);
         flex-basis: var(--sidebar-width-collapsed);
 
-        padding: 0.625rem 0.325rem;
+        padding: 0.5rem 0.25rem;
         justify-content: center;
 
         img {

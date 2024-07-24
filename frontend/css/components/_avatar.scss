@@ -1,7 +1,7 @@
 .avatar {
   --avatar-bg: #ccc;
-  --avatar-size: 40px;
-  --avatar-fallback-font-size: 0.8rem;
+  --avatar-size: 2.5rem;
+  --avatar-fallback-font-size: 0.75rem;
 
   display: inline-block;
   position: relative;
@@ -47,10 +47,11 @@
 }
 
 .avatar-sm {
-  --avatar-size: 24px;
+  --avatar-size: 1.5rem;
+  --avatar-fallback-font-size: 0.625rem;
 }
 
 .avatar-lg {
-  --avatar-size: 64px;
+  --avatar-size: 4rem;
   --avatar-fallback-font-size: 1.5rem;
 }

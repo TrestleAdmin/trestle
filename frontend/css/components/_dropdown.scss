@@ -7,31 +7,37 @@
 
   &:before {
     top: -$dropdown-arrow-outer-width;
-    left: 12px;
+    left: 0.75rem;
 
     border-left: $dropdown-arrow-width solid transparent;
     border-right: $dropdown-arrow-width solid transparent;
-    border-bottom: $dropdown-arrow-width solid $dropdown-border-color;
+    border-bottom: $dropdown-arrow-width solid var(--#{$prefix}dropdown-border-color);
   }
 
   &:after {
     top: -$dropdown-arrow-width;
-    left: 11px;
+    left: 0.75rem;
+
+    margin-left: -1px;
+    margin-right: 0;
 
     border-left: $dropdown-arrow-outer-width solid transparent;
     border-right: $dropdown-arrow-outer-width solid transparent;
-    border-bottom: $dropdown-arrow-outer-width solid $dropdown-bg;
+    border-bottom: $dropdown-arrow-outer-width solid var(--#{$prefix}dropdown-bg);
   }
 
   &.dropdown-menu-end {
     &:before {
       left: auto;
-      right: 12px;
+      right: 0.75rem;
     }
 
     &:after {
       left: auto;
-      right: 11px;
+      right: 0.75rem;
+
+      margin-left: 0;
+      margin-right: -1px;
     }
   }
 
@@ -41,7 +47,7 @@
       bottom: -$dropdown-arrow-outer-width;
 
       border-bottom: 0;
-      border-top: $dropdown-arrow-width solid $dropdown-border-color;
+      border-top: $dropdown-arrow-width solid var(--#{$prefix}dropdown-border-color);
     }
 
     &:after {
@@ -49,27 +55,13 @@
       bottom: -$dropdown-arrow-width;
 
       border-bottom: 0;
-      border-top: $dropdown-arrow-outer-width solid $dropdown-bg;
+      border-top: $dropdown-arrow-outer-width solid var(--bs-dropdown-bg);
     }
   }
-}
 
-.dropdown-menu-dark {
-  &:before {
-    border-bottom-color: $dropdown-dark-border-color;
-  }
-
-  &:after {
-    border-bottom-color: $dropdown-dark-bg;
-  }
-
-  .dropup & {
-    &:before {
-      border-top-color: $dropdown-dark-border-color;
-    }
-
-    &:after {
-      border-top-color: $dropdown-dark-bg;
-    }
+  @include media-breakpoint-down(md) {
+    --#{$prefix}dropdown-font-size: 0.75rem;
+    --#{$prefix}dropdown-padding-y: 0.375rem;
+    --#{$prefix}dropdown-item-padding-x: 0.75rem;
   }
 }

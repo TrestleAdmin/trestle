@@ -1,15 +1,15 @@
 .main-content-area {
-  --content-area-margin: 1.5rem;
-  --content-area-padding: 1.5rem;
+  --content-area-margin: 1.25rem;
+  --content-area-padding: 1.25rem;
 
   --content-area-sidebar-width: #{$content-sidebar-width};
   --content-area-sidebar-bg: #{$content-sidebar-bg};
 
-  --content-area-header-padding: 0.75rem 1.25rem;
+  --content-area-header-padding: 0.625rem 1.125rem;
   --content-area-header-bg: #{$main-content-header-bg};
   --content-area-header-border: #{$main-content-header-border};
 
-  --content-area-footer-padding: 0.75rem 1.25rem;
+  --content-area-footer-padding: 0.625rem 1.125rem;
   --content-area-footer-bg: #{$main-content-footer-bg};
   --content-area-footer-border: #{$main-content-footer-border};
 
@@ -92,11 +92,11 @@
 
 @include media-breakpoint-down(md) {
   .main-content-area {
-    --content-area-margin: 0.75rem;
-    --content-area-padding: 1rem;
+    --content-area-margin: 0.625rem;
+    --content-area-padding: 0.875rem;
 
-    --content-area-header-padding: 0.75rem 1rem;
-    --content-area-footer-padding: 0.75rem 1rem;
+    --content-area-header-padding: 0.625rem 0.875rem;
+    --content-area-footer-padding: 0.625rem 0.875rem;
   }
 
   .main-content-header,

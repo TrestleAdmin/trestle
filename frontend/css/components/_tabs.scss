@@ -7,8 +7,8 @@
 
   gap: 0.325rem;
 
-  --bs-nav-link-padding-x: 1.5rem;
-  --bs-nav-link-padding-y: 0.75rem;
+  --#{$prefix}nav-link-padding-x: 1.25rem;
+  --#{$prefix}nav-link-padding-y: 0.625rem;
 
   &::-webkit-scrollbar {
     height: 4px;
@@ -50,7 +50,7 @@
 
   .badge {
     font-size: 0.65em;
-    margin-left: 0.35rem;
+    margin-left: 0.3125rem;
     vertical-align: 1px;
 
     // Default badge color when no badge- classes specified
@@ -63,12 +63,12 @@
 
 @include media-breakpoint-down(md) {
   .nav-tabs {
-    --bs-nav-link-padding-x: 0.75rem;
+    --#{$prefix}nav-link-padding-x: 0.625rem;
 
     gap: 0.175rem;
 
     .nav-link {
-      font-size: 0.95rem;
+      font-size: 0.8125rem;
     }
   }
 }

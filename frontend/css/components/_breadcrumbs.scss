@@ -1,10 +1,10 @@
 .breadcrumb {
-  --bs-breadcrumb-font-size: 0.85rem;
-  --bs-breadcrumb-item-padding-x: 0.35rem;
+  --#{$prefix}breadcrumb-font-size: 0.75rem;
+  --#{$prefix}breadcrumb-item-padding-x: 0.35rem;
 
   @include media-breakpoint-down(md) {
-    --bs-breadcrumb-font-size: 0.75rem;
-    --bs-breadcrumb-item-padding-x: 0.25rem;
+    --#{$prefix}breadcrumb-font-size: 0.625rem;
+    --#{$prefix}breadcrumb-item-padding-x: 0.25rem;
   }
 }
 

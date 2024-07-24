@@ -4,14 +4,14 @@
 
 .primary-toolbar {
   .btn {
-    --#{$prefix}btn-padding-x:     1.25rem;
-    --#{$prefix}btn-padding-y:     0.5rem;
-    --#{$prefix}btn-font-size:     1.35rem;
+    --#{$prefix}btn-padding-x: 1.125rem;
+    --#{$prefix}btn-padding-y: 0.5rem;
+    --#{$prefix}btn-font-size: 1.125rem;
 
     @include media-breakpoint-down(md) {
       --#{$prefix}btn-padding-x:     0.75rem;
-      --#{$prefix}btn-padding-y:     0.35rem;
-      --#{$prefix}btn-font-size:     1.25rem;
+      --#{$prefix}btn-padding-y:     0.25rem;
+      --#{$prefix}btn-font-size:     1.0625rem;
       --#{$prefix}btn-border-radius: #{$btn-border-radius-sm};
     }
   }
@@ -33,8 +33,8 @@
 
     @include media-breakpoint-down(md) {
       --#{$prefix}btn-padding-x: 0.5rem;
-      --#{$prefix}btn-padding-y: 0.2rem;
-      --#{$prefix}btn-font-size: 0.75rem;
+      --#{$prefix}btn-padding-y: 0.25rem;
+      --#{$prefix}btn-font-size: 0.6875rem;
       --#{$prefix}btn-border-radius: #{$btn-border-radius-sm};
     }
   }

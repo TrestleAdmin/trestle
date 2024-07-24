@@ -1,6 +1,6 @@
 .form-group {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.875rem;
 
   &.has-error {
     > .form-label {
@@ -21,14 +21,14 @@ ul.invalid-feedback {
 
 .form-text {
   color: $form-text-color;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 
   @include media-breakpoint-up(sm) {
     &.floating {
       position: absolute;
       top: 0;
       right: 0;
-      margin: 2px 0;
+      margin: 0.125rem 0;
     }
   }
 }
@@ -46,6 +46,6 @@ ul.invalid-feedback {
   .form-control,
   .form-select,
   .input-group-text {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

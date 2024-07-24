@@ -6,10 +6,10 @@
   align-items: center;
 
   background: $content-header-bg;
-  padding: 1rem 1.5rem;
+  padding: 0.875rem 1.25rem;
 
   @include media-breakpoint-down(md) {
-    padding: 0.75rem;
+    padding: 0.625rem;
   }
 
   @include media-breakpoint-down(sm) {
@@ -28,17 +28,17 @@
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.125rem;
     font-weight: 200;
 
     margin: 0;
 
     @include media-breakpoint-down(md) {
-      font-size: 2.25rem;
+      font-size: 2rem;
     }
 
     @include media-breakpoint-down(md) {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
   }
 }
@@ -55,6 +55,10 @@
 
   .btn-toolbar {
     flex-direction: row-reverse;
+  }
+
+  @include media-breakpoint-down(md) {
+    gap: 0.25rem;
   }
 }
 

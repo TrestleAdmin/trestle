@@ -35,7 +35,7 @@
 
 .scope-group {
   line-height: 2;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   padding: 0.5rem 1rem 0.25rem 0.75rem;
 
   background: #f7f7f7;
@@ -47,19 +47,13 @@
   display: flex;
   flex-wrap: wrap;
 
+  gap: 0.25rem 0.35rem;
+
   position: relative;
   align-items: center;
 
   margin-bottom: 0;
   padding: 0;
-
-  li {
-    margin: 0.125rem 0.35rem 0.125rem 0;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 }
 
 .scope {
@@ -67,7 +61,7 @@
 
   background-color: $scope-bg;
 
-  font-size: 0.8rem;
+  font-size: 0.6875rem;
   font-weight: normal;
   white-space: nowrap;
 

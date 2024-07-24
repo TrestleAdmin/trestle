@@ -6,7 +6,7 @@
       display: inline-block;
       @include icon-fa($fa-var-spinner);
       @extend .fa-spin;
-      margin-right: 10px;
+      margin-right: 0.625rem;
     }
   }
 
@@ -14,7 +14,7 @@
     font-size: 90%;
 
     + .btn-label {
-      margin-left: 5px;
+      margin-left: 0.25rem;
     }
   }
 }
@@ -126,7 +126,7 @@
 
   @include button-child-visible('icon', '> i') {
     > i + .btn-label {
-      margin-left: 5px;
+      margin-left: 0.25rem;
     }
   };
 

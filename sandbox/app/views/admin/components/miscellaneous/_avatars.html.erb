@@ -37,5 +37,9 @@
     <%= avatar(class: "avatar-sm") { gravatar("test@example.com") } %>
     <%= avatar { gravatar("test@example.com") } %>
     <%= avatar(class: "avatar-lg") { gravatar("test@example.com") } %>
+
+    <%= avatar(class: "avatar-sm", fallback: "SM") %>
+    <%= avatar(fallback: "MD") %>
+    <%= avatar(class: "avatar-lg", fallback: "LG") %>
   </div>
 <% end %>
