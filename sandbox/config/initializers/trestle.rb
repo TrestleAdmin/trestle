@@ -10,6 +10,7 @@ Trestle.configure do |config|
     group "Badges & Labels", priority: :last do
       item "Item with counter", "#", badge: { text: 99, class: "badge-primary badge-pill" }, priority: :first
       item "Item with badge", "#", badge: { text: "NEW!", class: "badge-success" }, icon: "fa fa-car"
+      item "Item with long label that spans multiple lines", "#", badge: "!"
     end
   end
 
