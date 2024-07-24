@@ -289,3 +289,10 @@
     }
   }
 }
+
+@media (prefers-reduced-motion) {
+  .app-sidebar,
+  .app-wrapper {
+    transition: none;
+  }
+}

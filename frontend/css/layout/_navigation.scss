@@ -254,3 +254,12 @@
     }
   }
 }
+
+@media (prefers-reduced-motion) {
+  .app-nav {
+    .nav-label,
+    .nav-header a span {
+      transition: none;
+    }
+  }
+}
