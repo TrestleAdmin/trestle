@@ -1,5 +1,9 @@
 class Trestle::DashboardController < Trestle::ApplicationController
   def index
+    if Trestle.config.root != Trestle.config.path
+      redirect_to Trestle.config.root and return
+    end
+
     admin = primary_admin
     redirect_to admin.path if admin
   end
