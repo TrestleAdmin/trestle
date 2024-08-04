@@ -27,11 +27,13 @@
   --tag-font-weight: normal;
   --tag-line-height: 1.1;
 
-  --tag-bg: #{shift-color($primary, $tag-bg-scale)};
-  --tag-border-color: #{rgba(black, 0.25)};
   --tag-color: white;
 
-  --tag-hover-border-color: #{rgba(black, 0.35)};
+  --tag-bg: #{shift-color($primary, $tag-bg-scale)};
+  --tag-border-color: #{$primary};
+
+  --tag-hover-bg: #{shift-color($primary, $tag-hover-bg-scale)};
+  --tag-hover-border-color: #{shift-color($primary, $tag-hover-border-scale)};
 
   display: inline-block;
   padding: var(--tag-padding-y) var(--tag-padding-x) var(--tag-padding-y) calc(var(--tag-padding-x) - var(--tag-border-width) / 2);
@@ -60,6 +62,14 @@
       color: var(--tag-hover-color, var(--tag-color));
     }
   }
+}
+
+.tag {
+  --tag-bg: #{adjust-theme-hsl(primary, $lightness: -$tag-bg-scale)};
+  --tag-border-color: var(--primary);
+
+  --tag-hover-bg: #{adjust-theme-hsl(primary, $lightness: -$tag-hover-bg-scale)};
+  --tag-hover-border-color: #{adjust-theme-hsl(primary, $lightness: -$tag-hover-border-scale)};
 }
 
 @each $state, $value in $theme-colors {
