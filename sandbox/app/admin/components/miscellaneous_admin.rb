@@ -7,11 +7,11 @@ Trestle.admin(:miscellaneous, scope: Components) do
 
   controller do
     def modal
-      render turbo_stream: turbo_stream_modal
+      render turbo_stream: turbo_stream.modal
     end
 
     def modal_post
-      render turbo_stream: turbo_stream_modal
+      render turbo_stream: turbo_stream.modal
     end
   end
 

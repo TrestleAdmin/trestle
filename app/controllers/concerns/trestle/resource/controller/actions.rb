@@ -14,7 +14,7 @@ module Trestle
         def new
           respond_to do |format|
             format.html
-            format.turbo_stream { render turbo_stream: turbo_stream_modal }
+            format.turbo_stream { render turbo_stream: turbo_stream.modal }
             format.json { render json: instance }
 
             yield format if block_given?
@@ -56,7 +56,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
-              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
+              format.turbo_stream { render turbo_stream: turbo_stream.modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?
@@ -75,7 +75,7 @@ module Trestle
           else
             respond_to do |format|
               format.html
-              format.turbo_stream { render turbo_stream: turbo_stream_modal } if modal_request?
+              format.turbo_stream { render turbo_stream: turbo_stream.modal } if modal_request?
               format.json { render json: instance }
 
               yield format if block_given?
