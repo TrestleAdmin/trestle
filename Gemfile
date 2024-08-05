@@ -36,3 +36,5 @@ gem 'i18n-js'
 
 # Specify your gem's dependencies in trestle.gemspec
 gemspec
+
+gem "rake", "~> 13.0"
