@@ -1,5 +1,1 @@
-<turbo-stream action="replace" target="<%= dom_id(admin.build_instance({}, params)) %>">
-  <template>
-    <%= render template: instance.persisted? ? "trestle/resource/show" : "trestle/resource/new", formats: [:html] %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.replace admin.build_instance({}, params), template: "trestle/resource/#{instance.persisted? ? "show" : "new"}" %>

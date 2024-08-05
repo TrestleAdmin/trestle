@@ -1,3 +1,5 @@
+require "turbo-rails"
+
 module Trestle
   class Engine < ::Rails::Engine
     isolate_namespace Trestle
@@ -27,19 +29,6 @@ module Trestle
     initializer "trestle.draper" do |app|
       if defined?(Draper)
         Draper::CollectionDecorator.delegate :current_page, :total_pages, :limit_value, :entry_name, :total_count, :offset_value, :last_page?
-      end
-    end
-
-    initializer "turbo.mimetype" do
-      Mime::Type.register "text/vnd.turbo-stream.html", :turbo_stream unless Mime[:turbo_stream]
-    end
-
-    initializer "turbo.renderer" do
-      ActiveSupport.on_load(:action_controller) do
-        ActionController::Renderers.add :turbo_stream do |turbo_streams_html, options|
-          self.content_type = Mime[:turbo_stream] if media_type.nil?
-          turbo_streams_html
-        end
       end
     end
 

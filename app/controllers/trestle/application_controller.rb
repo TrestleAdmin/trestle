@@ -9,5 +9,5 @@ class Trestle::ApplicationController < ActionController::Base
   include Trestle::Controller::Modal
   include Trestle::Controller::Title
   include Trestle::Controller::Toolbars
-  include Trestle::Controller::Turbo
+  include Trestle::Controller::TurboStream
 end

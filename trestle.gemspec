@@ -20,9 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.2.2"
 
-  spec.add_dependency "railties",        ">= 6.0.0"
-  spec.add_dependency "activemodel",     ">= 6.0.0"
-  spec.add_dependency "kaminari",        ">= 1.1.0"
+  spec.add_dependency "railties",    ">= 6.0.0"
+  spec.add_dependency "activemodel", ">= 6.0.0"
+  spec.add_dependency "turbo-rails", ">= 2.0.0"
+  spec.add_dependency "kaminari",    ">= 1.1.0"
 
   spec.add_development_dependency "rspec-rails",         ">= 5.1.2"
   spec.add_development_dependency "rspec-html-matchers", "~> 0.10.0"

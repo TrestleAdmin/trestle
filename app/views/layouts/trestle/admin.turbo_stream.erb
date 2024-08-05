@@ -1,11 +1,4 @@
 <%= yield %>
 
-<% unless modal_request? %>
-  <turbo-stream action="flash">
-    <template>
-      <%= render partial: "trestle/flash/flash", formats: [:html] %>
-    </template>
-  </turbo-stream>
-<% end %>
-
-<turbo-stream action="reload"></turbo-stream>
+<%= turbo_stream.flash unless modal_request? %>
+<%= turbo_stream.reload %>

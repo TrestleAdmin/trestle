@@ -1,5 +1,1 @@
-<turbo-stream action="replace" target="<%= dom_id(instance) %>">
-  <template>
-    <%= render template: "trestle/resource/show", formats: [:html] %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.replace instance, template: "trestle/resource/show" %>
