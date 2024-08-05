@@ -19,7 +19,6 @@ group :test do
   gem 'capybara-screenshot'
 end
 
-# gem 'rails', '~> 5.2.0'
 # gem 'rails', '~> 6.0.0'
 # gem 'rails', '~> 6.1.0'
 # gem 'rails', '~> 7.0.0'
