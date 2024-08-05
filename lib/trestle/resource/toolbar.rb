@@ -5,20 +5,30 @@ module Trestle
         delegate :admin, :instance, to: :@template
         delegate :translate, :t, to: :admin
 
-        def new
-          link(t("buttons.new", default: "New %{model_name}"), action: :new, style: :light, icon: "fa fa-plus", class: "btn-new-resource") if action?(:new)
+        def new(label: t("buttons.new", default: "New %{model_name}"), **attrs)
+          return unless action?(:new)
+
+          defaults = { action: :new, style: :light, icon: "fa fa-plus", class: "btn-new-resource" }
+          link(label, defaults.merge(attrs))
         end
 
-        def save
-          button(t("buttons.save", default: "Save %{model_name}"), style: :success)
+        def save(label: t("buttons.save", default: "Save %{model_name}"), **attrs)
+          defaults = { style: :success }
+          button(label, defaults.merge(attrs))
         end
 
-        def delete
-          link(t("buttons.delete", default: "Delete %{model_name}"), instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }) if action?(:destroy)
+        def delete(label: t("buttons.delete", default: "Delete %{model_name}"), **attrs)
+          return unless action?(:destroy)
+
+          defaults = Trestle::Options.new(action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" })
+          link(label, instance, defaults.merge(attrs))
         end
 
-        def dismiss
-          button(t("buttons.ok", default: "OK"), type: :button, style: :light, data: { bs_dismiss: "modal" }) if @template.modal_request?
+        def dismiss(label: t("buttons.ok", default: "OK"), **attrs)
+          return unless @template.modal_request?
+
+          defaults = Trestle::Options.new(type: :button, style: :light, data: { bs_dismiss: "modal" })
+          button(label, defaults.merge(attrs))
         end
         alias ok dismiss
 

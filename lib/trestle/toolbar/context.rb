@@ -25,7 +25,7 @@ module Trestle
         builder.respond_to?(name) || super
       end
 
-      def method_missing(name, *args, &block)
+      ruby2_keywords def method_missing(name, *args, &block)
         result = builder.send(name, *args, &block)
 
         if builder.builder_methods.include?(name)
