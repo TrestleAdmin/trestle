@@ -9,9 +9,9 @@ jobs:
       matrix:
         include:
           - gemfile: rails-6.0
-            ruby: '2.7'
+            ruby: '2.6'
           - gemfile: rails-6.1
-            ruby: '2.7'
+            ruby: '2.6'
           - gemfile: rails-6.1
             ruby: '3.0'
           - gemfile: rails-7.0
