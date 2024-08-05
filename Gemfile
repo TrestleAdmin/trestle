@@ -32,5 +32,7 @@ gem 'sprockets-rails'
 # gem 'sassc-rails'
 # gem 'propshaft'
 
+gem 'i18n-js'
+
 # Specify your gem's dependencies in trestle.gemspec
 gemspec
