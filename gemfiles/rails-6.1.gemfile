@@ -9,7 +9,7 @@ group :test do
   gem 'rexml'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'puma'
+  gem 'puma', '~> 5.6.8'
 
   gem 'haml', '~> 6.0'
 end
