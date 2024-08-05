@@ -21,9 +21,8 @@ module Trestle
       end
 
     private
-      def respond_to_missing?(name, include_all=false)
-        builder.respond_to?(name) || super
-      end
+      def self.ruby2_keywords(*)
+      end unless respond_to?(:ruby2_keywords, true)
 
       ruby2_keywords def method_missing(name, *args, &block)
         result = builder.send(name, *args, &block)
@@ -33,6 +32,10 @@ module Trestle
         else
           result
         end
+      end
+
+      def respond_to_missing?(name, include_all=false)
+        builder.respond_to?(name) || super
       end
     end
   end
