@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
-  serialize :tags, Array, coder: YAML
+  serialize :tags, type: Array, coder: YAML
 
   validates :title, presence: true
 
