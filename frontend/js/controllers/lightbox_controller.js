@@ -26,8 +26,6 @@ const VideoIframeUrl = {
 }
 
 export default class extends ApplicationController {
-  static targets = ["image"]
-
   static values = {
     animationType: { type: String, default: 'zoom' },
     animationDuration: { type: Number, default: 150 },
