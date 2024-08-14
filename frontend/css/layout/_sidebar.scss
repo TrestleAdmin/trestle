@@ -3,6 +3,8 @@
 .app-wrapper {
   --sidebar-width: #{$sidebar-width};
   --sidebar-width-collapsed: #{$sidebar-width-collapsed};
+  --sidebar-padding: #{$sidebar-padding};
+  --sidebar-padding-collapsed: #{$sidebar-padding-collapsed};
   --sidebar-transition-duration: #{$sidebar-transition-duration};
   --sidebar-transition-timing: ease-out;
   --sidebar-bg: #{$sidebar-bg};
@@ -69,7 +71,7 @@
   display: flex;
   align-items: center;
 
-  padding: 0.5rem 0.875rem;
+  padding: var(--sidebar-padding);
 
   font-size: 1.25rem;
   font-weight: 500;
@@ -176,7 +178,7 @@
 
   .app-sidebar-title {
     justify-content: center;
-    padding: 0.5rem 0.25rem;
+    padding: var(--sidebar-padding-collapsed);
 
     // Match right margin with navbar toggler width:
     // (margin + border + font-size * icon-width + padding)
@@ -200,7 +202,7 @@
       width: var(--sidebar-width-collapsed);
       flex-basis: var(--sidebar-width-collapsed);
 
-      padding: 0.5rem 0.25rem;
+      padding: var(--sidebar-padding-collapsed);
       justify-content: center;
 
       img {
@@ -231,7 +233,7 @@
         width: var(--sidebar-width);
         flex-basis: var(--sidebar-width);
 
-        padding: 0.5rem 0.25rem;
+        padding: var(--sidebar-padding);
         justify-content: flex-start;
 
         img {
@@ -267,7 +269,7 @@
         width: var(--sidebar-width-collapsed);
         flex-basis: var(--sidebar-width-collapsed);
 
-        padding: 0.5rem 0.25rem;
+        padding: var(--sidebar-padding-collapsed);
         justify-content: center;
 
         img {
