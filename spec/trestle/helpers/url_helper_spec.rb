@@ -7,6 +7,7 @@ describe Trestle::UrlHelper do
 
   let(:form) { double(modal?: false) }
   let(:admin) { double(form: form) }
+  let(:modal_request?) { false }
 
   before(:each) do
     allow(Trestle).to receive(:lookup).and_return(nil)

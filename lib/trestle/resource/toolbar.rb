@@ -20,7 +20,7 @@ module Trestle
         def delete(label: t("buttons.delete", default: "Delete %{model_name}"), **attrs)
           return unless action?(:destroy)
 
-          defaults = Trestle::Options.new(action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" })
+          defaults = Trestle::Options.new(action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", turbo_frame: "_top", controller: "confirm-delete", confirm_delete_placement_value: "bottom" })
           link(label, instance, defaults.merge(attrs))
         end
 

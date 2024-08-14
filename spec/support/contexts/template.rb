@@ -7,5 +7,6 @@ RSpec.shared_context "template" do
     template.extend(Trestle::UrlHelper)
 
     allow(template).to receive(:admin).and_return(admin)
+    allow(template).to receive(:modal_request?).and_return(false)
   end
 end

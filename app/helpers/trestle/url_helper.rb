@@ -50,7 +50,7 @@ module Trestle
           if MODAL_ACTIONS.include?(action) && admin.respond_to?(:form) && admin.form.modal?
             options[:data][:controller] ||= "modal-trigger"
           else
-            options[:data][:turbo_frame] = "_top"
+            options[:data][:turbo_frame] ||= (modal_request? ? "modal" : "_top")
           end
 
           link_to(content, path, options)

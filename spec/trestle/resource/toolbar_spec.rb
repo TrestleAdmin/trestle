@@ -69,15 +69,15 @@ describe Trestle::Resource::Toolbar::Builder do
       end
 
       it "returns a delete link" do
-        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
+        expect(builder.delete).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", turbo_frame: "_top", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
       end
 
       it "accepts a custom label" do
-        expect(builder.delete(label: "Delete Me")).to eq(Trestle::Toolbar::Link.new(template, "Delete Me", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
+        expect(builder.delete(label: "Delete Me")).to eq(Trestle::Toolbar::Link.new(template, "Delete Me", instance, action: :destroy, style: :danger, icon: "fa fa-trash", data: { turbo_method: "delete", turbo_frame: "_top", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
       end
 
       it "accepts custom options" do
-        expect(builder.delete(style: :warning, icon: "fas fa-bomb")).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :warning, icon: "fas fa-bomb", data: { turbo_method: "delete", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
+        expect(builder.delete(style: :warning, icon: "fas fa-bomb")).to eq(Trestle::Toolbar::Link.new(template, "Delete Resource", instance, action: :destroy, style: :warning, icon: "fas fa-bomb", data: { turbo_method: "delete", turbo_frame: "_top", controller: "confirm-delete", confirm_delete_placement_value: "bottom" }))
       end
     end
 
