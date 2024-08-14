@@ -1001,9 +1001,9 @@
   integrity sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==
 
 "@hotwired/turbo@^8.0.2":
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-8.0.4.tgz#5c5361c06a37cdf10dcba4223f1afd0ca1c75091"
-  integrity sha512-mlZEFUZrJnpfj+g/XeCWWuokvQyN68WvM78JM+0jfSFc98wegm259vCbC1zSllcspRwbgXK31ibehCy5PA78/Q==
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-8.0.5.tgz#abae6dad018a891e4286e87fa0959217e3866d5a"
+  integrity sha512-TdZDA7fxVQ2ZycygvpnzjGPmFq4sO/E2QVg+2em/sJ3YTSsIWVEis8HmWlumz+c9DjWcUkcCuB+muF08TInpAQ==
 
 "@jest/schemas@^29.6.0":
   version "29.6.0"
