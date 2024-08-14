@@ -11,7 +11,9 @@ module Trestle
 
     protected
       def modal_request?
-        request.headers["X-Trestle-Modal"] || request.headers["X-Trestle-Dialog"]
+        turbo_frame_request_id == "modal" ||
+          request.headers["X-Trestle-Modal"] ||
+          request.headers["X-Trestle-Dialog"]
       end
 
       def dialog_request?
