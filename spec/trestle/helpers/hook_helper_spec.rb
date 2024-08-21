@@ -7,7 +7,6 @@ describe Trestle::HookHelper do
 
   include ActionView::Helpers::OutputSafetyHelper
   include ActionView::Helpers::CaptureHelper
-  include ActionView::Context
 
   describe "#hook" do
     it "calls and concatenates each hook" do

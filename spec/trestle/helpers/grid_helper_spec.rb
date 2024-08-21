@@ -6,7 +6,6 @@ describe Trestle::GridHelper do
   include Trestle::GridHelper
 
   include ActionView::Helpers::TagHelper
-  include ActionView::Context
 
   describe "#row" do
     it "creates a div with class 'row'" do
