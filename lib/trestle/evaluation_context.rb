@@ -5,20 +5,18 @@ module Trestle
   # both the Adapter/Navigation instance, as well as the controller/view from where they are invoked.
   module EvaluationContext
   protected
-    def self.ruby2_keywords(*)
-    end unless respond_to?(:ruby2_keywords, true)
-
     # Missing methods are called on the given context if available.
     #
     # We include private methods as methods such as current_user
     # are usually declared as private or protected.
-    ruby2_keywords def method_missing(name, *args, &block)
+    def method_missing(name, *args, &block)
       if context_responds_to?(name)
         @context.send(name, *args, &block)
       else
         super
       end
     end
+    ruby2_keywords :method_missing if respond_to?(:ruby2_keywords, true)
 
     def respond_to_missing?(name, include_private=false)
       context_responds_to?(name) || super
