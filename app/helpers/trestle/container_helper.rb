@@ -4,8 +4,8 @@ module Trestle
       context = Context.new(self)
       content = capture(context, &block)
 
-      content_tag(:div, class: "main-content-container") do
-        concat content_tag(:div, content, class: "main-content")
+      tag.div(class: "main-content-container") do
+        concat tag.div(content, class: "main-content")
         concat context.sidebar if context.sidebar
       end
     end
@@ -17,7 +17,7 @@ module Trestle
 
       def sidebar(options={}, &block)
         if block_given?
-          @sidebar = @template.content_tag(:aside, default_sidebar_options.merge(options), &block)
+          @sidebar = @template.tag.aside(**default_sidebar_options.merge(options), &block)
           nil
         else
           @sidebar

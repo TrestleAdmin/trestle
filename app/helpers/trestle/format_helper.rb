@@ -13,8 +13,8 @@ module Trestle
       when :currency
         number_to_currency(value)
       when :tags
-        tags = Array(value).map { |tag| content_tag(:span, tag, class: "tag tag-primary") }
-        content_tag(:div, safe_join(tags), class: "tag-list")
+        tags = Array(value).map { |t| tag.span(t, class: "tag tag-primary") }
+        tag.div(safe_join(tags), class: "tag-list")
       else
         value
       end
@@ -23,8 +23,8 @@ module Trestle
     def autoformat_value(value, options={})
       case value
       when Array
-        content_tag(:ol, safe_join(value.map { |v|
-          content_tag(:li, v.is_a?(Array) ? v : autoformat_value(v, options)) },
+        tag.ol(safe_join(value.map { |v|
+          tag.li(v.is_a?(Array) ? v : autoformat_value(v, options)) },
         "\n"))
       when Time, DateTime
         timestamp(value)
@@ -37,7 +37,7 @@ module Trestle
         if blank.respond_to?(:call)
           instance_exec(&blank)
         else
-          content_tag(:span, blank, class: "blank")
+          tag.span(blank, class: "blank")
         end
       when String
         if value.html_safe? || options[:truncate] == false

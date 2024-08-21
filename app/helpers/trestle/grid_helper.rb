@@ -14,11 +14,9 @@ module Trestle
     #   <%= row class: "row-cols-2", id: "my-row" do %> ...
     #
     # Returns a HTML-safe String.
-    def row(attrs={})
+    def row(**attributes)
       defaults = Trestle::Options.new(class: ["row"])
-      options = defaults.merge(attrs)
-
-      content_tag(:div, options) { yield }
+      tag.div(**defaults.merge(attributes)) { yield }
     end
 
     # Renders a column div, one of the building blocks of Bootstrap's grid system.
@@ -53,7 +51,7 @@ module Trestle
         classes += breakpoints.map { |breakpoint, span| "col-#{breakpoint}-#{span}" }
       end
 
-      content_tag(:div, class: classes) { yield }
+      tag.div(class: classes) { yield }
     end
 
     # Renders an <HR> (horizontal rule) HTML tag.
@@ -61,8 +59,8 @@ module Trestle
     # attrs - Hash of attributes that will be passed to the tag (e.g. id, data, class).
     #
     # Returns a HTML-safe String.
-    def divider(attrs={})
-      tag(:hr, attrs)
+    def divider(**attributes)
+      tag.hr(**attributes)
     end
   end
 end

@@ -1,7 +1,7 @@
 module Trestle
   module Turbo
     module FrameHelper
-      def index_turbo_frame(options={}, &block)
+      def index_turbo_frame(**attributes, &block)
         defaults = {
           id: "index",
           data: {
@@ -10,10 +10,10 @@ module Trestle
           }
         }
 
-        content_tag("turbo-frame", defaults.merge(options), &block)
+        tag.turbo_frame(**defaults.merge(attributes), &block)
       end
 
-      def resource_turbo_frame(instance, options={}, &block)
+      def resource_turbo_frame(instance, **attributes, &block)
         defaults = {
           id: dom_id(instance),
           target: ("_top" unless modal_request?),
@@ -22,7 +22,7 @@ module Trestle
           }
         }
 
-        content_tag("turbo-frame", defaults.merge(options), &block)
+        tag.turbo_frame(**defaults.merge(attributes), &block)
       end
     end
   end

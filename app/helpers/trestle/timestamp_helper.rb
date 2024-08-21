@@ -27,7 +27,7 @@ module Trestle
       time_tag(time, class: classes) do
         safe_join([
           l(time, format: date_format, default: proc { |date| "#{date.day.ordinalize} %b %Y" }),
-          content_tag(:small, l(time, format: time_format, default: "%l:%M:%S %p"))
+          tag.small(l(time, format: time_format, default: "%l:%M:%S %p"))
         ], "\n")
       end
     end

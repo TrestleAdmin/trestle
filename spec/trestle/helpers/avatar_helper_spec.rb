@@ -10,7 +10,7 @@ describe Trestle::AvatarHelper do
   include ActionView::Context
 
   describe "#avatar" do
-    let(:image) { content_tag(:img, src: "avatar.png") }
+    let(:image) { tag.img(src: "avatar.png") }
 
     it "renders an avatar" do
       result = avatar { image }

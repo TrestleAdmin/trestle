@@ -1,10 +1,8 @@
 module Trestle
   module AvatarHelper
-    def avatar(options={})
-      fallback = options.delete(:fallback) if options[:fallback]
-
-      content_tag(:div, default_avatar_options.merge(options)) do
-        concat content_tag(:span, fallback, class: "avatar-fallback") if fallback
+    def avatar(fallback: nil, **attributes)
+      tag.div(**default_avatar_options.merge(attributes)) do
+        concat tag.span(fallback, class: "avatar-fallback") if fallback
         concat yield if block_given?
       end
     end

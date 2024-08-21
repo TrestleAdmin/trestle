@@ -1,8 +1,7 @@
 module Trestle
   module StatusHelper
-    def status_tag(label, status=:primary, options={})
-      options[:class] ||= ["badge", "badge-#{status}"]
-      content_tag(:span, label, options)
+    def status_tag(label, status=:primary, **attributes)
+      tag.span(label, **attributes.merge(class: ["badge", "badge-#{status}", attributes[:class]]))
     end
   end
 end

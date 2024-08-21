@@ -1,11 +1,11 @@
 module Trestle
   module CardHelper
     def card(options={}, &block)
-      content_tag(:div, options.slice(:id, :data).merge(class: ["card", options[:class]].compact)) do
+      tag.div(options.slice(:id, :data).merge(class: ["card", options[:class]].compact)) do
         safe_join([
-          (content_tag(:div, options[:header], class: "card-header") if options[:header]),
-          content_tag(:div, class: "card-body", &block),
-          (content_tag(:div, options[:footer], class: "card-footer") if options[:footer])
+          (tag.div(options[:header], class: "card-header") if options[:header]),
+          tag.div(class: "card-body", &block),
+          (tag.div(options[:footer], class: "card-footer") if options[:footer])
         ].compact)
       end
     end
