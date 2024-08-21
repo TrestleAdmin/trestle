@@ -7,15 +7,7 @@ module Trestle
       end
     end
 
-    def gravatar(email, options={})
-      options = { d: "mp" }.merge(options)
-
-      url = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.downcase)}.png"
-      url << "?#{options.to_query}" if options.any?
-
-      image_tag(url)
-    end
-
+  protected
     def default_avatar_options
       Trestle::Options.new(class: ["avatar"])
     end
