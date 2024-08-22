@@ -28,7 +28,7 @@ describe Trestle::CardHelper do
       result = card(header: "Header Text")
 
       expect(result).to have_tag("div.card") do
-        with_tag "div.card-header", text: "Header Text"
+        with_tag "header.card-header", text: "Header Text"
       end
     end
 
@@ -36,7 +36,7 @@ describe Trestle::CardHelper do
       result = card(footer: "Footer Text")
 
       expect(result).to have_tag("div.card") do
-        with_tag "div.card-footer", text: "Footer Text"
+        with_tag "footer.card-footer", text: "Footer Text"
       end
     end
   end
