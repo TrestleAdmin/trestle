@@ -21,6 +21,6 @@ end
 
 gem 'rails', github: 'rails/rails'
 gem 'sprockets-rails'
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3'
 
 gemspec path: "../"
