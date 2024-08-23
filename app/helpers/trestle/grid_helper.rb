@@ -1,9 +1,9 @@
 module Trestle
   module GridHelper
     # Renders a row div, one of the building blocks of Bootstrap's grid system.
-    # https://getbootstrap.com/docs/4.4/layout/grid/
+    # https://getbootstrap.com/docs/5.3/layout/grid/
     #
-    # attrs - Hash of attributes that will be passed to the tag (e.g. id, data, class).
+    # attributes - Hash of attributes that will be passed to the tag (e.g. id, data, class)
     #
     # Examples
     #
@@ -20,7 +20,7 @@ module Trestle
     end
 
     # Renders a column div, one of the building blocks of Bootstrap's grid system.
-    # https://getbootstrap.com/docs/4.4/layout/grid/
+    # https://getbootstrap.com/docs/5.3/layout/grid/
     #
     # Column divs should always be rendered inside of a row div.
     #
@@ -56,7 +56,7 @@ module Trestle
 
     # Renders an <HR> (horizontal rule) HTML tag.
     #
-    # attrs - Hash of attributes that will be passed to the tag (e.g. id, data, class).
+    # attributes - Hash of attributes that will be passed to the tag (e.g. id, data, class)
     #
     # Returns a HTML-safe String.
     def divider(**attributes)
