@@ -1,6 +1,5 @@
 module Trestle
   module FormHelper
-    IDENTITY_FIELD_ERROR_PROC = Proc.new { |html_tag, instance| html_tag }
     DEFAULT_FORM_CONTROLLERS = %w(keyboard-submit form-loading form-error)
 
     def trestle_form_for(instance, options={}, &block)
@@ -17,12 +16,19 @@ module Trestle
       end
     end
 
+    def form
+      @_trestle_form
+    end
+
+  protected
     def with_form(form)
       @_trestle_form = form
       yield form if block_given?
     ensure
       @_trestle_form = nil
     end
+
+    IDENTITY_FIELD_ERROR_PROC = Proc.new { |html_tag, instance| html_tag }
 
     def with_identity_field_error_proc
       original_field_error_proc = ::ActionView::Base.field_error_proc
@@ -31,18 +37,6 @@ module Trestle
       yield if block_given?
     ensure
       ::ActionView::Base.field_error_proc = original_field_error_proc
-    end
-
-    def form
-      @_trestle_form
-    end
-
-    def sidebar(&block)
-      content_for(:sidebar, &block)
-    end
-
-    def render_sidebar_as_tab?
-      modal_request? && content_for?(:sidebar)
     end
   end
 end

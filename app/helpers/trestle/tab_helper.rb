@@ -1,9 +1,5 @@
 module Trestle
   module TabHelper
-    def tabs
-      @_trestle_tabs ||= {}
-    end
-
     def tab(name, options={})
       tabs[name] = tab = Tab.new(name, options)
 
@@ -16,6 +12,18 @@ module Trestle
           render partial: name.to_s
         end
       end
+    end
+
+    def tabs
+      @_trestle_tabs ||= {}
+    end
+
+    def sidebar(&block)
+      content_for(:sidebar, &block)
+    end
+
+    def render_sidebar_as_tab?
+      modal_request? && content_for?(:sidebar)
     end
   end
 end
