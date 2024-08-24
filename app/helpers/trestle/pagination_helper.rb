@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module PaginationHelper
     # Custom version of Kaminari's page_entries_info helper to use a
     # Trestle-scoped I18n key and add a delimiter to the total count.

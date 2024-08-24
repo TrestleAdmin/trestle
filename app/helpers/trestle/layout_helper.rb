@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module LayoutHelper
     SIDEBAR_CLASSES = {
       "expanded"  => "sidebar-expanded",

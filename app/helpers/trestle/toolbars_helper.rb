@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module ToolbarsHelper
     def render_toolbar(toolbar, *args)
       result = toolbar.groups(self, *args).map do |items|

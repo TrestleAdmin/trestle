@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module FlashHelper
     def normalize_flash_alert(flash)
       flash.is_a?(Hash) ? flash.with_indifferent_access : { message: flash }
