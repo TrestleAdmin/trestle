@@ -17,7 +17,7 @@ module Trestle
     initializer "trestle.automount" do |app|
       if Trestle.config.automount
         app.routes.prepend do
-          mount Trestle::Engine => Trestle.config.path
+          mount Trestle::Engine, at: Trestle.config.path
         end
       end
     end
