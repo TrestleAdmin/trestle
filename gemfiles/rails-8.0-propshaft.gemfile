@@ -20,6 +20,7 @@ group :test do
 end
 
 gem 'rails', github: 'rails/rails'
+gem 'turbo-rails', github: 'hotwired/turbo-rails'
 gem 'propshaft'
 gem 'sqlite3'
 
