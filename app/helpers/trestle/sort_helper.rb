@@ -1,20 +1,22 @@
 module Trestle
   module SortHelper
-    def sort_link(text, field, options={})
-      sort_link = SortLink.new(field, persistent_params, options)
+    def sort_link(text, field, **options)
+      sort_link = SortLink.new(field, persistent_params, **options)
       link_to text, sort_link.params, class: sort_link.classes
     end
 
     class SortLink
       attr_reader :field
 
-      def initialize(field, params, options)
-        @field, @params, @options = field, params, options
+      def initialize(field, params, default: false, default_order: "asc")
+        @field, @params = field, params
+
+        @default = default
+        @default_order = default_order.to_s
       end
 
       def active?
-        @params[:sort] == field.to_s ||
-          (@options[:default] && !@params.key?(:sort))
+        @params[:sort] == field.to_s || (default? && !@params.key?(:sort))
       end
 
       def params
@@ -33,8 +35,12 @@ module Trestle
         @params[:order] || default_order
       end
 
+      def default?
+        @default
+      end
+
       def default_order
-        @options.fetch(:default_order, "asc").to_s
+        @default_order
       end
 
       def classes

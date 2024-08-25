@@ -7,7 +7,7 @@ describe Trestle::SortHelper::SortLink do
   let(:params) { {} }
   let(:parameters) { ActionController::Parameters.new(params) }
 
-  subject(:link) { Trestle::SortHelper::SortLink.new(:field, parameters, options)}
+  subject(:link) { Trestle::SortHelper::SortLink.new(:field, parameters, **options)}
 
   describe "#active?" do
     context "when the sort param matches the field name" do
