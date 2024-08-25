@@ -32,25 +32,23 @@ describe Trestle::ParamsHelper do
       end
     end
 
-    if Rails.gem_version > Gem::Version.new("5.1")
-      context "when Trestle.config.persistent_params contains a hash declaration" do
-        before(:each) do
-          expect(Trestle.config).to receive(:persistent_params).and_return([:sort, { hash: {} }, :order])
-        end
+    context "when Trestle.config.persistent_params contains a hash declaration" do
+      before(:each) do
+        expect(Trestle.config).to receive(:persistent_params).and_return([:sort, { hash: {} }, :order])
+      end
 
-        let(:params) do
-          ActionController::Parameters.new({
-            sort: :field,
-            order: "asc",
-            ignore: "me",
-            hash: { key: "value" },
-            ignore_hash: { abc: "123" }
-          })
-        end
+      let(:params) do
+        ActionController::Parameters.new({
+          sort: :field,
+          order: "asc",
+          ignore: "me",
+          hash: { key: "value" },
+          ignore_hash: { abc: "123" }
+        })
+      end
 
-        it "includes persistent hash param" do
-          expect(persistent_params).to eq(ActionController::Parameters.new(sort: :field, order: "asc", hash: { key: "value" }).permit!)
-        end
+      it "includes persistent hash param" do
+        expect(persistent_params).to eq(ActionController::Parameters.new(sort: :field, order: "asc", hash: { key: "value" }).permit!)
       end
     end
   end
