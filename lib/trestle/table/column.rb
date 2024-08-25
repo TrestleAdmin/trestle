@@ -70,7 +70,7 @@ module Trestle
 
         def content(instance)
           value = column_value(instance)
-          content = @template.format_value(value, options)
+          content = @template.format_value(value, **options)
 
           if value.respond_to?(:id) && options[:link] != false
             # Column value was a model instance (e.g. from an association).
