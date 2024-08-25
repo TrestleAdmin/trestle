@@ -61,7 +61,7 @@ module Trestle
           return if options.key?(:header) && options[:header].in?([nil, false])
 
           if @table.sortable? && @column.sortable?
-            @template.sort_link(header_text, @column.sort_field, @column.sort_options)
+            @template.sort_link(header_text, @column.sort_field, **@column.sort_options)
           else
             header_text
           end
