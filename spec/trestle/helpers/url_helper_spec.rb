@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/url_helper'
-
-describe Trestle::UrlHelper do
-  include Trestle::UrlHelper
-
+describe Trestle::UrlHelper, type: :helper do
   let(:form) { double(modal?: false) }
   let(:admin) { double(form: form) }
   let(:modal_request?) { false }

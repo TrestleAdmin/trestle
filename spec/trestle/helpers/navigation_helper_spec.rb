@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/navigation_helper'
-
-describe Trestle::NavigationHelper do
-  include Trestle::NavigationHelper
-
+describe Trestle::NavigationHelper, type: :helper do
   describe "#current_admin?" do
     context "when admin is undefined" do
       it "returns false" do

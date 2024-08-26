@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/modal_helper'
-
-describe Trestle::ModalHelper do
-  include Trestle::ModalHelper
-
+describe Trestle::ModalHelper, type: :helper do
   describe "#modal_options!" do
     it "merges hash with existing modal options" do
       modal_options!(class: "modal-class")

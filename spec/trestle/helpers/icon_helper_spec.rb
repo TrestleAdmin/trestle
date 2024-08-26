@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/icon_helper'
-
-describe Trestle::IconHelper do
-  include Trestle::IconHelper
-
-  include ActionView::Helpers::TagHelper
-
+describe Trestle::IconHelper, type: :helper do
   describe "#icon" do
     it "returns an <i> tag with the given classes" do
       result = icon("fas", "fa-star")

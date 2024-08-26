@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/form_helper'
-
-describe Trestle::FormHelper do
-  include Trestle::FormHelper
-
+describe Trestle::FormHelper, type: :helper do
   let(:admin) { double(parameter_name: :article) }
   let(:instance) { double }
 

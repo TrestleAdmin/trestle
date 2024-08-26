@@ -1,14 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/avatar_helper'
-
-describe Trestle::AvatarHelper do
-  include Trestle::AvatarHelper
-
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TextHelper
-  include ActionView::Context
-
+describe Trestle::AvatarHelper, type: :helper do
   describe "#avatar" do
     let(:image) { tag.img(src: "avatar.png") }
 

@@ -1,14 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/container_helper'
-
-describe Trestle::ContainerHelper do
-  include Trestle::ContainerHelper
-
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TextHelper
-  include ActionView::Context
-
+describe Trestle::ContainerHelper, type: :helper do
   describe "#container" do
     it "captures the block and renders within .main-content-container > .main-content divs" do
       result = container { "Main content" }

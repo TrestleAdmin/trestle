@@ -1,20 +1,10 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/format_helper'
-
-describe Trestle::FormatHelper do
-  include Trestle::FormatHelper
-
+describe Trestle::FormatHelper, type: :helper do
   include Trestle::DisplayHelper
   include Trestle::IconHelper
   include Trestle::StatusHelper
   include Trestle::TimestampHelper
-
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::DateHelper
-  include ActionView::Helpers::NumberHelper
-  include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::TranslationHelper
 
   describe "#format_value" do
     describe "autoformatting" do

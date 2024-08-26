@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/card_helper'
-
-describe Trestle::CardHelper do
-  include Trestle::CardHelper
-
-  include ActionView::Helpers::TagHelper
-
+describe Trestle::CardHelper, type: :helper do
   describe "#card" do
     it "returns a .card <div> containing a .card-body" do
       result = card { "Content" }

@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/status_helper'
-
-describe Trestle::StatusHelper do
-  include Trestle::StatusHelper
-
-  include ActionView::Helpers::TagHelper
-
+describe Trestle::StatusHelper, type: :helper do
   describe "#status_tag" do
     it "returns a badge with the given label" do
       result = status_tag("Status")

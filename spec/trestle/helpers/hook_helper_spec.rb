@@ -1,13 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/hook_helper'
-
-describe Trestle::HookHelper do
-  include Trestle::HookHelper
-
-  include ActionView::Helpers::OutputSafetyHelper
-  include ActionView::Helpers::CaptureHelper
-
+describe Trestle::HookHelper, type: :helper do
   describe "#hook" do
     it "calls and concatenates each hook" do
       Trestle.config.hook("test-hook") { "abc" }

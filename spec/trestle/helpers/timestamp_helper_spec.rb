@@ -1,14 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/card_helper'
-
-describe Trestle::TimestampHelper do
-  include Trestle::TimestampHelper
-
-  include ActionView::Helpers::DateHelper
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TranslationHelper
-
+describe Trestle::TimestampHelper, type: :helper do
   describe "#timestamp" do
     let(:time) { Time.zone.local(2024, 8, 21, 12, 34, 56) }
 

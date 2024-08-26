@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/gravatar_helper'
-
-describe Trestle::GravatarHelper do
-  include Trestle::GravatarHelper
-
-  include ActionView::Helpers::AssetTagHelper
-
+describe Trestle::GravatarHelper, type: :helper do
   let(:email) { "sam@trestle.io" }
 
   describe "#gravatar_image_tag" do

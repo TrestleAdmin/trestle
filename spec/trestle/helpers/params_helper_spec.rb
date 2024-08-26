@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/params_helper'
-
-describe Trestle::ParamsHelper do
-  include Trestle::ParamsHelper
-
+describe Trestle::ParamsHelper, type: :helper do
   let(:params) { ActionController::Parameters.new(sort: :field, order: "asc", ignore: "me") }
 
   describe "#persistent_params" do

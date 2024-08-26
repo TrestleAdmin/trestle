@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/table_helper'
-
-describe Trestle::TableHelper do
-  include Trestle::TableHelper
-
+describe Trestle::TableHelper, type: :helper do
   let(:admin) { double }
   let(:collection) { double }
   let(:table_object) { Trestle::Table.new }

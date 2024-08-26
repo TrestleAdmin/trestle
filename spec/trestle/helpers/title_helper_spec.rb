@@ -1,15 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/title_helper'
-
-describe Trestle::TitleHelper do
-  include Trestle::TitleHelper
-
-  include ActionView::Helpers::CaptureHelper
-  include ActionView::Context
-
-  before(:each) { _prepare_context }
-
+describe Trestle::TitleHelper, type: :helper do
   let(:action_name) { "default" }
 
   describe "#title" do
