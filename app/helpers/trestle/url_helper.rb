@@ -60,8 +60,8 @@ module Trestle
       end
     end
 
-    def admin_url_for(instance, options={})
-      admin = Trestle.lookup(options.delete(:admin)) if options.key?(:admin)
+    def admin_url_for(instance, admin: nil, **options)
+      admin = Trestle.lookup(admin) if admin
       admin ||= admin_for(instance)
       return unless admin
 
