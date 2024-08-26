@@ -51,4 +51,8 @@ RSpec.configure do |config|
       Object.send(:remove_const, const)
     end
   end
+
+  config.around(:example, :tz) do |example|
+    Time.use_zone(example.metadata[:tz]) { example.run }
+  end
 end

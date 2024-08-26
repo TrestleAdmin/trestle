@@ -2,6 +2,36 @@ module Trestle
   module UrlHelper
     MODAL_ACTIONS = [:new, :show, :edit]
 
+    # Generates a link to an admin, optionally for a specific instance on a resourceful admin.
+    #
+    # It has a few additional conveniences over using the standard `link_to` helper:
+    #
+    # 1) It can automatically infer the admin from the given instance.
+    # 2) It will automatically add data-controller="modal-trigger" when linking to a form
+    #    action that is set to show as a modal.
+    # 3) It sets data-turbo-frame appropriately for modal and non-modal contexts to ensure
+    #    the admin can correctly detect modal requests.
+    #
+    # content         - HTML or text content to use as the link content
+    #                   (will be ignored if a block is provided)
+    # instance_or_url - model instance, or explicit String path
+    # options         - Hash of options (default: {})
+    #                   :admin  - Optional explicit admin (symbol or admin class)
+    #                   :action - Controller action to generate the link to
+    #                   :params - Additional params to use when generating the link URL
+    #                   (all other options are forwarded to the `link_to` helper)
+    # block           - Optional block to capture to use as the link content
+    #
+    # Examples
+    #
+    #   <%= admin_link_to article.name, article %>
+    #
+    #   <%= admin_link_to admin: :dashboard, action: :index do %>
+    #     <%= icon "fas fa-gauge" %> Dashboard
+    #   <% end %>
+    #
+    # Returns a HTML-safe String.
+    # Raises ActionController::UrlGenerationError if the admin cannot be automatically inferred.
     def admin_link_to(content, instance_or_url=nil, options={}, &block)
       # Block given - ignore content parameter and capture content from block
       if block_given?
@@ -60,8 +90,23 @@ module Trestle
       end
     end
 
-    def admin_url_for(instance, options={})
-      admin = Trestle.lookup(options.delete(:admin)) if options.key?(:admin)
+    # Returns the admin path for a given instance.
+    #
+    # An admin can either be explicitly specified (as a symbol or admin class),
+    # or it can be automatically inferred based the instance type using `admin_for`.
+    #
+    # instance - The model instance to generate a path for
+    # admin    - Optional admin (symbol or admin class)
+    # options  - Hash of options to pass to `instance_path` or `path` admin methods
+    #
+    # Examples
+    #
+    #   <%= admin_url_for(article, action: :edit) %>
+    #   <%= admin_url_for(article, admin: :special_articles) %>
+    #
+    # Returns a String, or nil if the admin cannot be automatically inferred.
+    def admin_url_for(instance, admin: nil, **options)
+      admin = Trestle.lookup(admin) if admin
       admin ||= admin_for(instance)
       return unless admin
 
@@ -75,6 +120,15 @@ module Trestle
       end
     end
 
+    # Looks up the registered Trestle admin for a given model instance.
+    #
+    # The lookup is performed on the global `Trestle::Registry` instance,
+    # which tracks admin resource models unless the resource was created
+    # with `register_model: false`.
+    #
+    # instance - The model instance to look up in the registry
+    #
+    # Returns a Trestle::Admin subclass or nil if no matching admin found.
     def admin_for(instance)
       Trestle.lookup_model(instance.class)
     end

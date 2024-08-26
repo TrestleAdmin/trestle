@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module I18nHelper
     FLATPICKR_LOCALE_CONVERSIONS = { ca: "cat", el: "gr", nb: "no", vi: "vn" }.stringify_keys
 

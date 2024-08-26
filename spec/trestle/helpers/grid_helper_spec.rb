@@ -1,13 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/grid_helper'
-
-describe Trestle::GridHelper do
-  include Trestle::GridHelper
-
-  include ActionView::Helpers::TagHelper
-  include ActionView::Context
-
+describe Trestle::GridHelper, type: :helper do
   describe "#row" do
     it "creates a div with class 'row'" do
       expect(row { "content" }).to have_tag(".row", text: "content")

@@ -1,4 +1,5 @@
 module Trestle
+  # [Internal]
   module NavigationHelper
     def current_navigation_item?(item)
       current_page?(item.path) || (item.admin && current_admin?(item.admin))

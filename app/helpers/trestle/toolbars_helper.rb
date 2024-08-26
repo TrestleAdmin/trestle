@@ -1,9 +1,10 @@
 module Trestle
+  # [Internal]
   module ToolbarsHelper
     def render_toolbar(toolbar, *args)
       result = toolbar.groups(self, *args).map do |items|
         if items.many?
-          content_tag(:div, class: "btn-group", role: "group") do
+          tag.div(class: "btn-group", role: "group") do
             safe_join(items, "\n")
           end
         else

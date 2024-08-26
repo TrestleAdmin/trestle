@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-require_relative '../../../app/helpers/trestle/i18n_helper'
-
-describe Trestle::I18nHelper do
-  include Trestle::I18nHelper
-
+describe Trestle::I18nHelper, type: :helper do
   describe "#i18n_fallbacks" do
     it "delegates to I18n.fallbacks if available" do
       allow(I18n).to receive(:fallbacks).and_return({ ca: ["ca", "es-ES", "es"] }.with_indifferent_access)

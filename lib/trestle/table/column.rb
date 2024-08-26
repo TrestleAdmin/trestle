@@ -61,7 +61,8 @@ module Trestle
           return if options.key?(:header) && options[:header].in?([nil, false])
 
           if @table.sortable? && @column.sortable?
-            @template.sort_link(header_text, @column.sort_field, @column.sort_options)
+            link_options = @column.sort_options.slice(:default, :default_order)
+            @template.sort_link(header_text, @column.sort_field, **link_options)
           else
             header_text
           end
@@ -69,7 +70,7 @@ module Trestle
 
         def content(instance)
           value = column_value(instance)
-          content = @template.format_value(value, options)
+          content = @template.format_value(value, **options)
 
           if value.respond_to?(:id) && options[:link] != false
             # Column value was a model instance (e.g. from an association).
