@@ -5,7 +5,8 @@ module Trestle
     #
     # This helper accepts a block (within which the main content is provided),
     # which yields a `Context` capture object. The Context object has one important
-    # method -- `sidebar(**attributes, &block)` which renders a sidebar.
+    # method -- `sidebar(**attributes, &block)` which captures the sidebar content
+    # to be rendered after the main content.
     #
     # attributes - Additional HTML attributes to add to the <div> tag
     #
