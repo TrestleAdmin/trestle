@@ -66,6 +66,10 @@ describe Trestle::Configuration do
     expect(config.default_adapter.ancestors).to include(Trestle::Adapters::ActiveRecordAdapter, Trestle::Adapters::DraperAdapter)
   end
 
+  it "has a default form controllers configuration option" do
+    expect(config).to have_accessor(:default_form_controllers).with_default(["keyboard-submit", "form-loading", "form-error"])
+  end
+
   it "has a root breadcrumbs configuration option" do
     expect(config).to have_accessor(:root_breadcrumbs).with_default([Trestle::Breadcrumb.new("Home", "/admin")])
   end

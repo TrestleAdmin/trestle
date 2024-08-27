@@ -1,7 +1,5 @@
 module Trestle
   module FormHelper
-    DEFAULT_FORM_CONTROLLERS = %w(keyboard-submit form-loading form-error)
-
     # Generates a form for a resource using Rails' #form_for helper.
     #
     # In addition to delegating to #form_for, this helper method:
@@ -9,8 +7,9 @@ module Trestle
     # 1) Sets the default form builder to `Trestle::Form::Builder`.
     # 2) Sets the default :as option to match the parameter name
     #    expected by the admin.
-    # 3) Sets default Stimulus controllers on the <form> element:
-    #    "keyboard-submit form-loading form-error"
+    # 3) Sets default Stimulus controllers on the <form> element
+    #    from `Trestle.config.default_form_controllers`.
+    #    (defaults to: "keyboard-submit form-loading form-error")
     # 4) Sets a null/identity ActionView::Base.field_error_proc as
     #    errors are handled by Trestle::Form::Fields::FormGroup.
     # 5) Exposes the yielded form builder instance via the `form` helper.
@@ -26,7 +25,7 @@ module Trestle
       options[:as] ||= admin.parameter_name
 
       options[:data] ||= {}
-      options[:data][:controller] = (DEFAULT_FORM_CONTROLLERS + Array(options[:data][:controller])).join(" ")
+      options[:data][:controller] = (Trestle.config.default_form_controllers + Array(options[:data][:controller])).join(" ")
 
       form_for(instance, **options) do |f|
         with_identity_field_error_proc do
