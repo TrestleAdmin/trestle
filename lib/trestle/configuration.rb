@@ -91,6 +91,9 @@ module Trestle
     # Default adapter class used by all admin resources
     option :default_adapter, Adapters.compose(Adapters::ActiveRecordAdapter, Adapters::DraperAdapter)
 
+    # List of Stimulus controllers to add to forms by default
+    option :default_form_controllers, %w(keyboard-submit form-loading form-error)
+
     # Register a custom form field class
     def form_field(name, field)
       Form::Builder.register(name, field)
