@@ -1,10 +1,11 @@
 module Trestle
   class Scopes
     class Scope
-      attr_reader :name, :options, :block
+      attr_reader :name, :group, :block
 
-      def initialize(admin, name, options={}, &block)
-        @admin, @name, @options, @block = admin, name, options, block
+      def initialize(admin, name, label: nil, group: nil, default: false, count: true, &block)
+        @admin, @name, @block = admin, name, block
+        @label, @group, @default, @count = label, group, default, count
       end
 
       def to_param
@@ -12,19 +13,15 @@ module Trestle
       end
 
       def label
-        @options[:label] || @admin.t("scopes.#{name}", default: name.to_s.humanize.titleize)
-      end
-
-      def group
-        @options[:group]
+        @label || default_label
       end
 
       def default?
-        @options[:default] == true
+        @default
       end
 
       def count?
-        @options[:count] != false
+        @count
       end
 
       def apply(collection)
@@ -40,6 +37,7 @@ module Trestle
       end
 
       def count(collection)
+        return unless count?
         @admin.count(@admin.merge_scopes(collection, apply(collection)))
       end
 
@@ -51,6 +49,11 @@ module Trestle
         else
           default?
         end
+      end
+
+    protected
+      def default_label
+        @admin.t("scopes.#{name}", default: name.to_s.humanize.titleize)
       end
     end
   end

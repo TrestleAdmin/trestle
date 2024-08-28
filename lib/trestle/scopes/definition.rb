@@ -8,8 +8,8 @@ module Trestle
         @options = {}
       end
 
-      def append(options={}, &block)
-        @blocks << Block.new(options, &block)
+      def append(**defaults, &block)
+        @blocks << Block.new(**defaults, &block)
       end
 
       def apply_options!(options)

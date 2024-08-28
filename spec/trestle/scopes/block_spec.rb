@@ -5,7 +5,7 @@ describe Trestle::Scopes::Block do
   let(:options) { {} }
 
   subject(:block) do
-    Trestle::Scopes::Block.new(options) do
+    Trestle::Scopes::Block.new(**options) do
       scope :first
       scope :second, count: false
     end
@@ -16,21 +16,21 @@ describe Trestle::Scopes::Block do
       scope1, scope2 = block.scopes(admin)
 
       expect(scope1.name).to eq(:first)
-      expect(scope1.options).to eq({})
+      expect(scope1.count?).to be true
 
       expect(scope2.name).to eq(:second)
-      expect(scope2.options).to eq({ count: false })
+      expect(scope2.count?).to be false
     end
-  end
 
-  context "with options" do
-    let(:options) { { count: false } }
+    context "with options on the block" do
+      let(:options) { { count: false } }
 
-    it "applies the block options to each scope" do
-      scope1, scope2 = block.scopes(admin)
+      it "applies the block options as defaults to each scope" do
+        scope1, scope2 = block.scopes(admin)
 
-      expect(scope1.options).to eq({ count: false })
-      expect(scope2.options).to eq({ count: false })
+        expect(scope1.count?).to be false
+        expect(scope2.count?).to be false
+      end
     end
   end
 end
