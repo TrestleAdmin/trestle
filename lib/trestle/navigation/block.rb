@@ -28,12 +28,7 @@ module Trestle
           @admin ? @admin.path : nil
         end
 
-        def item(name, path=nil, options={})
-          if path.is_a?(Hash)
-            options = path
-            path = nil
-          end
-
+        def item(name, path=nil, **options)
           if options[:group]
             group = Group.new(options[:group])
           elsif @current_group
@@ -43,11 +38,11 @@ module Trestle
           options = options.merge(group: group) if group
           options = options.merge(admin: @admin) if @admin
 
-          items << Item.new(name, path || default_path, options)
+          items << Item.new(name, path || default_path, **options)
         end
 
-        def group(name, options={})
-          @current_group = Group.new(name, options)
+        def group(name, **options)
+          @current_group = Group.new(name, **options)
           yield
         ensure
           @current_group = nil
