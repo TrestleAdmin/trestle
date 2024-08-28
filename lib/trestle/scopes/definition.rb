@@ -12,6 +12,10 @@ module Trestle
         @blocks << Block.new(options, &block)
       end
 
+      def apply_options!(options)
+        @options.merge!(options)
+      end
+
       # Evaluates each of the scope blocks within the given admin context
       # and returns a hash of Scope objects keyed by the scope name.
       def evaluate(context)

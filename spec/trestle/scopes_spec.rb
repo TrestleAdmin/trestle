@@ -6,7 +6,7 @@ describe Trestle::Scopes do
 
   subject(:scopes) { Trestle::Scopes.new(definition, self) }
 
-  before(:each) { definition.options.merge!(options) }
+  before(:each) { definition.apply_options!(options) }
 
   describe "#classes" do
     it "includes scopes" do
