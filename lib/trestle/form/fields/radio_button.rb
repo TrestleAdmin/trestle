@@ -20,7 +20,7 @@ module Trestle
           wrapper_class = options.delete(:class)
           wrapper_class = default_wrapper_class if wrapper_class.empty?
 
-          content_tag(:div, class: wrapper_class) do
+          tag.div(class: wrapper_class) do
             safe_join([
               builder.raw_radio_button(name, tag_value, options.merge(class: input_class)),
               builder.label(name, options[:label] || tag_value.to_s.humanize, value: tag_value, class: label_class)

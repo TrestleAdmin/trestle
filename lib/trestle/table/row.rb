@@ -24,7 +24,7 @@ module Trestle
         end
 
         def render(instance)
-          @template.content_tag(:tr, options(instance)) do
+          @template.tag.tr(**options(instance)) do
             @template.safe_join(columns.map { |column| column.render(instance) }, "\n")
           end
         end

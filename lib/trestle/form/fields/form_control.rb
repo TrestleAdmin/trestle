@@ -12,7 +12,7 @@ module Trestle
 
         def input_group
           if @prepend || @append
-            content_tag(:div, class: "input-group") do
+            tag.div(class: "input-group") do
               concat input_group_addon(@prepend) if @prepend
               concat yield
               concat input_group_addon(@append) if @append
@@ -24,7 +24,7 @@ module Trestle
 
         def input_group_addon(addon)
           if addon[:wrap]
-            content_tag(:span, addon[:content], class: "input-group-text")
+            tag.span(addon[:content], class: "input-group-text")
           else
             addon[:content]
           end

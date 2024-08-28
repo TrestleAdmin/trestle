@@ -3,7 +3,7 @@ module Trestle
     class Field
       attr_reader :builder, :template, :name, :options, :block
 
-      delegate :admin, :content_tag, :concat, :safe_join, :icon, to: :template
+      delegate :admin, :tag, :content_tag, :concat, :safe_join, :icon, to: :template
 
       def initialize(builder, template, name, options={}, &block)
         @builder, @template, @name, @block = builder, template, name, block

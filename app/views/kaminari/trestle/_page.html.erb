@@ -8,5 +8,5 @@
     remote:        data-remote
 -%>
 <li class="page-item<% if page.current? %> active<% end %>">
-  <%= link_to content_tag(:span, page), url, class: "page-link", remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil %>
+  <%= link_to tag.span(page), url, class: "page-link", remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil %>
 </li>

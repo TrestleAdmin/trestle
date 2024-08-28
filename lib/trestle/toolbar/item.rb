@@ -3,7 +3,7 @@ module Trestle
     class Item
       attr_reader :label, :menu
 
-      delegate :admin_link_to, :button_tag, :content_tag, :safe_join, :icon, to: :@template
+      delegate :admin_link_to, :button_tag, :tag, :safe_join, :icon, to: :@template
 
       def initialize(template, label, options={}, &block)
         @template = template
@@ -22,7 +22,7 @@ module Trestle
 
       def to_s
         if menu.items.any?
-          content_tag(:div, class: "btn-group", role: "group") do
+          tag.div(class: "btn-group", role: "group") do
             safe_join([render, render_menu], "\n")
           end
         else
@@ -54,7 +54,7 @@ module Trestle
 
       def button_label(content, options)
         icon = icon(@icon) if @icon
-        label = content_tag(:span, content, class: "btn-label")
+        label = tag.span(content, class: "btn-label")
 
         safe_join([icon, label].compact, " ")
       end
@@ -102,7 +102,7 @@ module Trestle
 
       def label
         safe_join([
-          super, content_tag(:span, "", class: "caret")
+          super, tag.span("", class: "caret")
         ], " ")
       end
 

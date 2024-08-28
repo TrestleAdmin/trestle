@@ -36,7 +36,7 @@ module Trestle
         end
 
         def render(instance)
-          @template.content_tag(:td, content(instance), class: classes, data: data)
+          @template.tag.td(content(instance), class: classes, data: data)
         end
 
         def render?

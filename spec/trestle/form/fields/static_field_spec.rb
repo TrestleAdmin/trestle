@@ -27,7 +27,7 @@ describe Trestle::Form::Fields::StaticField, type: :helper do
 
   context "when passed a block" do
     subject do
-      builder.static_field(:title) { content_tag(:span, "Title from block") }
+      builder.static_field(:title) { tag.span("Title from block") }
     end
 
     it "renders the given block" do

@@ -11,7 +11,7 @@ module Trestle
         end
 
         def field
-          content_tag(:div, class: "time-select") do
+          tag.div(class: "time-select") do
             builder.raw_time_select(name, options, html_options, &block)
           end
         end

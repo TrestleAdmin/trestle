@@ -10,6 +10,6 @@
   <% if current_page.first? %>
     <span class="page-link">&laquo;</span>
   <% else %>
-    <%= link_to content_tag(:span, "&laquo;".html_safe), url, class: "page-link", remote: remote %>
+    <%= link_to tag.span("&laquo;".html_safe), url, class: "page-link", remote: remote %>
   <% end %>
 </li>
