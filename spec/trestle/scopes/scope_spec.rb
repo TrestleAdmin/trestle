@@ -5,7 +5,7 @@ describe Trestle::Scopes::Scope do
   let(:options) { {} }
   let(:block) { nil }
 
-  subject(:scope) { Trestle::Scopes::Scope.new(admin, :my_scope, options, &block) }
+  subject(:scope) { Trestle::Scopes::Scope.new(admin, :my_scope, **options, &block) }
 
   describe "#to_param" do
     it "returns the scope name" do
@@ -114,33 +114,29 @@ describe Trestle::Scopes::Scope do
   end
 
   describe "#default?" do
-    context "with options[:default] = true" do
+    it "returns false if default option not specified" do
+      expect(scope.default?).to be false
+    end
+
+    context "with default: true" do
       let(:options) { { default: true } }
 
       it "returns true" do
         expect(scope.default?).to be true
       end
     end
-
-    context "without options[:default]" do
-      it "returns false" do
-        expect(scope.default?).to be false
-      end
-    end
   end
 
   describe "#count?" do
-    context "with options[:count] = false" do
+    it "returns true if count option not specified" do
+      expect(scope.count?).to be true
+    end
+
+    context "with count: false" do
       let(:options) { { count: false } }
 
       it "returns true" do
         expect(scope.count?).to be false
-      end
-    end
-
-    context "without options[:count]" do
-      it "returns true by default" do
-        expect(scope.count?).to be true
       end
     end
   end

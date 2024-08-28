@@ -76,14 +76,16 @@ module Trestle
         admin.define_adapter_method(:count, &block)
       end
 
-      def scopes(options={}, &block)
+      def scopes(defaults: {}, **options, &block)
+        defaults = defaults.merge(options.slice(:count))
+
         admin.scopes.apply_options!(options)
-        admin.scopes.append(options, &block) if block_given?
+        admin.scopes.append(**defaults, &block) if block_given?
       end
 
-      def scope(name, scope=nil, options={}, &block)
+      def scope(name, scope=nil, **options, &block)
         scopes do
-          scope(name, scope, options, &block)
+          scope(name, scope, **options, &block)
         end
       end
 

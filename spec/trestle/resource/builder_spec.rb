@@ -345,7 +345,7 @@ describe Trestle::Resource::Builder, remove_const: true do
       scope = admin.scopes.first
 
       expect(scope.name).to eq(:my_scope)
-      expect(scope.options).to eq(label: "Custom Label")
+      expect(scope.label).to eq("Custom Label")
       expect(scope.block).to eq(b)
     end
 
@@ -364,7 +364,7 @@ describe Trestle::Resource::Builder, remove_const: true do
         scope = admin.scopes.first
 
         expect(scope.name).to eq(:my_scope)
-        expect(scope.options).to eq(label: "Custom Label")
+        expect(scope.label).to eq("Custom Label")
         expect(scope.block).to eq(b)
       end
     end
@@ -387,7 +387,7 @@ describe Trestle::Resource::Builder, remove_const: true do
       scope = admin.scopes.first
 
       expect(scope.name).to eq(:my_scope)
-      expect(scope.options).to eq(label: "Custom Label")
+      expect(scope.label).to eq("Custom Label")
       expect(scope.block).to eq(b)
     end
 
