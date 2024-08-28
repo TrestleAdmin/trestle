@@ -7,6 +7,14 @@ Trestle.resource(:users) do
     model.alphabetical.includes(:office)
   end
 
+  scopes layout: :columns do
+    Office.order(country: :asc, city: :asc).each do |office|
+      scope office.city, group: office.country do
+        office.users
+      end
+    end
+  end
+
   table do
     column :avatar, header: false, align: :center do |user|
       avatar(fallback: user.initials, style: "background: #{user.avatar_color}") { gravatar(user.email, d: user.avatar_type_value) }
