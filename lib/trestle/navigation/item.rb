@@ -3,7 +3,7 @@ module Trestle
     class Item
       attr_reader :name, :path, :options
 
-      def initialize(name, path=nil, options={})
+      def initialize(name, path=nil, **options)
         @name, @path, @options = name.to_s, path, options
       end
 

@@ -3,7 +3,7 @@ module Trestle
     class Group
       attr_reader :name, :options
 
-      def initialize(name, options={})
+      def initialize(name, **options)
         @name, @options = name.to_s, options
       end
 
@@ -26,7 +26,7 @@ module Trestle
       end
 
       def merge(other)
-        self.class.new(name, options.merge(other.options))
+        self.class.new(name, **options.merge(other.options))
       end
 
       def priority
