@@ -4,6 +4,6 @@ class CustomField < Trestle::Form::Field
   end
 
   def field
-    content_tag(:div, "Custom Field", class: "p-2 text-white bg-info font-weight-bold")
+    tag.div("Custom Field", class: "p-2 text-white bg-info font-weight-bold")
   end
 end

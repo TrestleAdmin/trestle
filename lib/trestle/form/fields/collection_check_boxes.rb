@@ -18,7 +18,7 @@ module Trestle
             if block
               block.call(b)
             else
-              content_tag(:div, class: default_wrapper_class) do
+              tag.div(class: default_wrapper_class) do
                 b.check_box(class: input_class) + b.label(class: label_class) { b.text }
               end
             end

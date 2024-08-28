@@ -1,5 +1,5 @@
 <% if tabs.any? || render_sidebar_as_tab? -%>
-  <%= content_tag :ul, class: "nav nav-tabs", data: local_assigns.fetch(:data, {}) do %>
+  <%= tag.ul(class: "nav nav-tabs", data: local_assigns.fetch(:data, {})) do %>
     <% tabs.each do |name, tab| %>
       <li class="nav-item">
         <%= link_to tab.label, "##{tab.id(("modal" if modal_request?))}", class: ["nav-link", ("active" if name == tabs.keys.first)], role: "tab", data: { bs_toggle: "tab" } %>

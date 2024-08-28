@@ -19,7 +19,7 @@ module Trestle
     end
 
     def badge
-      content_tag(:span, options[:badge], class: "badge") if options[:badge]
+      tag.span(options[:badge], class: "badge") if options[:badge]
     end
   end
 end

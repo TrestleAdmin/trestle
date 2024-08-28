@@ -18,7 +18,7 @@ module Trestle
           if block
             template.capture(&block)
           else
-            content_tag(:p, value || default_value, class: "form-control-static")
+            tag.p(value || default_value, class: "form-control-static")
           end
         end
 

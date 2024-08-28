@@ -26,7 +26,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
   end
 
   context "when options[:prepend!] is present" do
-    let(:button) { template.content_tag(:button, "Label", class: "btn btn-primary") }
+    let(:button) { template.tag.button("Label", class: "btn btn-primary") }
     let(:options) { { prepend!: button } }
 
     it "prepends the addon within an input group without wrapping" do
@@ -37,7 +37,7 @@ RSpec.shared_examples "a form control" do |field, value, html_options|
   end
 
   context "when options[:append!] is present" do
-    let(:button) { template.content_tag(:button, "Label", class: "btn btn-primary") }
+    let(:button) { template.tag.button("Label", class: "btn btn-primary") }
     let(:options) { { append!: button } }
 
     it "appends the addon within an input group without wrapping" do

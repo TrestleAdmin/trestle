@@ -36,7 +36,7 @@
     <%= hook :head %>
   </head>
 
-  <%= content_tag :body, body_attributes do %>
+  <%= tag.body(**body_attributes) do %>
     <div id="app-wrapper" class="app-wrapper" data-controller="wrapper" data-action="click->wrapper#hideMobileSidebar touchstart->wrapper#hideMobileSidebar" data-wrapper-mobile-sidebar-outlet=".app-sidebar">
       <%= render "trestle/shared/sidebar" %>
 

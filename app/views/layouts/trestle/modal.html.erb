@@ -1,5 +1,5 @@
-<%= content_tag(:div, modal_wrapper_attributes) do %>
-  <%= content_tag(:div, modal_dialog_attributes) do %>
+<%= tag.div(**modal_wrapper_attributes) do %>
+  <%= tag.div(**modal_dialog_attributes) do %>
     <%= yield %>
   <% end %>
 <% end %>
