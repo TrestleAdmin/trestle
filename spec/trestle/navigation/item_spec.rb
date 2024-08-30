@@ -37,6 +37,43 @@ describe Trestle::Navigation::Item do
     expect(item.icon).to eq("fa fa-user")
   end
 
+  it "sets the path from parameters" do
+    item = Trestle::Navigation::Item.new(:test, "/path")
+    expect(item.path).to eq("/path")
+  end
+
+  it "sets the path from the admin via options (using symbol)" do
+    admin = double(path: "/admin")
+    expect(Trestle).to receive(:lookup).with(:admin).and_return(admin)
+    item = Trestle::Navigation::Item.new(:test, admin: :admin)
+    expect(item.path).to eq("/admin")
+  end
+
+  it "sets the path from the admin and action via options (using symbol)" do
+    admin = double
+    expect(admin).to receive(:path).with(:show).and_return("/admin")
+    expect(Trestle).to receive(:lookup).with(:admin).and_return(admin)
+    item = Trestle::Navigation::Item.new(:test, admin: :admin, action: :show)
+    expect(item.path).to eq("/admin")
+  end
+
+  it "sets the path from the admin via options (using class)" do
+    admin = double(path: "/admin")
+    item = Trestle::Navigation::Item.new(:test, admin: admin)
+    expect(item.path).to eq("/admin")
+  end
+
+  it "raises an error if symbol admin via options can't be found" do
+    expect(Trestle).to receive(:lookup).with(:admin).and_return(nil)
+    item = Trestle::Navigation::Item.new(:test, admin: :admin)
+    expect { item.path }.to raise_error(ActionController::UrlGenerationError, "No admin found named :admin")
+  end
+
+  it "uses # as the fallback path if no path or admin provided" do
+    item = Trestle::Navigation::Item.new(:test)
+    expect(item.path).to eq("#")
+  end
+
   it "sorts by priority" do
     i1 = Trestle::Navigation::Item.new(:test1)
     i2 = Trestle::Navigation::Item.new(:test2, nil, priority: :first)

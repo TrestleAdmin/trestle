@@ -24,10 +24,6 @@ module Trestle
           @items = []
         end
 
-        def default_path
-          @admin ? @admin.path : nil
-        end
-
         def item(name, path=nil, **options)
           if options[:group]
             group = Group.new(options[:group])
@@ -35,10 +31,10 @@ module Trestle
             group = @current_group
           end
 
-          options = options.merge(group: group) if group
-          options = options.merge(admin: @admin) if @admin
+          options.merge!(group: group) if group
+          options.merge!(admin: @admin) if @admin
 
-          items << Item.new(name, path || default_path, **options)
+          items << Item.new(name, path, **options)
         end
 
         def group(name, **options)
