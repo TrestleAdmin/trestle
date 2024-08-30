@@ -203,8 +203,19 @@ describe Trestle::Resource::Builder, remove_const: true do
     end
   end
 
-  describe "#params" do
+  describe "#permitted_params" do
     it "sets an explicit permitted_params block" do
+      Trestle::Resource::Builder.create(:tests) do
+        permitted_params do |params|
+          params.require(:test).permit(:name)
+        end
+      end
+
+      params = ActionController::Parameters.new({ test: { name: "Test", ignored: 123 }})
+      expect(::TestsAdmin.permitted_params(params)).to eq(ActionController::Parameters.new(name: "Test").permit!)
+    end
+
+    it "is aliased as #params" do
       Trestle::Resource::Builder.create(:tests) do
         params do |params|
           params.require(:test).permit(:name)
