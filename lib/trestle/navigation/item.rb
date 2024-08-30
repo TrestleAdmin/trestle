@@ -1,7 +1,7 @@
 module Trestle
   class Navigation
     class Item
-      attr_reader :name, :path, :options
+      attr_reader :name, :options
 
       def initialize(name, path=nil, **options)
         @name, @path, @options = name.to_s, path, options
@@ -35,8 +35,25 @@ module Trestle
         options[:group] || NullGroup.new
       end
 
+      def path
+        if @path
+          @path
+        elsif admin = self.admin
+          admin.path(options[:action] || :index)
+        else
+          "#"
+        end
+      end
+
       def admin
-        options[:admin]
+        case options[:admin]
+        when nil, false
+          return
+        when Symbol, String
+          Trestle.lookup(options[:admin]) or raise ActionController::UrlGenerationError, "No admin found named #{options[:admin].inspect}"
+        else
+          options[:admin]
+        end
       end
 
       def label
@@ -56,7 +73,7 @@ module Trestle
       end
 
       def html_options
-        options.except(:admin, :badge, :group, :icon, :if, :label, :priority, :unless)
+        options.except(:action, :admin, :badge, :group, :icon, :if, :label, :priority, :unless)
       end
 
       def visible?(context)
