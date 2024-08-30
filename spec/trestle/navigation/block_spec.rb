@@ -18,7 +18,7 @@ describe Trestle::Navigation::Block do
 
       expect(items[1]).to eq(Trestle::Navigation::Item.new(:with_path, "/123"))
 
-      expect(items[2]).to eq(Trestle::Navigation::Item.new(:with_options, nil))
+      expect(items[2]).to eq(Trestle::Navigation::Item.new(:with_options))
       expect(items[2].options).to eq(icon: "fa fa-plus")
 
       expect(items[3]).to eq(Trestle::Navigation::Item.new(:with_path_and_options, "/path"))

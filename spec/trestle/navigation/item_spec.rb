@@ -9,7 +9,7 @@ describe Trestle::Navigation::Item do
   end
 
   it "can override the label from options" do
-    item = Trestle::Navigation::Item.new(:test, nil, label: "Custom Label")
+    item = Trestle::Navigation::Item.new(:test, label: "Custom Label")
     expect(item.label).to eq("Custom Label")
   end
 
@@ -23,7 +23,7 @@ describe Trestle::Navigation::Item do
 
   it "sets the group from options" do
     group = Trestle::Navigation::Group.new(:test)
-    item = Trestle::Navigation::Item.new(:test, nil, group: group)
+    item = Trestle::Navigation::Item.new(:test, group: group)
 
     expect(item.group).to eq(group)
   end
@@ -33,7 +33,7 @@ describe Trestle::Navigation::Item do
   end
 
   it "sets the icon from options" do
-    item = Trestle::Navigation::Item.new(:test, nil, icon: "fa fa-user")
+    item = Trestle::Navigation::Item.new(:test, icon: "fa fa-user")
     expect(item.icon).to eq("fa fa-user")
   end
 
@@ -76,17 +76,17 @@ describe Trestle::Navigation::Item do
 
   it "sorts by priority" do
     i1 = Trestle::Navigation::Item.new(:test1)
-    i2 = Trestle::Navigation::Item.new(:test2, nil, priority: :first)
-    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: :last)
-    i4 = Trestle::Navigation::Item.new(:test4, nil, priority: 50)
+    i2 = Trestle::Navigation::Item.new(:test2, priority: :first)
+    i3 = Trestle::Navigation::Item.new(:test3, priority: :last)
+    i4 = Trestle::Navigation::Item.new(:test4, priority: 50)
 
     expect([i1, i2, i3, i4].sort).to eq([i2, i1, i4, i3])
   end
 
   it "sorts by name if priority is equal" do
-    i1 = Trestle::Navigation::Item.new(:test1, nil, priority: 1)
-    i2 = Trestle::Navigation::Item.new(:test2, nil, priority: 1)
-    i3 = Trestle::Navigation::Item.new(:test3, nil, priority: 1)
+    i1 = Trestle::Navigation::Item.new(:test1, priority: 1)
+    i2 = Trestle::Navigation::Item.new(:test2, priority: 1)
+    i3 = Trestle::Navigation::Item.new(:test3, priority: 1)
 
     expect([i3, i1, i2].sort).to eq([i1, i2, i3])
   end
@@ -104,23 +104,23 @@ describe Trestle::Navigation::Item do
   end
 
   it "is not visible if options[:if] is provided and evaluates to false" do
-    item = Trestle::Navigation::Item.new(:test, nil, if: -> { false })
+    item = Trestle::Navigation::Item.new(:test, if: -> { false })
     expect(item.visible?(self)).to be false
   end
 
   it "is not visible if options[:unless] if provided and evaluates to true" do
-    item = Trestle::Navigation::Item.new(:test, nil, unless: -> { true })
+    item = Trestle::Navigation::Item.new(:test, unless: -> { true })
     expect(item.visible?(self)).to be false
   end
 
   it "can set html_options" do
-    item = Trestle::Navigation::Item.new(:test, nil, icon: "fa", class: "text-danger")
+    item = Trestle::Navigation::Item.new(:test, icon: "fa", class: "text-danger")
     expect(item.html_options).to eq({ class: "text-danger" })
   end
 
   context "with a badge" do
     it "has a badge" do
-      item = Trestle::Navigation::Item.new(:test, nil, badge: { text: "123", class: "badge-success" })
+      item = Trestle::Navigation::Item.new(:test, badge: { text: "123", class: "badge-success" })
 
       expect(item.badge?).to be true
       expect(item.badge.text).to eq("123")
@@ -128,7 +128,7 @@ describe Trestle::Navigation::Item do
     end
 
     it "has a badge with a default class if full options not provided" do
-      item = Trestle::Navigation::Item.new(:test, nil, badge: "123")
+      item = Trestle::Navigation::Item.new(:test, badge: "123")
 
       expect(item.badge?).to be true
       expect(item.badge.text).to eq("123")
