@@ -43,9 +43,10 @@ module Trestle
         admin.define_adapter_method(:to_param, &block)
       end
 
-      def params(&block)
+      def permitted_params(&block)
         admin.define_adapter_method(:permitted_params, &block)
       end
+      alias params permitted_params
 
       def decorator(decorator)
         admin.decorator = decorator
