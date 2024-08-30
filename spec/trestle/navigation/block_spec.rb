@@ -74,6 +74,17 @@ describe Trestle::Navigation::Block do
       expect(items[1].path).to eq("/custom")
     end
 
+    it "delegates the path method to the admin" do
+      expect(admin).to receive(:path).with(:show).and_return("/456")
+
+      block = Trestle::Navigation::Block.new(admin) do
+        item :path_method, path(:show)
+      end
+
+      items = block.items(context)
+      expect(items[0].path).to eq("/456")
+    end
+
     it "yields the admin to the block" do
       expect { |b| Trestle::Navigation::Block.new(admin, &b).items(context) }.to yield_with_args(admin)
     end

@@ -17,6 +17,8 @@ module Trestle
       class Evaluator
         include EvaluationContext
 
+        delegate :path, to: :@admin
+
         attr_reader :items
 
         def initialize(admin=nil, context=nil)
