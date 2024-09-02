@@ -44,8 +44,8 @@ module Trestle
   end
 
   # Builds and registers a new admin resource
-  def self.resource(name, register_model: true, **options, &block)
-    register(Resource::Builder.create(name, options, &block), register_model: register_model)
+  def self.resource(name, **options, &block)
+    register(Resource::Builder.create(name, options, &block))
   end
 
   # Configuration methods
