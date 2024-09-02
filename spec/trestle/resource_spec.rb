@@ -26,7 +26,7 @@ describe Trestle::Resource, remove_const: true do
     subject!(:admin) { nil }
 
     it "raises a NameError exception" do
-      expect { definition }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:tests, model: MyModel)")
+      expect { definition.model }.to raise_exception(NameError, "Unable to find model Test. Specify a different model using Trestle.resource(:tests, model: MyModel)")
     end
   end
 
@@ -46,6 +46,18 @@ describe Trestle::Resource, remove_const: true do
 
   it "has a singular parameter name" do
     expect(admin.parameter_name).to eq("test")
+  end
+
+  it "registers the model by default" do
+    expect(admin.register_model?).to be true
+  end
+
+  context "when register_model: false is passed via options" do
+    let(:options) { { register_model: false } }
+
+    it "does not register the model" do
+      expect(admin.register_model?).to be false
+    end
   end
 
   it "has a breadcrumb trail" do
@@ -171,6 +183,10 @@ describe Trestle::Resource, remove_const: true do
 
     it "is singular" do
       expect(admin).to be_singular
+    end
+
+    it "does not register the model" do
+      expect(admin.register_model?).to be false
     end
 
     it "returns the show action path as the default path" do

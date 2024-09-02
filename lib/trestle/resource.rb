@@ -104,6 +104,10 @@ module Trestle
         options[:singular]
       end
 
+      def register_model?
+        options[:register_model] != false && !singular?
+      end
+
       def translate(key, options={})
         super(key, options.merge({
           model_name:            model_name.titleize,

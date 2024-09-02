@@ -15,21 +15,15 @@ module Trestle
 
     def reset!
       @admins = {}
-      @models = {}
+      @models = nil
     end
 
     def empty?
       none?
     end
 
-    def register(admin, register_model: true)
+    def register(admin)
       @admins[admin.admin_name] = admin
-
-      if register_model && register_admin_for_model_loookup?(admin)
-        @models[admin.model.name] ||= admin
-      end
-
-      admin
     end
 
     def lookup_admin(admin)
@@ -43,7 +37,7 @@ module Trestle
     def lookup_model(model)
       # Lookup each class in the model's ancestor chain
       while model
-        admin = @models[model.name]
+        admin = models[model.name]
         return admin if admin
 
         model = model.superclass
@@ -54,8 +48,14 @@ module Trestle
     end
 
   private
-    def register_admin_for_model_loookup?(admin)
-      admin.respond_to?(:model) && !(admin.respond_to?(:singular?) && admin.singular?)
+    def models
+      @models ||= @admins.values.inject({}) { |result, admin|
+        if admin.respond_to?(:register_model?) && admin.register_model?
+          result[admin.model.name] ||= admin
+        end
+
+        result
+      }
     end
   end
 end

@@ -60,14 +60,8 @@ describe Trestle, remove_const: true do
 
     it "registers the admin in the registry" do
       expect(Trestle::Resource::Builder).to receive(:create).with(:test, { path: "/custom" })
-      expect(Trestle.registry).to receive(:register).with(admin, register_model: true)
+      expect(Trestle.registry).to receive(:register).with(admin)
       Trestle.resource(:test, path: "/custom")
-    end
-
-    it "passes the :register_model option to Registry#register" do
-      expect(Trestle::Resource::Builder).to receive(:create).with(:test, { path: "/custom" })
-      expect(Trestle.registry).to receive(:register).with(admin, register_model: false)
-      Trestle.resource(:test, path: "/custom", register_model: false)
     end
   end
 

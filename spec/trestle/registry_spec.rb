@@ -37,15 +37,9 @@ describe Trestle::Registry, remove_const: true do
       end
 
       context "with register_model: false" do
-        it "does not register the admin for model lookup" do
-          registry.register(admin, register_model: false)
-          expect(registry.lookup_model(model)).to be_nil
-        end
-      end
+        let(:admin) { Trestle.resource(:test, model: model, register_model: false) }
 
-      context "with a singular admin" do
         it "does not register the admin for model lookup" do
-          allow(admin).to receive(:singular?).and_return(true)
           registry.register(admin)
           expect(registry.lookup_model(model)).to be_nil
         end
