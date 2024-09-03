@@ -36,8 +36,6 @@ RSpec.configure do |config|
   config.include RSpecHtmlMatchers
 
   config.before(:example) do
-    Trestle.registry.reset!
-
     Trestle.config.hooks = Trestle::Hook::Set.new
     Trestle.config.menus = []
   end
