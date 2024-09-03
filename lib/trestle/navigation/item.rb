@@ -39,7 +39,7 @@ module Trestle
         if @path
           @path
         elsif admin = self.admin
-          admin.path(options[:action] || :index)
+          admin.path(options[:action])
         else
           "#"
         end
