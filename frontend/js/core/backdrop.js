@@ -12,6 +12,10 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_LOADING = 'loading'
 
 export default class Backdrop {
+  #config
+  #element
+  #isAppended
+
   static getInstance () {
     if (!this.instance) {
       this.instance = new Backdrop()
@@ -21,31 +25,31 @@ export default class Backdrop {
   }
 
   constructor () {
-    this._config = Default
-    this._element = null
-    this._isAppended = false
+    this.#config = Default
+    this.#element = null
+    this.#isAppended = false
   }
 
   show (callback) {
-    this._append()
+    this.#append()
 
-    if (this._config.isAnimated) {
-      reflow(this._getElement())
+    if (this.#config.isAnimated) {
+      reflow(this.#getElement())
     }
 
-    this._getElement().classList.add(CLASS_NAME_SHOW)
+    this.#getElement().classList.add(CLASS_NAME_SHOW)
 
-    this._emulateAnimation(() => {
+    this.#emulateAnimation(() => {
       execute(callback)
     })
   }
 
   hide (callback) {
     if (Modal.existing.length === 0) {
-      this._getElement().classList.remove(CLASS_NAME_SHOW)
+      this.#getElement().classList.remove(CLASS_NAME_SHOW)
     }
 
-    this._emulateAnimation(() => {
+    this.#emulateAnimation(() => {
       this.dispose()
       execute(callback)
       Modal.restorePrevious()
@@ -53,48 +57,46 @@ export default class Backdrop {
   }
 
   dispose () {
-    if (!this._isAppended) {
+    if (!this.#isAppended) {
       return
     }
 
     if (Modal.existing.length === 0) {
-      this._element.remove()
-      this._isAppended = false
+      this.#element.remove()
+      this.#isAppended = false
     }
   }
 
   loading (isLoading) {
-    const el = this._getElement()
+    const el = this.#getElement()
     el.classList[isLoading ? 'add' : 'remove'](CLASS_NAME_LOADING)
   }
 
-  // Private
-
-  _getElement () {
-    if (!this._element) {
+  #getElement () {
+    if (!this.#element) {
       const backdrop = document.createElement('div')
-      backdrop.className = this._config.className
-      if (this._config.isAnimated) {
+      backdrop.className = this.#config.className
+      if (this.#config.isAnimated) {
         backdrop.classList.add(CLASS_NAME_FADE)
       }
 
-      this._element = backdrop
+      this.#element = backdrop
     }
 
-    return this._element
+    return this.#element
   }
 
-  _append () {
-    if (this._isAppended) {
+  #append () {
+    if (this.#isAppended) {
       return
     }
 
-    document.body.append(this._getElement())
+    document.body.append(this.#getElement())
 
-    this._isAppended = true
+    this.#isAppended = true
   }
 
-  _emulateAnimation (callback) {
-    executeAfterTransition(callback, this._getElement(), this._config.isAnimated)
+  #emulateAnimation (callback) {
+    executeAfterTransition(callback, this.#getElement(), this.#config.isAnimated)
   }
 }

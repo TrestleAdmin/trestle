@@ -33,33 +33,31 @@ export default class ErrorModal {
   }
 
   show () {
-    this._append(this._buildModal())
+    this.#append(this.#buildModal())
   }
 
-  // Private
-
-  _buildModal () {
-    const el = this._buildWrapper()
+  #buildModal () {
+    const el = this.#buildWrapper()
     el.querySelector('.modal-title').textContent = this.title
 
-    const iframe = this._buildIframe(this.content)
+    const iframe = this.#buildIframe(this.content)
     el.querySelector('.modal-body').append(iframe)
 
     return el
   }
 
-  _buildWrapper () {
+  #buildWrapper () {
     return new DOMParser().parseFromString(TEMPLATE(), 'text/html').body.childNodes[0]
   }
 
-  _buildIframe () {
+  #buildIframe () {
     const iframe = document.createElement('iframe')
     iframe.className = 'error-iframe'
     iframe.srcdoc = this.content
     return iframe
   }
 
-  _append (el) {
+  #append (el) {
     document.getElementById('modal').append(el)
   }
 }

@@ -26,7 +26,7 @@ export default class extends ApplicationController {
       .then((modal) => {
         this.modal = modal
 
-        const modalController = this._getModalController(modal)
+        const modalController = this.#getModalController(modal)
         modalController.modalTrigger = this
 
         this.dispatch('loaded', { detail: modal })
@@ -68,7 +68,7 @@ export default class extends ApplicationController {
     return this.element.nodeName === 'A'
   }
 
-  _getModalController (modal) {
+  #getModalController (modal) {
     return this.application.getControllerForElementAndIdentifier(modal, 'modal')
   }
 }

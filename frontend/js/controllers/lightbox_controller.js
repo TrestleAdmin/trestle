@@ -109,7 +109,7 @@ export default class extends ApplicationController {
       itemData.type = 'html'
       itemData.html = `<video controls><source src="${itemData.src}"></video>`
 
-      this.setDefaultVideoDimensions(itemData)
+      this.#setDefaultVideoDimensions(itemData)
     }
 
     return itemData
@@ -126,7 +126,7 @@ export default class extends ApplicationController {
         itemData.type = 'html'
         itemData.html = `<iframe src="${src}" allowfullscreen></iframe>`
 
-        this.setDefaultVideoDimensions(itemData)
+        this.#setDefaultVideoDimensions(itemData)
       }
     }
 
@@ -151,7 +151,7 @@ export default class extends ApplicationController {
     }
   }
 
-  setDefaultVideoDimensions(itemData) {
+  #setDefaultVideoDimensions(itemData) {
     itemData.w ||= this.defaultVideoWidthValue
     itemData.h ||= this.defaultVideoHeightValue
   }
