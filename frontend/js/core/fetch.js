@@ -13,6 +13,7 @@ export function fetchWithErrorHandling (url, options = {}) {
     .catch(response => {
       const title = `${response.status} (${response.statusText})`
       response.text().then(content => ErrorModal.show({ title, content }))
+      throw response
     })
 }
 
@@ -29,4 +30,5 @@ export function fetchTurboStream (url, options = {}) {
   return fetchWithErrorHandling(url, options)
     .then(response => response.text())
     .then(html => renderStreamMessage(html))
+    .catch(() => { /* Error already handled */ })
 }
