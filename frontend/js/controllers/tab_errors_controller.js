@@ -20,7 +20,7 @@ export default class extends ApplicationController {
     const errorCount = pane.querySelectorAll(this.errorSelectorValue).length
 
     if (errorCount > 0) {
-      const badge = this._createErrorBadge(errorCount)
+      const badge = this.#createErrorBadge(errorCount)
       link.appendChild(badge)
     }
   }
@@ -34,7 +34,7 @@ export default class extends ApplicationController {
     })
   }
 
-  _createErrorBadge (count) {
+  #createErrorBadge (count) {
     const badge = document.createElement('span')
 
     badge.classList.add('badge', 'badge-danger', 'badge-pill')

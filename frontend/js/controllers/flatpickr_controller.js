@@ -23,7 +23,7 @@ export default class extends ApplicationController {
   }
 
   setup (selectedDates, dateStr, instance) {
-    this._createClearButton(instance)
+    this.#createClearButton(instance)
   }
 
   get options () {
@@ -33,7 +33,7 @@ export default class extends ApplicationController {
     }
   }
 
-  _createClearButton (instance) {
+  #createClearButton (instance) {
     if (this.element.dataset.allowClear) {
       const clearButton = document.createElement('button')
 
