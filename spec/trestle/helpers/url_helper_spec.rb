@@ -141,6 +141,11 @@ describe Trestle::UrlHelper, type: :helper do
         expect(link).to have_tag("a", text: "Admin Link", with: { href: "/admin/test", "data-turbo-frame": "modal" })
       end
     end
+
+    it "sets the data-turbo-method attribute when passed :method option" do
+      link = admin_link_to("Admin Link", admin: :test, method: :post)
+      expect(link).to have_tag("a", text: "Admin Link", with: { href: "/admin/test", "data-turbo-method": "post" })
+    end
   end
 
   describe "#admin_url_for", remove_const: true do

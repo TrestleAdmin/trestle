@@ -19,6 +19,7 @@ module Trestle
     #            otherwise falling back to the current admin if available
     # action   - Optional admin action to link to. Will default to :show if instance is provided,
     #            otherwise the admin's root action (usually :index) will be used
+    # method   - Optional request method (e.g. :delete), that will be set as `data-turbo-method`
     # params   - Hash of URL parameters to pass to `instance_path` or `path` admin methods (default: {})
     # options  - Hash of options to forward to the `link_to` helper (default: {})
     # block    - Optional block to capture to use as the link content
@@ -33,7 +34,7 @@ module Trestle
     #
     # Returns a HTML-safe String.
     # Raises ActionController::UrlGenerationError if the admin cannot be automatically inferred.
-    def admin_link_to(content=nil, instance=nil, admin: nil, action: nil, params: {}, **options, &block)
+    def admin_link_to(content=nil, instance=nil, admin: nil, action: nil, method: nil, params: {}, **options, &block)
       # Block given - ignore content parameter and capture content from block
       if block_given?
         instance, content = content, capture(&block)
@@ -65,6 +66,8 @@ module Trestle
       else
         options[:data][:turbo_frame] ||= (modal_request? ? "modal" : "_top")
       end
+
+      options[:data][:turbo_method] ||= method if method
 
       link_to(content, path, options)
     end
