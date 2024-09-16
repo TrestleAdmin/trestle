@@ -78,13 +78,13 @@ describe Trestle::UrlHelper, type: :helper do
 
     context "when no instance is provided" do
       it "generates a link to the index action of the given admin" do
-        expect(current_admin).to receive(:path).with(:index, **{}).and_return("/admin/test")
+        expect(current_admin).to receive(:path).with(:index, {}).and_return("/admin/test")
         link = admin_link_to("Collection Link", admin: :test)
         expect(link).to have_tag("a", text: "Collection Link", with: { href: "/admin/test" })
       end
 
       it "uses provided action and params" do
-        expect(current_admin).to receive(:path).with(:summary, scope: :test).and_return("/admin/test/summary?scope=test")
+        expect(current_admin).to receive(:path).with(:summary, { scope: :test }).and_return("/admin/test/summary?scope=test")
         link = admin_link_to("Collection Link", admin: :test, action: :summary, params: { scope: :test })
         expect(link).to have_tag("a", text: "Collection Link", with: { href: "/admin/test/summary?scope=test" })
       end
@@ -103,7 +103,7 @@ describe Trestle::UrlHelper, type: :helper do
       end
 
       it "falls back to the current admin if not explicitly provided" do
-        expect(current_admin).to receive(:path).with(:index, **{}).and_return("/admin/test")
+        expect(current_admin).to receive(:path).with(:index, {}).and_return("/admin/test")
         link = admin_link_to("Collection Link")
         expect(link).to have_tag("a", text: "Collection Link", with: { href: "/admin/test" })
       end
@@ -178,34 +178,34 @@ describe Trestle::UrlHelper, type: :helper do
         alternate_instance = alternate_admin.new(self)
         expect(alternate_admin).to receive(:new).with(self).and_return(alternate_instance)
         expect(alternate_instance).to receive(:to_param).with(instance).and_return(123)
-        expect(alternate_instance).to receive(:path).with(:show, id: 123).and_return("/alternate/123")
+        expect(alternate_instance).to receive(:path).with(:show, { id: 123 }).and_return("/alternate/123")
         expect(admin_url_for(instance, admin: :alternate)).to eq("/alternate/123")
       end
     end
 
     context "when no instance is given" do
       it "returns the path using by delegating to #path on the admin" do
-        expect(current_admin).to receive(:path).with(:index, **{}).and_return("/admin")
+        expect(current_admin).to receive(:path).with(:index, {}).and_return("/admin")
         expect(admin_url_for(action: :index)).to eq("/admin")
       end
 
       it "returns the path to the index action by default" do
-        expect(current_admin).to receive(:path).with(:index, **{}).and_return("/admin")
+        expect(current_admin).to receive(:path).with(:index, {}).and_return("/admin")
         expect(admin_url_for).to eq("/admin")
       end
 
       it "passes additional options to the call to #path" do
-        expect(current_admin).to receive(:path).with(:index, scope: :limited).and_return("/admin?scope=limited")
+        expect(current_admin).to receive(:path).with(:index, { scope: :limited }).and_return("/admin?scope=limited")
         expect(admin_url_for(action: :index, scope: :limited)).to eq("/admin?scope=limited")
       end
 
       it "uses the specified admin when passed as a symbol" do
-        expect(alternate_admin).to receive(:path).with(:index, **{}).and_return("/alternate")
+        expect(alternate_admin).to receive(:path).with(:index, {}).and_return("/alternate")
         expect(admin_url_for(action: :index, admin: :alternate)).to eq("/alternate")
       end
 
       it "uses the specified admin when passed as a class" do
-        expect(alternate_admin).to receive(:path).with(:index, **{}).and_return("/alternate")
+        expect(alternate_admin).to receive(:path).with(:index, {}).and_return("/alternate")
         expect(admin_url_for(action: :index, admin: alternate_admin)).to eq("/alternate")
       end
     end

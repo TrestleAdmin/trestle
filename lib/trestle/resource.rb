@@ -119,7 +119,7 @@ module Trestle
 
       def instance_path(instance, action: :show, **options)
         options.merge!(id: to_param(instance)) unless singular?
-        path(action, **options)
+        path(action, options)
       end
 
       def routes

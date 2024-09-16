@@ -106,12 +106,12 @@ module Trestle
 
       if instance
         if target.respond_to?(:instance_path)
-          target.instance_path(instance, **params.merge(action: action))
+          target.instance_path(instance, action: action, **params)
         else
-          target.path(action, **params.merge(id: target.to_param(instance)))
+          target.path(action, params.merge(id: target.to_param(instance)))
         end
       else
-        target.path(action, **params)
+        target.path(action, params)
       end
     end
 
