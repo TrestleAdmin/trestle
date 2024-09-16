@@ -30,6 +30,9 @@ module Trestle
       # Given object is already an admin class
       return admin if admin.is_a?(Class) && admin < Trestle::Admin
 
+      # Given object is already an admin instance
+      return admin if admin.is_a?(Trestle::Admin)
+
       @admins[admin.to_s]
     end
     alias lookup lookup_admin

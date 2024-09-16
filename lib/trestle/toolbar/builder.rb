@@ -5,16 +5,16 @@ module Trestle
         @template = template
       end
 
-      def button(label, options={}, &block)
-        Button.new(@template, label, options, &block)
+      def button(label, **options, &block)
+        Button.new(@template, label, **options, &block)
       end
 
-      def link(label, instance_or_url={}, options={}, &block)
-        Link.new(@template, label, instance_or_url, options, &block)
+      def link(label, instance_or_url=nil, **options, &block)
+        Link.new(@template, label, instance_or_url, **options, &block)
       end
 
-      def dropdown(label=nil, options={}, &block)
-        Dropdown.new(@template, label, options, &block)
+      def dropdown(label=nil, **options, &block)
+        Dropdown.new(@template, label, **options, &block)
       end
 
       # Only methods explicitly tagged as builder methods will be automatically

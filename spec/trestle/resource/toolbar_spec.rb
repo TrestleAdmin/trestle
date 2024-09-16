@@ -9,6 +9,8 @@ describe Trestle::Resource::Toolbar::Builder do
   subject(:builder) { Trestle::Resource::Toolbar::Builder.new(template) }
 
   before(:each) do
+    allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
+
     allow(admin).to receive(:t).with("buttons.new", default: "New %{model_name}").and_return("New Resource")
     allow(admin).to receive(:t).with("buttons.save", default: "Save %{model_name}").and_return("Save Resource")
     allow(admin).to receive(:t).with("buttons.delete", default: "Delete %{model_name}").and_return("Delete Resource")

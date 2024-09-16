@@ -44,7 +44,7 @@ end
 shared_examples "a toolbar item with a dropdown" do |tag, attrs|
   include_context "template"
 
-  let(:admin) { double }
+  let(:admin) { double(root_action: :index) }
 
   let(:options) { {} }
 
@@ -58,6 +58,7 @@ shared_examples "a toolbar item with a dropdown" do |tag, attrs|
   end
 
   before(:each) {
+    allow(Trestle).to receive(:lookup).with(admin).and_return(admin)
     allow(Trestle).to receive(:lookup).with(:test).and_return(admin)
     allow(admin).to receive(:path).and_return("/admin/test")
   }
@@ -109,7 +110,7 @@ shared_examples "a toolbar item with a split dropdown" do |tag, attrs|
 end
 
 describe Trestle::Toolbar::Button do
-  subject(:button) { Trestle::Toolbar::Button.new(template, "Label", options, &block) }
+  subject(:button) { Trestle::Toolbar::Button.new(template, "Label", **options, &block) }
 
   let(:options) { {} }
   let(:block) { nil }
@@ -119,7 +120,7 @@ describe Trestle::Toolbar::Button do
 end
 
 describe Trestle::Toolbar::Link do
-  subject(:link) { Trestle::Toolbar::Link.new(template, "Label", "#", options, &block) }
+  subject(:link) { Trestle::Toolbar::Link.new(template, "Label", "#", **options, &block) }
 
   let(:options) { {} }
   let(:block) { nil }
@@ -129,7 +130,7 @@ describe Trestle::Toolbar::Link do
 end
 
 describe Trestle::Toolbar::Dropdown do
-  subject(:dropdown) { Trestle::Toolbar::Dropdown.new(template, "Label", options, &block) }
+  subject(:dropdown) { Trestle::Toolbar::Dropdown.new(template, "Label", **options, &block) }
 
   let(:options) { {} }
   let(:block) { nil }

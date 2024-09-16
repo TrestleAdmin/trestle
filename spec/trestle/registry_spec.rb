@@ -81,6 +81,13 @@ describe Trestle::Registry, remove_const: true do
       end
     end
 
+    context "given an instance of an admin class" do
+      it "returns the admin instance" do
+        admin = TestAdmin.new(self)
+        expect(registry.lookup(admin)).to eq(admin)
+      end
+    end
+
     context "given a string or symbol" do
       it "returns the admin class corresponding to the given string/symbol" do
         expect(registry.lookup(:test)).to eq(TestAdmin)
