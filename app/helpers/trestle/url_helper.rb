@@ -138,10 +138,10 @@ module Trestle
         result = fallback
       end
 
-      if result
+      if result && result.is_a?(Class)
         # Instantiate admin with current context
-        result = result.new(self) if result.is_a?(Class)
-
+        result.new(self)
+      elsif result
         result
       elsif raise
         raise ActionController::UrlGenerationError,
