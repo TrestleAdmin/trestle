@@ -5,15 +5,14 @@ module Trestle
 
       delegate :admin_link_to, :button_tag, :tag, :safe_join, :icon, to: :@template
 
-      def initialize(template, label, options={}, &block)
+      def initialize(template, label, icon: nil, style: nil, **options, &block)
         @template = template
         @label, @options, @block = label, options
 
         @menu = Menu.new(template)
         @menu.build(&block) if block_given?
 
-        @icon = options.delete(:icon)
-        @style = options.delete(:style)
+        @icon, @style = icon, style
       end
 
       def ==(other)
@@ -77,21 +76,13 @@ module Trestle
     class Link < Item
       attr_reader :instance_or_url
 
-      def initialize(template, label, instance_or_url={}, options={}, &block)
-        if instance_or_url.is_a?(Hash)
-          super(template, label, instance_or_url, &block)
-        else
-          super(template, label, options, &block)
-          @instance_or_url = instance_or_url
-        end
+      def initialize(template, label, instance_or_url=nil, **options, &block)
+        super(template, label, **options, &block)
+        @instance_or_url = instance_or_url
       end
 
       def render
-        if @instance_or_url
-          admin_link_to(button_label(label, options), instance_or_url, options)
-        else
-          admin_link_to(button_label(label, options), options)
-        end
+        admin_link_to(button_label(label, options), instance_or_url, **options)
       end
     end
 

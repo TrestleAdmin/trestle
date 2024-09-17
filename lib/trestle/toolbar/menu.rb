@@ -42,7 +42,7 @@ module Trestle
           options[:class] = Array(options[:class])
           options[:class] << "dropdown-item"
 
-          item { admin_link_to(content, instance_or_url, options, &block) }
+          item { admin_link_to(content, instance_or_url, **options, &block) }
         end
 
         def header(text)

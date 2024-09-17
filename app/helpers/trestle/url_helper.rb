@@ -12,15 +12,17 @@ module Trestle
     # 3) It sets data-turbo-frame appropriately for modal and non-modal contexts to ensure
     #    the admin can correctly detect modal requests.
     #
-    # content         - HTML or text content to use as the link content
-    #                   (will be ignored if a block is provided)
-    # instance_or_url - model instance, or explicit String path
-    # options         - Hash of options (default: {})
-    #                   :admin  - Optional explicit admin (symbol or admin class)
-    #                   :action - Controller action to generate the link to
-    #                   :params - Additional params to use when generating the link URL
-    #                   (all other options are forwarded to the `link_to` helper)
-    # block           - Optional block to capture to use as the link content
+    # content  - HTML or text content to use as the link content
+    #            (will be ignored if a block is provided)
+    # instance - Optional model instance, or explicit String path
+    # admin    - Optional admin instance to link to. Will be inferred from instance if provided,
+    #            otherwise falling back to the current admin if available
+    # action   - Optional admin action to link to. Will default to :show if instance is provided,
+    #            otherwise the admin's root action (usually :index) will be used
+    # method   - Optional request method (e.g. :delete), that will be set as `data-turbo-method`
+    # params   - Hash of URL parameters to pass to `instance_path` or `path` admin methods (default: {})
+    # options  - Hash of options to forward to the `link_to` helper (default: {})
+    # block    - Optional block to capture to use as the link content
     #
     # Examples
     #
@@ -32,62 +34,42 @@ module Trestle
     #
     # Returns a HTML-safe String.
     # Raises ActionController::UrlGenerationError if the admin cannot be automatically inferred.
-    def admin_link_to(content, instance_or_url=nil, options={}, &block)
+    def admin_link_to(content=nil, instance=nil, admin: nil, action: nil, method: nil, params: {}, **options, &block)
       # Block given - ignore content parameter and capture content from block
       if block_given?
-        instance_or_url, options = content, instance_or_url || {}
-        content = capture(&block)
+        instance, content = content, capture(&block)
       end
 
-      if instance_or_url.is_a?(String)
-        # Treat string URL as regular link
-        link_to(content, instance_or_url, options)
+      # Treat string URL as regular link
+      if instance.is_a?(String)
+        return link_to(content, instance, options)
+      end
+
+      # Determine target admin
+      target = lookup_admin_from_options(
+        instance: instance,
+        admin: admin,
+        fallback: self&.admin,
+        raise: true
+      )
+
+      # Set default action depending on instance or not
+      action ||= (instance ? :show : target.root_action)
+
+      path = admin_url_for(instance, admin: target, action: action, **params)
+
+      # Determine link data options
+      options[:data] ||= {}
+
+      if MODAL_ACTIONS.include?(action) && target&.form&.modal?
+        options[:data][:controller] ||= "modal-trigger"
       else
-        # Normalize options if instance is not provided
-        if instance_or_url.is_a?(Hash)
-          instance, options = nil, instance_or_url
-        else
-          instance = instance_or_url
-        end
-
-        # Determine admin
-        if options.key?(:admin)
-          admin = Trestle.lookup(options.delete(:admin))
-        elsif instance
-          admin = admin_for(instance)
-        end
-
-        admin ||= self.admin if respond_to?(:admin)
-
-        if admin
-          # Ensure admin has controller context
-          admin = admin.new(self) if admin.is_a?(Class)
-
-          # Generate path
-          action = options.delete(:action) || :show
-          params = options.delete(:params) || {}
-
-          if admin.respond_to?(:instance_path) && instance
-            path = admin.instance_path(instance, params.reverse_merge(action: action))
-          else
-            params[:id] ||= admin.to_param(instance) if instance
-            path = admin.path(action, params)
-          end
-
-          # Determine link data options
-          options[:data] ||= {}
-
-          if MODAL_ACTIONS.include?(action) && admin.respond_to?(:form) && admin.form.modal?
-            options[:data][:controller] ||= "modal-trigger"
-          else
-            options[:data][:turbo_frame] ||= (modal_request? ? "modal" : "_top")
-          end
-
-          link_to(content, path, options)
-        else
-          raise ActionController::UrlGenerationError, "An admin could not be inferred. Please specify an admin using the :admin option."
-        end
+        options[:data][:turbo_frame] ||= (modal_request? ? "modal" : "_top")
       end
+
+      options[:data][:turbo_method] ||= method if method
+
+      link_to(content, path, options)
     end
 
     # Returns the admin path for a given instance.
@@ -97,7 +79,12 @@ module Trestle
     #
     # instance - The model instance to generate a path for
     # admin    - Optional admin (symbol or admin class)
-    # options  - Hash of options to pass to `instance_path` or `path` admin methods
+    # action   - Optional admin action to generate the URL for. Will default to :show if
+    #            instance is provided, otherwise the admin's root action (usually :index)
+    #            will be used
+    # raise    - Whether to raise a ActionController::UrlGenerationError if the admin
+    #            cannot be determined, either from the admin parameter or automatically
+    # params   - Hash of URL parameters to pass to `instance_path` or `path` admin methods
     #
     # Examples
     #
@@ -105,18 +92,26 @@ module Trestle
     #   <%= admin_url_for(article, admin: :special_articles) %>
     #
     # Returns a String, or nil if the admin cannot be automatically inferred.
-    def admin_url_for(instance, admin: nil, **options)
-      admin = Trestle.lookup(admin) if admin
-      admin ||= admin_for(instance)
-      return unless admin
+    def admin_url_for(instance=nil, admin: nil, action: nil, raise: false, **params)
+      target = lookup_admin_from_options(
+        instance: instance,
+        admin: admin,
+        fallback: self&.admin,
+        raise: raise
+      )
+      return unless target
 
-      # Ensure admin has controller context
-      admin = admin.new(self) if admin.is_a?(Class)
+      # Set default action depending on instance or not
+      action ||= (instance ? :show : target.root_action)
 
-      if admin.respond_to?(:instance_path)
-        admin.instance_path(instance, options)
+      if instance
+        if target.respond_to?(:instance_path)
+          target.instance_path(instance, action: action, **params)
+        else
+          target.path(action, params.merge(id: target.to_param(instance)))
+        end
       else
-        admin.path(options[:action] || :show, id: admin.to_param(instance))
+        target.path(action, params)
       end
     end
 
@@ -131,6 +126,27 @@ module Trestle
     # Returns a Trestle::Admin subclass or nil if no matching admin found.
     def admin_for(instance)
       Trestle.lookup_model(instance.class)
+    end
+
+  private
+    def lookup_admin_from_options(instance: nil, admin: nil, fallback: nil, raise: true)
+      if admin
+        result = Trestle.lookup(admin)
+      elsif instance
+        result = Trestle.lookup_model(instance.class) || fallback
+      else
+        result = fallback
+      end
+
+      if result && result.is_a?(Class)
+        # Instantiate admin with current context
+        result.new(self)
+      elsif result
+        result
+      elsif raise
+        raise ActionController::UrlGenerationError,
+          "An admin could not be inferred. Please specify an admin using the :admin option."
+      end
     end
   end
 end

@@ -117,10 +117,8 @@ module Trestle
       end
       alias t translate
 
-      def instance_path(instance, options={})
-        action = options.fetch(:action) { :show }
-        options = options.merge(id: to_param(instance)) unless singular?
-
+      def instance_path(instance, action: :show, **options)
+        options.merge!(id: to_param(instance)) unless singular?
         path(action, options)
       end
 
