@@ -55,7 +55,7 @@ module Trestle
     #
     # Examples
     #
-    #   <%= pagination collection: Account.page(params[:page]), remote: true %>
+    #   <%= pagination collection: Account.page(params[:page]) %>
     #
     # Returns the HTML representation of the pagination controls as a HTML-safe String.
     def pagination(collection:, entry_name: nil, **options)

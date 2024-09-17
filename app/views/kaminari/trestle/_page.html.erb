@@ -5,8 +5,7 @@
     current_page:  a page object for the currently displayed page
     total_pages:   total number of pages
     per_page:      number of items to fetch per page
-    remote:        data-remote
 -%>
 <li class="page-item<% if page.current? %> active<% end %>">
-  <%= link_to tag.span(page), url, class: "page-link", remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil %>
+  <%= link_to tag.span(page), url, class: "page-link", rel: page.next? ? 'next' : page.prev? ? 'prev' : nil %>
 </li>
