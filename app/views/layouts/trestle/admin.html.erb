@@ -44,7 +44,9 @@
         <%= render "trestle/shared/header" %>
 
         <main class="app-main">
-          <%= yield %>
+          <turbo-frame id="main">
+            <%= yield %>
+          </turbo-frame>
         </main>
 
         <%= render "trestle/shared/footer" %>
