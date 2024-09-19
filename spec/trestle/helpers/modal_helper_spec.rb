@@ -36,7 +36,7 @@ describe Trestle::ModalHelper, type: :helper do
       })
     end
 
-    it "merges teh controller from modal_options if provided" do
+    it "merges the controller from modal_options if provided" do
       modal_options!(controller: "custom-modal")
 
       expect(modal_wrapper_attributes).to eq({
