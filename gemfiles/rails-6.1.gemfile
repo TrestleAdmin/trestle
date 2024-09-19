@@ -17,5 +17,6 @@ end
 gem 'rails', '~> 6.1.0'
 gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.4'
+gem 'turbo-rails', '2.0.7'
 
 gemspec path: "../"
