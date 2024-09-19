@@ -5,6 +5,10 @@ import cookie from '../core/cookie'
 export default class extends ApplicationController {
   static targets = ["inner"]
 
+  static values = {
+    scrollMargin: { type: Number, default: 100 }
+  }
+
   connect () {
     this.scrollToActive()
   }
@@ -25,9 +29,15 @@ export default class extends ApplicationController {
   }
 
   scrollToActive () {
-    const active = this.element.getElementsByClassName('active')[0]
-    if (active && this.hasInnerTarget) {
-      this.innerTarget.scrollTop = active.offsetTop - 100
+    if (!this.hasInnerTarget) return
+
+    const active = this.element.querySelector('.active')
+    if (!active) return
+
+    // Check if bottom of active element is outside of visible navigation height (plus scroll margin)
+    const activeOffset = active.offsetTop + active.offsetHeight + this.scrollMarginValue
+    if (activeOffset > this.innerTarget.clientHeight) {
+      this.innerTarget.scrollTop = activeOffset - this.innerTarget.clientHeight
     }
   }
 }
