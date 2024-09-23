@@ -6,19 +6,21 @@
       <%= render "trestle/flash/flash" %>
     </turbo-frame>
 
-    <%= render "utilities" %>
-    <%= render "tabs", data: { controller: "tabs tab-errors" } %>
+    <turbo-frame id="content" data-controller="reloadable" data-turbo-action="advance">
+      <%= render "utilities" %>
+      <%= render "tabs", data: { controller: "tabs tab-errors" } %>
 
-    <% if local_assigns.fetch(:wrapper, true) %>
-      <%= container do |c| %>
+      <% if local_assigns.fetch(:wrapper, true) %>
+        <%= container do |c| %>
+          <%= yield %>
+
+          <% c.sidebar do %>
+            <%= content_for(:sidebar) %>
+          <% end if content_for?(:sidebar) %>
+        <% end %>
+      <% else %>
         <%= yield %>
-
-        <% c.sidebar do %>
-          <%= content_for(:sidebar) %>
-        <% end if content_for?(:sidebar) %>
       <% end %>
-    <% else %>
-      <%= yield %>
-    <% end %>
+    </turbo-frame>
   </div>
 </turbo-frame>
