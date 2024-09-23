@@ -1,1 +1,2 @@
 <%= turbo_stream.replace instance, template: "trestle/resource/show" %>
+<%= turbo_stream.reload if modal_request? %>
