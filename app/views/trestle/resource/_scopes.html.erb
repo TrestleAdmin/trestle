@@ -6,7 +6,7 @@
       <ul class="scope-list">
         <% scopes.each do |scope| %>
           <li>
-            <%= link_to persistent_params.merge(scope: (scope unless scope.active?(params))), class: ["scope", ("active" if scope.active?(params))] do %>
+            <%= link_to persistent_params.merge(scope: scope), class: ["scope", ("active" if scope.active?(params))] do %>
               <strong><%= scope.label %></strong>
               <% if scope.count? %>(<%= number_with_delimiter(scope.count(admin.collection(params))) %>)<% end %>
             <% end %>
