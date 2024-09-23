@@ -1,22 +1,24 @@
-<%= render "header", hide_breadcrumbs: local_assigns.fetch(:hide_breadcrumbs, false) if local_assigns.fetch(:header, true) %>
+<turbo-frame id="main" data-turbo-action="advance">
+  <%= render "header", hide_breadcrumbs: local_assigns.fetch(:hide_breadcrumbs, false) if local_assigns.fetch(:header, true) %>
 
-<div class="main-content-area" data-scroll-target>
-  <turbo-frame id="flash">
-    <%= render "trestle/flash/flash" %>
-  </turbo-frame>
+  <div class="main-content-area" data-scroll-target>
+    <turbo-frame id="flash">
+      <%= render "trestle/flash/flash" %>
+    </turbo-frame>
 
-  <%= render "utilities" %>
-  <%= render "tabs", data: { controller: "tabs tab-errors" } %>
+    <%= render "utilities" %>
+    <%= render "tabs", data: { controller: "tabs tab-errors" } %>
 
-  <% if local_assigns.fetch(:wrapper, true) %>
-    <%= container do |c| %>
+    <% if local_assigns.fetch(:wrapper, true) %>
+      <%= container do |c| %>
+        <%= yield %>
+
+        <% c.sidebar do %>
+          <%= content_for(:sidebar) %>
+        <% end if content_for?(:sidebar) %>
+      <% end %>
+    <% else %>
       <%= yield %>
-
-      <% c.sidebar do %>
-        <%= content_for(:sidebar) %>
-      <% end if content_for?(:sidebar) %>
     <% end %>
-  <% else %>
-    <%= yield %>
-  <% end %>
-</div>
+  </div>
+</turbo-frame>
