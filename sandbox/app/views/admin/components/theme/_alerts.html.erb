@@ -3,11 +3,17 @@
     <h2 class="m-0">Alerts</h2>
   </header>
 
-  <%= render "trestle/flash/alert", html_class: "alert-primary", icon: icon("alert-icon fas fa-bell"), alert: { title: "Primary" } do %>
-    <p>This custom alert has the <code>.alert-primary</code> class. This is the <a href="#">Link style</a>.</p>
-  <% end %>
+  <%= render "trestle/flash/alert", html_class: "alert-primary",
+                                    icon: icon("alert-icon fas fa-bell"),
+                                    alert: {
+                                      title: "Primary",
+                                      message: alert_message(".alert-primary")
+                                    } %>
 
-  <%= render "trestle/flash/alert", html_class: "alert-secondary", icon: icon("alert-icon fas fa-download"), alert: { title: "Secondary" } do %>
-    <p>This custom alert has the <code>.alert-secondary</code> class. This is the <a href="#">Link style</a>.</p>
-  <% end %>
+  <%= render "trestle/flash/alert", html_class: "alert-secondary",
+                                    icon: icon("alert-icon fas fa-download"),
+                                    alert: {
+                                      title: "Secondary",
+                                      message: alert_message(".alert-secondary")
+                                    } %>
 <% end %>

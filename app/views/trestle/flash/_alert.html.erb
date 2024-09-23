@@ -12,6 +12,8 @@
       <p><%= alert[:message] %></p>
     <% end %>
 
-    <%= yield if block_given? %>
+    <% if local_assigns[:errors] %>
+      <%= render "trestle/flash/debug", errors: errors %>
+    <% end %>
   </div>
 </div>

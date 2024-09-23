@@ -8,12 +8,29 @@
         <p>These alert types are generated internally by Trestle within resourceful admins.</p>
       <% end %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-success", icon: icon("alert-icon far fa-check-circle"), alert: { title: admin.t("flash.create.success.title"), message: admin.t("flash.create.success.message", lowercase_model_name: "resource") } %>
-      <%= render "trestle/flash/alert", html_class: "alert-danger", icon: icon("alert-icon far fa-times-circle"), alert: { title: admin.t("flash.create.failure.title"), message: admin.t("flash.create.failure.message", lowercase_model_name: "resource") } %>
+      <%= render "trestle/flash/alert", html_class: "alert-success",
+                                        icon: icon("alert-icon far fa-check-circle"),
+                                        alert: {
+                                          title: admin.t("flash.create.success.title"),
+                                          message: admin.t("flash.create.success.message",
+                                          lowercase_model_name: "resource")
+                                        } %>
 
-      <%= render layout:  "trestle/flash/alert", locals: { html_class: "alert-danger", icon: icon("alert-icon far fa-times-circle"), alert: { title: admin.t("flash.create.failure.title"), message: admin.t("flash.create.failure.message", lowercase_model_name: "resource") } } do %>
-        <%= render "trestle/flash/debug", errors: { field: "is required", another: "is already taken" } %>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-danger",
+                                        icon: icon("alert-icon far fa-times-circle"),
+                                        alert: {
+                                          title: admin.t("flash.create.failure.title"),
+                                          message: admin.t("flash.create.failure.message",
+                                          lowercase_model_name: "resource")
+                                        } %>
+
+      <%= render "trestle/flash/alert", html_class: "alert-danger",
+                                        icon: icon("alert-icon far fa-times-circle"),
+                                        alert: {
+                                          title: admin.t("flash.create.failure.title"),
+                                          message: admin.t("flash.create.failure.message", lowercase_model_name: "resource")
+                                        },
+                                        errors: { field: "is required", another: "is already taken" } %>
     <% end %>
 
     <%= container do |c| %>
@@ -21,29 +38,47 @@
         <h2>Custom alerts</h2>
       <% end %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-primary", icon: icon("alert-icon fas fa-bell"), alert: { title: "Primary" } do %>
-        <p>This custom alert has the <code>.alert-primary</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-primary",
+                                        icon: icon("alert-icon fas fa-bell"),
+                                        alert: {
+                                          title: "Primary",
+                                          message: alert_message(".alert-primary")
+                                        } %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-secondary", icon: icon("alert-icon fas fa-download"), alert: { title: "Secondary" } do %>
-        <p>This custom alert has the <code>.alert-secondary</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-secondary",
+                                        icon: icon("alert-icon fas fa-download"),
+                                        alert: {
+                                          title: "Secondary",
+                                          message: alert_message(".alert-secondary")
+                                        } %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-info", icon: icon("alert-icon fas fa-exclamation"), alert: { title: "Info" } do %>
-        <p>This custom alert has the <code>.alert-info</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-info",
+                                        icon: icon("alert-icon fas fa-exclamation"),
+                                        alert: {
+                                          title: "Info",
+                                          message: alert_message(".alert-info")
+                                        } %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-warning", icon: icon("alert-icon fas fa-radiation-alt"), alert: { title: "Warning" } do %>
-        <p>This custom alert has the <code>.alert-warning</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-warning",
+                                        icon: icon("alert-icon fas fa-radiation-alt"),
+                                        alert: {
+                                          title: "Warning",
+                                          message: alert_message(".alert-warning")
+                                        } %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-light", icon: icon("alert-icon far fa-sun"), alert: { title: "Light" } do %>
-        <p>This custom alert has the <code>.alert-light</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-light",
+                                        icon: icon("alert-icon fas fa-sun"),
+                                        alert: {
+                                          title: "Light",
+                                          message: alert_message(".alert-light")
+                                        } %>
 
-      <%= render "trestle/flash/alert", html_class: "alert-dark", icon: icon("alert-icon far fa-moon"), alert: { title: "Dark" } do %>
-        <p>This custom alert has the <code>.alert-dark</code> class. This is the <a href="#">Link style</a>.</p>
-      <% end %>
+      <%= render "trestle/flash/alert", html_class: "alert-dark",
+                                        icon: icon("alert-icon far fa-moon"),
+                                        alert: {
+                                          title: "Dark",
+                                          message: alert_message(".alert-dark")
+                                        } %>
     <% end %>
   </div>
 <% end %>
