@@ -33,6 +33,7 @@ module Trestle
       def index_turbo_frame(**attributes, &block)
         Trestle.deprecator.warn("The index_turbo_frame helper is deprecated and will be removed in future versions of Trestle.")
         yield
+        nil
       end
     end
   end
