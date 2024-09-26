@@ -1,34 +1,6 @@
 module Trestle
   module Turbo
     module FrameHelper
-      # Renders a <turbo-frame> container for an index view. An index turbo frame
-      # is by default reloadable (it will be refreshed by the `reload` turbo stream
-      # action), and has the Turbo visit behavior always set to "advance".
-      #
-      # attributes - Additional HTML attributes to add to the <turbo-frame> tag
-      #
-      # Examples
-      #
-      #   <%= index_turbo_frame do %> ...
-      #
-      #   <%= index_turbo_frame id: "articles-index",
-      #                         data: {
-      #                           reloadable_url_value: admin.path(:articles)
-      #                         } do %> ...
-      #
-      # Returns a HTML-safe String.
-      def index_turbo_frame(**attributes, &block)
-        defaults = {
-          id: "index",
-          data: {
-            controller: "reloadable",
-            turbo_action: "advance"
-          }
-        }
-
-        tag.turbo_frame(**defaults.merge(attributes), &block)
-      end
-
       # Renders a <turbo-frame> container for an instance/resource view. A resource
       # turbo frame sets its DOM id from the given instance and has a default target of
       # "_top" (except for modal requests).
@@ -52,6 +24,16 @@ module Trestle
         }
 
         tag.turbo_frame(**defaults.merge(attributes), &block)
+      end
+
+      # [DEPRECATED]
+      #
+      # The #content turbo-frame found in app/views/trestle/application/_layout.html.erb
+      # is now used as a common top-level hook for the 'reloadable' Stimulus controller.
+      def index_turbo_frame(**attributes, &block)
+        Trestle.deprecator.warn("The index_turbo_frame helper is deprecated and will be removed in future versions of Trestle.")
+        yield
+        nil
       end
     end
   end

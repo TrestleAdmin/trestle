@@ -1,1 +1,2 @@
 <%= turbo_stream.replace admin.build_instance({}, params), template: "trestle/resource/#{instance.persisted? ? "show" : "new"}" %>
+<%= turbo_stream.reload if modal_request? && instance.persisted? %>
