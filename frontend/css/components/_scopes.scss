@@ -6,22 +6,21 @@
   }
 
   &.grouped {
+    background: #fafafa;
+
+    dd {
+      padding: 0.375rem 0.5rem 0.375rem;
+    }
+
     @include media-breakpoint-up(md) {
       display: grid;
       grid-template-columns: auto 1fr;
     }
 
-
     @include media-breakpoint-down(md) {
       .scope-group-empty:first-child {
         display: none;
       }
-    }
-
-    background: #fafafa;
-
-    dd {
-      padding: 0.375rem 0.5rem 0.375rem;
     }
   }
 
