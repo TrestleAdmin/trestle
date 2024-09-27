@@ -11,9 +11,9 @@ $theme-colors: (
   @each $color, $value in $theme-colors {
     --#{$color}: #{$value};
 
-    --#{$color}-h: #{hue($value)};
-    --#{$color}-s: #{saturation($value)};
-    --#{$color}-l: #{lightness($value)};
+    --#{$color}-h: #{color.channel($value, "hue", $space: hsl)};
+    --#{$color}-s: #{color.channel($value, "saturation", $space: hsl)};
+    --#{$color}-l: #{color.channel($value, "lightness", $space: hsl)};
 
     --#{$color}-hue: var(--#{$color}-h);
     --#{$color}-saturation: var(--#{$color}-s);
