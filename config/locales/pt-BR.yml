@@ -70,7 +70,7 @@ pt-BR:
 
         failure:
           title: "Atenção!"
-          message: "O registro de %{model_name} foi deletado com sucesso."
+          message: "O registro de %{model_name} não pôde ser deletado."
 
     table:
       headers:
