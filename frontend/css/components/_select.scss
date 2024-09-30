@@ -13,6 +13,15 @@
         padding: $s2bs5-padding-y $s2bs5-padding-y;
       }
     }
+
+    .select2-results__options {
+      .select2-results__option[role="group"] {
+        .select2-results__group {
+          display: block;
+          font-size: $s2bs5-group-font-size;
+        }
+      }
+    }
   }
 
   .select2-selection--single {
