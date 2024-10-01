@@ -24,6 +24,9 @@ module Trestle
       attr_accessor :menu
 
       attr_accessor :form
+      attr_accessor :remove_form_attributes
+      attr_accessor :remove_table_attributes
+      attr_accessor :remove_select_attributes
 
       attr_writer :options
       attr_writer :breadcrumb
