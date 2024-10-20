@@ -19,8 +19,7 @@ group :test do
   gem 'haml', '~> 6.0'
 end
 
-gem 'rails', github: 'rails/rails'
-gem 'turbo-rails', github: 'hotwired/turbo-rails'
+gem 'rails', '~> 8.0.0.rc1'
 gem 'propshaft'
 gem 'sqlite3'
 

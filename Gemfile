@@ -24,9 +24,10 @@ end
 # gem 'rails', '~> 7.0.0'
 # gem 'rails', '~> 7.1.0'
 gem 'rails', '~> 7.2.0'
+# gem 'rails', '~> 8.0.0.rc1'
 
 gem 'haml'
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3'
 
 gem 'sprockets-rails'
 # gem 'sassc-rails'
