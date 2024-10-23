@@ -108,14 +108,12 @@ module Trestle
         end
 
         def destroy
-          deleting_referer = URI(request.referer).path == admin.instance_path(instance)
-
           if delete_instance
             respond_to do |format|
               flash[:message] = flash_message("destroy.success", title: "Success!", message: "The %{lowercase_model_name} was successfully deleted.")
 
               format.html { redirect_to_return_location(:destroy, instance, status: :see_other) { admin.path(:index) } }
-              format.turbo_stream { flash.discard } unless deleting_referer
+              format.turbo_stream { flash.discard } unless referer_is_instance_path?
               format.json { head :no_content }
 
               yield format if block_given?
@@ -137,6 +135,11 @@ module Trestle
               yield format if block_given?
             end
           end
+        end
+
+      private
+        def referer_is_instance_path?
+          request.referer && URI(request.referer).path == admin.instance_path(instance)
         end
       end
     end
