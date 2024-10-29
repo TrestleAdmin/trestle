@@ -29,6 +29,24 @@ feature 'Automatic resources', js: true do
     visit '/admin/automatic'
     click_link "1"
 
+    expect(page).to have_content("Created at")
+    expect(page).to have_content("Updated at")
+
+    fill_in "Title", with: "Updated Title"
+    click_button "Save Post"
+
+    expect(page).to have_content("The post was successfully updated.")
+  end
+
+  scenario 'update record while excluding attributes' do
+    create_test_post
+
+    visit '/admin/automatic_excluding'
+    click_link "1"
+
+    expect(page).not_to have_content("Created at")
+    expect(page).not_to have_content("Updated at")
+
     fill_in "Title", with: "Updated Title"
     click_button "Save Post"
 

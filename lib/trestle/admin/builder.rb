@@ -95,6 +95,12 @@ module Trestle
         end
       end
 
+      def exclude_form_attributes(*attributes)
+        attributes.each do |attribute|
+          @admin.excluded_form_attributes << attribute.to_sym
+        end
+      end
+
     protected
       def normalize_table_options(name, options)
         if name.is_a?(Hash)

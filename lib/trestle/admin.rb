@@ -149,6 +149,10 @@ module Trestle
         @additional_routes ||= []
       end
 
+      def excluded_form_attributes
+        @excluded_form_attributes ||= []
+      end
+
       def routes
         admin = self
 
