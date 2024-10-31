@@ -1,8 +1,8 @@
 module Trestle
   class Table
     class Automatic < Table
-      def initialize(admin)
-        super(sortable: true, admin: admin)
+      def initialize(admin, options={})
+        super(options.merge(sortable: true, admin: admin))
       end
 
       def columns

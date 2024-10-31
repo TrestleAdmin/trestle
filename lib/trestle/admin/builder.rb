@@ -49,7 +49,12 @@ module Trestle
 
       def table(name_or_options={}, options={}, &block)
         name, options = normalize_table_options(name_or_options, options)
-        admin.tables[name] = Table::Builder.build(options, &block)
+
+        if block_given?
+          admin.tables[name] = Table::Builder.build(options, &block)
+        else
+          admin.tables[name] = Table::Automatic.new(admin, options)
+        end
       end
 
       def form(options={}, &block)
