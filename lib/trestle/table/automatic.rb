@@ -10,7 +10,7 @@ module Trestle
       end
 
       def content_columns
-        admin.default_table_attributes.map.with_index do |attribute, index|
+        attributes.map.with_index do |attribute, index|
           case attribute.type
           when :association
             Column.new(attribute.association_name, sort: false)
@@ -29,6 +29,17 @@ module Trestle
 
       def actions_column
         ActionsColumn.new
+      end
+
+    private
+      def attributes
+        admin.default_table_attributes.reject { |attribute|
+          exclude?(attribute.name)
+        }
+      end
+
+      def exclude?(field)
+        Array(options[:exclude]).include?(field)
       end
     end
   end
