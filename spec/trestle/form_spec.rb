@@ -21,4 +21,13 @@ describe Trestle::Form do
 
     it { is_expected.to be_modal }
   end
+
+  context "without options[:wrapper]" do
+    it { is_expected.to be_wrapper }
+  end
+
+  context "with options[:wrapper] = false" do
+    subject(:form) { Trestle::Form.new(wrapper: false) }
+    it { is_expected.not_to be_wrapper }
+  end
 end

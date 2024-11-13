@@ -14,6 +14,6 @@
 
 <%= resource_turbo_frame(instance) do %>
   <%= trestle_form_for instance, url: admin.path(:create), method: :post do |f| %>
-    <%= render partial: "form", layout: modal_request? ? "modal" : "layout" %>
+    <%= render partial: "form", layout: modal_request? ? "modal" : "layout", locals: { wrapper: admin.form.wrapper? } %>
   <% end %>
 <% end %>

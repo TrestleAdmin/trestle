@@ -26,6 +26,10 @@ module Trestle
       options[:modal]
     end
 
+    def wrapper?
+      options.fetch(:wrapper, true)
+    end
+
     def dialog?
       Trestle.deprecator.warn("`Trestle::Form#dialog?` is deprecated. Please use `modal?` instead.")
       options[:modal]
