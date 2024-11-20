@@ -8,16 +8,10 @@ import { Tab } from 'bootstrap'
 export default class extends ApplicationController {
   connect () {
     this.element.querySelectorAll('.nav-link').forEach((link) => {
-      link.addEventListener('shown.bs.tab', this.saveActiveTab)
+      this.appendAction('shown.bs.tab', 'saveActiveTab', link)
     })
 
     this.focusActiveTab()
-  }
-
-  disconnect () {
-    this.element.querySelectorAll('.nav-link').forEach((link) => {
-      link.removeEventListener('shown.bs.tab', this.saveActiveTab)
-    })
   }
 
   saveActiveTab (e) {

@@ -4,11 +4,7 @@ import ErrorModal from '../core/error_modal'
 
 export default class extends ApplicationController {
   connect () {
-    this.element.addEventListener('turbo:before-fetch-response', this.handleFormResponse)
-  }
-
-  disconnect () {
-    this.element.removeEventListener('turbo:before-fetch-response', this.handleFormResponse)
+    this.appendAction('turbo:before-fetch-response', 'handleFormResponse')
   }
 
   handleFormResponse (e) {

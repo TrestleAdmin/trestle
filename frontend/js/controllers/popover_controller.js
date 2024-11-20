@@ -15,22 +15,16 @@ export default class extends ApplicationController {
 
   initialize () {
     this.boundHide = this.hide.bind(this)
-
-    this.boundOnShown = this.onShown.bind(this)
-    this.boundOnHidden = this.onHidden.bind(this)
   }
 
   connect () {
     this.popover = new Popover(this.element, this.popoverOptions)
 
-    this.element.addEventListener('shown.bs.popover', this.boundOnShown)
-    this.element.addEventListener('hidden.bs.popover', this.boundOnHidden)
+    this.appendAction('shown.bs.popover', 'onShown')
+    this.appendAction('hidden.bs.popover', 'onHidden')
   }
 
   disconnect () {
-    this.element.removeEventListener('shown.bs.popover', this.boundOnShown)
-    this.element.removeEventListener('hidden.bs.popover', this.boundOnHidden)
-
     document.removeEventListener('click', this.boundHide)
 
     if (this.popover._isEnabled) {

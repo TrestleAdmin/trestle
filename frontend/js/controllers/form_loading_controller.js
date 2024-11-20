@@ -3,19 +3,9 @@ import ApplicationController from './application_controller'
 const SUBMIT_BUTTON_SELECTOR = 'input[type="submit"], button[type="submit"]'
 
 export default class extends ApplicationController {
-  initialize () {
-    this.boundSubmit = this.submit.bind(this)
-    this.boundReset = this.reset.bind(this)
-  }
-
   connect () {
-    this.element.addEventListener('submit', this.boundSubmit)
-    this.element.addEventListener('turbo:before-fetch-response', this.boundReset)
-  }
-
-  disconnect () {
-    this.element.removeEventListener('submit', this.boundSubmit)
-    this.element.removeEventListener('turbo:before-fetch-response', this.boundReset)
+    this.appendAction('submit', 'submit')
+    this.appendAction('turbo:before-fetch-response', 'reset')
   }
 
   submit (e) {

@@ -5,16 +5,8 @@ import ApplicationController from './application_controller'
 import Modal from '../core/modal'
 
 export default class extends ApplicationController {
-  initialize () {
-    this.boundLoad = this.load.bind(this)
-  }
-
   connect () {
-    this.element.addEventListener('click', this.boundLoad)
-  }
-
-  disconnect () {
-    this.element.removeEventListener('click', this.boundLoad)
+    this.appendAction('click', 'load')
   }
 
   load (e) {

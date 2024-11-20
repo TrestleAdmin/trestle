@@ -16,21 +16,13 @@ export default class extends PopoverController {
   initialize () {
     super.initialize()
 
-    this.boundOnClick = this.onClick.bind(this)
-
     this.confirmed = false
   }
 
   connect () {
     super.connect()
 
-    this.element.addEventListener('click', this.boundOnClick, { capture: true })
-  }
-
-  disconnect () {
-    super.disconnect()
-
-    this.element.removeEventListener('click', this.boundOnClick, { capture: true })
+    this.appendAction('click', 'onClick:capture')
   }
 
   onClick (e) {
