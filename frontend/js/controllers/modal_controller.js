@@ -7,7 +7,7 @@ export default class extends ApplicationController {
     this.modal = new Modal(this.element)
     this.modal.show()
 
-    this.element.addEventListener('hidden.bs.modal', () => this.remove())
+    this.appendAction('hidden.bs.modal', 'remove')
   }
 
   disconnect () {

@@ -5,12 +5,8 @@ export default class extends ApplicationController {
     url: String
   }
 
-  initialize () {
-    this.boundScrollToTop = this.scrollToTop.bind(this)
-  }
-
   connect () {
-    this.element.addEventListener('turbo:frame-load', this.boundScrollToTop)
+    this.appendAction('turbo:frame-load', 'scrollToTop')
   }
 
   scrollToTop (e) {

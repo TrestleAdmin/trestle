@@ -2,7 +2,7 @@ import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
   connect () {
-    this.element.addEventListener('turbo:before-fetch-request', this.addTrestleModalHeader)
+    this.appendAction('turbo:before-fetch-request', 'addTrestleModalHeader')
   }
 
   addTrestleModalHeader (event) {

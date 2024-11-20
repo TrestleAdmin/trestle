@@ -3,16 +3,8 @@ import ApplicationController from './application_controller'
 export default class extends ApplicationController {
   static outlets = ['mobile-sidebar']
 
-  initialize () {
-    this.boundStopAnimating = this.stopAnimating.bind(this)
-  }
-
   connect () {
-    this.element.addEventListener('transitionend', this.boundStopAnimating)
-  }
-
-  disconnect () {
-    this.element.removeEventListener('transitionend', this.boundStopAnimating)
+    this.appendAction('transitionEnd', 'stopAnimating')
   }
 
   animate () {
