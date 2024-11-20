@@ -24,7 +24,7 @@ end
 # gem 'rails', '~> 7.0.0'
 # gem 'rails', '~> 7.1.0'
 gem 'rails', '~> 7.2.0'
-# gem 'rails', '~> 8.0.0.rc1'
+# gem 'rails', '~> 8.0.0'
 
 gem 'haml'
 gem 'sqlite3'
