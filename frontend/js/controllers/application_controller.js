@@ -14,6 +14,13 @@ export default class extends Controller {
     element.dataset.action = actions.join(' ')
   }
 
+  removeAction (event, method, element = this.element) {
+    const newAction = `${event}->${this.identifier}#${method}`
+    const actions = this.actionsList.filter(action => action !== newAction)
+
+    element.dataset.action = actions.join(' ')
+  }
+
   fetch (url, options = {}) {
     return fetchWithErrorHandling(url, options)
   }
