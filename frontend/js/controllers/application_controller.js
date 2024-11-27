@@ -5,7 +5,11 @@ import { fetchWithErrorHandling, fetchTurboStream } from '../core/fetch'
 export default class extends Controller {
   appendAction (event, method, element = this.element) {
     const actions = this.actionsList
-    actions.push(`${event}->${this.identifier}#${method}`)
+    const newAction = `${event}->${this.identifier}#${method}`
+
+    if (!actions.includes(newAction)) {
+      actions.push(newAction)
+    }
 
     element.dataset.action = actions.join(' ')
   }
