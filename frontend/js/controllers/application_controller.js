@@ -3,9 +3,10 @@ import { Controller } from '@hotwired/stimulus'
 import { fetchWithErrorHandling, fetchTurboStream } from '../core/fetch'
 
 export default class extends Controller {
-  appendAction (event, action, element = this.element) {
-    const actions = element.dataset.action ? element.dataset.action.split(' ') : []
-    actions.push(`${event}->${this.identifier}#${action}`)
+  appendAction (event, method, element = this.element) {
+    const actions = this.actionsList
+    actions.push(`${event}->${this.identifier}#${method}`)
+
     element.dataset.action = actions.join(' ')
   }
 
@@ -19,5 +20,13 @@ export default class extends Controller {
 
   get csrfToken () {
     return document.querySelector("[name='csrf-token']").content
+  }
+
+  get actionsList () {
+    if (element.dataset.action) {
+      return element.dataset.action.split(' ')
+    } else {
+      return []
+    }
   }
 }
