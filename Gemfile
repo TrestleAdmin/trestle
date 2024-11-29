@@ -10,10 +10,7 @@ group :test do
   gem 'guard-rspec',      require: false
 
   gem 'capybara'
-  gem 'capybara-selenium'
-  gem 'rexml'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
   gem 'puma'
   gem 'launchy'
   gem 'capybara-screenshot'
