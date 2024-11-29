@@ -54,7 +54,7 @@ jobs:
       if: failure()
       with:
         name: screenshots
-        path: ${{ github.workspace }}/tmp/capybara
+        path: ${{ github.workspace }}/spec/dummy/tmp/screenshots
         if-no-files-found: ignore
 
     - name: Coveralls Parallel
