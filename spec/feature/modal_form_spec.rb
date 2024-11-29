@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Modal forms', js: true do
+feature 'Modal forms', type: :system do
   include FeatureHelper
 
   scenario 'index' do
