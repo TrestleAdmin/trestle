@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Singular resources' do
+feature 'Singular resources', type: :system do
   scenario 'show' do
     create_test_post
 

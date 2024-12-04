@@ -1,6 +1,6 @@
 require "spec_helper"
 
-feature "Scopes" do
+feature "Scopes", type: :system do
   before(:each) do
     Post.create!(title: "Unpublished 1")
     Post.create!(title: "Unpublished 2")

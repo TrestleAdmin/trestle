@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Automatic resources', js: true do
+feature 'Automatic resources', type: :system do
   include FeatureHelper
 
   scenario 'index' do

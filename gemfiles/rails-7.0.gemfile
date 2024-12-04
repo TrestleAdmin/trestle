@@ -5,10 +5,7 @@ group :test do
   gem 'simplecov', require: false
 
   gem 'capybara'
-  gem 'capybara-selenium'
-  gem 'rexml'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'selenium-webdriver', '>= 4.9.0'
   gem 'puma'
 
   gem 'haml', '~> 6.0'

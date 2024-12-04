@@ -49,6 +49,14 @@ jobs:
     - name: Run Specs
       run: bundle exec rake
 
+    - name: Keep screenshots from failed feature specs
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: screenshots
+        path: ${{ github.workspace }}/spec/dummy/tmp/screenshots
+        if-no-files-found: ignore
+
     - name: Coveralls Parallel
       uses: coverallsapp/github-action@v2
       with:

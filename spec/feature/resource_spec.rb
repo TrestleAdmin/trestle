@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Resources', js: true do
+feature 'Resources', type: :system do
   include FeatureHelper
 
   scenario 'index' do
