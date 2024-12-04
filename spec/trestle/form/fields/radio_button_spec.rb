@@ -25,6 +25,18 @@ describe Trestle::Form::Fields::RadioButton, type: :helper do
     end
   end
 
+  context "when options[:id] is specified" do
+    let(:options) { { id: "custom-id" } }
+
+    it "overrides the id attribute on the input element" do
+      expect(subject).to have_tag("input.form-check-input", with: { id: "custom-id" })
+    end
+
+    it "overrides the for attribute on the label element" do
+      expect(subject).to have_tag("label", with: { for: "custom-id" })
+    end
+  end
+
   context "when options[:label] is specified" do
     let(:options) { { label: "Custom Label" } }
 
