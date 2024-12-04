@@ -27,6 +27,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rspec-rails",         ">= 5.1.2"
   spec.add_development_dependency "rspec-html-matchers", "~> 0.10.0"
-  spec.add_development_dependency "database_cleaner",    "~> 2.1.0"
   spec.add_development_dependency "ammeter",             "~> 1.1.5"
 end
