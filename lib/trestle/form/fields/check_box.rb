@@ -22,9 +22,21 @@ module Trestle
           tag.div(class: wrapper_class) do
             safe_join([
               builder.raw_check_box(name, options.merge(class: input_class), checked_value, unchecked_value),
-              builder.label(name, options[:label] || admin.human_attribute_name(name), class: label_class, value: (checked_value if options[:multiple]))
+              builder.label(name, label, label_options)
             ])
           end
+        end
+
+        def label
+          options[:label] || admin.human_attribute_name(name)
+        end
+
+        def label_options
+          {
+            class: label_class,
+            value: (checked_value if options[:multiple]),
+            for: options[:id]
+          }.compact
         end
 
         def extract_wrapper_options!

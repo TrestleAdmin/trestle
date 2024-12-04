@@ -23,9 +23,21 @@ module Trestle
           tag.div(class: wrapper_class) do
             safe_join([
               builder.raw_radio_button(name, tag_value, options.merge(class: input_class)),
-              builder.label(name, options[:label] || tag_value.to_s.humanize, value: tag_value, class: label_class)
+              builder.label(name, label, label_options)
             ])
           end
+        end
+
+        def label
+          options[:label] || tag_value.to_s.humanize
+        end
+
+        def label_options
+          {
+            class: label_class,
+            value: tag_value,
+            for: options[:id]
+          }.compact
         end
 
         def extract_wrapper_options!
