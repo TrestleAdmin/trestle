@@ -52,6 +52,26 @@ describe Trestle::Configurable do
     end
   end
 
+  describe "#dup" do
+    let(:original_options) { config.options }
+    let(:duplicate) { config.dup }
+
+    it "returns a new instance with a clone of the options" do
+      expect(duplicate.options).to eq(original_options)
+      expect(duplicate.options).not_to be(original_options)
+    end
+  end
+
+  describe "#clone" do
+    let(:original_options) { config.options }
+    let(:duplicate) { config.clone }
+
+    it "returns a new instance with a clone of the options" do
+      expect(duplicate.options).to eq(original_options)
+      expect(duplicate.options).not_to be(original_options)
+    end
+  end
+
   describe ".option" do
     it "defines accessors for the option" do
       configurable.option :myoption
@@ -111,6 +131,16 @@ describe Trestle::Configurable do
     it "converts to JSON representation" do
       config.first.second.third = "value"
       expect(config.as_json({})).to eq({ first: { second: { third: "value" } } })
+    end
+
+    describe "#dup" do
+      it "creates clones of nested options" do
+        config.first.second.third = "value"
+        duplicate = config.dup
+
+        expect(duplicate.second.options).to eq(config.second.options)
+        expect(duplicate.second.options).not_to be(config.second.options)
+      end
     end
   end
 end

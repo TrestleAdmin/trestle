@@ -40,6 +40,10 @@ module Trestle
       end
     end
 
+    def initialize_copy(original)
+      @options = original.options.deep_dup
+    end
+
     def inspect
       "#<#{self.class.name || "Anonymous(Trestle::Configurable)"}>"
     end
