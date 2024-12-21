@@ -2,8 +2,11 @@ module Trestle
   class Form
     class Automatic < Form
       def initialize(admin, options={})
+        @admin = admin
+        form = self
+
         super(options) do |instance|
-          admin.default_form_attributes.each do |attribute|
+          form.attributes.each do |attribute|
             if attribute.array?
               if [:string, :text].include?(attribute.type)
                 select attribute.name, nil, {}, { multiple: true, data: { tags: true, select_on_close: true }}
@@ -45,6 +48,17 @@ module Trestle
             end
           end
         end
+      end
+
+      def attributes
+        @admin.default_form_attributes.reject { |attribute|
+          exclude?(attribute.name)
+        }
+      end
+
+    private
+      def exclude?(field)
+        Array(options[:exclude]).include?(field)
       end
     end
   end
