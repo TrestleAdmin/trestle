@@ -29,8 +29,13 @@ export default class extends ApplicationController {
   get options () {
     return {
       allowInput: true,
-      altInput: true
+      altInput: true,
+      now: this.now
     }
+  }
+
+  get now () {
+    return new Date()
   }
 
   #createClearButton (instance) {
