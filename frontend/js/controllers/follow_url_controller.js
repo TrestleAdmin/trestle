@@ -31,6 +31,6 @@ export default class extends ApplicationController {
   }
 
   ignoreElement (node) {
-    return node.matches('a, input, button, .select-row')
+    return node.closest('a, input, button, .select-row')
   }
 }
