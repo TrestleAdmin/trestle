@@ -43,13 +43,13 @@ module Trestle
 
       def default_table_attributes
         default_attributes.reject do |attribute|
-          inheritance_column?(attribute) || counter_cache_column?(attribute)
+          inheritance_column?(attribute) || counter_cache_column?(attribute) || admin.remove_table_attributes&.include?(attribute.name.to_s)
         end
       end
 
       def default_form_attributes
         default_attributes.reject do |attribute|
-          primary_key?(attribute) || inheritance_column?(attribute) || counter_cache_column?(attribute)
+          primary_key?(attribute) || inheritance_column?(attribute) || counter_cache_column?(attribute) || admin.remove_form_attributes&.include?(attribute.name.to_s)
         end
       end
 
