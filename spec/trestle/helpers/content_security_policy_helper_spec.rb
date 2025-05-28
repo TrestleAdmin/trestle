@@ -12,7 +12,10 @@ describe Trestle::ContentSecurityPolicyHelper, type: :helper do
 
     context "when content_security_policy is enabled" do
       context "when content_security_policy_nonce is 'testnonce'" do
-        before { allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce") }
+        before do
+          allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce")
+          allow(Trestle.config).to receive(:nonced_scripts).and_return(true)
+        end
 
         it "adds the nonce attribute" do
           expect(helper.javascript_include_tag(script_name)).to have_tag("script[src*='#{script_name}'][nonce='testnonce']")
@@ -30,7 +33,10 @@ describe Trestle::ContentSecurityPolicyHelper, type: :helper do
 
     context "when content_security_policy is enabled on rails versions before nonce: true" do
       context "when content_security_policy_nonce is 'testnonce'" do
-        before { allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce") }
+        before do
+          allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce")
+          allow(Trestle.config).to receive(:nonced_scripts).and_return(true)
+        end
 
         context "with Rails < 6.0.0" do
           include_context "rails_version", "5.2.0"
@@ -56,7 +62,10 @@ describe Trestle::ContentSecurityPolicyHelper, type: :helper do
 
     context "when content_security_policy is enabled" do
       context "when content_security_policy_nonce is 'testnonce'" do
-        before { allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce") }
+        before do
+          allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce")
+          allow(Trestle.config).to receive(:nonced_styles).and_return(true)
+        end
 
         it "adds the nonce attribute" do
           expect(helper.stylesheet_link_tag(style_name)).to have_tag("link[href*='#{style_name}'][rel='stylesheet'][nonce='testnonce']")
@@ -74,7 +83,10 @@ describe Trestle::ContentSecurityPolicyHelper, type: :helper do
 
     context "when content_security_policy is enabled on Rails versions before nonce: true" do
       context "when content_security_policy_nonce is 'testnonce'" do
-        before { allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce") }
+        before do
+          allow(helper).to receive(:content_security_policy_nonce).and_return("testnonce")
+          allow(Trestle.config).to receive(:nonced_styles).and_return(true)
+        end
 
         context "with Rails < 8.0.0" do
           it "adds nonce attribute with the direct nonce value" do

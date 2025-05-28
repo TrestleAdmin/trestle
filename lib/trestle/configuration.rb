@@ -65,6 +65,14 @@ module Trestle
       menus << Navigation::Block.new(&block)
     end
 
+    ## Content Security Policy Options
+
+    # Enable nonces for styles if a nonce generator is configured
+    option :nonced_styles, false
+
+    # Enable nonces for scripts if a nonce generator is configured
+    option :nonced_scripts, false
+
     ## Extension Options
 
     # [Internal] List of helper modules to include in all Trestle controllers
