@@ -2,6 +2,12 @@ module Trestle
   class Resource
     module Controller
       module Actions
+        if Gem::Version.new(Rack::RELEASE) < Gem::Version.new("3.1")
+          UNPROCESSABLE_CONTENT = :unprocessable_entity
+        else
+          UNPROCESSABLE_CONTENT = :unprocessable_content
+        end
+
         def index
           respond_to do |format|
             format.html
@@ -36,9 +42,9 @@ module Trestle
             respond_to do |format|
               flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
 
-              format.html { render "new", status: :unprocessable_content }
-              format.turbo_stream { render "create", status: :unprocessable_content } if modal_request?
-              format.json { render json: instance.errors, status: :unprocessable_content }
+              format.html { render "new", status: UNPROCESSABLE_CONTENT }
+              format.turbo_stream { render "create", status: UNPROCESSABLE_CONTENT } if modal_request?
+              format.json { render json: instance.errors, status: UNPROCESSABLE_CONTENT }
 
               yield format if block_given?
             end
@@ -98,9 +104,9 @@ module Trestle
             respond_to do |format|
               flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
 
-              format.html { render "show", status: :unprocessable_content }
-              format.turbo_stream { render "update", status: :unprocessable_content }
-              format.json { render json: instance.errors, status: :unprocessable_content }
+              format.html { render "show", status: UNPROCESSABLE_CONTENT }
+              format.turbo_stream { render "update", status: UNPROCESSABLE_CONTENT }
+              format.json { render json: instance.errors, status: UNPROCESSABLE_CONTENT }
 
               yield format if block_given?
             end
