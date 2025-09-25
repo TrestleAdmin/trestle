@@ -22,6 +22,16 @@ feature 'Resources', type: :system do
     expect(page).to have_current_path(/\/admin\/posts\/\d+/)
   end
 
+  scenario 'new record with errors' do
+    visit '/admin/posts'
+
+    click_link "New Post"
+    click_button "Save Post"
+
+    expect(page).to have_content("Please correct the errors below.")
+    expect(page).to have_current_path(/\/admin\/posts\/new/)
+  end
+
   scenario 'update record' do
     create_test_post
 
@@ -32,6 +42,18 @@ feature 'Resources', type: :system do
     click_button "Save Post"
 
     expect(page).to have_content("The post was successfully updated.")
+  end
+
+  scenario 'update record with errors' do
+    create_test_post
+
+    visit '/admin/posts'
+    click_link "First Post"
+
+    fill_in "Title", with: ""
+    click_button "Save Post"
+
+    expect(page).to have_content("Please correct the errors below.")
   end
 
   scenario 'delete record' do
