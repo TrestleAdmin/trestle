@@ -36,9 +36,9 @@ module Trestle
             respond_to do |format|
               flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.")
 
-              format.html { render "new", status: :unprocessable_entity }
-              format.turbo_stream { render "create", status: :unprocessable_entity } if modal_request?
-              format.json { render json: instance.errors, status: :unprocessable_entity }
+              format.html { render "new", status: :unprocessable_content }
+              format.turbo_stream { render "create", status: :unprocessable_content } if modal_request?
+              format.json { render json: instance.errors, status: :unprocessable_content }
 
               yield format if block_given?
             end
@@ -98,9 +98,9 @@ module Trestle
             respond_to do |format|
               flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.")
 
-              format.html { render "show", status: :unprocessable_entity }
-              format.turbo_stream { render "update", status: :unprocessable_entity }
-              format.json { render json: instance.errors, status: :unprocessable_entity }
+              format.html { render "show", status: :unprocessable_content }
+              format.turbo_stream { render "update", status: :unprocessable_content }
+              format.json { render json: instance.errors, status: :unprocessable_content }
 
               yield format if block_given?
             end
