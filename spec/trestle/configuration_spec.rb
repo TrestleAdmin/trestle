@@ -82,6 +82,28 @@ describe Trestle::Configuration do
     expect(config.menus).to eq([])
   end
 
+  describe "#nonced_styles" do
+    it "sets the nonced style preference" do
+      config.nonced_styles = true
+      expect(config.nonced_styles).to eq(true)
+    end
+  end
+
+  it "has a default nonced styles configuration option" do
+    expect(config).to have_accessor(:nonced_styles).with_default(false)
+  end
+
+  describe "#nonced_scripts" do
+    it "sets the nonced script preference" do
+      config.nonced_scripts = true
+      expect(config.nonced_scripts).to eq(true)
+    end
+  end
+
+  it "has a default nonced scripts configuration option" do
+    expect(config).to have_accessor(:nonced_scripts).with_default(false)
+  end
+
   describe "#menu" do
     it "adds an unbound navigation block to menus" do
       b = proc {}

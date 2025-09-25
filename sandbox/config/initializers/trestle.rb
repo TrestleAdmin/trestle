@@ -19,4 +19,6 @@ Trestle.configure do |config|
 
   # config.form_field :custom_field, -> { CustomField }
   config.form_field :custom_field, "CustomField"
+
+  config.nonced_scripts = true
 end
