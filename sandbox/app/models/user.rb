@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   scope :alphabetical, ->(order=:asc) { reorder(last_name: order, first_name: order) }
 
-  enum level: [:executive, :manager, :staff, :intern, :contractor]
-  enum avatar_type: { "Mystery Person" => "mp", "Identicon" => "identicon", "MonsterID" => "monsterid", "Wavatar" => "wavatar", "Retro" => "retro", "RoboHash" => "robohash", "Initials" => "blank" }
+  enum :level, [:executive, :manager, :staff, :intern, :contractor]
+  enum :avatar_type, { "Mystery Person" => "mp", "Identicon" => "identicon", "MonsterID" => "monsterid", "Wavatar" => "wavatar", "Retro" => "retro", "RoboHash" => "robohash", "Initials" => "blank" }
 
   def full_name
     [first_name, last_name].join(" ")
